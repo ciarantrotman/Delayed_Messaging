@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.delayed_messaging.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "S:\\Personal\\Projects\\Delayed Messaging\\Delayed_Messaging\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Delayed_Messaging [Testing]"
+        }
+      }
+    }
+  ]
+}
