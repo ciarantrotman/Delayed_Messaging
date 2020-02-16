@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 3ebafc3f63824aa4f821c6c79cc71e91
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Button
+    100002: buttonActiveTransform
+    100004: buttonBase
+    100006: buttonInactiveTransform
+    100008: buttonInternal
+    100010: //RootNode
+    100012: hoverGroup
+    100014: hoverInner
+    100016: hoverOuter
+    100018: pasted__buttonActive
+    100020: pasted__buttonBase
+    100022: pasted__buttonInternal
+    100024: Target_Visual
+    100026: transform1
+    100028: transform2
+    100030: transform3
+    100032: transform4
+    100034: transform5
+    100036: transform6
+    100038: transform7
+    100040: Close_Icon
+    100042: group
+    100044: pasted__XL
+    100046: transform8
+    100048: transform9
+    100050: XL
+    400000: Button
+    400002: buttonActiveTransform
+    400004: buttonBase
+    400006: buttonInactiveTransform
+    400008: buttonInternal
+    400010: //RootNode
+    400012: hoverGroup
+    400014: hoverInner
+    400016: hoverOuter
+    400018: pasted__buttonActive
+    400020: pasted__buttonBase
+    400022: pasted__buttonInternal
+    400024: Target_Visual
+    400026: transform1
+    400028: transform2
+    400030: transform3
+    400032: transform4
+    400034: transform5
+    400036: transform6
+    400038: transform7
+    400040: Close_Icon
+    400042: group
+    400044: pasted__XL
+    400046: transform8
+    400048: transform9
+    400050: XL
+    2100000: lambert1
+    2300000: Target_Visual
+    2300002: Close_Icon
+    3300000: Target_Visual
+    3300002: Close_Icon
+    4300000: Button
+    4300002: Target_Visual
+    4300004: Close_Icon
+    9500000: //RootNode
+    13700000: Button
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

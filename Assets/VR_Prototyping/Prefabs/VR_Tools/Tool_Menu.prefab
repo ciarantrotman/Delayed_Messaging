@@ -1,0 +1,315 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6464194781663961269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6464194781663961267}
+  - component: {fileID: 6464194781663961268}
+  - component: {fileID: 1548152124150935786}
+  - component: {fileID: 996178410202326001}
+  - component: {fileID: 8033839298211828535}
+  - component: {fileID: 496836517179795589}
+  m_Layer: 0
+  m_Name: Tool_Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6464194781663961267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464194781663961269}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.469, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6464194781663961268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464194781663961269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eef3ff58febd044cbd1fbf2154b9ef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1548152124150935786}
+    - {fileID: 996178410202326001}
+    - {fileID: 8033839298211828535}
+    - {fileID: 496836517179795589}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: tools
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[VR_Prototyping.Scripts.Tools.BaseTool,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 1
+      Data: Sketch
+    - Name: 
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 1
+      Data: Measure
+    - Name: 
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 1
+      Data: Memo
+    - Name: 
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: 
+      Entry: 1
+      Data: Note
+    - Name: 
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  toolMenuHeader: {fileID: 100000, guid: d73d73feb2f9b194c9ba86a216b16099, type: 3}
+  headerHeight: 0.07
+  headerIndent: -0.05
+  toolMenuFooter: {fileID: 7471766173052431655, guid: 84c29d3e17a064c49878d92547979795,
+    type: 3}
+  gridSize: 2
+  horizontalSpacing: 0.12
+  verticalSpacing: 0.12
+--- !u!114 &1548152124150935786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464194781663961269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09073bfac61932f4a8911b622199c767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 4502723651188342817, guid: fda408bab8a496f49a6251692dd25fcb,
+    type: 3}
+  buttonModel: {fileID: 8604994689402678720, guid: 7ab192f1584b8a241b305bf147c0afb3,
+    type: 3}
+  nonDominant: {fileID: 5856006291299973252, guid: f57cb58b4e0371f46bb30eea2eb773d5,
+    type: 3}
+  dominant: {fileID: 3695830211362363385, guid: 8553eaa023a09734b9c74414ed226e1f,
+    type: 3}
+  dominantSpeed: 0.5
+  nonDominantSpeed: 1
+  erasingDistance: 0.1
+  minWidth: 0.001
+  maxWidth: 0.05
+  sketchMaterial: {fileID: 2100000, guid: a96d560642c451749959d8e0518abc9c, type: 2}
+  sketchTrail: 1
+  trailWidth:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.016458005
+      outSlope: -0.016458005
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.25850558
+    - serializedVersion: 3
+      time: 1
+      value: -0.0000010416843
+      inSlope: 0.008762704
+      outSlope: 0.008762704
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.24262397
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  sketchProfile: 1
+  profileCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -2
+      outSlope: -2
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &996178410202326001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464194781663961269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7c86d915891ad4d972f7847679d509, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 4502723651188342817, guid: fda408bab8a496f49a6251692dd25fcb,
+    type: 3}
+  buttonModel: {fileID: 1992522322137207222, guid: f8829db694abce143837885ae64b56b4,
+    type: 3}
+  nonDominant: {fileID: 5856006291299973252, guid: 270d23721ca959440a42ba256251a764,
+    type: 3}
+  dominant: {fileID: 3695830211362363385, guid: 0ba219af5c5f089459eb31bb8a6f46f3,
+    type: 3}
+  dominantSpeed: 1
+  nonDominantSpeed: 1
+  tapeNodePrefab: {fileID: 2758839382525824194, guid: bb196f17f0ff6e149891d484bbd0cfba,
+    type: 3}
+  axisSnapping: 1
+  snapObject: {fileID: 443859414914003195, guid: cb38ac6545c74fb46ab63f5ce6a40544,
+    type: 3}
+  nodeLockingType: 1
+  snapTolerance: 0.15
+  activeWidth: 0.002
+  inactiveWidth: 0.0005
+  nodeInsertion: 1
+  intersectionPointPrefab: {fileID: 2758839382525824194, guid: b0e9f7e6c706e6a47b77e11b4059055f,
+    type: 3}
+  tolerance: 0.005
+  insertionThreshold: 0.075
+  grabNode: 1
+  nodeGrabDistance: 0.05
+  tapeMaterial: {fileID: 2100000, guid: 8b32fcf34306a704c9423ba5b6596b0e, type: 2}
+  tapeWidth: 0.004
+  nodeTextFocusHeight: 0.15
+  nodeTextStandardHeight: 0.1
+--- !u!114 &8033839298211828535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464194781663961269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f62821a7665ec304ca3c83d645fac0df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 4502723651188342817, guid: fda408bab8a496f49a6251692dd25fcb,
+    type: 3}
+  buttonModel: {fileID: 1697958560615545378, guid: 51754ddb5ae55dd43a1beebb18634855,
+    type: 3}
+  nonDominant: {fileID: 6400732894752833174, guid: b8bdbc66f56417e428636e3c33c5b3ed,
+    type: 3}
+  dominant: {fileID: 1087201317739122668, guid: 2797ad5c394412e42b7eed797186392a,
+    type: 3}
+  dominantSpeed: 1
+  nonDominantSpeed: 1
+  memoPrefab: {fileID: 137106192623996715, guid: 8c21d6d03a5a29b4e8d31ded2b4a279f,
+    type: 3}
+  microphones: []
+  triggerDistance: 0.05
+--- !u!114 &496836517179795589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464194781663961269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222b5ce9c9db1b34b8ca4c9679c3b6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 4502723651188342817, guid: fda408bab8a496f49a6251692dd25fcb,
+    type: 3}
+  buttonModel: {fileID: 1240458500235914628, guid: d082362b0f56c314cbc081668471c3ef,
+    type: 3}
+  nonDominant: {fileID: 2539755873991121999, guid: 453c2d873358be9459a62215a50d7cf2,
+    type: 3}
+  dominant: {fileID: 2294465584451555479, guid: 49b23826101229c4ab0c2d26a6177f02,
+    type: 3}
+  dominantSpeed: 1
+  nonDominantSpeed: 1
+  notePrefab: {fileID: 5820125354782596746, guid: 257b819d1bb0e7b4587f8ac24639cffa,
+    type: 3}

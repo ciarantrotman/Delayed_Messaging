@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 26a40dccd59367d4c9fb490b0c7ee9aa
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - c: {instanceID: 0}
+  - sliderMaterial: {fileID: 2100000, guid: c370e6676fed2e14d87bc2991b4d69eb, type: 2}
+  - sliderCap: {fileID: 9118401091631344384, guid: 34b8229c51f2deb42a79286412240e87,
+      type: 3}
+  - sliderHandle: {fileID: 3111459450017273737, guid: fc274b072ac762243add36eccab50e24,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,172 @@
+fileFormatVersion: 2
+guid: 2950c0535ab494643a9988c731b54bb7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Button
+    100002: Button_Label
+    100004: buttonActiveTransform
+    100006: buttonBase
+    100008: buttonInactiveTransform
+    100010: buttonInternal
+    100012: //RootNode
+    100014: group
+    100016: hoverGroup
+    100018: hoverInner
+    100020: hoverOuter
+    100022: pasted__Button
+    100024: pasted__buttonActive
+    100026: pasted__buttonActiveTransform
+    100028: pasted__buttonBase
+    100030: pasted__buttonBase 1
+    100032: pasted__buttonInactiveTransform
+    100034: pasted__buttonInternal
+    100036: pasted__buttonInternal 1
+    100038: pasted__pasted__buttonActive
+    100040: pasted__pasted__buttonBase
+    100042: pasted__pasted__buttonInternal
+    100044: pasted__transform1
+    100046: pasted__transform2
+    100048: pasted__transform3
+    100050: pasted__transform4
+    100052: Target_Visual
+    100054: transform1
+    100056: transform2
+    100058: transform3
+    100060: transform4
+    100062: transform5
+    100064: transform6
+    100066: transform7
+    400000: Button
+    400002: Button_Label
+    400004: buttonActiveTransform
+    400006: buttonBase
+    400008: buttonInactiveTransform
+    400010: buttonInternal
+    400012: //RootNode
+    400014: group
+    400016: hoverGroup
+    400018: hoverInner
+    400020: hoverOuter
+    400022: pasted__Button
+    400024: pasted__buttonActive
+    400026: pasted__buttonActiveTransform
+    400028: pasted__buttonBase
+    400030: pasted__buttonBase 1
+    400032: pasted__buttonInactiveTransform
+    400034: pasted__buttonInternal
+    400036: pasted__buttonInternal 1
+    400038: pasted__pasted__buttonActive
+    400040: pasted__pasted__buttonBase
+    400042: pasted__pasted__buttonInternal
+    400044: pasted__transform1
+    400046: pasted__transform2
+    400048: pasted__transform3
+    400050: pasted__transform4
+    400052: Target_Visual
+    400054: transform1
+    400056: transform2
+    400058: transform3
+    400060: transform4
+    400062: transform5
+    400064: transform6
+    400066: transform7
+    2100000: lambert1
+    2100002: typeBlinn
+    2300000: Button_Label
+    2300002: Target_Visual
+    3300000: Button_Label
+    3300002: Target_Visual
+    4300000: Button
+    4300002: Target_Visual
+    4300004: Button_Label
+    4300006: pasted__Button
+    9500000: //RootNode
+    13700000: Button
+    13700002: pasted__Button
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

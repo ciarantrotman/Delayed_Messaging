@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 315c2776475041c4f9c34efee8f1c75c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - c: {instanceID: 0}
+  - dialMaterial: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
+  - dialCap: {instanceID: 0}
+  - dialHandle: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

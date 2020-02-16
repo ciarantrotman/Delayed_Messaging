@@ -1,0 +1,175 @@
+fileFormatVersion: 2
+guid: 9882eae5058761440b5f84abf963454f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Base_Outline
+    100002: Bottom_Anchor
+    100004: Hover_Target
+    100006: pCylinder1
+    100008: pCylinder2
+    100010: pCylinder3
+    100012: pCylinder4
+    100014: Top_Anchor
+    100016: transform1
+    100018: transform2
+    100020: transform3
+    100022: transform4
+    100024: //RootNode
+    100026: group
+    100028: group1
+    100030: pasted__Base_Outline
+    100032: pasted__group
+    100034: pasted__pasted__pCylinder1
+    100036: pasted__pasted__pCylinder2
+    100038: pasted__pasted__transform1
+    100040: pasted__pasted__transform2
+    100042: pasted__pCylinder1
+    100044: pasted__pCylinder2
+    100046: pasted__transform1
+    100048: pasted__transform2
+    100050: pCylinder5
+    100052: pCylinder6
+    100054: transform5
+    100056: transform6
+    100058: InactiveBase
+    100060: ActiveBase
+    400000: Base_Outline
+    400002: Bottom_Anchor
+    400004: Hover_Target
+    400006: pCylinder1
+    400008: pCylinder2
+    400010: pCylinder3
+    400012: pCylinder4
+    400014: Top_Anchor
+    400016: transform1
+    400018: transform2
+    400020: transform3
+    400022: transform4
+    400024: //RootNode
+    400026: group
+    400028: group1
+    400030: pasted__Base_Outline
+    400032: pasted__group
+    400034: pasted__pasted__pCylinder1
+    400036: pasted__pasted__pCylinder2
+    400038: pasted__pasted__transform1
+    400040: pasted__pasted__transform2
+    400042: pasted__pCylinder1
+    400044: pasted__pCylinder2
+    400046: pasted__transform1
+    400048: pasted__transform2
+    400050: pCylinder5
+    400052: pCylinder6
+    400054: transform5
+    400056: transform6
+    400058: InactiveBase
+    400060: ActiveBase
+    2100000: lambert1
+    2300000: Base_Outline
+    2300002: Bottom_Anchor
+    2300004: Hover_Target
+    2300006: Top_Anchor
+    2300008: pasted__Base_Outline
+    2300010: InactiveBase
+    2300012: ActiveBase
+    3300000: Base_Outline
+    3300002: Bottom_Anchor
+    3300004: Hover_Target
+    3300006: Top_Anchor
+    3300008: pasted__Base_Outline
+    3300010: InactiveBase
+    3300012: ActiveBase
+    4300000: Base_Outline
+    4300002: Hover_Target
+    4300004: Bottom_Anchor
+    4300006: Top_Anchor
+    4300008: pasted__Base_Outline
+    4300010: InactiveBase
+    4300012: ActiveBase
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.15
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,11 @@
+
+newmtl 0.BaseMaterial
+Kd  01 01 00
+Ks  0.2 0.2 0.2
+Ka  00 00 00
+d  01
+Ns  00
+illum 2
+
+
+

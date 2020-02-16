@@ -1,0 +1,165 @@
+fileFormatVersion: 2
+guid: 334c76f07d0a81042a1f8b1e92c4df4d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: measureNodeAxes
+    100004: transform1
+    100006: transform2
+    100008: transform3
+    100010: xAxis
+    100012: yAxis
+    100014: yAxis 1
+    100016: zAxis
+    100018: zAxis 1
+    100020: group
+    100022: group1
+    100024: pasted__group
+    100026: pasted__group1
+    100028: pasted__pasted__group1
+    100030: pasted__pasted__group1_pasted__pasted__pasted__yAxis_pasted__pasted__pasted__yAxis
+    100032: pasted__pasted__pasted__xAxis
+    100034: pasted__pasted__pasted__yAxis
+    100036: pasted__pasted__pasted__yAxis 1
+    100038: pasted__pasted__pasted__zAxis
+    100040: pasted__pasted__pasted__zAxis 1
+    100042: pasted__pasted__xAxis
+    100044: pasted__pasted__yAxis
+    100046: pasted__pasted__yAxis 1
+    100048: pasted__pasted__zAxis
+    100050: pasted__pasted__zAxis 1
+    100052: transform4
+    100054: transform5
+    100056: transform6
+    100058: active
+    100060: activeState
+    100062: inactive
+    400000: //RootNode
+    400002: measureNodeAxes
+    400004: transform1
+    400006: transform2
+    400008: transform3
+    400010: xAxis
+    400012: yAxis
+    400014: yAxis 1
+    400016: zAxis
+    400018: zAxis 1
+    400020: group
+    400022: group1
+    400024: pasted__group
+    400026: pasted__group1
+    400028: pasted__pasted__group1
+    400030: pasted__pasted__group1_pasted__pasted__pasted__yAxis_pasted__pasted__pasted__yAxis
+    400032: pasted__pasted__pasted__xAxis
+    400034: pasted__pasted__pasted__yAxis
+    400036: pasted__pasted__pasted__yAxis 1
+    400038: pasted__pasted__pasted__zAxis
+    400040: pasted__pasted__pasted__zAxis 1
+    400042: pasted__pasted__xAxis
+    400044: pasted__pasted__yAxis
+    400046: pasted__pasted__yAxis 1
+    400048: pasted__pasted__zAxis
+    400050: pasted__pasted__zAxis 1
+    400052: transform4
+    400054: transform5
+    400056: transform6
+    400058: active
+    400060: activeState
+    400062: inactive
+    2100000: lambert1
+    2300000: measureNodeAxes
+    2300002: pasted__pasted__group1_pasted__pasted__pasted__yAxis_pasted__pasted__pasted__yAxis
+    2300004: activeState
+    3300000: measureNodeAxes
+    3300002: pasted__pasted__group1_pasted__pasted__pasted__yAxis_pasted__pasted__pasted__yAxis
+    3300004: activeState
+    4300000: measureNodeAxes
+    4300002: pasted__pasted__group1_pasted__pasted__pasted__yAxis_pasted__pasted__pasted__yAxis
+    4300004: activeState
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.7
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

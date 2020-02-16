@@ -1,0 +1,10 @@
+fileFormatVersion: 2
+guid: 0446b73a69033914aa3cf6c0dc1f78cb
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _WipeTexture: {fileID: 2800000, guid: 5f9bea2f583434c4eafd978cf66b4080, type: 3}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
