@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-using VR_Prototyping.Scripts.Tools;
 
 namespace VR_Prototyping.Scripts.Keyboard
 {
     public class KeyboardManager : MonoBehaviour
     { 
         public KeyboardTarget KeyboardTarget { get; private set; }
-        private ToolMenu ToolMenu { get; set; }
         private ControllerTransforms ControllerTransforms { get; set; }
         public enum KeyboardKeyValues
         {
@@ -58,14 +56,13 @@ namespace VR_Prototyping.Scripts.Keyboard
             ENTER = '¬'
         }
         
-        [BoxGroup] [SerializeField] [Required] private Transform keyboardParent;
-        [BoxGroup] [HideInEditorMode] [Space(10)] public List<KeyboardKey> keyboardKeys = new List<KeyboardKey>();
+        /*[BoxGroup]*/ [SerializeField]private Transform keyboardParent;
+        /*[BoxGroup] [HideInEditorMode] */[Space(10)] public List<KeyboardKey> keyboardKeys = new List<KeyboardKey>();
         [HideInInspector] public UnityEvent enter;
 
-        public void InitialiseKeyboard(ControllerTransforms c, ToolMenu t, Transform parent)
+        public void InitialiseKeyboard(ControllerTransforms c, Transform parent)
         {
             ControllerTransforms = c;
-            ToolMenu = t;
             transform.SetParent(parent);
             
             int index = 0;

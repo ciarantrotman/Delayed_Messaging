@@ -1,11 +1,10 @@
-﻿using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace VR_Prototyping.Scripts.Demo_Scripts
 {
     public class IsometricCameraFollow : MonoBehaviour
     {
-        [BoxGroup] [SerializeField] private Transform target;
+        [SerializeField] private Transform target;
 
         private void Update()
         {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/*
 namespace VR_Prototyping.Scripts.Icon_Scripts
 {
     public class ViewpointTarget : SelectableObject
@@ -38,3 +38,4 @@ namespace VR_Prototyping.Scripts.Icon_Scripts
         }
     }
 }
+*/

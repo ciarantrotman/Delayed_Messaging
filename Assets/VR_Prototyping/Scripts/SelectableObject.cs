@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DG.Tweening;
 //using Leap.Unity.Interaction;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -85,93 +85,93 @@ namespace VR_Prototyping.Scripts
 		private readonly List<Vector3> rotations = new List<Vector3>();
 		private const float Sensitivity = 10f;
 	
-		[BoxGroup("Script Setup")] public bool instantiated;
-		[BoxGroup("Script Setup")] [Required] [HideIf("instantiated")] public GameObject player;
+		/*[BoxGroup("Script Setup")] */public bool instantiated;
+		/*[BoxGroup("Script Setup")] [Required] [HideIf("instantiated")] */public GameObject player;
 		[Header("Define Object Behaviour")]
-		[BoxGroup("Script Setup")] [HideIf("button")] [SerializeField] private bool grab;
-		[BoxGroup("Script Setup")] [HideIf("grab")] [SerializeField] private bool button;
-		[BoxGroup("Script Setup")] [ShowIf("button")] [SerializeField] [Indent] private bool toggle;
-		[BoxGroup("Script Setup")] [ShowIf("button")] [SerializeField] [Indent(2)] private bool startsActive;
-		[BoxGroup("Script Setup")] [ShowIf("button")] [SerializeField] [Indent] private bool menu;
-		[BoxGroup("Script Setup")] [ShowIf("button")] [ShowIf("menu")] [Indent(2)] public GameObject menuItems;
+		/*[BoxGroup("Script Setup")] [HideIf("button")] */[SerializeField] private bool grab;
+		/*[BoxGroup("Script Setup")] [HideIf("grab")] */[SerializeField] private bool button;
+		/*[BoxGroup("Script Setup")] [ShowIf("button")] [Indent]*/[SerializeField] private bool toggle;
+		/*[BoxGroup("Script Setup")] [ShowIf("button")] [Indent(2)] */[SerializeField] private bool startsActive;
+		/*[BoxGroup("Script Setup")] [ShowIf("button")] [Indent]*/ [SerializeField] private bool menu;
+		/*[BoxGroup("Script Setup")] [ShowIf("button")] [ShowIf("menu")] [Indent(2)] */public GameObject menuItems;
 		
 		[Header("Grab Settings")]
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), Range(0, 1f)] public float moveForce = .15f;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), Range(0, 10f)] public float latency = 4.5f;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), SerializeField] private bool gravity;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("grab")] public bool directGrab = true;
-		[Header("Rotation Settings")]
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), Space(5), SerializeField] public bool freeRotationEnabled;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("freeRotationEnabled"), Indent, SerializeField] public RotationLock rotationLock;
-		[Header("Scaling Settings")]
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), Space(5), SerializeField] public bool scalingEnabled;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideInPlayMode, ShowIf("scalingEnabled"), Indent, Range(.01f, 1f)] public float minScaleFactor;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideInPlayMode, ShowIf("scalingEnabled"), Indent, Range(1f, 10f)] public float maxScaleFactor;
-		[Header("Visual Effects")]
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), Space(5)] [SerializeField] private bool genericGrabEffect;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), Indent] [SerializeField] private bool grabOutline;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("grabOutline"), Indent(2), Range(1f, 10f), SerializeField] private float grabOutlineWidth;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("grabOutline"), Indent(2), SerializeField] private Color grabOutlineColor = new Color(0,0,0,255);
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("grabOutline"), Indent(2), SerializeField] private Outline.Mode grabOutlineMode;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("directGrab"), Indent] [SerializeField] private bool touchOutline;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("directGrab"), ShowIf("touchOutline"), Indent(2), Range(1f, 10f), SerializeField] private float touchOutlineWidth;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("directGrab"), ShowIf("touchOutline"), Indent(2), SerializeField] private Color touchOutlineColor = new Color(0,0,0,255);
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("directGrab"), ShowIf("touchOutline"), Indent(2), SerializeField] private Outline.Mode touchOutlineMode;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] public UnityEvent grabStart;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] public UnityEvent grabStay;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] public UnityEvent grabEnd;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] public UnityEvent dualGrabStart;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] public UnityEvent dualGrabStay;
-		[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] public UnityEvent dualGrabEnd;
-		
-		[Header("Visual Effects")]
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), Space(5)] [SerializeField] private bool genericSelectState;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Required] public TextMeshPro buttonText;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Required] public MeshRenderer buttonBack;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, Range(0, 1f), SerializeField] private float selectOffset;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, Range(0, 1f), SerializeField] private float selectScale;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, Range(0, 1f), SerializeField] private float selectEffectDuration = .1f;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, Required, SerializeField] private TMP_FontAsset activeFont;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, Required, SerializeField] private TMP_FontAsset inactiveFont;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, SerializeField] private Color activeColor = new Color(0,0,0,255);
-		[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, SerializeField] private Color inactiveColor = new Color(0,0,0,255);
-		[Header("Visual Effects")]
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("button"), HideIf("genericSelectState"), Space(5), SerializeField] private bool blendShapeButton;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), SerializeField, Required] internal SkinnedMeshRenderer buttonSkinnedMeshRenderer;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), SerializeField, Required] internal GameObject text;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), SerializeField, Required] internal Transform border;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Space(10)] [SerializeField] private HoverAxis hoverAxis = HoverAxis.Z;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, SerializeField, Range(0f, .01f)] internal float restDepth;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, SerializeField, Range(.01f, .5f)] internal float hoverDepth;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, SerializeField, Range(.1f, 1f)] internal float hoverDuration;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Space(10)] [Range(.01f, 1)] [SerializeField] internal float buttonAnimationDuration = .5f;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, SerializeField] internal Color activeFontColor = new Color(255f,255f,255f, 255f);
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, SerializeField] internal Color inactiveFontColor = new Color(45f,45f,45f, 255f);
-		
-		[FoldoutGroup("Button Settings"), ShowIf("button"), Space(5)] private ButtonTrigger buttonTrigger;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), Space(10)] public UnityEvent selectStart;
-		[FoldoutGroup("Button Settings"), ShowIf("button")] public UnityEvent selectStay;
-		[FoldoutGroup("Button Settings"), ShowIf("button")] public UnityEvent selectEnd;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("toggle")] public UnityEvent toggleStart;
-		[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("toggle")] public UnityEvent toggleEnd;
-
-		[FoldoutGroup("Hover Settings"), SerializeField] private bool reactiveMat;
-		[FoldoutGroup("Hover Settings"), ShowIf("reactiveMat"), SerializeField, Indent, Range(0, 1f)] private float clippingDistance;
-		[FoldoutGroup("Hover Settings"), SerializeField] private bool hover;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover")] public bool toolTip;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("toolTip")] [Indent] public string toolTipText = "Enter hover state text here.";
-		[Header("Visual Effects")]
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), Space(5)] [Indent] [SerializeField] private bool genericHoverEffect;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), Indent(2), Range(0, 1f)] [SerializeField] private float hoverOffset;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), Indent(2), Range(0, 1f)] [SerializeField] private float hoverScale;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), Indent(2), Range(0, 1f)] [SerializeField] private float hoverEffectDuration;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), Indent, SerializeField] private bool hoverOutline;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), ShowIf("hoverOutline"), Indent(2), Range(1f, 10f), SerializeField] private float hoverOutlineWidth;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), ShowIf("hoverOutline"), Indent(2), SerializeField] private Color hoverOutlineColor = new Color(0,0,0,255);
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), ShowIf("hoverOutline"), Indent(2), SerializeField] private Outline.Mode hoverOutlineMode;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), HideIf("genericHoverEffect"), Space(10), SerializeField] public UnityEvent hoverStart;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), HideIf("genericHoverEffect"), SerializeField] public UnityEvent hoverStay;
-		[FoldoutGroup("Hover Settings"), ShowIf("hover"), HideIf("genericHoverEffect"), SerializeField] public UnityEvent hoverEnd;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"),*/[Range(0, 1f)] public float moveForce = .15f;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"),*/ [Range(0, 10f)] public float latency = 4.5f;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"),*/ [SerializeField] private bool gravity;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("grab")] */public bool directGrab = true;
+		/**/[Header("Rotation Settings")]
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), */[Space(5), SerializeField] public bool freeRotationEnabled;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("freeRotationEnabled"), Indent,*/[SerializeField] public RotationLock rotationLock;
+		/*[Header("Scaling Settings")]
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), Space(5), */[SerializeField] public bool scalingEnabled;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideInPlayMode, ShowIf("scalingEnabled"), Indent, */[Range(.01f, 1f)] public float minScaleFactor;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideInPlayMode, ShowIf("scalingEnabled"), Indent, */[Range(1f, 10f)] public float maxScaleFactor;
+		/*[Header("Visual Effects")]
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), */[Space(5)] [SerializeField] private bool genericGrabEffect;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), Indent]*/ [SerializeField] private bool grabOutline;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("grabOutline"), Indent(2), */[Range(1f, 10f), SerializeField] private float grabOutlineWidth;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("grabOutline"), Indent(2), */[SerializeField] private Color grabOutlineColor = new Color(0,0,0,255);
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("grabOutline"), Indent(2), */[SerializeField] private Outline.Mode grabOutlineMode;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("directGrab"), Indent, */[SerializeField] private bool touchOutline;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("directGrab"), ShowIf("touchOutline"), Indent(2), Range(1f, 10f), */[SerializeField] private float touchOutlineWidth;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("directGrab"), ShowIf("touchOutline"), Indent(2), */[SerializeField] private Color touchOutlineColor = new Color(0,0,0,255);
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), ShowIf("genericGrabEffect"), ShowIf("directGrab"), ShowIf("touchOutline"), Indent(2), */[SerializeField] private Outline.Mode touchOutlineMode;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] */public UnityEvent grabStart;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] */public UnityEvent grabStay;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] */public UnityEvent grabEnd;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] */public UnityEvent dualGrabStart;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] */public UnityEvent dualGrabStay;
+		/*[FoldoutGroup("Manipulation Settings"), ShowIf("grab"), HideIf("genericGrabEffect"), ShowIf("directGrab"), Indent] */public UnityEvent dualGrabEnd;
+		/*
+		/*[Header("Visual Effects")]
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), */[Space(5)] [SerializeField] private bool genericSelectState;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Required]*/ public TextMeshPro buttonText;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Required] */public MeshRenderer buttonBack;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, */[Range(0, 1f), SerializeField] private float selectOffset;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, */[Range(0, 1f), SerializeField] private float selectScale;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, */[Range(0, 1f), SerializeField] private float selectEffectDuration = .1f;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, Required, */[SerializeField] private TMP_FontAsset activeFont;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, Required, */[SerializeField] private TMP_FontAsset inactiveFont;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, */[SerializeField] private Color activeColor = new Color(0,0,0,255);
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), HideIf("blendShapeButton"), ShowIf("genericSelectState"), Indent, */[SerializeField] private Color inactiveColor = new Color(0,0,0,255);
+		/*[Header("Visual Effects")]
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("button"), HideIf("genericSelectState"), */[Space(5), SerializeField] private bool blendShapeButton;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), */[SerializeField] internal SkinnedMeshRenderer buttonSkinnedMeshRenderer;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), */[SerializeField] internal GameObject text;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), */[SerializeField] internal Transform border;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), */[Space(10)] [SerializeField] private HoverAxis hoverAxis = HoverAxis.Z;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, */[SerializeField, Range(0f, .01f)] internal float restDepth;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, */[SerializeField, Range(.01f, .5f)] internal float hoverDepth;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, */[SerializeField, Range(.1f, 1f)] internal float hoverDuration;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), */[Space(10)] [Range(.01f, 1)] [SerializeField] internal float buttonAnimationDuration = .5f;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, */[SerializeField] internal Color activeFontColor = new Color(255f,255f,255f, 255f);
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("blendShapeButton"), HideIf("genericSelectState"), Indent, */[SerializeField] internal Color inactiveFontColor = new Color(45f,45f,45f, 255f);
+		/*
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), */[Space(5)] private ButtonTrigger buttonTrigger;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), */[Space(10)] public UnityEvent selectStart;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button")] */public UnityEvent selectStay;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button")] */public UnityEvent selectEnd;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("toggle")] */public UnityEvent toggleStart;
+		/*[FoldoutGroup("Button Settings"), ShowIf("button"), ShowIf("toggle")] */public UnityEvent toggleEnd;
+/*
+		/*[FoldoutGroup("Hover Settings"), */[SerializeField] private bool reactiveMat;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("reactiveMat"), Indent, */[SerializeField, Range(0, 1f)] private float clippingDistance;
+		/*[FoldoutGroup("Hover Settings"), */[SerializeField] private bool hover;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover")] */public bool toolTip;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("toolTip")] [Indent] */public string toolTipText = "Enter hover state text here.";
+		/*[Header("Visual Effects")]
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), Space(5)] [Indent] */[SerializeField] private bool genericHoverEffect;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), Indent(2), */[Range(0, 1f), SerializeField] private float hoverOffset;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), Indent(2), */[Range(0, 1f), SerializeField] private float hoverScale;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), Indent(2), */[Range(0, 1f), SerializeField] private float hoverEffectDuration;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), Indent, */[SerializeField] private bool hoverOutline;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), ShowIf("hoverOutline"), Indent(2), */[Range(1f, 10f), SerializeField] private float hoverOutlineWidth;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), ShowIf("hoverOutline"), Indent(2), */[SerializeField] private Color hoverOutlineColor = new Color(0,0,0,255);
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), ShowIf("genericHoverEffect"), ShowIf("hoverOutline"), Indent(2), */[SerializeField] private Outline.Mode hoverOutlineMode;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), HideIf("genericHoverEffect"), */[Space(10), SerializeField] public UnityEvent hoverStart;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), HideIf("genericHoverEffect"), */[SerializeField] public UnityEvent hoverStay;
+		/*[FoldoutGroup("Hover Settings"), ShowIf("hover"), HideIf("genericHoverEffect"), */[SerializeField] public UnityEvent hoverEnd;
 		
 		private static readonly int Threshold = Shader.PropertyToID("_ClipThreshold");
 		internal const float BlendShapeActive = 0f;

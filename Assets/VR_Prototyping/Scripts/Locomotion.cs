@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 //using UnityEngine.Rendering.PostProcessing;
@@ -66,7 +66,7 @@ namespace VR_Prototyping.Scripts
         private Vector3 customRotation;
         private Vector3 customPosition;
         
-        public ViewpointManager ViewpointManager { get; set; }
+        //public ViewpointManager ViewpointManager { get; set; }
         
         public enum Method
         {
@@ -78,31 +78,31 @@ namespace VR_Prototyping.Scripts
             return type != Method.DASH;
         }
         
-        [BoxGroup("Distance Settings")] [Range(.1f, 1f)] [SerializeField] private float min = .5f;
-        [BoxGroup("Distance Settings")] [Range(1f, 100f)] [SerializeField] private float max = 15f;
-        
-        [BoxGroup("References")] [Range(1, 15)] [SerializeField] private int layerIndex = 10;
-        
-        [ValidateInput("TypeCheck", "Dash is the recommended locomotion type, but should be disabled for motion sickness prone users.", InfoMessageType.Info)]
-        [TabGroup("Locomotion Settings")] [Space(5)] [SerializeField] private Method locomotionMethod = Method.DASH;
-        [TabGroup("Locomotion Settings")] [Tooltip("This controls the ability to control the direction you face when moving, it is recommended, but should be disabled for the Vive.")] [Space(5)] [SerializeField] private bool advancedLocomotion = true;
-        [TabGroup("Locomotion Settings")] [Space(10)][SerializeField] private bool rotation = true;
-        [TabGroup("Locomotion Settings")] [ShowIf("rotation")] [Indent] [Range(15f, 90f)] [SerializeField] private float angle = 45f;
-        [TabGroup("Locomotion Settings")] [ShowIf("rotation")] [Indent] [Range(0f, 1f)] [SerializeField] private float rotateSpeed = .15f;
-        [TabGroup("Locomotion Settings")] [Space(10)][SerializeField] private bool disableLeftHand;
-        [TabGroup("Locomotion Settings")] [SerializeField] private bool disableRightHand;
-
-        [TabGroup("Aesthetic Settings")] [Required] [SerializeField] private GameObject ghost;
-        //[TabGroup("Aesthetic Settings")] [Required] [SerializeField] private PostProcessVolume volume;
-        [TabGroup("Aesthetic Settings")] [SerializeField] private bool motionSicknessVignette;
-        [TabGroup("Aesthetic Settings")] [ShowIf("motionSicknessVignette")] [Indent] [Range(0f, 1f)] [SerializeField] private float vignetteStrength = .35f;
-        [TabGroup("Aesthetic Settings")] [Range(0f, 1f)] [SerializeField] private float moveSpeed = .75f;
-        [TabGroup("Aesthetic Settings")] [Space(5)] [SerializeField] [Required] private GameObject targetVisual;
-        [TabGroup("Aesthetic Settings")] [SerializeField] [Required] private AnimationCurve locomotionEasing;
-        [TabGroup("Aesthetic Settings")] [SerializeField] [Required] private Material lineRenderMat;
-        [TabGroup("Aesthetic Settings")] [Range(3f, 50f)] [SerializeField] private int lineRenderQuality = 40;
-        [TabGroup("Aesthetic Settings")] [Space(10)] [SerializeField] [Required] private GameObject sceneChangeWipe;
-        [TabGroup("Aesthetic Settings")] [Indent] [SerializeField] [Range(.25f, 5f)] private float sceneWipeDuration;
+        /*[BoxGroup("Distance Settings")] [*/[Range(.1f, 1f)] [SerializeField] private float min = .5f;
+        /*[BoxGroup("Distance Settings")] [*/[Range(1f, 100f)] [SerializeField] private float max = 15f;
+        /*
+        /*[BoxGroup("References")] [*/[Range(1, 15)] [SerializeField] private int layerIndex = 10;
+        /*
+        /*[ValidateInput("TypeCheck", "Dash is the recommended locomotion type, but should be disabled for motion sickness prone users.", InfoMessageType.Info)]
+        /*[TabGroup("Locomotion Settings")] [Space(5)] [*/[SerializeField] private Method locomotionMethod = Method.DASH;
+        /*[TabGroup("Locomotion Settings")] [Tooltip("This controls the ability to control the direction you face when moving, it is recommended, but should be disabled for the Vive.")] [*/[Space(5)] [SerializeField] private bool advancedLocomotion = true;
+        /*[TabGroup("Locomotion Settings")] [*/[Space(10)][SerializeField] private bool rotation = true;
+        /*[TabGroup("Locomotion Settings")] [ShowIf("rotation")] [Indent] */[Range(15f, 90f)] [SerializeField] private float angle = 45f;
+        /*[TabGroup("Locomotion Settings")] [ShowIf("rotation")] [Indent] [*/[Range(0f, 1f)] [SerializeField] private float rotateSpeed = .15f;
+        /*[TabGroup("Locomotion Settings")] [*/[Space(10)][SerializeField] private bool disableLeftHand;
+        /*[TabGroup("Locomotion Settings")] [*/[SerializeField] private bool disableRightHand;
+/*
+        /*[TabGroup("Aesthetic Settings")] [Required] [*/[SerializeField] private GameObject ghost;
+        /*//[TabGroup("Aesthetic Settings")] [Required] [SerializeField] private PostProcessVolume volume;
+        /*[TabGroup("Aesthetic Settings")] [*/[SerializeField] private bool motionSicknessVignette;
+        /*[TabGroup("Aesthetic Settings")] [ShowIf("motionSicknessVignette")] [Indent] [*/[Range(0f, 1f)] [SerializeField] private float vignetteStrength = .35f;
+        /*[TabGroup("Aesthetic Settings")] [*/[Range(0f, 1f)] [SerializeField] private float moveSpeed = .75f;
+        /*[TabGroup("Aesthetic Settings")] [*/[Space(5)] [SerializeField] private GameObject targetVisual;
+        /*[TabGroup("Aesthetic Settings")] [*/[SerializeField] private AnimationCurve locomotionEasing;
+        /*[TabGroup("Aesthetic Settings")] [*/[SerializeField] private Material lineRenderMat;
+        /*[TabGroup("Aesthetic Settings")] [*/[Range(3f, 50f)] [SerializeField] private int lineRenderQuality = 40;
+        /*[TabGroup("Aesthetic Settings")] [*/[Space(10)] [SerializeField] private GameObject sceneChangeWipe;
+        /*[TabGroup("Aesthetic Settings")] [Indent] [SerializeField] [*/[Range(.25f, 5f)] private float sceneWipeDuration;
 
         [HideInInspector] public UnityEvent sceneWipeTrigger;
         
@@ -378,7 +378,7 @@ namespace VR_Prototyping.Scripts
             //vignetteLayer.intensity.value = intensity;
         }
         
-        [Button, HideInEditorMode]
+       // [Button, HideInEditorMode]
         public void SceneWipe()
         {
             StartCoroutine(sceneWipe.SceneWipeStart(sceneWipeDuration));

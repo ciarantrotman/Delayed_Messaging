@@ -1,17 +1,17 @@
-﻿using Sirenix.OdinInspector;
+﻿//using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace VR_Prototyping.Scripts
 {
     public class RubberbandedObject : MonoBehaviour
     {
-        [TabGroup("Script References")][SerializeField] private Transform target;
-        [TabGroup("Rotation RubberBanding")][SerializeField] private bool rotationRubberBanding;
-        [TabGroup("Rotation RubberBanding")][ShowIf("rotationRubberBanding")][SerializeField] private float angleThreshold;
-        [TabGroup("Rotation RubberBanding")][ShowIf("rotationRubberBanding")][Space(10)][SerializeField][Range(0,1)] private float rotationLerpSpeed;
-        [TabGroup("Position RubberBanding")][SerializeField] private bool positionRubberBanding;
-        [TabGroup("Position RubberBanding")][ShowIf("positionRubberBanding")][Space(10)][SerializeField] private float distanceThreshold;
-        [TabGroup("Position RubberBanding")][ShowIf("positionRubberBanding")][SerializeField][Range(0,1)] private float positionLerpSpeed;
+        /*[TabGroup("Script References"), */[SerializeField] private Transform target;
+        /*[TabGroup("Rotation RubberBanding"), */[SerializeField] private bool rotationRubberBanding;
+        /*[TabGroup("Rotation RubberBanding"), ShowIf("rotationRubberBanding"), */[SerializeField] private float angleThreshold;
+        /*[TabGroup("Rotation RubberBanding"), ShowIf("rotationRubberBanding"), */[Space(10)][SerializeField][Range(0,1)] private float rotationLerpSpeed;
+        /*[TabGroup("Position RubberBanding"), */[SerializeField] private bool positionRubberBanding;
+        /*[TabGroup("Position RubberBanding"), ShowIf("positionRubberBanding"), */[Space(10), SerializeField] private float distanceThreshold;
+        /*[TabGroup("Position RubberBanding"), ShowIf("positionRubberBanding"), */[SerializeField, Range(0,1)] private float positionLerpSpeed;
    
         private float angle;
         private float distance;

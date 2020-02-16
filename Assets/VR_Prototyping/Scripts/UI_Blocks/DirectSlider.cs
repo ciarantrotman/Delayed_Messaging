@@ -1,6 +1,4 @@
-﻿using Sirenix.OdinInspector;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace VR_Prototyping.Scripts.UI_Blocks
@@ -28,25 +26,25 @@ namespace VR_Prototyping.Scripts.UI_Blocks
         [HideInInspector] public Vector3 sliderMinPos;
         [HideInInspector] public float sliderValue;
 
-        [TabGroup("Slider Settings")] [Range(.01f, .5f)] [SerializeField] private float directGrabDistance = .02f;
-        [TabGroup("Slider Settings")] [Header("Slider Values")] [Space(5)] [SerializeField] [Range(0f, 1f)] private float startingValue;
-        [TabGroup("Slider Settings")] [HideInPlayMode] [Indent] [Range(.01f, 2f)] public float sliderMax;
-        [TabGroup("Slider Settings")] [HideInPlayMode] [Indent] [Range(.01f, 2f)] public float sliderMin;
-        [TabGroup("Slider Settings")] [Space(5)] public bool ignoreLeftHand;
-        [TabGroup("Slider Settings")] public bool ignoreRightHand;
+        [Range(.01f, .5f)] [SerializeField] private float directGrabDistance = .02f;
+        [Header("Slider Values")] [Space(5)] [SerializeField] [Range(0f, 1f)] private float startingValue;
+        [Range(.01f, 2f)] public float sliderMax;
+        [Range(.01f, 2f)] public float sliderMin;
+        [Space(5)] public bool ignoreLeftHand;
+        public bool ignoreRightHand;
         
-        [TabGroup("Aesthetics Settings")] [SerializeField] [HideInPlayMode] [Range(.001f, .005f)] private float activeWidth;
-        [TabGroup("Aesthetics Settings")] [SerializeField] [HideInPlayMode] [Range(.001f, .005f)] private float inactiveWidth;
-        [TabGroup("Aesthetics Settings")] [SerializeField] [Required] [Space(10)] private Material sliderMaterial;
-        [TabGroup("Aesthetics Settings")] [Required] [Space(5)] public GameObject sliderCap;
-        [TabGroup("Aesthetics Settings")] [Required] public GameObject sliderHandle;
+        [SerializeField, Range(.001f, .005f)] private float activeWidth;
+        [SerializeField, Range(.001f, .005f)] private float inactiveWidth;
+        [SerializeField, Space(10)] private Material sliderMaterial;
+        [Space(5)] public GameObject sliderCap;
+        public GameObject sliderHandle;
         
-        [FoldoutGroup("Slider Events")] [SerializeField] private UnityEvent hoverStart;
-        [FoldoutGroup("Slider Events")] [SerializeField] private UnityEvent hoverStay;
-        [FoldoutGroup("Slider Events")] [SerializeField] private UnityEvent hoverEnd;
-        [FoldoutGroup("Slider Events")] [Space(10)] [SerializeField] private UnityEvent grabStart;
-        [FoldoutGroup("Slider Events")] [SerializeField] private UnityEvent grabStay;
-        [FoldoutGroup("Slider Events")] [SerializeField] private UnityEvent grabEnd;
+        [SerializeField] private UnityEvent hoverStart;
+        [SerializeField] private UnityEvent hoverStay;
+        [SerializeField] private UnityEvent hoverEnd;
+        [Space(10)] [SerializeField] private UnityEvent grabStart;
+        [SerializeField] private UnityEvent grabStay;
+        [SerializeField] private UnityEvent grabEnd;
         
         private void Start()
         {
@@ -176,33 +174,4 @@ namespace VR_Prototyping.Scripts.UI_Blocks
             }
         }
     }
-    #if UNITY_EDITOR
-    [CustomEditor(typeof(DirectSlider)), CanEditMultipleObjects]
-    public sealed class DirectSliderSetup : Sirenix.OdinInspector.Editor.OdinEditor
-    {
-        private void OnSceneGUI()
-        {
-            DirectSlider slider = (DirectSlider)target;
-            Transform transform = slider.transform;
-            Vector3 right = transform.right;
-            Vector3 position = transform.position;
-            float size = HandleUtility.GetHandleSize(slider.sliderMaxPos) * .25f;
-            const float snap = .1f;
-            
-            EditorGUI.BeginChangeCheck();
-            
-            Vector3 max = Handles.Slider(slider.sliderMaxPos, right, size, Handles.ConeHandleCap, snap);
-            Vector3 min = Handles.Slider(slider.sliderMinPos, -right, size, Handles.ConeHandleCap, snap);
-            
-            Handles.DrawLine(position, slider.sliderMaxPos);
-            Handles.DrawLine(position, slider.sliderMinPos);
-            
-            slider.AlignHandles(slider.sliderMax, slider.sliderMin);
-
-            if (!EditorGUI.EndChangeCheck()) return;
-            slider.sliderMaxPos = max;
-            slider.sliderMinPos = min;
-        }
-    }
-    #endif
 }

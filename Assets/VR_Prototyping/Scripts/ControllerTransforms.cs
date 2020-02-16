@@ -2,7 +2,7 @@
 //using Leap;
 //using Leap.Unity;
 //using Leap.Unity.Interaction;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR;
@@ -11,53 +11,53 @@ namespace VR_Prototyping.Scripts
 {
     public class ControllerTransforms : MonoBehaviour
     {
-        [BoxGroup("Settings"), SerializeField] public bool steamEnabled;
-        [BoxGroup("Settings"), SerializeField] public bool leapMotionEnabled;
-        [BoxGroup("Settings"), ShowIf("leapMotionEnabled"), Indent, Range(0, 1), SerializeField] private float leapStabilisation = .3f;
-        [BoxGroup("Settings"), ShowIf("leapMotionEnabled"), Indent, Range(.01f, .05f), SerializeField] private float leapGestureThreshold = .05f;
-        [BoxGroup("Settings"), ShowIf("leapMotionEnabled"), Indent, Range(.05f, .5f), SerializeField] private float leapControllerThreshold = .3f;
-        //[BoxGroup("Settings"), ShowIf("leapMotionEnabled"), Indent, SerializeField] private InteractionManager interactionManager;
-        [BoxGroup("Settings"), SerializeField, Space(10)] public bool debugActive;
-        [BoxGroup("Settings"), SerializeField, Space(10)] public bool directInteraction;
-        [BoxGroup("Settings"), ShowIf("directInteraction"), Indent, Range(.01f, .05f), SerializeField] private float directDistance = .025f;
-        [BoxGroup("Settings"), ShowIf("directInteraction"), Indent, Range(0, 31)] public int layerIndex = 9;
-        
-        [FoldoutGroup("Transforms"), SerializeField, Required] private Transform cameraRig;
-        [FoldoutGroup("Transforms"), SerializeField, Space(10), Required, ShowIf("steamEnabled")] private Transform leftController;
-        [FoldoutGroup("Transforms"), SerializeField, Required, ShowIf("steamEnabled")] private Transform rightController;
-        [FoldoutGroup("Transforms"), SerializeField, Space(10), Required, ShowIf("leapMotionEnabled")] private Transform leftHand;
-        [FoldoutGroup("Transforms"), SerializeField, Required, ShowIf("leapMotionEnabled")] private Transform rightHand;
-        
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform rightThumb;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform rightIndex;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform rightMiddle;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform rightRing;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform rightLittle;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform rightPalm;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform rightWrist;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled"), Space(10)] public Transform leftThumb;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform leftIndex;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform leftMiddle;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform leftRing;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform leftLittle;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform leftPalm;
-        [FoldoutGroup("LeapMotion Hands"), SerializeField, Required, ShowIf("leapMotionEnabled")] public Transform leftWrist;
-
-        [FoldoutGroup("Aesthetics"),  SerializeField, Required] public Material lineRenderMat;
-        [FoldoutGroup("Aesthetics"),  SerializeField, Required] public Material dottedLineRenderMat;
-        [FoldoutGroup("Aesthetics"),  SerializeField, Required] public Material doubleSidedLineRenderMat;
-        [FoldoutGroup("Aesthetics"),  SerializeField, Required] public Material voidSkyBox;
-        [FoldoutGroup("Aesthetics"),  SerializeField, Required] public Material environmentSkyBox;
-        [FoldoutGroup("Aesthetics"), Space(10), ShowIf("leapMotionEnabled"),  SerializeField, Required] public GameObject grabParticleSystem;
-        [FoldoutGroup("Aesthetics"), ShowIf("leapMotionEnabled"),  SerializeField, Required] public GameObject selectParticleSystem;
-        [FoldoutGroup("Aesthetics"), ShowIf("leapMotionEnabled"),  SerializeField, Required] public GameObject fingerTouchParticleSystem;
-        
-        [FoldoutGroup("Events"), ShowIf("steamEnabled")] public SteamVR_Action_Boolean grabGrip;
-        [FoldoutGroup("Events"), ShowIf("steamEnabled")] public SteamVR_Action_Boolean triggerGrip;
-        [FoldoutGroup("Events"), ShowIf("steamEnabled")] public SteamVR_Action_Boolean menu;
-        [FoldoutGroup("Events"), ShowIf("steamEnabled")] public SteamVR_Action_Boolean joystickPress;
-        [FoldoutGroup("Events"), ShowIf("steamEnabled")] public SteamVR_Action_Vector2 joystickDirection;
-        [FoldoutGroup("Events"), ShowIf("steamEnabled")] public SteamVR_Action_Vibration haptic;
+        /*[BoxGroup("Settings"), */[SerializeField] public bool steamEnabled;
+        /*[BoxGroup("Settings"), */[SerializeField] public bool leapMotionEnabled;
+        /*[BoxGroup("Settings"), ShowIf("leapMotionEnabled"), Indent, */[Range(0, 1), SerializeField] private float leapStabilisation = .3f;
+        /*[BoxGroup("Settings"), ShowIf("leapMotionEnabled"), Indent, */[Range(.01f, .05f), SerializeField] private float leapGestureThreshold = .05f;
+        /*[BoxGroup("Settings"), ShowIf("leapMotionEnabled"), Indent, */[Range(.05f, .5f), SerializeField] private float leapControllerThreshold = .3f;
+        /*//[BoxGroup("Settings"), ShowIf("leapMotionEnabled"), Indent, SerializeField] private InteractionManager interactionManager;
+        /*[BoxGroup("Settings"), */[SerializeField, Space(10)] public bool debugActive;
+        /*[BoxGroup("Settings"), */[SerializeField, Space(10)] public bool directInteraction;
+        /*[BoxGroup("Settings"), ShowIf("directInteraction"), Indent, */[Range(.01f, .05f), SerializeField] private float directDistance = .025f;
+        /*[BoxGroup("Settings"), ShowIf("directInteraction"), Indent, */[Range(0, 31)] public int layerIndex = 9;
+        /*
+        /*[FoldoutGroup("Transforms"), */[SerializeField] private Transform cameraRig;
+        /*[FoldoutGroup("Transforms"), */[SerializeField, Space(10), /*Required, ShowIf("steamEnabled")*/] private Transform leftController;
+        /*[FoldoutGroup("Transforms"), */[SerializeField, /*Required, ShowIf("steamEnabled")*/] private Transform rightController;
+        /*[FoldoutGroup("Transforms"), */[SerializeField, Space(10), /*Required, ShowIf("leapMotionEnabled")*/] private Transform leftHand;
+        /*[FoldoutGroup("Transforms"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] private Transform rightHand;
+        /*
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform rightThumb;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform rightIndex;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform rightMiddle;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform rightRing;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform rightLittle;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform rightPalm;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform rightWrist;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled"),*/ Space(10)] public Transform leftThumb;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform leftIndex;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform leftMiddle;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform leftRing;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform leftLittle;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform leftPalm;
+        /*[FoldoutGroup("LeapMotion Hands"), */[SerializeField, /*Required, ShowIf("leapMotionEnabled")*/] public Transform leftWrist;
+/*
+        /*[FoldoutGroup("Aesthetics"),  */[SerializeField/*, Required*/] public Material lineRenderMat;
+        /*[FoldoutGroup("Aesthetics"),  */[SerializeField/*, Required*/] public Material dottedLineRenderMat;
+        /*[FoldoutGroup("Aesthetics"),  */[SerializeField/*, Required*/] public Material doubleSidedLineRenderMat;
+        /*[FoldoutGroup("Aesthetics"),  */[SerializeField/*, Required*/] public Material voidSkyBox;
+        /*[FoldoutGroup("Aesthetics"),  */[SerializeField/*, Required*/] public Material environmentSkyBox;
+        /*[FoldoutGroup("Aesthetics"), */[Space(10), /*ShowIf("leapMotionEnabled"), */ SerializeField/*, Required*/] public GameObject grabParticleSystem;
+        /*[FoldoutGroup("Aesthetics"), ShowIf("leapMotionEnabled"),  */[SerializeField, /*Required*/] public GameObject selectParticleSystem;
+        /*[FoldoutGroup("Aesthetics"), ShowIf("leapMotionEnabled"),  */[SerializeField, /*Required*/] public GameObject fingerTouchParticleSystem;
+        /*
+        /*[FoldoutGroup("Events"), ShowIf("steamEnabled")] */public SteamVR_Action_Boolean grabGrip;
+        /*[FoldoutGroup("Events"), ShowIf("steamEnabled")] */public SteamVR_Action_Boolean triggerGrip;
+        /*[FoldoutGroup("Events"), ShowIf("steamEnabled")] */public SteamVR_Action_Boolean menu;
+        /*[FoldoutGroup("Events"), ShowIf("steamEnabled")] */public SteamVR_Action_Boolean joystickPress;
+        /*[FoldoutGroup("Events"), ShowIf("steamEnabled")] */public SteamVR_Action_Vector2 joystickDirection;
+        /*[FoldoutGroup("Events"), ShowIf("steamEnabled")] */public SteamVR_Action_Vibration haptic;
         //[FoldoutGroup("Events"), Space(10), ShowIf("leapMotionEnabled"), Required] public HandEnableDisable leftHandEnabled;
         //[FoldoutGroup("Events"), ShowIf("leapMotionEnabled"), Required] public HandEnableDisable rightHandEnabled;
         //[FoldoutGroup("Events"), ShowIf("leapMotionEnabled"), Required] public CapsuleHand leftCapsuleHand;

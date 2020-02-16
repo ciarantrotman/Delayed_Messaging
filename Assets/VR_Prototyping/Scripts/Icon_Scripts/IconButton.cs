@@ -1,4 +1,4 @@
-﻿using DG.Tweening;
+﻿/*using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -62,3 +62,4 @@ namespace VR_Prototyping.Scripts.Icon_Scripts
         }
     }
 }
+*/

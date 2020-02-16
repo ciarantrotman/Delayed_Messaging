@@ -342,30 +342,6 @@
                 <e p="Outline.cs" t="Include" />
               </e>
             </e>
-            <e p="Sirenix" t="Include">
-              <e p="Assemblies" t="Include">
-                <e p="link.xml" t="Include" />
-                <e p="Sirenix.OdinInspector.Attributes.xml" t="Include" />
-                <e p="Sirenix.OdinInspector.Editor.xml" t="Include" />
-                <e p="Sirenix.Serialization.Config.xml" t="Include" />
-                <e p="Sirenix.Utilities.Editor.xml" t="Include" />
-                <e p="Sirenix.Utilities.xml" t="Include" />
-              </e>
-              <e p="Odin Inspector" t="Include">
-                <e p="Scripts" t="Include">
-                  <e p="Editor" t="Include">
-                    <e p="AssemblyImportSettingsAutomation.cs" t="Include" />
-                    <e p="BuildAOTAutomation.cs" t="Include" />
-                    <e p="EnsureOdinInspectorDefine.cs" t="Include" />
-                    <e p="Vector2IntMinMaxAttributeDrawer.cs" t="Include" />
-                    <e p="VectorIntDrawers.cs" t="Include" />
-                    <e p="VectorIntPropertyResolvers.cs" t="Include" />
-                  </e>
-                  <e p="VectorIntFormatters.cs" t="Include" />
-                </e>
-              </e>
-              <e p="readme.txt" t="Include" />
-            </e>
             <e p="Stencil_Buffer_UI" t="Include">
               <e p="Shaders" t="Include">
                 <e p="CustomInternalShaders" t="Include">
@@ -434,10 +410,6 @@
               <e p="KeyboardManager.cs" t="Include" />
               <e p="KeyboardTarget.cs" t="Include" />
             </e>
-            <e p="LeapMotion" t="Include">
-              <e p="AugmentedEnvelope.cs" t="Include" />
-              <e p="HandMenu.cs" t="Include" />
-            </e>
             <e p="Locomotion.cs" t="Include" />
             <e p="LocomotionPositionPreview.cs" t="Include" />
             <e p="LocomotionVisual.cs" t="Include" />
@@ -451,43 +423,6 @@
             <e p="SetTransform.cs" t="Include" />
             <e p="Setup.cs" t="Include" />
             <e p="SortBy.cs" t="Include" />
-            <e p="Tools" t="Include">
-              <e p="BaseTool.cs" t="Include" />
-              <e p="CloseButton.cs" t="Include" />
-              <e p="Measure" t="Include">
-                <e p="MeasureDeleteNode.cs" t="Include" />
-                <e p="MeasureLockNode.cs" t="Include" />
-                <e p="MeasureNewTape.cs" t="Include" />
-                <e p="MeasureNode.cs" t="Include" />
-                <e p="MeasureSnappingToggle.cs" t="Include" />
-                <e p="MeasureTape.cs" t="Include" />
-                <e p="MeasureTapeColor.cs" t="Include" />
-                <e p="MeasureText.cs" t="Include" />
-                <e p="MeasureTool.cs" t="Include" />
-                <e p="MeasureVisual.cs" t="Include" />
-              </e>
-              <e p="Memo" t="Include">
-                <e p="MemoNode.cs" t="Include" />
-                <e p="MemoPlayButton.cs" t="Include" />
-                <e p="MemoText.cs" t="Include" />
-                <e p="MemoTool.cs" t="Include" />
-              </e>
-              <e p="Note" t="Include">
-                <e p="NoteObject.cs" t="Include" />
-                <e p="NoteTool.cs" t="Include" />
-              </e>
-              <e p="Sketch" t="Include">
-                <e p="SketchBrushColor.cs" t="Include" />
-                <e p="SketchBrushVisual.cs" t="Include" />
-                <e p="SketchBrushWidth.cs" t="Include" />
-                <e p="SketchErase.cs" t="Include" />
-                <e p="SketchObject.cs" t="Include" />
-                <e p="SketchTool.cs" t="Include" />
-              </e>
-              <e p="ToolButton.cs" t="Include" />
-              <e p="ToolController.cs" t="Include" />
-              <e p="ToolMenu.cs" t="Include" />
-            </e>
             <e p="UI_Blocks" t="Include">
               <e p="BaseDirectBlock.cs" t="Include" />
               <e p="DirectButton.cs" t="Include" />

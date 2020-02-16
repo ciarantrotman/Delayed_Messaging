@@ -1,15 +1,15 @@
 ﻿using DG.Tweening;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace VR_Prototyping.Scripts.Demo_Scripts
 {
     public class RecruitmentProjectSelection : SelectableObject
     {
-        [BoxGroup] public Transform table;
-        [BoxGroup] public Transform building;
-        [BoxGroup] public Transform target;
-        [BoxGroup] public Transform dome;
+        /*[BoxGroup] */public Transform table;
+        /*[BoxGroup] */public Transform building;
+        /*[BoxGroup] */public Transform target;
+        /*[BoxGroup] */public Transform dome;
         
         protected override void InitialisePostSetup()
         {

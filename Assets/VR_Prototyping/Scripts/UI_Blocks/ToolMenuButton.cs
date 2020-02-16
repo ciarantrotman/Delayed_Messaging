@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace VR_Prototyping.Scripts.UI_Blocks
 {
@@ -16,12 +14,12 @@ namespace VR_Prototyping.Scripts.UI_Blocks
         private const float BlendShapeInactive = 100f;
         private const float SpawnDelayDuration = 1.5f;
         
-        [BoxGroup("Button Settings")] [HideIf("placeholderButton")] [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
-        [BoxGroup("Button Settings")] [Indent] [HideIf("placeholderButton")] [Range(.01f, .1f)] [SerializeField] private  float hoverVisualDepth = .1f;
-        [BoxGroup("Button Settings")] [Indent] [HideIf("placeholderButton")] [Range(.01f, 1)] [SerializeField] private  float buttonAnimationDuration = .5f;
-        [BoxGroup("Button Settings")] [Space(10)] [HideIf("placeholderButton")] [SerializeField] internal GameObject buttonText;
-        [BoxGroup("Button Settings")] [Indent] [HideIf("placeholderButton")] [SerializeField] internal Color activeColor = new Color(255f,255f,255f, 255f);
-        [BoxGroup("Button Settings")] [Indent] [HideIf("placeholderButton")] [SerializeField] internal Color inactiveColor = new Color(45f,45f,45f, 255f);
+        [SerializeField] private SkinnedMeshRenderer skinnedMeshRenderer;
+        [Range(.01f, .1f)] [SerializeField] private  float hoverVisualDepth = .1f;
+        [Range(.01f, 1)] [SerializeField] private  float buttonAnimationDuration = .5f;
+        [Space(10)] [SerializeField] internal GameObject buttonText;
+        [SerializeField] internal Color activeColor = new Color(255f,255f,255f, 255f);
+        [SerializeField] internal Color inactiveColor = new Color(45f,45f,45f, 255f);
 
         protected override void ButtonSetup()
         {

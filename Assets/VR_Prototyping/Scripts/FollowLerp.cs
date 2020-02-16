@@ -1,21 +1,21 @@
-﻿using Sirenix.OdinInspector;
+﻿//using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace VR_Prototyping.Scripts
 {
 	public class FollowLerp : MonoBehaviour
 	{
-		[TabGroup("Follow Settings")][SerializeField]private Transform lerpTarget;
-		[TabGroup("Follow Settings")][SerializeField][Range(0f,1f)]private float lerpSpeed;
-		[Space(5)]
-		[TabGroup("Lock Settings")][SerializeField] private bool lockXPosition;
-		[TabGroup("Lock Settings")][SerializeField] private bool lockYPosition;
-		[TabGroup("Lock Settings")][SerializeField] private bool lockZPosition;
-		[Space(10)]
-		[TabGroup("Lock Settings")][SerializeField] private bool lockXRotation;
-		[TabGroup("Lock Settings")][SerializeField] private bool lockYRotation;
-		[TabGroup("Lock Settings")][SerializeField] private bool lockZRotation;
-		[TabGroup("Lock Settings")][SerializeField] private bool lockWRotation;
+		/*[TabGroup("Follow Settings")][*/[SerializeField]private Transform lerpTarget;
+		/*[TabGroup("Follow Settings")][*/[SerializeField][Range(0f,1f)]private float lerpSpeed;
+		/*[*/[Space(5)]
+		/*[TabGroup("Lock Settings")][*/[SerializeField] private bool lockXPosition;
+		/*[TabGroup("Lock Settings")][*/[SerializeField] private bool lockYPosition;
+		/*[TabGroup("Lock Settings")][*/[SerializeField] private bool lockZPosition;
+		/*[Space(10)]
+		/*[TabGroup("Lock Settings")][*/[SerializeField] private bool lockXRotation;
+		/*[TabGroup("Lock Settings")][*/[SerializeField] private bool lockYRotation;
+		/*[TabGroup("Lock Settings")][*/[SerializeField] private bool lockZRotation;
+		/*[TabGroup("Lock Settings")][*/[SerializeField] private bool lockWRotation;
 	
 		private Vector3 defaultPosition;
 		private Quaternion defaultRotation;

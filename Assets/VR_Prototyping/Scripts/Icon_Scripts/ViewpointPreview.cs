@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿/*using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 
@@ -33,3 +33,4 @@ namespace VR_Prototyping.Scripts.Icon_Scripts
         }
     }
 }
+*/

@@ -1,14 +1,14 @@
 ﻿using System;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace VR_Prototyping.Scripts
 {
     public class LocomotionPositionPreview : MonoBehaviour
     {
-        [BoxGroup] [SerializeField] private Transform head;
-        [BoxGroup] [SerializeField] private Transform lHand;
-        [BoxGroup] [SerializeField] private Transform rHand;
+        /*[BoxGroup]*/ [SerializeField] private Transform head;
+        /*[BoxGroup]*/ [SerializeField] private Transform lHand;
+        /*[BoxGroup]*/ [SerializeField] private Transform rHand;
         private bool active;
         
         public ControllerTransforms ControllerTransforms { private get; set; }

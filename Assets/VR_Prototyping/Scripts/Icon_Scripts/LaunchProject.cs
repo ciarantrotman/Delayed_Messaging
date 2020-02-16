@@ -1,5 +1,5 @@
 ﻿using UnityEngine.SceneManagement;
-
+/*
 namespace VR_Prototyping.Scripts.Icon_Scripts
 {
     public class LaunchProject : SelectableObject
@@ -29,3 +29,4 @@ namespace VR_Prototyping.Scripts.Icon_Scripts
         }
     }
 }
+*/

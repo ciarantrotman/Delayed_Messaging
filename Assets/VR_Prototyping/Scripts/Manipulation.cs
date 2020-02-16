@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace VR_Prototyping.Scripts
@@ -63,21 +63,21 @@ namespace VR_Prototyping.Scripts
 			Lerp		
 		}
 		
-		[BoxGroup("Grab Settings")] public ManipulationType manipulationType;
-		[BoxGroup("Grab Settings")] public bool directGrab;
-		[BoxGroup("Grab Settings")] [ShowIf("directGrab")] [Indent] [Range(0f, 1f)] [SerializeField] private float directGrabDistance = .5f;
-		[BoxGroup("Grab Settings")] public bool disableLeftGrab;
-		[BoxGroup("Grab Settings")] public bool disableRightGrab;
-		
-		[BoxGroup("Rotation Settings")] public bool enableRotation;
-		[BoxGroup("Rotation Settings")] [ShowIf("enableRotation")] [Indent] [Range(1f, 10f)] public float rotationForce;
-		
-		[BoxGroup("Scaling Settings")] public bool enableScaling;
-		[BoxGroup("Scaling Settings")] [ShowIf("enableScaling")] [Indent] [Range(.001f, .005f)] public float lineRendererThickness;
-		
-		[BoxGroup("Snapping")] [SerializeField] private bool distanceSnapping = true;
-		[BoxGroup("Snapping")] [ShowIf("distanceSnapping")] [Indent] [Range(0f, 5f)] [SerializeField] private float snapDistance = 1f;
-		[BoxGroup("Snapping")] [ShowIf("distanceSnapping")] [Indent] [SerializeField] private bool maximumDistance;
+		/*[BoxGroup("Grab Settings")] */public ManipulationType manipulationType;
+		/*[BoxGroup("Grab Settings")] */public bool directGrab;
+		/*[BoxGroup("Grab Settings")] [ShowIf("directGrab")] [Indent]*/ [Range(0f, 1f)] [SerializeField] private float directGrabDistance = .5f;
+		/*[BoxGroup("Grab Settings")] */public bool disableLeftGrab;
+		/*[BoxGroup("Grab Settings")] */public bool disableRightGrab;
+		/*
+		/*[BoxGroup("Rotation Settings")] */public bool enableRotation;
+		/*[BoxGroup("Rotation Settings")] [ShowIf("enableRotation")] [Indent] */[Range(1f, 10f)] public float rotationForce;
+		/*
+		/*[BoxGroup("Scaling Settings")] */public bool enableScaling;
+		/*[BoxGroup("Scaling Settings")] [ShowIf("enableScaling")] [Indent] */[Range(.001f, .005f)] public float lineRendererThickness;
+		/*
+		/*[BoxGroup("Snapping")] */[SerializeField] private bool distanceSnapping = true;
+		/*[BoxGroup("Snapping")] [ShowIf("distanceSnapping")] [Indent] */[Range(0f, 5f)] [SerializeField] private float snapDistance = 1f;
+		/*[BoxGroup("Snapping")] [ShowIf("distanceSnapping")] [Indent] */[SerializeField] private bool maximumDistance;
 		
 		#endregion
 		private void Start () 

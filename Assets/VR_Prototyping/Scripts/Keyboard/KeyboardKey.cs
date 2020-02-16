@@ -1,5 +1,5 @@
 ﻿using DG.Tweening;
-using Sirenix.OdinInspector;
+//using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -11,11 +11,11 @@ namespace VR_Prototyping.Scripts.Keyboard
         public int Index { private get; set; }
         private float borderDepth;
 
-        [BoxGroup("Key Settings")] [SerializeField] private Transform hoverBorder;
-        [BoxGroup("Key Settings")] [Space(10)] [SerializeField] [Range(0f, .01f)] private float hoverRestDepth;
-        [BoxGroup("Key Settings")] [SerializeField] [Range(.01f, .05f)] private float hoverActiveDepth;
-        [BoxGroup("Key Settings")] [SerializeField] [Range(.1f, 1f)] private float duration;
-        [BoxGroup("Key Settings")] [Space(10)] public KeyboardManager.KeyboardKeyValues keyValue;
+        /*[BoxGroup("Key Settings")]*/ [SerializeField] private Transform hoverBorder;
+        /*[BoxGroup("Key Settings")]*/ [Space(10)] [SerializeField] [Range(0f, .01f)] private float hoverRestDepth;
+        /*[BoxGroup("Key Settings")]*/ [SerializeField] [Range(.01f, .05f)] private float hoverActiveDepth;
+        /*[BoxGroup("Key Settings")]*/ [SerializeField] [Range(.1f, 1f)] private float duration;
+        /*[BoxGroup("Key Settings")]*/ [Space(10)] public KeyboardManager.KeyboardKeyValues keyValue;
 
         private void Awake()
         {
