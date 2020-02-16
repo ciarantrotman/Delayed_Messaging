@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using DG.Tweening;
-using Leap.Unity.Interaction;
+//using Leap.Unity.Interaction;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEditor;
@@ -52,7 +52,7 @@ namespace VR_Prototyping.Scripts
 		private MeshRenderer textRenderer;
 		private Rigidbody rb;
 
-		private InteractionBehaviour interactionBehaviour;
+		//private InteractionBehaviour interactionBehaviour;
 		
 		public float AngleL { get; private set; }
 		public float AngleR { get; private set; }
@@ -219,7 +219,7 @@ namespace VR_Prototyping.Scripts
 			SetupRigidBody();
 			SetupManipulation();
 			SetupOutline();
-			SetupInteractionBehaviour(controllerTransforms.InteractionManager());
+			//SetupInteractionBehaviour(controllerTransforms.InteractionManager());
 			ToggleList(gameObject, objectSelection.globalList, true);
 			ToggleList(gameObject, objectSelection.gazeList, true);
 			InitialisePostSetup();
@@ -311,6 +311,7 @@ namespace VR_Prototyping.Scripts
 				selectStart.AddListener(SetBlendShapeActive);
 			}
 		}
+		/*
 		private void SetupInteractionBehaviour(InteractionManager interactionManager)
 		{
 			if (!controllerTransforms.leapMotionEnabled || !controllerTransforms.InteractionManager().enabled) return;
@@ -318,6 +319,7 @@ namespace VR_Prototyping.Scripts
 			interactionBehaviour.manager = interactionManager;
 			interactionBehaviour.ignoreGrasping = !grab;
 		}
+		*/
 		private static void ToggleList(GameObject g, ICollection<GameObject> l, bool add)
 		{
 			switch (add)

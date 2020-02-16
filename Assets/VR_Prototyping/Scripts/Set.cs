@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Leap;
-using Leap.Unity;
+//using Leap;
+//using Leap.Unity;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -540,7 +540,7 @@ namespace VR_Prototyping.Scripts
                     throw new ArgumentOutOfRangeException(nameof(axis), axis, null);
             }
         }
-        
+        /*
         public static void HandPosition(bool armDisabled, GameObject elbow, Arm arm, GameObject transformPosition, Vector3 position, GameObject lookAt, Transform wrist)
         {
             if (armDisabled) return;
@@ -550,6 +550,7 @@ namespace VR_Prototyping.Scripts
             Debug.DrawLine(elbow.transform.position, wrist.transform.position, Color.yellow);
             Debug.DrawLine(transformPosition.transform.position, lookAt.transform.position, Color.white);
         }
+        */
         /// <summary>
         /// Returns a GameObject, sets its parent, and names it
         /// </summary>

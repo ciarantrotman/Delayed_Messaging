@@ -5,7 +5,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Rendering.PostProcessing;
+//using UnityEngine.Rendering.PostProcessing;
 using VR_Prototyping.Scripts.Icon_Scripts;
 
 namespace VR_Prototyping.Scripts
@@ -38,7 +38,7 @@ namespace VR_Prototyping.Scripts
         private Vector3 rLastValidPosition;
         private Vector3 lLastValidPosition;
 
-        private Vignette vignetteLayer;
+        //private Vignette vignetteLayer;
 
         private LocomotionPositionPreview positionPreview;
         
@@ -93,7 +93,7 @@ namespace VR_Prototyping.Scripts
         [TabGroup("Locomotion Settings")] [SerializeField] private bool disableRightHand;
 
         [TabGroup("Aesthetic Settings")] [Required] [SerializeField] private GameObject ghost;
-        [TabGroup("Aesthetic Settings")] [Required] [SerializeField] private PostProcessVolume volume;
+        //[TabGroup("Aesthetic Settings")] [Required] [SerializeField] private PostProcessVolume volume;
         [TabGroup("Aesthetic Settings")] [SerializeField] private bool motionSicknessVignette;
         [TabGroup("Aesthetic Settings")] [ShowIf("motionSicknessVignette")] [Indent] [Range(0f, 1f)] [SerializeField] private float vignetteStrength = .35f;
         [TabGroup("Aesthetic Settings")] [Range(0f, 1f)] [SerializeField] private float moveSpeed = .75f;
@@ -118,7 +118,7 @@ namespace VR_Prototyping.Scripts
 
         private void SetupGameObjects()
         {
-            volume.profile.TryGetSettings(out vignetteLayer);
+            //volume.profile.TryGetSettings(out vignetteLayer);
             parent = new GameObject("Locomotion/Calculations");
             Transform parentTransform = parent.transform;
             parentTransform.SetParent(transform);
@@ -375,7 +375,7 @@ namespace VR_Prototyping.Scripts
         private void SetVignette(float intensity)
         {
             if (!motionSicknessVignette) return;
-            vignetteLayer.intensity.value = intensity;
+            //vignetteLayer.intensity.value = intensity;
         }
         
         [Button, HideInEditorMode]
