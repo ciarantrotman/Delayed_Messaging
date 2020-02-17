@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml.Serialization;
-//using Sirenix.OdinInspector;
-using TMPro;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using VR_Prototyping.Scripts.Accessibility;
 using Object = UnityEngine.Object;
@@ -69,27 +65,26 @@ namespace VR_Prototyping.Scripts
 		private Transform lPrevious;
 		private Transform rPrevious;
 		
-		/*[ValidateInput("TypeCheck", "Recommended Selection Type is Fusion", InfoMessageType.Warning)]
-		/*[BoxGroup("Selection Settings"), */[SerializeField] private SelectionType selectionType;
-		/*[BoxGroup("Selection Settings"), HideIf("selectionType", SelectionType.RAY_CAST), Indent, */[Range(0f, 180f)] public float gaze = 60f;
-		/*[BoxGroup("Selection Settings"), HideIf("selectionType", SelectionType.RAY_CAST), Indent, */[Range(0f, 180f)] public float manual = 25f;
-		/*[BoxGroup("Selection Settings"), */[Space(10)] public bool setSelectionRange;		
-		/*[BoxGroup("Selection Settings"), ShowIf("setSelectionRange"), Indent, */[Range(0f, 250f)] public float selectionRange = 25f;		
-		/*[BoxGroup("Selection Settings")] */public bool disableLeftHand;
-		/*[BoxGroup("Selection Settings")] */public bool disableRightHand;
-		/*
-		/*[BoxGroup("Aesthetics")] */public GameObject gazeCursor;
-		/*[BoxGroup("Aesthetics"), Range(3f, 30f), */[Space(10)] public int lineRenderQuality = 15;
-		/*[BoxGroup("Aesthetics"), Range(.1f, 2.5f), Indent] */public float inactiveLineRenderOffset = 1f;
-		/*
-		/*[BoxGroup("Object Lists"), HideInEditorMode] */public List<GameObject> globalList;
-		/*[BoxGroup("Object Lists"), HideInEditorMode] */public List<GameObject> gazeList;
-		/*[BoxGroup("Object Lists"), HideInEditorMode] */public List<GameObject> rHandList;
-		/*[BoxGroup("Object Lists"), HideInEditorMode] */public List<GameObject> lHandList;
-/*
-		/*[BoxGroup("Accessibility Settings")] */public bool toolTips;
-		/*[BoxGroup("Accessibility Settings"), ShowIf("toolTips"), Indent, */[SerializeField] private GameObject toolTipPrefab;
-		/*[BoxGroup("Accessibility Settings"), ShowIf("toolTips"), Indent, */[SerializeField, Range(.01f, .2f)] private float toolTipOffset;
+		[SerializeField] private SelectionType selectionType;
+		[Range(0f, 180f)] public float gaze = 60f;
+		[Range(0f, 180f)] public float manual = 25f;
+		[Space(10)] public bool setSelectionRange;		
+		[Range(0f, 250f)] public float selectionRange = 25f;		
+		public bool disableLeftHand;
+		public bool disableRightHand;
+		
+		public GameObject gazeCursor;
+		[Range(3f, 30f), Space(10)] public int lineRenderQuality = 15;
+		[Range(.1f, 2.5f)] public float inactiveLineRenderOffset = 1f;
+		
+		[HideInInspector] public List<GameObject> globalList;
+		[HideInInspector] public List<GameObject> gazeList;
+		[HideInInspector] public List<GameObject> rHandList;
+		[HideInInspector] public List<GameObject> lHandList;
+
+		public bool toolTips;
+		[SerializeField] private GameObject toolTipPrefab;
+		[SerializeField, Range(.01f, .2f)] private float toolTipOffset;
 
 		#endregion
 		private void Start ()

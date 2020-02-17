@@ -2,11 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-//using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
-//using UnityEngine.Rendering.PostProcessing;
-using VR_Prototyping.Scripts.Icon_Scripts;
 
 namespace VR_Prototyping.Scripts
 {
@@ -276,7 +273,7 @@ namespace VR_Prototyping.Scripts
 
         public void RotateUser(float a, float time)
         {
-            if(transform.parent == cN.transform || !rotation || controllerTransforms.LeftHandEnabled() || controllerTransforms.RightHandEnabled()) return;
+            if(transform.parent == cN.transform || !rotation) return;
             active = true;
             
             controllerTransforms.CameraTransform().SplitRotation(cN.transform, false);
