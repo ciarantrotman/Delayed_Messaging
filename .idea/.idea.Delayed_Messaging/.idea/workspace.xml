@@ -3,105 +3,28 @@
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Accessibility/Tooltip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Accessibility/Tooltip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/IsometricCameraFollow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/IsometricCameraFollow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/RecruitmentProjectSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/RecruitmentProjectSelection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/FollowLerp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/FollowLerp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/HandleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/HandleController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/BaseIconControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/BaseIconControl.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/DioramaModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/DioramaModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/FullModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/FullModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenuController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenuController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenuSideBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenuSideBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconScenes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconScenes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/LaunchProject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/LaunchProject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ReturnToDiorama.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ReturnToDiorama.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointPreview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointTarget.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointTarget.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Keyboard/KeyboardKey.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Keyboard/KeyboardKey.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Keyboard/KeyboardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Keyboard/KeyboardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion/AugmentedEnvelope.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion/AugmentedEnvelope.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion/HandMenu.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion/HandMenu.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionPositionPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionPositionPreview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionVisual.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Manipulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Manipulation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/RubberbandedObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/RubberbandedObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/SelectableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/SelectableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/BaseTool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/BaseTool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/CloseButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/CloseButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureDeleteNode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureDeleteNode.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureLockNode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureLockNode.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureNewTape.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureNewTape.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureNode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureNode.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureSnappingToggle.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureSnappingToggle.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTape.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTape.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTapeColor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTapeColor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureText.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureText.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureVisual.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureVisual.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoNode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoNode.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoPlayButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoPlayButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoText.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoText.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoTool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoTool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteTool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteTool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchBrushColor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchBrushColor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchBrushVisual.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchBrushVisual.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchBrushWidth.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchBrushWidth.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchErase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchErase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchTool.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Sketch/SketchTool.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolButton.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolMenu.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolMenu.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/BaseDirectBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/BaseDirectBlock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectDial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectDial.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/ToolMenuButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/ToolMenuButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Base_Prefabs/[Camera Rig].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Base_Prefabs/[Camera Rig].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Base_Prefabs/[LeapMotion Rig].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Base_Prefabs/[LeapMotion Rig].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Sphere_Wipe.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Sphere_Wipe.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Teleport_Ghost.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Teleport_Ghost.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Teleport_Visual.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Teleport_Visual.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/ToolTip_Prefab.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/ToolTip_Prefab.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/[CameraRig] Variant.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/[CameraRig] Variant.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/[Leap Rig].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/[Leap Rig].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/[S] Vehicle Origin.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/[S] Vehicle Origin.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/[Scene Statics].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/[Scene Statics].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -110,33 +33,89 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="26">
-              <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+            <state relative-caret-position="78">
+              <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
               <folding>
-                <marker date="1581865206959" expanded="true" signature="6:44" ph="..." />
-                <marker date="1581865206959" expanded="true" signature="88:6634" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="170:6632" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="1899:1961" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="2012:2059" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="2094:3497" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="3572:3749" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="3785:4401" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="3980:4096" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="4130:4244" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="4483:5301" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="4634:4776" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="4892:5137" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="5388:5466" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="5504:5937" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="6001:6192" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="6314:6626" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="6362:6422" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="6460:6519" ph="{...}" />
-                <marker date="1581865206959" expanded="true" signature="6558:6616" ph="{...}" />
+                <marker date="1581970514074" expanded="false" signature="6:94" ph="..." />
+                <marker date="1581970514074" expanded="true" signature="128:7168" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="184:7166" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="1885:1993" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="2029:2577" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="2612:2915" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="2959:2999" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="3035:3312" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="3348:3399" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="3449:3504" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="3547:3603" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="3642:3707" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="3751:3817" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="3869:3939" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="3992:4063" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="4125:4188" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="4242:4299" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="4363:4420" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="4463:4553" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="4597:4647" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="4688:4747" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="4801:4865" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="4897:4987" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="5020:5111" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="5143:5229" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="5266:5353" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="5387:5480" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="5523:5617" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="5655:5715" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="5754:5815" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="5857:5952" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="6003:6099" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="6138:6236" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="6276:6375" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="6427:6516" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="6565:6655" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="6735:6788" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="6834:6892" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="6950:7021" ph="{...}" />
+                <marker date="1581970514074" expanded="true" signature="7088:7160" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+              <folding>
+                <marker date="1581970562363" expanded="true" signature="6:137" ph="..." />
+                <marker date="1581970562363" expanded="true" signature="171:16681" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="302:16679" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="2198:2254" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="2305:2365" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="2592:2633" ph="/* [BoxGroup(&quot;References&quot;)] [ ... */" />
+                <marker date="1581970562363" expanded="true" signature="2702:2924" ph="/* [ValidateInput(&quot;TypeCheck&quot;, &quot;Dash is the recommended locomotion type, but should be disabled for motion sickne ... */" />
+                <marker date="1581970562363" expanded="true" signature="3832:3892" ph="/* [TabGroup(&quot;Aesthetic Settings&quot;)] [Required] [ ... */" />
+                <marker date="1581970562363" expanded="true" signature="3943:4088" ph="/* [TabGroup(&quot;Aesthetic Settings&quot;)] [Required] [SerializeField] private PostProcessVolume volume; ... */" />
+                <marker date="1581970562363" expanded="true" signature="5268:5451" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="5492:8549" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="8580:10758" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="10793:12141" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="12214:12329" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="12382:12878" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="12951:13130" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="13247:14369" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="13604:14223" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="14481:15678" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="14744:15668" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="15713:15907" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="15978:16210" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="16261:16387" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="16465:16558" ph="{...}" />
+                <marker date="1581970562363" expanded="true" signature="16604:16673" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -153,8 +132,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Accessibility/Tooltip.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenuController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Set.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Keyboard/KeyboardKey.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Keyboard/KeyboardManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/HandleController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/ToolMenuButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectButton.cs" root0="FORCE_HIGHLIGHTING" />
@@ -184,13 +170,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ReturnToDiorama.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/FollowLerp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointPreview.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Accessibility/Tooltip.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconButton.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenuController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Set.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/HandleController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -201,12 +180,10 @@
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/SelectableObject.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/RubberbandedObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionVisual.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionPositionPreview.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/HandleController.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/FollowLerp.cs" />
-        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Accessibility/Tooltip.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/RecruitmentProjectSelection.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/IsometricCameraFollow.cs" />
@@ -231,7 +208,6 @@
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoNode.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoPlayButton.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoTool.cs" />
-        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteTool.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteObject.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/BaseTool.cs" />
@@ -244,6 +220,9 @@
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectButton.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectDial.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs" />
+        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs" />
+        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs" />
+        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" />
       </list>
     </option>
   </component>
@@ -256,16 +235,21 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="478" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="726" />
-    <option name="height" value="1039" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectView">
     <navigator currentView="UnityExplorer" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="SolutionExplorer">
+        <option name="show-all-files" value="false" />
+      </pane>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
       <pane id="UnityExplorer">
         <subPane>
           <expand>
@@ -284,52 +268,12 @@
               <item name="VR_Prototyping" type="1045f7f1:UnityExplorerNode" />
               <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
             </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="VR_Prototyping" type="1045f7f1:UnityExplorerNode" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Accessibility" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="VR_Prototyping" type="1045f7f1:UnityExplorerNode" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Demo_Scripts" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="VR_Prototyping" type="1045f7f1:UnityExplorerNode" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Icon_Scripts" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="VR_Prototyping" type="1045f7f1:UnityExplorerNode" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="Keyboard" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="VR_Prototyping" type="1045f7f1:UnityExplorerNode" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="UI_Blocks" type="1045f7f1:UnityExplorerNode" />
-            </path>
           </expand>
           <select />
         </subPane>
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
       </pane>
-      <pane id="AssemblyExplorer" />
-      <pane id="SolutionExplorer">
-        <option name="show-all-files" value="false" />
-      </pane>
-      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -379,11 +323,12 @@
       <option name="presentableId" value="Default" />
       <updated>1581859412695</updated>
       <workItem from="1581859419679" duration="4766000" />
+      <workItem from="1581970507043" duration="673000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4766000" />
+    <option name="totallyTimeSpent" value="5439000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,17 +343,9 @@
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2104422" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21257326" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="NuGet" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Unity" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Unit Tests" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -416,12 +353,20 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Errors In Solution" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Unity" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Unit Tests" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="13" />
+      <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Errors In Solution" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Unit Tests Coverage" order="5" />
     </layout>
     <layout-to-restore>
       <window_info id="Favorites" order="0" side_tool="true" />
@@ -493,37 +438,6 @@
             <marker date="1581862940895" expanded="true" signature="2308:2443" ph="{...}" />
             <marker date="1581862940895" expanded="true" signature="2460:2524" ph="{...}" />
             <marker date="1581862940895" expanded="true" signature="2581:3140" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1456">
-          <caret line="94" column="29" lean-forward="true" selection-start-line="94" selection-start-column="29" selection-end-line="94" selection-end-column="29" />
-          <folding>
-            <marker date="1581863020710" expanded="true" signature="6:221" ph="..." />
-            <marker date="1581863020710" expanded="true" signature="255:10608" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="382:10606" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="388:4045" ph="01 Inspector and Variables" />
-            <marker date="1581863020710" expanded="true" signature="514:555" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="607:655" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="2276:2411" ph="/* [ValidateInput(&quot;TypeCheck&quot;, &quot;Recommended Selection Type is Fusion&quot;, InfoMessageType.Warning)] ... */" />
-            <marker date="1581863020710" expanded="true" signature="3099:3133" ph="/* [BoxGroup(&quot;Aesthetics&quot;)] ... */" />
-            <marker date="1581863020710" expanded="true" signature="3360:3414" ph="/* [BoxGroup(&quot;Object Lists&quot;), HideInEditorMode] ... */" />
-            <marker date="1581863020710" expanded="true" signature="3707:3753" ph="/* [BoxGroup(&quot;Accessibility Settings&quot;)] ... */" />
-            <marker date="1581863020710" expanded="true" signature="4069:4447" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="4481:6043" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="4506:5379" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="6073:9446" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="6120:7694" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="8718:8778" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="8870:8930" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="9022:9078" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="9475:10064" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="10092:10219" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="10285:10352" ph="{...}" />
-            <marker date="1581863020710" expanded="true" signature="10382:10603" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -618,95 +532,6 @@
             <marker date="1581863221733" expanded="true" signature="560:608" ph="/* [Space(10)] ... */" />
             <marker date="1581863221733" expanded="true" signature="988:1125" ph="{...}" />
             <marker date="1581863221733" expanded="true" signature="1153:1915" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="61" column="116" lean-forward="true" selection-start-line="61" selection-start-column="116" selection-end-line="61" selection-end-column="116" />
-          <folding>
-            <marker date="1581863347944" expanded="true" signature="6:191" ph="..." />
-            <marker date="1581863347944" expanded="true" signature="34:130" ph="/* using Leap; ... */" />
-            <marker date="1581863347944" expanded="true" signature="225:23843" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="281:23841" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="901:1063" ph="/* [BoxGroup(&quot;Settings&quot;), ShowIf(&quot;leapMotionEnabled&quot;), Indent, SerializeField] private InteractionManager interac ... */" />
-            <marker date="1581863347944" expanded="true" signature="1478:1522" ph="/* [FoldoutGroup(&quot;Transforms&quot;), ... */" />
-            <marker date="1581863347944" expanded="true" signature="2118:2168" ph="/* [FoldoutGroup(&quot;LeapMotion Hands&quot;), ... */" />
-            <marker date="1581863347944" expanded="true" signature="4029:4074" ph="/* [FoldoutGroup(&quot;Aesthetics&quot;), ... */" />
-            <marker date="1581863347944" expanded="true" signature="5022:5086" ph="/* [FoldoutGroup(&quot;Events&quot;), ShowIf(&quot;steamEnabled&quot;)] ... */" />
-            <marker date="1581863347944" expanded="true" signature="5652:6108" ph="/* [FoldoutGroup(&quot;Events&quot;), Space(10), ShowIf(&quot;leapMotionEnabled&quot;), Required] public HandEnableDisable leftHandEn ... */" />
-            <marker date="1581863347944" expanded="true" signature="8181:8311" ph="/* private Arm lArm; ... */" />
-            <marker date="1581863347944" expanded="true" signature="8442:8727" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="8580:8717" ph="/* leftHandEnabled.handEnabledEvent.AddListener(SetupLeftArm); ... */" />
-            <marker date="1581863347944" expanded="true" signature="8763:9311" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="9346:9649" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="9685:10159" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="10160:10847" ph="/* private void SetupLeftArm() ... */" />
-            <marker date="1581863347944" expanded="true" signature="10890:12634" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="10933:12624" ph="/* GameObject particle = Instantiate(fingerTouchParticleSystem, leftIndex); ... */" />
-            <marker date="1581863347944" expanded="true" signature="12670:13644" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="13242:13634" ph="/* Set.HandPosition(lElbow == null, lElbow, lArm, lHandStable, Set.FivePointMidpointPosition(leftIndex, leftMiddl ... */" />
-            <marker date="1581863347944" expanded="true" signature="13680:13731" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="13781:13911" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="13966:14028" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="14071:14205" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="14269:14331" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="14378:14443" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="14487:14553" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="14605:14675" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="14728:14799" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="14861:14924" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="14978:15035" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="15099:15156" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="15199:15289" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="15333:15383" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="15424:15483" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="15537:15601" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="15633:15819" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="15856:16109" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="15879:15998" ph="/* return LeftIndexSoloSelect(); ... */" />
-            <marker date="1581863347944" expanded="true" signature="16146:16336" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="16382:16642" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="16405:16528" ph="/* return RightIndexSoloSelect(); ... */" />
-            <marker date="1581863347944" expanded="true" signature="16682:16870" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="16907:17099" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="17133:17327" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="17370:17568" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="17607:17697" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="17740:17974" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="18022:18113" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="18165:18400" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="18446:18535" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="18585:18816" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="18864:18955" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="19007:19242" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="19290:19382" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="19426:19663" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="19712:19805" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="19858:20097" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="20144:20235" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="20286:20521" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="20570:20663" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="20716:20955" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="20993:21142" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="21181:21334" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="21376:21471" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="21522:21618" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="21657:21820" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="21860:22026" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="22078:22267" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="22316:22508" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="22588:22641" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="22687:22745" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="22803:22874" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="22941:23013" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="23060:23193" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="23236:23349" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="23397:23532" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="23584:23699" ph="{...}" />
-            <marker date="1581863347944" expanded="true" signature="23708:23835" ph="/* public InteractionManager InteractionManager() ... */" />
           </folding>
         </state>
       </provider>
@@ -1028,141 +853,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion/AugmentedEnvelope.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion/HandMenu.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" column="58" lean-forward="true" selection-start-line="9" selection-start-column="58" selection-end-line="9" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureNode.cs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTool.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="105" selection-start-line="20" selection-start-column="105" selection-end-line="20" selection-end-column="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTape.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="121" column="13" lean-forward="true" selection-start-line="121" selection-start-column="13" selection-end-line="121" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoNode.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoPlayButton.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="36" column="9" lean-forward="true" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoTool.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
-          <folding>
-            <marker date="1581864765973" expanded="true" signature="6:257" ph="..." />
-            <marker date="1581864765973" expanded="true" signature="291:16886" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="422:16884" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="2318:2374" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="2425:2485" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="2712:2753" ph="/* [BoxGroup(&quot;References&quot;)] [ ... */" />
-            <marker date="1581864765973" expanded="true" signature="2822:3044" ph="/* [ValidateInput(&quot;TypeCheck&quot;, &quot;Dash is the recommended locomotion type, but should be disabled for motion sickne ... */" />
-            <marker date="1581864765973" expanded="true" signature="3952:4012" ph="/* [TabGroup(&quot;Aesthetic Settings&quot;)] [Required] [ ... */" />
-            <marker date="1581864765973" expanded="true" signature="4063:4208" ph="/* [TabGroup(&quot;Aesthetic Settings&quot;)] [Required] [SerializeField] private PostProcessVolume volume; ... */" />
-            <marker date="1581864765973" expanded="true" signature="5388:5571" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="5612:8669" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="8700:10878" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="10913:12261" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="12334:12449" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="12502:13083" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="13156:13335" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="13452:14574" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="13809:14428" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="14686:15883" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="14949:15873" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="15918:16112" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="16183:16415" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="16466:16592" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="16670:16763" ph="{...}" />
-            <marker date="1581864765973" expanded="true" signature="16809:16878" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteTool.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="1" column="18" lean-forward="true" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/BaseTool.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2470">
-          <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolMenu.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="114" column="13" lean-forward="true" selection-start-line="114" selection-start-column="13" selection-end-line="114" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolButton.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/CloseButton.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion/AugmentedEnvelope.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LeapMotion/HandMenu.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureNode.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTool.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Measure/MeasureTape.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoNode.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoPlayButton.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Memo/MemoTool.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteTool.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/Note/NoteObject.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/BaseTool.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolMenu.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolController.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/ToolButton.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Tools/CloseButton.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/ToolMenuButton.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -1290,10 +995,9 @@
     <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
-          <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
           <folding>
-            <marker date="1581865206959" expanded="true" signature="6:44" ph="..." />
-            <marker date="1581865206959" expanded="true" signature="88:6634" ph="{...}" />
+            <element signature="e#0#44#0" expanded="true" />
             <marker date="1581865206959" expanded="true" signature="170:6632" ph="{...}" />
             <marker date="1581865206959" expanded="true" signature="1899:1961" ph="{...}" />
             <marker date="1581865206959" expanded="true" signature="2012:2059" ph="{...}" />
@@ -1312,6 +1016,116 @@
             <marker date="1581865206959" expanded="true" signature="6362:6422" ph="{...}" />
             <marker date="1581865206959" expanded="true" signature="6460:6519" ph="{...}" />
             <marker date="1581865206959" expanded="true" signature="6558:6616" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <marker date="1581970550350" expanded="true" signature="6:131" ph="..." />
+            <marker date="1581970550350" expanded="true" signature="165:9607" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="292:9605" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="298:3044" ph="01 Inspector and Variables" />
+            <marker date="1581970550350" expanded="true" signature="424:465" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="517:565" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="3068:3446" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="3480:5042" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="3505:4378" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="5072:8445" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="5119:6693" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="7717:7777" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="7869:7929" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="8021:8077" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="8474:9063" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="9091:9218" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="9284:9351" ph="{...}" />
+            <marker date="1581970550350" expanded="true" signature="9381:9602" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding>
+            <marker date="1581970514074" expanded="false" signature="6:94" ph="..." />
+            <marker date="1581970514074" expanded="true" signature="128:7168" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="184:7166" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="1885:1993" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="2029:2577" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="2612:2915" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="2959:2999" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="3035:3312" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="3348:3399" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="3449:3504" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="3547:3603" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="3642:3707" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="3751:3817" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="3869:3939" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="3992:4063" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="4125:4188" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="4242:4299" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="4363:4420" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="4463:4553" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="4597:4647" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="4688:4747" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="4801:4865" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="4897:4987" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="5020:5111" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="5143:5229" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="5266:5353" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="5387:5480" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="5523:5617" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="5655:5715" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="5754:5815" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="5857:5952" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="6003:6099" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="6138:6236" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="6276:6375" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="6427:6516" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="6565:6655" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="6735:6788" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="6834:6892" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="6950:7021" ph="{...}" />
+            <marker date="1581970514074" expanded="true" signature="7088:7160" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <marker date="1581970562363" expanded="true" signature="6:137" ph="..." />
+            <marker date="1581970562363" expanded="true" signature="171:16681" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="302:16679" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="2198:2254" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="2305:2365" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="2592:2633" ph="/* [BoxGroup(&quot;References&quot;)] [ ... */" />
+            <marker date="1581970562363" expanded="true" signature="2702:2924" ph="/* [ValidateInput(&quot;TypeCheck&quot;, &quot;Dash is the recommended locomotion type, but should be disabled for motion sickne ... */" />
+            <marker date="1581970562363" expanded="true" signature="3832:3892" ph="/* [TabGroup(&quot;Aesthetic Settings&quot;)] [Required] [ ... */" />
+            <marker date="1581970562363" expanded="true" signature="3943:4088" ph="/* [TabGroup(&quot;Aesthetic Settings&quot;)] [Required] [SerializeField] private PostProcessVolume volume; ... */" />
+            <marker date="1581970562363" expanded="true" signature="5268:5451" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="5492:8549" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="8580:10758" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="10793:12141" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="12214:12329" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="12382:12878" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="12951:13130" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="13247:14369" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="13604:14223" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="14481:15678" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="14744:15668" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="15713:15907" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="15978:16210" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="16261:16387" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="16465:16558" ph="{...}" />
+            <marker date="1581970562363" expanded="true" signature="16604:16673" ph="{...}" />
           </folding>
         </state>
       </provider>
