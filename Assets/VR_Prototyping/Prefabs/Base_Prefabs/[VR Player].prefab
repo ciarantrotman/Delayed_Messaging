@@ -66,10 +66,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steamEnabled: 1
-  leapMotionEnabled: 1
-  leapStabilisation: 0.3
-  leapGestureThreshold: 0.04
-  leapControllerThreshold: 0.1
   debugActive: 0
   directInteraction: 1
   directDistance: 0.025
@@ -77,22 +73,6 @@ MonoBehaviour:
   cameraRig: {fileID: 3186137213216201964}
   leftController: {fileID: 8976386972614945327}
   rightController: {fileID: 8976386972615003891}
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
-  rightThumb: {fileID: 0}
-  rightIndex: {fileID: 0}
-  rightMiddle: {fileID: 0}
-  rightRing: {fileID: 0}
-  rightLittle: {fileID: 0}
-  rightPalm: {fileID: 0}
-  rightWrist: {fileID: 0}
-  leftThumb: {fileID: 0}
-  leftIndex: {fileID: 0}
-  leftMiddle: {fileID: 0}
-  leftRing: {fileID: 0}
-  leftLittle: {fileID: 0}
-  leftPalm: {fileID: 0}
-  leftWrist: {fileID: 0}
   lineRenderMat: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
   dottedLineRenderMat: {fileID: 2100000, guid: 95adac4e70d55624ea95cb85f7af17e3, type: 2}
   doubleSidedLineRenderMat: {fileID: 2100000, guid: c370e6676fed2e14d87bc2991b4d69eb,
@@ -106,59 +86,23 @@ MonoBehaviour:
   fingerTouchParticleSystem: {fileID: 187449281967836016, guid: 40c12f1bf03b10d47a1654960bfe2630,
     type: 3}
   grabGrip:
-    actionPath: /actions/default/in/GrabGrip
+    actionPath: /actions/DelayedMessaging/in/Grab
     needsReinit: 0
   triggerGrip:
-    actionPath: /actions/default/in/InteractUI
+    actionPath: /actions/DelayedMessaging/in/Select
     needsReinit: 0
   menu:
-    actionPath: /actions/default/in/Menu
+    actionPath: /actions/DelayedMessaging/in/Menu
     needsReinit: 0
   joystickPress:
-    actionPath: /actions/default/in/Teleport
+    actionPath: /actions/DelayedMessaging/in/JoystickClick
     needsReinit: 0
   joystickDirection:
-    actionPath: /actions/default/in/JoystickDirection
+    actionPath: /actions/DelayedMessaging/in/JoystickDirection
     needsReinit: 0
   haptic:
-    actionPath: /actions/default/out/Haptic
+    actionPath: /actions/DelayedMessaging/out/Haptic
     needsReinit: 0
-  lIndexSoloSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  lMiddleSoloSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  lRingSoloSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  lLittleSoloSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  lDualSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  lGrabSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  rIndexSoloSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  rMiddleSoloSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  rRingSoloSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  rLittleSoloSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  rDualSelect:
-    m_PersistentCalls:
-      m_Calls: []
-  rGrabSelect:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &618182138019180014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +235,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8976386972614985437}
     m_Modifications:
+    - target: {fileID: 614573013255550330, guid: d6093219eb6c7fe4d8c7a35829789780,
+        type: 3}
+      propertyPath: poseAction.actionPath
+      value: /actions/DelayedMessaging/in/Pose
+      objectReference: {fileID: 0}
+    - target: {fileID: 614573014001150706, guid: d6093219eb6c7fe4d8c7a35829789780,
+        type: 3}
+      propertyPath: poseAction.actionPath
+      value: /actions/DelayedMessaging/in/Pose
+      objectReference: {fileID: 0}
     - target: {fileID: 653559607715744778, guid: d6093219eb6c7fe4d8c7a35829789780,
         type: 3}
       propertyPath: m_IsActive

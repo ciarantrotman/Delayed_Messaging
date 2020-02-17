@@ -506,12 +506,12 @@ PrefabInstance:
     - target: {fileID: 2910476754053980516, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: advancedLocomotion
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2910476754053980516, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2910476754053980516, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
@@ -521,7 +521,7 @@ PrefabInstance:
     - target: {fileID: 2910476754053980516, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: max
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 3988825840404499409, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
@@ -792,6 +792,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[VR Player]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9009321326906681257, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: poseAction.actionPath
+      value: /actions/DelayedMessaging/in/Pose
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8749d393fbf106e488259a509328cf48, type: 3}

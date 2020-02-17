@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gaze_Cursor
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cd3bd1c8ce4653f46ae1bac1a07fe5be, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: cd3bd1c8ce4653f46ae1bac1a07fe5be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

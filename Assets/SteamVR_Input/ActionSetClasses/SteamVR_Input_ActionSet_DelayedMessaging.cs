@@ -14,78 +14,14 @@ namespace Valve.VR
     using UnityEngine;
     
     
-    public class SteamVR_Input_ActionSet_default : Valve.VR.SteamVR_ActionSet
+    public class SteamVR_Input_ActionSet_DelayedMessaging : Valve.VR.SteamVR_ActionSet
     {
         
-        public virtual SteamVR_Action_Boolean InteractUI
+        public virtual SteamVR_Action_Boolean Select
         {
             get
             {
-                return SteamVR_Actions.default_InteractUI;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean Teleport
-        {
-            get
-            {
-                return SteamVR_Actions.default_Teleport;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean GrabPinch
-        {
-            get
-            {
-                return SteamVR_Actions.default_GrabPinch;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean GrabGrip
-        {
-            get
-            {
-                return SteamVR_Actions.default_GrabGrip;
-            }
-        }
-        
-        public virtual SteamVR_Action_Pose Pose
-        {
-            get
-            {
-                return SteamVR_Actions.default_Pose;
-            }
-        }
-        
-        public virtual SteamVR_Action_Skeleton SkeletonLeftHand
-        {
-            get
-            {
-                return SteamVR_Actions.default_SkeletonLeftHand;
-            }
-        }
-        
-        public virtual SteamVR_Action_Skeleton SkeletonRightHand
-        {
-            get
-            {
-                return SteamVR_Actions.default_SkeletonRightHand;
-            }
-        }
-        
-        public virtual SteamVR_Action_Single Squeeze
-        {
-            get
-            {
-                return SteamVR_Actions.default_Squeeze;
-            }
-        }
-        
-        public virtual SteamVR_Action_Boolean HeadsetOnHead
-        {
-            get
-            {
-                return SteamVR_Actions.default_HeadsetOnHead;
+                return SteamVR_Actions.delayedMessaging_Select;
             }
         }
         
@@ -93,7 +29,47 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.default_JoystickClick;
+                return SteamVR_Actions.delayedMessaging_JoystickClick;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean Grab
+        {
+            get
+            {
+                return SteamVR_Actions.delayedMessaging_Grab;
+            }
+        }
+        
+        public virtual SteamVR_Action_Pose Pose
+        {
+            get
+            {
+                return SteamVR_Actions.delayedMessaging_Pose;
+            }
+        }
+        
+        public virtual SteamVR_Action_Skeleton SkeletonLeftHand
+        {
+            get
+            {
+                return SteamVR_Actions.delayedMessaging_SkeletonLeftHand;
+            }
+        }
+        
+        public virtual SteamVR_Action_Skeleton SkeletonRightHand
+        {
+            get
+            {
+                return SteamVR_Actions.delayedMessaging_SkeletonRightHand;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean HeadsetOnHead
+        {
+            get
+            {
+                return SteamVR_Actions.delayedMessaging_HeadsetOnHead;
             }
         }
         
@@ -101,7 +77,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.default_JoystickDirection;
+                return SteamVR_Actions.delayedMessaging_JoystickDirection;
             }
         }
         
@@ -109,7 +85,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.default_Menu;
+                return SteamVR_Actions.delayedMessaging_Menu;
             }
         }
         
@@ -117,7 +93,7 @@ namespace Valve.VR
         {
             get
             {
-                return SteamVR_Actions.default_Haptic;
+                return SteamVR_Actions.delayedMessaging_Haptic;
             }
         }
     }
