@@ -617,7 +617,6 @@
             </e>
             <e p="Check.cs" t="Include" />
             <e p="ControllerTransforms.cs" t="Include" />
-            <e p="DebugSelectableObject.cs" t="Include" />
             <e p="Demo_Scripts" t="Include">
               <e p="IsometricCameraFollow.cs" t="Include" />
               <e p="RecruitmentProjectSelection.cs" t="Include" />
@@ -660,7 +659,6 @@
             <e p="RubberbandedObject.cs" t="Include" />
             <e p="SceneWipe.cs" t="Include" />
             <e p="SelectableObject.cs" t="Include" />
-            <e p="SelfRighting.cs" t="Include" />
             <e p="Set.cs" t="Include" />
             <e p="SetTransform.cs" t="Include" />
             <e p="Setup.cs" t="Include" />
@@ -672,7 +670,6 @@
               <e p="DirectSlider.cs" t="Include" />
               <e p="ToolMenuButton.cs" t="Include" />
             </e>
-            <e p="VehicleController.cs" t="Include" />
           </e>
         </e>
       </e>
