@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using VR_Prototyping.Scripts.Accessibility;
+using VR_Prototyping.Scripts.Utilities;
 using Object = UnityEngine.Object;
 
 namespace VR_Prototyping.Scripts

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 //using Sirenix.OdinInspector;
 using UnityEngine;
+using VR_Prototyping.Scripts.Utilities;
 
 namespace VR_Prototyping.Scripts
 {

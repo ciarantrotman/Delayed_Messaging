@@ -14,6 +14,7 @@ using VR_Prototyping.Interfaces;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
 using VR_Prototyping.Scripts.Accessibility;
 using VR_Prototyping.Scripts.Icon_Scripts;
+using VR_Prototyping.Scripts.Utilities;
 using Object = UnityEngine.Object;
 
 namespace VR_Prototyping.Scripts

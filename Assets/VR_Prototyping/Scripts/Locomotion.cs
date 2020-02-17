@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
+using VR_Prototyping.Scripts.Utilities;
 
 namespace VR_Prototyping.Scripts
 {

@@ -2,14 +2,656 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Base_Prefabs/[Scene Statics].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Prefabs/Base_Prefabs/[Scene Statics].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/DebugSelectableObject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/DebugSelectableObject.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/SelfRighting.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/SelfRighting.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/AstarPathfindingProject.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/AstarPathfindingProject.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Behaviors.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Behaviors/AIDestinationSetter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Behaviors/AIDestinationSetter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Behaviors/Patrol.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Behaviors/Patrol.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/AIBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/AIBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/AILerp.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/AILerp.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/AIPath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/AIPath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/IAstarAI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/IAstarAI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/NavmeshController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/NavmeshController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/Seeker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/Seeker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/TurnBasedAI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AI/TurnBasedAI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AstarData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AstarData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AstarMath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AstarMath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AstarPath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/AstarPath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/GraphUpdateScene.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/GraphUpdateScene.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/GraphUpdateShape.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/GraphUpdateShape.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/AnimationLink.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/AnimationLink.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/ArrayPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/ArrayPool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/AstarDebugger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/AstarDebugger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/BinaryHeap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/BinaryHeap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/Draw.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/Draw.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/EditorResourceHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/EditorResourceHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/GraphEditorBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/GraphEditorBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/GraphModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/GraphModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/GraphUpdateProcessor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/GraphUpdateProcessor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/GraphUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/GraphUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/HierarchicalGraph.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/HierarchicalGraph.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/Int3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/Int3.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/ListPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/ListPool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/MovementUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/MovementUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/NodeLink.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/NodeLink.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/NodeLink2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/NodeLink2.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/NodeLink3.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/NodeLink3.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/ObjectPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/ObjectPool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/PathInterpolator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/PathInterpolator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/PathPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/PathPool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/PathProcessor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/PathProcessor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/PathReturnQueue.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/PathReturnQueue.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/StackPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/StackPool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/ThreadControlQueue.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/ThreadControlQueue.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/WindowsStoreCompatibility.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/WindowsStoreCompatibility.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/WorkItemProcessor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Misc/WorkItemProcessor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Nodes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Nodes/GraphNode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Nodes/GraphNode.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Path.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Path.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/PathHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/PathHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/JsonConverters.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/JsonConverters.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/SimpleJsonReplacement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/SimpleJsonReplacement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/SimpleZipReplacement.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/SimpleZipReplacement.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/TinyJson.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/Serialization/TinyJson.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/astarclasses.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Core/astarclasses.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AIBaseEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AIBaseEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AILerpEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AILerpEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AnimationLinkEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AnimationLinkEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AstarPathEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AstarPathEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AstarPathfindingProjectEditor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AstarPathfindingProjectEditor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AstarUpdateChecker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AstarUpdateChecker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AstarUpdateWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/AstarUpdateWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/CustomGraphEditorAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/CustomGraphEditorAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/AstarEditorSkinDark.guiskin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/AstarEditorSkinDark.guiskin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/AstarEditorSkinLight.guiskin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/AstarEditorSkinLight.guiskin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/colorInterpolationBox.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/colorInterpolationBox.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/deleteButton@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/deleteButton@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/deleteButton@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/deleteButton@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/deleteButton_active@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/deleteButton_active@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/deleteButton_active@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/deleteButton_active@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/editButton@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/editButton@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/editButton@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/editButton@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/editButton_active@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/editButton_active@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/editButton_active@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/editButton_active@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gizmoButton_off@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gizmoButton_off@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gizmoButton_off@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gizmoButton_off@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gizmoButton_on@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gizmoButton_on@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gizmoButton_on@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gizmoButton_on@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gridPivotSelect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/gridPivotSelect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/headerBackground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/headerBackground.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/hex_diameter@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/hex_diameter@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/hex_diameter@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/hex_diameter@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/hex_width@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/hex_width@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/hex_width@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/hex_width@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images/gridPivotSelect-03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images/gridPivotSelect-03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images/gridPivotSelect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images/gridPivotSelect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images/gridPivotSelect_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images/gridPivotSelect_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images/gridPivotSelect_On.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/images/gridPivotSelect_On.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/infoButton@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/infoButton@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/infoButton@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/infoButton@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/infoButton_active@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/infoButton_active@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/infoButton_active@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/infoButton_active@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/lock_closed@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/lock_closed@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/lock_closed@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/lock_closed@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/lock_open@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/lock_open@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/lock_open@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/lock_open@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/pixelBox2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/pixelBox2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/pixelBox3@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/pixelBox3@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/pixelBox3@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/pixelBox3@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/pixelBox3_separator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/DarkSkin/pixelBox3_separator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/colorInterpolationBox.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/colorInterpolationBox.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/deleteButton@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/deleteButton@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/deleteButton@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/deleteButton@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/deleteButton_active@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/deleteButton_active@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/deleteButton_active@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/deleteButton_active@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/editButton@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/editButton@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/editButton@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/editButton@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/editButton_active@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/editButton_active@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/editButton_active@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/editButton_active@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/gizmoButton_off@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/gizmoButton_off@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/gizmoButton_off@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/gizmoButton_off@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/gizmoButton_on@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/gizmoButton_on@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/gizmoButton_on@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/gizmoButton_on@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/headerBackground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/headerBackground.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/hex_diameter@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/hex_diameter@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/hex_diameter@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/hex_diameter@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/hex_width@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/hex_width@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/hex_width@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/hex_width@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/infoButton@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/infoButton@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/infoButton@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/infoButton@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/infoButton_active@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/infoButton_active@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/infoButton_active@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/infoButton_active@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/lock_closed@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/lock_closed@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/lock_closed@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/lock_closed@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/lock_open@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/lock_open@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/lock_open@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/lock_open@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/pixelBox3@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/pixelBox3@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/pixelBox3@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/pixelBox3@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/reset_normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/reset_normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/reset_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/LightSkin/reset_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.cginc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.cginc.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/Navmesh.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/NavmeshOutline.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/line_falloff_1px.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/Materials/line_falloff_1px.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/grid.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/grid.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/ArrowDown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/ArrowDown.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/ArrowDown_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/ArrowDown_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/ArrowUp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/ArrowUp.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/ArrowUp_on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/ArrowUp_on.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/gridPivotSelect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/gridPivotSelect.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/gridPivotSelect_Normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/gridPivotSelect_Normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/gridPivotSelect_On.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/gridPivotSelect_On.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/upDownArrow_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/upDownArrow_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/upDownArrow_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/upDownArrow_02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/upDownButtons_01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/upDownButtons_01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/upDownButtons_02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/images/upDownButtons_02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/linkButton_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/linkButton_active.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/linkButton_normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/linkButton_normal.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/pixelBox.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/pixelBox.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/pixelBox2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/pixelBox2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/pixelBox3_separator.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/pixelBox3_separator.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/scene_box@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/scene_box@1x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/scene_box@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/scene_box@2x.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/tooltips.tsv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/EditorAssets/tooltips.tsv.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors/GraphEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors/GraphEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors/GridGeneratorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors/NavMeshGeneratorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors/NavMeshGeneratorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors/PointGeneratorEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphEditors/PointGeneratorEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/GraphUpdateSceneEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/Legacy.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/Legacy/LegacyAIPathEditor2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/Legacy/LegacyAIPathEditor2.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/Legacy/LegacyEditorHelper2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/Legacy/LegacyEditorHelper2.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/ModifierEditors.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/ModifierEditors/RaycastModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/ModifierEditors/RaycastModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/ModifierEditors/SmoothModifierEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/ModifierEditors/SmoothModifierEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/SeekerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Editor/SeekerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/Procedural.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/Procedural.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralGridMover.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralGridMover.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralGround.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralGround.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab1.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab1.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab2.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab2.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab3.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab3.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab4.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralPrefab4.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralWorld.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/ProceduralWorld.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/TopDownOverlay.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/TopDownOverlay.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/cylinder.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example12_Procedural/cylinder.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example15_2D.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example15_2D/2D.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example15_2D/2D.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain/Example2.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain/Example2.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain/Pathfinding_Terrain.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain/Pathfinding_Terrain.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain/checkerGround.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain/checkerGround.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain/dynamicObstacle.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example2_Terrain/dynamicObstacle.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ListCubes.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ListCubes.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/PointGraphExample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/PointGraphExample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/blackText.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/blackText.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ex5Ground.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ex5Ground.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ground.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example5_PointGraph/ground.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/Materials/navmesh-navmesh_example6navmeshMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/Materials/navmesh-navmesh_example6navmeshMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/NavmeshExample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/NavmeshExample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/example6.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/example6.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/navmesh.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example6_Navmesh/navmesh.obj.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example9_Penalties.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example9_Penalties/PenaltiesExample.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Example9_Penalties/PenaltiesExample.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/AstarSmoothFollow2.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/AstarSmoothFollow2.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/DoorController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/DynamicGridObstacle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/DynamicGridObstacle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/MineBotAI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/MineBotAI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/MineBotAnimation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/MineBotAnimation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/ObjectPlacer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/ObjectPlacer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/ExampleScripts/TargetMover.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/AI.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/AI.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/BlueBox.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/BlueBox.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/BlueCheckerGround.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/BlueCheckerGround.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/BlueGround.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/BlueGround.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/DiffuseAlwaysVisible.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/DiffuseAlwaysVisible.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Door.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Door.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Ground.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Ground.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/GroundRTS.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/GroundRTS.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/OrangeGround.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/OrangeGround.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/PathBlueArea.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/PathBlueArea.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/PathGreyCube.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/PathGreyCube.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/PathRedArea.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/PathRedArea.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Projector Light.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Projector Light.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/SomeBox.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/SomeBox.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Textures/Falloff-Reflected.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Textures/Falloff-Reflected.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Textures/Falloff.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Textures/Falloff.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Textures/Shadow.psd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Textures/Shadow.psd.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Wall.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Materials/Wall.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/DynamicObstacle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/DynamicObstacle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/Minebot.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/Minebot.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/Minebot_NRM.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/Minebot_NRM.tif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-01 - Default.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-01 - Default.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-minebot.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot-minebot.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@awake-01 - Default.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@awake-01 - Default.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@back-01 - Default.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@back-01 - Default.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@forward 1-01 - Default.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@forward 1-01 - Default.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@forward-01 - Default.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@forward-01 - Default.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@left-01 - Default.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@left-01 - Default.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@right-01 - Default.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/Materials/mine_bot@right-01 - Default.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/idle.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/idle.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@awake.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@awake.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@back.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@back.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@forward.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@forward.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@left.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@left.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@right.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/MineBot/mine_bot@right.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/SomeBox.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/SomeBox.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/TargetReachedEffect.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/Prefabs/TargetReachedEffect.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/_Example Scenes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/ExampleScenes/_Example Scenes.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Base.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Base.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/GridGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/GridGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NavMeshGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NavMeshGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NavmeshBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NavmeshBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses/GridNode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses/GridNode.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses/GridNodeBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses/GridNodeBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses/PointNode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses/PointNode.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses/TriangleMeshNode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/NodeClasses/TriangleMeshNode.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/PointGenerator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/PointGenerator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/QuadtreeGraph.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/QuadtreeGraph.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/BBTree.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/BBTree.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/EuclideanEmbedding.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/EuclideanEmbedding.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/GraphTransform.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/GraphTransform.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/GridLookup.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/GridLookup.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/NavMeshRenderer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/NavMeshRenderer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/NavmeshTile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/NavmeshTile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/ObjImporter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/PointKDTree.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Generators/Utilities/PointKDTree.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor/LegacyAIPathEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor/LegacyAIPathEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor/LegacyEditorHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor/LegacyEditorHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor/LegacyRVOControllerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor/LegacyRVOControllerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor/LegacyRichAIEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/Editor/LegacyRichAIEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/LegacyAIPath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/LegacyAIPath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/MiscLegacy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Legacy/MiscLegacy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/AlternativePath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/AlternativePath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/FunnelModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/FunnelModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/Modifiers.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/Modifiers.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/RaycastModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/RaycastModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/SimpleSmoothModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/StartEndModifier.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Modifiers/StartEndModifier.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Navmesh.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Navmesh/NavmeshUpdates.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Navmesh/NavmeshUpdates.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Navmesh/RelevantGraphSurface.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Navmesh/RelevantGraphSurface.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor/EditorBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor/EditorBase.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor/EditorGUIx.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor/EditorGUIx.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor/EnumFlagDrawer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor/EnumFlagDrawer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor/PackageToolsEditor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/Editor/PackageToolsEditor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/EnumFlagAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/EnumFlagAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/UniqueComponentAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/UniqueComponentAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/VersionedMonoBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/PackageTools/VersionedMonoBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Pathfinders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Pathfinders/ABPath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Pathfinders/ABPath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Plugins/DotNetZip.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Plugins/DotNetZip/DotNetZipLicense.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Plugins/DotNetZip/DotNetZipLicense.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Plugins/dependencies.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Plugins/dependencies.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Readme.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Readme_upgrading.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Readme_upgrading.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/TurnBased.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/TurnBased/BlockManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/TurnBased/BlockManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/TurnBased/SingleNodeBlocker.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/AstarChecksum.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/AstarChecksum.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/AstarMemory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/AstarMemory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/AstarParallel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/AstarParallel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/AstarProfiler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/AstarProfiler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/DotNetReplacements.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/DotNetReplacements.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/Funnel.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/Funnel.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/GraphGizmoHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/GraphGizmoHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/GraphUpdateUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/GraphUpdateUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/PathUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/PathUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/ProfileHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/ProfileHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/RetainedGizmos.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/RetainedGizmos.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/Utilities/UnityReferenceHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/changelog.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/changelog.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/defines.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/defines.csv.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/documentation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/documentation.html.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/link.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/link.xml.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Plugins/AstarPathfindingProject/package.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scenes/Icon_Scenes/00_Base_VR_Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scenes/Icon_Scenes/00_Base_VR_Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Manipulation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Manipulation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/SelectableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/SelectableObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectDial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectDial.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Utilities/Setup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Utilities/Setup.cs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,33 +712,108 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3380">
-              <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
+            <state relative-caret-position="104">
+              <caret line="245" column="36" selection-start-line="245" selection-start-column="36" selection-end-line="245" selection-end-column="36" />
               <folding>
-                <marker date="1581974309312" expanded="true" signature="6:137" ph="..." />
-                <marker date="1581974309312" expanded="true" signature="171:15186" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="302:15184" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="2073:2129" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="2180:2240" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="3837:4020" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="4061:7054" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="7085:9263" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="9298:10646" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="10719:10834" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="10887:11383" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="11456:11635" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="11752:12874" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="12109:12728" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="12986:14183" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="13249:14173" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="14218:14412" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="14483:14715" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="14766:14892" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="14970:15063" ph="{...}" />
-                <marker date="1581974309312" expanded="true" signature="15109:15178" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="6:177" ph="..." />
+                <marker date="1581981892788" expanded="true" signature="211:15226" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="342:15224" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="2113:2169" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="2220:2280" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="3877:4060" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="4101:7094" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="7125:9303" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="9338:10686" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="10759:10874" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="10927:11423" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="11496:11675" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="11792:12914" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="12149:12768" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="13026:14223" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="13289:14213" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="14258:14452" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="14523:14755" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="14806:14932" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="15010:15103" ph="{...}" />
+                <marker date="1581981892788" expanded="true" signature="15149:15218" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Units/Unit.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+              <folding>
+                <marker date="1581982200540" expanded="true" signature="6:121" ph="..." />
+                <marker date="1581982200540" expanded="true" signature="164:1942" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="204:1940" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="427:486" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="535:756" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="766:1934" ph="Gizmos" />
+                <marker date="1581982200540" expanded="true" signature="818:1055" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="863:915" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="986:1045" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="1101:1345" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="1146:1198" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="1276:1335" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="1381:1915" ph="{...}" />
+                <marker date="1581982200540" expanded="true" signature="1426:1478" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Utilities/Setup.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="73" column="22" lean-forward="true" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
+              <folding>
+                <marker date="1581982126695" expanded="true" signature="6:117" ph="..." />
+                <marker date="1581982126695" expanded="true" signature="161:5165" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="193:5163" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="208:449" ph="/// Setup a Line renderer ... " />
+                <marker date="1581982126695" expanded="true" signature="565:898" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="907:1188" ph="/// Sets up a trail renderer component ... " />
+                <marker date="1581982126695" expanded="true" signature="1314:1536" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="1545:1678" ph="/// Add a Rigidbody ... " />
+                <marker date="1581982126695" expanded="true" signature="1746:1897" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="1906:2049" ph="/// Add the Outline Componant ... " />
+                <marker date="1581982126695" expanded="true" signature="2113:2258" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="2267:2424" ph="/// Add the AI Destination Setter Component ... " />
+                <marker date="1581982126695" expanded="true" signature="2512:2693" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="2702:2845" ph="/// Add the AI Path component ... " />
+                <marker date="1581982126695" expanded="true" signature="2907:3049" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="3058:3195" ph="/// Add a line renderer ... " />
+                <marker date="1581982126695" expanded="true" signature="3269:3429" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="3438:3585" ph="/// Add a mesh renderer component ... " />
+                <marker date="1581982126695" expanded="true" signature="3659:3819" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="3828:3991" ph="/// Checks if a mesh renderer exists on an object ... " />
+                <marker date="1581982126695" expanded="true" signature="4060:4183" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="4192:4408" ph="/// Sets an offset position at runtime ... " />
+                <marker date="1581982126695" expanded="true" signature="4515:4766" ph="{...}" />
+                <marker date="1581982126695" expanded="true" signature="4775:4970" ph="/// Setup a sphere collider ... " />
+                <marker date="1581982126695" expanded="true" signature="5069:5157" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Units/UnitClass.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+              <folding>
+                <marker date="1581981539813" expanded="true" signature="61:886" ph="{...}" />
+                <marker date="1581981539813" expanded="true" signature="184:884" ph="{...}" />
+                <marker date="1581981539813" expanded="true" signature="777:878" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -116,12 +833,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Accessibility/Tooltip.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenuController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Set.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Keyboard/KeyboardKey.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Keyboard/KeyboardManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/HandleController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/ToolMenuButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Legacy/MiscLegacy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectSlider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/UI_Blocks/DirectButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Manipulation.cs" root0="FORCE_HIGHLIGHTING" />
@@ -130,31 +846,28 @@
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionPositionPreview.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/RubberbandedObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/SelectableObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/IsometricCameraFollow.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Units/UnitClass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/FullModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/RecruitmentProjectSelection.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Demo_Scripts/RecruitmentTableRotation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/StartLocation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/LaunchProject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointTarget.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Setup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/DioramaModel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconScenes.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/BaseIconControl.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Utilities/Setup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionVisual.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenuSideBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/IconMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ReturnToDiorama.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/FollowLerp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Icon_Scripts/ViewpointPreview.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Set.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Setup.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Manipulation.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs" />
@@ -203,6 +916,9 @@
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs" />
         <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Units/UnitClass.cs" />
+        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Utilities/Setup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Units/Unit.cs" />
       </list>
     </option>
   </component>
@@ -217,8 +933,8 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="974" />
-    <option name="height" value="547" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectView">
     <navigator currentView="UnityExplorer" proportions="" version="1">
@@ -236,6 +952,24 @@
             <path>
               <item name="" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="8711f2a6:AssetsRoot" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Delayed_Messaging" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Delayed_Messaging" type="1045f7f1:UnityExplorerNode" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Delayed_Messaging" type="1045f7f1:UnityExplorerNode" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Units" type="1045f7f1:UnityExplorerNode" />
             </path>
             <path>
               <item name="" type="e068e287:UnityExplorerRootNode" />
@@ -303,12 +1037,12 @@
       <option name="presentableId" value="Default" />
       <updated>1581859412695</updated>
       <workItem from="1581859419679" duration="4766000" />
-      <workItem from="1581970507043" duration="2690000" />
+      <workItem from="1581970507043" duration="5118000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7456000" />
+    <option name="totallyTimeSpent" value="9884000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -391,93 +1125,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/VehicleController.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="139" column="46" lean-forward="true" selection-start-line="139" selection-start-column="46" selection-end-line="139" selection-end-column="46" />
-          <folding>
-            <marker date="1581862511012" expanded="true" signature="0:5657" ph="/* using System; ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/RubberbandedObject.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="32" lean-forward="true" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-          <folding>
-            <marker date="1581862940895" expanded="true" signature="83:3148" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="137:3146" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="1252:1538" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="1584:2031" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="1698:1761" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="1802:1940" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="1957:2021" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="2081:2534" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="2201:2264" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="2308:2443" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="2460:2524" ph="{...}" />
-            <marker date="1581862940895" expanded="true" signature="2581:3140" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Manipulation.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="61" column="20" lean-forward="true" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
-          <folding>
-            <marker date="1581862487579" expanded="true" signature="6:97" ph="..." />
-            <marker date="1581862487579" expanded="true" signature="131:11517" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="250:11515" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="256:3031" ph="Inspector and Variables" />
-            <marker date="1581862487579" expanded="true" signature="1857:1887" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="2293:2334" ph="/* [BoxGroup(&quot;Rotation Settings&quot;)] ... */" />
-            <marker date="1581862487579" expanded="true" signature="2483:2523" ph="/* [BoxGroup(&quot;Scaling Settings&quot;)] ... */" />
-            <marker date="1581862487579" expanded="true" signature="2682:2714" ph="/* [BoxGroup(&quot;Snapping&quot;)] ... */" />
-            <marker date="1581862487579" expanded="true" signature="3056:3153" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="3188:5473" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="5507:5653" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="5515:5649" ph="/* scaleLr = fM.AddComponent&lt;LineRenderer&gt;(); ... */" />
-            <marker date="1581862487579" expanded="true" signature="5680:6097" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="6134:6581" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="6169:6356" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="6388:6577" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="6618:7288" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="6670:7284" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="7325:7913" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="7377:7909" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="8038:8858" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="8054:8301" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="8313:8854" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="8550:8636" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="8645:8784" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="8974:10282" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="9008:9790" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="9819:10278" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="10311:10378" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="10475:10579" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="10750:10992" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="11030:11288" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="11100:11284" ph="{...}" />
-            <marker date="1581862487579" expanded="true" signature="11395:11512" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionVisual.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="2" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
-          <folding>
-            <marker date="1581863042462" expanded="true" signature="6:63" ph="..." />
-            <marker date="1581863042462" expanded="true" signature="97:361" ph="{...}" />
-            <marker date="1581863042462" expanded="true" signature="149:359" ph="{...}" />
-            <marker date="1581863042462" expanded="true" signature="272:353" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/LocomotionPositionPreview.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
@@ -520,98 +1167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="147" column="42" selection-start-line="147" selection-start-column="42" selection-end-line="147" selection-end-column="42" />
-          <folding>
-            <marker date="1581862868258" expanded="true" signature="6:512" ph="..." />
-            <marker date="1581862868258" expanded="true" signature="132:194" ph="/* using Leap.Unity.Interaction; ... */" />
-            <marker date="1581862868258" expanded="true" signature="546:30011" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="676:30009" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="682:13651" ph="Inspector and Variables" />
-            <marker date="1581862868258" expanded="true" signature="1792:1837" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="1866:1913" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="1941:1966" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="3692:3795" ph="/* [Header(&quot;Scaling Settings&quot;)] ... */" />
-            <marker date="1581862868258" expanded="true" signature="4159:4250" ph="/* [Header(&quot;Visual Effects&quot;)] ... */" />
-            <marker date="1581862868258" expanded="true" signature="6731:6851" ph="/* [Header(&quot;Visual Effects&quot;)] ... */" />
-            <marker date="1581862868258" expanded="true" signature="8547:8682" ph="/* [Header(&quot;Visual Effects&quot;)] ... */" />
-            <marker date="1581862868258" expanded="true" signature="10616:10677" ph="/* [FoldoutGroup(&quot;Button Settings&quot;), ShowIf(&quot;button&quot;), ... */" />
-            <marker date="1581862868258" expanded="true" signature="11213:11255" ph="/* [FoldoutGroup(&quot;Hover Settings&quot;), ... */" />
-            <marker date="1581862868258" expanded="true" signature="11730:11834" ph="/* [Header(&quot;Visual Effects&quot;)] ... */" />
-            <marker date="1581862868258" expanded="true" signature="13675:13733" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="13771:13783" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="13808:13849" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="13877:13916" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="13943:13982" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="14025:14346" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="14391:14782" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="14829:14841" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="14875:15459" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="14902:15169" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="15001:15164" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="15491:15708" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="15743:15836" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="15775:15832" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="15866:15981" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="16011:16186" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="16216:16563" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="16304:16340" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="16377:16411" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="16596:16932" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="16714:16825" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="16868:16928" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="16935:17309" ph="/* private void SetupInteractionBehaviour(InteractionManager interactionManager) ... */" />
-            <marker date="1581862868258" expanded="true" signature="17393:17582" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="17413:17578" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="17606:18534" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="18568:19127" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="18628:18997" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="19168:19180" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="19214:19434" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="19478:20197" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="19545:20056" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="20240:21709" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="20307:21601" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="21752:22211" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="21819:22175" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="22238:22701" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="22794:22899" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="22934:23321" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="22996:23317" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="23361:23619" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="23658:25500" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="23777:25469" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="23848:23946" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="24040:24139" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="24232:24318" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="24413:24561" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="24595:24832" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="24867:24963" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="25057:25190" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="25283:25403" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="25526:25715" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="25752:25953" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="25996:26656" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="26062:26139" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="26196:26311" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="26682:26735" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="26775:27176" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="26843:26885" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="27204:27715" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="27257:27422" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="27459:27711" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="27491:27706" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="27742:27774" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="27800:28113" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="27904:28109" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="28150:28591" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="28176:28494" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="28624:29064" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="28650:28968" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="29104:29366" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="29403:29560" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="29599:29806" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="29843:29901" ph="{...}" />
-            <marker date="1581862868258" expanded="true" signature="29946:30006" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -905,47 +1460,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="227">
           <caret line="357" column="1" selection-start-line="357" selection-start-column="1" selection-end-line="357" selection-end-column="1" />
-          <folding>
-            <marker date="1581865099711" expanded="true" signature="6:103" ph="..." />
-            <marker date="1581865099711" expanded="true" signature="147:12487" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="206:12485" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="744:824" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="2600:2661" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="2710:2768" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="3088:3150" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="3200:3495" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="3328:3391" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="3408:3485" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="3538:3685" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="3731:3752" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="3788:6963" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="4462:6742" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="7030:7207" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="7243:8484" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="7429:8110" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="8531:8552" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="8592:8745" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="8778:10344" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="8879:8993" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="9090:9225" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="9321:9445" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="9506:10036" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="9557:10022" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="10090:10211" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="10269:10334" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="10383:10507" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="10546:10676" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="10713:10841" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="10877:11460" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="10979:11104" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="11138:11262" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="11523:12130" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="11561:12120" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="11724:11811" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="11989:12078" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="12199:12328" ph="{...}" />
-            <marker date="1581865099711" expanded="true" signature="12404:12479" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -953,22 +1467,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="5" column="45" lean-forward="true" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
-          <folding>
-            <marker date="1581865152659" expanded="true" signature="62:5704" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="142:5702" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="1463:1525" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="1576:1621" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="1654:3439" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="3508:3683" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="3719:4261" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="3991:4105" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="4139:4251" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="4338:4969" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="4466:4574" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="4688:4882" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="5046:5124" ph="{...}" />
-            <marker date="1581865152659" expanded="true" signature="5162:5696" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -978,24 +1476,24 @@
           <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
-            <marker date="1581865206959" expanded="true" signature="170:6632" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="1899:1961" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="2012:2059" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="2094:3497" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="3572:3749" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="3785:4401" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="3980:4096" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="4130:4244" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="4483:5301" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="4634:4776" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="4892:5137" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="5388:5466" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="5504:5937" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="6001:6192" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="6314:6626" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="6362:6422" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="6460:6519" ph="{...}" />
-            <marker date="1581865206959" expanded="true" signature="6558:6616" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="210:6672" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="1939:2001" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="2052:2099" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="2134:3537" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="3612:3789" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="3825:4441" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="4020:4136" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="4170:4284" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="4523:5341" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="4674:4816" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="4932:5177" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="5428:5506" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="5544:5977" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="6041:6232" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="6354:6666" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="6402:6462" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="6500:6559" ph="{...}" />
+            <marker date="1581981889329" expanded="true" signature="6598:6656" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1005,24 +1503,24 @@
         <state relative-caret-position="104">
           <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
           <folding>
-            <marker date="1581970550350" expanded="true" signature="6:131" ph="..." />
-            <marker date="1581970550350" expanded="true" signature="165:9607" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="292:9605" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="298:3044" ph="01 Inspector and Variables" />
-            <marker date="1581970550350" expanded="true" signature="424:465" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="517:565" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="3068:3446" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="3480:5042" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="3505:4378" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="5072:8445" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="5119:6693" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="7717:7777" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="7869:7929" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="8021:8077" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="8474:9063" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="9091:9218" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="9284:9351" ph="{...}" />
-            <marker date="1581970550350" expanded="true" signature="9381:9602" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="6:171" ph="..." />
+            <marker date="1581981891057" expanded="true" signature="205:9647" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="332:9645" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="338:3084" ph="01 Inspector and Variables" />
+            <marker date="1581981891057" expanded="true" signature="464:505" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="557:605" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="3108:3486" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="3520:5082" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="3545:4418" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="5112:8485" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="5159:6733" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="7757:7817" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="7909:7969" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="8061:8117" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="8514:9103" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="9131:9258" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="9324:9391" ph="{...}" />
+            <marker date="1581981891057" expanded="true" signature="9421:9642" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1078,30 +1576,119 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3380">
-          <caret line="110" column="9" selection-start-line="110" selection-start-column="9" selection-end-line="110" selection-end-column="9" />
+        <state relative-caret-position="104">
+          <caret line="245" column="36" selection-start-line="245" selection-start-column="36" selection-end-line="245" selection-end-column="36" />
           <folding>
-            <marker date="1581974309312" expanded="true" signature="6:137" ph="..." />
-            <marker date="1581974309312" expanded="true" signature="171:15186" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="302:15184" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="2073:2129" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="2180:2240" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="3837:4020" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="4061:7054" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="7085:9263" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="9298:10646" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="10719:10834" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="10887:11383" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="11456:11635" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="11752:12874" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="12109:12728" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="12986:14183" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="13249:14173" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="14218:14412" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="14483:14715" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="14766:14892" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="14970:15063" ph="{...}" />
-            <marker date="1581974309312" expanded="true" signature="15109:15178" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="6:177" ph="..." />
+            <marker date="1581981892788" expanded="true" signature="211:15226" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="342:15224" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="2113:2169" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="2220:2280" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="3877:4060" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="4101:7094" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="7125:9303" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="9338:10686" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="10759:10874" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="10927:11423" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="11496:11675" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="11792:12914" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="12149:12768" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="13026:14223" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="13289:14213" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="14258:14452" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="14523:14755" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="14806:14932" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="15010:15103" ph="{...}" />
+            <marker date="1581981892788" expanded="true" signature="15149:15218" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Units/UnitClass.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="14" column="61" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+          <folding>
+            <marker date="1581981539813" expanded="true" signature="61:886" ph="{...}" />
+            <marker date="1581981539813" expanded="true" signature="184:884" ph="{...}" />
+            <marker date="1581981539813" expanded="true" signature="777:878" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Utilities/Setup.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="73" column="22" lean-forward="true" selection-start-line="73" selection-start-column="22" selection-end-line="73" selection-end-column="22" />
+          <folding>
+            <marker date="1581982126695" expanded="true" signature="6:117" ph="..." />
+            <marker date="1581982126695" expanded="true" signature="161:5165" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="193:5163" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="208:449" ph="/// Setup a Line renderer ... " />
+            <marker date="1581982126695" expanded="true" signature="565:898" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="907:1188" ph="/// Sets up a trail renderer component ... " />
+            <marker date="1581982126695" expanded="true" signature="1314:1536" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="1545:1678" ph="/// Add a Rigidbody ... " />
+            <marker date="1581982126695" expanded="true" signature="1746:1897" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="1906:2049" ph="/// Add the Outline Componant ... " />
+            <marker date="1581982126695" expanded="true" signature="2113:2258" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="2267:2424" ph="/// Add the AI Destination Setter Component ... " />
+            <marker date="1581982126695" expanded="true" signature="2512:2693" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="2702:2845" ph="/// Add the AI Path component ... " />
+            <marker date="1581982126695" expanded="true" signature="2907:3049" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="3058:3195" ph="/// Add a line renderer ... " />
+            <marker date="1581982126695" expanded="true" signature="3269:3429" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="3438:3585" ph="/// Add a mesh renderer component ... " />
+            <marker date="1581982126695" expanded="true" signature="3659:3819" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="3828:3991" ph="/// Checks if a mesh renderer exists on an object ... " />
+            <marker date="1581982126695" expanded="true" signature="4060:4183" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="4192:4408" ph="/// Sets an offset position at runtime ... " />
+            <marker date="1581982126695" expanded="true" signature="4515:4766" ph="{...}" />
+            <marker date="1581982126695" expanded="true" signature="4775:4970" ph="/// Setup a sphere collider ... " />
+            <marker date="1581982126695" expanded="true" signature="5069:5157" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Legacy/MiscLegacy.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+          <folding>
+            <marker date="1574908697000" expanded="false" signature="6:42" ph="..." />
+            <marker date="1574908697000" expanded="true" signature="66:2318" ph="{...}" />
+            <marker date="1574908697000" expanded="true" signature="128:2316" ph="{...}" />
+            <marker date="1574908697000" expanded="true" signature="132:358" ph="/// True if the end of the path has been reached. ... " />
+            <marker date="1574908697000" expanded="true" signature="621:812" ph="/// Rotation speed. ... " />
+            <marker date="1574908697000" expanded="true" signature="1045:1175" ph="/// Maximum speed in world units per second. ... " />
+            <marker date="1574908697000" expanded="true" signature="1376:1635" ph="/// Direction that the agent wants to move in (excluding physics and local avoidance). ... " />
+            <marker date="1574908697000" expanded="true" signature="1778:1851" ph="{...}" />
+            <marker date="1574908697000" expanded="true" signature="1787:1847" ph="{...}" />
+            <marker date="1574908697000" expanded="true" signature="1855:2115" ph="/// Current desired velocity of the agent (excluding physics and local avoidance but it includes gravity). ... " />
+            <marker date="1574908697000" expanded="true" signature="2281:2313" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Units/Unit.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+          <folding>
+            <marker date="1581982200540" expanded="true" signature="6:121" ph="..." />
+            <marker date="1581982200540" expanded="true" signature="164:1942" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="204:1940" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="427:486" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="535:756" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="766:1934" ph="Gizmos" />
+            <marker date="1581982200540" expanded="true" signature="818:1055" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="863:915" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="986:1045" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="1101:1345" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="1146:1198" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="1276:1335" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="1381:1915" ph="{...}" />
+            <marker date="1581982200540" expanded="true" signature="1426:1478" ph="{...}" />
           </folding>
         </state>
       </provider>
