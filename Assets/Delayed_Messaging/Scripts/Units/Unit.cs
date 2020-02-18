@@ -1,4 +1,5 @@
 ﻿using System;
+using Delayed_Messaging.Scripts.Utilities;
 using Pathfinding;
 using UnityEngine;
 using VR_Prototyping.Scripts;
@@ -24,8 +25,7 @@ namespace Delayed_Messaging.Scripts.Units
             unitClass = u;
             aiPath = transform.AddOrGetAIPath();
             destinationSetter = transform.AddOrGetAIDestinationSetter();
-
-            aiPath.maxSpeed = unitClass.moveSpeed;
+            aiPath.SetupAIPath(unitClass);
         }
 
         #region Gizmos
