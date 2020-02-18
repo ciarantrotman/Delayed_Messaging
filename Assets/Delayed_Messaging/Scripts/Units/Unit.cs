@@ -7,7 +7,7 @@ using VR_Prototyping.Scripts.Utilities;
 
 namespace Delayed_Messaging.Scripts.Units
 {
-    public class Unit : MonoBehaviour
+    public class Unit : MonoBehaviour, IDamageable<float>
     {
         public UnitClass unitClass;
         public UnitClass.UnitData unitData;
@@ -27,8 +27,12 @@ namespace Delayed_Messaging.Scripts.Units
             destinationSetter = transform.AddOrGetAIDestinationSetter();
             aiPath.SetupAIPath(unitClass);
         }
+        
+        public void Damage(float damageTaken)
+        {
 
-        #region Gizmos
+        }
+        
         private void OnDrawGizmos () 
         {
             if (unitClass == null)
@@ -40,7 +44,6 @@ namespace Delayed_Messaging.Scripts.Units
                 DrawGizmos ();
             }
         }
-
         private void OnDrawGizmosSelected ()
         {
             if (unitClass == null)
@@ -52,7 +55,6 @@ namespace Delayed_Messaging.Scripts.Units
                 DrawGizmos ();
             }
         }
-
         private void DrawGizmos ()
         {
             if (unitClass == null)
@@ -83,6 +85,5 @@ namespace Delayed_Messaging.Scripts.Units
             Gizmos.color = unitClass.forwardVectorColour;
             Gizmos.DrawRay(pos, r.normalized);
         }
-        #endregion
     }
 }

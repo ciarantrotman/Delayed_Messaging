@@ -72,17 +72,7 @@ MonoBehaviour:
   cameraRig: {fileID: 3186137213216201964}
   leftController: {fileID: 8976386972614945327}
   rightController: {fileID: 8976386972615003891}
-  lineRenderMat: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
-  dottedLineRenderMat: {fileID: 2100000, guid: 95adac4e70d55624ea95cb85f7af17e3, type: 2}
-  doubleSidedLineRenderMat: {fileID: 0}
-  voidSkyBox: {fileID: 2100000, guid: f8f5137c34772dd40b4b964504217e4d, type: 2}
-  environmentSkyBox: {fileID: 2100000, guid: 71f14a2d79f732f4d9893ef1b911f4ff, type: 2}
-  grabParticleSystem: {fileID: 3167397458377695127, guid: 43d92c7ac701e8d4b87b9b2b0f56d760,
-    type: 3}
-  selectParticleSystem: {fileID: 2842794087781093117, guid: ce0abc95367c3a94e9f3cb5629c234f7,
-    type: 3}
-  fingerTouchParticleSystem: {fileID: 187449281967836016, guid: 40c12f1bf03b10d47a1654960bfe2630,
-    type: 3}
+  lineRenderMaterial: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
   grabGrip:
     actionPath: /actions/DelayedMessaging/in/Grab
     needsReinit: 0
@@ -128,10 +118,6 @@ MonoBehaviour:
   gazeList: []
   rHandList: []
   lHandList: []
-  toolTips: 1
-  toolTipPrefab: {fileID: 4587959169018795455, guid: 3354367ee8e9a764cacec99b757586a3,
-    type: 3}
-  toolTipOffset: 0.05
 --- !u!114 &2910476754053980516
 MonoBehaviour:
   m_ObjectHideFlags: 0

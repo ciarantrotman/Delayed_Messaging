@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using VR_Prototyping.Scripts.Utilities;
 
 namespace VR_Prototyping.Scripts
 {

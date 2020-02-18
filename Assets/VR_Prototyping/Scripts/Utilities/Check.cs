@@ -5,62 +5,68 @@ using UnityEngine;
 using VR_Prototyping.Scripts.Accessibility;
 using Object = UnityEngine.Object;
 
-namespace VR_Prototyping.Scripts
+namespace VR_Prototyping.Scripts.Utilities
 {
     public static class Check
     {
-        public static void Manipulation(this Object focusObject, Object oppFocusObject, SelectableObject selectableObject, SelectableObject previous, bool grip, bool pGrip, Transform con, bool touch, bool oppTouch)
+        public static void Manipulation(this Object focusObject, Object oppFocusObject, BaseObject baseObject, BaseObject previous, bool grip, bool pGrip, Transform con, bool touch, bool oppTouch)
         {
-            if (focusObject == null || selectableObject == null || touch) return;
-         
+            if (focusObject == null || baseObject == null || touch) return;
+            /*
             if (oppTouch && oppFocusObject  == focusObject) return;
             
             if (grip && !pGrip)
             {
-                selectableObject.GrabStart(con);
+                baseObject.GrabStart(con);
             }
             if (grip && pGrip)
             {
-                selectableObject.GrabStay(con);
+                baseObject.GrabStay(con);
             }
             if (!grip && pGrip)
             {
                 previous.GrabEnd(con);
-            }
+            }*/
         }
         
-        public static void Selection(this Object focusObject, SelectableObject button, bool select, bool pSelect)
+        public static void Selection(this Object focusObject, BaseObject selectableObject, bool select, bool pSelect)
         {
-            if (focusObject == null || button == null) return;
+            if (focusObject == null || selectableObject == null) return;
             if (select && !pSelect)
             {
-                button.SelectStart();
+                selectableObject.SelectStart();
             }
             if (select && pSelect)
             {
-                button.SelectStay();
+                selectableObject.SelectStay();
             }
             if (!select && pSelect)
             {
-                button.SelectEnd();
+                selectableObject.SelectEnd();
             }
         }
 
-        public static void Hover(this SelectableObject current, SelectableObject previous, Tooltip tooltip)
+        /// <summary>
+        /// Checks for the state of hovering for the Base Object
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="previous"></param>
+        /// <param name="other"></param>
+        public static void Hover(this BaseObject current, BaseObject previous, BaseObject other)
         {
             if (current != previous && current != null)
             {
-                current.HoverStart(tooltip);
+                current.HoverStart();
                 return;
             }
-            if (current == previous && current != null)
+            if (current != null && (current == other || current == previous))
             {
                 current.HoverStay();
                 return;
             }
-            if (previous != null && current != previous)
+            if (previous != other && previous != null && current != previous)
             {
-                previous.HoverEnd(tooltip);
+                previous.HoverEnd();
             }
         }
 
@@ -175,7 +181,18 @@ namespace VR_Prototyping.Scripts
             target.transform.TransformLerpPosition(objects.Count > 0 ? objects[0].gameObject.transform: inactive.transform, .1f);
             return objects.Count > 0 ? objects[0].gameObject : null;
         }
-        
+        /// <summary>
+        /// Finds an active object, it prioritises ray-cast, then uses the fuzzy method to find a center of an object
+        /// </summary>
+        /// <param name="objects"></param>
+        /// <param name="current"></param>
+        /// <param name="target"></param>
+        /// <param name="inactive"></param>
+        /// <param name="controller"></param>
+        /// <param name="forward"></param>
+        /// <param name="distance"></param>
+        /// <param name="disable"></param>
+        /// <returns></returns>
         public static GameObject FusionFindFocusObject(this List<GameObject> objects, GameObject current, GameObject target, GameObject inactive, Transform controller, Vector3 forward, float distance, bool disable)
         {
             if (disable && current == null)
@@ -208,12 +225,12 @@ namespace VR_Prototyping.Scripts
             return null;
         }
 
-        public static SelectableObject FindSelectableObject(this GameObject focusObject, SelectableObject current, bool disable)
+        public static BaseObject FindSelectableObject(this GameObject focusObject, BaseObject current, bool disable)
         {
             if (disable) return current == null ? null : current;
             
             if (focusObject == null) return null;
-            return focusObject.GetComponent<SelectableObject>() != null ? focusObject.GetComponent<SelectableObject>() : null;
+            return focusObject.GetComponent<BaseObject>() != null ? focusObject.GetComponent<BaseObject>() : null;
         }
         
         public static void DrawLineRenderer(this LineRenderer lr, GameObject focus, GameObject midpoint, Transform controller, GameObject target, int quality)
@@ -247,12 +264,10 @@ namespace VR_Prototyping.Scripts
             conO.Position(con);
             objP.Position(con);
         }
-
         public static bool IsCollinear(this Vector3 a, Vector3 b, Vector3 x, float tolerance)
         {
             return Math.Abs(Vector3.Distance(a, x) + Vector3.Distance(b, x) - Vector3.Distance(a, b)) < tolerance;
         }
-        
         public static void CheckGaze(this GameObject o, float a, float c, ICollection<GameObject> g, ICollection<GameObject> l, ICollection<GameObject> r, ICollection<GameObject> global)
         {
             if (!global.Contains(o))
@@ -274,11 +289,18 @@ namespace VR_Prototyping.Scripts
                 r.Remove(o);
             }
         }
-        public static bool CheckHand(this GameObject g, ICollection<GameObject> gaze, float m, float c, bool b, bool button)
+        /// <summary>
+        /// Checks the current manual angle against the allowed angle
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="gazeList"></param>
+        /// <param name="manualAngle"></param>
+        /// <param name="currentAngle"></param>
+        /// <returns></returns>
+        public static bool CheckHand(this GameObject gameObject, ICollection<GameObject> gazeList, float manualAngle, float currentAngle)
         {
-            if (b && !button) return false;
-            if (!gaze.Contains(g)) return false;
-            return m > c / 2;
+            if (!gazeList.Contains(gameObject)) return false;
+            return manualAngle > currentAngle / 2;
         }
         public static void ManageList(this GameObject g, ICollection<GameObject> l, bool b, bool d, bool r)
         {
@@ -293,7 +315,6 @@ namespace VR_Prototyping.Scripts
                 l.Remove(g);
             }
         }
-
         public static float TransformDistance(this Transform a, Transform b)
         {
             return Vector3.Distance(a.position, b.position);
@@ -302,6 +323,19 @@ namespace VR_Prototyping.Scripts
         public static bool TransformDistanceCheck(this Transform a, Transform b, float distance)
         {
             return Vector3.Distance(a.position, b.position) < distance;
+        }
+        /// <summary>
+        /// Checks if an object is within range
+        /// </summary>
+        /// <param name="enabled"></param>
+        /// <param name="self"></param>
+        /// <param name="user"></param>
+        /// <param name="range"></param>
+        /// <returns></returns>
+        public static bool WithinRange(this Transform self, bool enabled, Transform user, float range)
+        {
+            if (!enabled) return true;
+            return Vector3.Distance(self.position, user.position) <= range;
         }
     }
 }

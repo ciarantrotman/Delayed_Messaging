@@ -431,20 +431,6 @@ namespace VR_Prototyping.Scripts
                     throw new ArgumentException();
             }   
         }
-
-        public static void VisualState(this Transform t, SelectableObject s, Vector3 scale, Vector3 pos, TMP_FontAsset font, Color color)
-        {
-            if (s.buttonText != null)
-            {
-                s.buttonText.font = font;
-            }
-
-            if (s.buttonBack != null)
-            {
-                s.buttonBack.material.color = color;
-            }
-        }
-
         public static Vector3 Offset(this Transform a, Transform b)
         {
             Vector3 x = a.position;
@@ -470,8 +456,9 @@ namespace VR_Prototyping.Scripts
             return objO.transform.localPosition.z * Mathf.Pow(depth, 2.5f);
         }
 
-        public static void Outline(this Outline outline, Outline.Mode mode, float width, Color color)
+        public static void SetOutline(this Outline outline, Outline.Mode mode, float width, Color color, bool state)
         {
+            outline.enabled = state;
             outline.OutlineColor = color;
             outline.OutlineWidth = width;
             outline.OutlineMode = mode;
@@ -563,6 +550,26 @@ namespace VR_Prototyping.Scripts
             gameObject.transform.parent = parent.transform;
             gameObject.name = name;
             return gameObject;
+        }
+        /// <summary>
+        /// Will either add or remove the object from the list provided
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="list"></param>
+        /// <param name="add"></param>
+        public static void ToggleList(this GameObject gameObject, ICollection<GameObject> list, bool add)
+        {
+            switch (add)
+            {
+                case true when !list.Contains(gameObject):
+                    list.Add(gameObject);
+                    return;
+                case false when list.Contains(gameObject):
+                    list.Remove(gameObject);
+                    return;
+                default:
+                    return;
+            }
         }
     }
 }

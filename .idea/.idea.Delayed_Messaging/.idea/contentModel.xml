@@ -634,6 +634,7 @@
             <e p="Accessibility" t="Include">
               <e p="Tooltip.cs" t="Include" />
             </e>
+            <e p="BaseObject.cs" t="Include" />
             <e p="ControllerTransforms.cs" t="Include" />
             <e p="Icon_Scripts" t="Include">
               <e p="BaseIconControl.cs" t="Include" />
@@ -663,7 +664,6 @@
             <e p="ObjectSelection.cs" t="Include" />
             <e p="RubberbandedObject.cs" t="Include" />
             <e p="SceneWipe.cs" t="Include" />
-            <e p="SelectableObject.cs" t="Include" />
             <e p="UI_Blocks" t="Include">
               <e p="BaseDirectBlock.cs" t="Include" />
               <e p="DirectButton.cs" t="Include" />

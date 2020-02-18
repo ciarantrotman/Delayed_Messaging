@@ -1,21 +1,30 @@
 ﻿using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
+using VR_Prototyping.Scripts;
 
 namespace Delayed_Messaging.Scripts.Structures
 {
-    public class Structure : MonoBehaviour, ISelectable, IDamageable<float>
+    public class Structure : BaseObject, IDamageable<float>
     {
         public StructureClass structureClass;
         public StructureClass.StructureData structureData;
-        
-        public void Select()
-        {
-            throw new System.NotImplementedException();
-        }
 
+        public override void SelectStart()
+        {
+			
+        }
+        public override void SelectStay()
+        {
+
+        }
+        public override void SelectEnd()
+        {
+			
+        }
+        
         public void Damage(float damageTaken)
         {
-            throw new System.NotImplementedException();
+            
         }
         
         #region Gizmos
@@ -30,7 +39,6 @@ namespace Delayed_Messaging.Scripts.Structures
                 DrawGizmos ();
             }
         }
-
         private void OnDrawGizmosSelected ()
         {
             if (structureClass == null)
@@ -42,7 +50,6 @@ namespace Delayed_Messaging.Scripts.Structures
                 DrawGizmos ();
             }
         }
-
         private void DrawGizmos ()
         {
             if (structureClass == null)

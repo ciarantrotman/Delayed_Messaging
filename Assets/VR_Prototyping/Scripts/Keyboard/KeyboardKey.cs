@@ -5,21 +5,21 @@ using UnityEngine.Rendering;
 
 namespace VR_Prototyping.Scripts.Keyboard
 {
-    public class KeyboardKey : SelectableObject
+    public class KeyboardKey : BaseObject
     {
         public KeyboardManager KeyboardManager { private get; set; }
         public int Index { private get; set; }
         private float borderDepth;
 
-        /*[BoxGroup("Key Settings")]*/ [SerializeField] private Transform hoverBorder;
-        /*[BoxGroup("Key Settings")]*/ [Space(10)] [SerializeField] [Range(0f, .01f)] private float hoverRestDepth;
-        /*[BoxGroup("Key Settings")]*/ [SerializeField] [Range(.01f, .05f)] private float hoverActiveDepth;
-        /*[BoxGroup("Key Settings")]*/ [SerializeField] [Range(.1f, 1f)] private float duration;
-        /*[BoxGroup("Key Settings")]*/ [Space(10)] public KeyboardManager.KeyboardKeyValues keyValue;
+        [SerializeField] private Transform hoverBorder;
+        [Space(10)] [SerializeField] [Range(0f, .01f)] private float hoverRestDepth;
+        [SerializeField] [Range(.01f, .05f)] private float hoverActiveDepth;
+        [SerializeField] [Range(.1f, 1f)] private float duration;
+        [Space(10)] public KeyboardManager.KeyboardKeyValues keyValue;
 
         private void Awake()
         {
-            selectStart.AddListener(KeyStroke);
+            //selectStart.AddListener(KeyStroke);
         }
 
         public void SetupKey(KeyboardManager manager, GameObject p)
@@ -27,12 +27,12 @@ namespace VR_Prototyping.Scripts.Keyboard
             KeyboardManager = manager;
             player = p;
             name = "Key_" + (char)keyValue;
-            buttonText.SetText(""+(char)keyValue);
-            buttonBack.shadowCastingMode = ShadowCastingMode.Off;
-            toolTipText = keyValue.ToString();
+            //buttonText.SetText(""+(char)keyValue);
+            //buttonBack.shadowCastingMode = ShadowCastingMode.Off;
+            //toolTipText = keyValue.ToString();
             
-            hoverStart.AddListener(HoverBorderStart);
-            hoverEnd.AddListener(HoverBorderEnd);
+            //hoverStart.AddListener(HoverBorderStart);
+            //hoverEnd.AddListener(HoverBorderEnd);
         }
         
         private void KeyStroke()

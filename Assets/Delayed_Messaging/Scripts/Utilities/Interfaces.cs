@@ -2,7 +2,17 @@
 {
     public interface ISelectable
     {
-        void Select();
+        void HoverStart();
+        void HoverStay();
+        void HoverEnd();
+        void SelectStart();
+        void SelectStay();
+        void SelectEnd();
+    }
+
+    public interface IMovable
+    {
+        void Move();
     }
     
     public interface IDamageable<in T>

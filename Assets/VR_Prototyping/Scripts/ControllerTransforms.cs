@@ -17,11 +17,7 @@ namespace VR_Prototyping.Scripts
         [SerializeField, Space(10)] private Transform leftController;
         [SerializeField] private Transform rightController;
 
-        [SerializeField] public Material lineRenderMat;
-        [SerializeField] public Material dottedLineRenderMat;
-        [SerializeField] public Material doubleSidedLineRenderMat;
-        [SerializeField] public Material voidSkyBox;
-        [SerializeField] public Material environmentSkyBox;
+        [SerializeField] public Material lineRenderMaterial;
 
         public SteamVR_Action_Boolean grabGrip;
         public SteamVR_Action_Boolean triggerGrip;
