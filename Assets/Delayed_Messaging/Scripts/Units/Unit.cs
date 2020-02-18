@@ -13,6 +13,7 @@ namespace Delayed_Messaging.Scripts.Units
 
         private AIDestinationSetter destinationSetter;
         private AIPath aiPath;
+        internal UnitController unitController;
         
         private void Start()
         {
@@ -22,11 +23,17 @@ namespace Delayed_Messaging.Scripts.Units
         public void InitialiseUnit(UnitClass u)
         {
             unitClass = u;
-            aiPath = transform.AddOrGetAIPath();
+            //aiPath = transform.AddOrGetAIPath();
             destinationSetter = transform.AddOrGetAIDestinationSetter();
-            aiPath.SetupAIPath(unitClass);
+            //aiPath.SetupAIPath(unitClass);
+            unitController = player.GetComponent<UnitController>();
         }
-        
+
+        public override void SelectEnd()
+        {
+            destinationSetter.target = unitController.unitDestination;
+        }
+
         public void Damage(float damageTaken)
         {
 
@@ -68,16 +75,16 @@ namespace Delayed_Messaging.Scripts.Units
             
             // Object
             Gizmos.color = Color.black;
-            Gizmos.DrawWireCube(pos, new Vector3(
+            /*Gizmos.DrawWireCube(pos, new Vector3(
                 unitClass.size.x,
                 unitClass.size.y,
-                unitClass.size.z));
+                unitClass.size.z));*/
 
             // Debug
             if (destinationSetter != null && destinationSetter.target != null)
             {
                 Gizmos.color = unitClass.destinationColour;
-                Gizmos.DrawWireSphere(destinationSetter.target.position, 1f);
+                Gizmos.DrawSphere(destinationSetter.target.position, .25f);
             }
             
             // Vectors

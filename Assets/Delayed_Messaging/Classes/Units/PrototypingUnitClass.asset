@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugType: 2
   cost: 0
-  size: {x: 1, y: 1, z: 1}
-  moveSpeed: 5
-  rotationSpeed: 5
+  size: {x: 0.1, y: 0.1, z: 0.1}
+  moveSpeed: 7
+  rotationSpeed: 7
   forwardVectorColour: {r: 0, g: 0.526397, b: 1, a: 1}
   destinationColour: {r: 0, g: 0, b: 0, a: 1}
