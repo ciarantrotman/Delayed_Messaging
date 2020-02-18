@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: TestUnitClass
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  unitRadius: 0
-  unitHeight: 0
-  unitDebugType: 1
-  troupeCenterColour: {r: 1, g: 1, b: 1, a: 0.27058825}
-  forwardVectorColour: {r: 0, g: 0, b: 0, a: 0}
+  rotationSpeed: 5
+  unitRadius: 1
+  unitHeight: 1
+  unitDebugType: 2
+  troupeCenterColour: {r: 0, g: 0, b: 0, a: 1}
+  forwardVectorColour: {r: 0, g: 0.526397, b: 1, a: 1}

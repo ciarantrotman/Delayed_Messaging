@@ -11,7 +11,6 @@ namespace Delayed_Messaging.Scripts.Units
         public UnitClass unitClass;
         public UnitClass.UnitData unitData;
 
-        // 
         private AIDestinationSetter destinationSetter;
         private AIPath aiPath;
         
@@ -64,11 +63,14 @@ namespace Delayed_Messaging.Scripts.Units
             // Cache
             Transform t = transform;
             Vector3 pos = t.position;
-            Vector3 r = t.right;
+            Vector3 r = t.forward;
             
             // Sphere Radius
             Gizmos.color = unitClass.troupeCenterColour;
-            Gizmos.DrawSphere(unitData.troupeCenter, unitClass.unitRadius);
+            Gizmos.DrawWireCube(pos, new Vector3(
+                unitClass.unitRadius,
+                unitClass.unitHeight,
+                unitClass.unitRadius));
 
             // Vectors
             Gizmos.color = unitClass.forwardVectorColour;

@@ -220,6 +220,9 @@
               <e p="Unit.cs" t="Include" />
               <e p="UnitClass.cs" t="Include" />
             </e>
+            <e p="Utilities" t="Include">
+              <e p="SetupAIBehaviour.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="SteamVR" t="Include">

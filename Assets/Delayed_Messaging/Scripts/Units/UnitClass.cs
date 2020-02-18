@@ -7,6 +7,7 @@ namespace Delayed_Messaging.Scripts.Units
     {
         [Header("Movement")] 
         [Range(0, 10)] public float moveSpeed = 5;
+        [Range(0, 10)] public float rotationSpeed = 5;
 
         [Header("Space")] 
         [Range(0, 10)] public float unitRadius;  
