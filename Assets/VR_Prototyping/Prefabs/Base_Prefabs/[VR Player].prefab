@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7473554891637304817}
   - component: {fileID: 7473554891637304831}
   - component: {fileID: 618182138019180014}
-  - component: {fileID: 2459010844718547940}
   - component: {fileID: 2910476754053980516}
   m_Layer: 0
   m_Name: '[VR Player]'
@@ -75,8 +74,7 @@ MonoBehaviour:
   rightController: {fileID: 8976386972615003891}
   lineRenderMat: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
   dottedLineRenderMat: {fileID: 2100000, guid: 95adac4e70d55624ea95cb85f7af17e3, type: 2}
-  doubleSidedLineRenderMat: {fileID: 2100000, guid: c370e6676fed2e14d87bc2991b4d69eb,
-    type: 2}
+  doubleSidedLineRenderMat: {fileID: 0}
   voidSkyBox: {fileID: 2100000, guid: f8f5137c34772dd40b4b964504217e4d, type: 2}
   environmentSkyBox: {fileID: 2100000, guid: 71f14a2d79f732f4d9893ef1b911f4ff, type: 2}
   grabParticleSystem: {fileID: 3167397458377695127, guid: 43d92c7ac701e8d4b87b9b2b0f56d760,
@@ -134,39 +132,6 @@ MonoBehaviour:
   toolTipPrefab: {fileID: 4587959169018795455, guid: 3354367ee8e9a764cacec99b757586a3,
     type: 3}
   toolTipOffset: 0.05
---- !u!114 &2459010844718547940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8976386972615268133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d632d9b2b74cc1e4f9216bca53401d48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mP: {fileID: 0}
-  mRp: {fileID: 0}
-  mRc: {fileID: 0}
-  cR: {fileID: 0}
-  tSr: {fileID: 0}
-  cL: {fileID: 0}
-  tSl: {fileID: 0}
-  sCl: {fileID: 0}
-  sCr: {fileID: 0}
-  manipulationType: 0
-  directGrab: 1
-  directGrabDistance: 0.025
-  disableLeftGrab: 0
-  disableRightGrab: 0
-  enableRotation: 1
-  rotationForce: 10
-  enableScaling: 1
-  lineRendererThickness: 0.005
-  distanceSnapping: 1
-  snapDistance: 1
-  maximumDistance: 1
 --- !u!114 &2910476754053980516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,10 +186,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  lineRenderMat: {fileID: 2100000, guid: c370e6676fed2e14d87bc2991b4d69eb, type: 2}
+  lineRenderMat: {fileID: 0}
   lineRenderQuality: 40
   sceneChangeWipe: {fileID: 4682701757106891871, guid: e7cf404ab85b8b34ca9fbaf27821454f,
     type: 3}
+  sceneWipeDuration: 0
   sceneWipeTrigger:
     m_PersistentCalls:
       m_Calls: []

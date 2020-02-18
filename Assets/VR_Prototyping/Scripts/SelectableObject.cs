@@ -53,8 +53,6 @@ namespace VR_Prototyping.Scripts
 		private MeshRenderer textRenderer;
 		private Rigidbody rb;
 
-		//private InteractionBehaviour interactionBehaviour;
-		
 		public float AngleL { get; private set; }
 		public float AngleR { get; private set; }
 		public float AngleG { get; private set; }

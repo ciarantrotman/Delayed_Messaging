@@ -17,8 +17,8 @@ namespace Delayed_Messaging.Scripts.Utilities
             aiPath.rotationSpeed = unitClass.rotationSpeed;
             
             // Size
-            aiPath.radius = unitClass.unitRadius;
-            aiPath.height = unitClass.unitHeight;
+            aiPath.radius = unitClass.size.x;
+            aiPath.height = unitClass.size.y;
         }
     }
 }

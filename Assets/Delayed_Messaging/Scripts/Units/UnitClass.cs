@@ -2,28 +2,19 @@
 
 namespace Delayed_Messaging.Scripts.Units
 {
-    [CreateAssetMenu(fileName = "UnitClass", menuName = "Unit/UnitClass")]
-    public class UnitClass : ScriptableObject
+    [CreateAssetMenu(fileName = "UnitClass", menuName = "Class/Unit/UnitClass")]
+    public class UnitClass : BaseClass
     {
-        [Header("Movement")] 
+        [Header("Unit Specific Traits")]
         [Range(0, 10)] public float moveSpeed = 5;
         [Range(0, 10)] public float rotationSpeed = 5;
 
-        [Header("Space")] 
-        [Range(0, 10)] public float unitRadius;  
-        [Range(0, 10)] public float unitHeight;  
-        
-        public enum DebugType { NEVER, SELECTED_ONLY, ALWAYS }
-        [Header("Debug Visuals")] 
-        public DebugType unitDebugType;
-        
-        public Color troupeCenterColour = new Color(0,0,0,1);
         public Color forwardVectorColour = new Color(0,0,0,1);
-
+        public Color destinationColour = new Color(0,0,0,1);
+        
         public struct UnitData
         {
-            public Vector3 placeholder;
-            public Vector3 troupeCenter;
+            public Vector3 destination;
         }
     }
 }

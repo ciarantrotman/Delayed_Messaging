@@ -35,7 +35,7 @@ namespace Delayed_Messaging.Scripts.Units
             {
                 return;
             }
-            if (unitClass.unitDebugType == UnitClass.DebugType.ALWAYS)
+            if (unitClass.debugType == BaseClass.DebugType.ALWAYS)
             {
                 DrawGizmos ();
             }
@@ -47,7 +47,7 @@ namespace Delayed_Messaging.Scripts.Units
             {
                 return;
             }
-            if (unitClass.unitDebugType == UnitClass.DebugType.SELECTED_ONLY)
+            if (unitClass.debugType == BaseClass.DebugType.SELECTED_ONLY)
             {
                 DrawGizmos ();
             }
@@ -65,13 +65,20 @@ namespace Delayed_Messaging.Scripts.Units
             Vector3 pos = t.position;
             Vector3 r = t.forward;
             
-            // Sphere Radius
-            Gizmos.color = unitClass.troupeCenterColour;
+            // Object
+            Gizmos.color = Color.black;
             Gizmos.DrawWireCube(pos, new Vector3(
-                unitClass.unitRadius,
-                unitClass.unitHeight,
-                unitClass.unitRadius));
+                unitClass.size.x,
+                unitClass.size.y,
+                unitClass.size.z));
 
+            // Debug
+            if (destinationSetter != null && destinationSetter.target != null)
+            {
+                Gizmos.color = unitClass.destinationColour;
+                Gizmos.DrawWireSphere(destinationSetter.target.position, 1f);
+            }
+            
             // Vectors
             Gizmos.color = unitClass.forwardVectorColour;
             Gizmos.DrawRay(pos, r.normalized);

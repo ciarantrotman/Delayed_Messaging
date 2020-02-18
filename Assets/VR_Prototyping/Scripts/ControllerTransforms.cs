@@ -22,10 +22,7 @@ namespace VR_Prototyping.Scripts
         [SerializeField] public Material doubleSidedLineRenderMat;
         [SerializeField] public Material voidSkyBox;
         [SerializeField] public Material environmentSkyBox;
-        [SerializeField, Space(10)] public GameObject grabParticleSystem;
-        [SerializeField] public GameObject selectParticleSystem;
-        [SerializeField] public GameObject fingerTouchParticleSystem;
-        
+
         public SteamVR_Action_Boolean grabGrip;
         public SteamVR_Action_Boolean triggerGrip;
         public SteamVR_Action_Boolean menu;
@@ -46,7 +43,6 @@ namespace VR_Prototyping.Scripts
 
         private void Start()
         {
-            SetupParticleSystem();
             SetupDirect();
             SetupLocal();
         }
@@ -71,11 +67,6 @@ namespace VR_Prototyping.Scripts
             localHeadset = Set.NewGameObject(localRef, "Local/HMD");
             localR = Set.NewGameObject(localHeadset,"Local/Right");
             localL = Set.NewGameObject(localHeadset,"Local/Left");
-        }
-
-        private void SetupParticleSystem()
-        {
-            return;
         }
 
         private void FixedUpdate()
