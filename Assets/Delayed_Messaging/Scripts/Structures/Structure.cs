@@ -1,4 +1,5 @@
-﻿using Delayed_Messaging.Scripts.Utilities;
+﻿using Delayed_Messaging.Scripts.Units;
+using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 
@@ -9,17 +10,11 @@ namespace Delayed_Messaging.Scripts.Structures
         public StructureClass structureClass;
         public StructureClass.StructureData structureData;
 
-        public override void SelectStart()
-        {
-			
-        }
-        public override void SelectStay()
-        {
-
-        }
+        public GameObject unit;
+        
         public override void SelectEnd()
         {
-			
+            Instantiate(unit);
         }
         
         public void Damage(float damageTaken)

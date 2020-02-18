@@ -1,5 +1,4 @@
-﻿using System;
-using Delayed_Messaging.Scripts.Utilities;
+﻿using Delayed_Messaging.Scripts.Utilities;
 using Pathfinding;
 using UnityEngine;
 using VR_Prototyping.Scripts;
@@ -7,7 +6,7 @@ using VR_Prototyping.Scripts.Utilities;
 
 namespace Delayed_Messaging.Scripts.Units
 {
-    public class Unit : MonoBehaviour, IDamageable<float>
+    public class Unit : BaseObject, IDamageable<float>
     {
         public UnitClass unitClass;
         public UnitClass.UnitData unitData;

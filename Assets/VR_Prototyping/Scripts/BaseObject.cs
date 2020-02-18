@@ -78,7 +78,7 @@ namespace VR_Prototyping.Scripts
 				{
 					if (rootGameObject.name != "[VR Player]") continue;
 					player = rootGameObject;
-					Debug.Log(name + " player set to " + rootGameObject.name);
+					Debug.Log("<b>[Base Object] </b>" + name + " player set to " + rootGameObject.name);
 				}
 			}
 			objectSelection = player.GetComponent<ObjectSelection>();

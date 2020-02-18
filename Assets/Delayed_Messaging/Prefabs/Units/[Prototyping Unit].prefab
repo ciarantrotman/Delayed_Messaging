@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4937663743960991425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4937663744074412861}
@@ -126,6 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51c6302154701454aa7d08394f62919e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverOutlineColour: {r: 0.9245283, g: 0.42301533, b: 0.42301533, a: 1}
+  hoverOutlineWidth: 5
+  hoverOutlineMode: 0
   unitClass: {fileID: 11400000, guid: 994eb961c8016df45a489aca4123b441, type: 2}
 --- !u!114 &4937663744074412851
 MonoBehaviour:

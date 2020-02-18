@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VR_Prototyping.Plugins.QuickOutline.Scripts;
 
 namespace Delayed_Messaging.Scripts
 {
