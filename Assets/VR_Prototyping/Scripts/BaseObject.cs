@@ -1,4 +1,5 @@
-﻿using Delayed_Messaging.Scripts.Utilities;
+﻿using Delayed_Messaging.Scripts.Player;
+using Delayed_Messaging.Scripts.Utilities;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,8 +11,9 @@ namespace VR_Prototyping.Scripts
 	[DisallowMultipleComponent, CanEditMultipleObjects]
 	public abstract class BaseObject : MonoBehaviour, ISelectable
 	{
-		internal GameObject player;
+		internal GameObject playerObject;
 		internal ObjectSelection objectSelection;
+		internal Player player;
 
 		private Outline outline;
 		private Vector3 defaultPosition;
@@ -72,16 +74,18 @@ namespace VR_Prototyping.Scripts
 		}
 		private void AssignComponents()
 		{
-			if (player == null)
+			if (playerObject == null)
 			{
 				foreach (GameObject rootGameObject in SceneManager.GetActiveScene().GetRootGameObjects())
 				{
 					if (rootGameObject.name != "[VR Player]") continue;
-					player = rootGameObject;
+					playerObject = rootGameObject;
 					Debug.Log("<b>[Base Object] </b>" + name + " player set to " + rootGameObject.name);
 				}
 			}
-			objectSelection = player.GetComponent<ObjectSelection>();
+			
+			objectSelection = playerObject.GetComponent<ObjectSelection>();
+			player = playerObject.GetComponent<Player>();
 		}
 		private void SetupOutline()
 		{
@@ -126,7 +130,7 @@ namespace VR_Prototyping.Scripts
 		}
 		public virtual void SelectStart()
 		{
-			
+			player.selectedObjects.Add(this);
 		}
 		public virtual void SelectStay()
 		{

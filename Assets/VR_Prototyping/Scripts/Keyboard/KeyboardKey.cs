@@ -25,7 +25,7 @@ namespace VR_Prototyping.Scripts.Keyboard
         public void SetupKey(KeyboardManager manager, GameObject p)
         {
             KeyboardManager = manager;
-            player = p;
+            playerObject = p;
             name = "Key_" + (char)keyValue;
             //buttonText.SetText(""+(char)keyValue);
             //buttonBack.shadowCastingMode = ShadowCastingMode.Off;

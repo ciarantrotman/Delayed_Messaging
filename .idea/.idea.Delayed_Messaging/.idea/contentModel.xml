@@ -217,6 +217,10 @@
           </e>
           <e p="Scripts" t="Include">
             <e p="BaseClass.cs" t="Include" />
+            <e p="Player" t="Include">
+              <e p="Player.cs" t="Include" />
+              <e p="PlayerClass.cs" t="Include" />
+            </e>
             <e p="Structures" t="Include">
               <e p="Structure.cs" t="Include" />
               <e p="StructureClass.cs" t="Include" />

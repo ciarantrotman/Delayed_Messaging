@@ -15,7 +15,6 @@ namespace Delayed_Messaging.Scripts.Structures
         public override void SelectEnd()
         {
             Instantiate(unit);
-            Debug.Log("<b>OH YEAH</b>");
         }
         
         public void Damage(float damageTaken)

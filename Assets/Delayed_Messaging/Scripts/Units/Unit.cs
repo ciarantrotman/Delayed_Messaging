@@ -26,7 +26,7 @@ namespace Delayed_Messaging.Scripts.Units
             //aiPath = transform.AddOrGetAIPath();
             destinationSetter = transform.AddOrGetAIDestinationSetter();
             //aiPath.SetupAIPath(unitClass);
-            unitController = player.GetComponent<UnitController>();
+            unitController = playerObject.GetComponent<UnitController>();
         }
 
         public override void SelectEnd()
