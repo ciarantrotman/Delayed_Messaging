@@ -28,21 +28,44 @@ namespace VR_Prototyping.Scripts.Utilities
                 previous.GrabEnd(con);
             }*/
         }
-        
-        public static void Selection(this Object focusObject, BaseObject selectableObject, bool select, bool pSelect)
+
+        /// <summary>
+        /// Used to determine the state of selection for focus objects.
+        /// </summary>
+        /// <param name="focusObject"></param>
+        /// <param name="selectableObject"></param>
+        /// <param name="currentSelectionState"></param>
+        /// <param name="previousSelectionState"></param>
+        /// <param name="selectionList"></param>
+        /// <param name="selectHoldDuration"></param>
+        public static void Selection(this BaseObject selectableObject, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, int selectHoldDuration)
         {
-            if (focusObject == null || selectableObject == null) return;
-            if (select && !pSelect)
+            if (selectableObject == null) return;
+            
+            // Used to calculate the type of hold state
+            selectionList.BoolListCull(currentSelectionState, selectHoldDuration);
+            
+            // Is true if select is called for the first time
+            if (currentSelectionState && !previousSelectionState)
             {
                 selectableObject.SelectStart();
+                return;
             }
-            if (select && pSelect)
+            // Is called if you have pressed select and let go within the threshold period
+            if (currentSelectionState && !selectionList[0])
             {
-                selectableObject.SelectStay();
+                selectableObject.QuickSelect();
+                return;
             }
-            if (!select && pSelect)
+            // Called if you are still holding select and 
+            if (currentSelectionState && selectionList[0])
             {
-                selectableObject.SelectEnd();
+                selectableObject.SelectHold();
+            }
+            // Called after letting go of a selected object
+            if (!currentSelectionState && previousSelectionState)
+            {
+                selectableObject.SelectHoldEnd();
             }
         }
 
@@ -70,13 +93,35 @@ namespace VR_Prototyping.Scripts.Utilities
             }
         }
 
-        public static void JoystickTracking(this List<Vector2> list, Vector2 current, float sensitivity)
+        /// <summary>
+        /// Maintains a list of booleans at a certain capacity
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="current"></param>
+        /// <param name="sensitivity"></param>
+        public static void BoolListCull(this List<bool> list, bool current, float sensitivity)
         {
             list.Add(current);
             CullList(list, sensitivity);
         }
-        
-        public static void PositionTracking(this List<Vector3> list, Vector3 current, float sensitivity)
+        /// <summary>
+        /// Maintains a list of Vector2 at a certain capacity
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="current"></param>
+        /// <param name="sensitivity"></param>
+        public static void Vector2ListCull(this List<Vector2> list, Vector2 current, float sensitivity)
+        {
+            list.Add(current);
+            CullList(list, sensitivity);
+        }
+        /// <summary>
+        /// Maintains a list of Vector3 at a certain capacity
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="current"></param>
+        /// <param name="sensitivity"></param>
+        public static void Vector3ListCull(this List<Vector3> list, Vector3 current, float sensitivity)
         {
             list.Add(current);
             CullList(list, sensitivity);
@@ -88,7 +133,11 @@ namespace VR_Prototyping.Scripts.Utilities
             CullList(list, sensitivity);
         }
 
-        
+        /// <summary>
+        /// Culls a list to maintain a stable volume of values
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="sensitivity"></param>
         private static void CullList(this IList list, float sensitivity)
         {
             if (list.Count > sensitivity)

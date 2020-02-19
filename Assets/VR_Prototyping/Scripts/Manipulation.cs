@@ -7,13 +7,13 @@ using VR_Prototyping.Scripts.Utilities;
 namespace VR_Prototyping.Scripts
 {
 	[DisallowMultipleComponent]
-	[RequireComponent(typeof(ObjectSelection))]
+	[RequireComponent(typeof(Selection))]
 	public class Manipulation : MonoBehaviour
 	{
 		#region Inspector and Variables
 		private GameObject player;
 		
-		private ObjectSelection c;
+		private Selection c;
 		
 		private GameObject fM;
 		[HideInInspector] public GameObject mP; // dual grab pos target
@@ -83,7 +83,7 @@ namespace VR_Prototyping.Scripts
 		#endregion
 		private void Start () 
 		{
-			c = GetComponent<ObjectSelection>();
+			c = GetComponent<Selection>();
 			player = c.gameObject;
 			SetupGameObjects();
 		}

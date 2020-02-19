@@ -666,9 +666,9 @@
             <e p="LocomotionPositionPreview.cs" t="Include" />
             <e p="LocomotionVisual.cs" t="Include" />
             <e p="Manipulation.cs" t="Include" />
-            <e p="ObjectSelection.cs" t="Include" />
             <e p="RubberbandedObject.cs" t="Include" />
             <e p="SceneWipe.cs" t="Include" />
+            <e p="Selection.cs" t="Include" />
             <e p="UI_Blocks" t="Include">
               <e p="BaseDirectBlock.cs" t="Include" />
               <e p="DirectButton.cs" t="Include" />

@@ -12,7 +12,7 @@ namespace VR_Prototyping.Scripts
 	public abstract class BaseObject : MonoBehaviour, ISelectable
 	{
 		internal GameObject playerObject;
-		internal ObjectSelection objectSelection;
+		internal Selection selection;
 		internal Player player;
 
 		private Outline outline;
@@ -26,9 +26,14 @@ namespace VR_Prototyping.Scripts
 		public float AngleG { get; private set; }
 		
 		[Header("Base Object Settings")]
+		[Header("Hover Aesthetics")]
 		[SerializeField] private Color hoverOutlineColour = new Color(0,0,0,1);
-		[SerializeField, Range(0,10)] private float hoverOutlineWidth;
-		[SerializeField] private Outline.Mode hoverOutlineMode;
+		[SerializeField, Range(0,10)] private float hoverOutlineWidth = 10f;
+		[SerializeField] private Outline.Mode hoverOutlineMode = Outline.Mode.OutlineAll;
+		[Header("Selection Aesthetics")]
+		[SerializeField] private Color selectOutlineColour = new Color(0,0,0,1);
+		[SerializeField, Range(0,10)] private float selectOutlineWidth = 10f;
+		[SerializeField] private Outline.Mode selectOutlineMode = Outline.Mode.OutlineAndSilhouette;
 			
 		private void Start ()
 		{
@@ -56,21 +61,21 @@ namespace VR_Prototyping.Scripts
 
 		private void DestroySelectableObject()
 		{
-			if (objectSelection == null) return;
-			objectSelection.ResetObjects();
+			if (selection == null) return;
+			selection.ResetObjects();
 			GameObject g = gameObject;
-			g.ToggleList(objectSelection.globalList, false);
-			g.ToggleList(objectSelection.gazeList, false);
-			g.ToggleList(objectSelection.lHandList, false);
-			g.ToggleList(objectSelection.rHandList, false);
+			g.ToggleList(selection.globalList, false);
+			g.ToggleList(selection.gazeList, false);
+			g.ToggleList(selection.lHandList, false);
+			g.ToggleList(selection.rHandList, false);
 		}
 		private void InitialiseObject()
 		{
 			AssignComponents();
 			SetupOutline();
 			GameObject g = gameObject;
-			g.ToggleList(objectSelection.globalList, true);
-			g.ToggleList(objectSelection.globalList, true);
+			g.ToggleList(selection.globalList, true);
+			g.ToggleList(selection.globalList, true);
 		}
 		private void AssignComponents()
 		{
@@ -84,7 +89,7 @@ namespace VR_Prototyping.Scripts
 				}
 			}
 			
-			objectSelection = playerObject.GetComponent<ObjectSelection>();
+			selection = playerObject.GetComponent<Selection>();
 			player = playerObject.GetComponent<Player>();
 		}
 		private void SetupOutline()
@@ -98,9 +103,9 @@ namespace VR_Prototyping.Scripts
 			GetAngles();
 			
 			GameObject o = gameObject;
-			o.CheckGaze(AngleG, objectSelection.gaze, objectSelection.gazeList, objectSelection.lHandList, objectSelection.rHandList, objectSelection.globalList);
-			o.ManageList(objectSelection.lHandList, o.CheckHand(objectSelection.gazeList, objectSelection.manual, AngleL), objectSelection.disableLeftHand, transform.WithinRange(objectSelection.setSelectionRange, objectSelection.Controller.LeftTransform(), objectSelection.selectionRange));
-			o.ManageList(objectSelection.rHandList, o.CheckHand(objectSelection.gazeList, objectSelection.manual, AngleR), objectSelection.disableRightHand, transform.WithinRange(objectSelection.setSelectionRange, objectSelection.Controller.RightTransform(), objectSelection.selectionRange));
+			o.CheckGaze(AngleG, selection.gaze, selection.gazeList, selection.lHandList, selection.rHandList, selection.globalList);
+			o.ManageList(selection.lHandList, o.CheckHand(selection.gazeList, selection.manual, AngleL), selection.disableLeftHand, transform.WithinRange(selection.setSelectionRange, selection.Controller.LeftTransform(), selection.selectionRange));
+			o.ManageList(selection.rHandList, o.CheckHand(selection.gazeList, selection.manual, AngleR), selection.disableRightHand, transform.WithinRange(selection.setSelectionRange, selection.Controller.RightTransform(), selection.selectionRange));
 			
 			ObjectUpdate();
 		}
@@ -112,9 +117,9 @@ namespace VR_Prototyping.Scripts
 		private void GetAngles()
 		{
 			Vector3 position = transform.position;
-			AngleG = Vector3.Angle(position - objectSelection.Controller.CameraPosition(), objectSelection.Controller.CameraForwardVector());
-			AngleL = Vector3.Angle(position - objectSelection.Controller.LeftTransform().position, objectSelection.Controller.LeftForwardVector());
-			AngleR = Vector3.Angle(position - objectSelection.Controller.RightTransform().position, objectSelection.Controller.RightForwardVector());
+			AngleG = Vector3.Angle(position - selection.Controller.CameraPosition(), selection.Controller.CameraForwardVector());
+			AngleL = Vector3.Angle(position - selection.Controller.LeftTransform().position, selection.Controller.LeftForwardVector());
+			AngleR = Vector3.Angle(position - selection.Controller.RightTransform().position, selection.Controller.RightForwardVector());
 		}
 		public virtual void HoverStart()
 		{
@@ -131,14 +136,26 @@ namespace VR_Prototyping.Scripts
 		public virtual void SelectStart()
 		{
 			player.selectedObjects.Add(this);
+			outline.SetOutline(selectOutlineMode, selectOutlineWidth, selectOutlineColour, true);
 		}
-		public virtual void SelectStay()
+		public virtual void SelectHold()
 		{
 
 		}
-		public virtual void SelectEnd()
+
+		public void SelectHoldEnd()
 		{
 			
+		}
+
+		public virtual void QuickSelect()
+		{
+			
+		}
+
+		public void Deselect()
+		{
+			outline.SetOutline(selectOutlineMode, selectOutlineWidth, selectOutlineColour, false);
 		}
 	}
 }

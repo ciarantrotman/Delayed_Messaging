@@ -29,7 +29,7 @@ namespace Delayed_Messaging.Scripts.Units
             unitController = playerObject.GetComponent<UnitController>();
         }
 
-        public override void SelectEnd()
+        public override void QuickSelect()
         {
             destinationSetter.target = unitController.unitDestination;
         }
@@ -72,19 +72,12 @@ namespace Delayed_Messaging.Scripts.Units
             Transform t = transform;
             Vector3 pos = t.position;
             Vector3 r = t.forward;
-            
-            // Object
-            Gizmos.color = Color.black;
-            /*Gizmos.DrawWireCube(pos, new Vector3(
-                unitClass.size.x,
-                unitClass.size.y,
-                unitClass.size.z));*/
 
             // Debug
             if (destinationSetter != null && destinationSetter.target != null)
             {
                 Gizmos.color = unitClass.destinationColour;
-                Gizmos.DrawSphere(destinationSetter.target.position, .25f);
+                Gizmos.DrawWireSphere(destinationSetter.target.position, .2f);
             }
             
             // Vectors

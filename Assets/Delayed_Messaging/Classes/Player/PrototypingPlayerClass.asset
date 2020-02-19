@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 107f0a654353e644eb8b52d23b56e864, type: 3}
-  m_Name: PrototypingStructureClass
+  m_Script: {fileID: 11500000, guid: 9cc20bfdc33e56f44b2bcaab0e1ceeee, type: 3}
+  m_Name: PrototypingPlayerClass
   m_EditorClassIdentifier: 
-  debugType: 2
-  cost: 0
-  healthMax: 0
-  size: {x: 0.5, y: 0.25, z: 0.5}
+  startingResources: 1000
   faction: 0
-  spawnLocationColour: {r: 0.042452812, g: 1, b: 0.4193379, a: 1}

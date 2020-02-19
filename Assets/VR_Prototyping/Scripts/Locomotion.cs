@@ -221,10 +221,10 @@ namespace VR_Prototyping.Scripts
             cTouchR = controllerTransforms.RightLocomotion();
             cTouchL = controllerTransforms.LeftLocomotion();
             
-            rJoystickValues.JoystickTracking(
+            rJoystickValues.Vector2ListCull(
                 controllerTransforms.RightJoystick(),
                 Sensitivity);
-            lJoystickValues.JoystickTracking(
+            lJoystickValues.Vector2ListCull(
                 controllerTransforms.LeftJoystick(),
                 Sensitivity);
             

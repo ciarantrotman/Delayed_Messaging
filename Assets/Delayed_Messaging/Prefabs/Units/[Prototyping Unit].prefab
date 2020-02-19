@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0a969e0a41a735b40be26939a0117219, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,6 +143,9 @@ MonoBehaviour:
   hoverOutlineColour: {r: 0.9245283, g: 0.42301533, b: 0.42301533, a: 1}
   hoverOutlineWidth: 5
   hoverOutlineMode: 0
+  selectOutlineColour: {r: 0.3066038, g: 1, b: 0.3519697, a: 1}
+  selectOutlineWidth: 5
+  selectOutlineMode: 3
   unitClass: {fileID: 11400000, guid: 994eb961c8016df45a489aca4123b441, type: 2}
 --- !u!114 &4937663744074412851
 MonoBehaviour:

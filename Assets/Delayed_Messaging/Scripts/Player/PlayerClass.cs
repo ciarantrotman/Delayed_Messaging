@@ -2,6 +2,7 @@
 
 namespace Delayed_Messaging.Scripts.Player
 {
+    [CreateAssetMenu(fileName = "PlayerClass", menuName = "Class/Player/PlayerClass")]
     public class PlayerClass : ScriptableObject
     {
         [Header("Base Player Traits")] 
