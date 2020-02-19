@@ -65,19 +65,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/UnitController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
-              <folding>
-                <marker date="1582064373849" expanded="true" signature="55:161" ph="{...}" />
-                <marker date="1582064373849" expanded="true" signature="105:159" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/ObjectSelection.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2184">
@@ -253,7 +240,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/BaseObject.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-52">
@@ -283,6 +270,15 @@
                 <marker date="1582145669158" expanded="true" signature="4314:4323" ph="{...}" />
                 <marker date="1582145669158" expanded="true" signature="4357:4369" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="1047" column="77" lean-forward="true" selection-start-line="1047" selection-start-column="77" selection-end-line="1047" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -370,6 +366,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Locomotion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Legacy/MiscLegacy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/SetupAIBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -553,12 +550,12 @@
       <workItem from="1581859419679" duration="4766000" />
       <workItem from="1581970507043" duration="6780000" />
       <workItem from="1582052016418" duration="12312000" />
-      <workItem from="1582144583365" duration="1097000" />
+      <workItem from="1582144583365" duration="1696000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24955000" />
+    <option name="totallyTimeSpent" value="25554000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1278,7 +1275,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Interfaces.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -1610,6 +1606,13 @@
             <marker date="1582145669158" expanded="true" signature="4314:4323" ph="{...}" />
             <marker date="1582145669158" expanded="true" signature="4357:4369" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="1047" column="77" lean-forward="true" selection-start-line="1047" selection-start-column="77" selection-end-line="1047" selection-end-column="77" />
         </state>
       </provider>
     </entry>
