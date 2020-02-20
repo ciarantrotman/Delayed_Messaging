@@ -13,7 +13,7 @@ namespace VR_Prototyping.Scripts
 	{
 		#region 01 Inspector and Variables
 		public ControllerTransforms Controller { get; private set; }
-		private enum SelectionType
+		public enum SelectionType
 		{
 			FUSION,
 			FUZZY,
@@ -58,6 +58,8 @@ namespace VR_Prototyping.Scripts
 		private BaseObject gPreviousBaseObject;
 		private LineRenderer lLineRenderer;
 		private LineRenderer rLineRenderer;
+		private Material lLineRendererMaterial;
+		private Material rLineRendererMaterial;
 
 		private Transform lPrevious;
 		private Transform rPrevious;
@@ -72,7 +74,7 @@ namespace VR_Prototyping.Scripts
 		[Range(0f, 250f)] public float selectionRange = 25f;
 		public bool disableLeftHand;
 		public bool disableRightHand;
-		
+
 		[Header("Selection Aesthetics")]
 		[Space(10)] public GameObject gazeCursor;
 		[Range(3f, 30f), Space(10)] public int lineRenderQuality = 15;
@@ -87,6 +89,8 @@ namespace VR_Prototyping.Scripts
 		/// Called when the user performs a quick select and there is no focus object
 		/// </summary>
 		[HideInInspector] public UnityEvent quickSelect;
+
+		private static readonly int Distance = Shader.PropertyToID("_Distance");
 
 		public Selection(bool rTouch, bool lTouch)
 		{
@@ -106,9 +110,9 @@ namespace VR_Prototyping.Scripts
 			
 			lLineRenderer.SetupLineRender(Controller.lineRenderMaterial, .005f, true);
 			rLineRenderer.SetupLineRender(Controller.lineRenderMaterial, .005f, true);
-
-			//lSelect = new List<bool> {Capacity = (int) SelectHoldDuration};
-			//rSelect = new List<bool> {Capacity = (int) SelectHoldDuration};
+			
+			rLineRendererMaterial = rLineRenderer.material;
+			lLineRendererMaterial = lLineRenderer.material;
 		}
 		private void SetupGameObjects()
 		{
@@ -165,6 +169,9 @@ namespace VR_Prototyping.Scripts
 			lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, Controller.LeftTransform(), lTarget, lineRenderQuality);
 			rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, Controller.RightTransform() ,rTarget, lineRenderQuality);
 			
+			lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
+			rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
+			
 			LFocusObject.Manipulation(RFocusObject, lBaseObject, pLBaseObject, Controller.LeftGrab(), lGrabPrevious, Controller.LeftTransform(), lTouch, rTouch);
 			RFocusObject.Manipulation(LFocusObject, rBaseObject, pRBaseObject, Controller.RightGrab(), rGrabPrevious, Controller.RightTransform(), rTouch, lTouch);
 			
@@ -193,7 +200,7 @@ namespace VR_Prototyping.Scripts
 			rBaseObject.Hover(pRBaseObject, lBaseObject);
 			
 			// Calculate Selection States
-			//lBaseObject.Selection(this, Controller.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity);
+			lBaseObject.Selection(this, Controller.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity);
 			rBaseObject.Selection(this, Controller.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity);
 
 			// Previous States

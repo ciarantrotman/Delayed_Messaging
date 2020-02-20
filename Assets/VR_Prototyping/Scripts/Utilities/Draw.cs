@@ -18,19 +18,27 @@ namespace VR_Prototyping.Scripts
 				lr.SetPosition(i, point);
 			}
 		}
-
+		public static void DrawLineRenderer(this LineRenderer lr, GameObject focus, GameObject midpoint, Transform controller, GameObject target, int quality)
+		{
+			midpoint.transform.localPosition = new Vector3(0, 0, controller.Midpoint(target.transform));
+            
+			lr.LineRenderWidth(.001f, focus != null ? .01f : 0f);
+            
+			lr.BezierLineRenderer(controller.position,
+				midpoint.transform.position, 
+				target.transform.position,
+				quality);
+		}
 		private static Vector3 GetPoint(Vector3 p0, Vector3 p1, Vector3 p2, float t)
 		{
 			return Vector3.Lerp(Vector3.Lerp(p0, p1, t), Vector3.Lerp(p1, p2, t), t);
 		}
-
 		public enum Orientation
 		{
 			Forward,
 			Right,
 			Up
 		}
-		
 		public static void CircleLineRenderer(this LineRenderer lr, float radius, Orientation orientation, int quality)
 		{
 			lr.positionCount = quality;
@@ -62,13 +70,11 @@ namespace VR_Prototyping.Scripts
 				angle += arcLength / quality;
 			}
 		}
-		
 		public static void StraightLineRender(this LineRenderer lr, Transform start, Transform end)
 		{
 			lr.SetPosition(0, start.position);
 			lr.SetPosition(1, end.position);
 		}
-
 		public static void ArcLineRenderer(this LineRenderer lr, float radius, float startAngle, float endAngle,
 			Orientation orientation, int quality)
 		{
@@ -100,7 +106,6 @@ namespace VR_Prototyping.Scripts
 				angle += arcLength / quality;
 			}
 		}
-		
 		private const int CircleSegmentCount = 64;
 		private const int CircleVertexCount = CircleSegmentCount + 2;
 		private const int CircleIndexCount = CircleSegmentCount * 3;

@@ -272,6 +272,12 @@ namespace VR_Prototyping.Scripts.Utilities
                 target.transform.SetParent(hit.transform);
                 target.transform.VectorLerpPosition(hit.point, .25f);
                 target.transform.forward = hit.normal;
+                /*
+                switch (hit.transform.gameObject.GetComponent<BaseObject>().selectionType == Scripts.Selection.SelectionType.FUSION)
+                {
+                    
+                }
+                */
                 return hit.transform.gameObject;
             }
 
@@ -294,19 +300,7 @@ namespace VR_Prototyping.Scripts.Utilities
             if (focusObject == null) return null;
             return focusObject.GetComponent<BaseObject>() != null ? focusObject.GetComponent<BaseObject>() : null;
         }
-        
-        public static void DrawLineRenderer(this LineRenderer lr, GameObject focus, GameObject midpoint, Transform controller, GameObject target, int quality)
-        {
-            midpoint.transform.localPosition = new Vector3(0, 0, controller.Midpoint(target.transform));
-            
-            lr.LineRenderWidth(.001f, focus != null ? .01f : 0f);
-            
-            lr.BezierLineRenderer(controller.position,
-                midpoint.transform.position, 
-                target.transform.position,
-                quality);
-        }
-        
+
         public static void GrabStart(this GameObject f, GameObject p, GameObject target, GameObject o, Transform con)
         {
             f.transform.LookAt(con);
@@ -379,6 +373,10 @@ namespace VR_Prototyping.Scripts.Utilities
         }
         public static float TransformDistance(this Transform a, Transform b)
         {
+            if (a == null || b == null)
+            {
+                return 0f;
+            }
             return Vector3.Distance(a.position, b.position);
         }
         

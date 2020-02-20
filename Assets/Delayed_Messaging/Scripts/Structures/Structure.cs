@@ -7,6 +7,7 @@ namespace Delayed_Messaging.Scripts.Structures
 {
     public class Structure : BaseObject, IDamageable<float>
     {
+        [Header("Structure Specific Settings")]
         public StructureClass structureClass;
         public StructureClass.StructureData structureData;
         public Transform spawnLocation;

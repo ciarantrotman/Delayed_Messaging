@@ -8,6 +8,7 @@ namespace Delayed_Messaging.Scripts.Units
 {
     public class Unit : BaseObject, IDamageable<float>
     {
+        [Header("Structure Specific Settings")]
         public UnitClass unitClass;
         public UnitClass.UnitData unitData;
 

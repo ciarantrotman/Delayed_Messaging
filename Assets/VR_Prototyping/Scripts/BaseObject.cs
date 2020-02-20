@@ -26,17 +26,24 @@ namespace VR_Prototyping.Scripts
 		public float AngleL { get; private set; }
 		public float AngleR { get; private set; }
 		public float AngleG { get; private set; }
+
+		[Header("Base Object Settings")] 
+		[Header("Selection Settings")]
+		public Selection.SelectionType selectionType;
 		
-		[Header("Base Object Settings")]
 		[Header("Hover Aesthetics")]
 		[SerializeField] private Color hoverOutlineColour = new Color(0,0,0,1);
 		[SerializeField, Range(0,10)] private float hoverOutlineWidth = 10f;
 		[SerializeField] private Outline.Mode hoverOutlineMode = Outline.Mode.OutlineAll;
+
 		[Header("Selection Aesthetics")]
-		[SerializeField] private Color selectOutlineColour = new Color(0,0,0,1);
-		[SerializeField, Range(0,10)] private float selectOutlineWidth = 10f;
-		[SerializeField] private Outline.Mode selectOutlineMode = Outline.Mode.OutlineAndSilhouette;
-			
+		[SerializeField] private GameObject selectionVisual;
+		[SerializeField] private float selectionScale;
+		[SerializeField] private Color selectionColour = new Color(1,1,1,1);
+		private Material selectionRing;
+		private static readonly int BorderThickness = Shader.PropertyToID("_BorderThickness");
+		private static readonly int SelectionColour = Shader.PropertyToID("_SelectionColour");
+
 		private void Start ()
 		{
 			InitialiseObject();
@@ -75,6 +82,8 @@ namespace VR_Prototyping.Scripts
 		{
 			AssignComponents();
 			SetupOutline();
+			SetupSelectedVisual(transform.position);
+			
 			GameObject g = gameObject;
 			g.ToggleList(selection.globalList, true);
 			g.ToggleList(selection.globalList, true);
@@ -98,6 +107,16 @@ namespace VR_Prototyping.Scripts
 			outline = transform.AddOrGetOutline();
 			outline.enabled = false;
 			outline.precomputeOutline = true;
+		}
+		private void SetupSelectedVisual(Vector3 position)
+		{
+			selectionVisual = Instantiate(selectionVisual, transform);
+			selectionVisual.transform.position = new Vector3(position.x, 0, position.z);
+			selectionVisual.transform.localScale = new Vector3(selectionScale, selectionScale, selectionScale);
+			
+			selectionRing = selectionVisual.GetComponent<MeshRenderer>().material;
+			selectionRing.SetFloat(BorderThickness, 0f);
+			selectionRing.SetColor(SelectionColour, selectionColour);
 		}
 		private void Update()
 		{					
@@ -132,16 +151,13 @@ namespace VR_Prototyping.Scripts
 		}
 		public virtual void HoverEnd()
 		{
-			if (!selected)
-			{
-				outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
-			}
+			outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
 		}
 		public virtual void SelectStart()
 		{
 			player.selectedObjects.Add(this);
 			selected = true;
-			outline.SetOutline(selectOutlineMode, selectOutlineWidth, selectOutlineColour, true);
+			selectionRing.SetFloat(BorderThickness, .05f);
 		}
 		public virtual void SelectHold()
 		{
@@ -160,16 +176,17 @@ namespace VR_Prototyping.Scripts
 
 		public void Deselect()
 		{
+			selected = false;
+			
 			switch (hover)
 			{
 				case true:
 					HoverStart();
 					break;
 				default:
-					outline.SetOutline(selectOutlineMode, selectOutlineWidth, selectOutlineColour, false);
+					selectionRing.SetFloat(BorderThickness, 0f);
 					break;
 			}
-			selected = false;
 		}
 	}
 }
