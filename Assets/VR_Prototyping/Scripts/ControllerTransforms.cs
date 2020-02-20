@@ -19,6 +19,7 @@ namespace VR_Prototyping.Scripts
 
         [SerializeField] public Material lineRenderMaterial;
 
+        [Header("SteamVR Actions")]
         public SteamVR_Action_Boolean grabGrip;
         public SteamVR_Action_Boolean triggerGrip;
         public SteamVR_Action_Boolean menu;

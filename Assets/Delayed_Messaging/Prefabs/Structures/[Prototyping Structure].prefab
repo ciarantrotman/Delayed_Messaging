@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3190667411478560410}
   - component: {fileID: 732624403288511022}
+  - component: {fileID: 8208909313468073409}
   m_Layer: 0
   m_Name: '[Prototyping Structure]'
   m_TagString: Untagged
@@ -133,6 +134,19 @@ MonoBehaviour:
   structureClass: {fileID: 11400000, guid: 4af1cb07134c82e4fbc075593ef7b548, type: 2}
   spawnLocation: {fileID: 372166708375171395}
   unit: {fileID: 0}
+--- !u!65 &8208909313468073409
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494321749994224828}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1, z: 2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &9056951692025071275
 GameObject:
   m_ObjectHideFlags: 0

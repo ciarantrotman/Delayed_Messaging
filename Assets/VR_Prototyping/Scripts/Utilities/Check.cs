@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using VR_Prototyping.Scripts.Accessibility;
 using Object = UnityEngine.Object;
 
@@ -32,40 +33,52 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <summary>
         /// Used to determine the state of selection for focus objects.
         /// </summary>
-        /// <param name="focusObject"></param>
         /// <param name="selectableObject"></param>
+        /// <param name="selection"></param>
         /// <param name="currentSelectionState"></param>
         /// <param name="previousSelectionState"></param>
         /// <param name="selectionList"></param>
-        /// <param name="selectHoldDuration"></param>
-        public static void Selection(this BaseObject selectableObject, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, int selectHoldDuration)
+        /// <param name="sensitivity"></param>
+        public static void Selection(this BaseObject selectableObject, Selection selection, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, float sensitivity)
         {
-            if (selectableObject == null) return;
-            
             // Used to calculate the type of hold state
-            selectionList.BoolListCull(currentSelectionState, selectHoldDuration);
+            selectionList.BoolListCull(currentSelectionState, sensitivity);
             
-            // Is true if select is called for the first time
-            if (currentSelectionState && !previousSelectionState)
+            //Debug.Log(currentSelectionState + ", " + previousSelectionState + " | [n-1] " + selectionList[selectionList.Count-1] + ", [0] " + selectionList[0]);
+            
+            switch (selectableObject == null)
             {
-                selectableObject.SelectStart();
-                return;
-            }
-            // Is called if you have pressed select and let go within the threshold period
-            if (currentSelectionState && !selectionList[0])
-            {
-                selectableObject.QuickSelect();
-                return;
-            }
-            // Called if you are still holding select and 
-            if (currentSelectionState && selectionList[0])
-            {
-                selectableObject.SelectHold();
-            }
-            // Called after letting go of a selected object
-            if (!currentSelectionState && previousSelectionState)
-            {
-                selectableObject.SelectHoldEnd();
+                case true:
+                    if (!currentSelectionState && previousSelectionState && !selectionList[0])
+                    {
+                        selection.quickSelect.Invoke();
+                        return;
+                    }
+                    break;
+                default:
+                    // Is true if select is called for the first time
+                    if (currentSelectionState && !previousSelectionState)
+                    {
+                        selectableObject.SelectStart();
+                        return;
+                    }
+                    // Called after letting go of a selected object
+                    if (!currentSelectionState && previousSelectionState && selectionList[0])
+                    {
+                        selectableObject.SelectHoldEnd();
+                    }
+                    // Is called if you have pressed select and let go within the threshold period
+                    if (!currentSelectionState && previousSelectionState && !selectionList[0])
+                    {
+                        selectableObject.QuickSelect();
+                        return;
+                    }
+                    // Called if you are still holding select
+                    if (currentSelectionState && selectionList[0])
+                    {
+                        selectableObject.SelectHold();
+                    }
+                    break;
             }
         }
 
@@ -254,7 +267,7 @@ namespace VR_Prototyping.Scripts.Utilities
 
             Vector3 position = controller.position;
 
-            if (Physics.Raycast(position, forward, out RaycastHit hit, distance) && objects.Contains(hit.transform.gameObject))
+            if (Physics.SphereCast(position, .1f, forward, out RaycastHit hit, distance) && objects.Contains(hit.transform.gameObject))
             {
                 target.transform.SetParent(hit.transform);
                 target.transform.VectorLerpPosition(hit.point, .25f);

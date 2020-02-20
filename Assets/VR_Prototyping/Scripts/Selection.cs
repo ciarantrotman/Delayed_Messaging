@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
 using VR_Prototyping.Scripts.Utilities;
 using Object = UnityEngine.Object;
 
@@ -31,32 +33,36 @@ namespace VR_Prototyping.Scripts
 
 		private bool initialised;
 
-		public bool RTouch { get; set; }
-		public bool LTouch { get; set; }
-		public GameObject LMidPoint { get; private set; }
-		public GameObject RMidPoint { get; private set; }
 		public GameObject LFocusObject { get; set; }
 		public GameObject RFocusObject { get; set; }
-		public GameObject GFocusObject { get; set; }
-		public BaseObject RBaseObject { get; set; }
-		public BaseObject LBaseObject { get; set; }
-		public BaseObject GBaseObject { get; set; }
-		public BaseObject RPreviousBaseObject { get; set; }
-		public BaseObject LPreviousBaseObject { get; set; }
-		public BaseObject GPreviousBaseObject { get; set; }
-		public LineRenderer LLineRenderer { get; private set; }
-		public LineRenderer RLineRenderer { get; private set; }
 		public bool DisableSelection { get; set; }
 		
+		private bool rTouch;
+		private bool lTouch;
 		private bool lSelectPrevious;
 		private bool rSelectPrevious;
-		private List<bool> lSelect;
-		private List<bool> rSelect;
 		private bool lGrabPrevious;
 		private bool rGrabPrevious;
+		
+		public List<bool> lSelect = new List<bool> {Capacity = (int) QuickSelectSensitivity};
+		public List<bool> rSelect = new List<bool> {Capacity = (int) QuickSelectSensitivity};
+		
+		private GameObject lMidPoint;
+		private GameObject rMidPoint;
+		private GameObject gFocusObject;
+		private BaseObject rBaseObject;
+		private BaseObject lBaseObject;
+		private BaseObject gBaseObject;
+		private BaseObject rPreviousBaseObject;
+		private BaseObject lPreviousBaseObject;
+		private BaseObject gPreviousBaseObject;
+		private LineRenderer lLineRenderer;
+		private LineRenderer rLineRenderer;
 
 		private Transform lPrevious;
 		private Transform rPrevious;
+		
+		private const float QuickSelectSensitivity = 20f;
 		
 		[Header("Selection Settings")]
 		[SerializeField] private SelectionType selectionType;
@@ -64,7 +70,6 @@ namespace VR_Prototyping.Scripts
 		[Range(0f, 180f)] public float manual = 25f;
 		[Space(10)] public bool setSelectionRange;		
 		[Range(0f, 250f)] public float selectionRange = 25f;
-		[Range(0, 100)] public int selectHoldDuration;		
 		public bool disableLeftHand;
 		public bool disableRightHand;
 		
@@ -77,6 +82,17 @@ namespace VR_Prototyping.Scripts
 		[HideInInspector] public List<GameObject> gazeList;
 		[HideInInspector] public List<GameObject> rHandList;
 		[HideInInspector] public List<GameObject> lHandList;
+		
+		/// <summary>
+		/// Called when the user performs a quick select and there is no focus object
+		/// </summary>
+		[HideInInspector] public UnityEvent quickSelect;
+
+		public Selection(bool rTouch, bool lTouch)
+		{
+			this.rTouch = rTouch;
+			this.lTouch = lTouch;
+		}
 
 		#endregion
 		private void Start ()
@@ -85,18 +101,21 @@ namespace VR_Prototyping.Scripts
 			
 			SetupGameObjects();
 			
-			LLineRenderer = Controller.LeftTransform().gameObject.AddComponent<LineRenderer>();
-			RLineRenderer = Controller.RightTransform().gameObject.AddComponent<LineRenderer>();
+			lLineRenderer = Controller.LeftTransform().gameObject.AddComponent<LineRenderer>();
+			rLineRenderer = Controller.RightTransform().gameObject.AddComponent<LineRenderer>();
 			
-			LLineRenderer.SetupLineRender(Controller.lineRenderMaterial, .005f, true);
-			RLineRenderer.SetupLineRender(Controller.lineRenderMaterial, .005f, true);
+			lLineRenderer.SetupLineRender(Controller.lineRenderMaterial, .005f, true);
+			rLineRenderer.SetupLineRender(Controller.lineRenderMaterial, .005f, true);
+
+			//lSelect = new List<bool> {Capacity = (int) SelectHoldDuration};
+			//rSelect = new List<bool> {Capacity = (int) SelectHoldDuration};
 		}
 		private void SetupGameObjects()
 		{
 			if (!initialised)
 			{
-				LMidPoint = Set.NewGameObject(Controller.LeftTransform().gameObject, "MidPoint/Left");
-				RMidPoint = Set.NewGameObject(Controller.RightTransform().gameObject, "MidPoint/Right");
+				lMidPoint = Set.NewGameObject(Controller.LeftTransform().gameObject, "MidPoint/Left");
+				rMidPoint = Set.NewGameObject(Controller.RightTransform().gameObject, "MidPoint/Right");
 
 				lTarget = Set.NewGameObject(gameObject, "[Target Left]");
 				rTarget = Set.NewGameObject(gameObject, "[Target Right]");
@@ -112,8 +131,8 @@ namespace VR_Prototyping.Scripts
 			lDefault.transform.SetOffsetPosition(Controller.LeftTransform(), inactiveLineRenderOffset);
 			rDefault.transform.SetOffsetPosition(Controller.RightTransform(), inactiveLineRenderOffset);
 			
-			LMidPoint.transform.SetOffsetPosition(Controller.LeftTransform(), 0f);
-			RMidPoint.transform.SetOffsetPosition(Controller.RightTransform(), 0f);
+			lMidPoint.transform.SetOffsetPosition(Controller.LeftTransform(), 0f);
+			rMidPoint.transform.SetOffsetPosition(Controller.RightTransform(), 0f);
 
 			initialised = true;
 		}
@@ -125,17 +144,17 @@ namespace VR_Prototyping.Scripts
 			switch (selectionType)
 			{
 				case SelectionType.FUZZY:
-					LFocusObject = lHandList.FuzzyFindFocusObject(LFocusObject, lTarget, lDefault, Controller.LeftGrab() || LTouch);
-					RFocusObject = rHandList.FuzzyFindFocusObject(RFocusObject, rTarget, rDefault, Controller.RightGrab() || RTouch);
+					LFocusObject = lHandList.FuzzyFindFocusObject(LFocusObject, lTarget, lDefault, Controller.LeftGrab() || lTouch);
+					RFocusObject = rHandList.FuzzyFindFocusObject(RFocusObject, rTarget, rDefault, Controller.RightGrab() || rTouch);
 					break;
 				case SelectionType.RAY_CAST:
-					LFocusObject = lHandList.RayCastFindFocusObject(LFocusObject, lTarget, lDefault, Controller.LeftTransform(), setSelectionRange ? selectionRange : float.PositiveInfinity, Controller.LeftGrab() || LTouch);
-					RFocusObject = rHandList.RayCastFindFocusObject(RFocusObject, rTarget, rDefault, Controller.RightTransform(), setSelectionRange ? selectionRange : float.PositiveInfinity, Controller.RightGrab() || RTouch);
+					LFocusObject = lHandList.RayCastFindFocusObject(LFocusObject, lTarget, lDefault, Controller.LeftTransform(), setSelectionRange ? selectionRange : float.PositiveInfinity, Controller.LeftGrab() || lTouch);
+					RFocusObject = rHandList.RayCastFindFocusObject(RFocusObject, rTarget, rDefault, Controller.RightTransform(), setSelectionRange ? selectionRange : float.PositiveInfinity, Controller.RightGrab() || rTouch);
 					break;
 				case SelectionType.FUSION:
-					LFocusObject = lHandList.FusionFindFocusObject(LFocusObject, lTarget, lDefault, Controller.LeftTransform(), Controller.LeftForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, Controller.LeftGrab() || LTouch);
-					RFocusObject = rHandList.FusionFindFocusObject(RFocusObject, rTarget, rDefault, Controller.RightTransform(), Controller.RightForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, Controller.RightGrab() || RTouch);
-					GFocusObject = gazeList.FusionFindFocusObject(GFocusObject, gTarget, gDefault, Controller.CameraTransform(), Controller.CameraForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, false);
+					LFocusObject = lHandList.FusionFindFocusObject(LFocusObject, lTarget, lDefault, Controller.LeftTransform(), Controller.LeftForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, Controller.LeftGrab() || lTouch);
+					RFocusObject = rHandList.FusionFindFocusObject(RFocusObject, rTarget, rDefault, Controller.RightTransform(), Controller.RightForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, Controller.RightGrab() || rTouch);
+					gFocusObject = gazeList.FusionFindFocusObject(gFocusObject, gTarget, gDefault, Controller.CameraTransform(), Controller.CameraForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, false);
 					break;
 				default:
 					LFocusObject = null;
@@ -143,22 +162,22 @@ namespace VR_Prototyping.Scripts
 					break;
 			}
 			
-			LLineRenderer.DrawLineRenderer(LFocusObject, LMidPoint, Controller.LeftTransform(), lTarget, lineRenderQuality);
-			RLineRenderer.DrawLineRenderer(RFocusObject, RMidPoint, Controller.RightTransform() ,rTarget, lineRenderQuality);
+			lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, Controller.LeftTransform(), lTarget, lineRenderQuality);
+			rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, Controller.RightTransform() ,rTarget, lineRenderQuality);
 			
-			LFocusObject.Manipulation(RFocusObject, LBaseObject, pLBaseObject, Controller.LeftGrab(), lGrabPrevious, Controller.LeftTransform(), LTouch, RTouch);
-			RFocusObject.Manipulation(LFocusObject, RBaseObject, pRBaseObject, Controller.RightGrab(), rGrabPrevious, Controller.RightTransform(), RTouch, LTouch);
+			LFocusObject.Manipulation(RFocusObject, lBaseObject, pLBaseObject, Controller.LeftGrab(), lGrabPrevious, Controller.LeftTransform(), lTouch, rTouch);
+			RFocusObject.Manipulation(LFocusObject, rBaseObject, pRBaseObject, Controller.RightGrab(), rGrabPrevious, Controller.RightTransform(), rTouch, lTouch);
 			
-			LBaseObject = LFocusObject.FindSelectableObject(LBaseObject, Controller.LeftGrab());
-			RBaseObject = RFocusObject.FindSelectableObject(RBaseObject, Controller.RightGrab());
-			GBaseObject = GFocusObject.FindSelectableObject(GBaseObject, false);
+			lBaseObject = LFocusObject.FindSelectableObject(lBaseObject, Controller.LeftGrab());
+			rBaseObject = RFocusObject.FindSelectableObject(rBaseObject, Controller.RightGrab());
+			gBaseObject = gFocusObject.FindSelectableObject(gBaseObject, false);
 			
 			lGrabPrevious = Controller.LeftGrab();
 			rGrabPrevious = Controller.RightGrab();
 
-			LPreviousBaseObject = LBaseObject;
-			RPreviousBaseObject = RBaseObject;
-			GPreviousBaseObject = GBaseObject;
+			lPreviousBaseObject = lBaseObject;
+			rPreviousBaseObject = rBaseObject;
+			gPreviousBaseObject = gBaseObject;
 			
 			ResetGameObjects(Controller.LeftTransform(), lPrevious);
 			ResetGameObjects(Controller.RightTransform(), rPrevious);
@@ -170,19 +189,19 @@ namespace VR_Prototyping.Scripts
 		private void LateUpdate()
 		{
 			// Calculate Hover States
-			LBaseObject.Hover(pLBaseObject, RBaseObject);
-			RBaseObject.Hover(pRBaseObject, LBaseObject);
+			lBaseObject.Hover(pLBaseObject, rBaseObject);
+			rBaseObject.Hover(pRBaseObject, lBaseObject);
 			
 			// Calculate Selection States
-			LBaseObject.Selection(Controller.LeftSelect(), lSelectPrevious, lSelect, selectHoldDuration);
-			RBaseObject.Selection(Controller.RightSelect(), rSelectPrevious, rSelect, selectHoldDuration);
+			//lBaseObject.Selection(this, Controller.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity);
+			rBaseObject.Selection(this, Controller.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity);
 
 			// Previous States
 			lSelectPrevious = Controller.LeftSelect();
 			rSelectPrevious = Controller.RightSelect();
 			
-			pLBaseObject = LBaseObject;
-			pRBaseObject = RBaseObject;
+			pLBaseObject = lBaseObject;
+			pRBaseObject = rBaseObject;
 		}
 
 		private void SortLists()

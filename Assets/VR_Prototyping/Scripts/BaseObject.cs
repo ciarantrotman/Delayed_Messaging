@@ -9,7 +9,7 @@ using VR_Prototyping.Scripts.Utilities;
 namespace VR_Prototyping.Scripts
 {
 	[DisallowMultipleComponent, CanEditMultipleObjects]
-	public abstract class BaseObject : MonoBehaviour, ISelectable
+	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable
 	{
 		internal GameObject playerObject;
 		internal Selection selection;
@@ -20,6 +20,8 @@ namespace VR_Prototyping.Scripts
 		private Vector3 defaultLocalPosition;
 
 		private bool active;
+		private bool hover;
+		private bool selected;
 
 		public float AngleL { get; private set; }
 		public float AngleR { get; private set; }
@@ -88,7 +90,6 @@ namespace VR_Prototyping.Scripts
 					Debug.Log("<b>[Base Object] </b>" + name + " player set to " + rootGameObject.name);
 				}
 			}
-			
 			selection = playerObject.GetComponent<Selection>();
 			player = playerObject.GetComponent<Player>();
 		}
@@ -131,11 +132,15 @@ namespace VR_Prototyping.Scripts
 		}
 		public virtual void HoverEnd()
 		{
-			outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
+			if (!selected)
+			{
+				outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
+			}
 		}
 		public virtual void SelectStart()
 		{
 			player.selectedObjects.Add(this);
+			selected = true;
 			outline.SetOutline(selectOutlineMode, selectOutlineWidth, selectOutlineColour, true);
 		}
 		public virtual void SelectHold()
@@ -155,7 +160,16 @@ namespace VR_Prototyping.Scripts
 
 		public void Deselect()
 		{
-			outline.SetOutline(selectOutlineMode, selectOutlineWidth, selectOutlineColour, false);
+			switch (hover)
+			{
+				case true:
+					HoverStart();
+					break;
+				default:
+					outline.SetOutline(selectOutlineMode, selectOutlineWidth, selectOutlineColour, false);
+					break;
+			}
+			selected = false;
 		}
 	}
 }
