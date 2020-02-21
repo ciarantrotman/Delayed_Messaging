@@ -41,9 +41,9 @@
         void HoverEnd();
     }
 
-    public interface IMovable
+    public interface IMovable<in T>
     {
-        void Move();
+        void Move(T destination);
     }
     
     public interface IDamageable<in T>

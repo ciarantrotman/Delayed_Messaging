@@ -41,16 +41,6 @@ namespace VR_Prototyping.Scripts
         [HideInInspector] public LineRenderer lLr;
         [HideInInspector] public LineRenderer rLr;
         
-        private const float MaxAngle = 110f;
-        private const float MinAngle = 80f;
-        
-        private const float Trigger = .7f;
-        private const float Sensitivity = 10f;
-        private const float Tolerance = .1f;
-        
-        private readonly List<Vector2> rJoystickValues = new List<Vector2>();
-        private readonly List<Vector2> lJoystickValues = new List<Vector2>();
-        
         private bool cTouchR;
         private bool cTouchL;
         private bool pTouchR;
@@ -67,30 +57,26 @@ namespace VR_Prototyping.Scripts
             DASH,
             BLINK
         }
-        private static bool TypeCheck(Method type)
-        {
-            return type != Method.DASH;
-        }
-        
-        [SerializeField, Range(.1f, 1f)] private float min = .5f;
-        [SerializeField, Range(1f, 100f)] private float max = 15f;
+
+        [SerializeField, Range(.1f, 1f)] private float minimumMoveDistance = .5f;
+        [SerializeField, Range(1f, 100f)] private float maximumMoveDistance = 15f;
         
         [SerializeField, Range(1, 15), Space(10)] private int layerIndex = 10;
 
         [SerializeField, Space(5)] private Method locomotionMethod = Method.DASH;
-        [SerializeField, Space(5)] private bool advancedLocomotion = true;
+        [SerializeField] private bool advancedLocomotion = true;
         [SerializeField, Space(10)] private bool rotation = true;
         [SerializeField, Range(15f, 90f)] private float angle = 45f;
         [SerializeField, Range(0f, 1f)] private float rotateSpeed = .15f;
+        [SerializeField, Range(0f, 1f)] private float moveSpeed = .75f;
         [SerializeField, Space(10)] private bool disableLeftHand;
         [SerializeField] private bool disableRightHand;
 
+        [Header("Locomotion Aesthetics")]
         [SerializeField] private GameObject ghost;
         [SerializeField] private bool motionSicknessVignette;
         [SerializeField, Range(0f, 1f)] private float vignetteStrength = .35f;
-        [SerializeField, Range(0f, 1f)] private float moveSpeed = .75f;
         [SerializeField, Space(5)] private GameObject targetVisual;
-        [SerializeField] private AnimationCurve locomotionEasing;
         [SerializeField] private Material lineRenderMat;
         [SerializeField, Range(3f, 50f)] private int lineRenderQuality = 40;
         [SerializeField, Space(10)] private GameObject sceneChangeWipe;
@@ -110,34 +96,34 @@ namespace VR_Prototyping.Scripts
 
         private void SetupGameObjects()
         {
-            parent = new GameObject("Locomotion/Calculations");
+            parent = new GameObject("[Locomotion/Calculations]");
             Transform parentTransform = parent.transform;
             parentTransform.SetParent(transform);
             
-            cN = new GameObject("Locomotion/Temporary");
+            cN = new GameObject("[Locomotion/Temporary]");
             
-            rCf = new GameObject("Locomotion/Follow/Right");
-            rCp = new GameObject("Locomotion/Proxy/Right");
-            rCn = new GameObject("Locomotion/Normalised/Right");
-            rMp = new GameObject("Locomotion/MidPoint/Right");
-            rTs = new GameObject("Locomotion/Target/Right");
-            rHp = new GameObject("Locomotion/HitPoint/Right");
-            rRt = new GameObject("Locomotion/Rotation/Right");
+            rCf = new GameObject("[Locomotion/Follow/Right]");
+            rCp = new GameObject("[Locomotion/Proxy/Right]");
+            rCn = new GameObject("[Locomotion/Normalised/Right]");
+            rMp = new GameObject("[Locomotion/MidPoint/Right]");
+            rTs = new GameObject("[Locomotion/Target/Right]");
+            rHp = new GameObject("[Locomotion/HitPoint/Right]");
+            rRt = new GameObject("[Locomotion/Rotation/Right]");
             
-            lCf = new GameObject("Locomotion/Follow/Left");
-            lCp = new GameObject("Locomotion/Proxy/Left");
-            lCn = new GameObject("Locomotion/Normalised/Left");
-            lMp = new GameObject("Locomotion/MidPoint/Left");
-            lTs = new GameObject("Locomotion/Target/Left");
-            lHp = new GameObject("Locomotion/HitPoint/Left");
-            lRt = new GameObject("Locomotion/Rotation/Left");
+            lCf = new GameObject("[Locomotion/Follow/Left]");
+            lCp = new GameObject("[Locomotion/Proxy/Left]");
+            lCn = new GameObject("[Locomotion/Normalised/Left]");
+            lMp = new GameObject("[Locomotion/MidPoint/Left]");
+            lTs = new GameObject("[Locomotion/Target/Left]");
+            lHp = new GameObject("[Locomotion/HitPoint/Left]");
+            lRt = new GameObject("[Locomotion/Rotation/Left]");
             
             rVo = Instantiate(targetVisual, rHp.transform);
-            rVo.name = "Locomotion/Visual/Right";
+            rVo.name = "[Locomotion/Visual/Right]";
             rVo.SetActive(false);
             
             lVo = Instantiate(targetVisual, lHp.transform);
-            lVo.name = "Locomotion/Visual/Left";
+            lVo.name = "[Locomotion/Visual/Left]";
             lVo.SetActive(false);
             
             ghost = Instantiate(ghost);
@@ -182,7 +168,7 @@ namespace VR_Prototyping.Scripts
                     rCn, 
                     controllerTransforms.RightTransform(), 
                     controllerTransforms.CameraTransform(),
-                    controllerTransforms.debugActive).CalculateDepth(MaxAngle, MinAngle, max, min, rCp.transform),
+                    controllerTransforms.debugActive).CalculateDepth(ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, rCp.transform),
                 false, 
                 .2f);
             lTs.transform.LocalDepth(
@@ -191,7 +177,7 @@ namespace VR_Prototyping.Scripts
                     lCn, 
                     controllerTransforms.LeftTransform(), 
                     controllerTransforms.CameraTransform(), 
-                    controllerTransforms.debugActive).CalculateDepth(MaxAngle, MinAngle, max, min, lCp.transform), 
+                    controllerTransforms.debugActive).CalculateDepth(ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, lCp.transform), 
                 false, 
                 .2f);
             
@@ -220,21 +206,14 @@ namespace VR_Prototyping.Scripts
         {
             cTouchR = controllerTransforms.RightLocomotion();
             cTouchL = controllerTransforms.LeftLocomotion();
-            
-            rJoystickValues.Vector2ListCull(
-                controllerTransforms.RightJoystick(),
-                Sensitivity);
-            lJoystickValues.Vector2ListCull(
-                controllerTransforms.LeftJoystick(),
-                Sensitivity);
-            
+
             this.JoystickGestureDetection(
                 controllerTransforms.RightJoystick(), 
-                rJoystickValues[0], 
+                controllerTransforms.rJoystickValues[0], 
                 angle, 
                 rotateSpeed, 
-                Trigger, 
-                Tolerance,
+                ControllerTransforms.Trigger, 
+                ControllerTransforms.Tolerance,
                 rVo,
                 rLr, 
                 cTouchR, 
@@ -243,11 +222,11 @@ namespace VR_Prototyping.Scripts
                 active);
             this.JoystickGestureDetection(
                 controllerTransforms.LeftJoystick(), 
-                lJoystickValues[0], 
+                controllerTransforms.lJoystickValues[0], 
                 angle,
                 rotateSpeed,
-                Trigger,
-                Tolerance,
+                ControllerTransforms.Trigger,
+                ControllerTransforms.Tolerance,
                 lVo,
                 lLr,
                 cTouchL,
@@ -369,7 +348,6 @@ namespace VR_Prototyping.Scripts
             //vignetteLayer.intensity.value = intensity;
         }
         
-       // [Button, HideInEditorMode]
         public void SceneWipe()
         {
             StartCoroutine(sceneWipe.SceneWipeStart(sceneWipeDuration));

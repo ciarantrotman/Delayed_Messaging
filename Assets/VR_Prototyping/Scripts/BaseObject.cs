@@ -1,5 +1,6 @@
 ﻿using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
+using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -174,19 +175,10 @@ namespace VR_Prototyping.Scripts
 			
 		}
 
-		public void Deselect()
+		public virtual void Deselect()
 		{
 			selected = false;
-			
-			switch (hover)
-			{
-				case true:
-					HoverStart();
-					break;
-				default:
-					selectionRing.SetFloat(BorderThickness, 0f);
-					break;
-			}
+			selectionRing.SetFloat(BorderThickness, 0f);
 		}
 	}
 }

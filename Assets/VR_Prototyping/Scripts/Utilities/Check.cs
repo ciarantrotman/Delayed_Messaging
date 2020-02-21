@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Delayed_Messaging.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VR_Prototyping.Scripts.Accessibility;
@@ -28,6 +29,20 @@ namespace VR_Prototyping.Scripts.Utilities
             {
                 previous.GrabEnd(con);
             }*/
+        }
+
+        public static void MoveUnit(this UnitController unitController, bool current, bool previous, GameObject visual, LineRenderer lineRenderer)
+        {
+            if (current && !previous)
+            {
+                UnitController.UnitMoveStart(visual, lineRenderer);
+                return;
+            }
+            if (!current && previous)
+            {
+                unitController.UnitMoveEnd(visual, lineRenderer);
+                return;
+            }
         }
 
         /// <summary>
@@ -59,6 +74,7 @@ namespace VR_Prototyping.Scripts.Utilities
                     // Is true if select is called for the first time
                     if (currentSelectionState && !previousSelectionState)
                     {
+                        //selection.quickSelect.Invoke();    // This deselects existing units, so you can only have one at a time
                         selectableObject.SelectStart();
                         return;
                     }
@@ -159,7 +175,7 @@ namespace VR_Prototyping.Scripts.Utilities
             }
         }
 
-        public static void Target(this GameObject visual, GameObject parent, Transform normal, Vector2 pos, GameObject target, bool advanced)
+        public static void Target(this GameObject visual, GameObject parent, Transform normal, Vector2 pos, GameObject target, bool advanced = true)
         {
             visual.transform.LookAt(RotationTarget(pos, target, advanced));
             

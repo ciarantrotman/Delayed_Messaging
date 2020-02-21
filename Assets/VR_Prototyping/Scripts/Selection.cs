@@ -60,6 +60,7 @@ namespace VR_Prototyping.Scripts
 		private LineRenderer rLineRenderer;
 		private Material lLineRendererMaterial;
 		private Material rLineRendererMaterial;
+		private static readonly int Distance = Shader.PropertyToID("_Distance");
 
 		private Transform lPrevious;
 		private Transform rPrevious;
@@ -89,8 +90,6 @@ namespace VR_Prototyping.Scripts
 		/// Called when the user performs a quick select and there is no focus object
 		/// </summary>
 		[HideInInspector] public UnityEvent quickSelect;
-
-		private static readonly int Distance = Shader.PropertyToID("_Distance");
 
 		public Selection(bool rTouch, bool lTouch)
 		{

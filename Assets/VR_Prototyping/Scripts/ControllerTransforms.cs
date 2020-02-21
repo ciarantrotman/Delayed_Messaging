@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR;
+using VR_Prototyping.Scripts.Utilities;
 
 namespace VR_Prototyping.Scripts
 {
@@ -20,10 +22,10 @@ namespace VR_Prototyping.Scripts
         [SerializeField] public Material lineRenderMaterial;
 
         [Header("SteamVR Actions")]
-        public SteamVR_Action_Boolean grabGrip;
-        public SteamVR_Action_Boolean triggerGrip;
+        public SteamVR_Action_Boolean grab;
+        public SteamVR_Action_Boolean trigger;
         public SteamVR_Action_Boolean menu;
-        public SteamVR_Action_Boolean joystickPress;
+        public SteamVR_Action_Boolean joystick;
         public SteamVR_Action_Vector2 joystickDirection;
         public SteamVR_Action_Vibration haptic;
 
@@ -37,7 +39,17 @@ namespace VR_Prototyping.Scripts
 
         public const string LTag = "Direct/Left";
         public const string RTag = "Direct/Right";
+        
+        public const float MaxAngle = 110f;
+        public const float MinAngle = 80f;
+        
+        public const float Trigger = .7f;
+        public const float Sensitivity = 10f;
+        public const float Tolerance = .1f;
 
+        public readonly List<Vector2> rJoystickValues = new List<Vector2>();
+        public readonly List<Vector2> lJoystickValues = new List<Vector2>();
+        
         private void Start()
         {
             SetupDirect();
@@ -65,6 +77,13 @@ namespace VR_Prototyping.Scripts
             localR = Set.NewGameObject(localHeadset,"Local/Right");
             localL = Set.NewGameObject(localHeadset,"Local/Left");
         }
+
+        private void Update()
+        {
+            rJoystickValues.Vector2ListCull(RightJoystick(), Sensitivity);
+            lJoystickValues.Vector2ListCull(LeftJoystick(), Sensitivity);
+        }
+        
 
         private void FixedUpdate()
         {
@@ -145,12 +164,12 @@ namespace VR_Prototyping.Scripts
 
         public bool LeftGrab()
         {
-            return grabGrip.GetState(SteamVR_Input_Sources.LeftHand);
+            return grab.GetState(SteamVR_Input_Sources.LeftHand);
         }
 
         public bool RightGrab()
         {
-            return grabGrip.GetState(SteamVR_Input_Sources.RightHand);
+            return grab.GetState(SteamVR_Input_Sources.RightHand);
         }
 
         public bool LeftMenu()
@@ -165,12 +184,12 @@ namespace VR_Prototyping.Scripts
 
         public bool LeftSelect()
         {
-            return triggerGrip.GetState(SteamVR_Input_Sources.LeftHand);
+            return trigger.GetState(SteamVR_Input_Sources.LeftHand);
         }
         
         public bool RightSelect()
         {
-            return triggerGrip.GetState(SteamVR_Input_Sources.RightHand);
+            return trigger.GetState(SteamVR_Input_Sources.RightHand);
         }
 
         public bool LeftLocomotion()
@@ -185,12 +204,12 @@ namespace VR_Prototyping.Scripts
 
         private bool LeftJoystickPress()
         {
-            return joystickPress.GetState(SteamVR_Input_Sources.LeftHand);
+            return joystick.GetState(SteamVR_Input_Sources.LeftHand);
         }
         
         private bool RightJoystickPress()
         {
-            return joystickPress.GetState(SteamVR_Input_Sources.RightHand);
+            return joystick.GetState(SteamVR_Input_Sources.RightHand);
         }
 
         public Vector2 LeftJoystick()

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107f0a654353e644eb8b52d23b56e864, type: 3}
   m_Name: PrototypingStructureClass
   m_EditorClassIdentifier: 
-  debugType: 1
+  debugType: 2
   cost: 0
   healthMax: 0
-  size: {x: 0.5, y: 0.25, z: 0.5}
+  size: {x: 0, y: 0, z: 0}
   faction: 0
   spawnLocationColour: {r: 0.042452812, g: 1, b: 0.4193379, a: 1}

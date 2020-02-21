@@ -6,38 +6,82 @@ using VR_Prototyping.Scripts.Utilities;
 
 namespace Delayed_Messaging.Scripts.Units
 {
-    public class Unit : BaseObject, IDamageable<float>
+    public class Unit : BaseObject, IDamageable<float>, IMovable<Vector3>
     {
-        [Header("Structure Specific Settings")]
+        [Header("Unit Specific Settings")]
         public UnitClass unitClass;
         public UnitClass.UnitData unitData;
-
+        
+        [Header("Aesthetics")]
+        [SerializeField] private GameObject destinationVisual;
+        
         private AIDestinationSetter destinationSetter;
         private AIPath aiPath;
-        internal UnitController unitController;
+
+        private GameObject unitDestination;
+
+        private bool intialised;
         
         private void Start()
         {
-            InitialiseUnit(unitClass);
+            InitialiseUnit();
         }
 
-        public void InitialiseUnit(UnitClass u)
+        public void InitialiseUnit()
         {
-            unitClass = u;
+            if (intialised)
+            {
+                return;
+            }
+            
+            Transform t = transform;
+            
             //aiPath = transform.AddOrGetAIPath();
-            destinationSetter = transform.AddOrGetAIDestinationSetter();
             //aiPath.SetupAIPath(unitClass);
-            unitController = playerObject.GetComponent<UnitController>();
+
+            destinationSetter = t.AddOrGetAIDestinationSetter();
+
+            unitDestination = new GameObject("[" + name + " Destination]");
+            unitDestination.transform.position = t.position;
+            
+            destinationVisual = Instantiate(destinationVisual, unitDestination.transform);
+            destinationVisual.SetActive(false);
+            
+            destinationSetter.target = unitDestination.transform;
+
+            intialised = true;
+        }
+
+        public override void SelectStart()
+        {
+            base.SelectStart();
+            destinationVisual.SetActive(true);
+        }
+
+        public override void Deselect()
+        {
+            base.Deselect();
+            destinationVisual.SetActive(false);
         }
 
         public override void QuickSelect()
         {
-            destinationSetter.target = unitController.unitDestination;
+            
         }
 
         public void Damage(float damageTaken)
         {
 
+        }
+        
+        public void Move(Vector3 destination)
+        {
+            if (unitDestination == null)
+            {
+                Debug.LogError(name + " tried to move but there is no <b>UnitDestination</b> defined!");
+                return;
+            }
+            unitDestination.transform.position = destination;
         }
         
         private void OnDrawGizmos () 
@@ -78,7 +122,7 @@ namespace Delayed_Messaging.Scripts.Units
             if (destinationSetter != null && destinationSetter.target != null)
             {
                 Gizmos.color = unitClass.destinationColour;
-                Gizmos.DrawWireSphere(destinationSetter.target.position, .2f);
+                Gizmos.DrawWireSphere(destinationSetter.target.position, .05f);
             }
             
             // Vectors
