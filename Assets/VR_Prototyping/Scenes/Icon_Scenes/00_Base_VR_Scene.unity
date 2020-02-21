@@ -958,11 +958,6 @@ PrefabInstance:
       propertyPath: debugActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7473554891637304831, guid: 8749d393fbf106e488259a509328cf48,
-        type: 3}
-      propertyPath: grab.actionPath
-      value: /actions/DelayedMessaging/in/Grab
-      objectReference: {fileID: 0}
     - target: {fileID: 7659184338774365066, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: m_IsActive
