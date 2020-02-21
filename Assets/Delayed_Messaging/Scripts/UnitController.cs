@@ -50,13 +50,16 @@ namespace Delayed_Messaging.Scripts
 
         private Vector3 customRotation;
         private Vector3 customPosition;
-
+        
+        [Header("Casting Settings")]
+        [SerializeField, Range(0f, 180f)] private float minimumAngle = 60f;
+        [SerializeField, Range(0f, 180f)] private float maximumAngle = 110f;
         [SerializeField, Range(.1f, 1f)] private float minimumMoveDistance = .5f;
         [SerializeField, Range(1f, 100f)] private float maximumMoveDistance = 15f;
-
         [SerializeField, Range(1, 15), Space(10)]
         private int layerIndex = 10;
 
+        [Header("Aesthetic Settings")]
         [SerializeField, Space(5)] private GameObject targetVisual;
         [SerializeField] private Material lineRenderMat;
         [SerializeField, Range(3f, 50f)] private int lineRenderQuality = 40;
@@ -128,42 +131,19 @@ namespace Delayed_Messaging.Scripts
         
         private void Update()
         {
-            // set the positions of the local objects and calculate the depth based on the angle of the controller
-            rTs.transform.LocalDepth(
-                rCf.ControllerAngle(
-                    rCp, 
-                    rCn, 
-                    controllerTransforms.RightTransform(), 
-                    controllerTransforms.CameraTransform(),
-                    controllerTransforms.debugActive).CalculateDepth(ControllerTransforms.MaxAngle, 60, maximumMoveDistance, minimumMoveDistance, rCp.transform),
-                false, 
-                .2f);
-            lTs.transform.LocalDepth(
-                lCf.ControllerAngle(
-                    lCp, 
-                    lCn, 
-                    controllerTransforms.LeftTransform(), 
-                    controllerTransforms.CameraTransform(), 
-                    controllerTransforms.debugActive).CalculateDepth(ControllerTransforms.MaxAngle, 60, maximumMoveDistance, minimumMoveDistance, lCp.transform), 
-                false, 
-                .2f);
+            rLastValidPosition = rTs.LastValidPosition(rLastValidPosition);
+            lLastValidPosition = lTs.LastValidPosition(lLastValidPosition);
             
-            // detect valid positions for the target
-            rTs.TargetLocation(rHp, rLastValidPosition = rTs.LastValidPosition(rLastValidPosition), layerIndex, false);
-            lTs.TargetLocation(lHp, lLastValidPosition = lTs.LastValidPosition(lLastValidPosition),layerIndex, false);
-            
-            // set the midpoint position
-            rMp.transform.LocalDepth(rCp.transform.Midpoint(rTs.transform), false, 0f);
-            lMp.transform.LocalDepth(lCp.transform.Midpoint(lTs.transform), false, 0f);
-            
-            // set the rotation of the target based on the joystick values
-            rVisual.Target(rHp, rCn.transform, controllerTransforms.RightJoystick(), rRt);
-            lVisual.Target(lHp, lCn.transform, controllerTransforms.LeftJoystick(), lRt);
-            
+            Set.DistanceCast(rTs, rCf, rCp, rCn, rHp, rMp, rRt, rVisual, 
+                controllerTransforms.RightTransform(), controllerTransforms.CameraTransform(), controllerTransforms.RightJoystick(), maximumAngle, minimumAngle,
+                minimumMoveDistance, maximumMoveDistance, rLastValidPosition);
+            Set.DistanceCast(lTs, lCf, lCp, lCn, lHp, lMp, lRt, lVisual, 
+                controllerTransforms.LeftTransform(), controllerTransforms.CameraTransform(), controllerTransforms.LeftJoystick(), maximumAngle, minimumAngle,
+                minimumMoveDistance, maximumMoveDistance, lLastValidPosition);
+
             // draw the line renderer
             rLineRenderer.BezierLineRenderer(controllerTransforms.RightTransform().position,rMp.transform.position,rHp.transform.position,lineRenderQuality);
             lLineRenderer.BezierLineRenderer(controllerTransforms.LeftTransform().position, lMp.transform.position, lHp.transform.position, lineRenderQuality);
-            
             lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lVisual.transform));
             rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rVisual.transform));
         }
@@ -179,14 +159,12 @@ namespace Delayed_Messaging.Scripts
 
         public static void UnitMoveStart(GameObject visual, LineRenderer lr)
         {
-            Debug.Log("Yes");
             visual.SetActive(true);
             lr.enabled = true;
         }
         
         public void UnitMoveEnd(GameObject visual, LineRenderer lr)
         {
-            Debug.Log("No");
             visual.SetActive(false);
             lr.enabled = false;
 

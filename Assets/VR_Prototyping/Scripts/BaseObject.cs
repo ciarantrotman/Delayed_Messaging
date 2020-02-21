@@ -117,7 +117,7 @@ namespace VR_Prototyping.Scripts
 			selectionVisual.transform.position = new Vector3(position.x, 0, position.z);
 			selectionVisual.transform.localScale = new Vector3(selectionScale, selectionScale, selectionScale);
 			
-			selectionRing = selectionVisual.GetComponent<MeshRenderer>().material;
+			selectionRing = selectionVisual.GetComponentInChildren<MeshRenderer>().material;
 			selectionRing.SetFloat(BorderThickness, 0f);
 			selectionRing.SetColor(SelectionColour, selectionColour);
 		}

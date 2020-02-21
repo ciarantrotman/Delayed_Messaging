@@ -21,7 +21,7 @@ namespace VR_Prototyping.Scripts
         private GameObject rMp; // midpoint
         private GameObject rTs; // target
         private GameObject rHp; // hit
-        private GameObject rVo; // visual
+        private GameObject rVisual; // visual
         private GameObject rRt; // rotation
         
         private GameObject lCf; // follow
@@ -30,7 +30,7 @@ namespace VR_Prototyping.Scripts
         private GameObject lMp; // midpoint
         private GameObject lTs; // target
         private GameObject lHp; // hit
-        private GameObject lVo; // visual
+        private GameObject lVisual; // visual
         private GameObject lRt; // rotation
         
         private Vector3 rLastValidPosition;
@@ -40,6 +40,9 @@ namespace VR_Prototyping.Scripts
         
         [HideInInspector] public LineRenderer lLr;
         [HideInInspector] public LineRenderer rLr;
+        private Material lLineRendererMaterial;
+        private Material rLineRendererMaterial;
+        private static readonly int Distance = Shader.PropertyToID("_Distance");
         
         private bool cTouchR;
         private bool cTouchL;
@@ -118,13 +121,13 @@ namespace VR_Prototyping.Scripts
             lHp = new GameObject("[Locomotion/HitPoint/Left]");
             lRt = new GameObject("[Locomotion/Rotation/Left]");
             
-            rVo = Instantiate(targetVisual, rHp.transform);
-            rVo.name = "[Locomotion/Visual/Right]";
-            rVo.SetActive(false);
+            rVisual = Instantiate(targetVisual, rHp.transform);
+            rVisual.name = "[Locomotion/Visual/Right]";
+            rVisual.SetActive(false);
             
-            lVo = Instantiate(targetVisual, lHp.transform);
-            lVo.name = "[Locomotion/Visual/Left]";
-            lVo.SetActive(false);
+            lVisual = Instantiate(targetVisual, lHp.transform);
+            lVisual.name = "[Locomotion/Visual/Left]";
+            lVisual.SetActive(false);
             
             ghost = Instantiate(ghost);
             ghost.name = "Locomotion/Ghost";
@@ -157,6 +160,9 @@ namespace VR_Prototyping.Scripts
             
             lLr = lCp.AddComponent<LineRenderer>();
             lLr.SetupLineRender(lineRenderMat, .005f, false);
+            
+            rLineRendererMaterial = rLr.material;
+            lLineRendererMaterial = lLr.material;
         }
 
         private void Update()
@@ -164,16 +170,18 @@ namespace VR_Prototyping.Scripts
             rLastValidPosition = rTs.LastValidPosition(rLastValidPosition);
             lLastValidPosition = lTs.LastValidPosition(lLastValidPosition);
             
-            Set.DistanceCast(rTs, rCf, rCp, rCn, rHp, rMp, rRt, rVo, 
+            Set.DistanceCast(rTs, rCf, rCp, rCn, rHp, rMp, rRt, rVisual, 
                 controllerTransforms.RightTransform(), controllerTransforms.CameraTransform(), controllerTransforms.RightJoystick(), ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle,
                 minimumMoveDistance, maximumMoveDistance, rLastValidPosition);
-            Set.DistanceCast(lTs, lCf, lCp, lCn, lHp, lMp, lRt, lVo, 
+            Set.DistanceCast(lTs, lCf, lCp, lCn, lHp, lMp, lRt, lVisual, 
                 controllerTransforms.LeftTransform(), controllerTransforms.CameraTransform(), controllerTransforms.LeftJoystick(), ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle,
                 minimumMoveDistance, maximumMoveDistance, lLastValidPosition);
             
             // draw the line renderer
             rLr.BezierLineRenderer(controllerTransforms.RightTransform().position,rMp.transform.position,rHp.transform.position,lineRenderQuality);
             lLr.BezierLineRenderer(controllerTransforms.LeftTransform().position, lMp.transform.position, lHp.transform.position, lineRenderQuality);
+            lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lVisual.transform) + lVisual.transform.TransformDistance(lMp.transform));
+            rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rVisual.transform) + rVisual.transform.TransformDistance(rMp.transform));
         }
 
         private void LateUpdate()
@@ -184,11 +192,11 @@ namespace VR_Prototyping.Scripts
             this.JoystickGestureDetection(
                 controllerTransforms.RightJoystick(), controllerTransforms.rJoystickValues[0], angle, rotateSpeed, 
                 ControllerTransforms.Trigger, ControllerTransforms.Tolerance,
-                rVo, rLr, cTouchR, pTouchR, disableRightHand, active);
+                rVisual, rLr, cTouchR, pTouchR, disableRightHand, active);
             this.JoystickGestureDetection(
                 controllerTransforms.LeftJoystick(), controllerTransforms.lJoystickValues[0], angle, rotateSpeed,
                 ControllerTransforms.Trigger, ControllerTransforms.Tolerance,
-                lVo, lLr, cTouchL, pTouchL, disableLeftHand, active);
+                lVisual, lLr, cTouchL, pTouchL, disableLeftHand, active);
             
             pTouchR = controllerTransforms.RightLocomotion();
             pTouchL = controllerTransforms.LeftLocomotion();

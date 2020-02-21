@@ -96,13 +96,17 @@ namespace VR_Prototyping.Scripts
 		[Range(0f, 180f)] public float manual = 25f;
 		[Space(10)] public bool setSelectionRange;		
 		[Range(0f, 250f)] public float selectionRange = 25f;
-		[SerializeField, Space(10)] private float castSelectionRadius;
-		[SerializeField, Range(1, 15)] private int layerIndex = 10;
-		[SerializeField] private GameObject targetVisual;
-		[Space(10)]public bool disableLeftHand;
+		[Space(10)] public bool disableLeftHand;
 		public bool disableRightHand;
+		
+		[Header("Casting Settings")]
+		[SerializeField, Range(0f, 180f)] private float minimumAngle = 60f;
+		[SerializeField, Range(0f, 180f)] private float maximumAngle = 110f;
+		[SerializeField] private float castSelectionRadius;
+		[SerializeField, Range(1, 15)] private int layerIndex = 10;
 
 		[Header("Selection Aesthetics")]
+		[SerializeField] private GameObject targetVisual;
 		[SerializeField] private Material lineRenderMat;
 		[SerializeField, Range(.001f, .1f)] private float lineRenderWidth = .005f;
 		[Space(10)] public GameObject gazeCursor;
@@ -133,14 +137,14 @@ namespace VR_Prototyping.Scripts
 			SetupGameObjects();
 			SetupCastSelectGameObjects();
 
-			lLineRenderer = controllerTransforms.LeftTransform().gameObject.AddComponent<LineRenderer>();
-			rLineRenderer = controllerTransforms.RightTransform().gameObject.AddComponent<LineRenderer>();
+			//lLineRenderer = controllerTransforms.LeftTransform().gameObject.AddComponent<LineRenderer>();
+			//rLineRenderer = controllerTransforms.RightTransform().gameObject.AddComponent<LineRenderer>();
 			
-			lLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
-			rLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
+			//lLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
+			//rLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
 			
-			rLineRendererMaterial = rLineRenderer.material;
-			lLineRendererMaterial = lLineRenderer.material;
+			//rLineRendererMaterial = rLineRenderer.material;
+			//lLineRendererMaterial = lLineRenderer.material;
 		}
 		private void SetupGameObjects()
 		{
@@ -193,11 +197,11 @@ namespace VR_Prototyping.Scripts
             
             rVisual = Instantiate(targetVisual, rHp.transform);
             rVisual.name = "[Cast Selection/Visual/Right]";
-            rVisual.SetActive(false);
+            rVisual.SetActive(true);
             
             lVisual = Instantiate(targetVisual, lHp.transform);
             lVisual.name = "[Cast Selection/Visual/Left]";
-            lVisual.SetActive(false);
+            lVisual.SetActive(true);
 
             rCf.transform.SetParent(parentTransform);
             rCp.transform.SetParent(rCf.transform);
@@ -218,8 +222,8 @@ namespace VR_Prototyping.Scripts
             rLineRenderer = rCp.AddComponent<LineRenderer>();
             lLineRenderer = lCp.AddComponent<LineRenderer>();
 
-            rLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, false);
-            lLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, false);
+            rLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
+            lLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
             
             rLineRendererMaterial = rLineRenderer.material;
             lLineRendererMaterial = lLineRenderer.material;
@@ -251,11 +255,11 @@ namespace VR_Prototyping.Scripts
 					break;
 			}
 			
-			lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
-			rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
+			//lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
+			//rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
 			
-			lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
-			rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
+			//lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
+			//rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
 			
 			LFocusObject.Manipulation(RFocusObject, lBaseObject, pLBaseObject, controllerTransforms.LeftGrab(), lGrabPrevious, controllerTransforms.LeftTransform(), lTouch, rTouch);
 			RFocusObject.Manipulation(LFocusObject, rBaseObject, pRBaseObject, controllerTransforms.RightGrab(), rGrabPrevious, controllerTransforms.RightTransform(), rTouch, lTouch);
@@ -279,37 +283,15 @@ namespace VR_Prototyping.Scripts
 		/// </summary>
 		private void CastUpdate()
 		{
-			// set the positions of the local objects and calculate the depth based on the angle of the controller
-            rTs.transform.LocalDepth(
-                rCf.ControllerAngle(
-                    rCp, 
-                    rCn, 
-                    controllerTransforms.RightTransform(), 
-                    controllerTransforms.CameraTransform(),
-                    controllerTransforms.debugActive).CalculateDepth(ControllerTransforms.MaxAngle, 60, 0f, selectionRange, rCp.transform),
-                false, 
-                .2f);
-            lTs.transform.LocalDepth(
-                lCf.ControllerAngle(
-                    lCp, 
-                    lCn, 
-                    controllerTransforms.LeftTransform(), 
-                    controllerTransforms.CameraTransform(), 
-                    controllerTransforms.debugActive).CalculateDepth(ControllerTransforms.MaxAngle, 60, 0f, selectionRange, lCp.transform), 
-                false, 
-                .2f);
+			rLastValidPosition = rTs.LastValidPosition(rLastValidPosition);
+			lLastValidPosition = lTs.LastValidPosition(lLastValidPosition);
             
-            // detect valid positions for the target
-            rTs.TargetLocation(rHp, rLastValidPosition = rTs.LastValidPosition(rLastValidPosition), layerIndex, true);
-            lTs.TargetLocation(lHp, lLastValidPosition = lTs.LastValidPosition(lLastValidPosition),layerIndex, true);
-
-            // set the midpoint position
-            rMp.transform.LocalDepth(rCp.transform.Midpoint(rTs.transform), false, 0f);
-            lMp.transform.LocalDepth(lCp.transform.Midpoint(lTs.transform), false, 0f);
-            
-            // set the rotation of the target based on the joystick values
-            rVisual.Target(rHp, rCn.transform, controllerTransforms.RightJoystick(), rRt);
-            lVisual.Target(lHp, lCn.transform, controllerTransforms.LeftJoystick(), lRt);
+			Set.DistanceCast(rTs, rCf, rCp, rCn, rHp, rMp, rRt, rVisual, 
+				controllerTransforms.RightTransform(), controllerTransforms.CameraTransform(), controllerTransforms.RightJoystick(), maximumAngle, minimumAngle,
+				.1f, selectionRange, rLastValidPosition);
+			Set.DistanceCast(lTs, lCf, lCp, lCn, lHp, lMp, lRt, lVisual, 
+				controllerTransforms.LeftTransform(), controllerTransforms.CameraTransform(), controllerTransforms.LeftJoystick(), maximumAngle, minimumAngle,
+				.1f, selectionRange, lLastValidPosition);
             
             // draw the line renderer
             rLineRenderer.BezierLineRenderer(controllerTransforms.RightTransform().position,rMp.transform.position,rHp.transform.position,lineRenderQuality);

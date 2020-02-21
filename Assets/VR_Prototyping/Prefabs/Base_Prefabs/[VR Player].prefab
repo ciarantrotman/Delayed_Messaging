@@ -126,13 +126,16 @@ MonoBehaviour:
   manual: 10
   setSelectionRange: 1
   selectionRange: 10
-  layerIndex: 10
-  targetVisual: {fileID: 5171863205534225016, guid: ea396bcd31258314e8f1b32aaa93f2a0,
-    type: 3}
   disableLeftHand: 0
   disableRightHand: 0
+  minimumAngle: 60
+  maximumAngle: 110
+  castSelectionRadius: 0.5
+  layerIndex: 10
+  targetVisual: {fileID: 5171863205534225016, guid: b02a7701e4ccd0340b18d1e4a674b219,
+    type: 3}
   lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
-  lineRenderWidth: 0.005
+  lineRenderWidth: 0.0025
   gazeCursor: {fileID: 3368970237513492719, guid: 0df546e5f776c5e44a9ca29e0c322cb3,
     type: 3}
   lineRenderQuality: 30
@@ -174,7 +177,7 @@ MonoBehaviour:
   vignetteStrength: 0.35
   targetVisual: {fileID: 7457907001363424065, guid: 8489f5c5ab6d2f04c9a89cf64b64666e,
     type: 3}
-  lineRenderMat: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
+  lineRenderMat: {fileID: 2100000, guid: 81565e9f72405c247b4dcfac75c54592, type: 2}
   lineRenderQuality: 40
   sceneChangeWipe: {fileID: 4682701757106891871, guid: e7cf404ab85b8b34ca9fbaf27821454f,
     type: 3}
@@ -196,6 +199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lLineRenderer: {fileID: 0}
   rLineRenderer: {fileID: 0}
+  minimumAngle: 60
+  maximumAngle: 110
   minimumMoveDistance: 0.1
   maximumMoveDistance: 10
   layerIndex: 10
