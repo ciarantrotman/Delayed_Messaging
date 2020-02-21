@@ -219,14 +219,22 @@ namespace VR_Prototyping.Scripts.Utilities
             float proportion = Mathf.InverseLerp(maxAngle, minAngle, a);
             return Mathf.SmoothStep(max, min, proportion);
         }
-        
-        public static void TargetLocation(this GameObject target, GameObject hitPoint, Vector3 lastValidPosition, int layerIndex)
+
+        /// <summary>
+        /// Calculate the target location
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="hitPoint"></param>
+        /// <param name="lastValidPosition"></param>
+        /// <param name="layerIndex"></param>
+        /// <param name="normal"></param>
+        public static void TargetLocation(this GameObject target, GameObject hitPoint, Vector3 lastValidPosition, int layerIndex, bool normal)
         {
             Transform t = target.transform;
             Vector3 position = t.position;
             Vector3 up = t.up;
             hitPoint.transform.position = Vector3.Lerp(hitPoint.transform.position, Physics.Raycast(position, -up, out RaycastHit hit) && hit.transform.gameObject.layer == layerIndex ? hit.point : lastValidPosition, .25f);
-            hitPoint.transform.up = Physics.Raycast(position, -up, out RaycastHit h) ? h.normal : Vector3.up;
+            hitPoint.transform.up = Physics.Raycast(position, -up, out RaycastHit h) && normal ? h.normal : Vector3.up;
         }
 
         public static GameObject RayCastFindFocusObject(this List<GameObject> objects, GameObject current, GameObject target, GameObject inactive, Transform controller, float distance, bool disable)

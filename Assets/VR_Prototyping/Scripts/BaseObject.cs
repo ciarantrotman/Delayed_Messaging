@@ -13,6 +13,7 @@ namespace VR_Prototyping.Scripts
 	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable
 	{
 		internal GameObject playerObject;
+		internal ControllerTransforms controllerTransforms;
 		internal Selection selection;
 		internal Player player;
 
@@ -102,6 +103,7 @@ namespace VR_Prototyping.Scripts
 			}
 			selection = playerObject.GetComponent<Selection>();
 			player = playerObject.GetComponent<Player>();
+			controllerTransforms = playerObject.GetComponent<ControllerTransforms>();
 		}
 		private void SetupOutline()
 		{
@@ -125,8 +127,8 @@ namespace VR_Prototyping.Scripts
 			
 			GameObject o = gameObject;
 			o.CheckGaze(AngleG, selection.gaze, selection.gazeList, selection.lHandList, selection.rHandList, selection.globalList);
-			o.ManageList(selection.lHandList, o.CheckHand(selection.gazeList, selection.manual, AngleL), selection.disableLeftHand, transform.WithinRange(selection.setSelectionRange, selection.Controller.LeftTransform(), selection.selectionRange));
-			o.ManageList(selection.rHandList, o.CheckHand(selection.gazeList, selection.manual, AngleR), selection.disableRightHand, transform.WithinRange(selection.setSelectionRange, selection.Controller.RightTransform(), selection.selectionRange));
+			o.ManageList(selection.lHandList, o.CheckHand(selection.gazeList, selection.manual, AngleL), selection.disableLeftHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.LeftTransform(), selection.selectionRange));
+			o.ManageList(selection.rHandList, o.CheckHand(selection.gazeList, selection.manual, AngleR), selection.disableRightHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.RightTransform(), selection.selectionRange));
 			
 			ObjectUpdate();
 		}
@@ -138,9 +140,9 @@ namespace VR_Prototyping.Scripts
 		private void GetAngles()
 		{
 			Vector3 position = transform.position;
-			AngleG = Vector3.Angle(position - selection.Controller.CameraPosition(), selection.Controller.CameraForwardVector());
-			AngleL = Vector3.Angle(position - selection.Controller.LeftTransform().position, selection.Controller.LeftForwardVector());
-			AngleR = Vector3.Angle(position - selection.Controller.RightTransform().position, selection.Controller.RightForwardVector());
+			AngleG = Vector3.Angle(position - controllerTransforms.CameraPosition(), controllerTransforms.CameraForwardVector());
+			AngleL = Vector3.Angle(position - controllerTransforms.LeftTransform().position, controllerTransforms.LeftForwardVector());
+			AngleR = Vector3.Angle(position - controllerTransforms.RightTransform().position, controllerTransforms.RightForwardVector());
 		}
 		public virtual void HoverStart()
 		{

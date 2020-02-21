@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6405313724280983054
 Transform:
   m_ObjectHideFlags: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 4
-  outlineColor: {r: 0.6, g: 0.6, b: 0.6, a: 0.6}
+  outlineColor: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 0.6}
   outlineWidth: 0
   precomputeOutline: 1
   bakeKeys:
@@ -1774,7 +1774,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100006, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100022, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_Name

@@ -13,7 +13,8 @@ namespace VR_Prototyping.Scripts
 		#region Inspector and Variables
 		private GameObject player;
 		
-		private Selection c;
+		private Selection selection;
+		private ControllerTransforms controllerTransforms;
 		
 		private GameObject fM;
 		[HideInInspector] public GameObject mP; // dual grab pos target
@@ -81,27 +82,28 @@ namespace VR_Prototyping.Scripts
 		/*[BoxGroup("Snapping")] [ShowIf("distanceSnapping")] [Indent] */[SerializeField] private bool maximumDistance;
 		
 		#endregion
-		private void Start () 
+		private void Start ()
 		{
-			c = GetComponent<Selection>();
-			player = c.gameObject;
+			player = gameObject;
+			selection = GetComponent<Selection>();
+			controllerTransforms = GetComponent<ControllerTransforms>();
 			SetupGameObjects();
 		}
 
 		private void SetupGameObjects()
 		{
-			fM = new GameObject("Manipulation/Manipulation");
-			mP = new GameObject("Manipulation/MidPoint/Position");
-			mRc = new GameObject("Manipulation/MidPoint/Rotation");
-			mRp = new GameObject("Manipulation/MidPoint/Rotation");
+			fM = new GameObject("[Manipulation/Manipulation]");
+			mP = new GameObject("[Manipulation/MidPoint/Position]");
+			mRc = new GameObject("[Manipulation/MidPoint/Rotation]");
+			mRp = new GameObject("[Manipulation/MidPoint/Rotation]");
 			
-			tr = new GameObject("Manipulation/Target/Right");
-			cFr = new GameObject("Manipulation/Controller/Follow/Right");
-			cOr = new GameObject("Manipulation/Controller/Original/Right");
-			cPr = new GameObject("Manipulation/Controller/Proxy/Right");
-			tSr = new GameObject("Manipulation/Target/Scaled/Right");
-			oPr = new GameObject("Manipulation/Object/Proxy/Right");
-			oOr = new GameObject("Manipulation/Object/Original/Right");
+			tr = new GameObject("[Manipulation/Target/Right]");
+			cFr = new GameObject("[Manipulation/Controller/Follow/Right]");
+			cOr = new GameObject("[Manipulation/Controller/Original/Right]");
+			cPr = new GameObject("[Manipulation/Controller/Proxy/Right]");
+			tSr = new GameObject("[Manipulation/Target/Scaled/Right]");
+			oPr = new GameObject("[Manipulation/Object/Proxy/Right]");
+			oOr = new GameObject("[Manipulation/Object/Original/Right]");
 			
 			fM.transform.parent = player.transform;
 			
@@ -117,13 +119,13 @@ namespace VR_Prototyping.Scripts
 			oPr.transform.SetParent(cPr.transform);
 			oOr.transform.SetParent(cPr.transform);
 			
-			tl = new GameObject("Manipulation/Target/Left");
-			cFl = new GameObject("Manipulation/Controller/Follow/Left");
-			cOl = new GameObject("Manipulation/Controller/Original/Left");
-			cPl = new GameObject("Manipulation/Controller/Proxy/Left");
-			tSl = new GameObject("Manipulation/Target/Scaled/Left");
-			oPl = new GameObject("Manipulation/Object/Proxy/Left");
-			oOl = new GameObject("Manipulation/Object/Original/Left");
+			tl = new GameObject("[Manipulation/Target/Left]");
+			cFl = new GameObject("[Manipulation/Controller/Follow/Left]");
+			cOl = new GameObject("[Manipulation/Controller/Original/Left]");
+			cPl = new GameObject("[Manipulation/Controller/Proxy/Left]");
+			tSl = new GameObject("[Manipulation/Target/Scaled/Left]");
+			oPl = new GameObject("[Manipulation/Object/Proxy/Left]");
+			oOl = new GameObject("[Manipulation/Object/Original/Left]");
 			
 			tl.transform.SetParent(fM.transform);
 			cFl.transform.SetParent(fM.transform);
@@ -155,44 +157,44 @@ namespace VR_Prototyping.Scripts
 		
 		private void Update()
 		{				
-			c.Controller.CameraTransform().SplitPosition(c.Controller.LeftTransform(), cFl.transform);
-			c.Controller.CameraTransform().SplitPosition(c.Controller.RightTransform(), cFr.transform);
+			controllerTransforms.CameraTransform().SplitPosition(controllerTransforms.LeftTransform(), cFl.transform);
+			controllerTransforms.CameraTransform().SplitPosition(controllerTransforms.RightTransform(), cFr.transform);
 			mP.transform.MidpointPosition(tSl.transform, tSr.transform, true);
-			cR.transform.Transforms(c.Controller.RightTransform());
-			cL.transform.Transforms(c.Controller.LeftTransform());
+			cR.transform.Transforms(controllerTransforms.RightTransform());
+			cL.transform.Transforms(controllerTransforms.LeftTransform());
 			
 			FollowFocusObjects();
 		}
 
 		private void FollowFocusObjects()
 		{
-			if (c.LFocusObject != null)
+			if (selection.LFocusObject != null)
 			{
-				c.LFocusObject.transform.FocusObjectFollow(c.Controller.LeftTransform(), tl.transform, tSl.transform, oOl.transform, cOl.transform, oPl.transform, c.Controller.LeftGrab());
+				selection.LFocusObject.transform.FocusObjectFollow(controllerTransforms.LeftTransform(), tl.transform, tSl.transform, oOl.transform, cOl.transform, oPl.transform, controllerTransforms.LeftGrab());
 			}
 
-			if (c.RFocusObject != null)
+			if (selection.RFocusObject != null)
 			{
-				c.RFocusObject.transform.FocusObjectFollow(c.Controller.RightTransform(), tr.transform, tSr.transform, oOr.transform, cOr.transform, oPr.transform, c.Controller.RightGrab());
+				selection.RFocusObject.transform.FocusObjectFollow(controllerTransforms.RightTransform(), tr.transform, tSr.transform, oOr.transform, cOr.transform, oPr.transform, controllerTransforms.RightGrab());
 			}
 		}
 		public void OnStart(Transform con)
 		{
-			switch (con == c.Controller.LeftTransform())
+			switch (con == controllerTransforms.LeftTransform())
 			{
 				case true:
 					cFl.GrabStart(cPl, tl, cOl, con);
-					tl.transform.Transforms(c.LFocusObject.transform);
+					tl.transform.Transforms(selection.LFocusObject.transform);
 					tSl.transform.Transforms(tl.transform);
-					oPl.transform.Position(c.LFocusObject.transform);
-					oOl.transform.Position(c.LFocusObject.transform);
+					oPl.transform.Position(selection.LFocusObject.transform);
+					oOl.transform.Position(selection.LFocusObject.transform);
 					break;
 				case false:
 					cFr.GrabStart(cPr, tr, cOr, con);
-					tr.transform.Transforms(c.RFocusObject.transform);
+					tr.transform.Transforms(selection.RFocusObject.transform);
 					tSr.transform.Transforms(tr.transform);
-					oPr.transform.Position(c.RFocusObject.transform);
-					oOr.transform.Position(c.RFocusObject.transform);
+					oPr.transform.Position(selection.RFocusObject.transform);
+					oOr.transform.Position(selection.RFocusObject.transform);
 					break;
 				default:
 					throw new ArgumentException();
@@ -201,15 +203,15 @@ namespace VR_Prototyping.Scripts
 
 		public void OnStay(Transform con)
 		{
-			switch (con == c.Controller.LeftTransform())
+			switch (con == controllerTransforms.LeftTransform())
 			{
 				case true:
 					ControllerFollowing(con, cFl, cPl, tl);
-					tSl.transform.localPosition = new Vector3(0, 0, cPl.MagnifiedDepth(cOl, oOl, tSl, snapDistance, c.selectionRange - c.selectionRange * .25f, maximumDistance));
+					tSl.transform.localPosition = new Vector3(0, 0, cPl.MagnifiedDepth(cOl, oOl, tSl, snapDistance, selection.selectionRange - selection.selectionRange * .25f, maximumDistance));
 					break;
 				case false:
 					ControllerFollowing(con, cFr, cPr, tr);
-					tSr.transform.localPosition = new Vector3(0, 0, cPr.MagnifiedDepth(cOr, oOr, tSr, snapDistance, c.selectionRange - c.selectionRange * .25f, maximumDistance));
+					tSr.transform.localPosition = new Vector3(0, 0, cPr.MagnifiedDepth(cOr, oOr, tSr, snapDistance, selection.selectionRange - selection.selectionRange * .25f, maximumDistance));
 					break;
 				default:
 					throw new ArgumentException();
@@ -220,7 +222,7 @@ namespace VR_Prototyping.Scripts
 		{
 			if (rot)
 			{
-				mRp.transform.MidpointPosition(c.Controller.LeftTransform(), c.Controller.RightTransform(), true);
+				mRp.transform.MidpointPosition(controllerTransforms.LeftTransform(), controllerTransforms.RightTransform(), true);
 				pRot = mRp.transform.rotation;
 				mRc.transform.rotation = target.rotation;
 				mRc.transform.position = mRp.transform.position;
@@ -229,7 +231,7 @@ namespace VR_Prototyping.Scripts
 			{
 				initialScale = target.localScale;
 				initialScaleFactor = Mathf.InverseLerp(scaleMin.x, scaleMax.x, initialScale.x);
-				startDistance = c.Controller.ControllerDistance();
+				startDistance = controllerTransforms.ControllerDistance();
 
 				if (Math.Abs(initialScaleFactor) < float.Epsilon)
 				{
@@ -251,7 +253,7 @@ namespace VR_Prototyping.Scripts
 		{
 			if (rot && enableRotation)
 			{
-				mRp.transform.MidpointPosition(c.Controller.LeftTransform(), c.Controller.RightTransform(), true);
+				mRp.transform.MidpointPosition(controllerTransforms.LeftTransform(), controllerTransforms.RightTransform(), true);
 			
 				Quaternion rotation = mRp.transform.rotation;
 			
@@ -267,7 +269,7 @@ namespace VR_Prototyping.Scripts
 			}
 			if (sca && enableScaling)
 			{
-				float scaleFactor = Mathf.InverseLerp(minDistance, maxDistance, c.Controller.ControllerDistance());
+				float scaleFactor = Mathf.InverseLerp(minDistance, maxDistance, controllerTransforms.ControllerDistance());
             
 				scaleFactor = scaleFactor <= 0 ? 0 : scaleFactor;
 				scaleFactor = scaleFactor >= 1 ? 1 : scaleFactor;
@@ -275,7 +277,7 @@ namespace VR_Prototyping.Scripts
 				target.transform.localScale = Vector3.Lerp(scaleMin, scaleMax, scaleFactor);
 				
 				if(scaleLr == null) return;
-				scaleLr.StraightLineRender(c.Controller.LeftTransform(), c.Controller.RightTransform());
+				scaleLr.StraightLineRender(controllerTransforms.LeftTransform(), controllerTransforms.RightTransform());
 			}
 		}
 
@@ -304,7 +306,7 @@ namespace VR_Prototyping.Scripts
 		public void OnEnd(Transform con)
 		{
 			DualGrabEnd();
-			switch (con == c.Controller.LeftTransform())
+			switch (con == controllerTransforms.LeftTransform())
 			{
 				case true:
 					tl.transform.SetParent(null);

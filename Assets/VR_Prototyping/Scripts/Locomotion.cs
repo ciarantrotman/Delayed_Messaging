@@ -160,42 +160,16 @@ namespace VR_Prototyping.Scripts
         }
 
         private void Update()
-        {
-            // set the positions of the local objects and calculate the depth based on the angle of the controller
-            rTs.transform.LocalDepth(
-                rCf.ControllerAngle(
-                    rCp, 
-                    rCn, 
-                    controllerTransforms.RightTransform(), 
-                    controllerTransforms.CameraTransform(),
-                    controllerTransforms.debugActive).CalculateDepth(ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, rCp.transform),
-                false, 
-                .2f);
-            lTs.transform.LocalDepth(
-                lCf.ControllerAngle(
-                    lCp, 
-                    lCn, 
-                    controllerTransforms.LeftTransform(), 
-                    controllerTransforms.CameraTransform(), 
-                    controllerTransforms.debugActive).CalculateDepth(ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, lCp.transform), 
-                false, 
-                .2f);
+        {       
+            rLastValidPosition = rTs.LastValidPosition(rLastValidPosition);
+            lLastValidPosition = lTs.LastValidPosition(lLastValidPosition);
             
-            // detect valid positions for the target
-            rTs.TargetLocation(rHp,
-                rLastValidPosition = rTs.LastValidPosition(rLastValidPosition), 
-                layerIndex);
-            lTs.TargetLocation(lHp, 
-                lLastValidPosition = lTs.LastValidPosition(lLastValidPosition),
-                layerIndex);
-
-            // set the midpoint position
-            rMp.transform.LocalDepth(rCp.transform.Midpoint(rTs.transform), false, 0f);
-            lMp.transform.LocalDepth(lCp.transform.Midpoint(lTs.transform), false, 0f);
-            
-            // set the rotation of the target based on the joystick values
-            rVo.Target(rHp, rCn.transform, controllerTransforms.RightJoystick(), rRt, advancedLocomotion);
-            lVo.Target(lHp, lCn.transform, controllerTransforms.LeftJoystick(), lRt, advancedLocomotion);
+            Set.DistanceCast(rTs, rCf, rCp, rCn, rHp, rMp, rRt, rVo, 
+                controllerTransforms.RightTransform(), controllerTransforms.CameraTransform(), controllerTransforms.RightJoystick(), ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle,
+                minimumMoveDistance, maximumMoveDistance, rLastValidPosition);
+            Set.DistanceCast(lTs, lCf, lCp, lCn, lHp, lMp, lRt, lVo, 
+                controllerTransforms.LeftTransform(), controllerTransforms.CameraTransform(), controllerTransforms.LeftJoystick(), ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle,
+                minimumMoveDistance, maximumMoveDistance, lLastValidPosition);
             
             // draw the line renderer
             rLr.BezierLineRenderer(controllerTransforms.RightTransform().position,rMp.transform.position,rHp.transform.position,lineRenderQuality);
@@ -208,31 +182,13 @@ namespace VR_Prototyping.Scripts
             cTouchL = controllerTransforms.LeftLocomotion();
 
             this.JoystickGestureDetection(
-                controllerTransforms.RightJoystick(), 
-                controllerTransforms.rJoystickValues[0], 
-                angle, 
-                rotateSpeed, 
-                ControllerTransforms.Trigger, 
-                ControllerTransforms.Tolerance,
-                rVo,
-                rLr, 
-                cTouchR, 
-                pTouchR, 
-                disableRightHand,
-                active);
+                controllerTransforms.RightJoystick(), controllerTransforms.rJoystickValues[0], angle, rotateSpeed, 
+                ControllerTransforms.Trigger, ControllerTransforms.Tolerance,
+                rVo, rLr, cTouchR, pTouchR, disableRightHand, active);
             this.JoystickGestureDetection(
-                controllerTransforms.LeftJoystick(), 
-                controllerTransforms.lJoystickValues[0], 
-                angle,
-                rotateSpeed,
-                ControllerTransforms.Trigger,
-                ControllerTransforms.Tolerance,
-                lVo,
-                lLr,
-                cTouchL,
-                pTouchL,
-                disableLeftHand,
-                active);
+                controllerTransforms.LeftJoystick(), controllerTransforms.lJoystickValues[0], angle, rotateSpeed,
+                ControllerTransforms.Trigger, ControllerTransforms.Tolerance,
+                lVo, lLr, cTouchL, pTouchL, disableLeftHand, active);
             
             pTouchR = controllerTransforms.RightLocomotion();
             pTouchL = controllerTransforms.LeftLocomotion();

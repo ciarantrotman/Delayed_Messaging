@@ -6,6 +6,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
+using VR_Prototyping.Scripts.Utilities;
 
 namespace VR_Prototyping.Scripts
 {
@@ -570,6 +571,48 @@ namespace VR_Prototyping.Scripts
                 default:
                     return;
             }
+        }
+        /// <summary>
+        /// A static version of the distance - angle casting method, where the users hand angle controls the distance of the visual object
+        /// </summary>
+        /// <param name="Ts"></param>
+        /// <param name="Cf"></param>
+        /// <param name="Cp"></param>
+        /// <param name="Cn"></param>
+        /// <param name="Hp"></param>
+        /// <param name="Mp"></param>
+        /// <param name="Rt"></param>
+        /// <param name="visual"></param>
+        /// <param name="controllerTransform"></param>
+        /// <param name="cameraTransform"></param>
+        /// <param name="joystick"></param>
+        /// <param name="maxAngle"></param>
+        /// <param name="minAngle"></param>
+        /// <param name="minDistance"></param>
+        /// <param name="maxDistance"></param>
+        /// <param name="lastValidPosition"></param>
+        public static void DistanceCast(GameObject Ts, GameObject Cf, GameObject Cp, GameObject Cn, GameObject Hp, GameObject Mp, GameObject Rt, GameObject visual, Transform controllerTransform, Transform cameraTransform, Vector2 joystick, float maxAngle, float minAngle, float minDistance, float maxDistance, Vector3 lastValidPosition)
+        {
+            // set the positions of the local objects and calculate the depth based on the angle of the controller
+            Ts.transform.LocalDepth(Cf.ControllerAngle(Cp,Cn,controllerTransform,cameraTransform,true).CalculateDepth(maxAngle, minAngle, maxDistance, minDistance, Cp.transform), false, .2f);
+            Ts.TargetLocation(Hp, lastValidPosition, 10, false);
+            Mp.transform.LocalDepth(Cp.transform.Midpoint(Ts.transform), false, 0f);
+            visual.Target(Hp, Cn.transform, joystick, Rt);
+            /*
+            // detect valid positions for the target
+            rTs.TargetLocation(rHp,
+                rLastValidPosition = rTs.LastValidPosition(rLastValidPosition), 
+                layerIndex);
+            lTs.TargetLocation(lHp, 
+                lLastValidPosition = lTs.LastValidPosition(lLastValidPosition),
+                layerIndex);*/
+            /*
+            // draw the line renderer
+            rLineRenderer.BezierLineRenderer(controllerTransforms.RightTransform().position,rMp.transform.position,rHp.transform.position,lineRenderQuality);
+            lLineRenderer.BezierLineRenderer(controllerTransforms.LeftTransform().position, lMp.transform.position, lHp.transform.position, lineRenderQuality);
+            
+            lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lVisual.transform));
+            rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rVisual.transform));*/
         }
     }
 }

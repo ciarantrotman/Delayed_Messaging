@@ -126,8 +126,13 @@ MonoBehaviour:
   manual: 10
   setSelectionRange: 1
   selectionRange: 10
+  layerIndex: 10
+  targetVisual: {fileID: 5171863205534225016, guid: ea396bcd31258314e8f1b32aaa93f2a0,
+    type: 3}
   disableLeftHand: 0
   disableRightHand: 0
+  lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
+  lineRenderWidth: 0.005
   gazeCursor: {fileID: 3368970237513492719, guid: 0df546e5f776c5e44a9ca29e0c322cb3,
     type: 3}
   lineRenderQuality: 30
@@ -189,8 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b292bc0edeee64da52079c248b5a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lLr: {fileID: 0}
-  rLr: {fileID: 0}
+  lLineRenderer: {fileID: 0}
+  rLineRenderer: {fileID: 0}
   minimumMoveDistance: 0.1
   maximumMoveDistance: 10
   layerIndex: 10

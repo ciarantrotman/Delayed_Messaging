@@ -93,11 +93,11 @@ namespace Delayed_Messaging.Scripts
             lRt = new GameObject("[Unit Controller/Rotation/Left]");
             
             rVisual = Instantiate(targetVisual, rHp.transform);
-            rVisual.name = "Unit Controller/Visual/Right";
+            rVisual.name = "[Unit Controller/Visual/Right]";
             rVisual.SetActive(false);
             
             lVisual = Instantiate(targetVisual, lHp.transform);
-            lVisual.name = "Unit Controller/Visual/Left";
+            lVisual.name = "[Unit Controller/Visual/Left]";
             lVisual.SetActive(false);
 
             rCf.transform.SetParent(parentTransform);
@@ -149,13 +149,9 @@ namespace Delayed_Messaging.Scripts
                 .2f);
             
             // detect valid positions for the target
-            rTs.TargetLocation(rHp,
-                rLastValidPosition = rTs.LastValidPosition(rLastValidPosition), 
-                layerIndex);
-            lTs.TargetLocation(lHp, 
-                lLastValidPosition = lTs.LastValidPosition(lLastValidPosition),
-                layerIndex);
-
+            rTs.TargetLocation(rHp, rLastValidPosition = rTs.LastValidPosition(rLastValidPosition), layerIndex, false);
+            lTs.TargetLocation(lHp, lLastValidPosition = lTs.LastValidPosition(lLastValidPosition),layerIndex, false);
+            
             // set the midpoint position
             rMp.transform.LocalDepth(rCp.transform.Midpoint(rTs.transform), false, 0f);
             lMp.transform.LocalDepth(lCp.transform.Midpoint(lTs.transform), false, 0f);
