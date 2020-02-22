@@ -320,9 +320,6 @@ namespace VR_Prototyping.Scripts
 					break;
 			}
 
-			//LFocusObject.Manipulation(RFocusObject, lBaseObject, pLBaseObject, controllerTransforms.LeftGrab(), lGrabPrevious, controllerTransforms.LeftTransform(), lTouch, rTouch);
-			//RFocusObject.Manipulation(LFocusObject, rBaseObject, pRBaseObject, controllerTransforms.RightGrab(), rGrabPrevious, controllerTransforms.RightTransform(), rTouch, lTouch);
-			
 			lBaseObject = LFocusObject.FindBaseObject(lBaseObject, controllerTransforms.LeftGrab());
 			rBaseObject = RFocusObject.FindBaseObject(rBaseObject, controllerTransforms.RightGrab());
 			gBaseObject = gFocusObject.FindBaseObject(gBaseObject, false);
@@ -339,7 +336,6 @@ namespace VR_Prototyping.Scripts
 		
 		private void CastUpdate()
 		{
-			// Publicly accessible value for Cast Hit Points
 			CastLocationL = lHp.transform;
 			CastLocationR = rHp.transform;
 
@@ -352,8 +348,7 @@ namespace VR_Prototyping.Scripts
 			Set.DistanceCast(lTs, lCf, lCp, lCn, lHp, lMp, lRt, lVisual, 
 				controllerTransforms.LeftTransform(), controllerTransforms.CameraTransform(), controllerTransforms.LeftJoystick(), maximumAngle, minimumAngle,
 				.1f, selectionRange, lLastValidPosition);
-            
-            // draw the line renderer
+			
             rLineRenderer.BezierLineRenderer(controllerTransforms.RightTransform().position,rMp.transform.position,rHp.transform.position,lineRenderQuality);
             lLineRenderer.BezierLineRenderer(controllerTransforms.LeftTransform().position, lMp.transform.position,lHp.transform.position, lineRenderQuality);
             
@@ -510,6 +505,7 @@ namespace VR_Prototyping.Scripts
 					throw new ArgumentOutOfRangeException(nameof(side), side, null);
 			}		
 		}
+
 		private void OnDrawGizmos () 
 		{
 			if (controllerTransforms != null && controllerTransforms.debugActive)
