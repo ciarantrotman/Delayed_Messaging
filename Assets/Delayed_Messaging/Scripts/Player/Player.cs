@@ -15,13 +15,12 @@ namespace Delayed_Messaging.Scripts.Player
         private GameObject playerObject;
         private Selection selection;
 
-        public List<BaseObject> selectedObjects = new List<BaseObject>();
+        public List<BaseObject> rSelectedObjects = new List<BaseObject>();
+        public List<BaseObject> lSelectedObjects = new List<BaseObject>();
 
         private void Start()
         {
             AssignComponents();
-            
-            selection.quickSelect.AddListener(ClearSelectedObjects);
         }
         
         private void AssignComponents()
@@ -37,15 +36,19 @@ namespace Delayed_Messaging.Scripts.Player
             }
             selection = playerObject.GetComponent<Selection>();
         }
-
-        private void ClearSelectedObjects()
+        public void ClearSelectedObjects(Selection.MultiSelect side, BaseObject focusObject)
         {
-            foreach (BaseObject selectedObject in selectedObjects)
-            {
-                selectedObject.Deselect();
-            }
+            IEnumerable<BaseObject> list = side == Selection.MultiSelect.LEFT ? lSelectedObjects : rSelectedObjects;
             
-            selectedObjects.Clear();
+            foreach (BaseObject selectedObject in list)
+            {
+                if (focusObject == null || selectedObject != focusObject)
+                {
+                    Debug.Log(selectedObject.name + " was <b>REMOVED</b>");
+                    selectedObject.Deselect(side);
+                    lSelectedObjects.Remove(selectedObject);
+                }
+            }
         }
     }
 }

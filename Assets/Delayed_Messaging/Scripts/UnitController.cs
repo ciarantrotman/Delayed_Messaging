@@ -158,13 +158,14 @@ namespace Delayed_Messaging.Scripts
         }
 
         public static void UnitMoveStart(GameObject visual, LineRenderer lr)
-        {
+        {/*
             visual.SetActive(true);
-            lr.enabled = true;
+            lr.enabled = true;*/
         }
         
         public void UnitMoveEnd(GameObject visual, LineRenderer lr)
         {
+            /*
             visual.SetActive(false);
             lr.enabled = false;
 
@@ -174,7 +175,7 @@ namespace Delayed_Messaging.Scripts
                 {
                     selectedObject.GetComponent<Unit>().Move(visual.transform.position);
                 }
-            }
+            }*/
         }
     }
 }

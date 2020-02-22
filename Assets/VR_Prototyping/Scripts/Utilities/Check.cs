@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts;
+using Delayed_Messaging.Scripts.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VR_Prototyping.Scripts.Accessibility;
@@ -50,66 +51,63 @@ namespace VR_Prototyping.Scripts.Utilities
         /// </summary>
         /// <param name="selectableObject"></param>
         /// <param name="selection"></param>
+        /// <param name="player"></param>
         /// <param name="currentSelectionState"></param>
         /// <param name="previousSelectionState"></param>
         /// <param name="selectionList"></param>
         /// <param name="sensitivity"></param>
-        public static void Selection(this BaseObject selectableObject, Selection selection, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, float sensitivity)
+        /// <param name="selectState"></param>
+        /// <param name="side"></param>
+        public static void Selection(this BaseObject selectableObject, Selection selection, Player player, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, float sensitivity, bool selectState, Selection.MultiSelect side)
         {
             // Used to calculate the type of hold state
             selectionList.BoolListCull(currentSelectionState, sensitivity);
             
             //Debug.Log(currentSelectionState + ", " + previousSelectionState + " | [n-1] " + selectionList[selectionList.Count-1] + ", [0] " + selectionList[0]);
             
-            switch (selectableObject == null)
+            switch (selectableObject != null && !selectState)
             {
-                case true:
+                case true: // should only be called when there is a selectable object and select hold isn't active
                     // Is true if select is called for the first time
                     if (currentSelectionState && !previousSelectionState)
                     {
-                        selection.SelectStart();
+                        player.ClearSelectedObjects(side, selectableObject);
+                        selectableObject.SelectStart(side);
                         return;
                     }
                     // Called after letting go of a selected object
                     if (!currentSelectionState && previousSelectionState && selectionList[0])
                     {
-                        selection.SelectHoldEnd();
+                        selectableObject.SelectHoldEnd(side);
                     }
                     // Is called if you have pressed select and let go within the threshold period
                     if (!currentSelectionState && previousSelectionState && !selectionList[0])
                     {
-                        selection.QuickSelect();
+                        selectableObject.QuickSelect(side);
                         return;
                     }
                     // Called if you are still holding select
                     if (currentSelectionState && selectionList[0])
                     {
-                        selection.SelectHold();
+                        selectableObject.SelectHold(side);
                     }
                     break;
                 default:
                     // Is true if select is called for the first time
                     if (currentSelectionState && !previousSelectionState)
                     {
-                        //selection.quickSelect.Invoke();    // This deselects existing units, so you can only have one at a time
-                        selectableObject.SelectStart();
-                        return;
-                    }
-                    // Called after letting go of a selected object
-                    if (!currentSelectionState && previousSelectionState && selectionList[0])
-                    {
-                        selectableObject.SelectHoldEnd();
-                    }
-                    // Is called if you have pressed select and let go within the threshold period
-                    if (!currentSelectionState && previousSelectionState && !selectionList[0])
-                    {
-                        selectableObject.QuickSelect();
+                        selection.SelectStart(side);
                         return;
                     }
                     // Called if you are still holding select
-                    if (currentSelectionState && selectionList[0])
+                    if (currentSelectionState && previousSelectionState)
                     {
-                        selectableObject.SelectHold();
+                        selection.SelectHold(side);
+                    }
+                    // Called after letting go of a selected object
+                    if (!currentSelectionState && previousSelectionState)
+                    {
+                        selection.SelectHoldEnd(side);
                     }
                     break;
             }

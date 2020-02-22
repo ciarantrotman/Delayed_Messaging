@@ -1,28 +1,28 @@
 ﻿namespace Delayed_Messaging.Scripts.Utilities
 {
-    public interface ISelectable
+    public interface ISelectable<in T>
     {
         /// <summary>
         /// This is when the select button is first pressed.
         /// </summary>
-        void SelectStart();
+        void SelectStart(T side);
         /// <summary>
         /// This is called and maintained after a certain duration.
         /// </summary>
-        void SelectHold();
+        void SelectHold(T side);
         /// <summary>
         /// This is analogue to QuickSelect but for a held select.
         /// </summary>
-        void SelectHoldEnd();
+        void SelectHoldEnd(T side);
         /// <summary>
         /// This is when select is tapped rather than held.
         /// <b> This should be viewed as an event.</b>
         /// </summary>
-        void QuickSelect();
+        void QuickSelect(T side);
         /// <summary>
         /// Common function called after QuickSelect() and SelectHoldEnd()
         /// </summary>
-        void Deselect();
+        void Deselect(T side);
     }
 
     public interface IHoverable

@@ -15,7 +15,7 @@ namespace Delayed_Messaging.Scripts.Structures
 
         public GameObject unit;
         
-        public override void QuickSelect()
+        public override void QuickSelect(Selection.MultiSelect side)
         {
             Instantiate(unit);
             unit.transform.position = spawnOrigin.position;

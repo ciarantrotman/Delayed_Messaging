@@ -67,7 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerClass: {fileID: 11400000, guid: bc466795cbb632f47b45ba991c7cfa8d, type: 2}
-  selectedObjects: []
+  rSelectedObjects: []
+  lSelectedObjects: []
 --- !u!114 &7473554891637304831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +136,10 @@ MonoBehaviour:
   targetVisual: {fileID: 5171863205534225016, guid: b02a7701e4ccd0340b18d1e4a674b219,
     type: 3}
   lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
+  selectionLineRenderMat: {fileID: 2100000, guid: a95dbd70e70bafa49967e3c51a35de61,
+    type: 2}
+  selectionQuad: {fileID: 3418142435891911999, guid: 3507abf690922e0489a9fe19524ce7cc,
+    type: 3}
   lineRenderWidth: 0.0025
   gazeCursor: {fileID: 3368970237513492719, guid: 0df546e5f776c5e44a9ca29e0c322cb3,
     type: 3}

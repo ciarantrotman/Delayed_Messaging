@@ -1,4 +1,5 @@
-﻿using Delayed_Messaging.Scripts.Player;
+﻿using System;
+using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
 using DG.Tweening;
 using UnityEditor;
@@ -10,7 +11,7 @@ using VR_Prototyping.Scripts.Utilities;
 namespace VR_Prototyping.Scripts
 {
 	[DisallowMultipleComponent, CanEditMultipleObjects]
-	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable
+	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable<Selection.MultiSelect>
 	{
 		internal GameObject playerObject;
 		internal ControllerTransforms controllerTransforms;
@@ -99,6 +100,9 @@ namespace VR_Prototyping.Scripts
 			SetupSelectedVisual(transform.position);
 			
 			gameObject.ToggleList(selection.globalList, true);
+			
+			selection.lDeselect.AddListener(LeftDeselect);
+			selection.rDeselect.AddListener(RightDeselect);
 		}
 		private void AssignComponents()
 		{
@@ -154,16 +158,21 @@ namespace VR_Prototyping.Scripts
 		{
 			
 		}
+
 		private void GetSortingValues()
 		{
 			Vector3 position = transform.position;
-			AngleG = Vector3.Angle(position - controllerTransforms.CameraPosition(), controllerTransforms.CameraForwardVector());
-			AngleL = Vector3.Angle(position - controllerTransforms.LeftTransform().position, controllerTransforms.LeftForwardVector());
-			AngleR = Vector3.Angle(position - controllerTransforms.RightTransform().position, controllerTransforms.RightForwardVector());
+			AngleG = Vector3.Angle(position - controllerTransforms.CameraPosition(),
+				controllerTransforms.CameraForwardVector());
+			AngleL = Vector3.Angle(position - controllerTransforms.LeftTransform().position,
+				controllerTransforms.LeftForwardVector());
+			AngleR = Vector3.Angle(position - controllerTransforms.RightTransform().position,
+				controllerTransforms.RightForwardVector());
 
+			if (selection == null) return;
+			
 			Vector3 castLocationL = selection.CastLocationL.position;
 			Vector3 castLocationR = selection.CastLocationR.position;
-			
 			CastDistanceL = Vector3.Distance(lClosestPoint = ObjectBounds.ClosestPoint(castLocationL), castLocationL);
 			CastDistanceR = Vector3.Distance(rClosestPoint = ObjectBounds.ClosestPoint(castLocationR), castLocationR);
 		}
@@ -179,29 +188,64 @@ namespace VR_Prototyping.Scripts
 		{
 			outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
 		}
-		public virtual void SelectStart()
+		public virtual void SelectStart(Selection.MultiSelect side)
 		{
-			player.selectedObjects.Add(this);
+			switch (side)
+			{
+				case Selection.MultiSelect.LEFT:
+					if (!player.lSelectedObjects.Contains(this))
+					{
+						player.lSelectedObjects.Add(this);
+					}
+					break;
+				case Selection.MultiSelect.RIGHT:
+					if (!player.rSelectedObjects.Contains(this))
+					{
+						player.rSelectedObjects.Add(this);
+					}
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(side), side, null);
+			}
 			selected = true;
 			selectionRing.SetFloat(BorderThickness, .05f);
 		}
-		public virtual void SelectHold()
+		public virtual void SelectHold(Selection.MultiSelect side)
 		{
 
 		}
 
-		public void SelectHoldEnd()
+		public void SelectHoldEnd(Selection.MultiSelect side)
 		{
 			
 		}
 
-		public virtual void QuickSelect()
+		public virtual void QuickSelect(Selection.MultiSelect side)
 		{
 			
 		}
-
-		public virtual void Deselect()
+		private void LeftDeselect()
 		{
+			Deselect(Selection.MultiSelect.LEFT);
+		}
+		private void RightDeselect()
+		{
+			Deselect(Selection.MultiSelect.RIGHT);
+		}
+		public virtual void Deselect(Selection.MultiSelect side)
+		{
+			Debug.Log(name + " was <b>DESELECTED</b>");
+			switch (side)
+			{
+				case Selection.MultiSelect.LEFT when player.lSelectedObjects.Contains(this):
+					player.lSelectedObjects.Remove(this);
+					break;
+				case Selection.MultiSelect.RIGHT when player.rSelectedObjects.Contains(this):
+					player.rSelectedObjects.Remove(this);
+					break;
+				default:
+					break;
+			}
 			selected = false;
 			selectionRing.SetFloat(BorderThickness, 0f);
 		}

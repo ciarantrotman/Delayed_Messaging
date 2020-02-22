@@ -29,6 +29,14 @@ namespace VR_Prototyping.Scripts
 				target.transform.position,
 				quality);
 		}
+		public static void DrawRectangularLineRenderer(this LineRenderer lineRenderer, Vector3 start, Vector3 end)
+		{
+			lineRenderer.SetPosition(0, start);
+			lineRenderer.SetPosition(1, new Vector3(start.x, start.y, end.z));
+			lineRenderer.SetPosition(2, end);
+			lineRenderer.SetPosition(3, new Vector3(end.x, end.y, start.z));
+			lineRenderer.SetPosition(4, start);
+		}
 		private static Vector3 GetPoint(Vector3 p0, Vector3 p1, Vector3 p2, float t)
 		{
 			return Vector3.Lerp(Vector3.Lerp(p0, p1, t), Vector3.Lerp(p1, p2, t), t);

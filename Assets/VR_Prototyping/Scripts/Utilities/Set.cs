@@ -277,7 +277,16 @@ namespace VR_Prototyping.Scripts
             if (a == null || b == null) return 0f;
             return Vector3.Distance(a.position, b.position) *.5f;
         }
-
+        /// <summary>
+        /// Returns distance to the midpoint of Vector3s A and B
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static float Midpoint(this Vector3 a, Vector3 b)
+        {
+            return Vector3.Distance(a, b) *.5f;
+        }
         public static void ForwardVector(this Transform a, Transform b)
         {
             if (a == null || b == null) return;
@@ -302,6 +311,13 @@ namespace VR_Prototyping.Scripts
         {
             Vector3 posA = a.position;
             Vector3 posB = b.position;
+            return Vector3.Lerp(posA, posB, .5f);
+        }
+        
+        public static Vector3 MidpointPosition(Vector3 a, Vector3 b)
+        {
+            Vector3 posA = a;
+            Vector3 posB = b;
             return Vector3.Lerp(posA, posB, .5f);
         }
         

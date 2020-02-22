@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts;
+using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,11 +12,11 @@ namespace VR_Prototyping.Scripts
 {
 	[DisallowMultipleComponent]
 	[RequireComponent(typeof(ControllerTransforms))]
-	public class Selection : MonoBehaviour, ISelectable
+	public class Selection : MonoBehaviour
 	{
 		#region Inspector and Variables
-
 		private ControllerTransforms controllerTransforms;
+		private Player player;
 		public enum SelectionType
 		{
 			FUSION,
@@ -41,11 +42,15 @@ namespace VR_Prototyping.Scripts
 		public GameObject RFocusObject { get; set; }
 		public Transform CastLocationR { get; set; }
 		public Transform CastLocationL { get; set; }
+		public bool SelectHoldR { get; set; }
+		public bool SelectHoldL { get; set; }
 
 		private bool rTouch;
 		private bool lTouch;
 		private bool lSelectPrevious;
 		private bool rSelectPrevious;
+		private bool lSelectHoldPrevious;
+		private bool rSelectHoldPrevious;
 		private bool lGrabPrevious;
 		private bool rGrabPrevious;
 		
@@ -68,37 +73,43 @@ namespace VR_Prototyping.Scripts
 		private Transform rPrevious;
 
 		#region Distance Cast Variables
-		//private ControllerTransforms.
-		public GameObject parent;
-		public GameObject cN;
-            
-		public GameObject rCf; // follow
-		public GameObject rCp; // proxy
-		public GameObject rCn; // normalised
-		public GameObject rMp; // midpoint
-		public GameObject rTs; // target
-		public GameObject rHp; // hit
-		public GameObject rVisual; // visual
-            
-		public GameObject rRt; // rotation
-		public GameObject lCf; // follow
-		public GameObject lCp; // proxy
-		public GameObject lCn; // normalised
-		public GameObject lMp; // midpoint
-		public GameObject lTs; // target
-		public GameObject lHp; // hit
-		public GameObject lVisual; // visual
-		public GameObject lRt; // rotation
-            
-		public Vector3 rLastValidPosition;
-		public Vector3 lLastValidPosition;
+		private GameObject parent;
+		private GameObject cN;
 
+		private GameObject rCf; // follow
+		private GameObject rCp; // proxy
+		private GameObject rCn; // normalised
+		private GameObject rMp; // midpoint
+		private GameObject rTs; // target
+		private GameObject rHp; // hit
+		private GameObject rVisual; // visual
+
+		private GameObject rRt; // rotation
+		private GameObject lCf; // follow
+		private GameObject lCp; // proxy
+		private GameObject lCn; // normalised
+		private GameObject lMp; // midpoint
+		private GameObject lTs; // target
+		private GameObject lHp; // hit
+		private GameObject lVisual; // visual
+		private GameObject lRt; // rotation
+
+		private Vector3 rLastValidPosition;
+		private Vector3 lLastValidPosition;
+
+		public enum MultiSelect
+		{
+			LEFT,
+			RIGHT
+		}
 		public struct MultiSelection
         {
 	        public Bounds SelectionBounds { get; set; }
 	        public Vector3 multiSelectS;
 	        public Vector3 multiSelectM;
 	        public Vector3 multiSelectE;
+	        public GameObject selectionQuad;
+	        public LineRenderer selectionLineRenderer;
         }
         
         public MultiSelection lMultiSelection;
@@ -126,6 +137,8 @@ namespace VR_Prototyping.Scripts
 		[Header("Selection Aesthetics")]
 		[SerializeField] private GameObject targetVisual;
 		[SerializeField] private Material lineRenderMat;
+		[SerializeField] private Material selectionLineRenderMat;
+		[SerializeField] private GameObject selectionQuad;
 		[SerializeField, Range(.001f, .1f)] private float lineRenderWidth = .005f;
 		[Space(10)] public GameObject gazeCursor;
 		[Range(3f, 30f), Space(10)] public int lineRenderQuality = 15;
@@ -138,7 +151,8 @@ namespace VR_Prototyping.Scripts
 		[HideInInspector] public List<GameObject> rCastList;
 		[HideInInspector] public List<GameObject> lCastList;
 		
-		[HideInInspector] public UnityEvent quickSelect;
+		[HideInInspector] public UnityEvent lDeselect;
+		[HideInInspector] public UnityEvent rDeselect;
 
 		public Selection(bool rTouch, bool lTouch)
 		{
@@ -150,6 +164,7 @@ namespace VR_Prototyping.Scripts
 		private void Start ()
 		{
 			controllerTransforms = GetComponent<ControllerTransforms>();
+			player = GetComponent<Player>();
 			
 			SetupGameObjects();
 			SetupCastSelectGameObjects();
@@ -243,6 +258,20 @@ namespace VR_Prototyping.Scripts
 
             rLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
             lLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
+            
+            lMultiSelection.selectionLineRenderer = rHp.AddComponent<LineRenderer>();
+            rMultiSelection.selectionLineRenderer = lHp.AddComponent<LineRenderer>();
+            
+            lMultiSelection.selectionLineRenderer.SetupLineRender(selectionLineRenderMat, .01f, false);
+            rMultiSelection.selectionLineRenderer.SetupLineRender(selectionLineRenderMat, .01f, false);
+            
+            lMultiSelection.selectionLineRenderer.SetVertexCount(5);
+            rMultiSelection.selectionLineRenderer.SetVertexCount(5);
+
+            lMultiSelection.selectionQuad = Instantiate(selectionQuad, lHp.transform);
+            rMultiSelection.selectionQuad = Instantiate(selectionQuad, rHp.transform);
+            lMultiSelection.selectionQuad.SetActive(false);
+            rMultiSelection.selectionQuad.SetActive(false);
             
             rLineRendererMaterial = rLineRenderer.material;
             lLineRendererMaterial = lLineRenderer.material;
@@ -338,8 +367,8 @@ namespace VR_Prototyping.Scripts
 			rBaseObject.Hover(pRBaseObject, lBaseObject);
 			
 			// Calculate Selection States
-			lBaseObject.Selection(this, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity);
-			rBaseObject.Selection(this, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity);
+			lBaseObject.Selection(this, player, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT);
+			rBaseObject.Selection(this, player, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT);
 
 			// Previous States
 			lSelectPrevious = controllerTransforms.LeftSelect();
@@ -388,6 +417,95 @@ namespace VR_Prototyping.Scripts
 			lTarget.transform.SetParent(null);
 			rTarget.transform.SetParent(null);
 		}
+		
+		public void SelectStart(MultiSelect side)
+		{
+			switch (side)
+			{
+				case MultiSelect.LEFT:
+					player.ClearSelectedObjects(MultiSelect.LEFT, lBaseObject);
+					lMultiSelection.multiSelectS = CastLocationL.position;
+					lMultiSelection.selectionLineRenderer.enabled = true;
+					lMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(lMultiSelection.multiSelectS, lMultiSelection.multiSelectS);
+					lMultiSelection.selectionQuad.SetActive(true);
+					lMultiSelection.multiSelectM = Set.MidpointPosition(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
+					lMultiSelection.selectionQuad.transform.position = lMultiSelection.multiSelectM;
+					lMultiSelection.selectionQuad.transform.rotation = Quaternion.identity;
+					break;
+				case MultiSelect.RIGHT:
+					player.ClearSelectedObjects(MultiSelect.RIGHT, rBaseObject);
+					rMultiSelection.multiSelectS = CastLocationR.position;
+					rMultiSelection.selectionLineRenderer.enabled = true;
+					rMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(rMultiSelection.multiSelectS, rMultiSelection.multiSelectS);
+					rMultiSelection.selectionQuad.SetActive(true);
+					rMultiSelection.multiSelectM = Set.MidpointPosition(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
+					rMultiSelection.selectionQuad.transform.position = rMultiSelection.multiSelectM;
+					rMultiSelection.selectionQuad.transform.rotation = Quaternion.identity;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(side), side, null);
+			}	
+		}
+		public void SelectHold(MultiSelect side)
+		{
+			switch (side)
+			{
+				case MultiSelect.LEFT:
+					SelectHoldL = true;
+					lMultiSelection.multiSelectE = CastLocationL.position;
+					lMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
+					lMultiSelection.multiSelectM = Set.MidpointPosition(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
+					lMultiSelection.selectionQuad.transform.position = lMultiSelection.multiSelectM;
+					lMultiSelection.selectionQuad.transform.rotation = Quaternion.identity;
+					break;
+				case MultiSelect.RIGHT:
+					SelectHoldR = true;
+					rMultiSelection.multiSelectE = CastLocationR.position;
+					rMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
+					rMultiSelection.multiSelectM = Set.MidpointPosition(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
+					rMultiSelection.selectionQuad.transform.position = rMultiSelection.multiSelectM;
+					rMultiSelection.selectionQuad.transform.rotation = Quaternion.identity;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(side), side, null);
+			}
+		}
+
+		public void SelectHoldEnd(MultiSelect side)
+		{
+			switch (side)
+			{
+				case MultiSelect.LEFT:
+					SelectHoldL = false;
+					lMultiSelection.multiSelectE = CastLocationL.position;
+					lMultiSelection.selectionLineRenderer.enabled = false;
+					lMultiSelection.selectionQuad.SetActive(false);
+					break;
+				case MultiSelect.RIGHT:
+					SelectHoldR = false;
+					rMultiSelection.multiSelectE = CastLocationR.position;
+					rMultiSelection.selectionLineRenderer.enabled = false;
+					rMultiSelection.selectionQuad.SetActive(false);
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(side), side, null);
+			}		
+		}
+		public void Deselect(MultiSelect side)
+		{
+			switch (side)
+			{
+				case MultiSelect.LEFT:
+					lDeselect.Invoke();
+					break;
+				case MultiSelect.RIGHT:
+					rDeselect.Invoke();
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(side), side, null);
+			}		
+		}
+		
 		private void OnDrawGizmos () 
 		{
 			if (controllerTransforms != null && controllerTransforms.debugActive)
@@ -400,6 +518,7 @@ namespace VR_Prototyping.Scripts
 		{
 			Gizmos.color = Color.cyan;
 			Gizmos.DrawWireSphere(lHp.transform.position, castSelectionRadius);
+			Gizmos.DrawLine(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
 			if (LFocusObject != null)
 			{
 				Gizmos.color = Color.cyan;
@@ -407,41 +526,12 @@ namespace VR_Prototyping.Scripts
 			}
 			Gizmos.color = Color.yellow;
 			Gizmos.DrawWireSphere(rHp.transform.position, castSelectionRadius);
+			Gizmos.DrawLine(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
 			if (RFocusObject != null)
 			{
 				Gizmos.color = Color.yellow;
 				Gizmos.DrawSphere(RFocusObject.transform.position, .2f);
 			}
-		}
-
-		public void SelectStart()
-		{
-
-		}
-		
-		public void SelectHoldStart()
-		{
-			throw new NotImplementedException();
-		}
-
-		public void SelectHold()
-		{
-			throw new NotImplementedException();
-		}
-
-		public void SelectHoldEnd()
-		{
-			throw new NotImplementedException();
-		}
-
-		public void QuickSelect()
-		{
-			quickSelect.Invoke();
-		}
-
-		public void Deselect()
-		{
-			throw new NotImplementedException();
 		}
 	}
 }

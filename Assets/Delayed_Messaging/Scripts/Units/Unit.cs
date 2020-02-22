@@ -51,21 +51,21 @@ namespace Delayed_Messaging.Scripts.Units
             intialised = true;
         }
 
-        public override void SelectStart()
+        public override void SelectStart(Selection.MultiSelect side)
         {
-            base.SelectStart();
+            base.SelectStart(side);
             destinationVisual.SetActive(true);
         }
 
-        public override void Deselect()
+        public override void Deselect(Selection.MultiSelect side)
         {
-            base.Deselect();
+            base.Deselect(side);
             destinationVisual.SetActive(false);
         }
 
-        public override void QuickSelect()
+        public override void QuickSelect(Selection.MultiSelect side)
         {
-            
+            base.QuickSelect(side);
         }
 
         public void Damage(float damageTaken)

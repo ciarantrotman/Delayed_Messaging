@@ -14,29 +14,29 @@ namespace VR_Prototyping.Scripts
     {
         private LocomotionPositionPreview positionPreview;
         
-        public GameObject parent;
-        public GameObject cN;
+        private GameObject parent;
+        private GameObject cN;
             
-        public GameObject rCf; // follow
-        public GameObject rCp; // proxy
-        public GameObject rCn; // normalised
-        public GameObject rMp; // midpoint
-        public GameObject rTs; // target
-        public GameObject rHp; // hit
-        public GameObject rVisual; // visual
-            
-        public GameObject rRt; // rotation
-        public GameObject lCf; // follow
-        public GameObject lCp; // proxy
-        public GameObject lCn; // normalised
-        public GameObject lMp; // midpoint
-        public GameObject lTs; // target
-        public GameObject lHp; // hit
-        public GameObject lVisual; // visual
-        public GameObject lRt; // rotation
-            
-        public Vector3 rLastValidPosition;
-        public Vector3 lLastValidPosition;
+        private GameObject rCf; // follow
+        private GameObject rCp; // proxy
+        private GameObject rCn; // normalised
+        private GameObject rMp; // midpoint
+        private GameObject rTs; // target
+        private GameObject rHp; // hit
+        private GameObject rVisual; // visual
+
+        private GameObject rRt; // rotation
+        private GameObject lCf; // follow
+        private GameObject lCp; // proxy
+        private GameObject lCn; // normalised
+        private GameObject lMp; // midpoint
+        private GameObject lTs; // target
+        private GameObject lHp; // hit
+        private GameObject lVisual; // visual
+        private GameObject lRt; // rotation
+
+        private Vector3 rLastValidPosition;
+        private Vector3 lLastValidPosition;
         
         [HideInInspector] public LineRenderer lLr;
         [HideInInspector] public LineRenderer rLr;
