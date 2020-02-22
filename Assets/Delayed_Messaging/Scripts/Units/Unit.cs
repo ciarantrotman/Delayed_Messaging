@@ -38,15 +38,14 @@ namespace Delayed_Messaging.Scripts.Units
             
             //aiPath = transform.AddOrGetAIPath();
             //aiPath.SetupAIPath(unitClass);
-
-            destinationSetter = t.AddOrGetAIDestinationSetter();
-
+            
             unitDestination = new GameObject("[" + name + " Destination]");
             unitDestination.transform.position = t.position;
             
             destinationVisual = Instantiate(destinationVisual, unitDestination.transform);
             destinationVisual.SetActive(false);
-            
+
+            destinationSetter = transform.GetComponent<AIDestinationSetter>();
             destinationSetter.target = unitDestination.transform;
 
             intialised = true;
@@ -86,33 +85,36 @@ namespace Delayed_Messaging.Scripts.Units
         
         private void OnDrawGizmos () 
         {
-            if (unitClass == null)
+            if (unitClass == null || controllerTransforms == null)
             {
                 return;
             }
-            if (unitClass.debugType == BaseClass.DebugType.ALWAYS)
+            if (unitClass.debugType == ControllerTransforms.DebugType.ALWAYS)
             {
                 DrawGizmos ();
             }
         }
         private void OnDrawGizmosSelected ()
         {
-            if (unitClass == null)
+            if (unitClass == null || controllerTransforms == null)
             {
                 return;
             }
-            if (unitClass.debugType == BaseClass.DebugType.SELECTED_ONLY)
+            if (unitClass.debugType == ControllerTransforms.DebugType.SELECTED_ONLY)
             {
                 DrawGizmos ();
             }
         }
-        private void DrawGizmos ()
+
+        public override void DrawGizmos ()
         {
             if (unitClass == null)
             {
                 return;
             }
             
+            base.DrawGizmos();
+
             // Cache
             Transform t = transform;
             Vector3 pos = t.position;

@@ -22,7 +22,7 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _BorderSize: 1
-    - _GridSize: 0.95
-    - _Tiling: 100
+    - _GridSize: 0.9
+    - _Tiling: 50
     m_Colors:
     - _GridColour: {r: 32, g: 32, b: 32, a: 1}

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +11,7 @@ namespace VR_Prototyping.Scripts
 {
 	[DisallowMultipleComponent]
 	[RequireComponent(typeof(ControllerTransforms))]
-	public class Selection : MonoBehaviour
+	public class Selection : MonoBehaviour, ISelectable
 	{
 		#region Inspector and Variables
 
@@ -37,6 +39,8 @@ namespace VR_Prototyping.Scripts
 
 		public GameObject LFocusObject { get; set; }
 		public GameObject RFocusObject { get; set; }
+		public Transform CastLocationR { get; set; }
+		public Transform CastLocationL { get; set; }
 
 		private bool rTouch;
 		private bool lTouch;
@@ -64,28 +68,42 @@ namespace VR_Prototyping.Scripts
 		private Transform rPrevious;
 
 		#region Distance Cast Variables
-		private GameObject parent;
-		
-		private GameObject rCf; // follow
-        private GameObject rCp; // proxy
-        private GameObject rCn; // normalised
-        private GameObject rMp; // midpoint
-        private GameObject rTs; // target
-        private GameObject rHp; // hit
-        private GameObject rVisual; // visual
-        private GameObject rRt; // rotation
+		//private ControllerTransforms.
+		public GameObject parent;
+		public GameObject cN;
+            
+		public GameObject rCf; // follow
+		public GameObject rCp; // proxy
+		public GameObject rCn; // normalised
+		public GameObject rMp; // midpoint
+		public GameObject rTs; // target
+		public GameObject rHp; // hit
+		public GameObject rVisual; // visual
+            
+		public GameObject rRt; // rotation
+		public GameObject lCf; // follow
+		public GameObject lCp; // proxy
+		public GameObject lCn; // normalised
+		public GameObject lMp; // midpoint
+		public GameObject lTs; // target
+		public GameObject lHp; // hit
+		public GameObject lVisual; // visual
+		public GameObject lRt; // rotation
+            
+		public Vector3 rLastValidPosition;
+		public Vector3 lLastValidPosition;
 
-        private GameObject lCf; // follow
-        private GameObject lCp; // proxy
-        private GameObject lCn; // normalised
-        private GameObject lMp; // midpoint
-        private GameObject lTs; // target
-        private GameObject lHp; // hit
-        private GameObject lVisual; // visual
-        private GameObject lRt; // rotation
-
-        private Vector3 rLastValidPosition;
-        private Vector3 lLastValidPosition;
+		public struct MultiSelection
+        {
+	        public Bounds SelectionBounds { get; set; }
+	        public Vector3 multiSelectS;
+	        public Vector3 multiSelectM;
+	        public Vector3 multiSelectE;
+        }
+        
+        public MultiSelection lMultiSelection;
+        public MultiSelection rMultiSelection;
+        
         #endregion
 		
 		private const float QuickSelectSensitivity = 20f;
@@ -102,7 +120,7 @@ namespace VR_Prototyping.Scripts
 		[Header("Casting Settings")]
 		[SerializeField, Range(0f, 180f)] private float minimumAngle = 60f;
 		[SerializeField, Range(0f, 180f)] private float maximumAngle = 110f;
-		[SerializeField] private float castSelectionRadius;
+		public float castSelectionRadius;
 		[SerializeField, Range(1, 15)] private int layerIndex = 10;
 
 		[Header("Selection Aesthetics")]
@@ -117,10 +135,9 @@ namespace VR_Prototyping.Scripts
 		[HideInInspector] public List<GameObject> gazeList;
 		[HideInInspector] public List<GameObject> rHandList;
 		[HideInInspector] public List<GameObject> lHandList;
+		[HideInInspector] public List<GameObject> rCastList;
+		[HideInInspector] public List<GameObject> lCastList;
 		
-		/// <summary>
-		/// Called when the user performs a quick select and there is no focus object
-		/// </summary>
 		[HideInInspector] public UnityEvent quickSelect;
 
 		public Selection(bool rTouch, bool lTouch)
@@ -172,35 +189,37 @@ namespace VR_Prototyping.Scripts
 
 			initialised = true;
 		}
-		
 		private void SetupCastSelectGameObjects()
         {
-            parent = new GameObject("[Cast Selection/Calculations]");
+	        //controllerTransforms.SetupCastObjects( targetVisual, "Selection", true);
+			const string instanceName = "Cast Selection";
+            
+            parent = new GameObject("[" + instanceName + "/Calculations]");
             Transform parentTransform = parent.transform;
             parentTransform.SetParent(transform);
 
-            rCf = new GameObject("[Cast Selection/Follow/Right]");
-            rCp = new GameObject("[Cast Selection/Proxy/Right]");
-            rCn = new GameObject("[Cast Selection/Normalised/Right]");
-            rMp = new GameObject("[Cast Selection/MidPoint/Right]");
-            rTs = new GameObject("[Cast Selection/Target/Right]");
-            rHp = new GameObject("[Cast Selection/HitPoint/Right]");
-            rRt = new GameObject("[Cast Selection/Rotation/Right]");
+            rCf = new GameObject("[" + instanceName + "/Follow/Right]");
+            rCp = new GameObject("[" + instanceName + "/Proxy/Right]");
+            rCn = new GameObject("[" + instanceName + "/Normalised/Right]");
+            rMp = new GameObject("[" + instanceName + "/MidPoint/Right]");
+            rTs = new GameObject("[" + instanceName + "/Target/Right]");
+            rHp = new GameObject("[" + instanceName + "/HitPoint/Right]");
+            rRt = new GameObject("[" + instanceName + "/Rotation/Right]");
             
-            lCf = new GameObject("[Cast Selection/Follow/Left]");
-            lCp = new GameObject("[Cast Selection/Proxy/Left]");
-            lCn = new GameObject("[Cast Selection/Normalised/Left]");
-            lMp = new GameObject("[Cast Selection/MidPoint/Left]");
-            lTs = new GameObject("[Cast Selection/Target/Left]");
-            lHp = new GameObject("[Cast Selection/HitPoint/Left]");
-            lRt = new GameObject("[Cast Selection/Rotation/Left]");
+            lCf = new GameObject("[" + instanceName + "/Follow/Left]");
+            lCp = new GameObject("[" + instanceName + "/Proxy/Left]");
+            lCn = new GameObject("[" + instanceName + "/Normalised/Left]");
+            lMp = new GameObject("[" + instanceName + "/MidPoint/Left]");
+            lTs = new GameObject("[" + instanceName + "/Target/Left]");
+            lHp = new GameObject("[" + instanceName + "/HitPoint/Left]");
+            lRt = new GameObject("[" + instanceName + "/Rotation/Left]");
             
             rVisual = Instantiate(targetVisual, rHp.transform);
-            rVisual.name = "[Cast Selection/Visual/Right]";
+            rVisual.name = "[" + instanceName + "/Visual/Right]";
             rVisual.SetActive(true);
             
             lVisual = Instantiate(targetVisual, lHp.transform);
-            lVisual.name = "[Cast Selection/Visual/Left]";
+            lVisual.name = "[" + instanceName + "/Visual/Left]";
             lVisual.SetActive(true);
 
             rCf.transform.SetParent(parentTransform);
@@ -218,8 +237,8 @@ namespace VR_Prototyping.Scripts
             lTs.transform.SetParent(lCn.transform);
             lHp.transform.SetParent(transform);
             lRt.transform.SetParent(lHp.transform);
-            
-            rLineRenderer = rCp.AddComponent<LineRenderer>();
+	        
+	        rLineRenderer = rCp.AddComponent<LineRenderer>();
             lLineRenderer = lCp.AddComponent<LineRenderer>();
 
             rLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
@@ -232,41 +251,51 @@ namespace VR_Prototyping.Scripts
 		private void Update()
 		{
 			SortLists();
-			CastUpdate();
 
 			switch (selectionType)
 			{
 				case SelectionType.FUZZY:
 					LFocusObject = lHandList.FuzzyFindFocusObject(LFocusObject, lTarget, lDefault, controllerTransforms.LeftGrab() || lTouch);
 					RFocusObject = rHandList.FuzzyFindFocusObject(RFocusObject, rTarget, rDefault, controllerTransforms.RightGrab() || rTouch);
+					lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
+					rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
+					lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
+					rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
 					break;
 				case SelectionType.RAY_CAST:
 					LFocusObject = lHandList.RayCastFindFocusObject(LFocusObject, lTarget, lDefault, controllerTransforms.LeftTransform(), setSelectionRange ? selectionRange : float.PositiveInfinity, controllerTransforms.LeftGrab() || lTouch);
 					RFocusObject = rHandList.RayCastFindFocusObject(RFocusObject, rTarget, rDefault, controllerTransforms.RightTransform(), setSelectionRange ? selectionRange : float.PositiveInfinity, controllerTransforms.RightGrab() || rTouch);
+					lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
+					rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
+					lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
+					rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
 					break;
 				case SelectionType.FUSION:
 					LFocusObject = lHandList.FusionFindFocusObject(LFocusObject, lTarget, lDefault, controllerTransforms.LeftTransform(), controllerTransforms.LeftForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, controllerTransforms.LeftGrab() || lTouch);
 					RFocusObject = rHandList.FusionFindFocusObject(RFocusObject, rTarget, rDefault, controllerTransforms.RightTransform(), controllerTransforms.RightForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, controllerTransforms.RightGrab() || rTouch);
 					gFocusObject = gazeList.FusionFindFocusObject(gFocusObject, gTarget, gDefault, controllerTransforms.CameraTransform(), controllerTransforms.CameraForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, false);
+					lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
+					rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
+					lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
+					rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
+					break;
+				case SelectionType.DISTANCE_CAST:
+					CastUpdate();
+					LFocusObject = lCastList.CastFindObject();
+					RFocusObject = rCastList.CastFindObject();
 					break;
 				default:
 					LFocusObject = null;
 					RFocusObject = null;
 					break;
 			}
+
+			//LFocusObject.Manipulation(RFocusObject, lBaseObject, pLBaseObject, controllerTransforms.LeftGrab(), lGrabPrevious, controllerTransforms.LeftTransform(), lTouch, rTouch);
+			//RFocusObject.Manipulation(LFocusObject, rBaseObject, pRBaseObject, controllerTransforms.RightGrab(), rGrabPrevious, controllerTransforms.RightTransform(), rTouch, lTouch);
 			
-			//lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
-			//rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
-			
-			//lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
-			//rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
-			
-			LFocusObject.Manipulation(RFocusObject, lBaseObject, pLBaseObject, controllerTransforms.LeftGrab(), lGrabPrevious, controllerTransforms.LeftTransform(), lTouch, rTouch);
-			RFocusObject.Manipulation(LFocusObject, rBaseObject, pRBaseObject, controllerTransforms.RightGrab(), rGrabPrevious, controllerTransforms.RightTransform(), rTouch, lTouch);
-			
-			lBaseObject = LFocusObject.FindSelectableObject(lBaseObject, controllerTransforms.LeftGrab());
-			rBaseObject = RFocusObject.FindSelectableObject(rBaseObject, controllerTransforms.RightGrab());
-			gBaseObject = gFocusObject.FindSelectableObject(gBaseObject, false);
+			lBaseObject = LFocusObject.FindBaseObject(lBaseObject, controllerTransforms.LeftGrab());
+			rBaseObject = RFocusObject.FindBaseObject(rBaseObject, controllerTransforms.RightGrab());
+			gBaseObject = gFocusObject.FindBaseObject(gBaseObject, false);
 			
 			lGrabPrevious = controllerTransforms.LeftGrab();
 			rGrabPrevious = controllerTransforms.RightGrab();
@@ -277,12 +306,13 @@ namespace VR_Prototyping.Scripts
 			lPrevious = controllerTransforms.LeftTransform();
 			rPrevious = controllerTransforms.RightTransform();
 		}
-
-		/// <summary>
-		/// 
-		/// </summary>
+		
 		private void CastUpdate()
 		{
+			// Publicly accessible value for Cast Hit Points
+			CastLocationL = lHp.transform;
+			CastLocationR = rHp.transform;
+
 			rLastValidPosition = rTs.LastValidPosition(rLastValidPosition);
 			lLastValidPosition = lTs.LastValidPosition(lLastValidPosition);
             
@@ -295,7 +325,7 @@ namespace VR_Prototyping.Scripts
             
             // draw the line renderer
             rLineRenderer.BezierLineRenderer(controllerTransforms.RightTransform().position,rMp.transform.position,rHp.transform.position,lineRenderQuality);
-            lLineRenderer.BezierLineRenderer(controllerTransforms.LeftTransform().position, lMp.transform.position, lHp.transform.position, lineRenderQuality);
+            lLineRenderer.BezierLineRenderer(controllerTransforms.LeftTransform().position, lMp.transform.position,lHp.transform.position, lineRenderQuality);
             
             lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lVisual.transform));
             rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rVisual.transform));
@@ -321,11 +351,29 @@ namespace VR_Prototyping.Scripts
 
 		private void SortLists()
 		{
-			lHandList.Sort(SortBy.FocusObjectL);
-			rHandList.Sort(SortBy.FocusObjectR);
-			gazeList.Sort(SortBy.FocusObjectG);
+			switch (selectionType)
+			{
+				case SelectionType.DISTANCE_CAST:
+					lCastList.Sort(SortBy.CastObjectL);
+					rCastList.Sort(SortBy.CastObjectR);
+					break;
+				case SelectionType.FUSION:
+					lHandList.Sort(SortBy.FocusObjectL);
+					rHandList.Sort(SortBy.FocusObjectR);
+					gazeList.Sort(SortBy.FocusObjectG);
+					break;
+				case SelectionType.FUZZY:
+					lHandList.Sort(SortBy.FocusObjectL);
+					rHandList.Sort(SortBy.FocusObjectR);
+					gazeList.Sort(SortBy.FocusObjectG);
+					break;
+				case SelectionType.RAY_CAST:
+					break;
+				default:
+					break;
+			}
 		}
-
+		
 		private void ResetGameObjects(Object current, Object previous)
 		{
 			if (current == previous) return;
@@ -339,6 +387,61 @@ namespace VR_Prototyping.Scripts
 			rTarget.transform.SetParent(transform);
 			lTarget.transform.SetParent(null);
 			rTarget.transform.SetParent(null);
+		}
+		private void OnDrawGizmos () 
+		{
+			if (controllerTransforms != null && controllerTransforms.debugActive)
+			{
+				DrawGizmos ();
+			}
+		}
+		
+		private void DrawGizmos ()
+		{
+			Gizmos.color = Color.cyan;
+			Gizmos.DrawWireSphere(lHp.transform.position, castSelectionRadius);
+			if (LFocusObject != null)
+			{
+				Gizmos.color = Color.cyan;
+				Gizmos.DrawSphere(LFocusObject.transform.position, .2f);
+			}
+			Gizmos.color = Color.yellow;
+			Gizmos.DrawWireSphere(rHp.transform.position, castSelectionRadius);
+			if (RFocusObject != null)
+			{
+				Gizmos.color = Color.yellow;
+				Gizmos.DrawSphere(RFocusObject.transform.position, .2f);
+			}
+		}
+
+		public void SelectStart()
+		{
+
+		}
+		
+		public void SelectHoldStart()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void SelectHold()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void SelectHoldEnd()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void QuickSelect()
+		{
+			quickSelect.Invoke();
+		}
+
+		public void Deselect()
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

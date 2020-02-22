@@ -64,10 +64,27 @@ namespace VR_Prototyping.Scripts.Utilities
             switch (selectableObject == null)
             {
                 case true:
+                    // Is true if select is called for the first time
+                    if (currentSelectionState && !previousSelectionState)
+                    {
+                        selection.SelectStart();
+                        return;
+                    }
+                    // Called after letting go of a selected object
+                    if (!currentSelectionState && previousSelectionState && selectionList[0])
+                    {
+                        selection.SelectHoldEnd();
+                    }
+                    // Is called if you have pressed select and let go within the threshold period
                     if (!currentSelectionState && previousSelectionState && !selectionList[0])
                     {
-                        selection.quickSelect.Invoke();
+                        selection.QuickSelect();
                         return;
+                    }
+                    // Called if you are still holding select
+                    if (currentSelectionState && selectionList[0])
+                    {
+                        selection.SelectHold();
                     }
                     break;
                 default:
@@ -309,7 +326,7 @@ namespace VR_Prototyping.Scripts.Utilities
             {
                 target.transform.SetParent(objects[0].gameObject.transform);
                 target.transform.TransformLerpPosition(objects[0].gameObject.transform, .25f);
-                return objects[0].gameObject;
+                return objects[0];
             }
             
             target.transform.SetParent(null);
@@ -317,7 +334,16 @@ namespace VR_Prototyping.Scripts.Utilities
             return null;
         }
 
-        public static BaseObject FindSelectableObject(this GameObject focusObject, BaseObject current, bool disable)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="castObjects"></param>
+        /// <returns></returns>
+        public static GameObject CastFindObject(this List<GameObject> castObjects)
+        {
+            return castObjects.Count > 0 ? castObjects[0] : null;
+        }
+        public static BaseObject FindBaseObject(this GameObject focusObject, BaseObject current, bool disable)
         {
             if (disable) return current == null ? null : current;
             
@@ -377,22 +403,47 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <param name="manualAngle"></param>
         /// <param name="currentAngle"></param>
         /// <returns></returns>
-        public static bool CheckHand(this GameObject gameObject, ICollection<GameObject> gazeList, float manualAngle, float currentAngle)
+        public static bool WithinHandCone(this GameObject gameObject, ICollection<GameObject> gazeList, float manualAngle, float currentAngle)
         {
             if (!gazeList.Contains(gameObject)) return false;
             return manualAngle > currentAngle / 2;
         }
-        public static void ManageList(this GameObject g, ICollection<GameObject> l, bool b, bool d, bool r)
+        /// <summary>
+        /// Compares selection distance with the cast distance
+        /// </summary>
+        /// <param name="baseObject"></param>
+        /// <param name="globalList"></param>
+        /// <param name="castDistance"></param>
+        /// <param name="currentDistance"></param>
+        /// <returns></returns>
+        public static bool WithinCastDistance(this GameObject baseObject, ICollection<GameObject> globalList, float castDistance, float currentDistance)
         {
-            if (d || !r) return;
-			
-            if (b && !l.Contains(g))
+            if (!globalList.Contains(baseObject))
             {
-                l.Add(g);
+                return false;
             }
-            else if (!b && l.Contains(g))
+            
+            return currentDistance <= castDistance;
+        }
+        /// <summary>
+        /// Controls the appearance of game objects based on selection criteria
+        /// </summary>
+        /// <param name="gameObject"></param>
+        /// <param name="list"></param>
+        /// <param name="selectionConditionsMet"></param>
+        /// <param name="disabled"></param>
+        /// <param name="selectionRangeEnabled"></param>
+        public static void ManageList(this GameObject gameObject, ICollection<GameObject> list, bool selectionConditionsMet, bool disabled = false, bool selectionRangeEnabled = true)
+        {
+            if (disabled || !selectionRangeEnabled) return;
+			
+            if (selectionConditionsMet && !list.Contains(gameObject))
             {
-                l.Remove(g);
+                list.Add(gameObject);
+            }
+            else if (!selectionConditionsMet && list.Contains(gameObject))
+            {
+                list.Remove(gameObject);
             }
         }
         public static float TransformDistance(this Transform a, Transform b)

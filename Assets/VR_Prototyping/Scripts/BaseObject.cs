@@ -21,6 +21,9 @@ namespace VR_Prototyping.Scripts
 		private Vector3 defaultPosition;
 		private Vector3 defaultLocalPosition;
 
+		private Vector3 lClosestPoint;
+		private Vector3 rClosestPoint;
+
 		private bool active;
 		private bool hover;
 		private bool selected;
@@ -28,6 +31,10 @@ namespace VR_Prototyping.Scripts
 		public float AngleL { get; private set; }
 		public float AngleR { get; private set; }
 		public float AngleG { get; private set; }
+		public float CastDistanceR { get; private set; }
+		public float CastDistanceL { get; private set; }
+
+		public Bounds ObjectBounds { get; set; }
 
 		[Header("Base Object Settings")] 
 		[Header("Selection Settings")]
@@ -74,11 +81,16 @@ namespace VR_Prototyping.Scripts
 		{
 			if (selection == null) return;
 			selection.ResetObjects();
+			
 			GameObject g = gameObject;
 			g.ToggleList(selection.globalList, false);
+			
 			g.ToggleList(selection.gazeList, false);
 			g.ToggleList(selection.lHandList, false);
 			g.ToggleList(selection.rHandList, false);
+			
+			g.ToggleList(selection.rCastList, false);
+			g.ToggleList(selection.rCastList, false);
 		}
 		private void InitialiseObject()
 		{
@@ -86,9 +98,7 @@ namespace VR_Prototyping.Scripts
 			SetupOutline();
 			SetupSelectedVisual(transform.position);
 			
-			GameObject g = gameObject;
-			g.ToggleList(selection.globalList, true);
-			g.ToggleList(selection.globalList, true);
+			gameObject.ToggleList(selection.globalList, true);
 		}
 		private void AssignComponents()
 		{
@@ -123,12 +133,19 @@ namespace VR_Prototyping.Scripts
 		}
 		private void Update()
 		{					
-			GetAngles();
+			GetSortingValues();
+			ObjectBounds = transform.ObjectBounds(ObjectBounds);
 			
 			GameObject o = gameObject;
+			
+			/*
 			o.CheckGaze(AngleG, selection.gaze, selection.gazeList, selection.lHandList, selection.rHandList, selection.globalList);
-			o.ManageList(selection.lHandList, o.CheckHand(selection.gazeList, selection.manual, AngleL), selection.disableLeftHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.LeftTransform(), selection.selectionRange));
-			o.ManageList(selection.rHandList, o.CheckHand(selection.gazeList, selection.manual, AngleR), selection.disableRightHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.RightTransform(), selection.selectionRange));
+			o.ManageList(selection.lHandList, o.WithinHandCone(selection.gazeList, selection.manual, AngleL), selection.disableLeftHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.LeftTransform(), selection.selectionRange));
+			o.ManageList(selection.rHandList, o.WithinHandCone(selection.gazeList, selection.manual, AngleR), selection.disableRightHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.RightTransform(), selection.selectionRange));
+			*/
+			
+			o.ManageList(selection.lCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceL));
+			o.ManageList(selection.rCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceR));
 			
 			ObjectUpdate();
 		}
@@ -137,12 +154,18 @@ namespace VR_Prototyping.Scripts
 		{
 			
 		}
-		private void GetAngles()
+		private void GetSortingValues()
 		{
 			Vector3 position = transform.position;
 			AngleG = Vector3.Angle(position - controllerTransforms.CameraPosition(), controllerTransforms.CameraForwardVector());
 			AngleL = Vector3.Angle(position - controllerTransforms.LeftTransform().position, controllerTransforms.LeftForwardVector());
 			AngleR = Vector3.Angle(position - controllerTransforms.RightTransform().position, controllerTransforms.RightForwardVector());
+
+			Vector3 castLocationL = selection.CastLocationL.position;
+			Vector3 castLocationR = selection.CastLocationR.position;
+			
+			CastDistanceL = Vector3.Distance(lClosestPoint = ObjectBounds.ClosestPoint(castLocationL), castLocationL);
+			CastDistanceR = Vector3.Distance(rClosestPoint = ObjectBounds.ClosestPoint(castLocationR), castLocationR);
 		}
 		public virtual void HoverStart()
 		{
@@ -181,6 +204,34 @@ namespace VR_Prototyping.Scripts
 		{
 			selected = false;
 			selectionRing.SetFloat(BorderThickness, 0f);
+		}
+		
+		public virtual void DrawGizmos ()
+		{
+			if (selection == null)
+			{
+				return;
+			}
+			
+			Gizmos.color = Color.green;
+			Gizmos.DrawWireCube(ObjectBounds.center, ObjectBounds.size);
+			
+			Gizmos.color = Color.red;
+			Vector3 position = transform.position;
+			
+			Gizmos.DrawLine(lClosestPoint, selection.CastLocationL.position);
+			Gizmos.DrawWireSphere(lClosestPoint, .05f);
+			Gizmos.DrawLine(rClosestPoint, selection.CastLocationR.position);
+			Gizmos.DrawWireSphere(rClosestPoint, .05f);
+			Gizmos.color = Color.black;
+			Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationR.position - position) * selection.castSelectionRadius);
+			Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationL.position - position) * selection.castSelectionRadius);
+
+			if (hover)
+			{
+				Gizmos.color = hoverOutlineColour;
+				Gizmos.DrawRay(position, Vector3.up);
+			}
 		}
 	}
 }

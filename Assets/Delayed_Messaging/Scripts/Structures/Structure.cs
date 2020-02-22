@@ -37,7 +37,7 @@ namespace Delayed_Messaging.Scripts.Structures
             {
                 return;
             }
-            if (structureClass.debugType == StructureClass.DebugType.ALWAYS)
+            if (structureClass.debugType == ControllerTransforms.DebugType.ALWAYS)
             {
                 DrawGizmos ();
             }
@@ -48,7 +48,7 @@ namespace Delayed_Messaging.Scripts.Structures
             {
                 return;
             }
-            if (structureClass.debugType == StructureClass.DebugType.SELECTED_ONLY)
+            if (structureClass.debugType == ControllerTransforms.DebugType.SELECTED_ONLY)
             {
                 DrawGizmos ();
             }
@@ -59,6 +59,8 @@ namespace Delayed_Messaging.Scripts.Structures
             {
                 return;
             }
+            
+            base.DrawGizmos();
             
             // Cache
             Transform t = transform;

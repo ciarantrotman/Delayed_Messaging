@@ -563,9 +563,11 @@ namespace VR_Prototyping.Scripts
             switch (add)
             {
                 case true when !list.Contains(gameObject):
+                    Debug.Log(gameObject.name + " <b>added to</b> " + list);
                     list.Add(gameObject);
                     return;
                 case false when list.Contains(gameObject):
+                    Debug.Log(gameObject.name + " <b>removed from</b> " + list);
                     list.Remove(gameObject);
                     return;
                 default:
@@ -598,21 +600,17 @@ namespace VR_Prototyping.Scripts
             Ts.TargetLocation(Hp, lastValidPosition, 10, false);
             Mp.transform.LocalDepth(Cp.transform.Midpoint(Ts.transform), false, 0f);
             visual.Target(Hp, Cn.transform, joystick, Rt);
-            /*
-            // detect valid positions for the target
-            rTs.TargetLocation(rHp,
-                rLastValidPosition = rTs.LastValidPosition(rLastValidPosition), 
-                layerIndex);
-            lTs.TargetLocation(lHp, 
-                lLastValidPosition = lTs.LastValidPosition(lLastValidPosition),
-                layerIndex);*/
-            /*
-            // draw the line renderer
-            rLineRenderer.BezierLineRenderer(controllerTransforms.RightTransform().position,rMp.transform.position,rHp.transform.position,lineRenderQuality);
-            lLineRenderer.BezierLineRenderer(controllerTransforms.LeftTransform().position, lMp.transform.position, lHp.transform.position, lineRenderQuality);
-            
-            lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lVisual.transform));
-            rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rVisual.transform));*/
+        }
+
+        public static Bounds ObjectBounds(this Transform parentObject, Bounds bounds)
+        {
+            bounds = new Bounds (parentObject.position, Vector3.zero);
+            MeshRenderer[] renderers = parentObject.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in renderers)
+            {
+                bounds.Encapsulate(renderer.bounds);
+            }
+            return bounds;
         }
     }
 }

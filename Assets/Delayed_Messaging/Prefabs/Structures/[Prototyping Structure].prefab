@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ca992807e8bbf44b0e0d42f7e95fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionType: 0
+  selectionType: 3
   hoverOutlineColour: {r: 0.5538003, g: 0.8605781, b: 0.8962264, a: 1}
   hoverOutlineWidth: 7
   hoverOutlineMode: 0

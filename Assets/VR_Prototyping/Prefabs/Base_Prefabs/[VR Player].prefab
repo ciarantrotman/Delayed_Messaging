@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   steamEnabled: 1
-  debugActive: 0
+  debugActive: 1
   directInteraction: 1
   directDistance: 0.025
   layerIndex: 9
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lSelect: 
   rSelect: 
-  selectionType: 0
+  selectionType: 3
   gaze: 60
   manual: 10
   setSelectionRange: 1
@@ -144,6 +144,8 @@ MonoBehaviour:
   gazeList: []
   rHandList: []
   lHandList: []
+  rCastList: []
+  lCastList: []
   quickSelect:
     m_PersistentCalls:
       m_Calls: []
