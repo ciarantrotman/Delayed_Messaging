@@ -85,6 +85,7 @@ namespace VR_Prototyping.Scripts
 			
 			GameObject g = gameObject;
 			g.ToggleList(selection.globalList, false);
+			selection.baseObjectsList.Remove(this);
 			
 			g.ToggleList(selection.gazeList, false);
 			g.ToggleList(selection.lHandList, false);
@@ -100,6 +101,7 @@ namespace VR_Prototyping.Scripts
 			SetupSelectedVisual(transform.position);
 			
 			gameObject.ToggleList(selection.globalList, true);
+			selection.baseObjectsList.Add(this);
 			
 			selection.lDeselect.AddListener(LeftDeselect);
 			selection.rDeselect.AddListener(RightDeselect);
@@ -214,12 +216,10 @@ namespace VR_Prototyping.Scripts
 		{
 
 		}
-
 		public void SelectHoldEnd(Selection.MultiSelect side)
 		{
 			
 		}
-
 		public virtual void QuickSelect(Selection.MultiSelect side)
 		{
 			
