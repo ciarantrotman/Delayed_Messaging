@@ -146,12 +146,16 @@ MonoBehaviour:
   lineRenderQuality: 30
   inactiveLineRenderOffset: 0.1
   globalList: []
+  baseObjectsList: []
   gazeList: []
   rHandList: []
   lHandList: []
   rCastList: []
   lCastList: []
-  quickSelect:
+  lDeselect:
+    m_PersistentCalls:
+      m_Calls: []
+  rDeselect:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2910476754053980516

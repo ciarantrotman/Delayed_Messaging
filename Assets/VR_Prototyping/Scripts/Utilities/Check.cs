@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Player;
+using Delayed_Messaging.Scripts.Units;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VR_Prototyping.Scripts.Accessibility;
@@ -32,7 +33,7 @@ namespace VR_Prototyping.Scripts.Utilities
             }*/
         }
 
-        public static void MoveUnit(this UnitController unitController, bool current, bool previous, GameObject visual, LineRenderer lineRenderer)
+        public static void MoveUnit(this UnitController unitController, bool current, bool previous, GameObject visual, LineRenderer lineRenderer, List<BaseObject> units)
         {
             if (current && !previous)
             {
@@ -41,7 +42,7 @@ namespace VR_Prototyping.Scripts.Utilities
             }
             if (!current && previous)
             {
-                unitController.UnitMoveEnd(visual, lineRenderer);
+                unitController.UnitMoveEnd(visual, lineRenderer, units);
                 return;
             }
         }

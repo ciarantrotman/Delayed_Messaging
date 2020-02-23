@@ -150,32 +150,33 @@ namespace Delayed_Messaging.Scripts
 
         private void LateUpdate()
         {
-            this.MoveUnit(controllerTransforms.LeftGrab(),pGrabL, lVisual, lLineRenderer);
-            this.MoveUnit(controllerTransforms.RightGrab(),pGrabR, rVisual, rLineRenderer);
+            this.MoveUnit(controllerTransforms.LeftGrab(),pGrabL, lVisual, lLineRenderer, player.lSelectedObjects);
+            this.MoveUnit(controllerTransforms.RightGrab(),pGrabR, rVisual, rLineRenderer, player.rSelectedObjects);
 
             pGrabL = controllerTransforms.LeftGrab();
             pGrabR = controllerTransforms.RightGrab();
         }
 
         public static void UnitMoveStart(GameObject visual, LineRenderer lr)
-        {/*
+        {
             visual.SetActive(true);
-            lr.enabled = true;*/
+            lr.enabled = true;
         }
         
-        public void UnitMoveEnd(GameObject visual, LineRenderer lr)
+        public void UnitMoveEnd(GameObject visual, LineRenderer lr, IEnumerable<BaseObject> units)
         {
-            /*
             visual.SetActive(false);
             lr.enabled = false;
 
-            foreach (BaseObject selectedObject in player.selectedObjects)
+            foreach (BaseObject baseObject in units)
             {
-                if (selectedObject is Unit)
+                Unit selectedUnit = (Unit) baseObject;
+                if (selectedUnit == null)
                 {
-                    selectedObject.GetComponent<Unit>().Move(visual.transform.position);
+                    continue;
                 }
-            }*/
+                selectedUnit.Move(visual.transform.position);
+            }
         }
     }
 }
