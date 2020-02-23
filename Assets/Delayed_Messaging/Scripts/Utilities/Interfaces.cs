@@ -50,14 +50,4 @@
     {
         void Damage(T damageTaken);
     }
-
-    public interface ISpawnable
-    {
-        void Spawn();
-    }
-
-    public interface IPlaceable
-    {
-        void Place();
-    }
 }
