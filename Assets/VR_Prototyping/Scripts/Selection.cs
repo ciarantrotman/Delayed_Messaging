@@ -145,15 +145,12 @@ namespace VR_Prototyping.Scripts
 		[Range(.1f, 2.5f)] public float inactiveLineRenderOffset = 1f;
 
 		[HideInInspector] public List<GameObject> globalList;
-		public List<BaseObject> baseObjectsList;
+		[HideInInspector] public List<BaseObject> baseObjectsList;
 		[HideInInspector] public List<GameObject> gazeList;
 		[HideInInspector] public List<GameObject> rHandList;
 		[HideInInspector] public List<GameObject> lHandList;
 		[HideInInspector] public List<GameObject> rCastList;
 		[HideInInspector] public List<GameObject> lCastList;
-		
-		[HideInInspector] public UnityEvent lDeselect;
-		[HideInInspector] public UnityEvent rDeselect;
 
 		public Selection(bool rTouch, bool lTouch)
 		{

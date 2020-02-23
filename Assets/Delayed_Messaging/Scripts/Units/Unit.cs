@@ -12,21 +12,22 @@ namespace Delayed_Messaging.Scripts.Units
         public UnitClass unitClass;
         public UnitClass.UnitData unitData;
         
-        [Header("Aesthetics")]
-        [SerializeField] private GameObject destinationVisual;
+        [SerializeField, Space(10)] private Material destinationLineRendererMat;
         
         private AIDestinationSetter destinationSetter;
         private AIPath aiPath;
 
         private GameObject unitDestination;
+        private GameObject unitDestinationLocal;
+        private LineRenderer destinationLineRenderer;
 
         private bool intialised;
-        
-        private void Start()
+
+        protected override void Initialise()
         {
             InitialiseUnit();
         }
-
+        
         public void InitialiseUnit()
         {
             if (intialised)
@@ -40,27 +41,36 @@ namespace Delayed_Messaging.Scripts.Units
             //aiPath.SetupAIPath(unitClass);
             
             unitDestination = new GameObject("[" + name + " Destination]");
-            unitDestination.transform.position = t.position;
+            unitDestinationLocal = new GameObject("[" + name + " Destination Local]");
+            unitDestinationLocal.transform.SetParent(t);
             
-            destinationVisual = Instantiate(destinationVisual, unitDestination.transform);
-            destinationVisual.SetActive(false);
+            unitDestination.transform.position = t.position;
 
             destinationSetter = transform.GetComponent<AIDestinationSetter>();
             destinationSetter.target = unitDestination.transform;
 
+            destinationLineRenderer = unitDestination.transform.AddOrGetLineRenderer();
+            destinationLineRenderer.SetupLineRender(destinationLineRendererMat, .005f, false);
+
             intialised = true;
+        }
+        protected override void ObjectUpdate()
+        {
+            unitDestinationLocal.transform.Position(unitDestination.transform);
+            destinationLineRenderer.StraightLineRender(transform, unitDestination.transform);
+            selectionVisualEffect.SetVector3("Destination", unitDestinationLocal.transform.position);
         }
 
         public override void SelectStart(Selection.MultiSelect side)
         {
+            destinationLineRenderer.enabled = true;
             base.SelectStart(side);
-            destinationVisual.SetActive(true);
         }
 
         public override void Deselect(Selection.MultiSelect side)
         {
+            destinationLineRenderer.enabled = false;
             base.Deselect(side);
-            destinationVisual.SetActive(false);
         }
 
         public override void QuickSelect(Selection.MultiSelect side)

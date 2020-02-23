@@ -21,8 +21,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _BorderSize: 1
-    - _GridSize: 0.9
-    - _Tiling: 50
+    - _BorderSize: 0.97
+    - _GridSize: 0.95
+    - _Tiling: 100
     m_Colors:
-    - _GridColour: {r: 32, g: 32, b: 32, a: 1}
+    - _GridColour: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}

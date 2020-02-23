@@ -170,12 +170,16 @@ namespace Delayed_Messaging.Scripts
 
             foreach (BaseObject baseObject in units)
             {
-                Unit selectedUnit = (Unit) baseObject;
-                if (selectedUnit == null)
+                if (baseObject is Unit)
                 {
-                    continue;
+                    Unit selectedUnit = baseObject.GetComponent<Unit>();
+                    if (selectedUnit == null)
+                    {
+                        continue;
+                    }
+                    selectedUnit.Move(visual.transform.position);
                 }
-                selectedUnit.Move(visual.transform.position);
+                
             }
         }
     }

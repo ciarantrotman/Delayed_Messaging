@@ -126,13 +126,13 @@ MonoBehaviour:
   gaze: 60
   manual: 10
   setSelectionRange: 1
-  selectionRange: 10
+  selectionRange: 7.5
   disableLeftHand: 0
   disableRightHand: 0
   minimumAngle: 60
   maximumAngle: 110
-  castSelectionRadius: 0.5
-  layerIndex: 10
+  castSelectionRadius: 0.25
+  layerIndex: 15
   targetVisual: {fileID: 5171863205534225016, guid: b02a7701e4ccd0340b18d1e4a674b219,
     type: 3}
   lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}

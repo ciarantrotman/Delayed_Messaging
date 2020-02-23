@@ -1,10 +1,12 @@
 ﻿using System;
+using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
 using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
 using VR_Prototyping.Scripts.Utilities;
 
@@ -28,7 +30,11 @@ namespace VR_Prototyping.Scripts
 		private bool active;
 		private bool hover;
 		private bool selected;
+		private bool initialised;
 
+		internal VisualEffect selectionVisualEffect;
+		internal float health;
+			
 		public float AngleL { get; private set; }
 		public float AngleR { get; private set; }
 		public float AngleG { get; private set; }
@@ -37,7 +43,12 @@ namespace VR_Prototyping.Scripts
 
 		public Bounds ObjectBounds { get; set; }
 
+		private const string SelectEvent = "Select";
+		private const string DeselectEvent = "Deselect";
+
 		[Header("Base Object Settings")] 
+		[SerializeField] private BaseClass objectClass;
+		
 		[Header("Selection Settings")]
 		public Selection.SelectionType selectionType;
 		
@@ -46,13 +57,10 @@ namespace VR_Prototyping.Scripts
 		[SerializeField, Range(0,10)] private float hoverOutlineWidth = 10f;
 		[SerializeField] private Outline.Mode hoverOutlineMode = Outline.Mode.OutlineAll;
 
-		[Header("Selection Aesthetics")]
+		[Header("Selection Aesthetics")] 
 		[SerializeField] private GameObject selectionVisual;
-		[SerializeField] private float selectionScale;
+		[SerializeField] internal float selectionRadius;
 		[SerializeField] private Color selectionColour = new Color(1,1,1,1);
-		private Material selectionRing;
-		private static readonly int BorderThickness = Shader.PropertyToID("_BorderThickness");
-		private static readonly int SelectionColour = Shader.PropertyToID("_SelectionColour");
 
 		private void Start ()
 		{
@@ -70,18 +78,20 @@ namespace VR_Prototyping.Scripts
 
 		private void OnDestroy()
 		{
-			DestroySelectableObject();
+			DestroyBaseObject();
 		}
 
 		public void OnDisable()
 		{
-			DestroySelectableObject();
+			DestroyBaseObject();
 		}
 
-		private void DestroySelectableObject()
+		private void DestroyBaseObject()
 		{
 			if (selection == null) return;
 			selection.ResetObjects();
+
+			initialised = false;
 			
 			GameObject g = gameObject;
 			g.ToggleList(selection.globalList, false);
@@ -96,15 +106,20 @@ namespace VR_Prototyping.Scripts
 		}
 		private void InitialiseObject()
 		{
+			if (initialised)
+			{
+				Debug.LogError("<b>[BASE OBJECT]</b> " + name + " tried to initialise, but had already been initialised");
+				return;
+			}
 			AssignComponents();
 			SetupOutline();
-			SetupSelectedVisual(transform.position);
+			SetupSelectedVisual();
+
+			health = objectClass.healthMax;
 			
 			gameObject.ToggleList(selection.globalList, true);
 			selection.baseObjectsList.Add(this);
-			
-			selection.lDeselect.AddListener(LeftDeselect);
-			selection.rDeselect.AddListener(RightDeselect);
+			initialised = true;
 		}
 		private void AssignComponents()
 		{
@@ -127,40 +142,37 @@ namespace VR_Prototyping.Scripts
 			outline.enabled = false;
 			outline.precomputeOutline = true;
 		}
-		private void SetupSelectedVisual(Vector3 position)
+		private void SetupSelectedVisual()
 		{
 			selectionVisual = Instantiate(selectionVisual, transform);
-			selectionVisual.transform.position = new Vector3(position.x, 0, position.z);
-			selectionVisual.transform.localScale = new Vector3(selectionScale, selectionScale, selectionScale);
-			
-			selectionRing = selectionVisual.GetComponentInChildren<MeshRenderer>().material;
-			selectionRing.SetFloat(BorderThickness, 0f);
-			selectionRing.SetColor(SelectionColour, selectionColour);
+			selectionVisualEffect = selectionVisual.GetComponent<VisualEffect>();
+			selectionVisualEffect.SetFloat("SelectionRadius", selectionRadius);
+			selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
 		}
 		private void Update()
 		{					
 			GetSortingValues();
-			ObjectBounds = transform.ObjectBounds(ObjectBounds);
 			
 			GameObject o = gameObject;
+			Transform t = transform;
 			
+			ObjectBounds = (t).ObjectBounds(ObjectBounds);
+			selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
+
 			/*
 			o.CheckGaze(AngleG, selection.gaze, selection.gazeList, selection.lHandList, selection.rHandList, selection.globalList);
 			o.ManageList(selection.lHandList, o.WithinHandCone(selection.gazeList, selection.manual, AngleL), selection.disableLeftHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.LeftTransform(), selection.selectionRange));
 			o.ManageList(selection.rHandList, o.WithinHandCone(selection.gazeList, selection.manual, AngleR), selection.disableRightHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.RightTransform(), selection.selectionRange));
 			*/
-			
 			o.ManageList(selection.lCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceL));
 			o.ManageList(selection.rCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceR));
 			
 			ObjectUpdate();
 		}
-
 		protected virtual void ObjectUpdate()
 		{
 			
 		}
-
 		private void GetSortingValues()
 		{
 			Vector3 position = transform.position;
@@ -178,6 +190,10 @@ namespace VR_Prototyping.Scripts
 			CastDistanceL = Vector3.Distance(lClosestPoint = ObjectBounds.ClosestPoint(castLocationL), castLocationL);
 			CastDistanceR = Vector3.Distance(rClosestPoint = ObjectBounds.ClosestPoint(castLocationR), castLocationR);
 		}
+		private void SelectionVisual(string eventName)
+		{
+			selectionVisualEffect.SendEvent(eventName);
+		}
 		public virtual void HoverStart()
 		{
 			outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, true);
@@ -192,6 +208,8 @@ namespace VR_Prototyping.Scripts
 		}
 		public virtual void SelectStart(Selection.MultiSelect side)
 		{
+			SelectionVisual(SelectEvent);
+			selected = true;
 			switch (side)
 			{
 				case Selection.MultiSelect.LEFT:
@@ -207,10 +225,8 @@ namespace VR_Prototyping.Scripts
 					}
 					break;
 				default:
-					throw new ArgumentOutOfRangeException(nameof(side), side, null);
+					break;
 			}
-			selected = true;
-			selectionRing.SetFloat(BorderThickness, .05f);
 		}
 		public virtual void SelectHold(Selection.MultiSelect side)
 		{
@@ -224,17 +240,10 @@ namespace VR_Prototyping.Scripts
 		{
 			
 		}
-		private void LeftDeselect()
-		{
-			Deselect(Selection.MultiSelect.LEFT);
-		}
-		private void RightDeselect()
-		{
-			Deselect(Selection.MultiSelect.RIGHT);
-		}
 		public virtual void Deselect(Selection.MultiSelect side)
 		{
-			Debug.Log(name + " was <b>DESELECTED</b>");
+			SelectionVisual(DeselectEvent);
+			selected = false;
 			switch (side)
 			{
 				case Selection.MultiSelect.LEFT when player.lSelectedObjects.Contains(this):
@@ -246,10 +255,7 @@ namespace VR_Prototyping.Scripts
 				default:
 					break;
 			}
-			selected = false;
-			selectionRing.SetFloat(BorderThickness, 0f);
 		}
-		
 		public virtual void DrawGizmos ()
 		{
 			if (selection == null)

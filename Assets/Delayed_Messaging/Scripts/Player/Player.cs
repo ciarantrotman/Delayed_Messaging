@@ -42,7 +42,7 @@ namespace Delayed_Messaging.Scripts.Player
             
             foreach (BaseObject selectedObject in list)
             {
-                if (focusObject == null || selectedObject != focusObject)
+                if (selectedObject != focusObject || focusObject == null)
                 {
                     Debug.Log(selectedObject.name + " was <b>REMOVED</b>");
                     selectedObject.Deselect(side);
