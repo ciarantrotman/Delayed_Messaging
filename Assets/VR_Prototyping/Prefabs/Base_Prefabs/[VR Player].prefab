@@ -138,8 +138,8 @@ MonoBehaviour:
   lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
   selectionLineRenderMat: {fileID: 2100000, guid: a95dbd70e70bafa49967e3c51a35de61,
     type: 2}
-  selectionQuad: {fileID: 3418142435891911999, guid: 3507abf690922e0489a9fe19524ce7cc,
-    type: 3}
+  selectionQuadMaterial: {fileID: 2100000, guid: 49467c3ecb7c0294cac3aa1f5e4b0ee7,
+    type: 2}
   lineRenderWidth: 0.0025
   gazeCursor: {fileID: 3368970237513492719, guid: 0df546e5f776c5e44a9ca29e0c322cb3,
     type: 3}
@@ -152,12 +152,6 @@ MonoBehaviour:
   lHandList: []
   rCastList: []
   lCastList: []
-  lDeselect:
-    m_PersistentCalls:
-      m_Calls: []
-  rDeselect:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &2910476754053980516
 MonoBehaviour:
   m_ObjectHideFlags: 0

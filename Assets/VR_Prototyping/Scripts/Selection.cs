@@ -108,7 +108,9 @@ namespace VR_Prototyping.Scripts
 	        public Vector3 multiSelectS;
 	        public Vector3 multiSelectM;
 	        public Vector3 multiSelectE;
-	        public GameObject selectionQuad;
+	        public GameObject selectionQuadObject;
+	        public MeshRenderer selectionQuad;
+	        public MeshFilter selectionQuadFilter;
 	        public LineRenderer selectionLineRenderer;
         }
         
@@ -138,7 +140,7 @@ namespace VR_Prototyping.Scripts
 		[SerializeField] private GameObject targetVisual;
 		[SerializeField] private Material lineRenderMat;
 		[SerializeField] private Material selectionLineRenderMat;
-		[SerializeField] private GameObject selectionQuad;
+		[SerializeField] private Material selectionQuadMaterial;
 		[SerializeField, Range(.001f, .1f)] private float lineRenderWidth = .005f;
 		[Space(10)] public GameObject gazeCursor;
 		[Range(3f, 30f), Space(10)] public int lineRenderQuality = 15;
@@ -263,14 +265,26 @@ namespace VR_Prototyping.Scripts
             lMultiSelection.selectionLineRenderer.SetupLineRender(selectionLineRenderMat, .01f, false);
             rMultiSelection.selectionLineRenderer.SetupLineRender(selectionLineRenderMat, .01f, false);
             
-            lMultiSelection.selectionLineRenderer.SetVertexCount(5);
-            rMultiSelection.selectionLineRenderer.SetVertexCount(5);
+            lMultiSelection.selectionLineRenderer.positionCount = 5;
+            rMultiSelection.selectionLineRenderer.positionCount = 5;
 
-            lMultiSelection.selectionQuad = Instantiate(selectionQuad, lHp.transform);
-            rMultiSelection.selectionQuad = Instantiate(selectionQuad, rHp.transform);
-            lMultiSelection.selectionQuad.SetActive(false);
-            rMultiSelection.selectionQuad.SetActive(false);
+            //lMultiSelection.selectionQuad = Instantiate(selectionQuad, lHp.transform);
+            //rMultiSelection.selectionQuad = Instantiate(selectionQuad, rHp.transform);
+            //lMultiSelection.selectionQuad.SetActive(false);
+            //rMultiSelection.selectionQuad.SetActive(false);
             
+            lMultiSelection.selectionQuadObject = new GameObject("[Selection Quad/Left]", typeof(MeshFilter), typeof(MeshRenderer));
+            lMultiSelection.selectionQuad = lMultiSelection.selectionQuadObject.GetComponent<MeshRenderer>();
+            lMultiSelection.selectionQuad.material = selectionQuadMaterial;
+            lMultiSelection.selectionQuadFilter = lMultiSelection.selectionQuadObject.GetComponent<MeshFilter>();
+            lMultiSelection.selectionQuadFilter.mesh = Draw.GenerateQuadMesh();
+            
+            rMultiSelection.selectionQuadObject = new GameObject("[Selection Quad/Right]", typeof(MeshFilter), typeof(MeshRenderer));
+            rMultiSelection.selectionQuad = rMultiSelection.selectionQuadObject.GetComponent<MeshRenderer>();
+            rMultiSelection.selectionQuad.material = selectionQuadMaterial;
+            rMultiSelection.selectionQuadFilter = rMultiSelection.selectionQuadObject.GetComponent<MeshFilter>();
+            rMultiSelection.selectionQuadFilter.mesh = Draw.GenerateQuadMesh();
+
             rLineRendererMaterial = rLineRenderer.material;
             lLineRendererMaterial = lLineRenderer.material;
         }
@@ -420,22 +434,18 @@ namespace VR_Prototyping.Scripts
 					lMultiSelection.multiSelectS = CastLocationL.position;
 					lMultiSelection.selectionLineRenderer.enabled = true;
 					lMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(lMultiSelection.multiSelectS, lMultiSelection.multiSelectS);
-					lMultiSelection.selectionQuad.SetActive(true);
-					lMultiSelection.selectionQuad.transform.rotation = Quaternion.identity;
+					lMultiSelection.selectionQuadFilter.mesh.DrawQuadMesh(lMultiSelection.multiSelectS, lMultiSelection.multiSelectS);
+					lMultiSelection.selectionQuad.enabled = true;
 					lMultiSelection.SelectionBounds = lMultiSelection.selectionLineRenderer.bounds;
-					lMultiSelection.selectionQuad.transform.localScale = lMultiSelection.SelectionBounds.size;
-					lMultiSelection.selectionQuad.transform.position = lMultiSelection.SelectionBounds.center;
 					break;
 				case MultiSelect.RIGHT:
 					player.ClearSelectedObjects(MultiSelect.RIGHT, rBaseObject);
 					rMultiSelection.multiSelectS = CastLocationR.position;
 					rMultiSelection.selectionLineRenderer.enabled = true;
 					rMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(rMultiSelection.multiSelectS, rMultiSelection.multiSelectS);
-					rMultiSelection.selectionQuad.SetActive(true);
-					rMultiSelection.selectionQuad.transform.rotation = Quaternion.identity;
+					rMultiSelection.selectionQuadFilter.mesh.DrawQuadMesh(rMultiSelection.multiSelectS, rMultiSelection.multiSelectS);
+					rMultiSelection.selectionQuad.enabled = true;
 					rMultiSelection.SelectionBounds = rMultiSelection.selectionLineRenderer.bounds;
-					rMultiSelection.selectionQuad.transform.localScale = rMultiSelection.SelectionBounds.size;
-					rMultiSelection.selectionQuad.transform.position = rMultiSelection.SelectionBounds.center;
 					break;
 				default:
 					throw new ArgumentOutOfRangeException(nameof(side), side, null);
@@ -449,18 +459,14 @@ namespace VR_Prototyping.Scripts
 					SelectHoldL = true;
 					lMultiSelection.multiSelectE = CastLocationL.position;
 					lMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
-					lMultiSelection.selectionQuad.transform.rotation = Quaternion.identity;
-					lMultiSelection.selectionQuad.transform.localScale = lMultiSelection.SelectionBounds.size;
-					lMultiSelection.selectionQuad.transform.position = lMultiSelection.SelectionBounds.center;
+					lMultiSelection.selectionQuadFilter.mesh.DrawQuadMesh(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
 					lMultiSelection.SelectionBounds = lMultiSelection.selectionLineRenderer.bounds;
 					break;
 				case MultiSelect.RIGHT:
 					SelectHoldR = true;
 					rMultiSelection.multiSelectE = CastLocationR.position;
 					rMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
-					rMultiSelection.selectionQuad.transform.rotation = Quaternion.identity;
-					rMultiSelection.selectionQuad.transform.localScale = rMultiSelection.SelectionBounds.size;
-					rMultiSelection.selectionQuad.transform.position = rMultiSelection.SelectionBounds.center;
+					rMultiSelection.selectionQuadFilter.mesh.DrawQuadMesh(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
 					rMultiSelection.SelectionBounds = rMultiSelection.selectionLineRenderer.bounds;
 					break;
 				default:
@@ -476,7 +482,7 @@ namespace VR_Prototyping.Scripts
 					SelectHoldL = false;
 					lMultiSelection.multiSelectE = CastLocationL.position;
 					lMultiSelection.selectionLineRenderer.enabled = false;
-					lMultiSelection.selectionQuad.SetActive(false);
+					lMultiSelection.selectionQuad.enabled = false;
 					foreach (BaseObject baseObject in baseObjectsList)
 					{
 						if (lMultiSelection.SelectionBounds.Intersects(baseObject.ObjectBounds))
@@ -489,7 +495,7 @@ namespace VR_Prototyping.Scripts
 					SelectHoldR = false;
 					rMultiSelection.multiSelectE = CastLocationR.position;
 					rMultiSelection.selectionLineRenderer.enabled = false;
-					rMultiSelection.selectionQuad.SetActive(false);
+					rMultiSelection.selectionQuad.enabled = false;
 					foreach (BaseObject baseObject in baseObjectsList)
 					{
 						if (rMultiSelection.SelectionBounds.Intersects(baseObject.ObjectBounds))
