@@ -88,10 +88,6 @@ namespace Panda.Examples.Move
                 task.debugInfo = "t=1.00";
                 task.Succeed();
             }
-
-
         }
-
-
     }
 }
