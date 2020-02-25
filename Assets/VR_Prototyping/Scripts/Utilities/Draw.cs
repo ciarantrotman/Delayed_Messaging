@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VR_Prototyping.Scripts
+namespace VR_Prototyping.Scripts.Utilities
 {
 	public static class Draw
 	{
@@ -78,7 +78,7 @@ namespace VR_Prototyping.Scripts
 				angle += arcLength / quality;
 			}
 		}
-		public static void StraightLineRender(this LineRenderer lr, Transform start, Transform end)
+		public static void DrawStraightLineRender(this LineRenderer lr, Transform start, Transform end)
 		{
 			lr.SetPosition(0, start.position);
 			lr.SetPosition(1, end.position);
@@ -160,10 +160,10 @@ namespace VR_Prototyping.Scripts
 			Vector2[] uv = new Vector2[4];
 			int[] triangles = new int[6];
 			
-			vertices[0] = new Vector3(0,0,1);
-			vertices[1] = new Vector3(1,0,1);
+			vertices[0] = new Vector3(0,0,.1f);
+			vertices[1] = new Vector3(.1f,0,.1f);
 			vertices[2] = new Vector3(0,0,0);
-			vertices[3] = new Vector3(1,0,0);
+			vertices[3] = new Vector3(.1f,0,0);
 			
 			uv[0] = new Vector2(0,1);
 			uv[1] = new Vector2(1,1);

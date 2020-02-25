@@ -50,4 +50,9 @@
     {
         void Damage(T damageTaken);
     }
+
+    public interface IRaycastInterface
+    {
+        void Select();
+    }
 }

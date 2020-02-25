@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SelectionQuadMat
-  m_Shader: {fileID: -6465566751694194690, guid: da30f1bdb4d4e9243aadb6552e1d34ba,
+  m_Name: UIButtonMat
+  m_Shader: {fileID: -6465566751694194690, guid: 04ef63bdc2371364b8e6990d09885453,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
@@ -21,6 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _Fresnel: 5
-    - _Offset: 1
-    m_Colors: []
+    - _State: 0
+    m_Colors:
+    - _BaseColour: {r: 0.066037685, g: 0.066037685, b: 0.066037685, a: 1}
+    - _HoverColour: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}

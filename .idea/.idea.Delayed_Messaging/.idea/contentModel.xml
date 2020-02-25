@@ -276,6 +276,13 @@
           </e>
           <e p="Scripts" t="Include">
             <e p="BaseClass.cs" t="Include" />
+            <e p="Interaction" t="Include">
+              <e p="RaycastButton.cs" t="Include" />
+              <e p="RaycastCursor.cs" t="Include" />
+              <e p="RaycastInterface.cs" t="Include" />
+              <e p="UnitController.cs" t="Include" />
+              <e p="UserInterface.cs" t="Include" />
+            </e>
             <e p="Player" t="Include">
               <e p="Player.cs" t="Include" />
               <e p="PlayerClass.cs" t="Include" />
@@ -288,8 +295,8 @@
               <e p="Structure.cs" t="Include" />
               <e p="StructureClass.cs" t="Include" />
             </e>
-            <e p="UnitController.cs" t="Include" />
             <e p="Units" t="Include">
+              <e p="Gather.BT.txt" t="Include" />
               <e p="ResourceGatherer.BT.txt" t="Include" />
               <e p="ResourceGatherer.cs" t="Include" />
               <e p="Unit.cs" t="Include" />

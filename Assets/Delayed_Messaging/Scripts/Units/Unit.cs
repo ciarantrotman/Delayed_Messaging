@@ -54,7 +54,7 @@ namespace Delayed_Messaging.Scripts.Units
         }
         protected override void ObjectUpdate()
         {
-            destinationLineRenderer.StraightLineRender(transform, unitDestination.transform);
+            destinationLineRenderer.DrawStraightLineRender(transform, unitDestination.transform);
         }
 
         public override void SelectStart(Selection.MultiSelect side)

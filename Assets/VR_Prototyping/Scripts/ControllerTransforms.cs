@@ -42,7 +42,7 @@ namespace VR_Prototyping.Scripts
         public const string RTag = "Direct/Right";
         
         public const float MaxAngle = 110f;
-        public const float MinAngle = 80f;
+        public const float MinAngle = 60f;
         
         public const float Trigger = .7f;
         public const float Sensitivity = 10f;

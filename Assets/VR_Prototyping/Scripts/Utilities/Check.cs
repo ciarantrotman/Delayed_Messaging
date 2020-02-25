@@ -59,8 +59,13 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <param name="sensitivity"></param>
         /// <param name="selectState"></param>
         /// <param name="side"></param>
-        public static void Selection(this BaseObject selectableObject, Selection selection, Player player, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, float sensitivity, bool selectState, Selection.MultiSelect side)
+        public static void Selection(this BaseObject selectableObject, Selection selection, Player player, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, float sensitivity, bool selectState, Selection.MultiSelect side, bool disabled)
         {
+            if (disabled)
+            {
+                return;
+            }
+            
             // Used to calculate the type of hold state
             selectionList.BoolListCull(currentSelectionState, sensitivity);
             
@@ -249,7 +254,7 @@ namespace VR_Prototyping.Scripts.Utilities
             Transform t = target.transform;
             Vector3 position = t.position;
             Vector3 up = t.up;
-            hitPoint.transform.position = Vector3.Lerp(hitPoint.transform.position, Physics.Raycast(position, -up, out RaycastHit hit) && hit.transform.gameObject.layer == layerIndex ? hit.point : lastValidPosition, .25f);
+            hitPoint.transform.position = Vector3.Lerp(hitPoint.transform.position, Physics.Raycast(position, -up, out RaycastHit hit, 100, 1 << layerIndex) ? hit.point : lastValidPosition, .25f);
             hitPoint.transform.up = Physics.Raycast(position, -up, out RaycastHit h) && normal ? h.normal : Vector3.up;
         }
 

@@ -158,7 +158,7 @@ namespace VR_Prototyping.Scripts
 			GameObject o = gameObject;
 			Transform t = transform;
 			
-			ObjectBounds = t.ObjectBounds(ObjectBounds);
+			ObjectBounds = t.BoundsOfChildren(ObjectBounds);
 			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
 
 			/*

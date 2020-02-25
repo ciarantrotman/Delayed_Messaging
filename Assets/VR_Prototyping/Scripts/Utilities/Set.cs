@@ -619,7 +619,7 @@ namespace VR_Prototyping.Scripts
             visual.Target(Hp, Cn.transform, joystick, Rt);
         }
 
-        public static Bounds ObjectBounds(this Transform parentObject, Bounds bounds)
+        public static Bounds BoundsOfChildren(this Transform parentObject, Bounds bounds)
         {
             bounds = new Bounds (parentObject.position, Vector3.zero);
             MeshRenderer[] renderers = parentObject.GetComponentsInChildren<MeshRenderer>();

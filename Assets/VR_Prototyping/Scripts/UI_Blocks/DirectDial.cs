@@ -90,7 +90,7 @@ namespace VR_Prototyping.Scripts.UI_Blocks
 
         private void FixedUpdate()
         {
-            spokeLr.StraightLineRender(anchor.transform, handle.transform);
+            spokeLr.DrawStraightLineRender(anchor.transform, handle.transform);
             activeCircleLr.ArcLineRenderer(dialRadius, 0, center.transform.localEulerAngles.y, Draw.Orientation.Right,
                 circleQuality);
 

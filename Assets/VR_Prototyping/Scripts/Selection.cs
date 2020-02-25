@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Delayed_Messaging.Scripts.Interaction;
 using Delayed_Messaging.Scripts.Player;
 using UnityEngine;
 using VR_Prototyping.Scripts.Utilities;
@@ -265,15 +266,11 @@ namespace VR_Prototyping.Scripts
             lMultiSelection.selectionLineRenderer.positionCount = 5;
             rMultiSelection.selectionLineRenderer.positionCount = 5;
 
-            //lMultiSelection.selectionQuad = Instantiate(selectionQuad, lHp.transform);
-            //rMultiSelection.selectionQuad = Instantiate(selectionQuad, rHp.transform);
-            //lMultiSelection.selectionQuad.SetActive(false);
-            //rMultiSelection.selectionQuad.SetActive(false);
-            
             lMultiSelection.selectionQuadObject = new GameObject("[Selection Quad/Left]", typeof(MeshFilter), typeof(MeshRenderer));
             lMultiSelection.selectionQuad = lMultiSelection.selectionQuadObject.GetComponent<MeshRenderer>();
             lMultiSelection.selectionQuad.material = selectionQuadMaterial;
             lMultiSelection.selectionQuadFilter = lMultiSelection.selectionQuadObject.GetComponent<MeshFilter>();
+            lMultiSelection.selectionQuadFilter.mesh = Draw.GenerateQuadMesh();
             lMultiSelection.selectionQuadFilter.mesh = Draw.GenerateQuadMesh();
             
             rMultiSelection.selectionQuadObject = new GameObject("[Selection Quad/Right]", typeof(MeshFilter), typeof(MeshRenderer));
@@ -371,8 +368,8 @@ namespace VR_Prototyping.Scripts
 			rBaseObject.Hover(pRBaseObject, lBaseObject);
 			
 			// Calculate Selection States
-			lBaseObject.Selection(this, player, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT);
-			rBaseObject.Selection(this, player, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT);
+			lBaseObject.Selection(this, player, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT, disableLeftHand);
+			rBaseObject.Selection(this, player, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT, disableRightHand);
 
 			// Previous States
 			lSelectPrevious = controllerTransforms.LeftSelect();
@@ -504,6 +501,27 @@ namespace VR_Prototyping.Scripts
 				default:
 					throw new ArgumentOutOfRangeException(nameof(side), side, null);
 			}		
+		}
+
+		public void ToggleSelectionState(UserInterface.DominantHand hand, bool state)
+		{
+			switch (hand)
+			{
+				case UserInterface.DominantHand.LEFT:
+					lLineRenderer.enabled = state;
+					lMultiSelection.selectionQuad.enabled = state;
+					lVisual.SetActive(state);
+					disableLeftHand = !state;
+					break;
+				case UserInterface.DominantHand.RIGHT:
+					rLineRenderer.enabled = state;
+					rMultiSelection.selectionQuad.enabled = state;
+					rVisual.SetActive(state);
+					disableRightHand = !state;
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(hand), hand, null);
+			}
 		}
 
 		private void OnDrawGizmos () 

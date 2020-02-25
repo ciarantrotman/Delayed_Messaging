@@ -97,8 +97,8 @@ namespace VR_Prototyping.Scripts.UI_Blocks
 
         private void FixedUpdate()
         {
-            ActiveLr.StraightLineRender(min.transform, handle.transform);
-            InactiveLr.StraightLineRender(max.transform, handle.transform);
+            ActiveLr.DrawStraightLineRender(min.transform, handle.transform);
+            InactiveLr.DrawStraightLineRender(max.transform, handle.transform);
 
             if (!ignoreRightHand)
             {
