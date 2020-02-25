@@ -14,7 +14,12 @@ namespace Delayed_Messaging.Scripts.Structures
         public Transform spawnDestination;
 
         public GameObject unit;
-        
+
+        protected override void Initialise()
+        {
+            //objectClass = structureClass;
+        }
+
         public override void QuickSelect(Selection.MultiSelect side)
         {
             Instantiate(unit);

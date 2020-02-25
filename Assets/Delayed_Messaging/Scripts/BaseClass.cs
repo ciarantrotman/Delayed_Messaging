@@ -7,7 +7,7 @@ namespace Delayed_Messaging.Scripts
     {
         public enum Faction { RED, BLUE, NEUTRAL}
         
-        [Header("Common Class Traits")] 
+        [Header("Base Class Traits")] 
         public ControllerTransforms.DebugType debugType;
         [Range(0, 100)] public int cost;
         [Range(0, 100)] public int healthMax;

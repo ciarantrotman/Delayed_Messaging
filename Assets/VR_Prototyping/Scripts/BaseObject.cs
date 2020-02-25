@@ -2,7 +2,6 @@
 using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
-using DG.Tweening;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -46,8 +45,10 @@ namespace VR_Prototyping.Scripts
 		private const string SelectEvent = "Select";
 		private const string DeselectEvent = "Deselect";
 
+		//internal BaseClass objectClass;
+
 		[Header("Base Object Settings")] 
-		[SerializeField] private BaseClass objectClass;
+		[SerializeField] private ControllerTransforms.DebugType debugType;
 		
 		[Header("Selection Settings")]
 		public Selection.SelectionType selectionType;
@@ -60,7 +61,6 @@ namespace VR_Prototyping.Scripts
 		[Header("Selection Aesthetics")] 
 		[SerializeField] private GameObject selectionVisual;
 		[SerializeField] internal float selectionRadius;
-		[SerializeField] private Color selectionColour = new Color(1,1,1,1);
 
 		private void Start ()
 		{
@@ -106,6 +106,7 @@ namespace VR_Prototyping.Scripts
 		}
 		private void InitialiseObject()
 		{
+			Debug.Log("<b>[BASE OBJECT]</b> " + name + " attempting to initialise");
 			if (initialised)
 			{
 				Debug.LogError("<b>[BASE OBJECT]</b> " + name + " tried to initialise, but had already been initialised");
@@ -115,11 +116,12 @@ namespace VR_Prototyping.Scripts
 			SetupOutline();
 			SetupSelectedVisual();
 
-			health = objectClass.healthMax;
+			//health = objectClass.healthMax;
 			
 			gameObject.ToggleList(selection.globalList, true);
 			selection.baseObjectsList.Add(this);
 			initialised = true;
+			Debug.Log("<b>[BASE OBJECT]</b> " + name + " initialised");
 		}
 		private void AssignComponents()
 		{
@@ -129,7 +131,7 @@ namespace VR_Prototyping.Scripts
 				{
 					if (rootGameObject.name != "[VR Player]") continue;
 					playerObject = rootGameObject;
-					Debug.Log("<b>[Base Object] </b>" + name + " player set to " + rootGameObject.name);
+					Debug.Log("<b>[BASE OBJECT] </b>" + name + " player set to " + rootGameObject.name);
 				}
 			}
 			selection = playerObject.GetComponent<Selection>();
@@ -147,7 +149,7 @@ namespace VR_Prototyping.Scripts
 			selectionVisual = Instantiate(selectionVisual, transform);
 			selectionVisualEffect = selectionVisual.GetComponent<VisualEffect>();
 			selectionVisualEffect.SetFloat("SelectionRadius", selectionRadius);
-			selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
+			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
 		}
 		private void Update()
 		{					
@@ -156,8 +158,8 @@ namespace VR_Prototyping.Scripts
 			GameObject o = gameObject;
 			Transform t = transform;
 			
-			ObjectBounds = (t).ObjectBounds(ObjectBounds);
-			selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
+			ObjectBounds = t.ObjectBounds(ObjectBounds);
+			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
 
 			/*
 			o.CheckGaze(AngleG, selection.gaze, selection.gazeList, selection.lHandList, selection.rHandList, selection.globalList);
@@ -256,31 +258,39 @@ namespace VR_Prototyping.Scripts
 					break;
 			}
 		}
-		public virtual void DrawGizmos ()
+		
+		private void OnDrawGizmos () 
 		{
-			if (selection == null)
+			if (debugType == ControllerTransforms.DebugType.ALWAYS)
 			{
-				return;
+				DrawGizmos ();
 			}
-			
-			Gizmos.color = Color.green;
-			Gizmos.DrawWireCube(ObjectBounds.center, ObjectBounds.size);
-			
-			Gizmos.color = Color.red;
-			Vector3 position = transform.position;
-			
-			Gizmos.DrawLine(lClosestPoint, selection.CastLocationL.position);
-			Gizmos.DrawWireSphere(lClosestPoint, .05f);
-			Gizmos.DrawLine(rClosestPoint, selection.CastLocationR.position);
-			Gizmos.DrawWireSphere(rClosestPoint, .05f);
-			Gizmos.color = Color.black;
-			Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationR.position - position) * selection.castSelectionRadius);
-			Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationL.position - position) * selection.castSelectionRadius);
-
-			if (hover)
+		}
+		private void OnDrawGizmosSelected ()
+		{
+			if (debugType == ControllerTransforms.DebugType.SELECTED_ONLY)
 			{
-				Gizmos.color = hoverOutlineColour;
-				Gizmos.DrawRay(position, Vector3.up);
+				DrawGizmos ();
+			}
+		}
+
+		protected virtual void DrawGizmos ()
+		{
+			if (selection != null)
+			{		
+				Gizmos.color = Color.green;
+				Gizmos.DrawWireCube(ObjectBounds.center, ObjectBounds.size);
+			
+				Gizmos.color = Color.red;
+				Vector3 position = transform.position;
+			
+				Gizmos.DrawLine(lClosestPoint, selection.CastLocationL.position);
+				Gizmos.DrawWireSphere(lClosestPoint, .05f);
+				Gizmos.DrawLine(rClosestPoint, selection.CastLocationR.position);
+				Gizmos.DrawWireSphere(rClosestPoint, .05f);
+				Gizmos.color = Color.black;
+				Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationR.position - position) * selection.castSelectionRadius);
+				Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationL.position - position) * selection.castSelectionRadius);
 			}
 		}
 	}

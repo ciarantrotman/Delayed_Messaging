@@ -1,4 +1,5 @@
 ﻿using Delayed_Messaging.Scripts.Utilities;
+using Panda;
 using Pathfinding;
 using UnityEngine;
 using VR_Prototyping.Scripts;
@@ -14,11 +15,10 @@ namespace Delayed_Messaging.Scripts.Units
         
         [SerializeField, Space(10)] private Material destinationLineRendererMat;
         
-        private AIDestinationSetter destinationSetter;
-        private AIPath aiPath;
+        internal AIDestinationSetter destinationSetter;
+        internal AIPath aiPath;
 
-        private GameObject unitDestination;
-        private GameObject unitDestinationLocal;
+        internal GameObject unitDestination;
         private LineRenderer destinationLineRenderer;
 
         private bool intialised;
@@ -36,14 +36,12 @@ namespace Delayed_Messaging.Scripts.Units
             }
             
             Transform t = transform;
-            
-            //aiPath = transform.AddOrGetAIPath();
+
+            aiPath = GetComponent<AIPath>();
             //aiPath.SetupAIPath(unitClass);
             
             unitDestination = new GameObject("[" + name + " Destination]");
-            unitDestinationLocal = new GameObject("[" + name + " Destination Local]");
-            unitDestinationLocal.transform.SetParent(t);
-            
+
             unitDestination.transform.position = t.position;
 
             destinationSetter = transform.GetComponent<AIDestinationSetter>();
@@ -56,9 +54,7 @@ namespace Delayed_Messaging.Scripts.Units
         }
         protected override void ObjectUpdate()
         {
-            unitDestinationLocal.transform.Position(unitDestination.transform);
             destinationLineRenderer.StraightLineRender(transform, unitDestination.transform);
-            selectionVisualEffect.SetVector3("Destination", unitDestinationLocal.transform.position);
         }
 
         public override void SelectStart(Selection.MultiSelect side)
@@ -73,56 +69,24 @@ namespace Delayed_Messaging.Scripts.Units
             base.Deselect(side);
         }
 
-        public override void QuickSelect(Selection.MultiSelect side)
-        {
-            base.QuickSelect(side);
-        }
-
         public void Damage(float damageTaken)
         {
 
         }
         
+        [Task]
         public void Move(Vector3 destination)
         {
             if (unitDestination == null)
             {
-                Debug.LogError(name + " tried to move but there is no <b>UnitDestination</b> defined!");
+                Debug.LogError(name + " tried to move but there is no <b>[Unit Destination]</b> defined!");
                 return;
             }
             unitDestination.transform.position = destination;
         }
-        
-        private void OnDrawGizmos () 
-        {
-            if (unitClass == null || controllerTransforms == null)
-            {
-                return;
-            }
-            if (unitClass.debugType == ControllerTransforms.DebugType.ALWAYS)
-            {
-                DrawGizmos ();
-            }
-        }
-        private void OnDrawGizmosSelected ()
-        {
-            if (unitClass == null || controllerTransforms == null)
-            {
-                return;
-            }
-            if (unitClass.debugType == ControllerTransforms.DebugType.SELECTED_ONLY)
-            {
-                DrawGizmos ();
-            }
-        }
 
-        public override void DrawGizmos ()
+        protected override void DrawGizmos ()
         {
-            if (unitClass == null)
-            {
-                return;
-            }
-            
             base.DrawGizmos();
 
             // Cache

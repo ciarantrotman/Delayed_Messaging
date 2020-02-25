@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Player;
-using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Events;
 using VR_Prototyping.Scripts.Utilities;
 using Object = UnityEngine.Object;
 
