@@ -277,6 +277,7 @@
           <e p="Scripts" t="Include">
             <e p="BaseClass.cs" t="Include" />
             <e p="Interaction" t="Include">
+              <e p="ObjectHeader.cs" t="Include" />
               <e p="RaycastButton.cs" t="Include" />
               <e p="RaycastCursor.cs" t="Include" />
               <e p="RaycastInterface.cs" t="Include" />

@@ -18,13 +18,19 @@ namespace Delayed_Messaging.Scripts.Interaction
         
         [Header("User Interface Settings")]
         [SerializeField] private DominantHand dominantHand;
+        [SerializeField] private float uiOffset = .05f;
         [SerializeField, Range(0f, 20f)] private int userInterfaceInteractionLayer;
         [SerializeField, Space(10), Range(0f, 10f)] private float interactionRange;
         [SerializeField, Space(10)] private Material lineRendererMat;
         [SerializeField] private GameObject cursorObject;
 
+        [Header("User Interface References")] 
+        [SerializeField] private GameObject objectHeaderObject;
+
+        private GameObject uiAnchor;
         private GameObject uiSelectionOrigin;
         private RaycastCursor cursor;
+        private ObjectHeader objectHeader;
         private LineRenderer uiLineRenderer;
 
         private RaycastInterface currentInterface;
@@ -39,17 +45,28 @@ namespace Delayed_Messaging.Scripts.Interaction
         private void SetupGameObjects()
         {
             uiSelectionOrigin = new GameObject("[UI Selection Origin]");
+            uiAnchor = new GameObject("[UI Anchor]");
+            
             uiSelectionOrigin.transform.SetParent(dominantHand == DominantHand.LEFT ? controllerTransforms.LeftTransform() : controllerTransforms.RightTransform());
+            uiAnchor.transform.SetParent(dominantHand == DominantHand.LEFT ? controllerTransforms.RightTransform() : controllerTransforms.LeftTransform());
+            uiAnchor.transform.localPosition = new Vector3(dominantHand == DominantHand.LEFT ? -uiOffset : uiOffset, -uiOffset,-uiOffset);
+            uiAnchor.transform.localEulerAngles = new Vector3(90f, 0,0);
 
             cursorObject = Instantiate(cursorObject);
             cursor = cursorObject.GetComponent<RaycastCursor>();
 
             uiLineRenderer = cursorObject.AddComponent<LineRenderer>();
             uiLineRenderer.SetupLineRender(lineRendererMat, .001f, false);
+
+            objectHeaderObject = Instantiate(objectHeaderObject);
+            objectHeader = objectHeaderObject.GetComponent<ObjectHeader>();
+            objectHeaderObject.transform.Transforms(uiAnchor.transform);
         }
 
         private void Update()
         {
+            objectHeaderObject.transform.Transforms(uiAnchor.transform);
+            
             switch (Physics.Raycast(uiSelectionOrigin.transform.position, uiSelectionOrigin.transform.forward, out RaycastHit hit, interactionRange, 1 << userInterfaceInteractionLayer))
             {
                 case true when currentInterface == null:
@@ -80,6 +97,24 @@ namespace Delayed_Messaging.Scripts.Interaction
                 default:
                     break;
             }
+        }
+
+        public void SetObjectHeaderState(bool state)
+        {
+            switch (state)
+            {
+                case true:
+                    objectHeader.EnableHeader();
+                    break;
+                default:
+                    objectHeader.DisableHeader();
+                    break;
+            }
+        }
+
+        public void SelectObject(BaseClass objectClass)
+        {
+            objectHeader.SetHeader(objectClass);
         }
         
         private void OnDrawGizmos () 

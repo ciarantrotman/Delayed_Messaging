@@ -15,10 +15,6 @@ namespace Delayed_Messaging.Scripts.Utilities
             // Movement
             aiPath.maxSpeed = unitClass.moveSpeed;
             aiPath.rotationSpeed = unitClass.rotationSpeed;
-            
-            // Size
-            aiPath.radius = unitClass.size.x;
-            aiPath.height = unitClass.size.y;
         }
     }
 }

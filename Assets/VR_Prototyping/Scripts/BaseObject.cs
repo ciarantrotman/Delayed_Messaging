@@ -45,7 +45,7 @@ namespace VR_Prototyping.Scripts
 		private const string SelectEvent = "Select";
 		private const string DeselectEvent = "Deselect";
 
-		//internal BaseClass objectClass;
+		public BaseClass ObjectClass { get; set; }
 
 		[Header("Base Object Settings")] 
 		[SerializeField] private ControllerTransforms.DebugType debugType;

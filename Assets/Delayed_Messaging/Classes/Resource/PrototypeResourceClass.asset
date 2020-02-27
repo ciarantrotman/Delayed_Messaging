@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: PrototypeResourceClass
   m_EditorClassIdentifier: 
   debugType: 2
+  objectName: Mystery Resource
+  objectModel: {fileID: 6358289206232990632, guid: 41ddd782a3245ce47b4a20db49bfb45e,
+    type: 3}
+  team: 0
   cost: 0
   healthMax: 0
-  size: {x: 0, y: 0, z: 0}
-  faction: 2
   resourceCapacity: 10
   baseGatherDuration: 0.5

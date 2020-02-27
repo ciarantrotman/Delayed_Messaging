@@ -15,6 +15,7 @@ namespace VR_Prototyping.Scripts
 		#region Inspector and Variables
 		private ControllerTransforms controllerTransforms;
 		private Player player;
+		public UserInterface UserInterface { get; set; }
 		public enum SelectionType
 		{
 			FUSION,
@@ -163,18 +164,14 @@ namespace VR_Prototyping.Scripts
 		{
 			controllerTransforms = GetComponent<ControllerTransforms>();
 			player = GetComponent<Player>();
+			UserInterface = GetComponent<UserInterface>();
 			
 			SetupGameObjects();
 			SetupCastSelectGameObjects();
-
-			//lLineRenderer = controllerTransforms.LeftTransform().gameObject.AddComponent<LineRenderer>();
-			//rLineRenderer = controllerTransforms.RightTransform().gameObject.AddComponent<LineRenderer>();
 			
-			//lLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
-			//rLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
-			
-			//rLineRendererMaterial = rLineRenderer.material;
-			//lLineRendererMaterial = lLineRenderer.material;
+			// Set initial states
+			ToggleSelectionState(UserInterface.DominantHand.LEFT, !disableLeftHand);
+			ToggleSelectionState(UserInterface.DominantHand.RIGHT, !disableRightHand);
 		}
 		private void SetupGameObjects()
 		{
@@ -204,8 +201,7 @@ namespace VR_Prototyping.Scripts
 		}
 		private void SetupCastSelectGameObjects()
         {
-	        //controllerTransforms.SetupCastObjects( targetVisual, "Selection", true);
-			const string instanceName = "Cast Selection";
+	        const string instanceName = "Cast Selection";
             
             parent = new GameObject("[" + instanceName + "/Calculations]");
             Transform parentTransform = parent.transform;
@@ -421,6 +417,9 @@ namespace VR_Prototyping.Scripts
 		
 		public void SelectStart(MultiSelect side)
 		{
+			// Temporary
+			UserInterface.SetObjectHeaderState(false);
+			
 			switch (side)
 			{
 				case MultiSelect.LEFT:

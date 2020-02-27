@@ -5,13 +5,18 @@ namespace Delayed_Messaging.Scripts
 {
     public class BaseClass : ScriptableObject
     {
-        public enum Faction { RED, BLUE, NEUTRAL}
+        public enum Team { RED, BLUE, NEUTRAL}
         
         [Header("Base Class Traits")] 
         public ControllerTransforms.DebugType debugType;
-        [Range(0, 100)] public int cost;
-        [Range(0, 100)] public int healthMax;
-        public Vector3 size;
-        public Faction faction;
+
+        [Header("Object Information")] 
+        public string objectName = "Placeholder Name";
+        public GameObject objectModel;
+        
+        [Header("Object Settings")]
+        public Team team;
+        public int cost;
+        public int healthMax;
     }
 }

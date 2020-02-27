@@ -71,10 +71,6 @@ namespace Delayed_Messaging.Scripts.Structures
             Transform t = transform;
             Vector3 pos = t.position;
             Vector3 r = t.forward;
-            
-            // Object
-            Gizmos.color = Color.black;
-            Gizmos.DrawWireCube(new Vector3(pos.x, pos.y*.5f, pos.z), new Vector3(structureClass.size.x, structureClass.size.y, structureClass.size.z));
 
             Gizmos.color = structureClass.spawnLocationColour;
             Vector3 o = spawnOrigin.position;

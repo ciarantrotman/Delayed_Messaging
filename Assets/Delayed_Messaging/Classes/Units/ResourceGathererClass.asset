@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: ResourceGathererClass
   m_EditorClassIdentifier: 
   debugType: 2
-  cost: 0
-  healthMax: 0
-  size: {x: 0.1, y: 0.1, z: 0.1}
-  faction: 0
+  objectName: Resource Gatherer
+  objectModel: {fileID: 8954464585676608432, guid: bd9a8f2dda440b94d8b225107e79f1cf,
+    type: 3}
+  team: 0
+  cost: 50
+  healthMax: 50
   moveSpeed: 7
   rotationSpeed: 7
   forwardVectorColour: {r: 0, g: 0.5254903, b: 1, a: 1}

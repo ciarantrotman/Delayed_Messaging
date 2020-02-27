@@ -90,6 +90,8 @@ namespace VR_Prototyping.Scripts.Utilities
                     if (!currentSelectionState && previousSelectionState && !selectionList[0])
                     {
                         selectableObject.QuickSelect(side);
+                        selection.UserInterface.SetObjectHeaderState(true);
+                        selection.UserInterface.SelectObject(selectableObject.ObjectClass);
                         return;
                     }
                     // Called if you are still holding select

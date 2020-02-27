@@ -7,7 +7,7 @@ namespace Delayed_Messaging.Scripts.Player
     {
         [Header("Base Player Traits")] 
         [Range(0, 1000)] public int startingResources;
-        public BaseClass.Faction faction;
+        public BaseClass.Team team;
 
         public struct PlayerData
         {

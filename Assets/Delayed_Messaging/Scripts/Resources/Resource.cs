@@ -7,5 +7,10 @@ namespace Delayed_Messaging.Scripts.Resources
     {
         [Header("Resource Specific Settings")]
         public ResourceClass resourceClass;
+
+        protected override void Initialise()
+        {
+            ObjectClass = resourceClass;
+        }
     }
 }

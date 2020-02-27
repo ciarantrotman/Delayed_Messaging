@@ -39,6 +39,8 @@ namespace Delayed_Messaging.Scripts.Units
 
             aiPath = GetComponent<AIPath>();
             //aiPath.SetupAIPath(unitClass);
+
+            ObjectClass = unitClass;
             
             unitDestination = new GameObject("[" + name + " Destination]");
 

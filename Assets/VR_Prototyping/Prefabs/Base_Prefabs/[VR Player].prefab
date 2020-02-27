@@ -227,10 +227,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dominantHand: 1
+  uiOffset: 0.05
   userInterfaceInteractionLayer: 5
   interactionRange: 0.2
   lineRendererMat: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
   cursorObject: {fileID: 5148066705793338105, guid: 2f2763ad799ae494999e8b99faa5f8de,
+    type: 3}
+  objectHeaderObject: {fileID: 7600864894819164793, guid: 5503cb39fb6d3d2448d9c94bcefc84fc,
     type: 3}
 --- !u!1001 &8467027769127916243
 PrefabInstance:
