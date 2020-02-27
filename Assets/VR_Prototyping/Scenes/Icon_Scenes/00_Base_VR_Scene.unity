@@ -951,11 +951,6 @@ PrefabInstance:
     - target: {fileID: 618182138019180014, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: disableLeftHand
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 618182138019180014, guid: 8749d393fbf106e488259a509328cf48,
-        type: 3}
-      propertyPath: disableRightHand
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7473554891637304831, guid: 8749d393fbf106e488259a509328cf48,

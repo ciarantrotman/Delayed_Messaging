@@ -55,4 +55,9 @@
     {
         void Select();
     }
+
+    public interface IInitialiseObjectInterface<in T>
+    {
+        void Initialise(T baseObject);
+    }
 }

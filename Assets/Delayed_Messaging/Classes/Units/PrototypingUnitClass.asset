@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: PrototypingUnitClass
   m_EditorClassIdentifier: 
   debugType: 2
+  objectName: Placeholder Name
+  objectSpecificInterface: {fileID: 0}
+  objectModel: {fileID: 0}
+  cursorState: 1
+  team: 0
   cost: 0
   healthMax: 0
-  size: {x: 0.1, y: 0.1, z: 0.1}
-  faction: 0
   moveSpeed: 7
   rotationSpeed: 7
   forwardVectorColour: {r: 0, g: 0.5254903, b: 1, a: 1}

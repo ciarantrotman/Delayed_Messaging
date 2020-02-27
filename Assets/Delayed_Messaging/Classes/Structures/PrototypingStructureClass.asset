@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: PrototypingStructureClass
   m_EditorClassIdentifier: 
   debugType: 2
+  objectName: Placeholder Name
+  objectSpecificInterface: {fileID: 0}
+  objectModel: {fileID: 0}
+  cursorState: 2
+  team: 0
   cost: 0
   healthMax: 0
-  size: {x: 0, y: 0, z: 0}
-  faction: 0
   spawnLocationColour: {r: 0.042452812, g: 1, b: 0.4193379, a: 1}

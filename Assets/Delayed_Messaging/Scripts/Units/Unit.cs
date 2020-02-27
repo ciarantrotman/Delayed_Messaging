@@ -106,6 +106,9 @@ namespace Delayed_Messaging.Scripts.Units
             // Vectors
             Gizmos.color = unitClass.forwardVectorColour;
             Gizmos.DrawRay(pos, r.normalized);
+
+            Gizmos.color = unitClass.detectionColour;
+            Gizmos.DrawWireSphere(pos, unitClass.detectionRadius);
         }
     }
 }

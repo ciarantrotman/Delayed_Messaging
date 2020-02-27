@@ -14,9 +14,13 @@ namespace Delayed_Messaging.Scripts.Units
         public Resource currentResource;
 
         public bool gather;
-
         public int capacity = 0;
 
+        public void StartSearching()
+        {
+            
+        }
+        
         private bool Arrived(Transform target)
         {
             return transform.TransformDistanceCheck(target, .2f);

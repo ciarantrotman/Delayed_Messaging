@@ -318,8 +318,9 @@ MonoBehaviour:
   name: {fileID: 9207660863745520890}
   team: {fileID: 2650182323903254203}
   header: {fileID: 4079500093494964152}
+  frame: {fileID: 2300191515413599761}
   modelViewerCenter: {fileID: 1441881579407762721}
-  modelScaleDownFactor: 0.2
+  modelScaleDownFactor: 0.25
 --- !u!1 &8397864369126532085
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +349,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8397864369126532085}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.005}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 20682066633104994}
@@ -612,11 +613,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object Frame
       objectReference: {fileID: 0}
+    - target: {fileID: -679944970756086991, guid: c204558d3838ff248af78bec038db007,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab55f70e8df11ac4391fb44f24fb572a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c204558d3838ff248af78bec038db007, type: 3}
 --- !u!4 &3170822859350400570 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: c204558d3838ff248af78bec038db007,
+    type: 3}
+  m_PrefabInstance: {fileID: 7600864894675416352}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2300191515413599761 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -679944970756086991, guid: c204558d3838ff248af78bec038db007,
     type: 3}
   m_PrefabInstance: {fileID: 7600864894675416352}
   m_PrefabAsset: {fileID: 0}

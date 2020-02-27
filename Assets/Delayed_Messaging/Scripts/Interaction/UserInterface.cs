@@ -1,4 +1,6 @@
 ﻿using System;
+using Delayed_Messaging.Scripts.Interaction.User_Interface;
+using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 using VR_Prototyping.Scripts.Utilities;
@@ -15,6 +17,9 @@ namespace Delayed_Messaging.Scripts.Interaction
             LEFT,
             RIGHT
         }
+
+        private bool currentSelect;
+        private bool previousSelect;
         
         [Header("User Interface Settings")]
         [SerializeField] private DominantHand dominantHand;
@@ -33,6 +38,8 @@ namespace Delayed_Messaging.Scripts.Interaction
         private ObjectHeader objectHeader;
         private LineRenderer uiLineRenderer;
 
+        private GameObject objectInterface;
+
         private RaycastInterface currentInterface;
 
         private void Start()
@@ -49,7 +56,7 @@ namespace Delayed_Messaging.Scripts.Interaction
             
             uiSelectionOrigin.transform.SetParent(dominantHand == DominantHand.LEFT ? controllerTransforms.LeftTransform() : controllerTransforms.RightTransform());
             uiAnchor.transform.SetParent(dominantHand == DominantHand.LEFT ? controllerTransforms.RightTransform() : controllerTransforms.LeftTransform());
-            uiAnchor.transform.localPosition = new Vector3(dominantHand == DominantHand.LEFT ? -uiOffset : uiOffset, -uiOffset,-uiOffset);
+            uiAnchor.transform.localPosition = new Vector3(dominantHand == DominantHand.LEFT ? -uiOffset : uiOffset, 0,-uiOffset);
             uiAnchor.transform.localEulerAngles = new Vector3(90f, 0,0);
 
             cursorObject = Instantiate(cursorObject);
@@ -65,6 +72,10 @@ namespace Delayed_Messaging.Scripts.Interaction
 
         private void Update()
         {
+            currentSelect = dominantHand == DominantHand.LEFT
+                ? controllerTransforms.LeftSelect()
+                : controllerTransforms.RightSelect();
+            
             objectHeaderObject.transform.Transforms(uiAnchor.transform);
             
             switch (Physics.Raycast(uiSelectionOrigin.transform.position, uiSelectionOrigin.transform.forward, out RaycastHit hit, interactionRange, 1 << userInterfaceInteractionLayer))
@@ -86,6 +97,10 @@ namespace Delayed_Messaging.Scripts.Interaction
                     currentInterface.HoverStay();
                     cursorObject.transform.position = hit.point;
                     uiLineRenderer.DrawStraightLineRender(cursorObject.transform, uiSelectionOrigin.transform);
+                    if (currentSelect && !previousSelect)
+                    {
+                        currentInterface.Select();
+                    }
                     break;
                 case false when currentInterface != null:
                     currentInterface.HoverEnd();
@@ -97,6 +112,8 @@ namespace Delayed_Messaging.Scripts.Interaction
                 default:
                     break;
             }
+
+            previousSelect = currentSelect;
         }
 
         public void SetObjectHeaderState(bool state)
@@ -107,14 +124,24 @@ namespace Delayed_Messaging.Scripts.Interaction
                     objectHeader.EnableHeader();
                     break;
                 default:
+                    if (objectInterface != null)
+                    {
+                        Destroy(objectInterface);
+                    }
                     objectHeader.DisableHeader();
                     break;
             }
         }
 
-        public void SelectObject(BaseClass objectClass)
+        public void SelectObject(BaseObject baseObject)
         {
-            objectHeader.SetHeader(objectClass);
+            objectHeader.SetHeader(baseObject.ObjectClass);
+            if (objectInterface != null)
+            {
+                Destroy(objectInterface);
+            }
+            objectInterface = Instantiate(baseObject.ObjectClass.objectSpecificInterface, objectHeaderObject.transform);
+            objectInterface.GetComponent<BaseObjectInterface>().Initialise(baseObject);
         }
         
         private void OnDrawGizmos () 

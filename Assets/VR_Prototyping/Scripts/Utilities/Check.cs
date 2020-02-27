@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts;
+using Delayed_Messaging.Scripts.Interaction;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Units;
 using UnityEngine;
@@ -91,7 +92,7 @@ namespace VR_Prototyping.Scripts.Utilities
                     {
                         selectableObject.QuickSelect(side);
                         selection.UserInterface.SetObjectHeaderState(true);
-                        selection.UserInterface.SelectObject(selectableObject.ObjectClass);
+                        selection.UserInterface.SelectObject(selectableObject);
                         return;
                     }
                     // Called if you are still holding select
@@ -127,10 +128,55 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <param name="current"></param>
         /// <param name="previous"></param>
         /// <param name="other"></param>
-        public static void Hover(this BaseObject current, BaseObject previous, BaseObject other)
+        /// <param name="castCursor"></param>
+        public static void Hover(this BaseObject current, BaseObject previous, BaseObject other, CastCursor castCursor)
         {
-            if (current != previous && current != null)
+            /*
+             switch (Physics.Raycast(uiSelectionOrigin.transform.position, uiSelectionOrigin.transform.forward, out RaycastHit hit, interactionRange, 1 << userInterfaceInteractionLayer))
             {
+                case true when currentInterface == null:
+                    cursor.EnableCursor(true);
+                    uiLineRenderer.enabled = true;
+                    currentInterface = hit.collider.gameObject.GetComponent<RaycastInterface>();
+                    currentInterface.HoverStart();
+                    selection.ToggleSelectionState(dominantHand, false);
+                    break;
+                case true when currentInterface != null:
+                    if (currentInterface != hit.collider.gameObject.GetComponent<RaycastInterface>())
+                    {
+                        currentInterface.HoverEnd();
+                        currentInterface = hit.collider.gameObject.GetComponent<RaycastInterface>();
+                        currentInterface.HoverStart();
+                    }
+                    currentInterface.HoverStay();
+                    cursorObject.transform.position = hit.point;
+                    uiLineRenderer.DrawStraightLineRender(cursorObject.transform, uiSelectionOrigin.transform);
+
+                    if (currentSelect && !previousSelect)
+                    {
+                        currentInterface.OnSelect.Invoke();
+                    }
+                    
+                    break;
+                case false when currentInterface != null:
+                    currentInterface.HoverEnd();
+                    cursor.EnableCursor(false);
+                    uiLineRenderer.enabled = false;
+                    currentInterface = null;
+                    selection.ToggleSelectionState(dominantHand, true);
+                    break;
+                default:
+                    break;
+            }
+             */
+            if (current == null)
+            {
+                castCursor.SetCursorState(CastCursor.CursorState.DEFAULT);
+                return;
+            }
+            if (current != previous)
+            {
+                castCursor.SetCursorState(current.ObjectClass.cursorState);
                 current.HoverStart();
                 return;
             }
@@ -139,7 +185,7 @@ namespace VR_Prototyping.Scripts.Utilities
                 current.HoverStay();
                 return;
             }
-            if (previous != other && previous != null && current != previous)
+            if ((previous != other || previous != current) &&  previous != null)
             {
                 previous.HoverEnd();
             }

@@ -11,15 +11,14 @@ namespace Delayed_Messaging.Scripts.Interaction
     public abstract class RaycastInterface : MonoBehaviour, IRaycastInterface, IHoverable
     {
         internal UserInterface userInterface;
-        internal UnityEvent OnSelect;
         
         private Bounds bounds;
         private BoxCollider interfaceCollider;
-
-        private MeshRenderer visualRenderer;
         private static readonly int State = Shader.PropertyToID("_State");
+        public UnityEvent OnSelect;
 
         [Header("Base Interface Settings")]
+        [SerializeField] private MeshRenderer visualRenderer;
         [SerializeField, Range(0, 1)] private float fadeDuration = .2f;
 
         private float state;
@@ -35,9 +34,15 @@ namespace Delayed_Messaging.Scripts.Interaction
             }
 
             interfaceCollider = gameObject.AddComponent<BoxCollider>();
-
-            visualRenderer = GetComponentInChildren<MeshRenderer>();
             interfaceCollider.size = transform.BoundsOfChildren(bounds).size;
+            
+            gameObject.layer = 5;
+            
+            Initialise();
+        }
+
+        protected virtual void Initialise()
+        {
             
         }
 

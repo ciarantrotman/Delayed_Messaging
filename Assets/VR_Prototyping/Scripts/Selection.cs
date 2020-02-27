@@ -96,6 +96,9 @@ namespace VR_Prototyping.Scripts
 		private Vector3 rLastValidPosition;
 		private Vector3 lLastValidPosition;
 
+		private CastCursor rCastCursor;
+		private CastCursor lCastCursor;
+
 		public enum MultiSelect
 		{
 			LEFT,
@@ -136,13 +139,14 @@ namespace VR_Prototyping.Scripts
 		[SerializeField, Range(1, 15)] private int layerIndex = 10;
 
 		[Header("Selection Aesthetics")]
-		[SerializeField] private GameObject targetVisual;
-		[SerializeField] private Material lineRenderMat;
+		[SerializeField] private GameObject castCursorObject;
+		public GameObject gazeCursorObject;
+		//[SerializeField] private GameObject targetVisual;
+		[SerializeField, Space(10)] private Material lineRenderMat;
 		[SerializeField] private Material selectionLineRenderMat;
 		[SerializeField] private Material selectionQuadMaterial;
-		[SerializeField, Range(.001f, .1f)] private float lineRenderWidth = .005f;
-		[Space(10)] public GameObject gazeCursor;
-		[Range(3f, 30f), Space(10)] public int lineRenderQuality = 15;
+		[SerializeField, Range(.001f, .1f), Space(10)] private float lineRenderWidth = .005f;
+		[Range(3f, 30f)] public int lineRenderQuality = 15;
 		[Range(.1f, 2.5f)] public float inactiveLineRenderOffset = 1f;
 
 		[HideInInspector] public List<GameObject> globalList;
@@ -188,7 +192,7 @@ namespace VR_Prototyping.Scripts
 				rDefault = Set.NewGameObject(controllerTransforms.RightTransform().gameObject, "Target/LineRender/Right/Default");
 				gDefault = Set.NewGameObject(controllerTransforms.RightTransform().gameObject, "Target/LineRender/Right/Default");
 
-				gazeCursor = Instantiate(gazeCursor, gTarget.transform);
+				gazeCursorObject = Instantiate(gazeCursorObject, gTarget.transform);
 			}
 
 			lDefault.transform.SetOffsetPosition(controllerTransforms.LeftTransform(), inactiveLineRenderOffset);
@@ -223,12 +227,14 @@ namespace VR_Prototyping.Scripts
             lHp = new GameObject("[" + instanceName + "/HitPoint/Left]");
             lRt = new GameObject("[" + instanceName + "/Rotation/Left]");
             
-            rVisual = Instantiate(targetVisual, rHp.transform);
+            rVisual = Instantiate(castCursorObject, rHp.transform);
             rVisual.name = "[" + instanceName + "/Visual/Right]";
+            rCastCursor = rVisual.GetComponent<CastCursor>();
             rVisual.SetActive(true);
             
-            lVisual = Instantiate(targetVisual, lHp.transform);
+            lVisual = Instantiate(castCursorObject, lHp.transform);
             lVisual.name = "[" + instanceName + "/Visual/Left]";
+            lCastCursor = lVisual.GetComponent<CastCursor>();
             lVisual.SetActive(true);
 
             rCf.transform.SetParent(parentTransform);
@@ -323,16 +329,31 @@ namespace VR_Prototyping.Scripts
 
 			lBaseObject = LFocusObject.FindBaseObject(lBaseObject, controllerTransforms.LeftGrab());
 			rBaseObject = RFocusObject.FindBaseObject(rBaseObject, controllerTransforms.RightGrab());
-			gBaseObject = gFocusObject.FindBaseObject(gBaseObject, false);
-			
-			lGrabPrevious = controllerTransforms.LeftGrab();
-			rGrabPrevious = controllerTransforms.RightGrab();
+			//gBaseObject = gFocusObject.FindBaseObject(gBaseObject, false);
 
 			ResetGameObjects(controllerTransforms.LeftTransform(), lPrevious);
 			ResetGameObjects(controllerTransforms.RightTransform(), rPrevious);
 
+			// Calculate Hover States
+			lBaseObject.Hover(pLBaseObject, rBaseObject, lCastCursor);
+			rBaseObject.Hover(pRBaseObject, lBaseObject, rCastCursor);
+			
+			// Calculate Selection States
+			lBaseObject.Selection(this, player, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT, disableLeftHand);
+			rBaseObject.Selection(this, player, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT, disableRightHand);
+
+			// Previous States
+			lSelectPrevious = controllerTransforms.LeftSelect();
+			rSelectPrevious = controllerTransforms.RightSelect();
+			
+			lGrabPrevious = controllerTransforms.LeftGrab();
+			rGrabPrevious = controllerTransforms.RightGrab();
+			
 			lPrevious = controllerTransforms.LeftTransform();
 			rPrevious = controllerTransforms.RightTransform();
+			
+			pLBaseObject = lBaseObject;
+			pRBaseObject = rBaseObject;
 		}
 		
 		private void CastUpdate()
@@ -359,20 +380,6 @@ namespace VR_Prototyping.Scripts
 
 		private void LateUpdate()
 		{
-			// Calculate Hover States
-			lBaseObject.Hover(pLBaseObject, rBaseObject);
-			rBaseObject.Hover(pRBaseObject, lBaseObject);
-			
-			// Calculate Selection States
-			lBaseObject.Selection(this, player, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT, disableLeftHand);
-			rBaseObject.Selection(this, player, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT, disableRightHand);
-
-			// Previous States
-			lSelectPrevious = controllerTransforms.LeftSelect();
-			rSelectPrevious = controllerTransforms.RightSelect();
-			
-			pLBaseObject = lBaseObject;
-			pRBaseObject = rBaseObject;
 		}
 
 		private void SortLists()

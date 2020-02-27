@@ -10,8 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3190667411478560410}
   - component: {fileID: 2506199389814580325}
-  - component: {fileID: 8017703127872961917}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: '[Resource]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78e2151b85444f4ea4cbf37bca6ef5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugType: 0
+  debugType: 2
   selectionType: 3
   hoverOutlineColour: {r: 0, g: 0, b: 0, a: 1}
   hoverOutlineWidth: 0
@@ -54,19 +53,6 @@ MonoBehaviour:
     type: 3}
   selectionRadius: 0.1
   resourceClass: {fileID: 11400000, guid: 96c0592cab27ceb4f9838749812163de, type: 2}
---- !u!65 &8017703127872961917
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6494321749994224828}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1001 &5758058338410409332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,6 +60,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3190667411478560410}
     m_Modifications:
+    - target: {fileID: 4146920087698069469, guid: 41ddd782a3245ce47b4a20db49bfb45e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4925935891125908461, guid: 41ddd782a3245ce47b4a20db49bfb45e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -129,10 +120,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6011332318510132296, guid: 41ddd782a3245ce47b4a20db49bfb45e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6242452833471919847, guid: 41ddd782a3245ce47b4a20db49bfb45e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6333675807256132077, guid: 41ddd782a3245ce47b4a20db49bfb45e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6358289206232990632, guid: 41ddd782a3245ce47b4a20db49bfb45e,
         type: 3}
       propertyPath: m_Name
       value: '[Resource Model]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358289206232990632, guid: 41ddd782a3245ce47b4a20db49bfb45e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6463299523327671967, guid: 41ddd782a3245ce47b4a20db49bfb45e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41ddd782a3245ce47b4a20db49bfb45e, type: 3}

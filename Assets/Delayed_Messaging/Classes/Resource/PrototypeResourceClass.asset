@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugType: 2
   objectName: Mystery Resource
+  objectSpecificInterface: {fileID: 7492711001606360640, guid: 17e361040cd34424bb88a82c3dda1fab,
+    type: 3}
   objectModel: {fileID: 6358289206232990632, guid: 41ddd782a3245ce47b4a20db49bfb45e,
     type: 3}
-  team: 0
+  cursorState: 4
+  team: 2
   cost: 0
   healthMax: 0
   resourceCapacity: 10

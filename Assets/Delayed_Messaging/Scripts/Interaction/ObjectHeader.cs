@@ -10,6 +10,7 @@ namespace Delayed_Messaging.Scripts.Interaction
         [SerializeField] private TextMeshPro name;
         [SerializeField] private TextMeshPro team;
         [SerializeField] private MeshRenderer header;
+        [SerializeField] private MeshRenderer frame;
         [SerializeField] private Transform modelViewerCenter;
         [SerializeField, Range(1f, 0f)] private float modelScaleDownFactor;
 
@@ -35,6 +36,7 @@ namespace Delayed_Messaging.Scripts.Interaction
         public void EnableHeader()
         {
             header.enabled = true;
+            frame.enabled = true;
         }
         
         public void DisableHeader()
@@ -42,6 +44,7 @@ namespace Delayed_Messaging.Scripts.Interaction
             name.SetText(Blank);
             team.SetText(Blank);
             header.enabled = false;
+            frame.enabled = false;
             Destroy(model);
         }
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6984063654805262455}
   m_Layer: 0
-  m_Name: Gaze_Cursor
+  m_Name: '[Gaze Cursor]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +111,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: cd3bd1c8ce4653f46ae1bac1a07fe5be, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c370e6676fed2e14d87bc2991b4d69eb, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd3bd1c8ce4653f46ae1bac1a07fe5be, type: 3}
 --- !u!1 &8569834455761161549 stripped

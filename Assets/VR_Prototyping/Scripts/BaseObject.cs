@@ -198,7 +198,7 @@ namespace VR_Prototyping.Scripts
 		}
 		public virtual void HoverStart()
 		{
-			outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, true);
+			//outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, true);
 		}
 		public virtual void HoverStay()
 		{
@@ -206,7 +206,7 @@ namespace VR_Prototyping.Scripts
 		}
 		public virtual void HoverEnd()
 		{
-			outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
+			//outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
 		}
 		public virtual void SelectStart(Selection.MultiSelect side)
 		{
