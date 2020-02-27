@@ -1,16 +1,11 @@
-tree "Gather"
-    while Gather
+tree "Search"
+    while 
+        sequence
+            Search
+            not HasResource
         repeat
-            sequence
-                tree "Collect"
-                tree "Deposit"
+            tree "FindResource"
     
-tree "Collect"
-    sequence
-        MoveToResource
-        GatherResource
-
-tree "Deposit"
-    sequence
-        MoveToDeposit
-        DepositResource
+tree "FindResource"
+    fallback
+        DetectResource

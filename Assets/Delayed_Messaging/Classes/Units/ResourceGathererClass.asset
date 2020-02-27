@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ResourceGathererClass
   m_EditorClassIdentifier: 
   debugType: 2
-  objectName: Resource Gatherer
+  objectName: Placeholder Resource Gatherer
   objectSpecificInterface: {fileID: 7492711001606360640, guid: 07dae42f0fdb70749a1680525987b234,
     type: 3}
   objectModel: {fileID: 8954464585676608432, guid: bd9a8f2dda440b94d8b225107e79f1cf,
@@ -24,5 +24,7 @@ MonoBehaviour:
   healthMax: 50
   moveSpeed: 7
   rotationSpeed: 7
+  detectionRadius: 1.5
   forwardVectorColour: {r: 0, g: 0.5254903, b: 1, a: 1}
-  destinationColour: {r: 0, g: 0, b: 0, a: 1}
+  destinationColour: {r: 1, g: 1, b: 1, a: 1}
+  detectionColour: {r: 0.36320752, g: 1, b: 0.75509256, a: 1}

@@ -6,9 +6,10 @@ tree "Gather"
                 tree "Deposit"
     
 tree "Collect"
-    sequence
-        MoveToResource
-        GatherResource
+    fallback
+        sequence
+            MoveToResource
+            GatherResource
 
 tree "Deposit"
     sequence

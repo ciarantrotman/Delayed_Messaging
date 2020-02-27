@@ -1,4 +1,5 @@
-﻿using Delayed_Messaging.Scripts.Resources;
+﻿using System.Collections.Generic;
+using Delayed_Messaging.Scripts.Resources;
 using Panda;
 using UnityEngine;
 using VR_Prototyping.Scripts;
@@ -8,91 +9,126 @@ namespace Delayed_Messaging.Scripts.Units
 {
     public class ResourceGatherer : Unit
     {
-        [Header("Resource Gatherer Specific Settings")]
-        public Transform resourceLocation;
+        [Header("Resource Gatherer Specific Settings")] 
+        [SerializeField, Range(1f,0f)] private float gatherRate;
         public Transform depositLocation;
         public Resource currentResource;
 
-        public bool gather;
-        public int capacity = 0;
+        private bool gather;
+        private bool searching;
+
+        private List<Resource> detectedResources = new List<Resource>();
 
         public void StartSearching()
         {
-            
+            gather = true;
+            searching = true;
         }
         
         private bool Arrived(Transform target)
         {
-            return transform.TransformDistanceCheck(target, .2f);
+            return transform.TransformDistanceCheck(target, .3f);
         }
-        
         [Task] bool Gather()
         {
             return gather;
         }
+        [Task] bool Search()
+        {
+            return searching;
+        }
+        [Task] bool HasResource()
+        {
+            return currentResource != null;
+        }
         [Task] bool Loaded;
+        [Task] void DetectResource()
+        { 
+            if (currentResource != null && !searching)
+            {
+                Task.current.Fail();
+                return;
+            }
+            
+            Collider[] overlap = Physics.OverlapSphere(transform.position, unitClass.detectionRadius, 1 << 12);
+            
+            foreach (Collider overlapObject in overlap)
+            {
+                Resource resource = overlapObject.GetComponent<Resource>();
+                if (resource != null && resource.HasCapacity())
+                {
+                    detectedResources.Add(resource);
+                }
+            }
+
+            if (detectedResources.Count > 0)
+            {
+                // make this the closest one... (sort the list...)
+                currentResource = detectedResources[0];
+                //searching = false;
+                detectedResources.Clear();
+                Task.current.Succeed();
+            }
+            else
+            {
+                // Move a random direction and search again
+                Task.current.Fail();
+            }
+        }
         [Task] void MoveToResource()
         {
-            Task task = Task.current;
-            unitDestination.transform.position = resourceLocation.position;
+            if (currentResource == null)
+            {
+                Task.current.Fail();
+            }
             
-            if (Arrived(resourceLocation))
+            unitDestination.transform.position = currentResource.transform.position;
+            
+            if (Arrived(currentResource.transform))
             {
                 Debug.LogWarning(name + " have <b>ARRIVED</b> at the resource");
-                task.Succeed();
+                Task.current.Succeed();
             }
         }
         [Task] void GatherResource()
         {
-            Task task = Task.current;
-            
-            if (capacity <= 100)
+            if (currentResource != null && currentResource.GatherResource(gatherRate))
             {
-                capacity++;
+                Loaded = true;
+                Debug.LogWarning(name + " have <b>GATHERED</b> a resource");
+                Task.current.Succeed();
             }
             else
             {
-                Loaded = true;
-
-                Debug.LogWarning(name + " have <b>GATHERED</b> a resource");
-                task.Succeed();
+                currentResource = null;
+                Task.current.Fail();
             }
         }
         [Task] void MoveToDeposit()
         {
-            Task task = Task.current;
             unitDestination.transform.position = depositLocation.position;
             
             if (Arrived(depositLocation))
             {
                 Debug.LogWarning(name + " have <b>ARRIVED</b> at the deposit");
-                task.Succeed();
+                Task.current.Succeed();
             }
         }
         [Task] void DepositResource()
         {
-            Task task = Task.current;
-
-            if (capacity >= 0)
-            {
-                capacity--;
-            }
-            else
-            {
-                Loaded = false;
-                Debug.LogWarning(name + " have <b>DEPOSITED</b> a resource");
-                task.Succeed();
-            }
+            Loaded = false;
+            Debug.LogWarning(name + " have <b>DEPOSITED</b> a resource");
+            Task.current.Succeed();
         }
 
         protected override void DrawGizmos ()
         {
-            if (resourceLocation != null && depositLocation != null)
+            if (currentResource != null && depositLocation != null)
             {
                 Gizmos.color = new Color(1f, .5f, 0f, 1f);
-                Gizmos.DrawWireSphere(resourceLocation.position, .05f);
+                Gizmos.DrawWireSphere(currentResource.transform.position, .05f);
                 Gizmos.DrawWireSphere(depositLocation.position, .05f);
-                Gizmos.DrawLine(depositLocation.position, resourceLocation.position);
+                Gizmos.DrawLine(depositLocation.position, currentResource.transform.position);
             }
             base.DrawGizmos();
         }

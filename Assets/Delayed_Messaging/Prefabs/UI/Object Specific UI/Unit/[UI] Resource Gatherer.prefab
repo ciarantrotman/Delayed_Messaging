@@ -251,8 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479ba6104635fb041aeb68809c62b8a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualRenderer: {fileID: 6569102800874433147}
-  fadeDuration: 0.2
+  OnSelect:
+    m_PersistentCalls:
+      m_Calls: []
+  visualRenderer: {fileID: 7520161439720793938}
+  fadeDuration: 0.15
   buttonLabel: {fileID: 7658144048198499522}
   buttonText: Search
 --- !u!1 &7492711001606360640
@@ -382,6 +385,12 @@ PrefabInstance:
 --- !u!4 &5060767421982384541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: f0f380b263b7ff443bfccf758c5bd1a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 234681852403157639}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7520161439720793938 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: f0f380b263b7ff443bfccf758c5bd1a0,
     type: 3}
   m_PrefabInstance: {fileID: 234681852403157639}
   m_PrefabAsset: {fileID: 0}

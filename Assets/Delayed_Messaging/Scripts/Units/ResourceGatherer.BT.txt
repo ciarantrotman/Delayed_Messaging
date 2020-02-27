@@ -1,5 +1,6 @@
 tree "Root"
 	fallback
+		tree "Search"
 		tree "Gather"
 		tree "Idle"
     			

@@ -155,7 +155,7 @@ MonoBehaviour:
   disableRightHand: 0
   minimumAngle: 60
   maximumAngle: 110
-  castSelectionRadius: 0.25
+  castSelectionRadius: 0.1
   layerIndex: 15
   castCursorObject: {fileID: 5171863205534225016, guid: b02a7701e4ccd0340b18d1e4a674b219,
     type: 3}

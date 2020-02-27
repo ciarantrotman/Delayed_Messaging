@@ -34,7 +34,7 @@ namespace Delayed_Messaging.Scripts.Interaction
             }
 
             interfaceCollider = gameObject.AddComponent<BoxCollider>();
-            interfaceCollider.size = transform.BoundsOfChildren(bounds).size;
+            interfaceCollider.size = visualRenderer.bounds.size;//transform.BoundsOfChildren(bounds).size;
             
             gameObject.layer = 5;
             
@@ -53,9 +53,9 @@ namespace Delayed_Messaging.Scripts.Interaction
 
         public void HoverStart()
         {
-            DOTween.To(() => state, x => state = x, 1, fadeDuration);
-            visualRenderer.material.SetFloat(State, 1);
-            interfaceCollider.size = transform.BoundsOfChildren(bounds).size;
+            DOTween.To(() => state, x => state = x, 0, fadeDuration);
+            visualRenderer.material.SetFloat(State, state);
+            interfaceCollider.size = visualRenderer.bounds.size;//transform.BoundsOfChildren(bounds).size;
         }
 
         public void HoverStay()
@@ -65,9 +65,9 @@ namespace Delayed_Messaging.Scripts.Interaction
 
         public void HoverEnd()
         {
-            DOTween.To(() => state, x => state = x, 0, fadeDuration);
-            visualRenderer.material.SetFloat(State, 0);
-            interfaceCollider.size = transform.BoundsOfChildren(bounds).size;
+            DOTween.To(() => state, x => state = x, 1, fadeDuration);
+            visualRenderer.material.SetFloat(State, state);
+            interfaceCollider.size = visualRenderer.bounds.size;//transform.BoundsOfChildren(bounds).size;
         }
     }
 }
