@@ -315,8 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e15a43ca7c9f224b881b351b197f10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 9207660863745520890}
-  team: {fileID: 2650182323903254203}
+  objectName: {fileID: 9207660863745520890}
+  objectTeam: {fileID: 2650182323903254203}
   header: {fileID: 4079500093494964152}
   frame: {fileID: 2300191515413599761}
   modelViewerCenter: {fileID: 1441881579407762721}

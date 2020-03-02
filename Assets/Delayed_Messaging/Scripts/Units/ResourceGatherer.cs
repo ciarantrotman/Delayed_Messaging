@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Resources;
 using Panda;
 using UnityEngine;
@@ -10,7 +11,9 @@ namespace Delayed_Messaging.Scripts.Units
     public class ResourceGatherer : Unit
     {
         [Header("Resource Gatherer Specific Settings")] 
-        [SerializeField, Range(1f,0f)] private float gatherRate;
+        [SerializeField] private float gatherDuration;
+        public int capacity;
+        
         public Transform depositLocation;
         public Resource currentResource;
 
@@ -19,15 +22,20 @@ namespace Delayed_Messaging.Scripts.Units
 
         private List<Resource> detectedResources = new List<Resource>();
 
+        protected override void CancelCurrentTask()
+        {
+            gather = false;
+            searching = false;
+        }
+        public void StartGathering(Resource resource)
+        {
+            currentResource = resource;
+            gather = true;
+        }
         public void StartSearching()
         {
             gather = true;
             searching = true;
-        }
-        
-        private bool Arrived(Transform target)
-        {
-            return transform.TransformDistanceCheck(target, .3f);
         }
         [Task] bool Gather()
         {
@@ -71,20 +79,20 @@ namespace Delayed_Messaging.Scripts.Units
             }
             else
             {
-                // Move a random direction and search again
+                CancelCurrentTask();
                 Task.current.Fail();
             }
         }
         [Task] void MoveToResource()
         {
-            if (currentResource == null)
+            if (currentResource == null || unitDestination == null)
             {
                 Task.current.Fail();
             }
             
             unitDestination.transform.position = currentResource.transform.position;
             
-            if (Arrived(currentResource.transform))
+            if (transform.Arrived(currentResource.transform, .3f))
             {
                 Debug.LogWarning(name + " have <b>ARRIVED</b> at the resource");
                 Task.current.Succeed();
@@ -92,11 +100,14 @@ namespace Delayed_Messaging.Scripts.Units
         }
         [Task] void GatherResource()
         {
-            if (currentResource != null && currentResource.GatherResource(gatherRate))
+            if (currentResource != null && currentResource.GatherResource(this))
             {
                 Loaded = true;
                 Debug.LogWarning(name + " have <b>GATHERED</b> a resource");
+                //StartCoroutine(GatherResourceDelay(Task.current, gatherDuration));
                 Task.current.Succeed();
+                // AOE2 Bug
+                // currentResource = currentResource.HasCapacity() ? currentResource : null;
             }
             else
             {
@@ -108,7 +119,7 @@ namespace Delayed_Messaging.Scripts.Units
         {
             unitDestination.transform.position = depositLocation.position;
             
-            if (Arrived(depositLocation))
+            if (transform.Arrived(depositLocation, .3f))
             {
                 Debug.LogWarning(name + " have <b>ARRIVED</b> at the deposit");
                 Task.current.Succeed();
@@ -119,6 +130,7 @@ namespace Delayed_Messaging.Scripts.Units
             Loaded = false;
             Debug.LogWarning(name + " have <b>DEPOSITED</b> a resource");
             Task.current.Succeed();
+            //StartCoroutine(GatherResourceDelay(Task.current, gatherDuration));
         }
 
         protected override void DrawGizmos ()
@@ -131,6 +143,13 @@ namespace Delayed_Messaging.Scripts.Units
                 Gizmos.DrawLine(depositLocation.position, currentResource.transform.position);
             }
             base.DrawGizmos();
+        }
+
+        private IEnumerator GatherResourceDelay(Task task, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            task.Succeed();
+            yield return null;
         }
     }
 }

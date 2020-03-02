@@ -54,13 +54,14 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <param name="selectableObject"></param>
         /// <param name="selection"></param>
         /// <param name="player"></param>
+        /// <param name="selectedObjectList"></param>
         /// <param name="currentSelectionState"></param>
         /// <param name="previousSelectionState"></param>
         /// <param name="selectionList"></param>
         /// <param name="sensitivity"></param>
         /// <param name="selectState"></param>
         /// <param name="side"></param>
-        public static void Selection(this BaseObject selectableObject, Selection selection, Player player, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, float sensitivity, bool selectState, Selection.MultiSelect side, bool disabled)
+        public static void Selection(this BaseObject selectableObject, Selection selection, Player player, List<BaseObject> selectedObjectList, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, float sensitivity, bool selectState, Selection.MultiSelect side, bool disabled)
         {
             if (disabled)
             {
@@ -78,19 +79,19 @@ namespace VR_Prototyping.Scripts.Utilities
                     // Is true if select is called for the first time
                     if (currentSelectionState && !previousSelectionState)
                     {
-                        player.ClearSelectedObjects(side, selectableObject);
-                        selectableObject.SelectStart(side);
+                        //player.ClearSelectedObjects(side, selectableObject);
+                        selectableObject.SelectStart(side, selectedObjectList);
                         return;
                     }
                     // Called after letting go of a selected object
                     if (!currentSelectionState && previousSelectionState && selectionList[0])
                     {
-                        selectableObject.SelectHoldEnd(side);
+                        selectableObject.SelectHoldEnd(side, selectedObjectList);
                     }
                     // Is called if you have pressed select and let go within the threshold period
                     if (!currentSelectionState && previousSelectionState && !selectionList[0])
                     {
-                        selectableObject.QuickSelect(side);
+                        selectableObject.QuickSelect(side, selectedObjectList);
                         selection.UserInterface.SetObjectHeaderState(true);
                         selection.UserInterface.SelectObject(selectableObject);
                         return;
@@ -98,7 +99,7 @@ namespace VR_Prototyping.Scripts.Utilities
                     // Called if you are still holding select
                     if (currentSelectionState && selectionList[0])
                     {
-                        selectableObject.SelectHold(side);
+                        selectableObject.SelectHold(side, selectedObjectList);
                     }
                     break;
                 default:
@@ -523,6 +524,18 @@ namespace VR_Prototyping.Scripts.Utilities
         {
             if (!enabled) return true;
             return Vector3.Distance(self.position, user.position) <= range;
+        }
+
+        /// <summary>
+        /// Placeholder to determine if an object has reached its destination, will not work for large objects so needs to be fixed
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="target"></param>
+        /// <param name="distance"></param>
+        /// <returns></returns>
+        public static bool Arrived(this Transform unit, Transform target, float distance)
+        {
+            return unit.TransformDistanceCheck(target, distance);
         }
     }
 }

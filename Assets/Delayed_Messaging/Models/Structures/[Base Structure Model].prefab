@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5049018363716524618}
   - component: {fileID: 2443194392850964443}
   - component: {fileID: 8341762174572613351}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: '[Model]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3488862094534782892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.1, z: 0.05}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.2, z: 0.4}
   m_Children: []
   m_Father: {fileID: 7822062156561834377}
   m_RootOrder: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5d7e336994790394f82bd5c33faefdf5, type: 2}
+  - {fileID: 2100000, guid: 847fc7973b5bc6b49b1504d7fe51b3a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -88,8 +88,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7822062156561834377}
+  - component: {fileID: 9137501936120699643}
   m_Layer: 0
-  m_Name: '[Resource Gatherer Model]'
+  m_Name: '[Base Structure Model]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,3 +111,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9137501936120699643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954464585676608432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff58acb7f836484b8ebe895df5b61a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -177,9 +177,8 @@ namespace Delayed_Messaging.Scripts
                     {
                         continue;
                     }
-                    selectedUnit.Move(visual.transform.position);
+                    selectedUnit.SetDestination(visual.transform.position);
                 }
-                
             }
         }
     }

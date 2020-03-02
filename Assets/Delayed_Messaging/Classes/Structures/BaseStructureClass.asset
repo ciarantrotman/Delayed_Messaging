@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 107f0a654353e644eb8b52d23b56e864, type: 3}
-  m_Name: PrototypingStructureClass
+  m_Name: BaseStructureClass
   m_EditorClassIdentifier: 
   debugType: 2
-  objectName: Placeholder Name
-  objectSpecificInterface: {fileID: 0}
-  objectModel: {fileID: 0}
+  objectName: Base
+  objectSpecificInterface: {fileID: 7492711001606360640, guid: 1f0e403c50c20ef448da1b01036e7192,
+    type: 3}
+  objectModel: {fileID: 8954464585676608432, guid: a56c4bbbeee14c140b78e238a92c8065,
+    type: 3}
   cursorState: 2
   team: 0
-  cost: 0
-  healthMax: 0
+  cost: 100
+  healthMax: 100
   spawnLocationColour: {r: 0.042452812, g: 1, b: 0.4193379, a: 1}

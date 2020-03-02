@@ -7,8 +7,8 @@ namespace Delayed_Messaging.Scripts.Interaction
     public class ObjectHeader : MonoBehaviour
     {
         [Header("References")]
-        [SerializeField] private TextMeshPro name;
-        [SerializeField] private TextMeshPro team;
+        [SerializeField] private TextMeshPro objectName;
+        [SerializeField] private TextMeshPro objectTeam;
         [SerializeField] private MeshRenderer header;
         [SerializeField] private MeshRenderer frame;
         [SerializeField] private Transform modelViewerCenter;
@@ -24,8 +24,8 @@ namespace Delayed_Messaging.Scripts.Interaction
 
         public void SetHeader(BaseClass baseClass)
         {
-            name.SetText(baseClass.objectName);
-            team.SetText(baseClass.team.ToString());
+            objectName.SetText(baseClass.objectName);
+            objectTeam.SetText(baseClass.team.ToString());
             Destroy(model);
             
             model = Instantiate(baseClass.objectModel, modelViewerCenter);
@@ -41,8 +41,8 @@ namespace Delayed_Messaging.Scripts.Interaction
         
         public void DisableHeader()
         {
-            name.SetText(Blank);
-            team.SetText(Blank);
+            objectName.SetText(Blank);
+            objectTeam.SetText(Blank);
             header.enabled = false;
             frame.enabled = false;
             Destroy(model);

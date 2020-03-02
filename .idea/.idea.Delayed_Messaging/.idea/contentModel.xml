@@ -298,16 +298,19 @@
               <e p="ResourceClass.cs" t="Include" />
             </e>
             <e p="Structures" t="Include">
+              <e p="Base.cs" t="Include" />
               <e p="Structure.cs" t="Include" />
               <e p="StructureClass.cs" t="Include" />
             </e>
             <e p="Units" t="Include">
               <e p="Gather.BT.txt" t="Include" />
+              <e p="Move.BT.txt" t="Include" />
               <e p="ResourceGatherer.BT.txt" t="Include" />
               <e p="ResourceGatherer.cs" t="Include" />
               <e p="Search.BT.txt" t="Include" />
               <e p="Unit.cs" t="Include" />
               <e p="UnitClass.cs" t="Include" />
+              <e p="Worker.cs" t="Include" />
             </e>
             <e p="Utilities" t="Include">
               <e p="Interfaces.cs" t="Include" />

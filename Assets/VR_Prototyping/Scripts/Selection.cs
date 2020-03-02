@@ -339,8 +339,8 @@ namespace VR_Prototyping.Scripts
 			rBaseObject.Hover(pRBaseObject, lBaseObject, rCastCursor);
 			
 			// Calculate Selection States
-			lBaseObject.Selection(this, player, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT, disableLeftHand);
-			rBaseObject.Selection(this, player, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT, disableRightHand);
+			lBaseObject.Selection(this, player,  player.lSelectedObjects, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT, disableLeftHand);
+			rBaseObject.Selection(this, player,  player.rSelectedObjects, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT, disableRightHand);
 
 			// Previous States
 			lSelectPrevious = controllerTransforms.LeftSelect();
@@ -430,7 +430,7 @@ namespace VR_Prototyping.Scripts
 			switch (side)
 			{
 				case MultiSelect.LEFT:
-					player.ClearSelectedObjects(MultiSelect.LEFT, lBaseObject);
+					player.ClearSelectedObjects(MultiSelect.LEFT, player.lSelectedObjects, lBaseObject);
 					lMultiSelection.multiSelectS = CastLocationL.position;
 					lMultiSelection.selectionLineRenderer.enabled = true;
 					lMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(lMultiSelection.multiSelectS, lMultiSelection.multiSelectS);
@@ -439,7 +439,7 @@ namespace VR_Prototyping.Scripts
 					lMultiSelection.SelectionBounds = lMultiSelection.selectionLineRenderer.bounds;
 					break;
 				case MultiSelect.RIGHT:
-					player.ClearSelectedObjects(MultiSelect.RIGHT, rBaseObject);
+					player.ClearSelectedObjects(MultiSelect.RIGHT, player.rSelectedObjects, rBaseObject);
 					rMultiSelection.multiSelectS = CastLocationR.position;
 					rMultiSelection.selectionLineRenderer.enabled = true;
 					rMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(rMultiSelection.multiSelectS, rMultiSelection.multiSelectS);
@@ -487,7 +487,7 @@ namespace VR_Prototyping.Scripts
 					{
 						if (lMultiSelection.SelectionBounds.Intersects(baseObject.ObjectBounds))
 						{
-							baseObject.SelectStart(MultiSelect.LEFT);
+							baseObject.SelectStart(MultiSelect.LEFT, player.lSelectedObjects);
 						}
 					}
 					break;
@@ -500,7 +500,7 @@ namespace VR_Prototyping.Scripts
 					{
 						if (rMultiSelection.SelectionBounds.Intersects(baseObject.ObjectBounds))
 						{
-							baseObject.SelectStart(MultiSelect.RIGHT);
+							baseObject.SelectStart(MultiSelect.RIGHT, player.rSelectedObjects);
 						}
 					}
 					break;

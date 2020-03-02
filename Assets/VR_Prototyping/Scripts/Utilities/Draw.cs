@@ -216,5 +216,18 @@ namespace VR_Prototyping.Scripts.Utilities
 			//mesh.uv = uv;
 			mesh.triangles = triangles;
 		}
+		/*
+		public static void Circle (Vector3 center, float radius, Color color, float startAngle = 0f, float endAngle = 2*Mathf.PI) 
+		{
+			const int steps = 40;
+			while (startAngle > endAngle) startAngle -= 2*Mathf.PI;
+			Vector3 prev = new Vector3(Mathf.Cos(startAngle)*radius, 0, Mathf.Sin(startAngle)*radius);
+			for (int i = 0; i <= steps; i++) {
+				Vector3 c = new Vector3(Mathf.Cos(Mathf.Lerp(startAngle, endAngle, i/(float)steps))*radius, 0, Mathf.Sin(Mathf.Lerp(startAngle, endAngle, i/(float)steps))*radius);
+				Line(center + prev, center + c, color);
+				prev = c;
+			}
+		}
+		*/
 	}
 }

@@ -1,9 +1,11 @@
-﻿using Delayed_Messaging.Scripts.Utilities;
+﻿using System.Collections.Generic;
+using Delayed_Messaging.Scripts.Utilities;
 using Panda;
 using Pathfinding;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 using VR_Prototyping.Scripts.Utilities;
+using Draw = Pathfinding.Util.Draw;
 
 namespace Delayed_Messaging.Scripts.Units
 {
@@ -22,6 +24,7 @@ namespace Delayed_Messaging.Scripts.Units
         private LineRenderer destinationLineRenderer;
 
         private bool intialised;
+        private bool overrideDirection;
 
         protected override void Initialise()
         {
@@ -59,32 +62,57 @@ namespace Delayed_Messaging.Scripts.Units
             destinationLineRenderer.DrawStraightLineRender(transform, unitDestination.transform);
         }
 
-        public override void SelectStart(Selection.MultiSelect side)
+        public override void SelectStart(Selection.MultiSelect side, List<BaseObject> list)
         {
             destinationLineRenderer.enabled = true;
-            base.SelectStart(side);
+            base.SelectStart(side, list);
         }
 
-        public override void Deselect(Selection.MultiSelect side)
+        public override void Deselect(Selection.MultiSelect side, List<BaseObject> list)
         {
             destinationLineRenderer.enabled = false;
-            base.Deselect(side);
+            base.Deselect(side, list);
         }
 
         public void Damage(float damageTaken)
         {
 
         }
-        
-        [Task]
-        public void Move(Vector3 destination)
+
+        [Task] public bool UnitDirected()
         {
+            return overrideDirection;
+        }
+
+        public void SetDestination(Vector3 destination)
+        {
+            Debug.LogError("HMMM");
+            overrideDirection = true;
+            
             if (unitDestination == null)
             {
                 Debug.LogError(name + " tried to move but there is no <b>[Unit Destination]</b> defined!");
                 return;
             }
+            
             unitDestination.transform.position = destination;
+            CancelCurrentTask();
+        }
+
+        [Task] public void DirectedMovement()
+        {
+            if (transform.Arrived(unitDestination.transform, .3f))
+            {
+                Task.current.Succeed();
+                overrideDirection = false;
+            }
+        }
+        /// <summary>
+        /// This cancels whatever task the current unit is doing
+        /// </summary>
+        protected virtual void CancelCurrentTask()
+        {
+            
         }
 
         protected override void DrawGizmos ()
@@ -106,9 +134,10 @@ namespace Delayed_Messaging.Scripts.Units
             // Vectors
             Gizmos.color = unitClass.forwardVectorColour;
             Gizmos.DrawRay(pos, r.normalized);
-
-            Gizmos.color = unitClass.detectionColour;
-            Gizmos.DrawWireSphere(pos, unitClass.detectionRadius);
+            
+            Draw.Gizmos.CircleXZ(pos, unitClass.detectionRadius, unitClass.detectionColour);
+            Draw.Gizmos.CircleXZ(pos, unitClass.avoidanceRadius, unitClass.avoidanceColour);
+            Draw.Gizmos.CircleXZ(pos, unitClass.attackRadius, unitClass.attackColour);
         }
     }
 }

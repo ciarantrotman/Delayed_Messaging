@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ad345bd41e192c4b81ab5d662eee3e9, type: 3}
-  m_Name: ResourceGathererClass
+  m_Name: WorkerClass
   m_EditorClassIdentifier: 
   debugType: 2
   objectName: Placeholder Resource Gatherer
-  objectSpecificInterface: {fileID: 7492711001606360640, guid: 07dae42f0fdb70749a1680525987b234,
+  objectSpecificInterface: {fileID: 7492711001606360640, guid: 07c5d871a407c3f4bad2f89ee2b683dd,
     type: 3}
-  objectModel: {fileID: 8954464585676608432, guid: bd9a8f2dda440b94d8b225107e79f1cf,
+  objectModel: {fileID: 8954464585676608432, guid: 6d2408c57880e094399fdf62013a3f8d,
     type: 3}
   cursorState: 1
   team: 0

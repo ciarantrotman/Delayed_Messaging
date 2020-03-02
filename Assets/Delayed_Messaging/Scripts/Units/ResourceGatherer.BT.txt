@@ -1,8 +1,9 @@
 tree "Root"
-	fallback
-		tree "Search"
-		tree "Gather"
-		tree "Idle"
+    fallback
+        tree "Move"
+        tree "Search"
+        tree "Gather"
+        tree "Idle"
     			
 tree "Idle"
 	while

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
@@ -12,7 +13,7 @@ using VR_Prototyping.Scripts.Utilities;
 namespace VR_Prototyping.Scripts
 {
 	[DisallowMultipleComponent, CanEditMultipleObjects]
-	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable<Selection.MultiSelect>
+	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable<Selection.MultiSelect, List<BaseObject>>
 	{
 		internal GameObject playerObject;
 		internal ControllerTransforms controllerTransforms;
@@ -208,7 +209,7 @@ namespace VR_Prototyping.Scripts
 		{
 			//outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
 		}
-		public virtual void SelectStart(Selection.MultiSelect side)
+		public virtual void SelectStart(Selection.MultiSelect side, List<BaseObject> list)
 		{
 			SelectionVisual(SelectEvent);
 			selected = true;
@@ -230,32 +231,26 @@ namespace VR_Prototyping.Scripts
 					break;
 			}
 		}
-		public virtual void SelectHold(Selection.MultiSelect side)
+		public virtual void SelectHold(Selection.MultiSelect side, List<BaseObject> list)
 		{
 
 		}
-		public void SelectHoldEnd(Selection.MultiSelect side)
+		public void SelectHoldEnd(Selection.MultiSelect side, List<BaseObject> list)
 		{
 			
 		}
-		public virtual void QuickSelect(Selection.MultiSelect side)
+
+		public virtual void QuickSelect(Selection.MultiSelect side, List<BaseObject> list)
 		{
-			
+			player.ClearSelectedObjects(side, list, this);
 		}
-		public virtual void Deselect(Selection.MultiSelect side)
+		public virtual void Deselect(Selection.MultiSelect side, List<BaseObject> list)
 		{
 			SelectionVisual(DeselectEvent);
 			selected = false;
-			switch (side)
+			if (list.Contains(this))
 			{
-				case Selection.MultiSelect.LEFT when player.lSelectedObjects.Contains(this):
-					player.lSelectedObjects.Remove(this);
-					break;
-				case Selection.MultiSelect.RIGHT when player.rSelectedObjects.Contains(this):
-					player.rSelectedObjects.Remove(this);
-					break;
-				default:
-					break;
+				list.Remove(this);
 			}
 		}
 		
