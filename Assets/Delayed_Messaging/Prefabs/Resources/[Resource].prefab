@@ -53,6 +53,7 @@ MonoBehaviour:
     type: 3}
   selectionRadius: 0.1
   resourceClass: {fileID: 11400000, guid: 96c0592cab27ceb4f9838749812163de, type: 2}
+  startingVolume: 6
 --- !u!1001 &5758058338410409332
 PrefabInstance:
   m_ObjectHideFlags: 0

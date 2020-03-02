@@ -10,7 +10,7 @@ namespace Delayed_Messaging.Scripts.Units
 {
     public class ResourceGatherer : Unit
     {
-        [Header("Resource Gatherer Specific Settings")] 
+        [Header("Resource Gatherer Specific Settings")]
         [SerializeField] private float gatherDuration;
         public int capacity;
         

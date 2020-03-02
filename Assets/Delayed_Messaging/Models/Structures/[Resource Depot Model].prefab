@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5049018363716524618}
   - component: {fileID: 2443194392850964443}
   - component: {fileID: 8341762174572613351}
-  - component: {fileID: 4416130706358552240}
+  - component: {fileID: 3876444778509424751}
   m_Layer: 10
   m_Name: '[Model]'
   m_TagString: Untagged
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3488862094534782892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.2, z: 0.4}
+  m_LocalPosition: {x: 0, y: 0.075, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.15, z: 0.4}
   m_Children: []
   m_Father: {fileID: 7822062156561834377}
   m_RootOrder: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 847fc7973b5bc6b49b1504d7fe51b3a9, type: 2}
+  - {fileID: 2100000, guid: c0e826dae2321bb4785d82db2ddeab35, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4416130706358552240
+--- !u!65 &3876444778509424751
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7822062156561834377}
   m_Layer: 0
-  m_Name: '[Base Structure Model]'
+  m_Name: '[Resource Depot Model]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

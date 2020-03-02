@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4937663744074412861}
-  - component: {fileID: 8986336767574544993}
+  - component: {fileID: 7032860019259931361}
   - component: {fileID: 4937663744074412851}
   - component: {fileID: 4937663744074412860}
   - component: {fileID: 4937663744074412850}
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8986336767574544993
+--- !u!114 &7032860019259931361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,24 +45,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4937663744074412862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f225777aa5e226489435afd18eb9e6f, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ba6ba5d49cfb2b4abfcc4ae35186059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugType: 1
+  debugType: 2
   selectionType: 3
   hoverOutlineColour: {r: 0, g: 0, b: 0, a: 1}
-  hoverOutlineWidth: 0
-  hoverOutlineMode: 2
+  hoverOutlineWidth: 10
+  hoverOutlineMode: 0
   selectionVisual: {fileID: 8863300974467014936, guid: 816e914a4cd335d4f8e754c0f28dbc78,
     type: 3}
   selectionRadius: 0.1
-  unitClass: {fileID: 11400000, guid: 58623cf7d4b9bfe45a646c1dc85821f2, type: 2}
+  unitClass: {fileID: 11400000, guid: 6c42eb639fe285345a51a8e5da491ea1, type: 2}
   destinationLineRendererMat: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f,
     type: 2}
-  gatherDuration: 1
-  capacity: 3
-  depositLocation: {fileID: 0}
-  currentResource: {fileID: 0}
 --- !u!114 &4937663744074412851
 MonoBehaviour:
   m_ObjectHideFlags: 0

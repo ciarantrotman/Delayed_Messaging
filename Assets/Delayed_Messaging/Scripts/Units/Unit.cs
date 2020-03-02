@@ -86,7 +86,6 @@ namespace Delayed_Messaging.Scripts.Units
 
         public void SetDestination(Vector3 destination)
         {
-            Debug.LogError("HMMM");
             overrideDirection = true;
             
             if (unitDestination == null)
@@ -127,14 +126,14 @@ namespace Delayed_Messaging.Scripts.Units
             // Debug
             if (destinationSetter != null && destinationSetter.target != null)
             {
-                Gizmos.color = unitClass.destinationColour;
-                Gizmos.DrawWireSphere(destinationSetter.target.position, .05f);
+                Vector3 position = unitDestination.transform.position;
+                Draw.Gizmos.Line(position, pos, Color.black);
+                Draw.Gizmos.CircleXZ(position, .01f, Color.black);
             }
             
             // Vectors
             Gizmos.color = unitClass.forwardVectorColour;
             Gizmos.DrawRay(pos, r.normalized);
-            
             Draw.Gizmos.CircleXZ(pos, unitClass.detectionRadius, unitClass.detectionColour);
             Draw.Gizmos.CircleXZ(pos, unitClass.avoidanceRadius, unitClass.avoidanceColour);
             Draw.Gizmos.CircleXZ(pos, unitClass.attackRadius, unitClass.attackColour);

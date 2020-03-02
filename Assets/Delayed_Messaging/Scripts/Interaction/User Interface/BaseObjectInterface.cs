@@ -1,5 +1,4 @@
-﻿using System.Xml.Serialization;
-using Delayed_Messaging.Scripts.Utilities;
+﻿using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 

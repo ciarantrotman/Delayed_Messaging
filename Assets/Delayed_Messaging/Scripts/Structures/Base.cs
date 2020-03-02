@@ -1,17 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Delayed_Messaging.Scripts.Structures;
-using Pathfinding.Util;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using VR_Prototyping.Scripts;
 
-public class Base : Structure
+namespace Delayed_Messaging.Scripts.Structures
 {
-        public Transform spawnOrigin;
-        public Transform spawnDestination;
-
-        public GameObject unit;
-
+    public class Base : Structure
+    { 
         public override void QuickSelect(Selection.MultiSelect side, List<BaseObject> list)
         {
             /*
@@ -25,21 +18,5 @@ public class Base : Structure
             
             base.QuickSelect(side, list);
         }
-
-        protected override void DrawGizmos ()
-        {
-            if (structureClass == null)
-            {
-                return;
-            }
-            
-            base.DrawGizmos();
-            
-            // Cache
-            Vector3 o = spawnOrigin.position;
-            Vector3 d = spawnDestination.position;
-            Draw.Gizmos.CircleXZ(o, .1f, structureClass.spawnLocationColour);
-            Draw.Gizmos.CircleXZ(d, .1f, structureClass.spawnLocationColour);
-            Gizmos.DrawLine(o, d);
-        }
+    }
 }

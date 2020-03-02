@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
 using VR_Prototyping.Scripts.Utilities;
+using Draw = Pathfinding.Util.Draw;
 
 namespace VR_Prototyping.Scripts
 {
@@ -52,12 +53,12 @@ namespace VR_Prototyping.Scripts
 		[SerializeField] private ControllerTransforms.DebugType debugType;
 		
 		[Header("Selection Settings")]
-		public Selection.SelectionType selectionType;
+		public Selection.SelectionType selectionType = Selection.SelectionType.DISTANCE_CAST;
 		
 		[Header("Hover Aesthetics")]
 		[SerializeField] private Color hoverOutlineColour = new Color(0,0,0,1);
-		[SerializeField, Range(0,10)] private float hoverOutlineWidth = 10f;
-		[SerializeField] private Outline.Mode hoverOutlineMode = Outline.Mode.OutlineAll;
+		[SerializeField, Range(0,10)] private float hoverOutlineWidth = 0f;
+		[SerializeField] private Outline.Mode hoverOutlineMode = Outline.Mode.OutlineHidden;
 
 		[Header("Selection Aesthetics")] 
 		[SerializeField] private GameObject selectionVisual;
@@ -271,6 +272,8 @@ namespace VR_Prototyping.Scripts
 
 		protected virtual void DrawGizmos ()
 		{
+			Draw.Gizmos.CircleXZ(transform.position, selectionRadius, Color.white);
+			
 			if (selection != null)
 			{		
 				Gizmos.color = Color.green;
@@ -280,9 +283,9 @@ namespace VR_Prototyping.Scripts
 				Vector3 position = transform.position;
 			
 				Gizmos.DrawLine(lClosestPoint, selection.CastLocationL.position);
-				Gizmos.DrawWireSphere(lClosestPoint, .05f);
+				Gizmos.DrawWireSphere(lClosestPoint, .02f);
 				Gizmos.DrawLine(rClosestPoint, selection.CastLocationR.position);
-				Gizmos.DrawWireSphere(rClosestPoint, .05f);
+				Gizmos.DrawWireSphere(rClosestPoint, .02f);
 				Gizmos.color = Color.black;
 				Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationR.position - position) * selection.castSelectionRadius);
 				Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationL.position - position) * selection.castSelectionRadius);

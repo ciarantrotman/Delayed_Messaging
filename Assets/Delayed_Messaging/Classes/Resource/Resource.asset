@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14d07d11795047f479f7881c51020ccc, type: 3}
-  m_Name: PrototypeResourceClass
+  m_Name: Resource
   m_EditorClassIdentifier: 
   debugType: 2
   objectName: Resource

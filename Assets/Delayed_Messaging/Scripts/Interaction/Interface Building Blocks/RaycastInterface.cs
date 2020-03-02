@@ -34,7 +34,7 @@ namespace Delayed_Messaging.Scripts.Interaction
             }
 
             interfaceCollider = gameObject.AddComponent<BoxCollider>();
-            interfaceCollider.size = visualRenderer.bounds.size;//transform.BoundsOfChildren(bounds).size;
+            interfaceCollider.size = visualRenderer.bounds.size;    //transform.BoundsOfChildren(bounds).size;
             
             gameObject.layer = 5;
             

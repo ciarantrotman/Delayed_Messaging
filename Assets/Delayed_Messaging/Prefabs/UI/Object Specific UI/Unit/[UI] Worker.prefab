@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1590396685339780357}
-  - component: {fileID: 4864815609670525281}
-  m_Layer: 0
-  m_Name: '[UI] Base'
+  - component: {fileID: 9118216238916255208}
+  m_Layer: 5
+  m_Name: '[UI] Worker'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,11 +28,11 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4814389384230753850}
+  - {fileID: 6149449121740503356}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4864815609670525281
+--- !u!114 &9118216238916255208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,10 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7492711001606360640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df518508647e63940a80cee1e331afdc, type: 3}
+  m_Script: {fileID: 11500000, guid: 9615d5e1339b15d47bf3075791762691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &4791406885168212450
+--- !u!1001 &6195090424707516132
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -109,18 +109,18 @@ PrefabInstance:
     - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
       propertyPath: buttonText
-      value: Worker
+      value: Resource Depot
       objectReference: {fileID: 0}
     - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
       propertyPath: model
       value: 
-      objectReference: {fileID: 8954464585676608432, guid: 6d2408c57880e094399fdf62013a3f8d,
+      objectReference: {fileID: 8954464585676608432, guid: a9ca8e51080a5af4396b534b752a3c0f,
         type: 3}
     - target: {fileID: 5223815884838701151, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
       propertyPath: m_Name
-      value: Worker
+      value: Depot
       objectReference: {fileID: 0}
     - target: {fileID: 6595006252136924349, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
@@ -154,9 +154,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccdf138e8a288c44bbb18ba91f02c06c, type: 3}
---- !u!4 &4814389384230753850 stripped
+--- !u!4 &6149449121740503356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 49076212780482520, guid: ccdf138e8a288c44bbb18ba91f02c06c,
     type: 3}
-  m_PrefabInstance: {fileID: 4791406885168212450}
+  m_PrefabInstance: {fileID: 6195090424707516132}
   m_PrefabAsset: {fileID: 0}
