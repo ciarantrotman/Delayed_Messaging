@@ -1,18 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ResourceDepotInterface : MonoBehaviour
+namespace Delayed_Messaging.Scripts.Interaction.User_Interface
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ResourceDepotInterface : BaseObjectInterface
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void OverrideInitialise()
+        {
+            //
+        }
     }
 }

@@ -39,7 +39,12 @@ namespace VR_Prototyping.Scripts.Keyboard
         {
             KeyboardManager.Keystroke(Index, keyValue);
         }
-        
+
+        protected override void Initialise()
+        {
+            throw new System.NotImplementedException();
+        }
+
         protected override void ObjectUpdate()
         {
             hoverBorder.localPosition = new Vector3(0, 0, borderDepth);

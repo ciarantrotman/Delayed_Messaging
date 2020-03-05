@@ -36,7 +36,7 @@ namespace Delayed_Messaging.Scripts.Player
             }
             selection = playerObject.GetComponent<Selection>();
         }
-        public void ClearSelectedObjects(Selection.MultiSelect side, List<BaseObject> list, BaseObject focusObject)
+        public void ClearSelectedObjects(Selection.MultiSelect side, List<BaseObject> list, BaseObject focusObject = null)
         {
             foreach (BaseObject selectedObject in list)
             {

@@ -2,6 +2,9 @@
 {
     public class Worker : Unit
     {
-    
+        protected override void CancelCurrentTask()
+        {
+            //
+        }
     }
 }

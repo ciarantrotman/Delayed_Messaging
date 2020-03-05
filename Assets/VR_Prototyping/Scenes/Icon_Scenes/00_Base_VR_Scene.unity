@@ -352,7 +352,7 @@ PrefabInstance:
     - target: {fileID: 3190667411478560410, guid: ec06982604d9b42489c1cbb88cfbe7ad,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3190667411478560410, guid: ec06982604d9b42489c1cbb88cfbe7ad,
         type: 3}
@@ -369,10 +369,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5402288570566665688, guid: ec06982604d9b42489c1cbb88cfbe7ad,
+        type: 3}
+      propertyPath: spawnableUnits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402288570566665688, guid: ec06982604d9b42489c1cbb88cfbe7ad,
+        type: 3}
+      propertyPath: spawnableUnits.Array.data[0].name
+      value: worker
+      objectReference: {fileID: 0}
     - target: {fileID: 6494321749994224828, guid: ec06982604d9b42489c1cbb88cfbe7ad,
         type: 3}
       propertyPath: m_Name
       value: '[Base]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494321749994224828, guid: ec06982604d9b42489c1cbb88cfbe7ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec06982604d9b42489c1cbb88cfbe7ad, type: 3}
@@ -514,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 3190667411478560410, guid: c1c83201fd3cd5e44ac3c78de866d56c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3190667411478560410, guid: c1c83201fd3cd5e44ac3c78de866d56c,
         type: 3}
@@ -535,6 +550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Resource]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494321749994224828, guid: c1c83201fd3cd5e44ac3c78de866d56c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c83201fd3cd5e44ac3c78de866d56c, type: 3}
@@ -583,7 +603,7 @@ PrefabInstance:
     - target: {fileID: 3190667411478560410, guid: c1c83201fd3cd5e44ac3c78de866d56c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3190667411478560410, guid: c1c83201fd3cd5e44ac3c78de866d56c,
         type: 3}
@@ -604,6 +624,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Resource]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494321749994224828, guid: c1c83201fd3cd5e44ac3c78de866d56c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c83201fd3cd5e44ac3c78de866d56c, type: 3}
@@ -866,6 +891,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Worker]'
       objectReference: {fileID: 0}
+    - target: {fileID: 4937663744074412862, guid: 905da0b807d968d418e045a0acb21d88,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 905da0b807d968d418e045a0acb21d88, type: 3}
 --- !u!1 &1860103274
@@ -943,7 +973,7 @@ PrefabInstance:
     - target: {fileID: 3190667411478560410, guid: c1c83201fd3cd5e44ac3c78de866d56c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3190667411478560410, guid: c1c83201fd3cd5e44ac3c78de866d56c,
         type: 3}
@@ -964,6 +994,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Resource]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494321749994224828, guid: c1c83201fd3cd5e44ac3c78de866d56c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1c83201fd3cd5e44ac3c78de866d56c, type: 3}
@@ -1602,6 +1637,16 @@ PrefabInstance:
         type: 3}
       propertyPath: disableLeftHand
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 618182138019180014, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: lSelectionDistance
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 618182138019180014, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: rSelectionDistance
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7473554891637304831, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}

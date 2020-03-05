@@ -61,65 +61,45 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <param name="sensitivity"></param>
         /// <param name="selectState"></param>
         /// <param name="side"></param>
-        public static void Selection(this BaseObject selectableObject, Selection selection, Player player, List<BaseObject> selectedObjectList, bool currentSelectionState, bool previousSelectionState, List<bool> selectionList, float sensitivity, bool selectState, Selection.MultiSelect side, bool disabled)
+        public static void Selection(this BaseObject selectableObject, Selection selection, Player player, List<BaseObject> selectedObjectList, float cursorDistance, bool currentSelectionState, bool previousSelectionState, float multiSelectDistance, Selection.MultiSelection multiSelection, Selection.MultiSelect side, bool disabled)
         {
             if (disabled)
             {
                 return;
             }
-            
-            // Used to calculate the type of hold state
-            selectionList.BoolListCull(currentSelectionState, sensitivity);
-            
-            //Debug.Log(currentSelectionState + ", " + previousSelectionState + " | [n-1] " + selectionList[selectionList.Count-1] + ", [0] " + selectionList[0]);
-            
-            switch (selectableObject != null && !selectState)
+
+            // Is true if select is called for the first time, sets the cursor start position
+            if (currentSelectionState && !previousSelectionState)
             {
-                case true: // should only be called when there is a selectable object and select hold isn't active
-                    // Is true if select is called for the first time
-                    if (currentSelectionState && !previousSelectionState)
-                    {
-                        //player.ClearSelectedObjects(side, selectableObject);
-                        selectableObject.SelectStart(side, selectedObjectList);
-                        return;
-                    }
-                    // Called after letting go of a selected object
-                    if (!currentSelectionState && previousSelectionState && selectionList[0])
-                    {
-                        selectableObject.SelectHoldEnd(side, selectedObjectList);
-                    }
-                    // Is called if you have pressed select and let go within the threshold period
-                    if (!currentSelectionState && previousSelectionState && !selectionList[0])
-                    {
-                        selectableObject.QuickSelect(side, selectedObjectList);
-                        selection.UserInterface.SetObjectHeaderState(true);
-                        selection.UserInterface.SelectObject(selectableObject);
-                        return;
-                    }
-                    // Called if you are still holding select
-                    if (currentSelectionState && selectionList[0])
-                    {
-                        selectableObject.SelectHold(side, selectedObjectList);
-                    }
-                    break;
-                default:
-                    // Is true if select is called for the first time
-                    if (currentSelectionState && !previousSelectionState)
-                    {
-                        selection.SelectStart(side);
-                        return;
-                    }
-                    // Called if you are still holding select
-                    if (currentSelectionState && previousSelectionState)
-                    {
-                        selection.SelectHold(side);
-                    }
-                    // Called after letting go of a selected object
-                    if (!currentSelectionState && previousSelectionState)
-                    {
-                        selection.SelectHoldEnd(side);
-                    }
-                    break;
+                selection.SelectStart(side);
+                return;
+            }
+            // When you have a focus object, you have let go of the select button, and your cursor is still within the selection threshold
+            if (selectableObject != null && !currentSelectionState && previousSelectionState && cursorDistance <= multiSelectDistance)
+            {
+                selectableObject.QuickSelect(side, selectedObjectList);
+                selection.UserInterface.SetObjectHeaderState(true);
+                selection.UserInterface.SelectObject(selectableObject);
+                return;
+            }
+            // Called if you are still holding select and the cursor is outside the threshold distance
+            if (currentSelectionState && cursorDistance >= multiSelectDistance)
+            {
+                selection.MultiSelectStart(multiSelection);
+                selection.MultiSelectHold(multiSelection);
+                return;
+            }
+            // When you release the select button, but are still within the threshold
+            if (selectableObject == null && !currentSelectionState && previousSelectionState && cursorDistance <= multiSelectDistance)
+            {
+                selection.SelectEnd(side, selectedObjectList);
+                return;
+            }
+            // When you release the select button, and are outside of the threshold
+            if (selectableObject == null && !currentSelectionState && previousSelectionState && cursorDistance >= multiSelectDistance)
+            {
+                selection.MultiSelectEnd(multiSelection);
+                return;
             }
         }
 
@@ -199,6 +179,17 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <param name="current"></param>
         /// <param name="sensitivity"></param>
         public static void BoolListCull(this List<bool> list, bool current, float sensitivity)
+        {
+            list.Add(current);
+            CullList(list, sensitivity);
+        }
+        /// <summary>
+        /// Maintains a list of booleans at a certain capacity
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="current"></param>
+        /// <param name="sensitivity"></param>
+        public static void FloatListCull(this List<float> list, float current, float sensitivity)
         {
             list.Add(current);
             CullList(list, sensitivity);
@@ -536,6 +527,22 @@ namespace VR_Prototyping.Scripts.Utilities
         public static bool Arrived(this Transform unit, Transform target, float distance)
         {
             return unit.TransformDistanceCheck(target, distance);
+        }
+        /// <summary>
+        /// Returns the largest value based on a Vector3
+        /// </summary>
+        /// <param name="vector3"></param>
+        /// <returns></returns>
+        public static float LargestValue(this Vector3 vector3)
+        {
+            float x = vector3.x;
+            float y = vector3.y;
+            float z = vector3.z;
+            
+            float largestValue = x > y ? x : y;
+            largestValue = z > largestValue ? z : largestValue;
+
+            return largestValue;
         }
     }
 }

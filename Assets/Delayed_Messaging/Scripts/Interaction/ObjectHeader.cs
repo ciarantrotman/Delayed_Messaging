@@ -1,6 +1,6 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
+using VR_Prototyping.Scripts;
 
 namespace Delayed_Messaging.Scripts.Interaction
 {
@@ -12,7 +12,6 @@ namespace Delayed_Messaging.Scripts.Interaction
         [SerializeField] private MeshRenderer header;
         [SerializeField] private MeshRenderer frame;
         [SerializeField] private Transform modelViewerCenter;
-        [SerializeField, Range(1f, 0f)] private float modelScaleDownFactor;
 
         private const string Blank = "";
         private GameObject model;
@@ -29,8 +28,8 @@ namespace Delayed_Messaging.Scripts.Interaction
             Destroy(model);
             
             model = Instantiate(baseClass.objectModel, modelViewerCenter);
+            model.ScaleFactor();
             model.transform.position = modelViewerCenter.position;
-            model.transform.localScale = new Vector3(modelScaleDownFactor,modelScaleDownFactor,modelScaleDownFactor);
         }
 
         public void EnableHeader()

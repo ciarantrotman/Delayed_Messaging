@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8929538d7e8c6945b6ee8278fcdc3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lSelect: 
-  rSelect: 
+  lSelect: []
+  rSelect: []
   selectionType: 3
   gaze: 60
   manual: 10
@@ -155,6 +155,7 @@ MonoBehaviour:
   disableRightHand: 0
   minimumAngle: 60
   maximumAngle: 110
+  multiSelectDistanceThreshold: 0.2
   castSelectionRadius: 0.1
   layerIndex: 15
   castCursorObject: {fileID: 5171863205534225016, guid: b02a7701e4ccd0340b18d1e4a674b219,
@@ -162,7 +163,7 @@ MonoBehaviour:
   gazeCursorObject: {fileID: 3368970237513492719, guid: 0df546e5f776c5e44a9ca29e0c322cb3,
     type: 3}
   lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
-  selectionLineRenderMat: {fileID: 2100000, guid: a95dbd70e70bafa49967e3c51a35de61,
+  selectionLineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216,
     type: 2}
   selectionQuadMaterial: {fileID: 2100000, guid: 49467c3ecb7c0294cac3aa1f5e4b0ee7,
     type: 2}

@@ -87,6 +87,11 @@ MonoBehaviour:
   structureClass: {fileID: 11400000, guid: 4af1cb07134c82e4fbc075593ef7b548, type: 2}
   spawnOrigin: {fileID: 372166708375171395}
   spawnDestination: {fileID: 3139926114456602016}
+  spawnableObjects:
+  - objectName: Worker
+    objectPrefab: {fileID: 4937663744074412862, guid: 905da0b807d968d418e045a0acb21d88,
+      type: 3}
+    objectType: 0
 --- !u!1 &9056951692025071275
 GameObject:
   m_ObjectHideFlags: 0

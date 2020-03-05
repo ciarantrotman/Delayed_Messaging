@@ -13,6 +13,11 @@ namespace Delayed_Messaging.Scripts.Resources
 
         private int currentVolume;
 
+        protected override void ObjectUpdate()
+        {
+    
+        }
+
         public override void QuickSelect(Selection.MultiSelect side, List<BaseObject> list)
         {
             foreach (BaseObject unit in list)

@@ -6,17 +6,14 @@ namespace Delayed_Messaging.Scripts.Interaction.User_Interface
 {
     public abstract class BaseObjectInterface : MonoBehaviour, IInitialiseObjectInterface<BaseObject>
     {
-        internal BaseObject baseObject;
+        internal BaseObject baseObjectBaseObject;
         
         public void Initialise(BaseObject b)
         {
-            baseObject = b;
+            baseObjectBaseObject = b;
             OverrideInitialise();
         }
 
-        protected virtual void OverrideInitialise()
-        {
-            
-        }
+        protected abstract void OverrideInitialise();
     }
 }

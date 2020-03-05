@@ -618,7 +618,12 @@ namespace VR_Prototyping.Scripts
             Mp.transform.LocalDepth(Cp.transform.Midpoint(Ts.transform), false, 0f);
             visual.Target(Hp, Cn.transform, joystick, Rt);
         }
-
+        /// <summary>
+        /// Creates a bounds using the Mesh Renderers of the provided transform
+        /// </summary>
+        /// <param name="parentObject"></param>
+        /// <param name="bounds"></param>
+        /// <returns></returns>
         public static Bounds BoundsOfChildren(this Transform parentObject, Bounds bounds)
         {
             bounds = new Bounds (parentObject.position, Vector3.zero);
@@ -628,6 +633,38 @@ namespace VR_Prototyping.Scripts
                 bounds.Encapsulate(renderer.bounds);
             }
             return bounds;
+        }
+
+        /// <summary>
+        /// Finds the largest cardinal dimension of the model and scales the supplied GameObject accordingly
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="boundsMin"></param>
+        /// <returns></returns>
+        public static void ScaleFactor(this GameObject model, float boundsMin = .35f)
+        {
+            // Find the bounds of the model
+            Bounds modelBounds = new Bounds();
+            modelBounds = model.transform.BoundsOfChildren(modelBounds);
+
+            float boundsMax = modelBounds.size.LargestValue();
+            float scaleMax = model.transform.localScale.LargestValue();
+
+            float scaleRatio = scaleMax / boundsMax;
+            
+            // Scale base on the frame bounds
+            float boundsRatio = boundsMin / boundsMax;
+            
+            // Adjust the original scale to create the new scale factor
+            float adjustedBounds = boundsMax * boundsRatio;
+
+            /*Debug.Log(model.name + 
+                      " : Bounds Ratio: " + boundsRatio + " = " + boundsMin + " / " + boundsMax + 
+                      " | Adjusted Bounds: " + adjustedBounds + " = " + boundsMax + " * " + boundsRatio + 
+                      " | Scale Ratio: " + scaleRatio + " = " + scaleMax + " / " + boundsMax);*/
+
+            model.transform.localScale = new Vector3(.1f, .1f, .1f);
+            //model.transform.localScale = new Vector3(adjustedBounds, adjustedBounds, adjustedBounds);
         }
     }
 }

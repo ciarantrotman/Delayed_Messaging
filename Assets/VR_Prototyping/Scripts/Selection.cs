@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Interaction;
 using Delayed_Messaging.Scripts.Player;
+using Delayed_Messaging.Scripts.Structures;
 using UnityEngine;
 using VR_Prototyping.Scripts.Utilities;
 using Object = UnityEngine.Object;
@@ -44,8 +45,9 @@ namespace VR_Prototyping.Scripts
 		public bool SelectHoldR { get; set; }
 		public bool SelectHoldL { get; set; }
 
-		private bool rTouch;
-		private bool lTouch;
+		//private bool rTouch;
+		//private bool lTouch;
+		
 		private bool lSelectPrevious;
 		private bool rSelectPrevious;
 		private bool lSelectHoldPrevious;
@@ -53,9 +55,11 @@ namespace VR_Prototyping.Scripts
 		private bool lGrabPrevious;
 		private bool rGrabPrevious;
 		
-		[HideInInspector] public List<bool> lSelect = new List<bool> {Capacity = (int) QuickSelectSensitivity};
-		[HideInInspector] public List<bool> rSelect = new List<bool> {Capacity = (int) QuickSelectSensitivity};
-		
+		[HideInInspector] public List<float> lSelect = new List<float> {Capacity = (int) QuickSelectSensitivity};
+		[HideInInspector] public List<float> rSelect = new List<float> {Capacity = (int) QuickSelectSensitivity};
+
+		#region Selection Visuals
+
 		private GameObject lMidPoint;
 		private GameObject rMidPoint;
 		private GameObject gFocusObject;
@@ -68,13 +72,84 @@ namespace VR_Prototyping.Scripts
 		private Material rLineRendererMaterial;
 		private static readonly int Distance = Shader.PropertyToID("_Distance");
 
+		#endregion
+
 		private Transform lPrevious;
 		private Transform rPrevious;
 
 		#region Distance Cast Variables
 		private GameObject parent;
 		private GameObject cN;
+		
+		public class CastClass
+		{
+			public GameObject parent;
+			
+			public class CastObjects
+			{
+				public GameObject follow;
+				public GameObject proxy;
+				public GameObject normalised;
+				public GameObject midpoint;
+				public GameObject target;
+				public GameObject hitPoint;
+				public GameObject visual;
+				public GameObject rotation;
+				public Vector3 lastValidPosition;
+				public LineRenderer lineRenderer;
+			}
 
+			public CastObjects lCastObject = new CastObjects();
+			public CastObjects rCastObject = new CastObjects();
+
+			public void SetupCastObjects(GameObject v, Transform castTransform, string instanceName, Material lineRendererMat)
+			{
+				parent = new GameObject("[" + instanceName + "/Calculations]");
+				Transform parentTransform = parent.transform;
+				parentTransform.SetParent(castTransform);
+				CastObject(lCastObject, v, castTransform, parent.transform, instanceName, lineRendererMat);
+				CastObject(rCastObject, v, castTransform, parent.transform, instanceName, lineRendererMat);
+			}
+
+			public void CastUpdate(CastObjects castObjects, Transform hand, Transform head, Vector2 joystick, float maxAngle, float minAngle, float minDistance, float maxDistance)
+			{
+				castObjects.lastValidPosition = castObjects.target.LastValidPosition(castObjects.lastValidPosition);
+				Set.DistanceCast(castObjects.target, castObjects.follow, castObjects.proxy, castObjects.normalised, castObjects.hitPoint, castObjects.midpoint, castObjects.rotation, castObjects.visual, 
+					hand, head, joystick, maxAngle, minAngle,
+					minDistance, maxDistance, castObjects.lastValidPosition);
+				castObjects.lineRenderer.BezierLineRenderer(hand.position,castObjects.midpoint.transform.position,castObjects.hitPoint.transform.position);
+				castObjects.lineRenderer.material.SetFloat(Distance, hand.TransformDistance(castObjects.hitPoint.transform));
+			}
+
+			private void CastObject(CastObjects castObjects, GameObject v, Transform castTransform, Transform parentTransform, string instanceName, Material lineRendererMat)
+			{
+				castObjects.follow = new GameObject("[" + instanceName + "/Follow]");
+				castObjects.proxy = new GameObject("[" + instanceName + "/Proxy]");
+				castObjects.normalised = new GameObject("[" + instanceName + "/Normalised]");
+				castObjects.midpoint = new GameObject("[" + instanceName + "/MidPoint]");
+				castObjects.target = new GameObject("[" + instanceName + "/Target]");
+				castObjects.hitPoint = new GameObject("[" + instanceName + "/HitPoint]");
+				castObjects.rotation = new GameObject("[" + instanceName + "/Rotation]");
+
+				castObjects.visual = Instantiate(v, castObjects.hitPoint.transform);
+				castObjects.visual.name = "[" + instanceName + "/Visual/Right]";
+				castObjects.visual.SetActive(true);
+
+				castObjects.follow.transform.SetParent(parentTransform);
+				castObjects.proxy.transform.SetParent(castObjects.follow.transform);
+				castObjects.normalised.transform.SetParent(castObjects.follow.transform);
+				castObjects.midpoint.transform.SetParent(castObjects.proxy.transform);
+				castObjects.target.transform.SetParent(castObjects.normalised.transform);
+				castObjects.hitPoint.transform.SetParent(castTransform);
+				castObjects.rotation.transform.SetParent(castObjects.hitPoint.transform);
+
+				castObjects.lineRenderer = castObjects.proxy.AddComponent<LineRenderer>();
+				castObjects.lineRenderer.SetupLineRender(lineRendererMat, .01f, false);
+			}
+		}
+		
+		public CastClass cast = new CastClass();
+		/*
 		private GameObject rCf; // follow
 		private GameObject rCp; // proxy
 		private GameObject rCn; // normalised
@@ -82,8 +157,8 @@ namespace VR_Prototyping.Scripts
 		private GameObject rTs; // target
 		private GameObject rHp; // hit
 		private GameObject rVisual; // visual
-
 		private GameObject rRt; // rotation
+		
 		private GameObject lCf; // follow
 		private GameObject lCp; // proxy
 		private GameObject lCn; // normalised
@@ -91,10 +166,14 @@ namespace VR_Prototyping.Scripts
 		private GameObject lTs; // target
 		private GameObject lHp; // hit
 		private GameObject lVisual; // visual
-		private GameObject lRt; // rotation
+		private GameObject lRt; // rotation*/
 
+		private float lSelectionDistance;
+		private float rSelectionDistance;
 		private Vector3 rLastValidPosition;
 		private Vector3 lLastValidPosition;
+		private Vector3 rSelectStartPoint;
+		private Vector3 lSelectStartPoint;
 
 		private CastCursor rCastCursor;
 		private CastCursor lCastCursor;
@@ -104,20 +183,21 @@ namespace VR_Prototyping.Scripts
 			LEFT,
 			RIGHT
 		}
-		public struct MultiSelection
-        {
-	        public Bounds SelectionBounds { get; set; }
-	        public Vector3 multiSelectS;
-	        public Vector3 multiSelectM;
-	        public Vector3 multiSelectE;
-	        public GameObject selectionQuadObject;
-	        public MeshRenderer selectionQuad;
-	        public MeshFilter selectionQuadFilter;
-	        public LineRenderer selectionLineRenderer;
-        }
-        
-        public MultiSelection lMultiSelection;
-        public MultiSelection rMultiSelection;
+
+		public class MultiSelection
+		{
+			public Bounds selectionBounds;
+			public Vector3 multiSelectS;
+			public Vector3 multiSelectE;
+			public bool multiSelectActive;
+			public GameObject selectionQuadObject;
+			public MeshRenderer selectionQuad;
+			public MeshFilter selectionQuadFilter;
+			public LineRenderer selectionLineRenderer;
+		}
+
+		public MultiSelection lMultiSelection = new MultiSelection();
+        public MultiSelection rMultiSelection = new MultiSelection();
         
         #endregion
 		
@@ -135,6 +215,7 @@ namespace VR_Prototyping.Scripts
 		[Header("Casting Settings")]
 		[SerializeField, Range(0f, 180f)] private float minimumAngle = 60f;
 		[SerializeField, Range(0f, 180f)] private float maximumAngle = 110f;
+		[SerializeField, Range(0f, 1f)] private float multiSelectDistanceThreshold = .2f;
 		public float castSelectionRadius;
 		[SerializeField, Range(1, 15)] private int layerIndex = 10;
 
@@ -156,12 +237,6 @@ namespace VR_Prototyping.Scripts
 		[HideInInspector] public List<GameObject> lHandList;
 		[HideInInspector] public List<GameObject> rCastList;
 		[HideInInspector] public List<GameObject> lCastList;
-
-		public Selection(bool rTouch, bool lTouch)
-		{
-			this.rTouch = rTouch;
-			this.lTouch = lTouch;
-		}
 
 		#endregion
 		private void Start ()
@@ -205,12 +280,14 @@ namespace VR_Prototyping.Scripts
 		}
 		private void SetupCastSelectGameObjects()
         {
+	        cast.SetupCastObjects(castCursorObject, transform, "Cast Selection", selectionLineRenderMat);
+	        /*
 	        const string instanceName = "Cast Selection";
             
             parent = new GameObject("[" + instanceName + "/Calculations]");
             Transform parentTransform = parent.transform;
-            parentTransform.SetParent(transform);
-
+            parentTransform.SetParent(transform);*/
+/*
             rCf = new GameObject("[" + instanceName + "/Follow/Right]");
             rCp = new GameObject("[" + instanceName + "/Proxy/Right]");
             rCn = new GameObject("[" + instanceName + "/Normalised/Right]");
@@ -258,16 +335,20 @@ namespace VR_Prototyping.Scripts
 
             rLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
             lLineRenderer.SetupLineRender(lineRenderMat, lineRenderWidth, true);
-            
-            lMultiSelection.selectionLineRenderer = lHp.AddComponent<LineRenderer>();
-            rMultiSelection.selectionLineRenderer = rHp.AddComponent<LineRenderer>();
+            */
+
+            lMultiSelection.selectionLineRenderer = cast.lCastObject.hitPoint.AddComponent<LineRenderer>();
+            rMultiSelection.selectionLineRenderer = cast.rCastObject.hitPoint.AddComponent<LineRenderer>();
             
             lMultiSelection.selectionLineRenderer.SetupLineRender(selectionLineRenderMat, .01f, false);
             rMultiSelection.selectionLineRenderer.SetupLineRender(selectionLineRenderMat, .01f, false);
-            
+
+            lCastCursor = cast.lCastObject.visual.GetComponent<CastCursor>();
+	        rCastCursor = cast.rCastObject.visual.GetComponent<CastCursor>();
+
             lMultiSelection.selectionLineRenderer.positionCount = 5;
             rMultiSelection.selectionLineRenderer.positionCount = 5;
-
+            
             lMultiSelection.selectionQuadObject = new GameObject("[Selection Quad/Left]", typeof(MeshFilter), typeof(MeshRenderer));
             lMultiSelection.selectionQuad = lMultiSelection.selectionQuadObject.GetComponent<MeshRenderer>();
             lMultiSelection.selectionQuad.material = selectionQuadMaterial;
@@ -280,9 +361,9 @@ namespace VR_Prototyping.Scripts
             rMultiSelection.selectionQuad.material = selectionQuadMaterial;
             rMultiSelection.selectionQuadFilter = rMultiSelection.selectionQuadObject.GetComponent<MeshFilter>();
             rMultiSelection.selectionQuadFilter.mesh = Draw.GenerateQuadMesh();
-
-            rLineRendererMaterial = rLineRenderer.material;
-            lLineRendererMaterial = lLineRenderer.material;
+            
+            rLineRendererMaterial = selectionLineRenderMat;
+            lLineRendererMaterial = selectionLineRenderMat;
         }
 
 		private void Update()
@@ -292,29 +373,10 @@ namespace VR_Prototyping.Scripts
 			switch (selectionType)
 			{
 				case SelectionType.FUZZY:
-					LFocusObject = lHandList.FuzzyFindFocusObject(LFocusObject, lTarget, lDefault, controllerTransforms.LeftGrab() || lTouch);
-					RFocusObject = rHandList.FuzzyFindFocusObject(RFocusObject, rTarget, rDefault, controllerTransforms.RightGrab() || rTouch);
-					lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
-					rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
-					lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
-					rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
 					break;
 				case SelectionType.RAY_CAST:
-					LFocusObject = lHandList.RayCastFindFocusObject(LFocusObject, lTarget, lDefault, controllerTransforms.LeftTransform(), setSelectionRange ? selectionRange : float.PositiveInfinity, controllerTransforms.LeftGrab() || lTouch);
-					RFocusObject = rHandList.RayCastFindFocusObject(RFocusObject, rTarget, rDefault, controllerTransforms.RightTransform(), setSelectionRange ? selectionRange : float.PositiveInfinity, controllerTransforms.RightGrab() || rTouch);
-					lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
-					rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
-					lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
-					rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
 					break;
 				case SelectionType.FUSION:
-					LFocusObject = lHandList.FusionFindFocusObject(LFocusObject, lTarget, lDefault, controllerTransforms.LeftTransform(), controllerTransforms.LeftForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, controllerTransforms.LeftGrab() || lTouch);
-					RFocusObject = rHandList.FusionFindFocusObject(RFocusObject, rTarget, rDefault, controllerTransforms.RightTransform(), controllerTransforms.RightForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, controllerTransforms.RightGrab() || rTouch);
-					gFocusObject = gazeList.FusionFindFocusObject(gFocusObject, gTarget, gDefault, controllerTransforms.CameraTransform(), controllerTransforms.CameraForwardVector(), setSelectionRange ? selectionRange : float.PositiveInfinity, false);
-					lLineRenderer.DrawLineRenderer(LFocusObject, lMidPoint, controllerTransforms.LeftTransform(), lTarget, lineRenderQuality);
-					rLineRenderer.DrawLineRenderer(RFocusObject, rMidPoint, controllerTransforms.RightTransform() ,rTarget, lineRenderQuality);
-					lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lTarget.transform));
-					rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rTarget.transform));
 					break;
 				case SelectionType.DISTANCE_CAST:
 					CastUpdate();
@@ -339,8 +401,9 @@ namespace VR_Prototyping.Scripts
 			rBaseObject.Hover(pRBaseObject, lBaseObject, rCastCursor);
 			
 			// Calculate Selection States
-			lBaseObject.Selection(this, player,  player.lSelectedObjects, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT, disableLeftHand);
-			rBaseObject.Selection(this, player,  player.rSelectedObjects, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT, disableRightHand);
+			//lBaseObject.Selection(this, player,  player.lSelectedObjects, controllerTransforms.LeftSelect(), lSelectPrevious, lSelect, QuickSelectSensitivity, SelectHoldL, MultiSelect.LEFT, disableLeftHand);
+			//rBaseObject.Selection(this, player,  player.rSelectedObjects, controllerTransforms.RightSelect(), rSelectPrevious, rSelect, QuickSelectSensitivity, SelectHoldR,MultiSelect.RIGHT, disableRightHand);
+			rBaseObject.Selection(this, player,  player.rSelectedObjects, rSelectionDistance, controllerTransforms.RightSelect(), rSelectPrevious, multiSelectDistanceThreshold, rMultiSelection, MultiSelect.RIGHT, disableRightHand);
 
 			// Previous States
 			lSelectPrevious = controllerTransforms.LeftSelect();
@@ -358,9 +421,16 @@ namespace VR_Prototyping.Scripts
 		
 		private void CastUpdate()
 		{
-			CastLocationL = lHp.transform;
-			CastLocationR = rHp.transform;
+			CastLocationL = cast.lCastObject.hitPoint.transform;
+			CastLocationR = cast.rCastObject.hitPoint.transform;
+			
+			cast.CastUpdate(cast.lCastObject, controllerTransforms.LeftTransform(), controllerTransforms.CameraTransform(), controllerTransforms.LeftJoystick(), maximumAngle, minimumAngle, .1f, selectionRange);
+			cast.CastUpdate(cast.rCastObject, controllerTransforms.RightTransform(), controllerTransforms.CameraTransform(), controllerTransforms.RightJoystick(), maximumAngle, minimumAngle, .1f, selectionRange);
+			
+			lSelectionDistance = Vector3.Distance(CastLocationL.transform.position, lSelectStartPoint);
+			rSelectionDistance = Vector3.Distance(CastLocationR.transform.position, rSelectStartPoint);
 
+/*
 			rLastValidPosition = rTs.LastValidPosition(rLastValidPosition);
 			lLastValidPosition = lTs.LastValidPosition(lLastValidPosition);
             
@@ -375,11 +445,7 @@ namespace VR_Prototyping.Scripts
             lLineRenderer.BezierLineRenderer(controllerTransforms.LeftTransform().position, lMp.transform.position,lHp.transform.position, lineRenderQuality);
             
             lLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(lVisual.transform));
-            rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rVisual.transform));
-		}
-
-		private void LateUpdate()
-		{
+            rLineRendererMaterial.SetFloat(Distance, transform.TransformDistance(rVisual.transform));*/
 		}
 
 		private void SortLists()
@@ -424,89 +490,69 @@ namespace VR_Prototyping.Scripts
 		
 		public void SelectStart(MultiSelect side)
 		{
-			// Temporary
-			UserInterface.SetObjectHeaderState(false);
-			
 			switch (side)
 			{
 				case MultiSelect.LEFT:
-					player.ClearSelectedObjects(MultiSelect.LEFT, player.lSelectedObjects, lBaseObject);
-					lMultiSelection.multiSelectS = CastLocationL.position;
-					lMultiSelection.selectionLineRenderer.enabled = true;
-					lMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(lMultiSelection.multiSelectS, lMultiSelection.multiSelectS);
-					lMultiSelection.selectionQuadFilter.mesh.DrawQuadMesh(lMultiSelection.multiSelectS, lMultiSelection.multiSelectS);
-					lMultiSelection.selectionQuad.enabled = true;
-					lMultiSelection.SelectionBounds = lMultiSelection.selectionLineRenderer.bounds;
+					lSelectStartPoint = CastLocationL.position;
 					break;
 				case MultiSelect.RIGHT:
-					player.ClearSelectedObjects(MultiSelect.RIGHT, player.rSelectedObjects, rBaseObject);
-					rMultiSelection.multiSelectS = CastLocationR.position;
-					rMultiSelection.selectionLineRenderer.enabled = true;
-					rMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(rMultiSelection.multiSelectS, rMultiSelection.multiSelectS);
-					rMultiSelection.selectionQuadFilter.mesh.DrawQuadMesh(rMultiSelection.multiSelectS, rMultiSelection.multiSelectS);
-					rMultiSelection.selectionQuad.enabled = true;
-					rMultiSelection.SelectionBounds = rMultiSelection.selectionLineRenderer.bounds;
-					break;
-				default:
-					throw new ArgumentOutOfRangeException(nameof(side), side, null);
-			}	
-		}
-		public void SelectHold(MultiSelect side)
-		{
-			switch (side)
-			{
-				case MultiSelect.LEFT:
-					SelectHoldL = true;
-					lMultiSelection.multiSelectE = CastLocationL.position;
-					lMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
-					lMultiSelection.selectionQuadFilter.mesh.DrawQuadMesh(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
-					lMultiSelection.SelectionBounds = lMultiSelection.selectionLineRenderer.bounds;
-					break;
-				case MultiSelect.RIGHT:
-					SelectHoldR = true;
-					rMultiSelection.multiSelectE = CastLocationR.position;
-					rMultiSelection.selectionLineRenderer.DrawRectangularLineRenderer(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
-					rMultiSelection.selectionQuadFilter.mesh.DrawQuadMesh(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
-					rMultiSelection.SelectionBounds = rMultiSelection.selectionLineRenderer.bounds;
+					rSelectStartPoint = CastLocationR.position;
 					break;
 				default:
 					throw new ArgumentOutOfRangeException(nameof(side), side, null);
 			}
 		}
-
-		public void SelectHoldEnd(MultiSelect side)
+		public void SelectEnd(MultiSelect side, List<BaseObject> list)
 		{
-			switch (side)
+			player.ClearSelectedObjects(side, list);
+		}
+		public void MultiSelectStart(MultiSelection multiSelect)
+		{
+			if (multiSelect.multiSelectActive)
 			{
-				case MultiSelect.LEFT:
-					SelectHoldL = false;
-					lMultiSelection.multiSelectE = CastLocationL.position;
-					lMultiSelection.selectionLineRenderer.enabled = false;
-					lMultiSelection.selectionQuad.enabled = false;
-					foreach (BaseObject baseObject in baseObjectsList)
-					{
-						if (lMultiSelection.SelectionBounds.Intersects(baseObject.ObjectBounds))
-						{
-							baseObject.SelectStart(MultiSelect.LEFT, player.lSelectedObjects);
-						}
-					}
-					break;
-				case MultiSelect.RIGHT:
-					SelectHoldR = false;
-					rMultiSelection.multiSelectE = CastLocationR.position;
-					rMultiSelection.selectionLineRenderer.enabled = false;
-					rMultiSelection.selectionQuad.enabled = false;
-					foreach (BaseObject baseObject in baseObjectsList)
-					{
-						if (rMultiSelection.SelectionBounds.Intersects(baseObject.ObjectBounds))
-						{
-							baseObject.SelectStart(MultiSelect.RIGHT, player.rSelectedObjects);
-						}
-					}
-					break;
-				default:
-					throw new ArgumentOutOfRangeException(nameof(side), side, null);
-			}		
+				return;
+			}
+			
+			UserInterface.SetObjectHeaderState(false);
+			
+			multiSelect.multiSelectActive = true;
+			multiSelect.multiSelectS = CastLocationR.position;
+			multiSelect.selectionLineRenderer.enabled = true;
+			multiSelect.selectionLineRenderer.DrawRectangularLineRenderer(multiSelect.multiSelectS, multiSelect.multiSelectS);
+			multiSelect.selectionQuadFilter.mesh.DrawQuadMesh(multiSelect.multiSelectS, multiSelect.multiSelectS);
+			multiSelect.selectionQuad.enabled = true;
+			
+			Bounds bounds = multiSelect.selectionQuad.bounds;
+			multiSelect.selectionBounds = new Bounds(bounds.center, new Vector3(bounds.size.x, 1f, bounds.size.z));
+		}
+		public void MultiSelectHold(MultiSelection multiSelect)
+		{
+			multiSelect.multiSelectE = CastLocationR.position;
+			multiSelect.selectionLineRenderer.DrawRectangularLineRenderer(multiSelect.multiSelectS, multiSelect.multiSelectE);
+			multiSelect.selectionQuadFilter.mesh.DrawQuadMesh(multiSelect.multiSelectS, multiSelect.multiSelectE);
+			
+			Bounds bounds = multiSelect.selectionQuad.bounds;
+			multiSelect.selectionBounds = new Bounds(bounds.center, new Vector3(bounds.size.x, 1f, bounds.size.z));
+		}
+
+		public void MultiSelectEnd(MultiSelection multiSelect)
+		{
+			multiSelect.multiSelectActive = false;
+			multiSelect.multiSelectE = CastLocationR.position;
+			multiSelect.selectionLineRenderer.enabled = false;
+			multiSelect.selectionQuad.enabled = false;
+			
+			Bounds bounds = multiSelect.selectionQuad.bounds;
+			multiSelect.selectionBounds = new Bounds(bounds.center, new Vector3(bounds.size.x, 1f, bounds.size.z));
+			
+			player.ClearSelectedObjects(MultiSelect.RIGHT, player.rSelectedObjects);
+			foreach (BaseObject baseObject in baseObjectsList)
+			{
+				if (multiSelect.selectionBounds.Intersects(baseObject.ObjectBounds))
+				{
+					baseObject.SelectStart(MultiSelect.RIGHT, player.rSelectedObjects);
+				}
+			}
 		}
 
 		public void ToggleSelectionState(UserInterface.DominantHand hand, bool state)
@@ -514,15 +560,15 @@ namespace VR_Prototyping.Scripts
 			switch (hand)
 			{
 				case UserInterface.DominantHand.LEFT:
-					lLineRenderer.enabled = state;
+					cast.lCastObject.lineRenderer.enabled = state;
 					lMultiSelection.selectionQuad.enabled = state;
-					lVisual.SetActive(state);
+					cast.lCastObject.visual.SetActive(state);
 					disableLeftHand = !state;
 					break;
 				case UserInterface.DominantHand.RIGHT:
-					rLineRenderer.enabled = state;
+					cast.rCastObject.lineRenderer.enabled = state;
 					rMultiSelection.selectionQuad.enabled = state;
-					rVisual.SetActive(state);
+					cast.rCastObject.visual.SetActive(state);
 					disableRightHand = !state;
 					break;
 				default:
@@ -541,18 +587,19 @@ namespace VR_Prototyping.Scripts
 		private void DrawGizmos ()
 		{
 			Gizmos.color = Color.cyan;
-			Gizmos.DrawWireSphere(lHp.transform.position, castSelectionRadius);
+			Pathfinding.Util.Draw.Gizmos.CircleXZ(cast.lCastObject.hitPoint.transform.position, castSelectionRadius, Color.cyan);
 			Gizmos.DrawLine(lMultiSelection.multiSelectS, lMultiSelection.multiSelectE);
-			Gizmos.DrawWireCube(lMultiSelection.SelectionBounds.center, lMultiSelection.SelectionBounds.size);
+			Gizmos.DrawWireCube(lMultiSelection.selectionBounds.center, lMultiSelection.selectionBounds.size);
 			if (LFocusObject != null)
 			{
 				Gizmos.color = Color.cyan;
 				Gizmos.DrawSphere(LFocusObject.transform.position, .2f);
 			}
+			Pathfinding.Util.Draw.Gizmos.CircleXZ(lSelectStartPoint, .01f, Color.black);
 			Gizmos.color = Color.yellow;
-			Gizmos.DrawWireSphere(rHp.transform.position, castSelectionRadius);
+			Pathfinding.Util.Draw.Gizmos.CircleXZ(cast.rCastObject.hitPoint.transform.position, castSelectionRadius, Color.yellow);
 			Gizmos.DrawLine(rMultiSelection.multiSelectS, rMultiSelection.multiSelectE);
-			Gizmos.DrawWireCube(rMultiSelection.SelectionBounds.center, rMultiSelection.SelectionBounds.size);
+			Gizmos.DrawWireCube(rMultiSelection.selectionBounds.center, rMultiSelection.selectionBounds.size);
 			if (RFocusObject != null)
 			{
 				Gizmos.color = Color.yellow;

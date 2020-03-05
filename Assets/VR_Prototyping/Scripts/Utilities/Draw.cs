@@ -6,7 +6,7 @@ namespace VR_Prototyping.Scripts.Utilities
 {
 	public static class Draw
 	{
-		public static void BezierLineRenderer(this LineRenderer lr, Vector3 p0, Vector3 p1, Vector3 p2, int segments)
+		public static void BezierLineRenderer(this LineRenderer lr, Vector3 p0, Vector3 p1, Vector3 p2, int segments = 40)
 		{
 			lr.positionCount = segments;
 			lr.SetPosition(0, p0);

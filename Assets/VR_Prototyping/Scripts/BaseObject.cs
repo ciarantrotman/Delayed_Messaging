@@ -31,10 +31,22 @@ namespace VR_Prototyping.Scripts
 		private bool active;
 		private bool hover;
 		private bool selected;
-		private bool initialised;
+		private bool baseInitialised;
 
 		internal VisualEffect selectionVisualEffect;
 		internal float health;
+		
+		public enum SpawnableObjectType
+		{
+			UNIT,
+			STRUCTURE
+		}
+		[Serializable] public struct SpawnableObject 
+		{
+			public string objectName;
+			public GameObject objectPrefab;
+			public SpawnableObjectType objectType;
+		}
 			
 		public float AngleL { get; private set; }
 		public float AngleR { get; private set; }
@@ -66,34 +78,34 @@ namespace VR_Prototyping.Scripts
 
 		private void Start ()
 		{
-			InitialiseObject();
 			Initialise();
+			if (!baseInitialised)
+			{
+				InitialiseObject();
+			}
 		}
-		protected virtual void Initialise()
-		{
-			
-		}
+		protected abstract void Initialise();
 		public void OnEnable()
 		{
-			InitialiseObject();
+			if (!baseInitialised)
+			{
+				InitialiseObject();
+			}
 		}
-
 		private void OnDestroy()
 		{
 			DestroyBaseObject();
 		}
-
 		public void OnDisable()
 		{
 			DestroyBaseObject();
 		}
-
 		private void DestroyBaseObject()
 		{
 			if (selection == null) return;
 			selection.ResetObjects();
 
-			initialised = false;
+			baseInitialised = false;
 			
 			GameObject g = gameObject;
 			g.ToggleList(selection.globalList, false);
@@ -108,12 +120,12 @@ namespace VR_Prototyping.Scripts
 		}
 		private void InitialiseObject()
 		{
-			Debug.Log("<b>[BASE OBJECT]</b> " + name + " attempting to initialise");
-			if (initialised)
+			if (baseInitialised)
 			{
 				Debug.LogError("<b>[BASE OBJECT]</b> " + name + " tried to initialise, but had already been initialised");
 				return;
 			}
+			
 			AssignComponents();
 			SetupOutline();
 			SetupSelectedVisual();
@@ -122,7 +134,8 @@ namespace VR_Prototyping.Scripts
 			
 			gameObject.ToggleList(selection.globalList, true);
 			selection.baseObjectsList.Add(this);
-			initialised = true;
+			baseInitialised = true;
+			
 			Debug.Log("<b>[BASE OBJECT]</b> " + name + " initialised");
 		}
 		private void AssignComponents()
@@ -162,21 +175,19 @@ namespace VR_Prototyping.Scripts
 			
 			ObjectBounds = t.BoundsOfChildren(ObjectBounds);
 			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
-
+			
 			/*
 			o.CheckGaze(AngleG, selection.gaze, selection.gazeList, selection.lHandList, selection.rHandList, selection.globalList);
 			o.ManageList(selection.lHandList, o.WithinHandCone(selection.gazeList, selection.manual, AngleL), selection.disableLeftHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.LeftTransform(), selection.selectionRange));
 			o.ManageList(selection.rHandList, o.WithinHandCone(selection.gazeList, selection.manual, AngleR), selection.disableRightHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.RightTransform(), selection.selectionRange));
 			*/
+			
 			o.ManageList(selection.lCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceL));
 			o.ManageList(selection.rCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceR));
 			
 			ObjectUpdate();
 		}
-		protected virtual void ObjectUpdate()
-		{
-			
-		}
+		protected abstract void ObjectUpdate();
 		private void GetSortingValues()
 		{
 			Vector3 position = transform.position;
@@ -212,6 +223,7 @@ namespace VR_Prototyping.Scripts
 		}
 		public virtual void SelectStart(Selection.MultiSelect side, List<BaseObject> list)
 		{
+			/*
 			SelectionVisual(SelectEvent);
 			selected = true;
 			switch (side)
@@ -230,7 +242,7 @@ namespace VR_Prototyping.Scripts
 					break;
 				default:
 					break;
-			}
+			}*/
 		}
 		public virtual void SelectHold(Selection.MultiSelect side, List<BaseObject> list)
 		{
@@ -240,10 +252,16 @@ namespace VR_Prototyping.Scripts
 		{
 			
 		}
-
 		public virtual void QuickSelect(Selection.MultiSelect side, List<BaseObject> list)
 		{
+			SelectionVisual(SelectEvent);
+			selected = true;
+			
 			player.ClearSelectedObjects(side, list, this);
+			if (!list.Contains(this))
+			{
+				list.Add(this);
+			}
 		}
 		public virtual void Deselect(Selection.MultiSelect side, List<BaseObject> list)
 		{
@@ -254,7 +272,6 @@ namespace VR_Prototyping.Scripts
 				list.Remove(this);
 			}
 		}
-		
 		private void OnDrawGizmos () 
 		{
 			if (debugType == ControllerTransforms.DebugType.ALWAYS)
@@ -269,7 +286,6 @@ namespace VR_Prototyping.Scripts
 				DrawGizmos ();
 			}
 		}
-
 		protected virtual void DrawGizmos ()
 		{
 			Draw.Gizmos.CircleXZ(transform.position, selectionRadius, Color.white);
@@ -278,17 +294,12 @@ namespace VR_Prototyping.Scripts
 			{		
 				Gizmos.color = Color.green;
 				Gizmos.DrawWireCube(ObjectBounds.center, ObjectBounds.size);
-			
+				
 				Gizmos.color = Color.red;
-				Vector3 position = transform.position;
-			
-				Gizmos.DrawLine(lClosestPoint, selection.CastLocationL.position);
 				Gizmos.DrawWireSphere(lClosestPoint, .02f);
-				Gizmos.DrawLine(rClosestPoint, selection.CastLocationR.position);
 				Gizmos.DrawWireSphere(rClosestPoint, .02f);
-				Gizmos.color = Color.black;
-				Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationR.position - position) * selection.castSelectionRadius);
-				Gizmos.DrawRay(position, Vector3.Normalize(selection.CastLocationL.position - position) * selection.castSelectionRadius);
+				Gizmos.DrawRay(rClosestPoint, Vector3.Normalize(selection.CastLocationR.position - rClosestPoint) * selection.castSelectionRadius);
+				Gizmos.DrawRay(lClosestPoint, Vector3.Normalize(selection.CastLocationL.position - lClosestPoint) * selection.castSelectionRadius);
 			}
 		}
 	}

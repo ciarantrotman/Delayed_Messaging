@@ -1,18 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Delayed_Messaging.Scripts.Interaction.Interface_Building_Blocks;
+using Delayed_Messaging.Scripts.Structures;
 using UnityEngine;
 
-public class BaseInterface : MonoBehaviour
+namespace Delayed_Messaging.Scripts.Interaction.User_Interface
 {
-    // Start is called before the first frame update
-    void Start()
+    public class BaseInterface : BaseObjectInterface
     {
+        private Base baseObject;
         
-    }
+        [Header("Base Interface References")]
+        [SerializeField] private FrameButton workerSpawnButton;
+        [SerializeField] private string workerIndex = "Worker";
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void OverrideInitialise()
+        {
+            baseObject = (Base)baseObjectBaseObject;
+            workerSpawnButton.OnSelect.AddListener(WorkerSpawn);
+        }
+
+        private void WorkerSpawn()
+        {
+            baseObject.SpawnUnit(workerIndex);
+        }
     }
 }

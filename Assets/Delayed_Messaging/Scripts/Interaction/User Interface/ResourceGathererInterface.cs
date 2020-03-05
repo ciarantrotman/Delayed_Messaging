@@ -13,7 +13,7 @@ namespace Delayed_Messaging.Scripts.Interaction.User_Interface
 
         protected override void OverrideInitialise()
         {
-            resourceGatherer = (ResourceGatherer)baseObject;
+            resourceGatherer = (ResourceGatherer)baseObjectBaseObject;
             
             searchButton.OnSelect.AddListener(Search);
         }

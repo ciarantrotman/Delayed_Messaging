@@ -9,7 +9,7 @@ using Draw = Pathfinding.Util.Draw;
 
 namespace Delayed_Messaging.Scripts.Units
 {
-    public class Unit : BaseObject, IDamageable<float>, IMovable<Vector3>
+    public abstract class Unit : BaseObject, IDamageable<float>, IMovable<Vector3>, ISpawnableUnit<Vector3, Vector3>
     {
         [Header("Unit Specific Settings")]
         public UnitClass unitClass;
@@ -23,39 +23,41 @@ namespace Delayed_Messaging.Scripts.Units
         internal GameObject unitDestination;
         private LineRenderer destinationLineRenderer;
 
-        private bool intialised;
+        private bool unitInitialised;
         private bool overrideDirection;
-
+        
+        public void SpawnUnit(Vector3 spawnLocation, Vector3 spawnDestination)
+        {
+            InitialiseUnit();
+            transform.position = spawnLocation;
+            SetDestination(spawnDestination);
+        }
         protected override void Initialise()
         {
             InitialiseUnit();
         }
-        
-        public void InitialiseUnit()
+        private void InitialiseUnit()
         {
-            if (intialised)
+            if (unitInitialised)
             {
                 return;
             }
             
             Transform t = transform;
-
             aiPath = GetComponent<AIPath>();
             //aiPath.SetupAIPath(unitClass);
-
             ObjectClass = unitClass;
             
             unitDestination = new GameObject("[" + name + " Destination]");
-
             unitDestination.transform.position = t.position;
 
             destinationSetter = transform.GetComponent<AIDestinationSetter>();
             destinationSetter.target = unitDestination.transform;
-
+            
             destinationLineRenderer = unitDestination.transform.AddOrGetLineRenderer();
             destinationLineRenderer.SetupLineRender(destinationLineRendererMat, .005f, false);
-
-            intialised = true;
+            
+            unitInitialised = true;
         }
         protected override void ObjectUpdate()
         {
@@ -86,14 +88,17 @@ namespace Delayed_Messaging.Scripts.Units
 
         public void SetDestination(Vector3 destination)
         {
-            overrideDirection = true;
-            
             if (unitDestination == null)
             {
                 Debug.LogError(name + " tried to move but there is no <b>[Unit Destination]</b> defined!");
+                InitialiseUnit();
                 return;
             }
             
+            Debug.Log(name + " set to move to <b>[Unit Destination]</b> at " + unitDestination.transform.position);
+            
+            overrideDirection = true;
+
             unitDestination.transform.position = destination;
             CancelCurrentTask();
         }
@@ -109,10 +114,7 @@ namespace Delayed_Messaging.Scripts.Units
         /// <summary>
         /// This cancels whatever task the current unit is doing
         /// </summary>
-        protected virtual void CancelCurrentTask()
-        {
-            
-        }
+        protected abstract void CancelCurrentTask();
 
         protected override void DrawGizmos ()
         {
