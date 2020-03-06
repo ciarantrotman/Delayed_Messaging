@@ -580,11 +580,11 @@ namespace VR_Prototyping.Scripts
             switch (add)
             {
                 case true when !list.Contains(gameObject):
-                    Debug.Log(gameObject.name + " <b>added to</b> " + list);
+                    //Debug.Log(gameObject.name + " <b>added to</b> " + list);
                     list.Add(gameObject);
                     return;
                 case false when list.Contains(gameObject):
-                    Debug.Log(gameObject.name + " <b>removed from</b> " + list);
+                    //Debug.Log(gameObject.name + " <b>removed from</b> " + list);
                     list.Remove(gameObject);
                     return;
                 default:
@@ -594,13 +594,13 @@ namespace VR_Prototyping.Scripts
         /// <summary>
         /// A static version of the distance - angle casting method, where the users hand angle controls the distance of the visual object
         /// </summary>
-        /// <param name="Ts"></param>
-        /// <param name="Cf"></param>
-        /// <param name="Cp"></param>
-        /// <param name="Cn"></param>
-        /// <param name="Hp"></param>
-        /// <param name="Mp"></param>
-        /// <param name="Rt"></param>
+        /// <param name="target"></param>
+        /// <param name="follow"></param>
+        /// <param name="proxy"></param>
+        /// <param name="normalised"></param>
+        /// <param name="hitPoint"></param>
+        /// <param name="midPoint"></param>
+        /// <param name="rotation"></param>
         /// <param name="visual"></param>
         /// <param name="controllerTransform"></param>
         /// <param name="cameraTransform"></param>
@@ -610,13 +610,13 @@ namespace VR_Prototyping.Scripts
         /// <param name="minDistance"></param>
         /// <param name="maxDistance"></param>
         /// <param name="lastValidPosition"></param>
-        public static void DistanceCast(GameObject Ts, GameObject Cf, GameObject Cp, GameObject Cn, GameObject Hp, GameObject Mp, GameObject Rt, GameObject visual, Transform controllerTransform, Transform cameraTransform, Vector2 joystick, float maxAngle, float minAngle, float minDistance, float maxDistance, Vector3 lastValidPosition)
+        public static void DistanceCast(GameObject target, GameObject follow, GameObject proxy, GameObject normalised, GameObject hitPoint, GameObject midPoint, GameObject rotation, GameObject visual, Transform controllerTransform, Transform cameraTransform, Vector2 joystick, float maxAngle, float minAngle, float minDistance, float maxDistance, Vector3 lastValidPosition)
         {
             // set the positions of the local objects and calculate the depth based on the angle of the controller
-            Ts.transform.LocalDepth(Cf.ControllerAngle(Cp,Cn,controllerTransform,cameraTransform,true).CalculateDepth(maxAngle, minAngle, maxDistance, minDistance, Cp.transform), false, .2f);
-            Ts.TargetLocation(Hp, lastValidPosition, 10, false);
-            Mp.transform.LocalDepth(Cp.transform.Midpoint(Ts.transform), false, 0f);
-            visual.Target(Hp, Cn.transform, joystick, Rt);
+            target.transform.LocalDepth(follow.ControllerAngle(proxy,normalised,controllerTransform,cameraTransform,true).CalculateDepth(maxAngle, minAngle, maxDistance, minDistance, proxy.transform), false, .2f);
+            target.TargetLocation(hitPoint, lastValidPosition, 15);
+            midPoint.transform.LocalDepth(proxy.transform.Midpoint(target.transform), false, 0f);
+            visual.Target(hitPoint, normalised.transform, joystick, rotation);
         }
         /// <summary>
         /// Creates a bounds using the Mesh Renderers of the provided transform

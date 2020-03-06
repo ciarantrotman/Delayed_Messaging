@@ -18,9 +18,9 @@ namespace Delayed_Messaging.Scripts.Resources
     
         }
 
-        public override void QuickSelect(Selection.MultiSelect side, List<BaseObject> list)
+        public override void QuickSelect(SelectionObjects selectionObjects)
         {
-            foreach (BaseObject unit in list)
+            foreach (BaseObject unit in selectionObjects.list)
             {
                 ResourceGatherer resourceGatherer = unit.GetComponent<ResourceGatherer>();
                 
@@ -29,7 +29,7 @@ namespace Delayed_Messaging.Scripts.Resources
                 resourceGatherer.StartGathering(this);
             }
             
-            base.QuickSelect(side, list);
+            base.QuickSelect(selectionObjects);
         }
 
         protected override void Initialise()

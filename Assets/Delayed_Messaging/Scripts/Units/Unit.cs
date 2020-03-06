@@ -64,16 +64,16 @@ namespace Delayed_Messaging.Scripts.Units
             destinationLineRenderer.DrawStraightLineRender(transform, unitDestination.transform);
         }
 
-        public override void SelectStart(Selection.MultiSelect side, List<BaseObject> list)
+        public override void SelectStart(SelectionObjects selectionObjects)
         {
             destinationLineRenderer.enabled = true;
-            base.SelectStart(side, list);
+            base.SelectStart(selectionObjects);
         }
 
-        public override void Deselect(Selection.MultiSelect side, List<BaseObject> list)
+        public override void Deselect(SelectionObjects selectionObjects)
         {
             destinationLineRenderer.enabled = false;
-            base.Deselect(side, list);
+            base.Deselect(selectionObjects);
         }
 
         public void Damage(float damageTaken)

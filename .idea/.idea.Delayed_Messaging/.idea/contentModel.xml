@@ -322,6 +322,7 @@
               <e p="Worker.cs" t="Include" />
             </e>
             <e p="Utilities" t="Include">
+              <e p="Cast.cs" t="Include" />
               <e p="Interfaces.cs" t="Include" />
               <e p="SetupAIBehaviour.cs" t="Include" />
             </e>
@@ -760,6 +761,7 @@
             <e p="RubberbandedObject.cs" t="Include" />
             <e p="SceneWipe.cs" t="Include" />
             <e p="Selection.cs" t="Include" />
+            <e p="SelectionObjects.cs" t="Include" />
             <e p="UI_Blocks" t="Include">
               <e p="BaseDirectBlock.cs" t="Include" />
               <e p="DirectButton.cs" t="Include" />

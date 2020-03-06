@@ -14,12 +14,10 @@ using Draw = Pathfinding.Util.Draw;
 namespace VR_Prototyping.Scripts
 {
 	[DisallowMultipleComponent, CanEditMultipleObjects]
-	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable<Selection.MultiSelect, List<BaseObject>>
+	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable<SelectionObjects>
 	{
 		internal GameObject playerObject;
-		internal ControllerTransforms controllerTransforms;
 		internal Selection selection;
-		internal Player player;
 
 		private Outline outline;
 		private Vector3 defaultPosition;
@@ -63,14 +61,6 @@ namespace VR_Prototyping.Scripts
 
 		[Header("Base Object Settings")] 
 		[SerializeField] private ControllerTransforms.DebugType debugType;
-		
-		[Header("Selection Settings")]
-		public Selection.SelectionType selectionType = Selection.SelectionType.DISTANCE_CAST;
-		
-		[Header("Hover Aesthetics")]
-		[SerializeField] private Color hoverOutlineColour = new Color(0,0,0,1);
-		[SerializeField, Range(0,10)] private float hoverOutlineWidth = 0f;
-		[SerializeField] private Outline.Mode hoverOutlineMode = Outline.Mode.OutlineHidden;
 
 		[Header("Selection Aesthetics")] 
 		[SerializeField] private GameObject selectionVisual;
@@ -103,26 +93,21 @@ namespace VR_Prototyping.Scripts
 		private void DestroyBaseObject()
 		{
 			if (selection == null) return;
-			selection.ResetObjects();
-
+			
 			baseInitialised = false;
 			
 			GameObject g = gameObject;
 			g.ToggleList(selection.globalList, false);
 			selection.baseObjectsList.Remove(this);
 			
-			g.ToggleList(selection.gazeList, false);
-			g.ToggleList(selection.lHandList, false);
-			g.ToggleList(selection.rHandList, false);
-			
-			g.ToggleList(selection.rCastList, false);
+			g.ToggleList(selection.lCastList, false);
 			g.ToggleList(selection.rCastList, false);
 		}
 		private void InitialiseObject()
 		{
 			if (baseInitialised)
 			{
-				Debug.LogError("<b>[BASE OBJECT]</b> " + name + " tried to initialise, but had already been initialised");
+				Debug.LogError($"<b>[{name}]</b> tried to initialise, but had already been initialised");
 				return;
 			}
 			
@@ -136,7 +121,7 @@ namespace VR_Prototyping.Scripts
 			selection.baseObjectsList.Add(this);
 			baseInitialised = true;
 			
-			Debug.Log("<b>[BASE OBJECT]</b> " + name + " initialised");
+			Debug.Log($"Base Object: <b>{name}</b> was initialised.");
 		}
 		private void AssignComponents()
 		{
@@ -146,12 +131,10 @@ namespace VR_Prototyping.Scripts
 				{
 					if (rootGameObject.name != "[VR Player]") continue;
 					playerObject = rootGameObject;
-					Debug.Log("<b>[BASE OBJECT] </b>" + name + " player set to " + rootGameObject.name);
+					//Debug.Log($"<b>[{name}] </b> player set to " + rootGameObject.name);
 				}
 			}
 			selection = playerObject.GetComponent<Selection>();
-			player = playerObject.GetComponent<Player>();
-			controllerTransforms = playerObject.GetComponent<ControllerTransforms>();
 		}
 		private void SetupOutline()
 		{
@@ -175,13 +158,7 @@ namespace VR_Prototyping.Scripts
 			
 			ObjectBounds = t.BoundsOfChildren(ObjectBounds);
 			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
-			
-			/*
-			o.CheckGaze(AngleG, selection.gaze, selection.gazeList, selection.lHandList, selection.rHandList, selection.globalList);
-			o.ManageList(selection.lHandList, o.WithinHandCone(selection.gazeList, selection.manual, AngleL), selection.disableLeftHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.LeftTransform(), selection.selectionRange));
-			o.ManageList(selection.rHandList, o.WithinHandCone(selection.gazeList, selection.manual, AngleR), selection.disableRightHand, transform.WithinRange(selection.setSelectionRange, controllerTransforms.RightTransform(), selection.selectionRange));
-			*/
-			
+
 			o.ManageList(selection.lCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceL));
 			o.ManageList(selection.rCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceR));
 			
@@ -190,18 +167,11 @@ namespace VR_Prototyping.Scripts
 		protected abstract void ObjectUpdate();
 		private void GetSortingValues()
 		{
-			Vector3 position = transform.position;
-			AngleG = Vector3.Angle(position - controllerTransforms.CameraPosition(),
-				controllerTransforms.CameraForwardVector());
-			AngleL = Vector3.Angle(position - controllerTransforms.LeftTransform().position,
-				controllerTransforms.LeftForwardVector());
-			AngleR = Vector3.Angle(position - controllerTransforms.RightTransform().position,
-				controllerTransforms.RightForwardVector());
-
 			if (selection == null) return;
 			
-			Vector3 castLocationL = selection.CastLocationL.position;
-			Vector3 castLocationR = selection.CastLocationR.position;
+			Vector3 castLocationL = selection.selectionObjectsL.castLocation.position;
+			Vector3 castLocationR = selection.selectionObjectsR.castLocation.position;
+			
 			CastDistanceL = Vector3.Distance(lClosestPoint = ObjectBounds.ClosestPoint(castLocationL), castLocationL);
 			CastDistanceR = Vector3.Distance(rClosestPoint = ObjectBounds.ClosestPoint(castLocationR), castLocationR);
 		}
@@ -221,7 +191,7 @@ namespace VR_Prototyping.Scripts
 		{
 			//outline.SetOutline(hoverOutlineMode, hoverOutlineWidth, hoverOutlineColour, false);
 		}
-		public virtual void SelectStart(Selection.MultiSelect side, List<BaseObject> list)
+		public virtual void SelectStart(SelectionObjects selectionObjects)
 		{
 			/*
 			SelectionVisual(SelectEvent);
@@ -244,32 +214,32 @@ namespace VR_Prototyping.Scripts
 					break;
 			}*/
 		}
-		public virtual void SelectHold(Selection.MultiSelect side, List<BaseObject> list)
+		public virtual void SelectHold(SelectionObjects selectionObjects)
 		{
 
 		}
-		public void SelectHoldEnd(Selection.MultiSelect side, List<BaseObject> list)
+		public void SelectHoldEnd(SelectionObjects selectionObjects)
 		{
 			
 		}
-		public virtual void QuickSelect(Selection.MultiSelect side, List<BaseObject> list)
+		public virtual void QuickSelect(SelectionObjects selectionObjects)
 		{
 			SelectionVisual(SelectEvent);
 			selected = true;
 			
-			player.ClearSelectedObjects(side, list, this);
-			if (!list.Contains(this))
+			Selection.ClearSelectedObjects(selectionObjects);
+			if (!selectionObjects.list.Contains(this))
 			{
-				list.Add(this);
+				selectionObjects.list.Add(this);
 			}
 		}
-		public virtual void Deselect(Selection.MultiSelect side, List<BaseObject> list)
+		public virtual void Deselect(SelectionObjects selectionObjects)
 		{
 			SelectionVisual(DeselectEvent);
 			selected = false;
-			if (list.Contains(this))
+			if (selectionObjects.list.Contains(this))
 			{
-				list.Remove(this);
+				selectionObjects.list.Remove(this);
 			}
 		}
 		private void OnDrawGizmos () 
@@ -289,18 +259,16 @@ namespace VR_Prototyping.Scripts
 		protected virtual void DrawGizmos ()
 		{
 			Draw.Gizmos.CircleXZ(transform.position, selectionRadius, Color.white);
-			
-			if (selection != null)
-			{		
-				Gizmos.color = Color.green;
-				Gizmos.DrawWireCube(ObjectBounds.center, ObjectBounds.size);
+
+			if (selection == null) return;
+			Gizmos.color = Color.green;
+			Gizmos.DrawWireCube(ObjectBounds.center, ObjectBounds.size);
 				
-				Gizmos.color = Color.red;
-				Gizmos.DrawWireSphere(lClosestPoint, .02f);
-				Gizmos.DrawWireSphere(rClosestPoint, .02f);
-				Gizmos.DrawRay(rClosestPoint, Vector3.Normalize(selection.CastLocationR.position - rClosestPoint) * selection.castSelectionRadius);
-				Gizmos.DrawRay(lClosestPoint, Vector3.Normalize(selection.CastLocationL.position - lClosestPoint) * selection.castSelectionRadius);
-			}
+			Gizmos.color = Color.red;
+			Gizmos.DrawWireSphere(lClosestPoint, .02f);
+			Gizmos.DrawWireSphere(rClosestPoint, .02f);
+			Gizmos.DrawRay(rClosestPoint, Vector3.Normalize(selection.selectionObjectsL.castLocation.position - rClosestPoint) * selection.castSelectionRadius);
+			Gizmos.DrawRay(lClosestPoint, Vector3.Normalize(selection.selectionObjectsR.castLocation.position - lClosestPoint) * selection.castSelectionRadius);
 		}
 	}
 }

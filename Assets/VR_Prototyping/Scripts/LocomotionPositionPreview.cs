@@ -6,9 +6,9 @@ namespace VR_Prototyping.Scripts
 {
     public class LocomotionPositionPreview : MonoBehaviour
     {
-        /*[BoxGroup]*/ [SerializeField] private Transform head;
-        /*[BoxGroup]*/ [SerializeField] private Transform lHand;
-        /*[BoxGroup]*/ [SerializeField] private Transform rHand;
+        [SerializeField] private Transform head;
+        [SerializeField] private Transform lHand;
+        [SerializeField] private Transform rHand;
         private bool active;
         
         public ControllerTransforms ControllerTransforms { private get; set; }
@@ -21,9 +21,10 @@ namespace VR_Prototyping.Scripts
             
             thisTransform.localPosition = Vector3.zero;
             thisTransform.forward = thisTransform.parent.forward;
-            head.transform.LocalTransforms(ControllerTransforms.HmdLocalRelativeTransform());
-            Vector3 localRot = head.transform.localEulerAngles;
-            head.transform.localEulerAngles = new Vector3(localRot.x, 0, localRot.z);
+            Transform headTransform = head.transform;
+            headTransform.LocalTransforms(ControllerTransforms.HmdLocalRelativeTransform());
+            Vector3 localRot = headTransform.localEulerAngles;
+            headTransform.localEulerAngles = new Vector3(localRot.x, 0, localRot.z);
             lHand.transform.LocalTransforms(ControllerTransforms.LeftLocalRelativeTransform());
             rHand.transform.LocalTransforms(ControllerTransforms.RightLocalRelativeTransform());
         }

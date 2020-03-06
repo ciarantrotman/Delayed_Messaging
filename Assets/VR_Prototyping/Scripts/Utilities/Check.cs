@@ -14,27 +14,7 @@ namespace VR_Prototyping.Scripts.Utilities
 {
     public static class Check
     {
-        public static void Manipulation(this Object focusObject, Object oppFocusObject, BaseObject baseObject, BaseObject previous, bool grip, bool pGrip, Transform con, bool touch, bool oppTouch)
-        {
-            if (focusObject == null || baseObject == null || touch) return;
-            /*
-            if (oppTouch && oppFocusObject  == focusObject) return;
-            
-            if (grip && !pGrip)
-            {
-                baseObject.GrabStart(con);
-            }
-            if (grip && pGrip)
-            {
-                baseObject.GrabStay(con);
-            }
-            if (!grip && pGrip)
-            {
-                previous.GrabEnd(con);
-            }*/
-        }
-
-        public static void MoveUnit(this UnitController unitController, bool current, bool previous, GameObject visual, LineRenderer lineRenderer, List<BaseObject> units)
+        public static void MoveUnit(this UnitController unitController, bool current, bool previous, GameObject visual, LineRenderer lineRenderer, IEnumerable<BaseObject> units)
         {
             if (current && !previous)
             {
@@ -53,31 +33,33 @@ namespace VR_Prototyping.Scripts.Utilities
         /// </summary>
         /// <param name="selectableObject"></param>
         /// <param name="selection"></param>
-        /// <param name="player"></param>
-        /// <param name="selectedObjectList"></param>
+        /// <param name="selectionObjects"></param>
+        /// <param name="cursorDistance"></param>
         /// <param name="currentSelectionState"></param>
         /// <param name="previousSelectionState"></param>
-        /// <param name="selectionList"></param>
-        /// <param name="sensitivity"></param>
-        /// <param name="selectState"></param>
-        /// <param name="side"></param>
-        public static void Selection(this BaseObject selectableObject, Selection selection, Player player, List<BaseObject> selectedObjectList, float cursorDistance, bool currentSelectionState, bool previousSelectionState, float multiSelectDistance, Selection.MultiSelection multiSelection, Selection.MultiSelect side, bool disabled)
+        /// <param name="multiSelectDistance"></param>
+        /// <param name="disabled"></param>
+        public static void Selection(BaseObject selectableObject, Selection selection, SelectionObjects selectionObjects, float cursorDistance, bool currentSelectionState, bool previousSelectionState, float multiSelectDistance, bool disabled)
         {
             if (disabled)
             {
                 return;
             }
+            
+            Debug.Log($"{selectableObject.name}, on {selectionObjects.side}: [{currentSelectionState}|{previousSelectionState}] [{cursorDistance}|{multiSelectDistance}]");
 
             // Is true if select is called for the first time, sets the cursor start position
             if (currentSelectionState && !previousSelectionState)
             {
-                selection.SelectStart(side);
+                Debug.Log("Selection Start");
+                selection.SelectStart(selectionObjects);
                 return;
             }
             // When you have a focus object, you have let go of the select button, and your cursor is still within the selection threshold
             if (selectableObject != null && !currentSelectionState && previousSelectionState && cursorDistance <= multiSelectDistance)
             {
-                selectableObject.QuickSelect(side, selectedObjectList);
+                Debug.Log("Object Quick Select");
+                selectableObject.QuickSelect(selectionObjects);
                 selection.UserInterface.SetObjectHeaderState(true);
                 selection.UserInterface.SelectObject(selectableObject);
                 return;
@@ -85,20 +67,23 @@ namespace VR_Prototyping.Scripts.Utilities
             // Called if you are still holding select and the cursor is outside the threshold distance
             if (currentSelectionState && cursorDistance >= multiSelectDistance)
             {
-                selection.MultiSelectStart(multiSelection);
-                selection.MultiSelectHold(multiSelection);
+                Debug.Log("Select Multi Select Start / Hold");
+                selection.MultiSelectStart(selectionObjects);
+                selection.MultiSelectHold(selectionObjects);
                 return;
             }
             // When you release the select button, but are still within the threshold
             if (selectableObject == null && !currentSelectionState && previousSelectionState && cursorDistance <= multiSelectDistance)
             {
-                selection.SelectEnd(side, selectedObjectList);
+                Debug.Log("Select End");
+                selection.SelectEnd(selectionObjects);
                 return;
             }
             // When you release the select button, and are outside of the threshold
             if (selectableObject == null && !currentSelectionState && previousSelectionState && cursorDistance >= multiSelectDistance)
             {
-                selection.MultiSelectEnd(multiSelection);
+                Debug.Log("Select Multi Select End");
+                selection.MultiSelectEnd(selectionObjects);
                 return;
             }
         }
@@ -289,7 +274,7 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <param name="lastValidPosition"></param>
         /// <param name="layerIndex"></param>
         /// <param name="normal"></param>
-        public static void TargetLocation(this GameObject target, GameObject hitPoint, Vector3 lastValidPosition, int layerIndex, bool normal)
+        public static void TargetLocation(this GameObject target, GameObject hitPoint, Vector3 lastValidPosition, int layerIndex, bool normal = false)
         {
             Transform t = target.transform;
             Vector3 position = t.position;
@@ -387,7 +372,7 @@ namespace VR_Prototyping.Scripts.Utilities
         {
             return castObjects.Count > 0 ? castObjects[0] : null;
         }
-        public static BaseObject FindBaseObject(this GameObject focusObject, BaseObject current, bool disable)
+        public static BaseObject FindBaseObject(this GameObject focusObject, BaseObject current, bool disable = false)
         {
             if (disable) return current == null ? null : current;
             

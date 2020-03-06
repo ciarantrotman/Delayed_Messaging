@@ -213,8 +213,12 @@ namespace VR_Prototyping.Scripts.Utilities
 			triangles[5] = 3;
 
 			mesh.vertices = vertices;
-			//mesh.uv = uv;
+			mesh.uv = uv;
 			mesh.triangles = triangles;
+			
+			mesh.RecalculateBounds();
+			mesh.RecalculateNormals();
+			mesh.RecalculateTangents();
 		}
 		/*
 		public static void Circle (Vector3 center, float radius, Color color, float startAngle = 0f, float endAngle = 2*Mathf.PI) 
