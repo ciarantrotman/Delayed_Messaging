@@ -41,12 +41,10 @@ namespace VR_Prototyping.Scripts.Utilities
         /// <param name="disabled"></param>
         public static void Selection(BaseObject selectableObject, Selection selection, SelectionObjects selectionObjects, float cursorDistance, bool currentSelectionState, bool previousSelectionState, float multiSelectDistance, bool disabled)
         {
-            if (disabled)
-            {
-                return;
-            }
-            
-            Debug.Log($"{selectableObject.name}, on {selectionObjects.side}: [{currentSelectionState}|{previousSelectionState}] [{cursorDistance}|{multiSelectDistance}]");
+            if (disabled) return;
+
+            //string debugName = selectableObject == null ? "Null" : selectableObject.name;
+            //Debug.Log($"{debugName}, on {selectionObjects.side}: [{currentSelectionState}|{previousSelectionState}]");// [{Math.Round(cursorDistance, 1)}|{Math.Round(multiSelectDistance, 1)}]");
 
             // Is true if select is called for the first time, sets the cursor start position
             if (currentSelectionState && !previousSelectionState)
@@ -80,12 +78,13 @@ namespace VR_Prototyping.Scripts.Utilities
                 return;
             }
             // When you release the select button, and are outside of the threshold
-            if (selectableObject == null && !currentSelectionState && previousSelectionState && cursorDistance >= multiSelectDistance)
+            if (/*selectableObject == null && */!currentSelectionState && previousSelectionState && cursorDistance >= multiSelectDistance)
             {
                 Debug.Log("Select Multi Select End");
                 selection.MultiSelectEnd(selectionObjects);
                 return;
             }
+            Debug.Log("No Selection");
         }
 
         /// <summary>

@@ -13,8 +13,8 @@ namespace VR_Prototyping.Scripts
 		private ControllerTransforms controllerTransforms;
 		private Cast cast;
 		public UserInterface UserInterface { get; private set; }
-		public SelectionObjects selectionObjectsL;
-		public SelectionObjects selectionObjectsR;
+		[HideInInspector] public SelectionObjects selectionObjectsL;
+		[HideInInspector] public SelectionObjects selectionObjectsR;
 		public enum MultiSelect
 		{
 			LEFT,
@@ -68,7 +68,7 @@ namespace VR_Prototyping.Scripts
 		{
 			SortLists();
 			selectionObjectsL.SelectUpdate(this, cast.lCastObject, selectionObjectsR.currentBaseObject, lCastList, multiSelectDistanceThreshold, controllerTransforms.LeftSelect(), disableLeftHand);
-			selectionObjectsR.SelectUpdate(this, cast.rCastObject, selectionObjectsL.currentBaseObject, rCastList, multiSelectDistanceThreshold, controllerTransforms.RightTransform(), disableRightHand);
+			selectionObjectsR.SelectUpdate(this, cast.rCastObject, selectionObjectsL.currentBaseObject, rCastList, multiSelectDistanceThreshold, controllerTransforms.RightSelect(), disableRightHand);
 		}
 
 		private void SortLists()
@@ -80,6 +80,7 @@ namespace VR_Prototyping.Scripts
 		public void SelectStart(SelectionObjects selectionObjects)
 		{
 			selectionObjects.selectionStart = selectionObjects.castLocation.position;
+			selectionObjects.multiSelect.multiSelectS = selectionObjects.selectionStart;
 		}
 		public void SelectEnd(SelectionObjects selectionObjects)
 		{
@@ -97,12 +98,12 @@ namespace VR_Prototyping.Scripts
 			selectionObjects.multiSelect.selectionLineRenderer.enabled = false;
 			selectionObjects.multiSelect.selectionQuadRenderer.enabled = true;
 			
-			selectionObjects.multiSelect.multiSelectS = selectionObjects.castLocation.position;
-			selectionObjects.multiSelect.selectionLineRenderer.DrawRectangularLineRenderer(selectionObjects.multiSelect.multiSelectS, selectionObjects.multiSelect.multiSelectS);
-			selectionObjects.multiSelect.selectionQuadFilter.mesh.DrawQuadMesh(selectionObjects.multiSelect.multiSelectS, selectionObjects.multiSelect.multiSelectS);
+			selectionObjects.multiSelect.multiSelectE = selectionObjects.castLocation.position;
+			selectionObjects.multiSelect.selectionLineRenderer.DrawRectangularLineRenderer(selectionObjects.multiSelect.multiSelectS, selectionObjects.multiSelect.multiSelectE);
+			selectionObjects.multiSelect.selectionQuadFilter.mesh.DrawQuadMesh(selectionObjects.multiSelect.multiSelectS, selectionObjects.multiSelect.multiSelectE);
 			
 			Bounds bounds = selectionObjects.multiSelect.selectionQuadRenderer.bounds;
-			selectionObjects.multiSelect.selectionBounds = new Bounds(bounds.center, new Vector3(bounds.size.x, 1f, bounds.size.z));
+			selectionObjects.multiSelect.selectionBounds = new Bounds(new Vector3(bounds.center.x, .5f, bounds.center.z), new Vector3(bounds.size.x, 1f, bounds.size.z));
 		}
 		public void MultiSelectHold(SelectionObjects selectionObjects)
 		{
@@ -111,7 +112,7 @@ namespace VR_Prototyping.Scripts
 			selectionObjects.multiSelect.selectionQuadFilter.mesh.DrawQuadMesh(selectionObjects.multiSelect.multiSelectS, selectionObjects.multiSelect.multiSelectE);
 			
 			Bounds bounds = selectionObjects.multiSelect.selectionQuadRenderer.bounds;
-			selectionObjects.multiSelect.selectionBounds = new Bounds(bounds.center, new Vector3(bounds.size.x, 1f, bounds.size.z));
+			selectionObjects.multiSelect.selectionBounds = new Bounds(new Vector3(bounds.center.x, .5f, bounds.center.z), new Vector3(bounds.size.x, 1f, bounds.size.z));
 		}
 
 		public void MultiSelectEnd(SelectionObjects selectionObjects)
@@ -129,6 +130,7 @@ namespace VR_Prototyping.Scripts
 			{
 				if (selectionObjects.multiSelect.selectionBounds.Intersects(baseObject.ObjectBounds))
 				{
+					Debug.Log($"{baseObject.name} was selected: {selectionObjects.side}");
 					baseObject.SelectStart(selectionObjects);
 				}
 			}

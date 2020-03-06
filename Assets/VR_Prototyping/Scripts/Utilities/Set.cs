@@ -619,7 +619,7 @@ namespace VR_Prototyping.Scripts
             visual.Target(hitPoint, normalised.transform, joystick, rotation);
         }
         /// <summary>
-        /// Creates a bounds using the Mesh Renderers of the provided transform
+        /// Creates a bounds using the MeshRenderers of the provided transform
         /// </summary>
         /// <param name="parentObject"></param>
         /// <param name="bounds"></param>
@@ -645,11 +645,19 @@ namespace VR_Prototyping.Scripts
         {
             // Find the bounds of the model
             Bounds modelBounds = new Bounds();
+            Bounds frameBounds = new Bounds();
+            
             modelBounds = model.transform.BoundsOfChildren(modelBounds);
-
+            frameBounds.size = Vector3.one * boundsMin;
+            
             float boundsMax = modelBounds.size.LargestValue();
             float scaleMax = model.transform.localScale.LargestValue();
 
+            Vector3 boundsModelSize = modelBounds.size;
+            Vector3 frameModelSize = frameBounds.size;
+
+            Vector3 scale = new Vector3(boundsModelSize.x / frameModelSize.x, boundsModelSize.y / frameModelSize.y, boundsModelSize.z / frameModelSize.z);
+            
             float scaleRatio = scaleMax / boundsMax;
             
             // Scale base on the frame bounds
@@ -663,7 +671,8 @@ namespace VR_Prototyping.Scripts
                       " | Adjusted Bounds: " + adjustedBounds + " = " + boundsMax + " * " + boundsRatio + 
                       " | Scale Ratio: " + scaleRatio + " = " + scaleMax + " / " + boundsMax);*/
 
-            model.transform.localScale = new Vector3(.1f, .1f, .1f);
+            model.transform.localScale = scale;
+            //model.transform.localScale = Vector3.one * .1f;
             //model.transform.localScale = new Vector3(adjustedBounds, adjustedBounds, adjustedBounds);
         }
     }

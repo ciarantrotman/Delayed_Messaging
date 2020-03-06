@@ -141,7 +141,15 @@ namespace Delayed_Messaging.Scripts.Interaction
                 Destroy(objectInterface);
             }
             objectInterface = Instantiate(baseObject.ObjectClass.objectSpecificInterface, objectHeaderObject.transform);
-            objectInterface.GetComponent<BaseObjectInterface>().Initialise(baseObject);
+            BaseObjectInterface baseObjectInterface = objectInterface.GetComponent<BaseObjectInterface>();
+            if (baseObjectInterface != null)
+            {
+                baseObjectInterface.Initialise(baseObject);
+            }
+            else
+            {
+                Debug.LogError($"<b>{baseObject.name}</b> has no BaseObjectInterface attached to its contextual interface: {objectInterface.name}");
+            }
         }
         
         private void OnDrawGizmos () 

@@ -6,7 +6,7 @@ namespace Delayed_Messaging.Scripts.Interaction.User_Interface
     {
         protected override void OverrideInitialise()
         {
-            //
+            
         }
     }
 }

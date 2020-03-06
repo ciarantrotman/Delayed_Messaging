@@ -30,6 +30,8 @@ namespace VR_Prototyping.Scripts
 		private bool hover;
 		private bool selected;
 		private bool baseInitialised;
+		
+		public Vector3 
 
 		internal VisualEffect selectionVisualEffect;
 		internal float health;
@@ -193,26 +195,12 @@ namespace VR_Prototyping.Scripts
 		}
 		public virtual void SelectStart(SelectionObjects selectionObjects)
 		{
-			/*
 			SelectionVisual(SelectEvent);
 			selected = true;
-			switch (side)
+			if (!selectionObjects.list.Contains(this))
 			{
-				case Selection.MultiSelect.LEFT:
-					if (!player.lSelectedObjects.Contains(this))
-					{
-						player.lSelectedObjects.Add(this);
-					}
-					break;
-				case Selection.MultiSelect.RIGHT:
-					if (!player.rSelectedObjects.Contains(this))
-					{
-						player.rSelectedObjects.Add(this);
-					}
-					break;
-				default:
-					break;
-			}*/
+				selectionObjects.list.Add(this);
+			}
 		}
 		public virtual void SelectHold(SelectionObjects selectionObjects)
 		{
@@ -226,7 +214,6 @@ namespace VR_Prototyping.Scripts
 		{
 			SelectionVisual(SelectEvent);
 			selected = true;
-			
 			Selection.ClearSelectedObjects(selectionObjects);
 			if (!selectionObjects.list.Contains(this))
 			{
