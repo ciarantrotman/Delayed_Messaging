@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
+using Pathfinding;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,10 +31,11 @@ namespace VR_Prototyping.Scripts
 		private bool hover;
 		private bool selected;
 		private bool baseInitialised;
-		
-		public Vector3 
 
-		internal VisualEffect selectionVisualEffect;
+		public GraphNode currentNode;
+		public GraphNode previousNode;
+		
+		VisualEffect selectionVisualEffect;
 		internal float health;
 		
 		public enum SpawnableObjectType
@@ -157,7 +159,17 @@ namespace VR_Prototyping.Scripts
 			
 			GameObject o = gameObject;
 			Transform t = transform;
+			Vector3 position = t.position;
 			
+			currentNode = AstarPath.active.GetNearest(position).node;
+
+			if (previousNode != null && currentNode != previousNode && currentNode.Penalty > 0)
+			{
+				currentNode.Penalty--;
+			}
+
+			previousNode = currentNode;
+
 			ObjectBounds = t.BoundsOfChildren(ObjectBounds);
 			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
 
