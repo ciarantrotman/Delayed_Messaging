@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Utilities;
+using Pathfinding;
 using UnityEngine;
 
 namespace VR_Prototyping.Scripts.Utilities
@@ -83,6 +84,13 @@ namespace VR_Prototyping.Scripts.Utilities
 		{
 			lr.SetPosition(0, start.position);
 			lr.SetPosition(1, end.position);
+		}
+
+		public static void DrawDestinationLineRender(this LineRenderer lineRenderer, Seeker seeker)
+		{
+			for (int i = 0; i < seeker.lastCompletedNodePath.Count-1; i++) {
+				DrawLineRenderer((Vector3)seeker.lastCompletedNodePath[i].position, (Vector3)seeker.lastCompletedNodePath[i+1].position);
+			}
 		}
 		public static void ArcLineRenderer(this LineRenderer lr, float radius, float startAngle, float endAngle,
 			Orientation orientation, int quality)

@@ -9,6 +9,7 @@ using Draw = Pathfinding.Util.Draw;
 
 namespace Delayed_Messaging.Scripts.Objects.Units
 {
+    [RequireComponent(typeof(AIPath), typeof(AIDestinationSetter), typeof(Seeker))]
     public abstract class Unit : BaseObject, IDamageable<float>, IMovable<Vector3>, ISpawnableUnit<Vector3, Vector3>
     {
         [Header("Unit Specific Settings")]
@@ -16,9 +17,10 @@ namespace Delayed_Messaging.Scripts.Objects.Units
         public UnitClass.UnitData unitData;
         
         [SerializeField, Space(10)] private Material destinationLineRendererMat;
-        
-        internal AIDestinationSetter destinationSetter;
-        internal AIPath aiPath;
+
+        private AIDestinationSetter destinationSetter;
+        private AIPath aiPath;
+        private Seeker seeker;
 
         internal GameObject unitDestination;
         private LineRenderer destinationLineRenderer;
@@ -45,7 +47,8 @@ namespace Delayed_Messaging.Scripts.Objects.Units
             
             Transform t = transform;
             aiPath = GetComponent<AIPath>();
-            //aiPath.SetupAIPath(unitClass);
+            seeker = GetComponent<Seeker>();
+            
             ObjectClass = unitClass;
             
             unitDestination = new GameObject("[" + name + " Destination]");
