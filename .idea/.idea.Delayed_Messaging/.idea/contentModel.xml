@@ -278,8 +278,10 @@
             <e p="BaseClass.cs" t="Include" />
             <e p="Interaction" t="Include">
               <e p="Cursors" t="Include">
+                <e p="BaseCursor.cs" t="Include" />
                 <e p="CastCursor.cs" t="Include" />
                 <e p="RaycastCursor.cs" t="Include" />
+                <e p="UnitCursor.cs" t="Include" />
               </e>
               <e p="Interface Building Blocks" t="Include">
                 <e p="FrameButton.cs" t="Include" />

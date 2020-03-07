@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Interaction;
+using Delayed_Messaging.Scripts.Interaction.Cursors;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Units;
+using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VR_Prototyping.Scripts.Accessibility;
@@ -14,16 +16,21 @@ namespace VR_Prototyping.Scripts.Utilities
 {
     public static class Check
     {
-        public static void MoveUnit(this UnitController unitController, bool current, bool previous, GameObject visual, LineRenderer lineRenderer, IEnumerable<BaseObject> units)
+        public static void MoveUnit(this UnitController unitController, bool current, bool previous, Cast.CastObjects castObjects, IEnumerable<BaseObject> units)
         {
             if (current && !previous)
             {
-                UnitController.UnitMoveStart(visual, lineRenderer);
+                UnitController.UnitMoveStart(castObjects);
+                return;
+            }
+            if (current && previous)
+            {
+                unitController.UnitMoveStay(castObjects);
                 return;
             }
             if (!current && previous)
             {
-                unitController.UnitMoveEnd(visual, lineRenderer, units);
+                unitController.UnitMoveEnd(castObjects, units);
                 return;
             }
         }

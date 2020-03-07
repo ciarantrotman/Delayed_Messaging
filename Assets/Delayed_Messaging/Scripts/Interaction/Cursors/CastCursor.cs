@@ -1,9 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Delayed_Messaging.Scripts.Interaction
+namespace Delayed_Messaging.Scripts.Interaction.Cursors
 {
-    public class CastCursor : MonoBehaviour
+    public class CastCursor : BaseCursor
     {
         public enum CursorState
         {

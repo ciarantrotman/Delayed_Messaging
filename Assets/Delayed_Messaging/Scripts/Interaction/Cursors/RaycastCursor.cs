@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Delayed_Messaging.Scripts.Interaction
+namespace Delayed_Messaging.Scripts.Interaction.Cursors
 {
-    public class RaycastCursor : MonoBehaviour
+    public class RaycastCursor : BaseCursor
     {
         public enum CursorState
         {
@@ -28,7 +27,7 @@ namespace Delayed_Messaging.Scripts.Interaction
             cursor.enabled = state;
         }
         
-        public void SetCursorState(CursorState state)
+        public void SetCursorStateState(CursorState state)
         {
             switch (state)
             {

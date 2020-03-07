@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using Delayed_Messaging.Scripts.Interaction.Cursors;
 using Delayed_Messaging.Scripts.Units;
 using Delayed_Messaging.Scripts.Utilities;
+using Pathfinding;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 using VR_Prototyping.Scripts.Utilities;
@@ -29,8 +31,6 @@ namespace Delayed_Messaging.Scripts.Player
         [SerializeField, Range(0f, 180f)] private float maximumAngle = 110f;
         [SerializeField, Range(.1f, 1f)] private float minimumMoveDistance = .5f;
         [SerializeField, Range(1f, 100f)] private float maximumMoveDistance = 15f;
-        [SerializeField, Range(1, 15), Space(10)]
-        private int layerIndex = 15;
 
         [Header("Aesthetic Settings")]
         [SerializeField] private GameObject targetVisual;
@@ -49,23 +49,42 @@ namespace Delayed_Messaging.Scripts.Player
 
         private void LateUpdate()
         {
-            this.MoveUnit(controllerTransforms.LeftGrab(),pGrabL, cast.lCastObject.visual, cast.lCastObject.lineRenderer, selection.selectionObjectsL.list);
-            this.MoveUnit(controllerTransforms.RightGrab(),pGrabR,cast.rCastObject.visual, cast.rCastObject.lineRenderer, selection.selectionObjectsR.list);
+            this.MoveUnit(controllerTransforms.LeftGrab(),pGrabL, cast.lCastObject, selection.selectionObjectsL.list);
+            this.MoveUnit(controllerTransforms.RightGrab(),pGrabR, cast.rCastObject, selection.selectionObjectsR.list);
 
             pGrabL = controllerTransforms.LeftGrab();
             pGrabR = controllerTransforms.RightGrab();
         }
 
-        public static void UnitMoveStart(GameObject visual, LineRenderer lr)
+        public static void UnitMoveStart(Cast.CastObjects castObjects)
         {
-            visual.SetActive(true);
-            lr.enabled = true;
+            castObjects.visual.SetActive(true);
+            castObjects.lineRenderer.enabled = true;
+        }
+
+        public void UnitMoveStay(Cast.CastObjects castObjects)
+        {
+            GraphNode node = AstarPath.active.GetNearest(castObjects.visual.transform.position).node;
+            UnitCursor cursor = (UnitCursor) castObjects.cursor;
+            
+            switch (node.Walkable)
+            {
+                case true when cursor != null:
+                    cursor.SetCursorState(UnitCursor.CursorState.VALID_POSITION);
+                    break;
+                case false when cursor != null:
+                    cursor.SetCursorState(UnitCursor.CursorState.INVALID_POSITION);
+                    break;
+                default:
+                    Debug.Log($"UnitController {castObjects} has no UnitCursor attached to it.");
+                    break;
+            }
         }
         
-        public void UnitMoveEnd(GameObject visual, LineRenderer lr, IEnumerable<BaseObject> units)
+        public void UnitMoveEnd(Cast.CastObjects castObjects, IEnumerable<BaseObject> units)
         {
-            visual.SetActive(false);
-            lr.enabled = false;
+            castObjects.visual.SetActive(false);
+            castObjects.lineRenderer.enabled = false;
 
             foreach (BaseObject baseObject in units)
             {
@@ -76,7 +95,7 @@ namespace Delayed_Messaging.Scripts.Player
                     {
                         continue;
                     }
-                    selectedUnit.SetDestination(visual.transform.position);
+                    selectedUnit.SetDestination(castObjects.visual.transform.position);
                 }
             }
         }

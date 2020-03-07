@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Delayed_Messaging.Scripts.Interaction.Cursors;
+using UnityEngine;
 using VR_Prototyping.Scripts;
 using VR_Prototyping.Scripts.Utilities;
 
@@ -13,9 +14,10 @@ namespace Delayed_Messaging.Scripts.Utilities
 		private float minAngle;
 		private float maxDistance;
 		private float minDistance;
-		
+
 		public class CastObjects
 		{
+			public BaseCursor cursor;
 			public GameObject follow;
 			public GameObject proxy;
 			public GameObject normalised;
@@ -58,6 +60,12 @@ namespace Delayed_Messaging.Scripts.Utilities
 			castObjects.visual = Instantiate(v, castObjects.hitPoint.transform);
 			castObjects.visual.name = "[" + instanceName + "/Visual/Right]";
 			castObjects.visual.SetActive(enabled);
+			castObjects.cursor = castObjects.visual.GetComponent<BaseCursor>();
+
+			if (castObjects.cursor == null)
+			{
+				Debug.LogWarning($"{instanceName} has no <b>BaseCursor</b> attached to {castObjects.visual.name}");
+			}
 
 			castObjects.follow.transform.SetParent(parentTransform);
 			castObjects.proxy.transform.SetParent(castObjects.follow.transform);
