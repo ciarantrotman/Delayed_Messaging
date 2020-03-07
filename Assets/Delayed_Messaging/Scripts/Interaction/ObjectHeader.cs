@@ -30,7 +30,7 @@ namespace Delayed_Messaging.Scripts.Interaction
             
             model = Instantiate(baseClass.objectModel, modelViewerCenter);
             model.ScaleFactor();
-            model.transform.position = modelViewerCenter.position;
+            model.transform.Transforms(modelViewerCenter);
         }
 
         public void EnableHeader()

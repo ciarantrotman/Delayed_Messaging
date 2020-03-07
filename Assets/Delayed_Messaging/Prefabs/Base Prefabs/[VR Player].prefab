@@ -68,8 +68,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerClass: {fileID: 11400000, guid: bc466795cbb632f47b45ba991c7cfa8d, type: 2}
-  rSelectedObjects: []
-  lSelectedObjects: []
 --- !u!114 &6339565769025428999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,17 +80,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b292bc0edeee64da52079c248b5a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lLineRenderer: {fileID: 0}
-  rLineRenderer: {fileID: 0}
   minimumAngle: 60
   maximumAngle: 110
   minimumMoveDistance: 0.1
   maximumMoveDistance: 10
-  layerIndex: 15
   targetVisual: {fileID: 7165229023541344625, guid: 77853b28326a9c546be6bf48c998cfc2,
     type: 3}
-  lineRenderMat: {fileID: 2100000, guid: 95adac4e70d55624ea95cb85f7af17e3, type: 2}
-  lineRenderQuality: 40
+  lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
 --- !u!114 &7473554891637304831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,12 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8929538d7e8c6945b6ee8278fcdc3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lSelect: []
-  rSelect: []
-  selectionType: 3
-  gaze: 60
-  manual: 10
-  setSelectionRange: 1
+  selectionObjectsL: {fileID: 0}
+  selectionObjectsR: {fileID: 0}
   selectionRange: 7.5
   disableLeftHand: 0
   disableRightHand: 0
@@ -157,24 +147,14 @@ MonoBehaviour:
   maximumAngle: 110
   multiSelectDistanceThreshold: 0.2
   castSelectionRadius: 0.1
-  layerIndex: 15
   castCursorObject: {fileID: 5171863205534225016, guid: b02a7701e4ccd0340b18d1e4a674b219,
     type: 3}
-  gazeCursorObject: {fileID: 3368970237513492719, guid: 0df546e5f776c5e44a9ca29e0c322cb3,
-    type: 3}
-  lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
   selectionLineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216,
     type: 2}
   selectionQuadMaterial: {fileID: 2100000, guid: 49467c3ecb7c0294cac3aa1f5e4b0ee7,
     type: 2}
-  lineRenderWidth: 0.0025
-  lineRenderQuality: 30
-  inactiveLineRenderOffset: 0.1
   globalList: []
   baseObjectsList: []
-  gazeList: []
-  rHandList: []
-  lHandList: []
   rCastList: []
   lCastList: []
 --- !u!114 &2910476754053980516
@@ -189,13 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d37877ca88e5654f8ad3be77f5633e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lLr: {fileID: 0}
-  rLr: {fileID: 0}
   minimumMoveDistance: 0.1
   maximumMoveDistance: 10
   layerIndex: 15
   locomotionMethod: 0
-  advancedLocomotion: 1
   rotation: 1
   angle: 45
   rotateSpeed: 0.25
@@ -208,10 +185,6 @@ MonoBehaviour:
   targetVisual: {fileID: 7457907001363424065, guid: 8489f5c5ab6d2f04c9a89cf64b64666e,
     type: 3}
   lineRenderMat: {fileID: 2100000, guid: 81565e9f72405c247b4dcfac75c54592, type: 2}
-  lineRenderQuality: 40
-  sceneChangeWipe: {fileID: 4682701757106891871, guid: e7cf404ab85b8b34ca9fbaf27821454f,
-    type: 3}
-  sceneWipeDuration: 0
   sceneWipeTrigger:
     m_PersistentCalls:
       m_Calls: []

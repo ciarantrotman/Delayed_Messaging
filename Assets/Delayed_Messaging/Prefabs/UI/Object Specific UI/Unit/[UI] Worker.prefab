@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9615d5e1339b15d47bf3075791762691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnObjects:
+  - frameButton: {fileID: 4816529918010952861}
+    reference: Resource Depot
 --- !u!1001 &6195090424707516132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,7 +123,7 @@ PrefabInstance:
     - target: {fileID: 5223815884838701151, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
       propertyPath: m_Name
-      value: Depot
+      value: Resource Depot Button
       objectReference: {fileID: 0}
     - target: {fileID: 6595006252136924349, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
@@ -160,3 +163,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6195090424707516132}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4816529918010952861 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6195090424707516132}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10f70185d661854984ca8dc40d4dfc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

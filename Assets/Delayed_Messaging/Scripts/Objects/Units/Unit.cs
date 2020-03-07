@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Delayed_Messaging.Scripts.Units;
 using Delayed_Messaging.Scripts.Utilities;
 using Panda;
 using Pathfinding;
@@ -7,7 +7,7 @@ using VR_Prototyping.Scripts;
 using VR_Prototyping.Scripts.Utilities;
 using Draw = Pathfinding.Util.Draw;
 
-namespace Delayed_Messaging.Scripts.Units
+namespace Delayed_Messaging.Scripts.Objects.Units
 {
     public abstract class Unit : BaseObject, IDamageable<float>, IMovable<Vector3>, ISpawnableUnit<Vector3, Vector3>
     {
@@ -90,12 +90,12 @@ namespace Delayed_Messaging.Scripts.Units
         {
             if (unitDestination == null)
             {
-                Debug.LogError(name + " tried to move but there is no <b>[Unit Destination]</b> defined!");
+                Debug.LogError($"{name} tried to move but there is no <b>[Unit Destination]</b> defined!");
                 InitialiseUnit();
                 return;
             }
             
-            // Debug.Log(name + " set to move to <b>[Unit Destination]</b> at " + unitDestination.transform.position);
+            Debug.Log($"{name} set to move to <b>[Unit Destination]</b> at {unitDestination.transform.position}");
             
             overrideDirection = true;
 

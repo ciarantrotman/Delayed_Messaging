@@ -214,6 +214,40 @@
                 <e p="UnityReferenceHelper.cs" t="Include" />
               </e>
             </e>
+            <e p="Demigiant" t="Include">
+              <e p="DemiLib" t="Include">
+                <e p="Core" t="Include">
+                  <e p="DemiLib.xml" t="Include" />
+                  <e p="Editor" t="Include">
+                    <e p="DemiEditor.xml" t="Include" />
+                  </e>
+                </e>
+              </e>
+              <e p="DOTween" t="Include">
+                <e p="Modules" t="Include">
+                  <e p="DOTweenModuleAudio.cs" t="Include" />
+                  <e p="DOTweenModulePhysics.cs" t="Include" />
+                  <e p="DOTweenModulePhysics2D.cs" t="Include" />
+                  <e p="DOTweenModuleSprite.cs" t="Include" />
+                  <e p="DOTweenModuleUI.cs" t="Include" />
+                  <e p="DOTweenModuleUnityVersion.cs" t="Include" />
+                  <e p="DOTweenModuleUtils.cs" t="Include" />
+                </e>
+                <e p="readme.txt" t="Include" />
+              </e>
+              <e p="DOTweenPro" t="Include">
+                <e p="DOTweenAnimation.cs" t="Include" />
+                <e p="DOTweenProShortcuts.cs" t="Include" />
+                <e p="DOTweenTextMeshPro.cs" t="Include" />
+                <e p="DOTweenTk2d.cs" t="Include" />
+                <e p="Editor" t="Include">
+                  <e p="DOTweenAnimationInspector.cs" t="Include" />
+                  <e p="DOTweenPreviewManager.cs" t="Include" />
+                </e>
+                <e p="readme.txt" t="Include" />
+              </e>
+              <e p="readme_DOTweenPro.txt" t="Include" />
+            </e>
             <e p="PandaBehaviour" t="Include">
               <e p="ChangeLog.txt" t="Include" />
               <e p="Core" t="Include">
@@ -273,9 +307,74 @@
               </e>
               <e p="readme.txt" t="Include" />
             </e>
+            <e p="QuickOutline" t="Include">
+              <e p="readme.txt" t="Include" />
+              <e p="Resources" t="Include">
+                <e p="Shaders" t="Include">
+                  <e p="OutlineFill.shader" t="Include" />
+                  <e p="OutlineMask.shader" t="Include" />
+                </e>
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="Outline.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Stencil_Buffer_UI" t="Include">
+              <e p="Shaders" t="Include">
+                <e p="CustomInternalShaders" t="Include">
+                  <e p="CustomInternal-DepthNormalsTexture.shader" t="Include" />
+                </e>
+                <e p="StencilShaders" t="Include">
+                  <e p="Legacy" t="Include">
+                    <e p="Stencil_Legacy_Alpha-Diffuse.shader" t="Include" />
+                    <e p="Stencil_Legacy_Normal-Diffuse.shader" t="Include" />
+                    <e p="Stencil_Legacy_Normal-Spec.shader" t="Include" />
+                    <e p="Stencil_Legacy_Reflect-Normal-Spec.shader" t="Include" />
+                  </e>
+                  <e p="Masks" t="Include">
+                    <e p="DepthMask.shader" t="Include" />
+                    <e p="StencilMaskID.shader" t="Include" />
+                  </e>
+                  <e p="Standard" t="Include">
+                    <e p="StandardSurfaceShader.shader" t="Include" />
+                  </e>
+                  <e p="StencilViewer" t="Include">
+                    <e p="Stencil_Viewer.shader" t="Include" />
+                    <e p="Stencil_ViewerTextured.shader" t="Include" />
+                  </e>
+                </e>
+              </e>
+            </e>
+            <e p="TextMesh Pro" t="Include">
+              <e p="Fonts" t="Include">
+                <e p="LiberationSans - OFL.txt" t="Include" />
+              </e>
+              <e p="Resources" t="Include">
+                <e p="LineBreaking Following Characters.txt" t="Include" />
+                <e p="LineBreaking Leading Characters.txt" t="Include" />
+                <e p="Shaders" t="Include">
+                  <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+                  <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+                  <e p="TMP_Bitmap.shader" t="Include" />
+                  <e p="TMP_SDF Overlay.shader" t="Include" />
+                  <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+                  <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+                  <e p="TMP_SDF-Mobile.shader" t="Include" />
+                  <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+                  <e p="TMP_SDF-Surface.shader" t="Include" />
+                  <e p="TMP_SDF.shader" t="Include" />
+                  <e p="TMP_Sprite.shader" t="Include" />
+                  <e p="TMPro.cginc" t="Include" />
+                  <e p="TMPro_Properties.cginc" t="Include" />
+                  <e p="TMPro_Surface.cginc" t="Include" />
+                </e>
+              </e>
+              <e p="Sprites" t="Include">
+                <e p="EmojiOne Attribution.txt" t="Include" />
+              </e>
+            </e>
           </e>
           <e p="Scripts" t="Include">
-            <e p="BaseClass.cs" t="Include" />
             <e p="Environment" t="Include">
               <e p="EnvironmentController.cs" t="Include" />
             </e>
@@ -297,44 +396,43 @@
                 <e p="BaseObjectInterface.cs" t="Include" />
                 <e p="ResourceDepotInterface.cs" t="Include" />
                 <e p="ResourceGathererInterface.cs" t="Include" />
+                <e p="ResourceInterface.cs" t="Include" />
                 <e p="WorkerInterface.cs" t="Include" />
               </e>
               <e p="UserInterface.cs" t="Include" />
             </e>
+            <e p="Objects" t="Include">
+              <e p="BaseClass.cs" t="Include" />
+              <e p="BaseObject.cs" t="Include" />
+              <e p="Resources" t="Include">
+                <e p="Resource.cs" t="Include" />
+                <e p="ResourceClass.cs" t="Include" />
+              </e>
+              <e p="RubberbandedObject.cs" t="Include" />
+              <e p="Structures" t="Include">
+                <e p="Base.cs" t="Include" />
+                <e p="ResourceDepot.cs" t="Include" />
+                <e p="Structure.cs" t="Include" />
+                <e p="StructureClass.cs" t="Include" />
+              </e>
+              <e p="Units" t="Include">
+                <e p="Gather.BT.txt" t="Include" />
+                <e p="Move.BT.txt" t="Include" />
+                <e p="ResourceGatherer.BT.txt" t="Include" />
+                <e p="ResourceGatherer.cs" t="Include" />
+                <e p="Search.BT.txt" t="Include" />
+                <e p="Unit.cs" t="Include" />
+                <e p="UnitClass.cs" t="Include" />
+                <e p="Worker.cs" t="Include" />
+              </e>
+            </e>
             <e p="Player" t="Include">
+              <e p="ControllerTransforms.cs" t="Include" />
               <e p="Locomotion" t="Include">
                 <e p="Locomotion.cs" t="Include" />
                 <e p="LocomotionPositionPreview.cs" t="Include" />
                 <e p="LocomotionVisual.cs" t="Include" />
                 <e p="SceneWipe.cs" t="Include" />
-                <e p="Scripts" t="Include">
-                  <e p="ControllerTransforms.cs" t="Include" />
-                  <e p="Manipulation.cs" t="Include" />
-                  <e p="RubberbandedObject.cs" t="Include" />
-                </e>
-              </e>
-              <e p="Objects" t="Include">
-                <e p="BaseObject.cs" t="Include" />
-                <e p="Resources" t="Include">
-                  <e p="Resource.cs" t="Include" />
-                  <e p="ResourceClass.cs" t="Include" />
-                </e>
-                <e p="Structures" t="Include">
-                  <e p="Base.cs" t="Include" />
-                  <e p="ResourceDepot.cs" t="Include" />
-                  <e p="Structure.cs" t="Include" />
-                  <e p="StructureClass.cs" t="Include" />
-                </e>
-                <e p="Units" t="Include">
-                  <e p="Gather.BT.txt" t="Include" />
-                  <e p="Move.BT.txt" t="Include" />
-                  <e p="ResourceGatherer.BT.txt" t="Include" />
-                  <e p="ResourceGatherer.cs" t="Include" />
-                  <e p="Search.BT.txt" t="Include" />
-                  <e p="Unit.cs" t="Include" />
-                  <e p="UnitClass.cs" t="Include" />
-                  <e p="Worker.cs" t="Include" />
-                </e>
               </e>
               <e p="Player.cs" t="Include" />
               <e p="PlayerClass.cs" t="Include" />
@@ -649,116 +747,6 @@
           <e p="SteamVR_Input_Actions.cs" t="Include" />
           <e p="SteamVR_Input_ActionSets.cs" t="Include" />
           <e p="SteamVR_Input_Initialization.cs" t="Include" />
-        </e>
-        <e p="VR_Prototyping" t="Include">
-          <e p="Interfaces" t="Include">
-            <e p="Interfaces.cs" t="Include" />
-          </e>
-          <e p="Materials" t="Include">
-            <e p="AlphaWipeShader.shader" t="Include" />
-          </e>
-          <e p="Plugins" t="Include">
-            <e p="Demigiant" t="Include">
-              <e p="DemiLib" t="Include">
-                <e p="Core" t="Include">
-                  <e p="DemiLib.xml" t="Include" />
-                  <e p="Editor" t="Include">
-                    <e p="DemiEditor.xml" t="Include" />
-                  </e>
-                </e>
-              </e>
-              <e p="DOTween" t="Include">
-                <e p="Modules" t="Include">
-                  <e p="DOTweenModuleAudio.cs" t="Include" />
-                  <e p="DOTweenModulePhysics.cs" t="Include" />
-                  <e p="DOTweenModulePhysics2D.cs" t="Include" />
-                  <e p="DOTweenModuleSprite.cs" t="Include" />
-                  <e p="DOTweenModuleUI.cs" t="Include" />
-                  <e p="DOTweenModuleUnityVersion.cs" t="Include" />
-                  <e p="DOTweenModuleUtils.cs" t="Include" />
-                </e>
-                <e p="readme.txt" t="Include" />
-              </e>
-              <e p="DOTweenPro" t="Include">
-                <e p="DOTweenAnimation.cs" t="Include" />
-                <e p="DOTweenProShortcuts.cs" t="Include" />
-                <e p="DOTweenTextMeshPro.cs" t="Include" />
-                <e p="DOTweenTk2d.cs" t="Include" />
-                <e p="Editor" t="Include">
-                  <e p="DOTweenAnimationInspector.cs" t="Include" />
-                  <e p="DOTweenPreviewManager.cs" t="Include" />
-                </e>
-                <e p="readme.txt" t="Include" />
-              </e>
-              <e p="readme_DOTweenPro.txt" t="Include" />
-            </e>
-            <e p="QuickOutline" t="Include">
-              <e p="readme.txt" t="Include" />
-              <e p="Resources" t="Include">
-                <e p="Shaders" t="Include">
-                  <e p="OutlineFill.shader" t="Include" />
-                  <e p="OutlineMask.shader" t="Include" />
-                </e>
-              </e>
-              <e p="Scripts" t="Include">
-                <e p="Outline.cs" t="Include" />
-              </e>
-            </e>
-            <e p="Stencil_Buffer_UI" t="Include">
-              <e p="Shaders" t="Include">
-                <e p="CustomInternalShaders" t="Include">
-                  <e p="CustomInternal-DepthNormalsTexture.shader" t="Include" />
-                </e>
-                <e p="StencilShaders" t="Include">
-                  <e p="Legacy" t="Include">
-                    <e p="Stencil_Legacy_Alpha-Diffuse.shader" t="Include" />
-                    <e p="Stencil_Legacy_Normal-Diffuse.shader" t="Include" />
-                    <e p="Stencil_Legacy_Normal-Spec.shader" t="Include" />
-                    <e p="Stencil_Legacy_Reflect-Normal-Spec.shader" t="Include" />
-                  </e>
-                  <e p="Masks" t="Include">
-                    <e p="DepthMask.shader" t="Include" />
-                    <e p="StencilMaskID.shader" t="Include" />
-                  </e>
-                  <e p="Standard" t="Include">
-                    <e p="StandardSurfaceShader.shader" t="Include" />
-                  </e>
-                  <e p="StencilViewer" t="Include">
-                    <e p="Stencil_Viewer.shader" t="Include" />
-                    <e p="Stencil_ViewerTextured.shader" t="Include" />
-                  </e>
-                </e>
-              </e>
-            </e>
-            <e p="TextMesh Pro" t="Include">
-              <e p="Fonts" t="Include">
-                <e p="LiberationSans - OFL.txt" t="Include" />
-              </e>
-              <e p="Resources" t="Include">
-                <e p="LineBreaking Following Characters.txt" t="Include" />
-                <e p="LineBreaking Leading Characters.txt" t="Include" />
-                <e p="Shaders" t="Include">
-                  <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
-                  <e p="TMP_Bitmap-Mobile.shader" t="Include" />
-                  <e p="TMP_Bitmap.shader" t="Include" />
-                  <e p="TMP_SDF Overlay.shader" t="Include" />
-                  <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
-                  <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
-                  <e p="TMP_SDF-Mobile.shader" t="Include" />
-                  <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
-                  <e p="TMP_SDF-Surface.shader" t="Include" />
-                  <e p="TMP_SDF.shader" t="Include" />
-                  <e p="TMP_Sprite.shader" t="Include" />
-                  <e p="TMPro.cginc" t="Include" />
-                  <e p="TMPro_Properties.cginc" t="Include" />
-                  <e p="TMPro_Surface.cginc" t="Include" />
-                </e>
-              </e>
-              <e p="Sprites" t="Include">
-                <e p="EmojiOne Attribution.txt" t="Include" />
-              </e>
-            </e>
-          </e>
         </e>
       </e>
       <e p="AstarPathfindingProject.csproj" t="IncludeRecursive" />

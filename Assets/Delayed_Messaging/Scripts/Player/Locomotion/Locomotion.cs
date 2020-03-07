@@ -52,8 +52,9 @@ namespace VR_Prototyping.Scripts
         [SerializeField, Range(0f, 1f)] private float vignetteStrength = .35f;
         [SerializeField, Space(5)] private GameObject targetVisual;
         [SerializeField] private Material lineRenderMat;
-        [SerializeField, Space(10)] private GameObject sceneChangeWipe;
-        [SerializeField, Range(.25f, 5f)] private float sceneWipeDuration;
+        
+        //[SerializeField, Space(10)] private GameObject sceneChangeWipe;
+        //[SerializeField, Range(.25f, 5f)] private float sceneWipeDuration;
 
         [HideInInspector] public UnityEvent sceneWipeTrigger;
         
@@ -67,7 +68,6 @@ namespace VR_Prototyping.Scripts
             cast.SetupCastObjects(targetVisual, transform, "Locomotion", lineRenderMat, ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, .01f, controllerTransforms);
             cameraNormalised = new GameObject("[Locomotion/Temporary]");
             SetupGameObjects();
-            sceneWipeTrigger.AddListener(SceneWipeDebug);
         }
 
         private void SetupGameObjects()
@@ -78,9 +78,11 @@ namespace VR_Prototyping.Scripts
             positionPreview.ControllerTransforms = controllerTransforms;
             positionPreview.GhostToggle(null, false);
 
+            /*
             sceneChangeWipe = Instantiate(sceneChangeWipe, controllerTransforms.Player().transform);
             sceneWipe = sceneChangeWipe.AddComponent<SceneWipe>();
             sceneWipe.Initialise(controllerTransforms, this);
+            */
         }
 
         private void LateUpdate()
@@ -213,12 +215,7 @@ namespace VR_Prototyping.Scripts
         
         public void SceneWipe()
         {
-            StartCoroutine(sceneWipe.SceneWipeStart(sceneWipeDuration));
-        }
-
-        private static void SceneWipeDebug()
-        {
-            Debug.Log("Scene wipe was called.");
+            //StartCoroutine(sceneWipe.SceneWipeStart(sceneWipeDuration));
         }
     }
 }

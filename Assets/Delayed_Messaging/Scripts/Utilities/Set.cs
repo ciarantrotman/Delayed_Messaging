@@ -674,7 +674,8 @@ namespace Delayed_Messaging.Scripts.Utilities
                       " | Scale Ratio: " + scaleRatio + " = " + scaleMax + " / " + boundsMax);*/
 
             //model.transform.localScale = scale;
-            model.transform.localScale = Vector3.one * scaleFactor;
+            //model.transform.localScale = Vector3.one * scaleFactor;
+            model.transform.localScale = Vector3.one * .1f;
             //model.transform.localScale = new Vector3(adjustedBounds, adjustedBounds, adjustedBounds);
         }
     }

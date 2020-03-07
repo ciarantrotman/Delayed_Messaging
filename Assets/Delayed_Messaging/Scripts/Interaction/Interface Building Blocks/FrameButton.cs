@@ -17,7 +17,7 @@ namespace Delayed_Messaging.Scripts.Interaction.Interface_Building_Blocks
             {
                 model = Instantiate(model, modelViewerCenter);
                 model.ScaleFactor();
-                model.transform.position = modelViewerCenter.position;
+                model.transform.Transforms(modelViewerCenter);
             }
             
             base.Initialise();

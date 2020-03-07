@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26b87ff0815ea04d92a66c86ddd9e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnObjects:
+  - frameButton: {fileID: 1661254994066461407}
+    reference: Resource Gatherer
 --- !u!1001 &9947309138040998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,6 +111,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
+        type: 3}
       propertyPath: buttonText
       value: Resource Gatherer
       objectReference: {fileID: 0}
@@ -117,10 +125,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8954464585676608432, guid: bd9a8f2dda440b94d8b225107e79f1cf,
         type: 3}
+    - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3115482309136142264}
+    - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Spawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
+        type: 3}
+      propertyPath: OnSelect.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5223815884838701151, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
       propertyPath: m_Name
-      value: Worker
+      value: Resource Gatherer Button
       objectReference: {fileID: 0}
     - target: {fileID: 6595006252136924349, guid: ccdf138e8a288c44bbb18ba91f02c06c,
         type: 3}
@@ -160,3 +193,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9947309138040998}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1661254994066461407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1670450202802653817, guid: ccdf138e8a288c44bbb18ba91f02c06c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9947309138040998}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10f70185d661854984ca8dc40d4dfc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

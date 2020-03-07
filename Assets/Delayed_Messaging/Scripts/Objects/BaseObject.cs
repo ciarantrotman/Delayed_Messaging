@@ -15,11 +15,12 @@ using Draw = Pathfinding.Util.Draw;
 
 namespace VR_Prototyping.Scripts
 {
-	[DisallowMultipleComponent, CanEditMultipleObjects]
+	[DisallowMultipleComponent]
 	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable<SelectionObjects>
 	{
-		internal GameObject playerObject;
-		internal Selection selection;
+		private GameObject playerObject;
+		private Selection selection;
+		[HideInInspector] public Player player;
 
 		private Outline outline;
 		private Vector3 defaultPosition;
@@ -35,8 +36,8 @@ namespace VR_Prototyping.Scripts
 
 		public GraphNode currentNode;
 		public GraphNode previousNode;
-		
-		VisualEffect selectionVisualEffect;
+
+		private VisualEffect selectionVisualEffect;
 		internal float health;
 		
 		public enum SpawnableObjectType
@@ -69,6 +70,9 @@ namespace VR_Prototyping.Scripts
 		[Header("Selection Aesthetics")] 
 		[SerializeField] private GameObject selectionVisual;
 		[SerializeField] internal float selectionRadius;
+		
+		[Header("Spawnable Units")] 
+		public List<SpawnableObject> spawnableObjects;
 
 		private void Start ()
 		{
@@ -139,6 +143,7 @@ namespace VR_Prototyping.Scripts
 				}
 			}
 			selection = playerObject.GetComponent<Selection>();
+			player = playerObject.GetComponent<Player>();
 		}
 		private void SetupOutline()
 		{
@@ -222,7 +227,7 @@ namespace VR_Prototyping.Scripts
 		{
 			SelectionVisual(SelectEvent);
 			selected = true;
-			Selection.ClearSelectedObjects(selectionObjects);
+			Selection.ClearSelectedObjects(selectionObjects, this);
 			if (!selectionObjects.list.Contains(this))
 			{
 				selectionObjects.list.Add(this);

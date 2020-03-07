@@ -137,13 +137,18 @@ namespace VR_Prototyping.Scripts
 		}
 		public static void ClearSelectedObjects(SelectionObjects selectionObjects, BaseObject focusObject = null)
 		{
-			for (int i = 0; i < selectionObjects.list.Count - 1; i++)
+			for (int i = 0; i < selectionObjects.list.Count; i++)
 			{
-				if (selectionObjects.list[i] == focusObject) return;
-				
-				Debug.Log($"<b>{selectionObjects.list[i].name}</b> was <b>REMOVED</b> from {selectionObjects.side} Selection List");
-				selectionObjects.list[i].Deselect(selectionObjects);
-				selectionObjects.list.Remove(selectionObjects.list[i]);
+				if (selectionObjects.list[i] != focusObject)
+				{
+					Debug.Log($"<b>{selectionObjects.list[i].name}</b> was <b>removed</b> from {selectionObjects.side} Selection List");
+					selectionObjects.list[i].Deselect(selectionObjects);
+					selectionObjects.list.Remove(selectionObjects.list[i]);
+				}
+				else
+				{
+					Debug.Log($"<b>{selectionObjects.list[i].name}</b> was <b>kept in</b> {selectionObjects.side} Selection List");
+				}
 			}
 			/*
 			foreach (BaseObject selectedObject in selectionObjects.list)

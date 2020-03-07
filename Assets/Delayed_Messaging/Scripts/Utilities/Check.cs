@@ -50,14 +50,14 @@ namespace Delayed_Messaging.Scripts.Utilities
             // Is true if select is called for the first time, sets the cursor start position
             if (currentSelectionState && !previousSelectionState)
             {
-                Debug.Log("Selection Start");
+                //Debug.Log("Selection Start");
                 selection.SelectStart(selectionObjects);
                 return;
             }
             // When you have a focus object, you have let go of the select button, and your cursor is still within the selection threshold
             if (selectableObject != null && !currentSelectionState && previousSelectionState && cursorDistance <= multiSelectDistance)
             {
-                Debug.Log("Object Quick Select");
+                //Debug.Log("Object Quick Select");
                 selectableObject.QuickSelect(selectionObjects);
                 selection.UserInterface.SetObjectHeaderState(true);
                 selection.UserInterface.SelectObject(selectableObject);
@@ -66,7 +66,7 @@ namespace Delayed_Messaging.Scripts.Utilities
             // Called if you are still holding select and the cursor is outside the threshold distance
             if (currentSelectionState && cursorDistance >= multiSelectDistance)
             {
-                Debug.Log("Select Multi Select Start / Hold");
+                //Debug.Log("Select Multi Select Start / Hold");
                 selection.MultiSelectStart(selectionObjects);
                 selection.MultiSelectHold(selectionObjects);
                 return;
@@ -74,18 +74,18 @@ namespace Delayed_Messaging.Scripts.Utilities
             // When you release the select button, but are still within the threshold
             if (selectableObject == null && !currentSelectionState && previousSelectionState && cursorDistance <= multiSelectDistance)
             {
-                Debug.Log("Select End");
+                //Debug.Log("Select End");
                 selection.SelectEnd(selectionObjects);
                 return;
             }
             // When you release the select button, and are outside of the threshold
             if (/*selectableObject == null && */!currentSelectionState && previousSelectionState && cursorDistance >= multiSelectDistance)
             {
-                Debug.Log("Select Multi Select End");
+                //Debug.Log("Select Multi Select End");
                 selection.MultiSelectEnd(selectionObjects);
                 return;
             }
-            Debug.Log("No Selection");
+            //Debug.Log("No Selection");
         }
 
         /// <summary>

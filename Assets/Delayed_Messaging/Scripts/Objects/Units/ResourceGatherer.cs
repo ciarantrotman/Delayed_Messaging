@@ -4,10 +4,8 @@ using Delayed_Messaging.Scripts.Resources;
 using Delayed_Messaging.Scripts.Utilities;
 using Panda;
 using UnityEngine;
-using VR_Prototyping.Scripts;
-using VR_Prototyping.Scripts.Utilities;
 
-namespace Delayed_Messaging.Scripts.Units
+namespace Delayed_Messaging.Scripts.Objects.Units
 {
     public class ResourceGatherer : Unit
     {

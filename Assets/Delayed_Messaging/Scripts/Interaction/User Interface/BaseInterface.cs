@@ -1,5 +1,4 @@
-﻿using Delayed_Messaging.Scripts.Interaction.Interface_Building_Blocks;
-using Delayed_Messaging.Scripts.Structures;
+﻿using Delayed_Messaging.Scripts.Objects.Structures;
 using UnityEngine;
 
 namespace Delayed_Messaging.Scripts.Interaction.User_Interface
@@ -7,20 +6,26 @@ namespace Delayed_Messaging.Scripts.Interaction.User_Interface
     public class BaseInterface : BaseObjectInterface
     {
         private Base baseObject;
-        
-        [Header("Base Interface References")]
-        [SerializeField] private FrameButton workerSpawnButton;
-        [SerializeField] private string workerIndex = "Worker";
 
         protected override void OverrideInitialise()
         {
             baseObject = (Base)baseObjectBaseObject;
-            workerSpawnButton.OnSelect.AddListener(WorkerSpawn);
         }
-
-        private void WorkerSpawn()
+        
+        internal override void SetupSpawn()
         {
-            baseObject.SpawnUnit(workerIndex);
+            foreach (SpawnObject spawnObject in spawnObjects)
+            {
+                Debug.Log($"<b>{baseObjectBaseObject.name}</b> has added a listener to {spawnObject.frameButton.name} to spawn <b>{spawnObject.reference}</b>");
+                spawnObject.frameButton.OnSelect.AddListener(() =>
+                {
+                    Player.Player.Spawn(
+                        spawnObject.reference, 
+                        baseObjectBaseObject.name,
+                        baseObjectBaseObject.spawnableObjects,
+                        baseObject.spawnOrigin.transform.position);
+                });
+            }
         }
     }
 }

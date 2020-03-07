@@ -30,7 +30,7 @@ namespace Delayed_Messaging.Scripts.Interaction
             {
                 if (rootGameObject.name != "[VR Player]") continue;
                 userInterface = rootGameObject.GetComponent<UserInterface>();
-                Debug.Log("<b>[RAYCAST INTERFACE] </b>" + name + " player set to " + rootGameObject.name);
+               // Debug.Log("<b>[RAYCAST INTERFACE] </b>" + name + " player set to " + rootGameObject.name);
             }
 
             interfaceCollider = gameObject.AddComponent<BoxCollider>();
@@ -53,8 +53,8 @@ namespace Delayed_Messaging.Scripts.Interaction
 
         public void HoverStart()
         {
-            DOTween.To(() => state, x => state = x, 0, fadeDuration);
-            visualRenderer.material.SetFloat(State, state);
+            //DOTween.To(() => state, x => state = x, 0, fadeDuration);
+            visualRenderer.material.SetFloat(State, 0);
             interfaceCollider.size = visualRenderer.bounds.size;//transform.BoundsOfChildren(bounds).size;
         }
 
@@ -65,8 +65,8 @@ namespace Delayed_Messaging.Scripts.Interaction
 
         public void HoverEnd()
         {
-            DOTween.To(() => state, x => state = x, 1, fadeDuration);
-            visualRenderer.material.SetFloat(State, state);
+            //DOTween.To(() => state, x => state = x, 1, fadeDuration);
+            visualRenderer.material.SetFloat(State, 1);
             interfaceCollider.size = visualRenderer.bounds.size;//transform.BoundsOfChildren(bounds).size;
         }
     }
