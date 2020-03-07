@@ -302,34 +302,61 @@
               <e p="UserInterface.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
+              <e p="Locomotion" t="Include">
+                <e p="Locomotion.cs" t="Include" />
+                <e p="LocomotionPositionPreview.cs" t="Include" />
+                <e p="LocomotionVisual.cs" t="Include" />
+                <e p="SceneWipe.cs" t="Include" />
+                <e p="Scripts" t="Include">
+                  <e p="ControllerTransforms.cs" t="Include" />
+                  <e p="Manipulation.cs" t="Include" />
+                  <e p="RubberbandedObject.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Objects" t="Include">
+                <e p="BaseObject.cs" t="Include" />
+                <e p="Resources" t="Include">
+                  <e p="Resource.cs" t="Include" />
+                  <e p="ResourceClass.cs" t="Include" />
+                </e>
+                <e p="Structures" t="Include">
+                  <e p="Base.cs" t="Include" />
+                  <e p="ResourceDepot.cs" t="Include" />
+                  <e p="Structure.cs" t="Include" />
+                  <e p="StructureClass.cs" t="Include" />
+                </e>
+                <e p="Units" t="Include">
+                  <e p="Gather.BT.txt" t="Include" />
+                  <e p="Move.BT.txt" t="Include" />
+                  <e p="ResourceGatherer.BT.txt" t="Include" />
+                  <e p="ResourceGatherer.cs" t="Include" />
+                  <e p="Search.BT.txt" t="Include" />
+                  <e p="Unit.cs" t="Include" />
+                  <e p="UnitClass.cs" t="Include" />
+                  <e p="Worker.cs" t="Include" />
+                </e>
+              </e>
               <e p="Player.cs" t="Include" />
               <e p="PlayerClass.cs" t="Include" />
+              <e p="Selection" t="Include">
+                <e p="Selection.cs" t="Include" />
+                <e p="SelectionObjects.cs" t="Include" />
+              </e>
               <e p="UnitController.cs" t="Include" />
-            </e>
-            <e p="Resources" t="Include">
-              <e p="Resource.cs" t="Include" />
-              <e p="ResourceClass.cs" t="Include" />
-            </e>
-            <e p="Structures" t="Include">
-              <e p="Base.cs" t="Include" />
-              <e p="ResourceDepot.cs" t="Include" />
-              <e p="Structure.cs" t="Include" />
-              <e p="StructureClass.cs" t="Include" />
-            </e>
-            <e p="Units" t="Include">
-              <e p="Gather.BT.txt" t="Include" />
-              <e p="Move.BT.txt" t="Include" />
-              <e p="ResourceGatherer.BT.txt" t="Include" />
-              <e p="ResourceGatherer.cs" t="Include" />
-              <e p="Search.BT.txt" t="Include" />
-              <e p="Unit.cs" t="Include" />
-              <e p="UnitClass.cs" t="Include" />
-              <e p="Worker.cs" t="Include" />
             </e>
             <e p="Utilities" t="Include">
               <e p="Cast.cs" t="Include" />
+              <e p="Check.cs" t="Include" />
+              <e p="Draw.cs" t="Include" />
+              <e p="FollowLerp.cs" t="Include" />
+              <e p="GestureDetection.cs" t="Include" />
+              <e p="Haptics.cs" t="Include" />
               <e p="Interfaces.cs" t="Include" />
-              <e p="SetupAIBehaviour.cs" t="Include" />
+              <e p="Intersection.cs" t="Include" />
+              <e p="InverseLerp.cs" t="Include" />
+              <e p="Set.cs" t="Include" />
+              <e p="Setup.cs" t="Include" />
+              <e p="SortBy.cs" t="Include" />
             </e>
           </e>
         </e>
@@ -730,62 +757,6 @@
               <e p="Sprites" t="Include">
                 <e p="EmojiOne Attribution.txt" t="Include" />
               </e>
-            </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="Accessibility" t="Include">
-              <e p="Tooltip.cs" t="Include" />
-            </e>
-            <e p="BaseObject.cs" t="Include" />
-            <e p="ControllerTransforms.cs" t="Include" />
-            <e p="Icon_Scripts" t="Include">
-              <e p="BaseIconControl.cs" t="Include" />
-              <e p="DioramaModel.cs" t="Include" />
-              <e p="FullModel.cs" t="Include" />
-              <e p="IconButton.cs" t="Include" />
-              <e p="IconMenu.cs" t="Include" />
-              <e p="IconMenuController.cs" t="Include" />
-              <e p="IconMenuSideBar.cs" t="Include" />
-              <e p="IconScenes.cs" t="Include" />
-              <e p="LaunchProject.cs" t="Include" />
-              <e p="ReturnToDiorama.cs" t="Include" />
-              <e p="StartLocation.cs" t="Include" />
-              <e p="ViewpointManager.cs" t="Include" />
-              <e p="ViewpointPreview.cs" t="Include" />
-              <e p="ViewpointTarget.cs" t="Include" />
-            </e>
-            <e p="Keyboard" t="Include">
-              <e p="KeyboardKey.cs" t="Include" />
-              <e p="KeyboardManager.cs" t="Include" />
-              <e p="KeyboardTarget.cs" t="Include" />
-            </e>
-            <e p="Locomotion.cs" t="Include" />
-            <e p="LocomotionPositionPreview.cs" t="Include" />
-            <e p="LocomotionVisual.cs" t="Include" />
-            <e p="Manipulation.cs" t="Include" />
-            <e p="RubberbandedObject.cs" t="Include" />
-            <e p="SceneWipe.cs" t="Include" />
-            <e p="Selection.cs" t="Include" />
-            <e p="SelectionObjects.cs" t="Include" />
-            <e p="UI_Blocks" t="Include">
-              <e p="BaseDirectBlock.cs" t="Include" />
-              <e p="DirectButton.cs" t="Include" />
-              <e p="DirectDial.cs" t="Include" />
-              <e p="DirectSlider.cs" t="Include" />
-              <e p="ToolMenuButton.cs" t="Include" />
-            </e>
-            <e p="Utilities" t="Include">
-              <e p="Check.cs" t="Include" />
-              <e p="Draw.cs" t="Include" />
-              <e p="FollowLerp.cs" t="Include" />
-              <e p="GestureDetection.cs" t="Include" />
-              <e p="Haptics.cs" t="Include" />
-              <e p="Intersection.cs" t="Include" />
-              <e p="InverseLerp.cs" t="Include" />
-              <e p="Set.cs" t="Include" />
-              <e p="SetTransform.cs" t="Include" />
-              <e p="Setup.cs" t="Include" />
-              <e p="SortBy.cs" t="Include" />
             </e>
           </e>
         </e>
