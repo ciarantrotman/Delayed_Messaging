@@ -95,7 +95,7 @@ namespace Delayed_Messaging.Scripts.Units
                 return;
             }
             
-            Debug.Log(name + " set to move to <b>[Unit Destination]</b> at " + unitDestination.transform.position);
+            // Debug.Log(name + " set to move to <b>[Unit Destination]</b> at " + unitDestination.transform.position);
             
             overrideDirection = true;
 

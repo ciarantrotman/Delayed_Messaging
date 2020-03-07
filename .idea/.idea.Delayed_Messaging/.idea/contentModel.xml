@@ -276,6 +276,9 @@
           </e>
           <e p="Scripts" t="Include">
             <e p="BaseClass.cs" t="Include" />
+            <e p="Environment" t="Include">
+              <e p="EnvironmentController.cs" t="Include" />
+            </e>
             <e p="Interaction" t="Include">
               <e p="Cursors" t="Include">
                 <e p="BaseCursor.cs" t="Include" />

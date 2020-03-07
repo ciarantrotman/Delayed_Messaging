@@ -643,20 +643,26 @@ namespace VR_Prototyping.Scripts
         /// <returns></returns>
         public static void ScaleFactor(this GameObject model, float boundsMin = .35f)
         {
+            model.transform.position = Vector3.zero;
+            model.transform.eulerAngles = Vector3.zero;
+            model.transform.localScale = Vector3.one;
+            
             // Find the bounds of the model
             Bounds modelBounds = new Bounds();
             Bounds frameBounds = new Bounds();
             
             modelBounds = model.transform.BoundsOfChildren(modelBounds);
             frameBounds.size = Vector3.one * boundsMin;
-            
+
             float boundsMax = modelBounds.size.LargestValue();
             float scaleMax = model.transform.localScale.LargestValue();
 
+            float scaleFactor = Mathf.InverseLerp(0f, boundsMax, boundsMin);
+            
             Vector3 boundsModelSize = modelBounds.size;
             Vector3 frameModelSize = frameBounds.size;
 
-            Vector3 scale = new Vector3(boundsModelSize.x / frameModelSize.x, boundsModelSize.y / frameModelSize.y, boundsModelSize.z / frameModelSize.z);
+            // Vector3 scale = new Vector3(boundsModelSize.x / frameModelSize.x, boundsModelSize.y / frameModelSize.y, boundsModelSize.z / frameModelSize.z);
             
             float scaleRatio = scaleMax / boundsMax;
             
@@ -671,8 +677,8 @@ namespace VR_Prototyping.Scripts
                       " | Adjusted Bounds: " + adjustedBounds + " = " + boundsMax + " * " + boundsRatio + 
                       " | Scale Ratio: " + scaleRatio + " = " + scaleMax + " / " + boundsMax);*/
 
-            model.transform.localScale = scale;
-            //model.transform.localScale = Vector3.one * .1f;
+            //model.transform.localScale = scale;
+            model.transform.localScale = Vector3.one * scaleFactor;
             //model.transform.localScale = new Vector3(adjustedBounds, adjustedBounds, adjustedBounds);
         }
     }

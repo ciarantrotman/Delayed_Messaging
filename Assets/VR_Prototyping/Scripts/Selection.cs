@@ -137,6 +137,15 @@ namespace VR_Prototyping.Scripts
 		}
 		public static void ClearSelectedObjects(SelectionObjects selectionObjects, BaseObject focusObject = null)
 		{
+			for (int i = 0; i < selectionObjects.list.Count - 1; i++)
+			{
+				if (selectionObjects.list[i] == focusObject) return;
+				
+				Debug.Log($"<b>{selectionObjects.list[i].name}</b> was <b>REMOVED</b> from {selectionObjects.side} Selection List");
+				selectionObjects.list[i].Deselect(selectionObjects);
+				selectionObjects.list.Remove(selectionObjects.list[i]);
+			}
+			/*
 			foreach (BaseObject selectedObject in selectionObjects.list)
 			{
 				if (selectedObject != focusObject || focusObject == null)
@@ -146,6 +155,7 @@ namespace VR_Prototyping.Scripts
 					selectionObjects.list.Remove(selectedObject);
 				}
 			}
+			*/
 		}
 		public void ToggleSelectionState(UserInterface.DominantHand hand, bool state)
 		{

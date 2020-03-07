@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts;
+using Delayed_Messaging.Scripts.Environment;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
 using Pathfinding;
@@ -55,7 +56,6 @@ namespace VR_Prototyping.Scripts
 		public float AngleG { get; private set; }
 		public float CastDistanceR { get; private set; }
 		public float CastDistanceL { get; private set; }
-
 		public Bounds ObjectBounds { get; set; }
 
 		private const string SelectEvent = "Select";
@@ -162,19 +162,15 @@ namespace VR_Prototyping.Scripts
 			Vector3 position = t.position;
 			
 			currentNode = AstarPath.active.GetNearest(position).node;
-
-			if (previousNode != null && currentNode != previousNode && currentNode.Penalty > 0)
-			{
-				currentNode.Penalty--;
-			}
-
+			currentNode.PathGeneration(previousNode, ObjectClass.weight);
 			previousNode = currentNode;
-
-			ObjectBounds = t.BoundsOfChildren(ObjectBounds);
+			
 			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
 
 			o.ManageList(selection.lCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceL));
 			o.ManageList(selection.rCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceR));
+			
+			ObjectBounds = t.BoundsOfChildren(ObjectBounds);
 			
 			ObjectUpdate();
 		}

@@ -22,5 +22,6 @@ namespace Delayed_Messaging.Scripts
         public Team team;
         public int cost;
         public int healthMax;
+        public uint weight = 1;
     }
 }
