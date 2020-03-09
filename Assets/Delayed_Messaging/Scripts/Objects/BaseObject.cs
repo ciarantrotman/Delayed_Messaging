@@ -21,7 +21,7 @@ namespace Delayed_Messaging.Scripts.Objects
 		private GameObject playerObject;
 		private Selection selection;
 		[HideInInspector] public Player.Player player;
-		public ModelController modelController;
+		[HideInInspector] public ModelController modelController;
 
 		private Outline outline;
 		private Vector3 defaultPosition;
@@ -39,6 +39,7 @@ namespace Delayed_Messaging.Scripts.Objects
 		public GraphNode previousNode;
 
 		private VisualEffect selectionVisualEffect;
+		[HideInInspector] public GameObject model;
 		internal float health;
 		
 		public enum SpawnableObjectType
@@ -67,6 +68,7 @@ namespace Delayed_Messaging.Scripts.Objects
 
 		[Header("Base Object Settings")] 
 		[SerializeField] private ControllerTransforms.DebugType debugType;
+		[SerializeField] protected bool nonSpawnedObject;
 
 		[Header("Selection Aesthetics")] 
 		[SerializeField] private GameObject selectionVisual;
@@ -77,19 +79,17 @@ namespace Delayed_Messaging.Scripts.Objects
 
 		private void Start ()
 		{
+			InitialiseBaseObject();
+		}
+		public void InitialiseBaseObject()
+		{
+			ObjectInitialisation();
 			Initialise();
-			if (!baseInitialised)
-			{
-				InitialiseObject();
-			}
 		}
 		protected abstract void Initialise();
 		public void OnEnable()
 		{
-			if (!baseInitialised)
-			{
-				InitialiseObject();
-			}
+			ObjectInitialisation();
 		}
 		private void OnDestroy()
 		{
@@ -112,23 +112,19 @@ namespace Delayed_Messaging.Scripts.Objects
 			g.ToggleList(selection.lCastList, false);
 			g.ToggleList(selection.rCastList, false);
 		}
-		private void InitialiseObject()
+		private void ObjectInitialisation()
 		{
-			if (baseInitialised)
-			{
-				Debug.LogError($"<b>[{name}]</b> tried to initialise, but had already been initialised");
-				return;
-			}
+			if (baseInitialised) return;
+			baseInitialised = true;
 			
 			AssignComponents();
 			SetupOutline();
 			SetupSelectedVisual();
+			SetObjectBounds();
+			SetupModelController();
 
-			//health = objectClass.healthMax;
-			
 			gameObject.ToggleList(selection.globalList, true);
 			selection.baseObjectsList.Add(this);
-			baseInitialised = true;
 			
 			Debug.Log($"Base Object: <b>{name}</b> was initialised.");
 		}
@@ -160,8 +156,23 @@ namespace Delayed_Messaging.Scripts.Objects
 			selectionVisualEffect.SetFloat("SelectionRadius", selectionRadius);
 			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
 		}
+
+		private void SetupModelController()
+		{
+			if (modelController == null)
+			{
+				modelController = gameObject.AddComponent<ModelController>();
+			}
+			modelController.InitialiseModelController(this);
+			model = new GameObject("[Model Parent]");
+			model.transform.SetParent(transform);
+			
+			model.transform.DefaultTransform();
+		}
 		private void Update()
-		{					
+		{				
+			if (!baseInitialised) return; // Only call once this has been initialised
+			
 			GetSortingValues();
 			
 			GameObject o = gameObject;
@@ -169,7 +180,7 @@ namespace Delayed_Messaging.Scripts.Objects
 			Vector3 position = t.position;
 			
 			currentNode = AstarPath.active.GetNearest(position).node;
-			currentNode.PathGeneration(previousNode, ObjectClass.weight);
+			EnvironmentController.PathGeneration(currentNode, previousNode, ObjectClass.weight);
 			previousNode = currentNode;
 			
 			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
@@ -177,9 +188,13 @@ namespace Delayed_Messaging.Scripts.Objects
 			o.ManageList(selection.lCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceL));
 			o.ManageList(selection.rCastList, o.WithinCastDistance(selection.globalList, selection.castSelectionRadius, CastDistanceR));
 			
-			ObjectBounds = t.BoundsOfChildren(ObjectBounds);
+			
 			
 			ObjectUpdate();
+		}
+		public void SetObjectBounds()
+		{
+			ObjectBounds = transform.BoundsOfChildren(ObjectBounds);
 		}
 		protected abstract void ObjectUpdate();
 		private void GetSortingValues()
@@ -197,14 +212,9 @@ namespace Delayed_Messaging.Scripts.Objects
 			CastDistanceL = Vector3.Distance(lClosestPoint = ObjectBounds.ClosestPoint(castLocationL), castLocationL);
 			CastDistanceR = Vector3.Distance(rClosestPoint = ObjectBounds.ClosestPoint(castLocationR), castLocationR);
 		}
-		public void SetModel(BaseClass.Model model)
+		public void SetModel(BaseClass.Model spawnModel)
 		{
-			Debug.Log($"{name} has been spawned, setting model to {model.modelIndex}");
-			
-			InitialiseObject();
-			Initialise();
-			
-			modelController.SetModel(model);
+			modelController.SetModel(spawnModel);
 		}
 		private void SelectionVisual(string eventName)
 		{

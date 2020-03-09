@@ -62,11 +62,13 @@ namespace Delayed_Messaging.Scripts.Utilities
 			castObjects.visual.SetActive(enabled);
 			castObjects.cursor = castObjects.visual.GetComponent<BaseCursor>();
 
+			/*
 			if (castObjects.cursor == null)
 			{
 				Debug.LogWarning($"{instanceName} has no <b>BaseCursor</b> attached to {castObjects.visual.name}");
 			}
-
+			*/
+			
 			castObjects.follow.transform.SetParent(parentTransform);
 			castObjects.proxy.transform.SetParent(castObjects.follow.transform);
 			castObjects.normalised.transform.SetParent(castObjects.follow.transform);

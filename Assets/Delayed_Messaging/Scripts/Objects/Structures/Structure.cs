@@ -26,13 +26,15 @@ namespace Delayed_Messaging.Scripts.Objects.Structures
 
         private void InitialiseStructure()
         {
-            if (initialised)
-            {
-                return;
-            }
+            if (initialised) return;
+            initialised = true;
 
             ObjectClass = structureClass;
-            initialised = true;
+
+            if (nonSpawnedObject)
+            {
+                SetModel(structureClass.structureModels.Find((x) => x.modelIndex == BaseClass.ModelIndex.BUILT));
+            }
         }
         
         public void Damage(float damageTaken)

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 
 namespace Delayed_Messaging.Scripts.Objects
@@ -6,21 +8,29 @@ namespace Delayed_Messaging.Scripts.Objects
     public class ModelController : MonoBehaviour
     {
         [Header("Model Controller Reference")]
-        [SerializeField] private Transform modelParent;
+        private bool initialised;
+        private BaseObject baseObject;
+
+        public void InitialiseModelController(BaseObject b)
+        {
+            Debug.Log($"ModelController Initialised by {b.gameObject.name}");
+            baseObject = b;
+        }
 
         public void SetModel(BaseClass.Model model)
         {
-            foreach (GameObject child in modelParent)
+            Debug.Log($"{baseObject.name}: {baseObject.model.name}");
+            foreach (Transform child in baseObject.model.transform)
             {
-                Destroy(child);
+                Destroy(child.gameObject);
             }
             
-            Debug.Log($"{model.modelIndex} is being spawned from {name}");
+            GameObject newModel = Instantiate(model.modelPrefab, baseObject.model.transform);
+            newModel.transform.DefaultTransform();
             
-            GameObject newModel = Instantiate(model.modelPrefab, modelParent);
+            Debug.Log($"<b>{name} [{model.modelIndex}]</b> has been spawned, parented to {newModel.transform.parent}");
             
-            newModel.transform.localPosition = Vector3.zero;
-            newModel.transform.localRotation = Quaternion.identity;
+            baseObject.SetObjectBounds();
         }
     }
 }

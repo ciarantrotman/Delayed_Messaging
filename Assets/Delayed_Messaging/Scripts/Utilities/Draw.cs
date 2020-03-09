@@ -88,9 +88,11 @@ namespace VR_Prototyping.Scripts.Utilities
 
 		public static void DrawDestinationLineRender(this LineRenderer lineRenderer, Seeker seeker)
 		{
+			if (lineRenderer == null || seeker == null || seeker.lastCompletedNodePath == null) return;
+
 			lineRenderer.positionCount = seeker.lastCompletedNodePath.Count;
 			
-			for (int i = 0; i < seeker.lastCompletedNodePath.Count - 2; i++) 
+			for (int i = 0; i < seeker.lastCompletedNodePath.Count - 1; i++) 
 			{
 				lineRenderer.SetPosition(i, (Vector3)seeker.lastCompletedNodePath[i].position);
 			}

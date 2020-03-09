@@ -23,18 +23,25 @@ MonoBehaviour:
   cost:
     resourceCost: 10
     productionCost: 10
-  weight: 1
+  weight: 0
   structureModels:
-  - modelIndex: Site
+  - modelIndex: 1
     modelPrefab: {fileID: 8954464585676608432, guid: a56c4bbbeee14c140b78e238a92c8065,
       type: 3}
-  - modelIndex: Built
+  - modelIndex: 2
     modelPrefab: {fileID: 8954464585676608432, guid: f3e2331d07703f04da3d3bef4ea67398,
       type: 3}
-  - modelIndex: Damaged
-    modelPrefab: {fileID: 8954464585676608432, guid: a8be67a3c485bba428261875c8ad6bce,
-      type: 3}
-  - modelIndex: Ghost
+  - modelIndex: 0
     modelPrefab: {fileID: 8954464585676608432, guid: b183fb736eb9f9743aaf1aeabe652dfc,
       type: 3}
+  structureModelsDefined:
+    ghost:
+      modelIndex: 0
+      modelPrefab: {fileID: 0}
+    site:
+      modelIndex: 0
+      modelPrefab: {fileID: 0}
+    built:
+      modelIndex: 0
+      modelPrefab: {fileID: 0}
   spawnLocationColour: {r: 0.042452812, g: 1, b: 0.4193379, a: 1}

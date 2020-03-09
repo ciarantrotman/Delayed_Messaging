@@ -69,7 +69,12 @@ namespace Delayed_Messaging.Scripts.Objects.Units
         protected override void ObjectUpdate()
         {
             destinationLineRenderer.DrawDestinationLineRender(seeker);
-            //destinationLineRenderer.DrawStraightLineRender(transform, unitDestination.transform);
+        }
+
+        public override void QuickSelect(SelectionObjects selectionObjects)
+        {
+            destinationLineRenderer.enabled = true;
+            base.QuickSelect(selectionObjects);
         }
 
         public override void SelectStart(SelectionObjects selectionObjects)

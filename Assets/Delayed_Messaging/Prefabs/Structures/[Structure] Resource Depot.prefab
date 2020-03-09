@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4288653582925416930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936531549111143844}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 1
+  bakeKeys: []
+  bakeValues: []
 --- !u!114 &2545934967668457313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,7 +31,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  modelController: {fileID: 8634212937048537279}
   debugType: 2
+  nonSpawnedObject: 0
   selectionVisual: {fileID: 8863300974467014936, guid: 816e914a4cd335d4f8e754c0f28dbc78,
     type: 3}
   selectionRadius: 0.35
@@ -106,6 +126,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9083728202549870252}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8634212937048537279 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 710724624340649491, guid: 4b12ccf725066cd449babf0f7e9f3292,
+    type: 3}
+  m_PrefabInstance: {fileID: 9083728202549870252}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936531549111143844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ae7ad87b42bde45b3d180e9dbcd541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &881196112407430364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8229556041565518448, guid: 4b12ccf725066cd449babf0f7e9f3292,

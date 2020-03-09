@@ -28,10 +28,15 @@ namespace Delayed_Messaging.Scripts.Objects
             public int resourceCost;
             public int productionCost;
         }
-        
+        public enum ModelIndex
+        {
+            GHOST,
+            SITE,
+            BUILT
+        }
         [Serializable] public struct Model
         {
-            public string modelIndex;
+            public ModelIndex modelIndex;
             public GameObject modelPrefab;
         }
     }

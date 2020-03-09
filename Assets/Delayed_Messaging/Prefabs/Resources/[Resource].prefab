@@ -44,14 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78e2151b85444f4ea4cbf37bca6ef5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  modelController: {fileID: 0}
   debugType: 2
-  selectionType: 3
-  hoverOutlineColour: {r: 0, g: 0, b: 0, a: 1}
-  hoverOutlineWidth: 0
-  hoverOutlineMode: 3
+  nonSpawnedObject: 1
   selectionVisual: {fileID: 8863300974467014936, guid: 816e914a4cd335d4f8e754c0f28dbc78,
     type: 3}
   selectionRadius: 0.1
+  spawnableObjects: []
   resourceClass: {fileID: 11400000, guid: 96c0592cab27ceb4f9838749812163de, type: 2}
   startingVolume: 6
 --- !u!1001 &5758058338410409332

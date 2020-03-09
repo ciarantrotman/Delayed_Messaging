@@ -6,7 +6,6 @@ using Delayed_Messaging.Scripts.Objects.Structures;
 using UnityEngine;
 using Delayed_Messaging.Scripts.Player.Selection;
 using Delayed_Messaging.Scripts.Utilities;
-using VR_Prototyping.Scripts;
 
 namespace Delayed_Messaging.Scripts.Player
 {
@@ -18,14 +17,14 @@ namespace Delayed_Messaging.Scripts.Player
         private bool placingStructure;
 
         private bool cooldown;
-
-        private BaseObject.SpawnableObject spawnObject;
+        
         private Structure spawnStructure;
         private GameObject spawnGameObject;
+        private GameObject spawnLocation;
 
         public class Spawn
         {
-            public GameObject spawnLocation;
+            //public GameObject spawnLocation;
             public Transform spawnTarget;
             //private SpawnCursor spawnCursor;
         }
@@ -36,7 +35,7 @@ namespace Delayed_Messaging.Scripts.Player
         {
             selection = GetComponent<Selection.Selection>();
             userInterface = GetComponent<UserInterface>();
-            spawn.spawnLocation = new GameObject("[SpawnLocation]");
+            spawnLocation = new GameObject("[Spawn Location]");
             
             selection.selectionInitialised.AddListener(InitialiseStructureController);
         }
@@ -59,7 +58,7 @@ namespace Delayed_Messaging.Scripts.Player
         {
             //spawn.spawnLocation.transform.Position(spawn.spawnTarget);
             
-            spawn.spawnLocation.transform.Position(userInterface.dominantHand == UserInterface.DominantHand.LEFT
+            spawnLocation.transform.Position(userInterface.dominantHand == UserInterface.DominantHand.LEFT
                 ? selection.selectionObjectsL.castLocation
                 : selection.selectionObjectsR.castLocation);
         }
@@ -73,22 +72,21 @@ namespace Delayed_Messaging.Scripts.Player
 
             StartCoroutine(SpawnCooldown());
             
-            spawnGameObject = Instantiate(spawnableObject.objectPrefab, spawn.spawnTarget);
-            spawnObject = spawnableObject;
-            spawnStructure = spawnObject.objectPrefab.GetComponent<Structure>();
-            spawnStructure.SetModel(spawnStructure.structureClass.structureModels.Find((x) => x.modelIndex == "Ghost"));
-            Debug.Log($"{spawnableObject.objectName} was spawned.");
+            spawnGameObject = Instantiate(spawnableObject.objectPrefab, spawnLocation.transform);
+            spawnStructure = spawnGameObject.GetComponent<Structure>();
+            spawnStructure.InitialiseBaseObject();
+            spawnStructure.SetModel(spawnStructure.structureClass.structureModels.Find((x) => x.modelIndex == BaseClass.ModelIndex.GHOST));
         }
 
         public void SpawnStructureStay()
         {
             if (!placingStructure || cooldown) return;
-            
             spawnGameObject.transform.position = (Vector3)selectionObjects.graphNode.position;
         }
 
         private void SpawnStructureEnd()
         {
+            return;
             if (!placingStructure || cooldown) return;
             
             placingStructure = false;
@@ -96,7 +94,7 @@ namespace Delayed_Messaging.Scripts.Player
             
             Debug.Log($"{spawnStructure.name} was placed.");
 
-            spawnStructure.SetModel(spawnStructure.structureClass.structureModels.Find((x) => x.modelIndex == "Site"));
+            spawnStructure.SetModel(spawnStructure.structureClass.structureModels.Find((x) => x.modelIndex == BaseClass.ModelIndex.SITE));
         }
 
         public void SpawnStructureCancel()

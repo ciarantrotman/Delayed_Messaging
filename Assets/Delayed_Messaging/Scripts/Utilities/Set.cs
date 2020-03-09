@@ -252,6 +252,15 @@ namespace Delayed_Messaging.Scripts.Utilities
             }
         }
         /// <summary>
+        /// Sets a transform to (0,0,0) and (0,0,0,0)
+        /// </summary>
+        /// <param name="transform"></param>
+        public static void DefaultTransform(this Transform transform)
+        {
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+        }
+        /// <summary>
         /// Lerps transform A's position and rotation to transform B's position and rotation
         /// </summary>
         /// <param name="a"></param>
