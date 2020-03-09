@@ -65,12 +65,12 @@ namespace Delayed_Messaging.Scripts.Player
 
         public void SpawnStructureStart(BaseObject.SpawnableObject spawnableObject)
         {
+            StartCoroutine(SpawnCooldown());
+            
             if (placingStructure) return;
             
             placingStructure = true;
-            selection.disableRightHand = true;
-
-            StartCoroutine(SpawnCooldown());
+            selection.ToggleSelectionState(userInterface.dominantHand, false);
             
             spawnGameObject = Instantiate(spawnableObject.objectPrefab, spawnLocation.transform);
             spawnStructure = spawnGameObject.GetComponent<Structure>();
@@ -86,14 +86,14 @@ namespace Delayed_Messaging.Scripts.Player
 
         private void SpawnStructureEnd()
         {
-            return;
             if (!placingStructure || cooldown) return;
             
             placingStructure = false;
-            selection.disableRightHand = false;
+            selection.ToggleSelectionState(userInterface.dominantHand, true);
             
             Debug.Log($"{spawnStructure.name} was placed.");
 
+            spawnGameObject.transform.SetParent(null);
             spawnStructure.SetModel(spawnStructure.structureClass.structureModels.Find((x) => x.modelIndex == BaseClass.ModelIndex.SITE));
         }
 
@@ -108,8 +108,10 @@ namespace Delayed_Messaging.Scripts.Player
         private IEnumerator SpawnCooldown()
         {
             cooldown = true;
+            Debug.Log($"Cooldown: {cooldown}");
             yield return new WaitForSeconds(1);
             cooldown = false;
+            Debug.Log($"Cooldown: {cooldown}");
         }
     }
 }
