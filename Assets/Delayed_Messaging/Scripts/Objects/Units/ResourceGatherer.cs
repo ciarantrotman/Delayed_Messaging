@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Delayed_Messaging.Scripts.Objects.Resources;
+using Delayed_Messaging.Scripts.Objects.Structures;
 using Delayed_Messaging.Scripts.Resources;
 using Delayed_Messaging.Scripts.Utilities;
 using Panda;
@@ -13,13 +16,24 @@ namespace Delayed_Messaging.Scripts.Objects.Units
         [SerializeField] private float gatherDuration;
         public int capacity;
         
-        public Transform depositLocation;
+        public ResourceDepot resourceDepot;
         public Resource currentResource;
 
+        private List<Resource> detectedResources = new List<Resource>();
+        
         private bool gather;
         private bool searching;
 
-        private List<Resource> detectedResources = new List<Resource>();
+        protected override void Spawn()
+        {
+            resourceDepot = FindResourceDepot();
+        }
+
+        private ResourceDepot FindResourceDepot()
+        {
+            Collider[] depots = Physics.OverlapSphere(transform.position, unitClass.detectionRadius, 1 << 12);
+            return depots.Select(overlapObject => overlapObject.GetComponent<ResourceDepot>()).FirstOrDefault(depot => depot != null);
+        }
 
         protected override void CancelCurrentTask()
         {
@@ -56,18 +70,9 @@ namespace Delayed_Messaging.Scripts.Objects.Units
                 Task.current.Fail();
                 return;
             }
-            
-            Collider[] overlap = Physics.OverlapSphere(transform.position, unitClass.detectionRadius, 1 << 12);
-            
-            foreach (Collider overlapObject in overlap)
-            {
-                Resource resource = overlapObject.GetComponent<Resource>();
-                if (resource != null && resource.HasCapacity())
-                {
-                    detectedResources.Add(resource);
-                }
-            }
 
+            detectedResources = Resources();
+            
             if (detectedResources.Count > 0)
             {
                 // make this the closest one... (sort the list...)
@@ -82,6 +87,14 @@ namespace Delayed_Messaging.Scripts.Objects.Units
                 Task.current.Fail();
             }
         }
+
+        private List<Resource> Resources()
+        {
+            Collider[] overlap = Physics.OverlapSphere(transform.position, unitClass.detectionRadius, 1 << 12);
+            List<Resource> resources = overlap.Select(overlapObject => overlapObject.GetComponent<Resource>()).Where(resource => resource != null && resource.HasCapacity()).ToList();
+            return resources;
+        }
+
         [Task] void MoveToResource()
         {
             if (currentResource == null || unitDestination == null)
@@ -116,9 +129,9 @@ namespace Delayed_Messaging.Scripts.Objects.Units
         }
         [Task] void MoveToDeposit()
         {
-            unitDestination.transform.position = depositLocation.position;
+            unitDestination.transform.position = resourceDepot.DepositLocation();
             
-            if (transform.Arrived(depositLocation, .3f))
+            if (transform.Arrived(resourceDepot.DepositLocation(), .3f))
             {
                 Debug.LogWarning(name + " have <b>ARRIVED</b> at the deposit");
                 Task.current.Succeed();
@@ -134,12 +147,12 @@ namespace Delayed_Messaging.Scripts.Objects.Units
 
         protected override void DrawGizmos ()
         {
-            if (currentResource != null && depositLocation != null)
+            if (currentResource != null && resourceDepot != null)
             {
                 Gizmos.color = new Color(1f, .5f, 0f, 1f);
                 Gizmos.DrawWireSphere(currentResource.transform.position, .05f);
-                Gizmos.DrawWireSphere(depositLocation.position, .05f);
-                Gizmos.DrawLine(depositLocation.position, currentResource.transform.position);
+                Gizmos.DrawWireSphere(resourceDepot.DepositLocation(), .05f);
+                Gizmos.DrawLine(resourceDepot.DepositLocation(), currentResource.transform.position);
             }
             base.DrawGizmos();
         }

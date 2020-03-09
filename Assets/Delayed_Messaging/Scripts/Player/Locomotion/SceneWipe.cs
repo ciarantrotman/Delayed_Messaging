@@ -2,21 +2,21 @@
 using Delayed_Messaging.Scripts.Utilities;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.AI;
+using VR_Prototyping.Scripts;
 
-namespace VR_Prototyping.Scripts
+namespace Delayed_Messaging.Scripts.Player.Locomotion
 {
     public class SceneWipe : MonoBehaviour
     {
         private ControllerTransforms controllerTransforms;
-        private Locomotion locomotion;
+        private VR_Prototyping.Scripts.Locomotion locomotion;
         private MeshRenderer sceneWipeRenderer;
         private static readonly int Fade = Shader.PropertyToID("_Fade");
         
         private const float Value = .51f;
         private float value = -Value;
 
-        public void Initialise(ControllerTransforms transforms, Locomotion l)
+        public void Initialise(ControllerTransforms transforms, VR_Prototyping.Scripts.Locomotion l)
         {
             controllerTransforms = transforms;
             locomotion = l;

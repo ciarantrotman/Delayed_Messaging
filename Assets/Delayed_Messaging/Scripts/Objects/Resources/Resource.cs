@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using Delayed_Messaging.Scripts.Objects.Units;
-using Delayed_Messaging.Scripts.Units;
+﻿using Delayed_Messaging.Scripts.Objects.Units;
+using Delayed_Messaging.Scripts.Player.Selection;
+using Delayed_Messaging.Scripts.Resources;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 
-namespace Delayed_Messaging.Scripts.Resources
+namespace Delayed_Messaging.Scripts.Objects.Resources
 {
     public class Resource : BaseObject
     {

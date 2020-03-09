@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Interaction;
+using Delayed_Messaging.Scripts.Objects;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
+using VR_Prototyping.Scripts;
 using VR_Prototyping.Scripts.Utilities;
 
-namespace VR_Prototyping.Scripts
+namespace Delayed_Messaging.Scripts.Player.Selection
 {
 	[DisallowMultipleComponent, RequireComponent(typeof(ControllerTransforms))]
 	public class Selection : MonoBehaviour
@@ -43,6 +46,8 @@ namespace VR_Prototyping.Scripts
 		[HideInInspector] public List<GameObject> rCastList;
 		[HideInInspector] public List<GameObject> lCastList;
 
+		[HideInInspector] public UnityEvent selectionInitialised;
+
 		private void Start ()
 		{
 			controllerTransforms = GetComponent<ControllerTransforms>();
@@ -62,6 +67,8 @@ namespace VR_Prototyping.Scripts
 			// Set initial states
 			ToggleSelectionState(UserInterface.DominantHand.LEFT, !disableLeftHand);
 			ToggleSelectionState(UserInterface.DominantHand.RIGHT, !disableRightHand);
+			
+			selectionInitialised.Invoke();
 		}
 
 		private void Update()
@@ -79,15 +86,28 @@ namespace VR_Prototyping.Scripts
 
 		public void SelectStart(SelectionObjects selectionObjects)
 		{
+			if (selectionObjects.disabled)
+			{
+				return;
+			}
+			ClearSelectedObjects(selectionObjects);
 			selectionObjects.selectionStart = selectionObjects.castLocation.position;
 			selectionObjects.multiSelect.multiSelectS = selectionObjects.selectionStart;
 		}
 		public void SelectEnd(SelectionObjects selectionObjects)
 		{
+			if (selectionObjects.disabled)
+			{
+				return;
+			}
 			ClearSelectedObjects(selectionObjects);
 		}
 		public void MultiSelectStart(SelectionObjects selectionObjects)
 		{
+			if (selectionObjects.disabled)
+			{
+				return;
+			}
 			if (selectionObjects.multiSelect.multiSelectActive)
 			{
 				return;
@@ -107,6 +127,10 @@ namespace VR_Prototyping.Scripts
 		}
 		public void MultiSelectHold(SelectionObjects selectionObjects)
 		{
+			if (selectionObjects.disabled)
+			{
+				return;
+			}
 			selectionObjects.multiSelect.multiSelectE = selectionObjects.castLocation.position;
 			selectionObjects.multiSelect.selectionLineRenderer.DrawRectangularLineRenderer(selectionObjects.multiSelect.multiSelectS, selectionObjects.multiSelect.multiSelectE);
 			selectionObjects.multiSelect.selectionQuadFilter.mesh.DrawQuadMesh(selectionObjects.multiSelect.multiSelectS, selectionObjects.multiSelect.multiSelectE);
@@ -117,6 +141,10 @@ namespace VR_Prototyping.Scripts
 
 		public void MultiSelectEnd(SelectionObjects selectionObjects)
 		{
+			if (selectionObjects.disabled)
+			{
+				return;
+			}
 			selectionObjects.multiSelect.multiSelectActive = false;
 			selectionObjects.multiSelect.multiSelectE = selectionObjects.castLocation.position;
 			selectionObjects.multiSelect.selectionLineRenderer.enabled = false;
@@ -167,12 +195,14 @@ namespace VR_Prototyping.Scripts
 			switch (hand)
 			{
 				case UserInterface.DominantHand.LEFT:
+					selectionObjectsL.disabled = state;
 					cast.lCastObject.lineRenderer.enabled = state;
 					selectionObjectsL.multiSelect.selectionQuadRenderer.enabled = state;
 					cast.lCastObject.visual.SetActive(state);
 					disableLeftHand = !state;
 					break;
 				case UserInterface.DominantHand.RIGHT:
+					selectionObjectsL.disabled = state;
 					cast.rCastObject.lineRenderer.enabled = state;
 					selectionObjectsR.multiSelect.selectionQuadRenderer.enabled = state;
 					cast.rCastObject.visual.SetActive(state);

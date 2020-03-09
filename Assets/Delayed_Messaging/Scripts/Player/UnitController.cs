@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Interaction.Cursors;
+using Delayed_Messaging.Scripts.Objects;
 using Delayed_Messaging.Scripts.Objects.Units;
-using Delayed_Messaging.Scripts.Units;
 using Delayed_Messaging.Scripts.Utilities;
 using Pathfinding;
 using UnityEngine;
 using VR_Prototyping.Scripts;
-using VR_Prototyping.Scripts.Utilities;
 
 namespace Delayed_Messaging.Scripts.Player
 {
@@ -15,7 +14,7 @@ namespace Delayed_Messaging.Scripts.Player
     {
         private ControllerTransforms controllerTransforms;
         private Player player;
-        private Selection selection;
+        private Selection.Selection selection;
         private Cast cast;
 
         private bool pGrabR;
@@ -43,7 +42,7 @@ namespace Delayed_Messaging.Scripts.Player
         {
             controllerTransforms = GetComponent<ControllerTransforms>();
             player = GetComponent<Player>();
-            selection = GetComponent<Selection>();
+            selection = GetComponent<Selection.Selection>();
             cast = gameObject.AddComponent<Cast>();
             cast.SetupCastObjects(targetVisual, transform, "Unit Controller", lineRenderMat, maximumAngle, minimumAngle, maximumMoveDistance, minimumMoveDistance,  .0075f, controllerTransforms);
         }

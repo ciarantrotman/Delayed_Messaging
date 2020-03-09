@@ -404,6 +404,7 @@
             <e p="Objects" t="Include">
               <e p="BaseClass.cs" t="Include" />
               <e p="BaseObject.cs" t="Include" />
+              <e p="ModelController.cs" t="Include" />
               <e p="Resources" t="Include">
                 <e p="Resource.cs" t="Include" />
                 <e p="ResourceClass.cs" t="Include" />
@@ -440,6 +441,7 @@
                 <e p="Selection.cs" t="Include" />
                 <e p="SelectionObjects.cs" t="Include" />
               </e>
+              <e p="StructureController.cs" t="Include" />
               <e p="UnitController.cs" t="Include" />
             </e>
             <e p="Utilities" t="Include">

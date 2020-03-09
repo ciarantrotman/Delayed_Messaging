@@ -13,13 +13,28 @@ MonoBehaviour:
   m_Name: ResourceDepot
   m_EditorClassIdentifier: 
   debugType: 2
-  objectName: Base
-  objectSpecificInterface: {fileID: 7492711001606360640, guid: 1f0e403c50c20ef448da1b01036e7192,
+  objectName: Resource Depot
+  objectSpecificInterface: {fileID: 7492711001606360640, guid: d7a4e40f28a0c534cb44f4e51e7a701c,
     type: 3}
-  objectModel: {fileID: 8954464585676608432, guid: a56c4bbbeee14c140b78e238a92c8065,
+  objectModel: {fileID: 8954464585676608432, guid: 7c66a1c8ed6697a45bbc28cc7c926e36,
     type: 3}
   cursorState: 2
   team: 0
-  cost: 100
-  healthMax: 100
+  cost:
+    resourceCost: 10
+    productionCost: 10
+  weight: 1
+  structureModels:
+  - modelIndex: Site
+    modelPrefab: {fileID: 8954464585676608432, guid: 3321c4b644208924293509c2ff5942db,
+      type: 3}
+  - modelIndex: Built
+    modelPrefab: {fileID: 8954464585676608432, guid: 7c66a1c8ed6697a45bbc28cc7c926e36,
+      type: 3}
+  - modelIndex: Damaged
+    modelPrefab: {fileID: 8954464585676608432, guid: a9ca8e51080a5af4396b534b752a3c0f,
+      type: 3}
+  - modelIndex: Ghost
+    modelPrefab: {fileID: 8954464585676608432, guid: 31005a03dfe08bb4bb8c3e17f540b541,
+      type: 3}
   spawnLocationColour: {r: 0.042452812, g: 1, b: 0.4193379, a: 1}

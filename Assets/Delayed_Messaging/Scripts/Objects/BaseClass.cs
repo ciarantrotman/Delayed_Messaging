@@ -1,9 +1,9 @@
-﻿using Delayed_Messaging.Scripts.Interaction;
+﻿using System;
 using Delayed_Messaging.Scripts.Interaction.Cursors;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 
-namespace Delayed_Messaging.Scripts
+namespace Delayed_Messaging.Scripts.Objects
 {
     public class BaseClass : ScriptableObject
     {
@@ -20,8 +20,19 @@ namespace Delayed_Messaging.Scripts
         
         [Header("Object Settings")]
         public Team team;
-        public int cost;
-        public int healthMax;
+        public Cost cost;
         public uint weight = 1;
+        
+        [Serializable] public struct Cost
+        {
+            public int resourceCost;
+            public int productionCost;
+        }
+        
+        [Serializable] public struct Model
+        {
+            public string modelIndex;
+            public GameObject modelPrefab;
+        }
     }
 }

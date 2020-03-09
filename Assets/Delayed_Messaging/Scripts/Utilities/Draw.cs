@@ -88,10 +88,14 @@ namespace VR_Prototyping.Scripts.Utilities
 
 		public static void DrawDestinationLineRender(this LineRenderer lineRenderer, Seeker seeker)
 		{
-			for (int i = 0; i < seeker.lastCompletedNodePath.Count-1; i++) {
-				DrawLineRenderer((Vector3)seeker.lastCompletedNodePath[i].position, (Vector3)seeker.lastCompletedNodePath[i+1].position);
+			lineRenderer.positionCount = seeker.lastCompletedNodePath.Count;
+			
+			for (int i = 0; i < seeker.lastCompletedNodePath.Count - 2; i++) 
+			{
+				lineRenderer.SetPosition(i, (Vector3)seeker.lastCompletedNodePath[i].position);
 			}
 		}
+
 		public static void ArcLineRenderer(this LineRenderer lr, float radius, float startAngle, float endAngle,
 			Orientation orientation, int quality)
 		{

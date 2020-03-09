@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Interaction.Interface_Building_Blocks;
+using Delayed_Messaging.Scripts.Objects;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using VR_Prototyping.Scripts;
@@ -34,7 +35,7 @@ namespace Delayed_Messaging.Scripts.Interaction.User_Interface
                 Debug.Log($"<b>{baseObjectBaseObject.name}</b> has added a listener to {spawnObject.frameButton.name} to spawn <b>{spawnObject.reference}</b>");
                 spawnObject.frameButton.OnSelect.AddListener(() =>
                     {
-                        Player.Player.Spawn(
+                       baseObjectBaseObject.player.Spawn(
                             spawnObject.reference, 
                             baseObjectBaseObject.name,
                             baseObjectBaseObject.spawnableObjects);

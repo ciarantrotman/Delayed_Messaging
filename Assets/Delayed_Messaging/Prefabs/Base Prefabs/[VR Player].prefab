@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 8976386972614985437}
   - component: {fileID: 7473554891637304817}
   - component: {fileID: 6008014702192664898}
+  - component: {fileID: 5324881845562752161}
   - component: {fileID: 6339565769025428999}
+  - component: {fileID: 1436019363763248530}
   - component: {fileID: 7473554891637304831}
   - component: {fileID: 618182138019180014}
   - component: {fileID: 2910476754053980516}
-  - component: {fileID: 5324881845562752161}
   m_Layer: 0
   m_Name: '[VR Player]'
   m_TagString: Untagged
@@ -68,6 +69,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerClass: {fileID: 11400000, guid: bc466795cbb632f47b45ba991c7cfa8d, type: 2}
+--- !u!114 &5324881845562752161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976386972615268133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b4da82110f19745b0cbfec660065e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dominantHand: 1
+  uiOffset: 0.05
+  userInterfaceInteractionLayer: 5
+  interactionRange: 0.2
+  lineRendererMat: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
+  cursorObject: {fileID: 5148066705793338105, guid: 2f2763ad799ae494999e8b99faa5f8de,
+    type: 3}
+  objectHeaderObject: {fileID: 7600864894819164793, guid: 5503cb39fb6d3d2448d9c94bcefc84fc,
+    type: 3}
 --- !u!114 &6339565769025428999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +109,18 @@ MonoBehaviour:
   targetVisual: {fileID: 7165229023541344625, guid: 77853b28326a9c546be6bf48c998cfc2,
     type: 3}
   lineRenderMat: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
+--- !u!114 &1436019363763248530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976386972615268133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e65ba1afffe414c9711da6b80ad946, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7473554891637304831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,27 +222,6 @@ MonoBehaviour:
   sceneWipeTrigger:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5324881845562752161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8976386972615268133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61b4da82110f19745b0cbfec660065e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dominantHand: 1
-  uiOffset: 0.05
-  userInterfaceInteractionLayer: 5
-  interactionRange: 0.2
-  lineRendererMat: {fileID: 2100000, guid: 6b77ce60b754a1547be62f5376a1899f, type: 2}
-  cursorObject: {fileID: 5148066705793338105, guid: 2f2763ad799ae494999e8b99faa5f8de,
-    type: 3}
-  objectHeaderObject: {fileID: 7600864894819164793, guid: 5503cb39fb6d3d2448d9c94bcefc84fc,
-    type: 3}
 --- !u!1001 &8467027769127916243
 PrefabInstance:
   m_ObjectHideFlags: 0

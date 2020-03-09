@@ -1,6 +1,8 @@
 ﻿using System;
 using Delayed_Messaging.Scripts.Interaction.Cursors;
 using Delayed_Messaging.Scripts.Interaction.User_Interface;
+using Delayed_Messaging.Scripts.Objects;
+using Delayed_Messaging.Scripts.Player.Selection;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using VR_Prototyping.Scripts;
@@ -23,7 +25,7 @@ namespace Delayed_Messaging.Scripts.Interaction
         private bool previousSelect;
         
         [Header("User Interface Settings")]
-        [SerializeField] private DominantHand dominantHand;
+        public DominantHand dominantHand;
         [SerializeField] private float uiOffset = .05f;
         [SerializeField, Range(0f, 20f)] private int userInterfaceInteractionLayer;
         [SerializeField, Space(10), Range(0f, 10f)] private float interactionRange;

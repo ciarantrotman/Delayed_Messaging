@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using Delayed_Messaging.Scripts;
 using Delayed_Messaging.Scripts.Environment;
-using Delayed_Messaging.Scripts.Player;
+using Delayed_Messaging.Scripts.Player.Selection;
 using Delayed_Messaging.Scripts.Utilities;
 using Pathfinding;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
+using VR_Prototyping.Scripts;
 using VR_Prototyping.Scripts.Utilities;
 using Draw = Pathfinding.Util.Draw;
+using Selection = Delayed_Messaging.Scripts.Player.Selection.Selection;
 
-namespace VR_Prototyping.Scripts
+namespace Delayed_Messaging.Scripts.Objects
 {
-	[DisallowMultipleComponent]
+	[DisallowMultipleComponent, RequireComponent(typeof(ModelController))]
 	public abstract class BaseObject : MonoBehaviour, IHoverable, ISelectable<SelectionObjects>
 	{
 		private GameObject playerObject;
 		private Selection selection;
-		[HideInInspector] public Player player;
+		[HideInInspector] public Player.Player player;
+		public ModelController modelController;
 
 		private Outline outline;
 		private Vector3 defaultPosition;
@@ -143,7 +144,8 @@ namespace VR_Prototyping.Scripts
 				}
 			}
 			selection = playerObject.GetComponent<Selection>();
-			player = playerObject.GetComponent<Player>();
+			player = playerObject.GetComponent<Player.Player>();
+			modelController = GetComponent<ModelController>();
 		}
 		private void SetupOutline()
 		{
@@ -182,13 +184,27 @@ namespace VR_Prototyping.Scripts
 		protected abstract void ObjectUpdate();
 		private void GetSortingValues()
 		{
-			if (selection == null) return;
+			if (selection == null
+			    || selection.selectionObjectsL.castLocation == null
+			    || selection.selectionObjectsR.castLocation == null)
+			{
+				return;
+			}
 			
 			Vector3 castLocationL = selection.selectionObjectsL.castLocation.position;
 			Vector3 castLocationR = selection.selectionObjectsR.castLocation.position;
 			
 			CastDistanceL = Vector3.Distance(lClosestPoint = ObjectBounds.ClosestPoint(castLocationL), castLocationL);
 			CastDistanceR = Vector3.Distance(rClosestPoint = ObjectBounds.ClosestPoint(castLocationR), castLocationR);
+		}
+		public void SetModel(BaseClass.Model model)
+		{
+			Debug.Log($"{name} has been spawned, setting model to {model.modelIndex}");
+			
+			InitialiseObject();
+			Initialise();
+			
+			modelController.SetModel(model);
 		}
 		private void SelectionVisual(string eventName)
 		{

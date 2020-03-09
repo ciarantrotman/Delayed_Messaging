@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Delayed_Messaging.Scripts.Objects;
+using UnityEngine;
 
 namespace VR_Prototyping.Scripts.Utilities
 {

@@ -1,24 +1,33 @@
 ﻿using System.Collections.Generic;
-using Delayed_Messaging.Scripts.Interaction;
 using Delayed_Messaging.Scripts.Interaction.Cursors;
+using Delayed_Messaging.Scripts.Objects;
 using Delayed_Messaging.Scripts.Utilities;
+using Pathfinding;
 using UnityEngine;
+using UnityEngine.Events;
 using VR_Prototyping.Scripts.Utilities;
 
-namespace VR_Prototyping.Scripts
+namespace Delayed_Messaging.Scripts.Player.Selection
 {
 	public class SelectionObjects: MonoBehaviour
 	{
 		public Selection.MultiSelect side;
 		public BaseObject currentBaseObject;
 		public BaseObject previousBaseObject;
+
+		public GraphNode graphNode;
 			
 		public GameObject currentFocusObject;
 		public Transform castLocation;
 
+		public bool disabled;
+		public bool selectionCurrent;
 		public bool selectPrevious;
 
 		public List<BaseObject> list = new List<BaseObject>();
+
+		public UnityEvent selectStart = new UnityEvent();
+		public UnityEvent selectEnd = new UnityEvent();
 
 		public Vector3 selectionStart;
 		public float selectionDistance;
@@ -45,16 +54,32 @@ namespace VR_Prototyping.Scripts
 
 		public void SelectUpdate(Selection selection, Cast.CastObjects castObjects, BaseObject otherBaseObject, List<GameObject> castList, float threshold, bool select, bool disable)
 		{
+			selectionCurrent = select;
+			disabled = disable;
+			
 			castLocation = castObjects.hitPoint.transform;
 			currentFocusObject = castList.CastFindObject();
 			currentBaseObject = currentFocusObject.FindBaseObject(otherBaseObject);
-			selectionDistance = Vector3.Distance(castLocation.transform.position, selectionStart);
-
+			Vector3 position = castLocation.transform.position;
+			
+			selectionDistance = Vector3.Distance(position, selectionStart);
+			graphNode = AstarPath.active.GetNearest(position).node;
+			
 			currentBaseObject.Hover(previousBaseObject, otherBaseObject, castCursor);
 			
 			Check.Selection(currentBaseObject, selection, this, selectionDistance,select, selectPrevious, threshold, disable);
 
-			selectPrevious = select;
+			if (selectionCurrent && !selectPrevious)
+			{
+				selectStart.Invoke();
+			}
+
+			if (!selectionCurrent && selectPrevious)
+			{
+				selectEnd.Invoke();
+			}
+			
+			selectPrevious = selectionCurrent;
 			previousBaseObject = currentBaseObject;
 		}
 	}

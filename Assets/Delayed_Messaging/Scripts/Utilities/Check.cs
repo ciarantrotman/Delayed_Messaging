@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Interaction.Cursors;
+using Delayed_Messaging.Scripts.Objects;
 using Delayed_Messaging.Scripts.Player;
+using Delayed_Messaging.Scripts.Player.Selection;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 
@@ -484,9 +486,13 @@ namespace Delayed_Messaging.Scripts.Utilities
             return Vector3.Distance(a.position, b.position);
         }
         
-        public static bool TransformDistanceCheck(this Transform a, Transform b, float distance)
+        public static bool DistanceCheck(this Transform a, Transform b, float distance)
         {
             return Vector3.Distance(a.position, b.position) < distance;
+        }
+        public static bool DistanceCheck(this Vector3 a, Vector3 b, float distance)
+        {
+            return Vector3.Distance(a, b) < distance;
         }
         /// <summary>
         /// Checks if an object is within range
@@ -511,7 +517,11 @@ namespace Delayed_Messaging.Scripts.Utilities
         /// <returns></returns>
         public static bool Arrived(this Transform unit, Transform target, float distance)
         {
-            return unit.TransformDistanceCheck(target, distance);
+            return unit.DistanceCheck(target, distance);
+        }
+        public static bool Arrived(this Transform unit, Vector3 target, float distance)
+        {
+            return unit.position.DistanceCheck(target, distance);
         }
         /// <summary>
         /// Returns the largest value based on a Vector3

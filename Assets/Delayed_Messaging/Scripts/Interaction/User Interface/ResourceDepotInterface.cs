@@ -20,7 +20,7 @@ namespace Delayed_Messaging.Scripts.Interaction.User_Interface
                     $"<b>{baseObjectBaseObject.name}</b> has added a listener to {spawnObject.frameButton.name} to spawn <b>{spawnObject.reference}</b>");
                 spawnObject.frameButton.OnSelect.AddListener(() =>
                 {
-                    Player.Player.Spawn(
+                    resourceDepot.player.Spawn(
                         spawnObject.reference,
                         baseObjectBaseObject.name,
                         baseObjectBaseObject.spawnableObjects,

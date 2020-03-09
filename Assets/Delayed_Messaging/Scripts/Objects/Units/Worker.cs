@@ -6,6 +6,11 @@ namespace Delayed_Messaging.Scripts.Objects.Units
 {
     public class Worker : Unit
     {
+        protected override void Spawn()
+        {
+            
+        }
+
         protected override void CancelCurrentTask()
         {
             

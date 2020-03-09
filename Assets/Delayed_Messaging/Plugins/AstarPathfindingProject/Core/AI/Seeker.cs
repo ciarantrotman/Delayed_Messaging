@@ -123,8 +123,7 @@ namespace Pathfinding {
 		List<Vector3> lastCompletedVectorPath;
 
 		/// <summary>Used for drawing gizmos</summary>
-		[System.NonSerialized]
-		List<GraphNode> lastCompletedNodePath;
+		[System.NonSerialized] public List<GraphNode> lastCompletedNodePath;
 
 		/// <summary>The current path</summary>
 		[System.NonSerialized]

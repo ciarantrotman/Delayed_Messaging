@@ -20,8 +20,9 @@ MonoBehaviour:
     type: 3}
   cursorState: 1
   team: 0
-  cost: 50
-  healthMax: 50
+  cost:
+    resourceCost: 10
+    productionCost: 10
   weight: 1
   moveSpeed: 0.5
   rotationSpeed: 0.5

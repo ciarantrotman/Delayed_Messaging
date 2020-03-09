@@ -1,4 +1,5 @@
-﻿using Delayed_Messaging.Scripts.Units;
+﻿using Delayed_Messaging.Scripts.Player.Selection;
+using Delayed_Messaging.Scripts.Units;
 using Delayed_Messaging.Scripts.Utilities;
 using Panda;
 using Pathfinding;
@@ -32,8 +33,11 @@ namespace Delayed_Messaging.Scripts.Objects.Units
         {
             InitialiseUnit();
             transform.position = spawnLocation;
-            SetDestination(spawnDestination);
+            //SetDestination(spawnDestination);
+            Spawn();
         }
+
+        protected abstract void Spawn();
         protected override void Initialise()
         {
             InitialiseUnit();
@@ -64,7 +68,8 @@ namespace Delayed_Messaging.Scripts.Objects.Units
         }
         protected override void ObjectUpdate()
         {
-            destinationLineRenderer.DrawStraightLineRender(transform, unitDestination.transform);
+            destinationLineRenderer.DrawDestinationLineRender(seeker);
+            //destinationLineRenderer.DrawStraightLineRender(transform, unitDestination.transform);
         }
 
         public override void SelectStart(SelectionObjects selectionObjects)
