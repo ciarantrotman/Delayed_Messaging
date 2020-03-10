@@ -3,6 +3,7 @@ using Delayed_Messaging.Scripts.Utilities;
 using Pathfinding.Util;
 using UnityEngine;
 using VR_Prototyping.Scripts;
+using Draw = Pathfinding.Util.Draw;
 
 namespace Delayed_Messaging.Scripts.Objects.Structures
 {

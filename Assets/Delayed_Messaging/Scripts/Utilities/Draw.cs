@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Delayed_Messaging.Scripts.Utilities;
+using Delayed_Messaging.Scripts.Environment;
 using Pathfinding;
 using UnityEngine;
 
-namespace VR_Prototyping.Scripts.Utilities
+namespace Delayed_Messaging.Scripts.Utilities
 {
 	public static class Draw
 	{
@@ -235,18 +235,93 @@ namespace VR_Prototyping.Scripts.Utilities
 			mesh.RecalculateNormals();
 			mesh.RecalculateTangents();
 		}
-		/*
-		public static void Circle (Vector3 center, float radius, Color color, float startAngle = 0f, float endAngle = 2*Mathf.PI) 
+		public static class Noise 
 		{
-			const int steps = 40;
-			while (startAngle > endAngle) startAngle -= 2*Mathf.PI;
-			Vector3 prev = new Vector3(Mathf.Cos(startAngle)*radius, 0, Mathf.Sin(startAngle)*radius);
-			for (int i = 0; i <= steps; i++) {
-				Vector3 c = new Vector3(Mathf.Cos(Mathf.Lerp(startAngle, endAngle, i/(float)steps))*radius, 0, Mathf.Sin(Mathf.Lerp(startAngle, endAngle, i/(float)steps))*radius);
-				Line(center + prev, center + c, color);
-				prev = c;
+			/// <summary>
+			/// Used for generating a noise map
+			/// </summary>
+			/// <param name="mapWidth"></param>
+			/// <param name="mapHeight"></param>
+			/// <param name="scale"></param>
+			/// <param name="environmentDimensions"></param>
+			/// <returns></returns>
+			public static float[,] GeneratePerlinNoiseMap(EnvironmentController.Environment.EnvironmentDimensions environmentDimensions)
+			{
+				float[,] noiseMap = new float[environmentDimensions.x, environmentDimensions.z];
+
+				for (int y = 0; y < environmentDimensions.x; y++) 
+				{
+					for (int x = 0; x < environmentDimensions.z; x++) 
+					{
+						float sampleX = x / environmentDimensions.noiseScale;
+						float sampleY = y / environmentDimensions.noiseScale;
+
+						float perlinValue = Mathf.PerlinNoise (sampleX, sampleY);
+						noiseMap [x, y] = perlinValue;
+					}
+				}
+
+				return noiseMap;
+			}
+			
+			public static float[,] GenerateFractionalBrownianMotion(EnvironmentController.Environment.EnvironmentDimensions environmentDimensions) 
+			{
+				float[,] noiseMap = new float[environmentDimensions.x, environmentDimensions.z];
+
+				System.Random prng = new System.Random(environmentDimensions.seed);
+				Vector2[] octaveOffsets = new Vector2[environmentDimensions.octaves];
+				for (int i = 0; i < environmentDimensions.octaves; i++) 
+				{
+					float offsetX = prng.Next (-100000, 100000) + environmentDimensions.offset.x;
+					float offsetY = prng.Next (-100000, 100000) + environmentDimensions.offset.y;
+					octaveOffsets [i] = new Vector2 (offsetX, offsetY);
+				}
+
+				float maxNoiseHeight = float.MinValue;
+				float minNoiseHeight = float.MaxValue;
+
+				float halfWidth = environmentDimensions.x / 2f;
+				float halfHeight = environmentDimensions.z / 2f;
+
+				for (int y = 0; y < environmentDimensions.z; y++) 
+				{
+					for (int x = 0; x < environmentDimensions.x; x++) 
+					{
+						float amplitude = 1;
+						float frequency = 1;
+						float noiseHeight = 0;
+
+						for (int i = 0; i < environmentDimensions.octaves; i++) 
+						{
+							float sampleX = (x-halfWidth) / environmentDimensions.noiseScale * frequency + octaveOffsets[i].x;
+							float sampleY = (y-halfHeight) / environmentDimensions.noiseScale * frequency + octaveOffsets[i].y;
+							float perlinValue = Mathf.PerlinNoise (sampleX, sampleY) * 2 - 1;
+							noiseHeight += perlinValue * amplitude;
+							amplitude *= environmentDimensions.persistence;
+							frequency *= environmentDimensions.lacunarity;
+						}
+
+						if (noiseHeight > maxNoiseHeight) 
+						{
+							maxNoiseHeight = noiseHeight;
+						} else if (noiseHeight < minNoiseHeight) 
+						{
+							minNoiseHeight = noiseHeight;
+						}
+						noiseMap [x, y] = noiseHeight;
+					}
+				}
+
+				for (int y = 0; y < environmentDimensions.z; y++) 
+				{
+					for (int x = 0; x < environmentDimensions.x; x++) 
+					{
+						noiseMap [x, y] = Mathf.InverseLerp (minNoiseHeight, maxNoiseHeight, noiseMap [x, y]);
+					}
+				}
+
+				return noiseMap;
 			}
 		}
-		*/
 	}
 }

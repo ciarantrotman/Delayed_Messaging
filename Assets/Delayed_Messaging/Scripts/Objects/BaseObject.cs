@@ -180,7 +180,7 @@ namespace Delayed_Messaging.Scripts.Objects
 			Vector3 position = t.position;
 			
 			currentNode = AstarPath.active.GetNearest(position).node;
-			EnvironmentController.PathGeneration(currentNode, previousNode, ObjectClass.weight);
+			EnvironmentController.GeneratePath(currentNode, previousNode, ObjectClass.weight);
 			previousNode = currentNode;
 			
 			//selectionVisualEffect.SetFloat("Health", Mathf.InverseLerp(0, objectClass.healthMax, health));
