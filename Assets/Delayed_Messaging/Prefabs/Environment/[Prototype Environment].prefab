@@ -91,23 +91,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   environment:
-    environmentDimensions:
-      x: 50
-      z: 50
-      noiseScale: 10
+    environmentDefinition:
+      size: 200
+      noiseScale: 50
       octaves: 3
       persistence: 0.3
       lacunarity: 2.5
       environmentRegions:
-      - environmentRegion: 0
-        regionColourReference: {r: 0.48584908, g: 1, b: 0.5996126, a: 1}
       - environmentRegion: 1
-        regionColourReference: {r: 0.48627448, g: 0.8538855, b: 1, a: 1}
+        height: 0.414
+        regionColourReference: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
+      - environmentRegion: 0
+        height: 0.788
+        regionColourReference: {r: 0.8301887, g: 0.8301887, b: 0.8301887, a: 1}
       - environmentRegion: 2
-        regionColourReference: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 1}
-      seed: -81
+        height: 1
+        regionColourReference: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+      seed: 30
       offset: {x: 0, y: 0}
-    noiseRenderer: {fileID: 3105101885204317154}
+    drawMode: 1
+    environmentRenderer: {fileID: 3105101885204317154}
     generateEnvironment: 0
     generateRandomEnvironment: 0
 --- !u!1 &2734911605955553104
@@ -422,7 +425,7 @@ PrefabInstance:
     - target: {fileID: 6860195356995140534, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599, type: 3}

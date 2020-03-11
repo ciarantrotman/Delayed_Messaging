@@ -46,7 +46,7 @@ namespace Delayed_Messaging.Scripts.Player.Selection
 			multiSelect.selectionLineRenderer.material = lineRenderMat;
 			multiSelect.selectionQuadObject = new GameObject($"[Selection Quad/{side}]", typeof(MeshFilter), typeof(MeshRenderer));
 			multiSelect.selectionQuadFilter = multiSelect.selectionQuadObject.GetComponent<MeshFilter>();
-			multiSelect.selectionQuadFilter.mesh = Draw.GenerateQuadMesh();
+			multiSelect.selectionQuadFilter.mesh = Draw.QuadMesh();
 			multiSelect.selectionQuadRenderer = multiSelect.selectionQuadObject.GetComponent<MeshRenderer>();
 			multiSelect.selectionQuadRenderer.material = quadMat;
 			multiSelect.selectionQuadRenderer.enabled = false;

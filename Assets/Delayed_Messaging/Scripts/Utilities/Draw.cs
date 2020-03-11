@@ -132,15 +132,20 @@ namespace Delayed_Messaging.Scripts.Utilities
 		private const int CircleSegmentCount = 64;
 		private const int CircleVertexCount = CircleSegmentCount + 2;
 		private const int CircleIndexCount = CircleSegmentCount * 3;
-		public static Mesh GenerateCircleMesh(this float radius, Orientation orientation)
+
+		public static class GenerateMesh
 		{
-			var circle = new Mesh();
-			var vertices = new List<Vector3>(CircleVertexCount);
-			var indices = new int[CircleIndexCount];
+			
+		}
+		public static Mesh CircleMesh(this float radius, Orientation orientation)
+		{
+			Mesh circle = new Mesh();
+			List<Vector3> vertices = new List<Vector3>(CircleVertexCount);
+			int[] indices = new int[CircleIndexCount];
 			const float segmentWidth = Mathf.PI * 2f / CircleSegmentCount;
-			var angle = 0f;
+			float angle = 0f;
 			vertices.Add(Vector3.zero);
-			for (var i = 1; i < CircleVertexCount; ++i)
+			for (int i = 1; i < CircleVertexCount; ++i)
 			{
 				switch (orientation)
 				{
@@ -158,7 +163,7 @@ namespace Delayed_Messaging.Scripts.Utilities
 				}
 				angle -= segmentWidth;
 				if (i <= 1) continue;
-				var j = (i - 2) * 3;
+				int j = (i - 2) * 3;
 				indices[j + 0] = 0;
 				indices[j + 1] = i - 1;
 				indices[j + 2] = i;
@@ -168,7 +173,7 @@ namespace Delayed_Messaging.Scripts.Utilities
 			circle.RecalculateBounds();
 			return circle;
 		}
-		public static Mesh GenerateQuadMesh()
+		public static Mesh QuadMesh()
 		{
 			Mesh quad = new Mesh();
 			Vector3[] vertices = new Vector3[4];
@@ -198,7 +203,6 @@ namespace Delayed_Messaging.Scripts.Utilities
 			
 			return quad;
 		}
-		
 		public static void DrawQuadMesh(this Mesh mesh, Vector3 start, Vector3 end)
 		{
 			Vector3[] vertices = new Vector3[4];
@@ -238,23 +242,20 @@ namespace Delayed_Messaging.Scripts.Utilities
 		public static class Noise 
 		{
 			/// <summary>
-			/// Used for generating a noise map
+			/// Generates basic perlin noise
 			/// </summary>
-			/// <param name="mapWidth"></param>
-			/// <param name="mapHeight"></param>
-			/// <param name="scale"></param>
-			/// <param name="environmentDimensions"></param>
+			/// <param name="environmentDefinition"></param>
 			/// <returns></returns>
-			public static float[,] GeneratePerlinNoiseMap(EnvironmentController.Environment.EnvironmentDimensions environmentDimensions)
+			public static float[,] GeneratePerlinNoiseMap(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition)
 			{
-				float[,] noiseMap = new float[environmentDimensions.x, environmentDimensions.z];
+				float[,] noiseMap = new float[environmentDefinition.size, environmentDefinition.size];
 
-				for (int y = 0; y < environmentDimensions.x; y++) 
+				for (int y = 0; y < environmentDefinition.size; y++) 
 				{
-					for (int x = 0; x < environmentDimensions.z; x++) 
+					for (int x = 0; x < environmentDefinition.size; x++) 
 					{
-						float sampleX = x / environmentDimensions.noiseScale;
-						float sampleY = y / environmentDimensions.noiseScale;
+						float sampleX = x / environmentDefinition.noiseScale;
+						float sampleY = y / environmentDefinition.noiseScale;
 
 						float perlinValue = Mathf.PerlinNoise (sampleX, sampleY);
 						noiseMap [x, y] = perlinValue;
@@ -263,42 +264,46 @@ namespace Delayed_Messaging.Scripts.Utilities
 
 				return noiseMap;
 			}
-			
-			public static float[,] GenerateFractionalBrownianMotion(EnvironmentController.Environment.EnvironmentDimensions environmentDimensions) 
+			/// <summary>
+			/// Generates fractional brownian noise
+			/// </summary>
+			/// <param name="environmentDefinition"></param>
+			/// <returns></returns>
+			public static float[,] GenerateFractionalBrownianNoise(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition) 
 			{
-				float[,] noiseMap = new float[environmentDimensions.x, environmentDimensions.z];
+				float[,] noiseMap = new float[environmentDefinition.size, environmentDefinition.size];
 
-				System.Random prng = new System.Random(environmentDimensions.seed);
-				Vector2[] octaveOffsets = new Vector2[environmentDimensions.octaves];
-				for (int i = 0; i < environmentDimensions.octaves; i++) 
+				System.Random prng = new System.Random(environmentDefinition.seed);
+				Vector2[] octaveOffsets = new Vector2[environmentDefinition.octaves];
+				for (int i = 0; i < environmentDefinition.octaves; i++) 
 				{
-					float offsetX = prng.Next (-100000, 100000) + environmentDimensions.offset.x;
-					float offsetY = prng.Next (-100000, 100000) + environmentDimensions.offset.y;
+					float offsetX = prng.Next (-100000, 100000) + environmentDefinition.offset.x;
+					float offsetY = prng.Next (-100000, 100000) + environmentDefinition.offset.y;
 					octaveOffsets [i] = new Vector2 (offsetX, offsetY);
 				}
 
 				float maxNoiseHeight = float.MinValue;
 				float minNoiseHeight = float.MaxValue;
 
-				float halfWidth = environmentDimensions.x / 2f;
-				float halfHeight = environmentDimensions.z / 2f;
+				float halfWidth = environmentDefinition.size / 2f;
+				float halfHeight = environmentDefinition.size / 2f;
 
-				for (int y = 0; y < environmentDimensions.z; y++) 
+				for (int y = 0; y < environmentDefinition.size; y++) 
 				{
-					for (int x = 0; x < environmentDimensions.x; x++) 
+					for (int x = 0; x < environmentDefinition.size; x++) 
 					{
 						float amplitude = 1;
 						float frequency = 1;
 						float noiseHeight = 0;
 
-						for (int i = 0; i < environmentDimensions.octaves; i++) 
+						for (int i = 0; i < environmentDefinition.octaves; i++) 
 						{
-							float sampleX = (x-halfWidth) / environmentDimensions.noiseScale * frequency + octaveOffsets[i].x;
-							float sampleY = (y-halfHeight) / environmentDimensions.noiseScale * frequency + octaveOffsets[i].y;
+							float sampleX = (x-halfWidth) / environmentDefinition.noiseScale * frequency + octaveOffsets[i].x;
+							float sampleY = (y-halfHeight) / environmentDefinition.noiseScale * frequency + octaveOffsets[i].y;
 							float perlinValue = Mathf.PerlinNoise (sampleX, sampleY) * 2 - 1;
 							noiseHeight += perlinValue * amplitude;
-							amplitude *= environmentDimensions.persistence;
-							frequency *= environmentDimensions.lacunarity;
+							amplitude *= environmentDefinition.persistence;
+							frequency *= environmentDefinition.lacunarity;
 						}
 
 						if (noiseHeight > maxNoiseHeight) 
@@ -312,9 +317,9 @@ namespace Delayed_Messaging.Scripts.Utilities
 					}
 				}
 
-				for (int y = 0; y < environmentDimensions.z; y++) 
+				for (int y = 0; y < environmentDefinition.size; y++) 
 				{
-					for (int x = 0; x < environmentDimensions.x; x++) 
+					for (int x = 0; x < environmentDefinition.size; x++) 
 					{
 						noiseMap [x, y] = Mathf.InverseLerp (minNoiseHeight, maxNoiseHeight, noiseMap [x, y]);
 					}
@@ -322,6 +327,34 @@ namespace Delayed_Messaging.Scripts.Utilities
 
 				return noiseMap;
 			}
+		}
+		/// <summary>
+		/// Generates colours for the noise based on the supplied environment and noise map
+		/// </summary>
+		/// <param name="environmentDefinition"></param>
+		/// <param name="noiseMap"></param>
+		/// <returns></returns>
+		public static Color[] ColourMap(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition, float[,] noiseMap)
+		{
+			Color[] colourMap = new Color[environmentDefinition.size * environmentDefinition.size];
+			
+			for (int y = 0; y < environmentDefinition.size; y++) 
+			{
+				for (int x = 0; x < environmentDefinition.size; x++) 
+				{
+					float currentHeight = noiseMap [x, y];
+					for (int i = 0; i < environmentDefinition.environmentRegions.Count; i++) 
+					{
+						if (currentHeight <= environmentDefinition.environmentRegions[i].height) 
+						{
+							colourMap [y * environmentDefinition.size + x] = environmentDefinition.environmentRegions [i].regionColourReference;
+							break;
+						}
+					}
+				}
+			}
+
+			return colourMap;
 		}
 	}
 }

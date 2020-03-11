@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Utilities;
 using Pathfinding;
+using UnityEditor.Experimental.AssetImporters;
 using UnityEngine;
 
 namespace Delayed_Messaging.Scripts.Environment
@@ -10,17 +11,16 @@ namespace Delayed_Messaging.Scripts.Environment
     {
         [Serializable] public struct Environment
         {
-            [Serializable] public struct EnvironmentDimensions
+            [Serializable] public struct EnvironmentDefinition
             {
                 [Header("Environment Size")] 
-                [Range(0, 100)] public int x;
-                [Range(0, 100)] public int z;
-                [Range(.01f, 100)] public float noiseScale;
+                [Range(1, 500)] public int size;
+                [Range(1, 100)] public float noiseScale;
                 
                 [Header("Fractional Brownian Motion Setup")] 
-                [Range(0, 10)] public int octaves; 
+                [Range(1, 10)] public int octaves; 
                 [Range(0, 1)] public float persistence;
-                [Range(0, 10)]public float lacunarity;
+                [Range(1, 10)]public float lacunarity;
 
                 [Header("Environment Regions")] 
                 public List<EnvironmentRegions> environmentRegions;
@@ -31,16 +31,21 @@ namespace Delayed_Messaging.Scripts.Environment
             }
             
             [Header("Environment Dimensions")]
-            public EnvironmentDimensions environmentDimensions;
+            public EnvironmentDefinition environmentDefinition;
+            public enum DrawMode
+            {
+                NOISE, 
+                COLOUR
+            };
+            public DrawMode drawMode;
 
-            [Header("Environment References")] 
-            public Renderer noiseRenderer;
+            [Header("References")] 
+            public MeshRenderer environmentRenderer;
             
             [Header("Generate Environment")] 
             public bool generateEnvironment;
             public bool generateRandomEnvironment;
         }
-        
         [Serializable] public struct EnvironmentRegions
         {
             public enum EnvironmentRegion
@@ -50,41 +55,30 @@ namespace Delayed_Messaging.Scripts.Environment
                 MOUNTAIN
             }
             public EnvironmentRegion environmentRegion;
+            [Range(0, 1)] public float height;
             public Color regionColourReference;
         }
-
         public Environment environment;
-
         private void Start()
         {
             GenerateEnvironment();
         }
-        private void OnValidate()
-        {
-            if (environment.generateEnvironment)
-            {
-                GenerateEnvironment();
-                environment.generateEnvironment = false;
-                return;
-            }
-            
-            if (environment.generateRandomEnvironment)
-            {
-                environment.environmentDimensions.seed = UnityEngine.Random.Range(-100, 100);
-                GenerateEnvironment();
-                environment.generateRandomEnvironment = false;
-                return;
-            }
-
-            GenerateEnvironment();
-        }
-        /// <summary>
-        /// Generates a map based on the generated Perlin noise
-        /// </summary>
         private void GenerateEnvironment() 
         {
-            float[,] noiseMap = Draw.Noise.GenerateFractionalBrownianMotion(environment.environmentDimensions);
-            EnvironmentGeneration.DrawNoiseMap(noiseMap, environment.noiseRenderer);
+            float[,] noiseMap = Draw.Noise.GenerateFractionalBrownianNoise(environment.environmentDefinition);
+            Color[] colourMap = Draw.ColourMap(environment.environmentDefinition, noiseMap);
+
+            switch (environment.drawMode)
+            {
+                case Environment.DrawMode.NOISE:
+                    EnvironmentGenerator.DrawTexture(environment.environmentRenderer, EnvironmentGenerator.TextureFromHeightMap(noiseMap));
+                    break;
+                case Environment.DrawMode.COLOUR:
+                    EnvironmentGenerator.DrawTexture(environment.environmentRenderer, EnvironmentGenerator.TextureFromColourMap(colourMap, noiseMap));
+                    break;
+                default:
+                    break;
+            }
         }
         /// <summary>
         /// Generates a path by decreasing the penalty of walking on a node that other units have walked on before
@@ -98,6 +92,25 @@ namespace Delayed_Messaging.Scripts.Environment
             {
                 currentNode.Penalty -= weight;
             }
+        }
+        private void OnValidate()
+        {
+            if (environment.generateEnvironment)
+            {
+                GenerateEnvironment();
+                environment.generateEnvironment = false;
+                return;
+            }
+            
+            if (environment.generateRandomEnvironment)
+            {
+                environment.environmentDefinition.seed = UnityEngine.Random.Range(-100, 100);
+                GenerateEnvironment();
+                environment.generateRandomEnvironment = false;
+                return;
+            }
+
+            GenerateEnvironment();
         }
     }
 }
