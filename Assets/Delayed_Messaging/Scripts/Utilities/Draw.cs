@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Delayed_Messaging.Scripts.Environment;
 using Pathfinding;
 using UnityEngine;
@@ -337,23 +338,58 @@ namespace Delayed_Messaging.Scripts.Utilities
 		public static Color[] ColourMap(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition, float[,] noiseMap)
 		{
 			Color[] colourMap = new Color[environmentDefinition.size * environmentDefinition.size];
-			
+
 			for (int y = 0; y < environmentDefinition.size; y++) 
 			{
 				for (int x = 0; x < environmentDefinition.size; x++) 
 				{
-					float currentHeight = noiseMap [x, y];
-					for (int i = 0; i < environmentDefinition.environmentRegions.Count; i++) 
+					float currentHeight = noiseMap[x, y];
+					Color color;
+					EnvironmentController.EnvironmentRegions.EnvironmentRegion regionType =
+						currentHeight <= environmentDefinition.environmentRegions.seaLevel
+							? EnvironmentController.EnvironmentRegions.EnvironmentRegion.WATER
+							: EnvironmentController.EnvironmentRegions.EnvironmentRegion.LAND;
+
+					switch (regionType)
 					{
-						if (currentHeight <= environmentDefinition.environmentRegions[i].height) 
-						{
-							colourMap [y * environmentDefinition.size + x] = environmentDefinition.environmentRegions [i].regionColourReference;
+						case EnvironmentController.EnvironmentRegions.EnvironmentRegion.LAND:
+							if (currentHeight <= (environmentDefinition.environmentRegions.seaLevel + environmentDefinition.environmentRegions.shoreDepth))
+							{
+								color = environmentDefinition.environmentRegions.shoreColour;
+								break;
+							}
+							if (currentHeight >= environmentDefinition.environmentRegions.landHeight)
+							{
+								if (currentHeight <= environmentDefinition.environmentRegions.landHeight + environmentDefinition.environmentRegions.footHillHeight)
+								{
+									color = environmentDefinition.environmentRegions.footHillColour;
+									break;
+								}
+								if (currentHeight >= 1 - environmentDefinition.environmentRegions.snowHeight)
+								{
+									color = environmentDefinition.environmentRegions.snowColour;
+									break;
+								}
+								color = environmentDefinition.environmentRegions.mountainColour;
+								break;
+							}
+							color = environmentDefinition.environmentRegions.landColour;
 							break;
-						}
+						case EnvironmentController.EnvironmentRegions.EnvironmentRegion.WATER:
+							if (currentHeight <= (environmentDefinition.environmentRegions.seaLevel - environmentDefinition.environmentRegions.shallowsDepth))
+							{
+								color = environmentDefinition.environmentRegions.seaColour;
+								break;
+							}
+							color = environmentDefinition.environmentRegions.shallowsColour;
+							break;
+						default:
+							throw new ArgumentOutOfRangeException();
 					}
+					
+					colourMap[y*environmentDefinition.size+x] = color;
 				}
 			}
-
 			return colourMap;
 		}
 	}

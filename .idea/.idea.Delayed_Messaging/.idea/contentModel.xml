@@ -378,6 +378,7 @@
             <e p="Environment" t="Include">
               <e p="EnvironmentController.cs" t="Include" />
               <e p="EnvironmentGenerator.cs" t="Include" />
+              <e p="EnvironmentTileMap.cs" t="Include" />
             </e>
             <e p="Interaction" t="Include">
               <e p="Cursors" t="Include">
