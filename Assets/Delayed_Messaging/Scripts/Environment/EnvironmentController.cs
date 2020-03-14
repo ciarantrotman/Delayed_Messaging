@@ -9,50 +9,42 @@ namespace Delayed_Messaging.Scripts.Environment
     {
         [Serializable] public struct Environment
         {
-            [Serializable] public struct EnvironmentDefinition
-            {
-                [Header("Environment Size")] 
-                [Range(1, 500)] public int size;
-                [Range(1, 100)] public float noiseScale;
-                
-                [Header("Fractional Brownian Motion Setup")] 
-                [Range(1, 10)] public int octaves;
-                [Range(0, 1)] public float persistence;
-                [Range(1, 10)] public float lacunarity;
-
-                [Header("Environment Regions")]
-                public EnvironmentRegions environmentRegions;
-                
-                [Header("Noise Seed Reference")] 
-                [Range(0, 500)] public int seed;
-                public Vector2 offset;
-            }
+            [Header("Noise Settings")]
+            public Noise terrainNoise;
+            public Noise vegetationNoise;
             
-            [Header("Environment Dimensions")]
-            public EnvironmentDefinition environmentDefinition;
+            [Header("Environment Settings")]
+            public EnvironmentRegions environmentRegions;
+            public EnvironmentResources environmentResources;
             public enum DrawMode
             {
                 NOISE, 
                 COLOUR
             };
-            public DrawMode drawMode;
+            [Space(10)] public DrawMode drawMode;
 
             [Header("References")] 
-            public MeshRenderer environmentRenderer;
+            public MeshRenderer terrainRenderer;
+            public MeshRenderer resourcesRenderer;
             public EnvironmentTileMap environmentTileMap;
             
             [Header("Generate Environment")] 
             public bool generateEnvironment;
-            public bool generateRandomEnvironment;
         }
-        [Serializable] public struct NoiseSettings
+        [Serializable] public struct Noise
         {
-            public enum Noise
-            {
-                TERRAIN,
-                VEGETATION
-            }
-            public Noise noise;
+            [Header("Noise Settings")] 
+            [Range(1, 500)] public int size;
+            [Range(1, 1000)] public float noiseScale;
+            
+            [Header("Noise Seed Reference")] 
+            [Range(0, 500)] public int seed;
+            public Vector2 offset;
+
+            [Header("Fractional Brownian Motion Settings")] 
+            [Range(1, 10)] public int octaves;
+            [Range(0, 1)] public float persistence;
+            [Range(1, 10)] public float lacunarity;
         }
         [Serializable] public struct EnvironmentRegions
         {
@@ -61,11 +53,11 @@ namespace Delayed_Messaging.Scripts.Environment
                 LAND,
                 WATER,
             }
-            
+
             [Header("Land Settings")]
             [Range(0f, 1f)] public float landHeight;
             public Color landColour;
-            
+
             [Header("Mountain Settings")]
             public Color mountainColour;
             [Space(5), Range(0f, 1f)] public float footHillHeight;
@@ -81,30 +73,43 @@ namespace Delayed_Messaging.Scripts.Environment
             [Space(5), Range(0f, 1f)] public float shallowsDepth;
             public Color shallowsColour;
         }
+        [Serializable] public struct EnvironmentResources
+        {
+            [Header("Vegetation Settings")]
+            [Range(0f, 1f)] public float vegetationBorder;
+            [Range(.5f, 0f)] public float vegetationDensity;
+            public Color vegetationColour;
+
+        }
         public Environment environment;
         private void Start()
         {
             GenerateEnvironment();
         }
-        private void GenerateEnvironment(bool debug = false) 
+        private void GenerateEnvironment() 
         {
-            float[,] terrainHeightMap = Draw.Noise.GenerateFractionalBrownianNoise(environment.environmentDefinition);
-            float[,] vegetationHeightMap = Draw.Noise.GenerateFractionalBrownianNoise(environment.environmentDefinition);
+            float[,] terrainHeightMap = Draw.Noise.GenerateFractionalBrownianNoise(environment.terrainNoise);
+            
+            float[,] resourceHeightMap = Draw.Noise.GenerateFractionalBrownianNoise(environment.vegetationNoise);
+            resourceHeightMap = Draw.Noise.MaskedNoise(terrainHeightMap, resourceHeightMap, 
+                environment.environmentRegions.landHeight - environment.environmentResources.vegetationBorder,
+                environment.environmentRegions.seaLevel + environment.environmentRegions.shoreDepth + environment.environmentResources.vegetationBorder);
+            resourceHeightMap = Draw.Noise.MaskedNoise(resourceHeightMap, resourceHeightMap, 
+                1 - environment.environmentResources.vegetationDensity, 
+                environment.environmentResources.vegetationDensity);
 
-            Color[] terrainColourMap = Draw.ColourMap(environment.environmentDefinition, terrainHeightMap);
-            Color[] vegetationColourMap = Draw.ColourMap(environment.environmentDefinition, vegetationHeightMap);
+            Color[] terrainColourMap = Draw.ColourMap(environment.terrainNoise, environment.environmentRegions, terrainHeightMap);
+            Color[] resourceColourMap = Draw.ColourMap(environment.vegetationNoise, environment.environmentResources, resourceHeightMap);
 
             switch (environment.drawMode)
             {
                 case Environment.DrawMode.NOISE:
-                    EnvironmentGenerator.DrawTexture(environment.environmentRenderer, EnvironmentGenerator.TextureFromHeightMap(terrainHeightMap));
-                    break;
-                case Environment.DrawMode.COLOUR when !debug:
-                    environment.environmentTileMap.GenerateTileMap(environment.environmentDefinition, terrainHeightMap);
-                    EnvironmentGenerator.DrawTexture(environment.environmentRenderer, EnvironmentGenerator.TextureFromColourMap(terrainColourMap, terrainHeightMap));
+                    EnvironmentGenerator.DrawTexture(environment.resourcesRenderer, EnvironmentGenerator.TextureFromHeightMap(resourceHeightMap));
+                    EnvironmentGenerator.DrawTexture(environment.terrainRenderer, EnvironmentGenerator.TextureFromHeightMap(terrainHeightMap));
                     break;
                 case Environment.DrawMode.COLOUR:
-                    EnvironmentGenerator.DrawTexture(environment.environmentRenderer, EnvironmentGenerator.TextureFromColourMap(terrainColourMap, terrainHeightMap));
+                    EnvironmentGenerator.DrawTexture(environment.resourcesRenderer, EnvironmentGenerator.TextureFromColourMap(resourceColourMap, resourceHeightMap));
+                    EnvironmentGenerator.DrawTexture(environment.terrainRenderer, EnvironmentGenerator.TextureFromColourMap(terrainColourMap, terrainHeightMap));
                     break;
                 default:
                     break;
@@ -125,39 +130,31 @@ namespace Delayed_Messaging.Scripts.Environment
         }
         private void OnValidate()
         {
-            if (environment.environmentDefinition.environmentRegions.shallowsDepth > environment.environmentDefinition.environmentRegions.seaLevel)
+            if (environment.environmentRegions.shallowsDepth > environment.environmentRegions.seaLevel)
             {
-                environment.environmentDefinition.environmentRegions.shallowsDepth = environment.environmentDefinition.environmentRegions.seaLevel;
+                environment.environmentRegions.shallowsDepth = environment.environmentRegions.seaLevel;
             }
-            if (environment.environmentDefinition.environmentRegions.landHeight < environment.environmentDefinition.environmentRegions.seaLevel)
+            if (environment.environmentRegions.landHeight < environment.environmentRegions.seaLevel)
             {
-                environment.environmentDefinition.environmentRegions.landHeight = environment.environmentDefinition.environmentRegions.seaLevel;
+                environment.environmentRegions.landHeight = environment.environmentRegions.seaLevel;
             }
-            if (environment.environmentDefinition.environmentRegions.shoreDepth > environment.environmentDefinition.environmentRegions.landHeight)
+            if (environment.environmentRegions.shoreDepth > environment.environmentRegions.landHeight)
             {
-                environment.environmentDefinition.environmentRegions.shoreDepth = environment.environmentDefinition.environmentRegions.landHeight;
+                environment.environmentRegions.shoreDepth = environment.environmentRegions.landHeight;
             }
-            if (environment.environmentDefinition.environmentRegions.footHillHeight > environment.environmentDefinition.environmentRegions.landHeight - environment.environmentDefinition.environmentRegions.seaLevel)
+            if (environment.environmentRegions.footHillHeight > environment.environmentRegions.landHeight - environment.environmentRegions.seaLevel)
             {
-                environment.environmentDefinition.environmentRegions.footHillHeight = environment.environmentDefinition.environmentRegions.landHeight - environment.environmentDefinition.environmentRegions.seaLevel;
+                environment.environmentRegions.footHillHeight = environment.environmentRegions.landHeight - environment.environmentRegions.seaLevel;
             }
 
             if (environment.generateEnvironment)
             {
-                GenerateEnvironment(true);
+                GenerateEnvironment();
                 environment.generateEnvironment = false;
                 return;
             }
-            
-            if (environment.generateRandomEnvironment)
-            {
-                environment.environmentDefinition.seed = UnityEngine.Random.Range(-100, 100);
-                GenerateEnvironment(true);
-                environment.generateRandomEnvironment = false;
-                return;
-            }
 
-            GenerateEnvironment(true);
+            GenerateEnvironment();
         }
     }
 }

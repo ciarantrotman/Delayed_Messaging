@@ -47,33 +47,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   environment:
-    environmentDefinition:
+    terrainNoise:
       size: 200
       noiseScale: 50
+      seed: 125
+      offset: {x: 0, y: 0}
       octaves: 3
       persistence: 0.3
       lacunarity: 2.5
-      environmentRegions:
-        landHeight: 0.75
-        landColour: {r: 0.40730688, g: 0.764151, b: 0.4635706, a: 1}
-        mountainColour: {r: 0.3679245, g: 0.3457204, b: 0.3175952, a: 1}
-        footHillHeight: 0.1
-        footHillColour: {r: 0.5849056, g: 0.5290767, b: 0.4662691, a: 1}
-        snowHeight: 0.05
-        snowColour: {r: 1, g: 1, b: 1, a: 1}
-        seaLevel: 0.415
-        seaColour: {r: 0.17150229, g: 0.7555146, b: 0.8867924, a: 1}
-        shoreDepth: 0.025
-        shoreColour: {r: 0.8679245, g: 0.8035905, b: 0.6018156, a: 1}
-        shallowsDepth: 0.05
-        shallowsColour: {r: 0.4575472, g: 0.90164316, b: 1, a: 1}
-      seed: 30
+    vegetationNoise:
+      size: 200
+      noiseScale: 143
+      seed: 256
       offset: {x: 0, y: 0}
+      octaves: 3
+      persistence: 0.491
+      lacunarity: 2.47
+    environmentRegions:
+      landHeight: 0.793
+      landColour: {r: 0.55193126, g: 0.745283, b: 0.5967889, a: 1}
+      mountainColour: {r: 0.49056602, g: 0.4873743, b: 0.47899607, a: 1}
+      footHillHeight: 0.079
+      footHillColour: {r: 0.6603774, g: 0.61240655, b: 0.48905307, a: 1}
+      snowHeight: 0.026
+      snowColour: {r: 0.9123354, g: 0.9622642, b: 0.957737, a: 1}
+      seaLevel: 0.365
+      seaColour: {r: 0.53706837, g: 0.764151, b: 0.74849015, a: 1}
+      shoreDepth: 0.025
+      shoreColour: {r: 0.8679245, g: 0.7892578, b: 0.5854396, a: 1}
+      shallowsDepth: 0.1
+      shallowsColour: {r: 0.6690548, g: 0.9150943, b: 0.89812607, a: 1}
+    environmentResources:
+      vegetationBorder: 0.025
+      vegetationDensity: 0.346
+      vegetationColour: {r: 0.31626025, g: 0.6509434, b: 0.3204438, a: 1}
     drawMode: 1
-    environmentRenderer: {fileID: 3105101885204317154}
+    terrainRenderer: {fileID: 3105101885204317154}
+    resourcesRenderer: {fileID: 1944275478124750093}
     environmentTileMap: {fileID: 1546403610907772665}
     generateEnvironment: 0
-    generateRandomEnvironment: 0
 --- !u!114 &1546403610907772665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,9 +216,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Ground Plane]'
       objectReference: {fileID: 0}
+    - target: {fileID: 3185860459010400797, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Ground Plane] Terrain'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185860459010400797, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3493581727826064264, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3618515989412654944, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5461329005138906592, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599,
@@ -299,6 +326,12 @@ PrefabInstance:
 --- !u!4 &5811528561847598474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5461329005138906592, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599,
+    type: 3}
+  m_PrefabInstance: {fileID: 1976019915594920042}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1944275478124750093 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 114647846166271335, guid: 2069e7a4ddbb3a04c9577cfcbc4c3599,
     type: 3}
   m_PrefabInstance: {fileID: 1976019915594920042}
   m_PrefabAsset: {fileID: 0}

@@ -245,18 +245,18 @@ namespace Delayed_Messaging.Scripts.Utilities
 			/// <summary>
 			/// Generates basic perlin noise
 			/// </summary>
-			/// <param name="environmentDefinition"></param>
+			/// <param name="noise"></param>
 			/// <returns></returns>
-			public static float[,] GeneratePerlinNoiseMap(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition)
+			public static float[,] GeneratePerlinNoiseMap(EnvironmentController.Noise noise)
 			{
-				float[,] noiseMap = new float[environmentDefinition.size, environmentDefinition.size];
+				float[,] noiseMap = new float[noise.size, noise.size];
 
-				for (int y = 0; y < environmentDefinition.size; y++) 
+				for (int y = 0; y < noise.size; y++) 
 				{
-					for (int x = 0; x < environmentDefinition.size; x++) 
+					for (int x = 0; x < noise.size; x++) 
 					{
-						float sampleX = x / environmentDefinition.noiseScale;
-						float sampleY = y / environmentDefinition.noiseScale;
+						float sampleX = x / noise.noiseScale;
+						float sampleY = y / noise.noiseScale;
 
 						float perlinValue = Mathf.PerlinNoise (sampleX, sampleY);
 						noiseMap [x, y] = perlinValue;
@@ -268,43 +268,43 @@ namespace Delayed_Messaging.Scripts.Utilities
 			/// <summary>
 			/// Generates fractional brownian noise
 			/// </summary>
-			/// <param name="environmentDefinition"></param>
+			/// <param name="noise"></param>
 			/// <returns></returns>
-			public static float[,] GenerateFractionalBrownianNoise(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition) 
+			public static float[,] GenerateFractionalBrownianNoise(EnvironmentController.Noise noise) 
 			{
-				float[,] noiseMap = new float[environmentDefinition.size, environmentDefinition.size];
+				float[,] noiseMap = new float[noise.size, noise.size];
 
-				System.Random prng = new System.Random(environmentDefinition.seed);
-				Vector2[] octaveOffsets = new Vector2[environmentDefinition.octaves];
-				for (int i = 0; i < environmentDefinition.octaves; i++) 
+				System.Random prng = new System.Random(noise.seed);
+				Vector2[] octaveOffsets = new Vector2[noise.octaves];
+				for (int i = 0; i < noise.octaves; i++) 
 				{
-					float offsetX = prng.Next (-100000, 100000) + environmentDefinition.offset.x;
-					float offsetY = prng.Next (-100000, 100000) + environmentDefinition.offset.y;
+					float offsetX = prng.Next (-100000, 100000) + noise.offset.x;
+					float offsetY = prng.Next (-100000, 100000) + noise.offset.y;
 					octaveOffsets [i] = new Vector2 (offsetX, offsetY);
 				}
 
 				float maxNoiseHeight = float.MinValue;
 				float minNoiseHeight = float.MaxValue;
 
-				float halfWidth = environmentDefinition.size / 2f;
-				float halfHeight = environmentDefinition.size / 2f;
+				float halfWidth = noise.size / 2f;
+				float halfHeight = noise.size / 2f;
 
-				for (int y = 0; y < environmentDefinition.size; y++) 
+				for (int y = 0; y < noise.size; y++) 
 				{
-					for (int x = 0; x < environmentDefinition.size; x++) 
+					for (int x = 0; x < noise.size; x++) 
 					{
 						float amplitude = 1;
 						float frequency = 1;
 						float noiseHeight = 0;
 
-						for (int i = 0; i < environmentDefinition.octaves; i++) 
+						for (int i = 0; i < noise.octaves; i++) 
 						{
-							float sampleX = (x-halfWidth) / environmentDefinition.noiseScale * frequency + octaveOffsets[i].x;
-							float sampleY = (y-halfHeight) / environmentDefinition.noiseScale * frequency + octaveOffsets[i].y;
+							float sampleX = (x-halfWidth) / noise.noiseScale * frequency + octaveOffsets[i].x;
+							float sampleY = (y-halfHeight) / noise.noiseScale * frequency + octaveOffsets[i].y;
 							float perlinValue = Mathf.PerlinNoise (sampleX, sampleY) * 2 - 1;
 							noiseHeight += perlinValue * amplitude;
-							amplitude *= environmentDefinition.persistence;
-							frequency *= environmentDefinition.lacunarity;
+							amplitude *= noise.persistence;
+							frequency *= noise.lacunarity;
 						}
 
 						if (noiseHeight > maxNoiseHeight) 
@@ -318,9 +318,9 @@ namespace Delayed_Messaging.Scripts.Utilities
 					}
 				}
 
-				for (int y = 0; y < environmentDefinition.size; y++) 
+				for (int y = 0; y < noise.size; y++) 
 				{
-					for (int x = 0; x < environmentDefinition.size; x++) 
+					for (int x = 0; x < noise.size; x++) 
 					{
 						noiseMap [x, y] = Mathf.InverseLerp (minNoiseHeight, maxNoiseHeight, noiseMap [x, y]);
 					}
@@ -328,66 +328,114 @@ namespace Delayed_Messaging.Scripts.Utilities
 
 				return noiseMap;
 			}
+			public static float[,] MaskedNoise(float [,] terrain, float [,] resources, float upperLimit, float lowerLimit)
+			{
+				float[,] noiseMap = resources;
+				for (int y = 0; y < terrain.GetLength(0); y++)
+				{
+					for (int x = 0; x < terrain.GetLength(1); x++)
+					{
+						float maskHeight = terrain[x, y];
+						float resourceHeight = resources[x, y];
+						noiseMap[x, y] = WithinLimits(maskHeight, upperLimit, lowerLimit) ? resourceHeight : 0;
+					}
+				}
+				return noiseMap;
+			}
+
+			private static bool WithinLimits(float a, float b, float c)
+			{
+				return a <= b && a >= c;
+			}
 		}
 		/// <summary>
 		/// Generates colours for the noise based on the supplied environment and noise map
 		/// </summary>
-		/// <param name="environmentDefinition"></param>
+		/// <param name="noise"></param>
+		/// <param name="regions"></param>
 		/// <param name="noiseMap"></param>
 		/// <returns></returns>
-		public static Color[] ColourMap(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition, float[,] noiseMap)
+		public static Color[] ColourMap(EnvironmentController.Noise noise, EnvironmentController.EnvironmentRegions regions, float[,] noiseMap)
 		{
-			Color[] colourMap = new Color[environmentDefinition.size * environmentDefinition.size];
+			Color[] colourMap = new Color[noise.size * noise.size];
 
-			for (int y = 0; y < environmentDefinition.size; y++) 
+			for (int y = 0; y < noise.size; y++) 
 			{
-				for (int x = 0; x < environmentDefinition.size; x++) 
+				for (int x = 0; x < noise.size; x++) 
 				{
 					float currentHeight = noiseMap[x, y];
 					Color color;
 					EnvironmentController.EnvironmentRegions.EnvironmentRegion regionType =
-						currentHeight <= environmentDefinition.environmentRegions.seaLevel
+						currentHeight <= regions.seaLevel
 							? EnvironmentController.EnvironmentRegions.EnvironmentRegion.WATER
 							: EnvironmentController.EnvironmentRegions.EnvironmentRegion.LAND;
 
 					switch (regionType)
 					{
 						case EnvironmentController.EnvironmentRegions.EnvironmentRegion.LAND:
-							if (currentHeight <= (environmentDefinition.environmentRegions.seaLevel + environmentDefinition.environmentRegions.shoreDepth))
+							if (currentHeight <= (regions.seaLevel + regions.shoreDepth))
 							{
-								color = environmentDefinition.environmentRegions.shoreColour;
+								color = regions.shoreColour;
 								break;
 							}
-							if (currentHeight >= environmentDefinition.environmentRegions.landHeight)
+							if (currentHeight >= regions.landHeight)
 							{
-								if (currentHeight <= environmentDefinition.environmentRegions.landHeight + environmentDefinition.environmentRegions.footHillHeight)
+								if (currentHeight <= regions.landHeight + regions.footHillHeight)
 								{
-									color = environmentDefinition.environmentRegions.footHillColour;
+									color = regions.footHillColour;
 									break;
 								}
-								if (currentHeight >= 1 - environmentDefinition.environmentRegions.snowHeight)
+								if (currentHeight >= 1 - regions.snowHeight)
 								{
-									color = environmentDefinition.environmentRegions.snowColour;
+									color = regions.snowColour;
 									break;
 								}
-								color = environmentDefinition.environmentRegions.mountainColour;
+								color = regions.mountainColour;
 								break;
 							}
-							color = environmentDefinition.environmentRegions.landColour;
+							color = regions.landColour;
 							break;
 						case EnvironmentController.EnvironmentRegions.EnvironmentRegion.WATER:
-							if (currentHeight <= (environmentDefinition.environmentRegions.seaLevel - environmentDefinition.environmentRegions.shallowsDepth))
+							if (currentHeight <= (regions.seaLevel - regions.shallowsDepth))
 							{
-								color = environmentDefinition.environmentRegions.seaColour;
+								color = regions.seaColour;
 								break;
 							}
-							color = environmentDefinition.environmentRegions.shallowsColour;
+							color = regions.shallowsColour;
 							break;
 						default:
 							throw new ArgumentOutOfRangeException();
 					}
 					
-					colourMap[y*environmentDefinition.size+x] = color;
+					colourMap[y*noise.size+x] = color;
+				}
+			}
+			return colourMap;
+		}
+		/// <summary>
+		/// Generates colours for the noise based on the supplied environment and noise map
+		/// </summary>
+		/// <param name="noise"></param>
+		/// <param name="resources"></param>
+		/// <param name="noiseMap"></param>
+		/// <returns></returns>
+		public static Color[] ColourMap(EnvironmentController.Noise noise, EnvironmentController.EnvironmentResources resources, float[,] noiseMap)
+		{
+			Color[] colourMap = new Color[noise.size * noise.size];
+
+			for (int y = 0; y < noise.size; y++) 
+			{
+				for (int x = 0; x < noise.size; x++) 
+				{
+					float currentHeight = noiseMap[x, y];
+					Color color = new Color();
+
+					if (currentHeight > 0)
+					{
+						color = resources.vegetationColour;
+					}
+					
+					colourMap[y*noise.size+x] = color;
 				}
 			}
 			return colourMap;

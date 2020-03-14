@@ -22,6 +22,7 @@ namespace Delayed_Messaging.Scripts.Environment
                 filterMode = FilterMode.Point, 
                 wrapMode = TextureWrapMode.Clamp
             };
+            
             texture.SetPixels(colourMap);
             texture.Apply();
             return texture;
@@ -42,7 +43,7 @@ namespace Delayed_Messaging.Scripts.Environment
             {
                 for (int x = 0; x < width; x++) 
                 {
-                    colourMap [y * width + x] = Color.Lerp (Color.black, Color.white, heightMap [x, y]);
+                    colourMap [y * width + x] = heightMap[x, y] > 0f ? Color.Lerp (Color.black, Color.white, heightMap [x, y]) : new Color(0,0,0,0);
                 }
             }
 
@@ -57,13 +58,14 @@ namespace Delayed_Messaging.Scripts.Environment
         {
             renderer.sharedMaterial.mainTexture = texture;
         }
+
         /// <summary>
         /// Generates a tile map from a supplied colour map
         /// </summary>
-        /// <param name="environmentDefinition"></param>
+        /// <param name="environment"></param>
         /// <param name="noiseMap"></param>
         /// <returns></returns>
-        public static List<EnvironmentTileMap.Tile> GenerateTileMap(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition, float[,] noiseMap)
+        public static List<EnvironmentTileMap.Tile> GenerateTileMap(EnvironmentController.Environment environment, float[,] noiseMap)
         {
             return null;
             /*

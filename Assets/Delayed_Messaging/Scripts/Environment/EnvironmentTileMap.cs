@@ -15,14 +15,15 @@ namespace Delayed_Messaging.Scripts.Environment
 
         public List<Tile> tileMap = new List<Tile>();
 
-        public void GenerateTileMap(EnvironmentController.Environment.EnvironmentDefinition environmentDefinition, float[,] noiseMap)
+        public void GenerateTileMap(EnvironmentController.Environment environment, float[,] noiseMap)
         {
+            /*
             for (int i = 0; i < tileMap.Count; i++)
             {
                 Destroy(tileMap[i].tileModel);
             }
             
-            tileMap = EnvironmentGenerator.GenerateTileMap(environmentDefinition, noiseMap);
+            tileMap = EnvironmentGenerator.GenerateTileMap(environment, noiseMap);
 
             foreach (Tile t in tileMap)
             {
@@ -31,6 +32,7 @@ namespace Delayed_Messaging.Scripts.Environment
                 tile.tileModel = Instantiate(tile.tileModel, transform);
                 tile.tileModel.transform.position = new Vector3(tile.tileIndex.x, 0, tile.tileIndex.y);
             }
+            */
         }
     }
 }
