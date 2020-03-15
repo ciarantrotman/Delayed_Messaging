@@ -71,21 +71,28 @@ namespace Delayed_Messaging.Scripts.Environment
             [Header("Land Settings")]
             [Range(0f, 1f)] public float landHeight;
             public Color landColour;
+            public Material landMaterial;
 
             [Header("Mountain Settings")]
             public Color mountainColour;
+            public Material mountainMaterial;
             [Space(5), Range(0f, 1f)] public float footHillHeight;
             public Color footHillColour;
+            public Material footHillMaterial;
             [Space(5),Range(0f, 1f)] public float snowHeight;
             public Color snowColour;
+            public Material snowMaterial;
 
             [Header("Sea Settings")]
             [Range(0f, 1f)] public float seaLevel;
             public Color seaColour;
+            public Material seaMaterial;
             [Space(5), Range(0f, 1f)] public float shoreDepth;
             public Color shoreColour;
+            public Material shoreMaterial;
             [Space(5), Range(0f, 1f)] public float shallowsDepth;
             public Color shallowsColour;
+            public Material shallowsMaterial;
         }
         [Serializable] public class EnvironmentResources
         {
@@ -104,8 +111,13 @@ namespace Delayed_Messaging.Scripts.Environment
             public Color resourceColour;
         }
         public Environment environment;
+        private bool initialised;
+        private EnvironmentTileMap environmentTileMap;
+        
         private void Start()
         {
+            initialised = true;
+            environmentTileMap = GetComponent<EnvironmentTileMap>();
             GenerateEnvironment();
         }
         private void GenerateEnvironment() 
@@ -146,6 +158,9 @@ namespace Delayed_Messaging.Scripts.Environment
                 default:
                     break;
             }
+            
+            if (!initialised) return;
+            environmentTileMap.GenerateTileMap(environmentRegions, environment.environmentRegions);
         }
         /// <summary>
         /// Generates a path by decreasing the penalty of walking on a node that other units have walked on before

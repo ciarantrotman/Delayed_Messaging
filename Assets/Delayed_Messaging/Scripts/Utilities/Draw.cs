@@ -4,6 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 using Delayed_Messaging.Scripts.Environment;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Delayed_Messaging.Scripts.Utilities
 {
@@ -44,12 +45,7 @@ namespace Delayed_Messaging.Scripts.Utilities
 		{
 			return Vector3.Lerp(Vector3.Lerp(p0, p1, t), Vector3.Lerp(p1, p2, t), t);
 		}
-		public enum Orientation
-		{
-			Forward,
-			Right,
-			Up
-		}
+		public enum Orientation { FORWARD, RIGHT, UP }
 		public static void CircleLineRenderer(this LineRenderer lr, float radius, Orientation orientation, int quality)
 		{
 			lr.positionCount = quality;
@@ -65,13 +61,13 @@ namespace Delayed_Messaging.Scripts.Utilities
 				var y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 				switch (orientation)
 				{
-					case Orientation.Forward:
+					case Orientation.FORWARD:
 						lr.SetPosition(i, new Vector3(x, y, 0));
 						break;
-					case Orientation.Right:
+					case Orientation.RIGHT:
 						lr.SetPosition(i, new Vector3(x, 0, y));
 						break;
-					case Orientation.Up:
+					case Orientation.UP:
 						lr.SetPosition(i, new Vector3(0, x, y));
 						break;
 					default:
@@ -86,7 +82,6 @@ namespace Delayed_Messaging.Scripts.Utilities
 			lr.SetPosition(0, start.position);
 			lr.SetPosition(1, end.position);
 		}
-
 		public static void DrawDestinationLineRender(this LineRenderer lineRenderer, Seeker seeker)
 		{
 			if (lineRenderer == null || seeker == null || seeker.lastCompletedNodePath == null) return;
@@ -98,7 +93,6 @@ namespace Delayed_Messaging.Scripts.Utilities
 				lineRenderer.SetPosition(i, (Vector3)seeker.lastCompletedNodePath[i].position);
 			}
 		}
-
 		public static void ArcLineRenderer(this LineRenderer lr, float radius, float startAngle, float endAngle,
 			Orientation orientation, int quality)
 		{
@@ -114,13 +108,13 @@ namespace Delayed_Messaging.Scripts.Utilities
 				var y = Mathf.Cos(Mathf.Deg2Rad * angle) * radius;
 				switch (orientation)
 				{
-					case Orientation.Forward:
+					case Orientation.FORWARD:
 						lr.SetPosition(i, new Vector3(x, y, 0));
 						break;
-					case Orientation.Right:
+					case Orientation.RIGHT:
 						lr.SetPosition(i, new Vector3(x, 0, y));
 						break;
-					case Orientation.Up:
+					case Orientation.UP:
 						lr.SetPosition(i, new Vector3(0, x, y));
 						break;
 					default:
@@ -133,11 +127,6 @@ namespace Delayed_Messaging.Scripts.Utilities
 		private const int CircleSegmentCount = 64;
 		private const int CircleVertexCount = CircleSegmentCount + 2;
 		private const int CircleIndexCount = CircleSegmentCount * 3;
-
-		public static class GenerateMesh
-		{
-			
-		}
 		public static Mesh CircleMesh(this float radius, Orientation orientation)
 		{
 			Mesh circle = new Mesh();
@@ -150,13 +139,13 @@ namespace Delayed_Messaging.Scripts.Utilities
 			{
 				switch (orientation)
 				{
-					case Orientation.Forward:
+					case Orientation.FORWARD:
 						vertices.Add(new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0));
 						break;
-					case Orientation.Right:
+					case Orientation.RIGHT:
 						vertices.Add(new Vector3(Mathf.Cos(angle) * radius, 0f, Mathf.Sin(angle) * radius));
 						break;
-					case Orientation.Up:
+					case Orientation.UP:
 						vertices.Add(new Vector3(0f, Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius));
 						break;
 					default:
@@ -204,6 +193,56 @@ namespace Delayed_Messaging.Scripts.Utilities
 			
 			return quad;
 		}
+		/// <summary>
+		/// Creates a mesh with the supplied width and height
+		/// </summary>
+		/// <returns></returns>
+		public static Mesh CubeMesh(float width, float height, Vector3 origin)
+		{
+			Mesh mesh = new Mesh();
+
+			float bottom = origin.y;
+			float negative = -(width * .5f);
+			float positive = width * .5f;
+			
+			Vector3[] vertices = 
+			{
+				new Vector3 (negative, bottom, negative),	// 	0	Front Bottom Left
+				new Vector3 (positive, bottom, negative),	//	1	Front Bottom Right
+				new Vector3 (positive, height, negative),	//	2	Front Top Right
+				new Vector3 (negative, height, negative),	//	3	Front Top Left
+				new Vector3 (negative, height, positive),	//	4	Back Top Left
+				new Vector3 (positive, height, positive),	//	5	Back Top Right
+				new Vector3 (positive, bottom, positive),	//	6	Back Bottom Right
+				new Vector3 (negative, bottom, positive),	//	7	Back Bottom Left
+			};
+			int[] triangles = 
+			{
+				0, 2, 1, //face front
+				0, 3, 2,
+				2, 3, 4, //face top
+				2, 4, 5,
+				1, 2, 5, //face right
+				1, 5, 6,
+				0, 7, 4, //face left
+				0, 4, 3,
+				5, 4, 7, //face back
+				5, 7, 6,
+				0, 6, 7, //face bottom
+				0, 1, 6
+			};
+
+			mesh.Clear ();
+			mesh.vertices = vertices;
+			mesh.triangles = triangles;
+			
+			mesh.Optimize ();
+			mesh.RecalculateBounds();
+			mesh.RecalculateNormals();
+			mesh.RecalculateTangents();
+
+			return mesh;
+		}
 		public static void DrawQuadMesh(this Mesh mesh, Vector3 start, Vector3 end)
 		{
 			Vector3[] vertices = new Vector3[4];
@@ -236,6 +275,7 @@ namespace Delayed_Messaging.Scripts.Utilities
 			mesh.uv = uv;
 			mesh.triangles = triangles;
 			
+			mesh.Optimize ();
 			mesh.RecalculateBounds();
 			mesh.RecalculateNormals();
 			mesh.RecalculateTangents();
@@ -594,7 +634,6 @@ namespace Delayed_Messaging.Scripts.Utilities
 			}
 			return colourMap;
 		}
-
 		/// <summary>
 		/// Takes in two colour maps and outputs a new one with the overlaid colour map being masked using the mask colour
 		/// </summary>

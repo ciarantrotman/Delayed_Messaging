@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -62,40 +63,59 @@ namespace Delayed_Messaging.Scripts.Environment
         /// <summary>
         /// Generates a tile map from a supplied colour map
         /// </summary>
-        /// <param name="environment"></param>
-        /// <param name="noiseMap"></param>
+        /// <param name="resourceRegions"></param>
+        /// <param name="environmentRegions"></param>
+        /// <param name="tileWidth"></param>
         /// <returns></returns>
-        public static List<EnvironmentTileMap.Tile> GenerateTileMap(EnvironmentController.Environment environment, float[,] noiseMap)
+        public static EnvironmentTileMap.Tile[,] GenerateTileMap(EnvironmentController.ResourceRegions[,] resourceRegions, EnvironmentController.EnvironmentRegions environmentRegions, float tileWidth)
         {
-            return null;
-            /*
-            List<EnvironmentTileMap.Tile> tiles = new List<EnvironmentTileMap.Tile>();
+            int width = resourceRegions.GetLength(0);
+            int height = resourceRegions.GetLength(1);
             
-            int width = noiseMap.GetLength(0);
-            int height = noiseMap.GetLength(1);
+            EnvironmentTileMap.Tile[,] tiles = new EnvironmentTileMap.Tile[width, height];
             
             for (int y = 0; y < height; y++) 
             {
                 for (int x = 0; x < width; x++) 
                 {
-                    float currentHeight = noiseMap [x, y];
-                    for (int i = 0; i < environmentDefinition.environmentRegions.Count; i++) 
+                    EnvironmentTileMap.Tile tile = new EnvironmentTileMap.Tile
                     {
-                        if (currentHeight <= environmentDefinition.environmentRegions[i].height) 
-                        {
-                            EnvironmentTileMap.Tile tile = new EnvironmentTileMap.Tile
-                            {
-                                tileIndex = new Vector2(x, y),
-                                tileModel = environmentDefinition.environmentRegions[i].regionTile
-                            };
-                            tiles.Add(tile);
+                        region = resourceRegions[x, y].resourceRegion,
+                        height = resourceRegions[x, y].height
+                    };
+
+                    // Set region specific tile information
+                    switch (resourceRegions[x,y].resourceRegion)
+                    {
+                        case EnvironmentController.ResourceRegions.ResourceRegion.SEA:
+                            tile.tileMaterial = environmentRegions.seaMaterial;
                             break;
-                        }
+                        case EnvironmentController.ResourceRegions.ResourceRegion.SHALLOWS:
+                            tile.tileMaterial = environmentRegions.shallowsMaterial;
+                            break;
+                        case EnvironmentController.ResourceRegions.ResourceRegion.SHORE:
+                            tile.tileMaterial = environmentRegions.shoreMaterial;
+                            break;
+                        case EnvironmentController.ResourceRegions.ResourceRegion.LAND:
+                            tile.tileMaterial = environmentRegions.landMaterial;
+                            break;
+                        case EnvironmentController.ResourceRegions.ResourceRegion.FOOTHILLS:
+                            tile.tileMaterial = environmentRegions.footHillMaterial;
+                            break;
+                        case EnvironmentController.ResourceRegions.ResourceRegion.MOUNTAIN:
+                            tile.tileMaterial = environmentRegions.mountainMaterial;
+                            break;
+                        case EnvironmentController.ResourceRegions.ResourceRegion.SNOW:
+                            tile.tileMaterial = environmentRegions.snowMaterial;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
                     }
+
+                    tiles[x,y] = tile;
                 }
             }
             return tiles;
-        */
         }
     }
 }
