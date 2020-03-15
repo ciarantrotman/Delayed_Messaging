@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Utilities;
 using Pathfinding;
 using UnityEngine;
@@ -11,11 +12,10 @@ namespace Delayed_Messaging.Scripts.Environment
         {
             [Header("Noise Settings")]
             public Noise terrainNoise;
-            public Noise vegetationNoise;
-            
+
             [Header("Environment Settings")]
             public EnvironmentRegions environmentRegions;
-            public EnvironmentResources environmentResources;
+            public List<EnvironmentResources> environmentResources;
             public enum DrawMode
             {
                 NOISE, 
@@ -33,18 +33,33 @@ namespace Delayed_Messaging.Scripts.Environment
         }
         [Serializable] public struct Noise
         {
-            [Header("Noise Settings")] 
-            [Range(1, 500)] public int size;
-            [Range(1, 1000)] public float noiseScale;
-            
             [Header("Noise Seed Reference")] 
             [Range(0, 500)] public int seed;
             public Vector2 offset;
+            
+            [Header("Noise Settings")] 
+            [Range(1, 500)] public int size;
+            [Range(1, 1000)] public float noiseScale;
 
             [Header("Fractional Brownian Motion Settings")] 
             [Range(1, 10)] public int octaves;
             [Range(0, 1)] public float persistence;
             [Range(1, 10)] public float lacunarity;
+        }
+        public struct ResourceRegions
+        {
+            public enum ResourceRegion
+            {
+                SEA,
+                SHALLOWS,
+                SHORE,
+                LAND,
+                FOOTHILLS,
+                MOUNTAIN,
+                SNOW
+            }
+            public ResourceRegion resourceRegion;
+            public float height;
         }
         [Serializable] public struct EnvironmentRegions
         {
@@ -73,13 +88,21 @@ namespace Delayed_Messaging.Scripts.Environment
             [Space(5), Range(0f, 1f)] public float shallowsDepth;
             public Color shallowsColour;
         }
-        [Serializable] public struct EnvironmentResources
+        [Serializable] public class EnvironmentResources
         {
-            [Header("Vegetation Settings")]
-            [Range(0f, 1f)] public float vegetationBorder;
-            [Range(.5f, 0f)] public float vegetationDensity;
-            public Color vegetationColour;
+            [SerializeField] private string resourceName;
+            
+            [Header("Resource Noise Settings")]
+            public ResourceRegions.ResourceRegion resourceRegion;
+            public Noise resourceNoise;
+            public float[,] resourceNoiseMap;
+            [HideInInspector] public Color[] resourceColourMap;
 
+            [Header("Resource Settings")] 
+            public bool contiguous;
+            [Range(0f, 1f)] public float borderThickness;
+            [Range(.5f, 0f)] public float resourceDensity;
+            public Color resourceColour;
         }
         public Environment environment;
         private void Start()
@@ -88,27 +111,37 @@ namespace Delayed_Messaging.Scripts.Environment
         }
         private void GenerateEnvironment() 
         {
+            // Create base terrain height maps and colour maps from textures
             float[,] terrainHeightMap = Draw.Noise.GenerateFractionalBrownianNoise(environment.terrainNoise);
-            
-            float[,] resourceHeightMap = Draw.Noise.GenerateFractionalBrownianNoise(environment.vegetationNoise);
-            resourceHeightMap = Draw.Noise.MaskedNoise(terrainHeightMap, resourceHeightMap, 
-                environment.environmentRegions.landHeight - environment.environmentResources.vegetationBorder,
-                environment.environmentRegions.seaLevel + environment.environmentRegions.shoreDepth + environment.environmentResources.vegetationBorder);
-            resourceHeightMap = Draw.Noise.MaskedNoise(resourceHeightMap, resourceHeightMap, 
-                1 - environment.environmentResources.vegetationDensity, 
-                environment.environmentResources.vegetationDensity);
+            ResourceRegions[,] environmentRegions = Draw.Noise.GenerateEnvironmentResources(environment.terrainNoise, terrainHeightMap, environment.environmentRegions);
+            Color[] terrainColourMap = Draw.ColourMap(environmentRegions, environment.environmentRegions);
 
-            Color[] terrainColourMap = Draw.ColourMap(environment.terrainNoise, environment.environmentRegions, terrainHeightMap);
-            Color[] resourceColourMap = Draw.ColourMap(environment.vegetationNoise, environment.environmentResources, resourceHeightMap);
+            // Loop through all of the available resources to create individual height maps and colour maps
+            foreach (EnvironmentResources environmentResource in environment.environmentResources)
+            {
+                // Generate height map based on the resource specific noise
+                environmentResource.resourceNoiseMap = Draw.Noise.GenerateFractionalBrownianNoise(environmentResource.resourceNoise);
+                // Mask that based on the region that it appears in
+                environmentResource.resourceNoiseMap = Draw.Noise.MaskedNoise(environmentResource, environmentRegions, environment.environmentRegions);
+                // Mask that again based on how dense that resource is, change values based on whether they are contiguous or not
+                float upperLimit = environmentResource.contiguous ? 1 - environmentResource.resourceDensity : 1;
+                float lowerLimit = environmentResource.contiguous ? environmentResource.resourceDensity : 1 - environmentResource.resourceDensity;
+                environmentResource.resourceNoiseMap = Draw.Noise.MaskedNoise(environmentResource.resourceNoiseMap, environmentResource.resourceNoiseMap, upperLimit, lowerLimit);
+                // Create a colour map based on that noise
+                environmentResource.resourceColourMap = Draw.ColourMap(environmentResource);
+                // Mask that over the terrain map
+                terrainColourMap = Draw.OverlayColourMap(environmentResource.resourceNoise, 
+                    terrainColourMap,
+                    environmentResource.resourceColourMap,
+                    new Color(0,0,0,0));
+            }
 
             switch (environment.drawMode)
             {
                 case Environment.DrawMode.NOISE:
-                    EnvironmentGenerator.DrawTexture(environment.resourcesRenderer, EnvironmentGenerator.TextureFromHeightMap(resourceHeightMap));
                     EnvironmentGenerator.DrawTexture(environment.terrainRenderer, EnvironmentGenerator.TextureFromHeightMap(terrainHeightMap));
                     break;
                 case Environment.DrawMode.COLOUR:
-                    EnvironmentGenerator.DrawTexture(environment.resourcesRenderer, EnvironmentGenerator.TextureFromColourMap(resourceColourMap, resourceHeightMap));
                     EnvironmentGenerator.DrawTexture(environment.terrainRenderer, EnvironmentGenerator.TextureFromColourMap(terrainColourMap, terrainHeightMap));
                     break;
                 default:
@@ -142,9 +175,13 @@ namespace Delayed_Messaging.Scripts.Environment
             {
                 environment.environmentRegions.shoreDepth = environment.environmentRegions.landHeight;
             }
-            if (environment.environmentRegions.footHillHeight > environment.environmentRegions.landHeight - environment.environmentRegions.seaLevel)
+            if (environment.environmentRegions.footHillHeight > 1 - environment.environmentRegions.landHeight)
             {
-                environment.environmentRegions.footHillHeight = environment.environmentRegions.landHeight - environment.environmentRegions.seaLevel;
+                environment.environmentRegions.footHillHeight = 1 - environment.environmentRegions.landHeight;
+            }
+            if (environment.environmentRegions.snowHeight > environment.environmentRegions.footHillHeight)
+            {
+                environment.environmentRegions.snowHeight = environment.environmentRegions.footHillHeight;
             }
 
             if (environment.generateEnvironment)

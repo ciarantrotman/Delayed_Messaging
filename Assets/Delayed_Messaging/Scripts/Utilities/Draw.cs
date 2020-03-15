@@ -328,24 +328,147 @@ namespace Delayed_Messaging.Scripts.Utilities
 
 				return noiseMap;
 			}
-			public static float[,] MaskedNoise(float [,] terrain, float [,] resources, float upperLimit, float lowerLimit)
+			/// <summary>
+			/// Creates a height map where each unit in the matrix has an associated land type 
+			/// </summary>
+			/// <param name="terrainNoise"></param>
+			/// <param name="terrainNoiseMap"></param>
+			/// <param name="regions"></param>
+			/// <returns></returns>
+			/// <exception cref="ArgumentOutOfRangeException"></exception>
+			public static EnvironmentController.ResourceRegions[,] GenerateEnvironmentResources(EnvironmentController.Noise terrainNoise, float[,] terrainNoiseMap, EnvironmentController.EnvironmentRegions regions)
 			{
-				float[,] noiseMap = resources;
+				EnvironmentController.ResourceRegions[,] resourceRegions = new EnvironmentController.ResourceRegions[terrainNoise.size, terrainNoise.size];
+
+				for (int y = 0; y < terrainNoise.size; y++) 
+				{
+					for (int x = 0; x < terrainNoise.size; x++) 
+					{
+						float currentHeight = terrainNoiseMap[x, y];
+						resourceRegions[x, y].height = currentHeight;
+
+						EnvironmentController.EnvironmentRegions.EnvironmentRegion regionType =
+							currentHeight <= regions.seaLevel
+								? EnvironmentController.EnvironmentRegions.EnvironmentRegion.WATER
+								: EnvironmentController.EnvironmentRegions.EnvironmentRegion.LAND;
+
+						switch (regionType)
+						{
+							case EnvironmentController.EnvironmentRegions.EnvironmentRegion.LAND:
+								if (currentHeight <= (regions.seaLevel + regions.shoreDepth))
+								{
+									resourceRegions[x, y].resourceRegion = EnvironmentController.ResourceRegions.ResourceRegion.SHORE;
+									break;
+								}
+								if (currentHeight >= regions.landHeight)
+								{
+									if (currentHeight <= regions.landHeight + regions.footHillHeight)
+									{
+										resourceRegions[x, y].resourceRegion = EnvironmentController.ResourceRegions.ResourceRegion.FOOTHILLS;
+										break;
+									}
+									if (currentHeight >= 1 - regions.snowHeight)
+									{
+										resourceRegions[x, y].resourceRegion = EnvironmentController.ResourceRegions.ResourceRegion.SNOW;
+										break;
+									}
+									resourceRegions[x, y].resourceRegion = EnvironmentController.ResourceRegions.ResourceRegion.MOUNTAIN;
+									break;
+								}
+								resourceRegions[x, y].resourceRegion = EnvironmentController.ResourceRegions.ResourceRegion.LAND;
+								break;
+							case EnvironmentController.EnvironmentRegions.EnvironmentRegion.WATER:
+								if (currentHeight <= (regions.seaLevel - regions.shallowsDepth))
+								{
+									resourceRegions[x, y].resourceRegion = EnvironmentController.ResourceRegions.ResourceRegion.SEA;
+									break;
+								}
+								resourceRegions[x, y].resourceRegion = EnvironmentController.ResourceRegions.ResourceRegion.SHALLOWS;
+								break;
+							default:
+								throw new ArgumentOutOfRangeException();
+						}
+					}
+				}
+				return resourceRegions;
+			}
+			/// <summary>
+			/// Masks one noise map with another
+			/// </summary>
+			/// <param name="terrain"></param>
+			/// <param name="resourceHeightMap"></param>
+			/// <param name="upperLimit"></param>
+			/// <param name="lowerLimit"></param>
+			/// <returns></returns>
+			public static float[,] MaskedNoise(float [,] terrain, float [,] resourceHeightMap, float upperLimit, float lowerLimit)
+			{
+				float[,] noiseMap = resourceHeightMap;
 				for (int y = 0; y < terrain.GetLength(0); y++)
 				{
 					for (int x = 0; x < terrain.GetLength(1); x++)
 					{
 						float maskHeight = terrain[x, y];
-						float resourceHeight = resources[x, y];
+						float resourceHeight = resourceHeightMap[x, y];
 						noiseMap[x, y] = WithinLimits(maskHeight, upperLimit, lowerLimit) ? resourceHeight : 0;
 					}
 				}
 				return noiseMap;
 			}
-
-			private static bool WithinLimits(float a, float b, float c)
+			private static bool WithinLimits(float value, float upper, float lower, float border = 0f)
 			{
-				return a <= b && a >= c;
+				return value <= upper - border && value >= lower + border;
+			}
+
+			/// <summary>
+			/// Takes in an indexed environment region and masks values based on the mask
+			/// </summary>
+			/// <param name="environmentResource"></param>
+			/// <param name="indexedTerrainHeightMap"></param>
+			/// <param name="regions"></param>
+			/// <returns></returns>
+			/// <exception cref="ArgumentOutOfRangeException"></exception>
+			public static float[,] MaskedNoise(EnvironmentController.EnvironmentResources environmentResource, EnvironmentController.ResourceRegions[,] indexedTerrainHeightMap, EnvironmentController.EnvironmentRegions regions)
+			{
+				float[,] noiseMap = environmentResource.resourceNoiseMap;
+				
+				for (int y = 0; y < indexedTerrainHeightMap.GetLength(0); y++)
+				{
+					for (int x = 0; x < indexedTerrainHeightMap.GetLength(1); x++)
+					{
+						float maskHeight = indexedTerrainHeightMap[x, y].height;
+						float resourceHeight = environmentResource.resourceNoiseMap[x, y];
+						
+						switch (environmentResource.resourceRegion)
+						{
+							case EnvironmentController.ResourceRegions.ResourceRegion.SEA:
+								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel - regions.shoreDepth, regions.seaLevel, environmentResource.borderThickness) ? resourceHeight : 0;
+								break;
+							case EnvironmentController.ResourceRegions.ResourceRegion.SHALLOWS:
+								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel, regions.seaLevel - regions.shoreDepth, environmentResource.borderThickness) ? resourceHeight : 0;
+								break;
+							case EnvironmentController.ResourceRegions.ResourceRegion.SHORE:
+								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel + regions.shoreDepth, regions.seaLevel, environmentResource.borderThickness) ? resourceHeight : 0;
+								break;
+							case EnvironmentController.ResourceRegions.ResourceRegion.LAND:
+								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel + regions.shoreDepth, regions.landHeight, environmentResource.borderThickness) ? resourceHeight : 0;
+								break;
+							case EnvironmentController.ResourceRegions.ResourceRegion.FOOTHILLS:
+								noiseMap[x, y] = WithinLimits(maskHeight, regions.landHeight + regions.footHillHeight, regions.landHeight, environmentResource.borderThickness) ? resourceHeight : 0;
+								break;
+							case EnvironmentController.ResourceRegions.ResourceRegion.MOUNTAIN:
+								noiseMap[x, y] = WithinLimits(maskHeight, 1 - regions.snowHeight, regions.landHeight + regions.footHillHeight, environmentResource.borderThickness) ? resourceHeight : 0;
+								break;
+							case EnvironmentController.ResourceRegions.ResourceRegion.SNOW:
+								noiseMap[x, y] = WithinLimits(maskHeight, 1, 1 - regions.snowHeight, environmentResource.borderThickness) ? resourceHeight : 0;
+								break;
+							default:
+								break;
+						}
+
+						noiseMap[x, y] = indexedTerrainHeightMap[x,y].resourceRegion == environmentResource.resourceRegion ? resourceHeight : 0;
+					}
+				}
+				return noiseMap;
 			}
 		}
 		/// <summary>
@@ -358,7 +481,7 @@ namespace Delayed_Messaging.Scripts.Utilities
 		public static Color[] ColourMap(EnvironmentController.Noise noise, EnvironmentController.EnvironmentRegions regions, float[,] noiseMap)
 		{
 			Color[] colourMap = new Color[noise.size * noise.size];
-
+			
 			for (int y = 0; y < noise.size; y++) 
 			{
 				for (int x = 0; x < noise.size; x++) 
@@ -412,30 +535,85 @@ namespace Delayed_Messaging.Scripts.Utilities
 			}
 			return colourMap;
 		}
+		public static Color[] ColourMap(EnvironmentController.ResourceRegions[,] resourceRegions, EnvironmentController.EnvironmentRegions regions)
+		{
+			Color[] colourMap = new Color[resourceRegions.GetLength(0) * resourceRegions.GetLength(1)];
+			
+			for (int y = 0; y < resourceRegions.GetLength(0); y++) 
+			{
+				for (int x = 0; x < resourceRegions.GetLength(1); x++) 
+				{
+					Color color;
+					switch (resourceRegions[x,y].resourceRegion)
+					{
+						case EnvironmentController.ResourceRegions.ResourceRegion.SEA:
+							color = regions.seaColour;
+							break;
+						case EnvironmentController.ResourceRegions.ResourceRegion.SHALLOWS:
+							color = regions.shallowsColour;
+							break;
+						case EnvironmentController.ResourceRegions.ResourceRegion.SHORE:
+							color = regions.shoreColour;
+							break;
+						case EnvironmentController.ResourceRegions.ResourceRegion.LAND:
+							color = regions.landColour;
+							break;
+						case EnvironmentController.ResourceRegions.ResourceRegion.FOOTHILLS:
+							color = regions.footHillColour;
+							break;
+						case EnvironmentController.ResourceRegions.ResourceRegion.MOUNTAIN:
+							color = regions.mountainColour;
+							break;
+						case EnvironmentController.ResourceRegions.ResourceRegion.SNOW:
+							color = regions.snowColour;
+							break;
+						default:
+							throw new ArgumentOutOfRangeException();
+					}
+					
+					colourMap[y*resourceRegions.GetLength(0) + x] = color;
+				}
+			}
+			return colourMap;
+		}
 		/// <summary>
 		/// Generates colours for the noise based on the supplied environment and noise map
 		/// </summary>
-		/// <param name="noise"></param>
 		/// <param name="resources"></param>
-		/// <param name="noiseMap"></param>
 		/// <returns></returns>
-		public static Color[] ColourMap(EnvironmentController.Noise noise, EnvironmentController.EnvironmentResources resources, float[,] noiseMap)
+		public static Color[] ColourMap(EnvironmentController.EnvironmentResources resources)
+		{
+			Color[] colourMap = new Color[resources.resourceNoise.size * resources.resourceNoise.size];
+
+			for (int y = 0; y < resources.resourceNoise.size; y++) 
+			{
+				for (int x = 0; x < resources.resourceNoise.size; x++) 
+				{
+					colourMap[y * resources.resourceNoise.size + x] = resources.resourceNoiseMap[x, y] > 0 ? resources.resourceColour : new Color(0, 0, 0, 0);
+				}
+			}
+			return colourMap;
+		}
+
+		/// <summary>
+		/// Takes in two colour maps and outputs a new one with the overlaid colour map being masked using the mask colour
+		/// </summary>
+		/// <param name="noise"></param>
+		/// <param name="baseColourMap"></param>
+		/// <param name="overlayColourMap"></param>
+		/// <param name="maskColour"></param>
+		/// <returns></returns>
+		public static Color[] OverlayColourMap(EnvironmentController.Noise noise, Color[] baseColourMap, Color[] overlayColourMap, Color maskColour)
 		{
 			Color[] colourMap = new Color[noise.size * noise.size];
 
 			for (int y = 0; y < noise.size; y++) 
 			{
-				for (int x = 0; x < noise.size; x++) 
+				for (int x = 0; x < noise.size; x++)
 				{
-					float currentHeight = noiseMap[x, y];
-					Color color = new Color();
-
-					if (currentHeight > 0)
-					{
-						color = resources.vegetationColour;
-					}
-					
-					colourMap[y*noise.size+x] = color;
+					colourMap[y * noise.size + x] = overlayColourMap[y * noise.size + x] == maskColour
+						? baseColourMap[y * noise.size + x]
+						: overlayColourMap[y * noise.size + x];;
 				}
 			}
 			return colourMap;
