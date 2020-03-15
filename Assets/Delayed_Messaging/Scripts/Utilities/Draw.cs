@@ -438,19 +438,21 @@ namespace Delayed_Messaging.Scripts.Utilities
 						float maskHeight = indexedTerrainHeightMap[x, y].height;
 						float resourceHeight = environmentResource.resourceNoiseMap[x, y];
 						
+						noiseMap[x, y] = indexedTerrainHeightMap[x,y].resourceRegion == environmentResource.resourceRegion ? resourceHeight : 0;
+						
 						switch (environmentResource.resourceRegion)
 						{
 							case EnvironmentController.ResourceRegions.ResourceRegion.SEA:
 								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel - regions.shoreDepth, regions.seaLevel, environmentResource.borderThickness) ? resourceHeight : 0;
 								break;
 							case EnvironmentController.ResourceRegions.ResourceRegion.SHALLOWS:
-								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel, regions.seaLevel - regions.shoreDepth, environmentResource.borderThickness) ? resourceHeight : 0;
+								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel, regions.seaLevel - regions.shallowsDepth, environmentResource.borderThickness) ? resourceHeight : 0;
 								break;
 							case EnvironmentController.ResourceRegions.ResourceRegion.SHORE:
 								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel + regions.shoreDepth, regions.seaLevel, environmentResource.borderThickness) ? resourceHeight : 0;
 								break;
 							case EnvironmentController.ResourceRegions.ResourceRegion.LAND:
-								noiseMap[x, y] = WithinLimits(maskHeight, regions.seaLevel + regions.shoreDepth, regions.landHeight, environmentResource.borderThickness) ? resourceHeight : 0;
+								noiseMap[x, y] = WithinLimits(maskHeight, regions.landHeight, regions.seaLevel + regions.shoreDepth, environmentResource.borderThickness) ? resourceHeight : 0;
 								break;
 							case EnvironmentController.ResourceRegions.ResourceRegion.FOOTHILLS:
 								noiseMap[x, y] = WithinLimits(maskHeight, regions.landHeight + regions.footHillHeight, regions.landHeight, environmentResource.borderThickness) ? resourceHeight : 0;
@@ -464,8 +466,6 @@ namespace Delayed_Messaging.Scripts.Utilities
 							default:
 								break;
 						}
-
-						noiseMap[x, y] = indexedTerrainHeightMap[x,y].resourceRegion == environmentResource.resourceRegion ? resourceHeight : 0;
 					}
 				}
 				return noiseMap;

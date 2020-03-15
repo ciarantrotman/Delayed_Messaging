@@ -1296,6 +1296,16 @@ PrefabInstance:
       propertyPath: environment.environmentDimensions.noiseScale
       value: 22.7
       objectReference: {fileID: 0}
+    - target: {fileID: 4045247005948024791, guid: 954f986a7a0f9a64aa492ae8fc7c6339,
+        type: 3}
+      propertyPath: environment.environmentDefinition.seed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045247005948024791, guid: 954f986a7a0f9a64aa492ae8fc7c6339,
+        type: 3}
+      propertyPath: environment.drawMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4100506552262118933, guid: 954f986a7a0f9a64aa492ae8fc7c6339,
         type: 3}
       propertyPath: m_RootOrder

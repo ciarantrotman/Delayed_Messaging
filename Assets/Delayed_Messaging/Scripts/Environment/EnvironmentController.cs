@@ -25,7 +25,6 @@ namespace Delayed_Messaging.Scripts.Environment
 
             [Header("References")] 
             public MeshRenderer terrainRenderer;
-            public MeshRenderer resourcesRenderer;
             public EnvironmentTileMap environmentTileMap;
             
             [Header("Generate Environment")] 
@@ -190,8 +189,6 @@ namespace Delayed_Messaging.Scripts.Environment
                 environment.generateEnvironment = false;
                 return;
             }
-
-            GenerateEnvironment();
         }
     }
 }
