@@ -7,6 +7,7 @@ using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using VR_Prototyping.Scripts;
 using Gizmos = Popcron.Gizmos;
+using Side = Gravity_Gloves.Scripts.Selection.TargetObjects.Side;
 
 namespace Gravity_Gloves.Scripts
 {
@@ -14,7 +15,7 @@ namespace Gravity_Gloves.Scripts
     public class Selection : MonoBehaviour
     {
         private ControllerTransforms controllerTransforms;
-        
+
         [Header("Selection Settings")]
         [Range(0f, 250f)] public float selectionRange = 25f;
         [SerializeField, Range(0f, 180f)] private float selectionConeAngle = 45f;
@@ -22,12 +23,13 @@ namespace Gravity_Gloves.Scripts
 
         public SelectionData rightHand;
         public SelectionData leftHand;
-        
+
         public struct SelectionData
         {
             public SelectionCone primarySelectionCone;
             public SelectionCone preferentialSelectionCone;
             public TargetObjects targetObjects;
+            //public GravityObject targetGravityObject;
 
             public void ConstructSelectionData(float primaryAngle, float preferentialAngle, float range)
             {
@@ -45,61 +47,13 @@ namespace Gravity_Gloves.Scripts
             public void ResetTargetObjects()
             {
                 targetObjects.objects.Clear();
-                targetObjects.target = null;
-            }
-            
-            public void FindTarget(SelectionData selectionData, TargetObjects.Side side)
-            {
-                IEnumerable<GravityObject> targets = selectionData.targetObjects.objects;
-                IEnumerable<GravityObject> gravityObjects = targets as GravityObject[] ?? targets.ToArray();
-                
-                if (!gravityObjects.Any()) return;
-                if (selectionData.targetObjects.target == null)
-                {
-                    selectionData.targetObjects.target = gravityObjects.First();
-                }
-                
-                // Find the closest and the least deviant gravity objects
-                GravityObject closest = Check.FindClosest(gravityObjects, side);
-                GravityObject leastDeviant = Check.FindLeastDeviant(gravityObjects, side);
-
-                // Work out which should be the target
-                bool prefClosest = closest.transform.IsPointInCone(selectionData.preferentialSelectionCone, selectionData.targetObjects.target.GetData(side));
-                bool prefLeastDeviant = leastDeviant.transform.IsPointInCone(selectionData.preferentialSelectionCone, selectionData.targetObjects.target.GetData(side));
-
-                // If both fall within the preferential cone, choose the closest
-                if (prefClosest && prefLeastDeviant)
-                {
-                    targetObjects.target = closest;
-                }
-                // If neither do then choose the least deviant
-                else if (!prefClosest && !prefLeastDeviant)
-                {
-                    // Give preference to deviance, but take into account closer objects
-                    targetObjects.target = leastDeviant.GetData(side).distance <= closest.GetData(side).distance * .5f /*  */ ? leastDeviant : closest;
-                }
-                // Otherwise pick whichever is within the preferential selection cone
-                else if (prefLeastDeviant)
-                {
-                    targetObjects.target = leastDeviant;
-                }
-                else
-                {
-                    targetObjects.target = closest;
-                }
-                
-                targetObjects.target.SetTargetData(targetObjects.target.GetData(side), true);
-
-                Debug.Log(targetObjects.target != null
-                    ? $"{side}: <b>{targetObjects.target.name}</b>: {closest.name}, {prefClosest} | {leastDeviant.name}, {prefLeastDeviant}"
-                    : $"{side}: No Valid Target");
+                //targetObjects.target = null;
             }
         }
-        
         public struct TargetObjects
         {
             public List<GravityObject> objects;
-            public GravityObject target;
+            public GravityObject targetGravityObject;
             public enum Side { RIGHT, LEFT }
         }
         public struct SelectionCone
@@ -138,18 +92,33 @@ namespace Gravity_Gloves.Scripts
 
         private void Update()
         {
+            // Keep the selection cones synced with controllers
             rightHand.SetConesData(controllerTransforms.RightForwardVector(), controllerTransforms.RightPosition());
             leftHand.SetConesData(controllerTransforms.LeftForwardVector(), controllerTransforms.LeftPosition());
             
+            // Reset the target object information
             rightHand.ResetTargetObjects();
             leftHand.ResetTargetObjects();
         }
 
         private void LateUpdate()
         {
-            // Find target objects
-            rightHand.FindTarget(rightHand, TargetObjects.Side.RIGHT);
-            leftHand.FindTarget(leftHand, TargetObjects.Side.LEFT);
+            // Find target objects, has to be in late update to make sure that all targets have been added
+            rightHand.targetObjects.targetGravityObject = Check.FindTarget(rightHand, Side.RIGHT);
+            leftHand.targetObjects.targetGravityObject = Check.FindTarget(leftHand, Side.LEFT);
+        }
+
+        public GravityObject GetTarget(Side side)
+        {
+            switch (side)
+            {
+                case Side.RIGHT:
+                    return rightHand.targetObjects.targetGravityObject;
+                case Side.LEFT:
+                    return leftHand.targetObjects.targetGravityObject;
+                default:
+                    return null;
+            }
         }
 
         private void OnDrawGizmos()
@@ -168,15 +137,15 @@ namespace Gravity_Gloves.Scripts
             Gizmos.Cone(rightCone.position, rightCone.rotation, selectionRange, selectionConeAngle, Color.cyan);
             Gizmos.Cone(rightCone.position, rightCone.rotation, selectionRange, preferentialSelectionConeAngle, Color.blue);
 
-            if (leftHand.targetObjects.target != null)
+            if (leftHand.targetObjects.targetGravityObject != null)
             {
-                Gizmos.Cube(leftHand.targetObjects.target.transform.position, Quaternion.identity, new Vector3(.2f,.2f,.2f), Color.red);
-                Gizmos.Line(leftCone.position, leftHand.targetObjects.target.transform.position, Color.red);
+                Gizmos.Cube(leftHand.targetObjects.targetGravityObject.transform.position, Quaternion.identity, new Vector3(.2f,.2f,.2f), Color.red);
+                Gizmos.Line(leftCone.position, leftHand.targetObjects.targetGravityObject.transform.position, Color.red);
             }
-            if (leftHand.targetObjects.target != null)
+            if (rightHand.targetObjects.targetGravityObject != null)
             {
-                Gizmos.Cube(rightHand.targetObjects.target.transform.position, Quaternion.identity, new Vector3(.2f,.2f,.2f), Color.blue);
-                Gizmos.Line(rightCone.position, rightHand.targetObjects.target.transform.position, Color.blue);
+                Gizmos.Cube(rightHand.targetObjects.targetGravityObject.transform.position, Quaternion.identity, new Vector3(.2f,.2f,.2f), Color.blue);
+                Gizmos.Line(rightCone.position, rightHand.targetObjects.targetGravityObject.transform.position, Color.blue);
             }
         }
     }

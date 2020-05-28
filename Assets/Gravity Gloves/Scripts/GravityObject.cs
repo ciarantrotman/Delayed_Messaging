@@ -1,16 +1,18 @@
 ﻿using System;
-using Delayed_Messaging.Scripts.Objects;
+using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
-using VR_Prototyping.Scripts.Utilities;
+using Side = Gravity_Gloves.Scripts.Selection.TargetObjects.Side;
 
 namespace Gravity_Gloves.Scripts
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class GravityObject : MonoBehaviour
     {
         private Selection selection;
         private Outline outline;
+        private Rigidbody gravityRigidBody;
 
         public GravityObjectData leftHandData;
         public GravityObjectData rightHandData;
@@ -19,7 +21,7 @@ namespace Gravity_Gloves.Scripts
         {
             public float deviation;
             public float distance;
-            public bool target;
+            public bool isTarget;
 
             public void SetData(float dev, float dis)
             {
@@ -28,19 +30,29 @@ namespace Gravity_Gloves.Scripts
             }
         }
         
-        public void SetTargetData(GravityObjectData data, bool state)
-        {
-            data.target = state;
-            ToggleOutline(state);
-        }
-        
-        public GravityObjectData GetData(Selection.TargetObjects.Side side)
+        public void SetTargetData(Side side, bool state)
         {
             switch (side)
             {
-                case Selection.TargetObjects.Side.RIGHT:
+                case Side.RIGHT:
+                    rightHandData.isTarget = state;
+                    break;
+                case Side.LEFT:
+                    leftHandData.isTarget = state;
+                    break;
+                default:
+                    break;
+            }
+            ToggleOutline(state);
+        }
+        
+        public GravityObjectData GetData(Side side)
+        {
+            switch (side)
+            {
+                case Side.RIGHT:
                     return rightHandData;
-                case Selection.TargetObjects.Side.LEFT:
+                case Side.LEFT:
                     return leftHandData;
                 default:
                     return new GravityObjectData();
@@ -57,14 +69,20 @@ namespace Gravity_Gloves.Scripts
         {
             ResetTargetState();
             
-            if (selection.leftHand.primarySelectionCone.Intersection(transform, leftHandData))
-            {
-                selection.leftHand.targetObjects.objects.Add(this);
-            }
-            if (selection.rightHand.primarySelectionCone.Intersection(transform, rightHandData))
-            {
-                selection.rightHand.targetObjects.objects.Add(this);
-            }
+            CheckIntersection(selection.leftHand, leftHandData);
+            CheckIntersection(selection.rightHand, rightHandData);
+        }
+
+        private void CheckIntersection(Selection.SelectionData selectionData, GravityObjectData data)
+        {
+            if (!selectionData.primarySelectionCone.Intersection(transform, data)) return;
+            selectionData.targetObjects.objects.Add(this);
+        }
+
+        public void LaunchGravityObject(Vector3 vector, float force = 20f)
+        {
+            Vector3 f = vector * force;
+            gravityRigidBody.AddForce(f, ForceMode.Impulse);
         }
 
         private void ToggleOutline(bool state)
@@ -80,6 +98,9 @@ namespace Gravity_Gloves.Scripts
                 if (rootGameObject.name != "[Experimental Player]") continue;
                 selection = rootGameObject.GetComponent<Selection>();
             }
+
+            gravityRigidBody = GetComponent<Rigidbody>();
+            
             if (selection != null) return;
             Debug.LogError("No <b>Selection Component</b> was Assigned");
         }
@@ -87,14 +108,15 @@ namespace Gravity_Gloves.Scripts
         {
             outline = transform.AddOrGetOutline();
             outline.OutlineWidth = 10;
+            outline.OutlineColor = Color.white;
             outline.enabled = false;
             outline.precomputeOutline = true;
         }
 
         private void ResetTargetState()
         {
-            leftHandData.target = false;
-            rightHandData.target = false;
+            leftHandData.isTarget = false;
+            rightHandData.isTarget = false;
             outline.enabled = false;
         }
     }

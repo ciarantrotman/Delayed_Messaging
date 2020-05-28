@@ -1,8 +1,7 @@
-﻿using System;
-using Delayed_Messaging.Scripts.Player;
+﻿using Delayed_Messaging.Scripts.Player;
 using UnityEngine;
-using VR_Prototyping.Scripts;
 using Gizmos = Popcron.Gizmos;
+using Side = Gravity_Gloves.Scripts.Selection.TargetObjects.Side;
 
 namespace Gravity_Gloves.Scripts
 {
@@ -11,9 +10,9 @@ namespace Gravity_Gloves.Scripts
     {
         private ControllerTransforms controllerTransforms;
         private Selection selection;
-     
-        [Header("Grab Gesture Detection Settings")]
-        [Range(0f, 1f)] public float grabGestureDistanceThreshold = .15f;
+
+        private const float GrabGestureDistanceThreshold = .125f;
+        private const float GrabGestureDetectionTimeout = 2f;
 
         public GrabGesture rightGrab;
         public GrabGesture leftGrab;
@@ -26,47 +25,57 @@ namespace Gravity_Gloves.Scripts
 
             private float startGrabTime;
             public Vector3 startGrabPosition;
-            
-            private float endGrabTime;
-            public Vector3 endGrabPosition;
+            private Vector3 endGrabPosition;
+            private Vector3 grabDirection;
 
-            public Vector3 grabDirection;
-            public float gestureDistance;
+            private GravityObject targetGravityObject;
 
-            public void CheckState(bool current, Vector3 position)
+            public void CheckState(bool current, Vector3 position, Side side, Selection selection)
             {
+                // Set the current grab states
                 SetCurrentState(current);
-                if (currentGrabState && !previousGrabState)
+                
+                switch (detecting)
                 {
-                    GrabStart(position);
-                    return;
-                }
-                if (detecting && !currentGrabState && previousGrabState)
-                {
-                    detecting = false;
-                }
-
-                if (!detecting) return;
-                if (Vector3.Distance(position, startGrabPosition) >= gestureDistance)
-                {
-                    endGrabTime = Time.time;
-                    endGrabPosition = position;
-                    GrabGestureDetected();
+                    case false when currentGrabState && !previousGrabState:
+                        // When you grab
+                        GrabStart(position, selection, side);
+                        return;
+                    case true when !currentGrabState && previousGrabState && Vector3.Distance(position, startGrabPosition) < GrabGestureDistanceThreshold:
+                        // You let go and you haven't triggered the gesture
+                        detecting = false;
+                        return;
+                    case true when Time.time - startGrabTime >= GrabGestureDetectionTimeout:
+                        // The gesture detection has timed out and you haven't triggered the gesture
+                        detecting = false;
+                        return;
+                    case true when Vector3.Distance(position, startGrabPosition) >= GrabGestureDistanceThreshold:
+                        GrabGestureDetected(position);
+                        return;
+                    default:
+                        return;
                 }
             }
             private void SetCurrentState(bool state)
             {
                 currentGrabState = state;
             }
-            private void GrabStart(Vector3 position)
+            private void GrabStart(Vector3 position, Selection selection, Side side)
             {
+                if (selection.GetTarget(side) == null) return;
                 startGrabTime = Time.time;
                 startGrabPosition = position;
                 detecting = true;
+                targetGravityObject = selection.GetTarget(side);
             }
-            private void GrabGestureDetected()
+            private void GrabGestureDetected(Vector3 position)
             {
-                grabDirection = startGrabPosition - endGrabPosition;
+                endGrabPosition = position;
+                grabDirection = endGrabPosition - startGrabPosition;
+                detecting = false;
+                targetGravityObject.LaunchGravityObject(grabDirection);
+
+                targetGravityObject = null;
             }
         }
 
@@ -78,8 +87,8 @@ namespace Gravity_Gloves.Scripts
 
         private void Update()
         {
-            rightGrab.CheckState(controllerTransforms.RightGrab(), controllerTransforms.RightPosition());
-            leftGrab.CheckState(controllerTransforms.LeftGrab(), controllerTransforms.LeftPosition());
+            rightGrab.CheckState(controllerTransforms.RightGrab(), controllerTransforms.RightPosition(), Side.RIGHT, selection);
+            leftGrab.CheckState(controllerTransforms.LeftGrab(), controllerTransforms.LeftPosition(), Side.LEFT, selection);
         }
 
         private void LateUpdate()
@@ -101,10 +110,10 @@ namespace Gravity_Gloves.Scripts
 
         private void DrawGizmos()
         {
-            Gizmos.Sphere(leftGrab.startGrabPosition, grabGestureDistanceThreshold, Color.green);
+            Gizmos.Sphere(leftGrab.startGrabPosition, GrabGestureDistanceThreshold, Color.green);
             Gizmos.Line(leftGrab.startGrabPosition, controllerTransforms.LeftPosition(), Color.green);
             
-            Gizmos.Sphere(rightGrab.startGrabPosition, grabGestureDistanceThreshold, Color.yellow);
+            Gizmos.Sphere(rightGrab.startGrabPosition, GrabGestureDistanceThreshold, Color.yellow);
             Gizmos.Line(rightGrab.startGrabPosition, controllerTransforms.RightPosition(), Color.yellow);
         }
     }
