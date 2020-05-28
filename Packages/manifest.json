@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.popcron.gizmos": "https://github.com/popcron/gizmos.git",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ide.rider": "1.1.4",
     "com.unity.ide.vscode": "1.1.4",
@@ -44,5 +45,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.popcron.gizmos": {
+      "revision": "HEAD",
+      "hash": "41dfa1712443598c7f8538c7997994075db5f5fd"
+    }
   }
 }

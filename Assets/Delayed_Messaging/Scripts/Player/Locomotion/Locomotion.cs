@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Player.Locomotion;
 using Delayed_Messaging.Scripts.Utilities;
 using DG.Tweening;

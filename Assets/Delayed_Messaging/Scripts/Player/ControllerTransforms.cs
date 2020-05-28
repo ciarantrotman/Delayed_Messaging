@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Events;
 using Valve.VR;
-using VR_Prototyping.Scripts.Utilities;
 
-namespace VR_Prototyping.Scripts
+namespace Delayed_Messaging.Scripts.Player
 {
     public class ControllerTransforms : MonoBehaviour
     {

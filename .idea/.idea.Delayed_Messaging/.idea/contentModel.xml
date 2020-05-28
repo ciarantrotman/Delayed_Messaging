@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\ciara\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\ciara\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Delayed_Messaging.615601211.00" t="ExcludeRecursive" />
+    <e p="C:\Users\ciara\AppData\local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\ciara\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_Delayed_Messaging.615601211.00" t="ExcludeRecursive" />
     <e p="S:\Personal\Projects\Delayed Messaging\Delayed_Messaging" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -460,6 +460,51 @@
               <e p="Setup.cs" t="Include" />
               <e p="SortBy.cs" t="Include" />
             </e>
+          </e>
+        </e>
+        <e p="Gravity Gloves" t="Include">
+          <e p="Plugins" t="Include">
+            <e p="Inverse Kinematics" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="InverseKinematics.cs" t="Include" />
+              </e>
+            </e>
+            <e p="VRArmIK" t="Include">
+              <e p="Demo" t="Include">
+                <e p="ArmRendererScaler.cs" t="Include" />
+              </e>
+              <e p="LICENSE.txt" t="Include" />
+              <e p="Materials" t="Include">
+                <e p="AlwaysOnTop.shader" t="Include" />
+              </e>
+              <e p="readme.txt" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="ArmTransforms.cs" t="Include" />
+                <e p="AvatarVRTrackingReferences.cs" t="Include" />
+                <e p="LocalVrTrackingInput.cs" t="Include" />
+                <e p="PoseManager.cs" t="Include" />
+                <e p="ShoulderPoser.cs" t="Include" />
+                <e p="ShoulderTransforms.cs" t="Include" />
+                <e p="StaticOffsetTransform.cs" t="Include" />
+                <e p="Utils" t="Include">
+                  <e p="Editor" t="Include">
+                    <e p="LabelOverrideInspector.cs" t="Include" />
+                    <e p="ReadOnlyInspector.cs" t="Include" />
+                  </e>
+                  <e p="Extensions.cs" t="Include" />
+                  <e p="InspectorAttributes.cs" t="Include" />
+                  <e p="VectorHelpers.cs" t="Include" />
+                </e>
+                <e p="VRArmIK.cs" t="Include" />
+                <e p="VRTrackingReferences.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="GestureDetector.cs" t="Include" />
+            <e p="GravityObject.cs" t="Include" />
+            <e p="InverseKinematicRig.cs" t="Include" />
+            <e p="Selection.cs" t="Include" />
           </e>
         </e>
         <e p="SteamVR" t="Include">

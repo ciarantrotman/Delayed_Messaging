@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Delayed_Messaging.Scripts.Interaction.Cursors;
 using Delayed_Messaging.Scripts.Objects;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Player.Selection;
+using Gravity_Gloves.Scripts;
 using UnityEngine;
 using VR_Prototyping.Scripts;
+using Selection = Delayed_Messaging.Scripts.Player.Selection.Selection;
 
 namespace Delayed_Messaging.Scripts.Utilities
 {
@@ -538,6 +541,87 @@ namespace Delayed_Messaging.Scripts.Utilities
             largestValue = z > largestValue ? z : largestValue;
 
             return largestValue;
+        }
+        /// <summary>
+        /// Utility which checks whether a given point lies within a cone
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsPointInCone(this Transform point, Vector3 coneAxis, Vector3 coneTipPosition, float coneAngle, float coneHeight = Single.PositiveInfinity)
+        {
+            // Normalise the two vectors
+            Vector3 axis = coneAxis.normalized;
+            Vector3 pointVector = (point.position - coneTipPosition).normalized;
+            
+            // Use the dot product to calculate the angle between them
+            float dotProduct = Vector3.Dot(pointVector, axis);
+            float angle = Mathf.Acos(dotProduct);
+            float coneRadians = Mathf.Lerp(0, coneAngle, .5f) * Mathf.Deg2Rad;
+            
+            // Check against the height of the cone
+            bool heightCheck = Vector3.Distance(point.position, coneTipPosition) <= coneHeight;
+            
+            // If the angle is smaller than the cone radians, then it is within the cone
+            return angle < coneRadians && heightCheck;
+        }
+        public static bool IsPointInCone(this Transform point, Gravity_Gloves.Scripts.Selection.SelectionCone selectionCone, GravityObject.GravityObjectData gravityObjectData)
+        {
+            // Normalise the two vectors
+            Vector3 axis = selectionCone.coneAxis;
+            Vector3 pointVector = (point.position - selectionCone.coneTipPosition).normalized;
+            
+            // Use the dot product to calculate the angle between them
+            float dotProduct = Vector3.Dot(pointVector, axis);
+            float angle = Mathf.Acos(dotProduct);
+            float coneRadians = Mathf.Lerp(0, selectionCone.coneAngle, .5f) * Mathf.Deg2Rad;
+            float distance = Vector3.Distance(point.position, selectionCone.coneTipPosition);
+
+            // Check against the height of the cone
+            bool heightCheck = distance <= selectionCone.coneHeight;
+            
+            // Set Gravity Object Data
+            gravityObjectData.SetData(angle, distance);
+            
+            // If the angle is smaller than the cone radians, then it is within the cone
+            return angle < coneRadians && heightCheck;
+        }
+        public static GravityObject FindClosest(IEnumerable<GravityObject> targets, Gravity_Gloves.Scripts.Selection.TargetObjects.Side side)
+        {
+            GravityObject gravityObject = null;
+            IEnumerable<GravityObject> gravityObjects = targets as GravityObject[] ?? targets.ToArray();
+                
+            // Make sure you're comparing against something
+            if (gravityObjects.Any())
+            {
+                gravityObject = gravityObjects.First();
+            }
+            foreach (GravityObject target in gravityObjects)
+            {
+                if (gravityObject.GetData(side).distance < target.GetData(side).distance)
+                {
+                    gravityObject = target;
+                }
+            }
+            return gravityObject;
+        }
+
+        public static GravityObject FindLeastDeviant(IEnumerable<GravityObject> targets, Gravity_Gloves.Scripts.Selection.TargetObjects.Side side)
+        {
+            GravityObject gravityObject = null;
+            IEnumerable<GravityObject> gravityObjects = targets as GravityObject[] ?? targets.ToArray();
+                
+            // Make sure you're comparing against something
+            if (gravityObjects.Any())
+            {
+                gravityObject = gravityObjects.First();
+            }
+            foreach (GravityObject target in gravityObjects)
+            {
+                if (gravityObject.GetData(side).deviation < target.GetData(side).deviation)
+                {
+                    gravityObject = target;
+                }
+            }
+            return gravityObject;
         }
     }
 }
