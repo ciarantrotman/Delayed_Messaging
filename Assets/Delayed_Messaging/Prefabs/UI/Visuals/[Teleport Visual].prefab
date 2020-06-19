@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5656354663593816340}
   - component: {fileID: 6849235911013895591}
   m_Layer: 0
-  m_Name: Teleport_Visual
+  m_Name: '[Teleport Visual]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1827,7 +1827,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 21d9fb6a022cced4a8d9cd90eb2fbae4, type: 2}
+      objectReference: {fileID: 2100000, guid: 03b1b698a630ccf40b3a90e00f4f0ca6, type: 2}
     - target: {fileID: 2300000, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_ReceiveShadows
       value: 0
@@ -1839,7 +1839,7 @@ PrefabInstance:
     - target: {fileID: 2300002, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 21d9fb6a022cced4a8d9cd90eb2fbae4, type: 2}
+      objectReference: {fileID: 2100000, guid: 03b1b698a630ccf40b3a90e00f4f0ca6, type: 2}
     - target: {fileID: 2300002, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_ReceiveShadows
       value: 0
@@ -1851,11 +1851,11 @@ PrefabInstance:
     - target: {fileID: 2300006, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 21d9fb6a022cced4a8d9cd90eb2fbae4, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2300010, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 21d9fb6a022cced4a8d9cd90eb2fbae4, type: 2}
+      objectReference: {fileID: 2100000, guid: 03b1b698a630ccf40b3a90e00f4f0ca6, type: 2}
     - target: {fileID: 2300010, guid: 64ab2ac82d65cea4ca4e293cb5d5fcc5, type: 3}
       propertyPath: m_ReceiveShadows
       value: 0

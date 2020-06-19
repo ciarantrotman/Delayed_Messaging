@@ -1,5 +1,6 @@
 ﻿using System;
 using Delayed_Messaging.Scripts.Utilities;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
@@ -16,7 +17,9 @@ namespace Gravity_Gloves.Scripts
 
         public GravityObjectData leftHandData;
         public GravityObjectData rightHandData;
-        
+
+        private const float DistanceConstantScalar = 3f;
+
         public struct GravityObjectData
         {
             public float deviation;
@@ -79,10 +82,33 @@ namespace Gravity_Gloves.Scripts
             selectionData.targetObjects.objects.Add(this);
         }
 
-        public void LaunchGravityObject(Vector3 vector, float force = 20f)
+        public void LaunchGravityObject(Vector3 vector, Vector3 handPosition)
         {
-            Vector3 f = vector * force;
-            gravityRigidBody.AddForce(f, ForceMode.Impulse);
+            // How far does the object need to travel?
+            float distance = Vector3.Distance(transform.position, handPosition) + DistanceConstantScalar;
+            
+            // How much force needs to be added to the object to make it travel that far
+            float distanceModifier = (distance * (Mathf.Pow(gravityRigidBody.mass, 1)));
+            
+            // Add that force to the direction vector
+            Vector3 appliedForce = vector * distanceModifier;
+            
+            // Apply that force to the rigid body
+            gravityRigidBody.AddForce(appliedForce, ForceMode.Impulse);
+        }
+
+        public void WarpToHand(Transform hand)
+        {
+            // Stop it from moving
+            gravityRigidBody.velocity = Vector3.zero;
+            
+            // Warp the object to the hand
+            gravityRigidBody.DOMove(hand.position, .25f).OnComplete(()=>HoldGravityObject(hand));
+        }
+
+        public void HoldGravityObject(Transform hand)
+        {
+            
         }
 
         private void ToggleOutline(bool state)

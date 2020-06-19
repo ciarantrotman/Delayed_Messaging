@@ -21,13 +21,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Prefabs/[Gravity Object].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Prefabs/[Gravity Object].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/UI/Visuals/[Teleport Visual].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/UI/Visuals/[Teleport Visual].prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scenes/[Experimentation Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Scenes/[Experimentation Scene].unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,12 +169,12 @@
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Inverse Kinematic Rig.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/InverseKinematicRig.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
-        <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" />
+        <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" />
+        <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
       </list>
     </option>
   </component>
@@ -245,7 +243,8 @@
       <workItem from="1584296203485" duration="12061000" />
       <workItem from="1590501337283" duration="1996000" />
       <workItem from="1590504149462" duration="36872000" />
-      <workItem from="1590681727409" duration="14838000" />
+      <workItem from="1590681727409" duration="28606000" />
+      <workItem from="1592569865793" duration="643000" />
     </task>
     <servers />
   </component>

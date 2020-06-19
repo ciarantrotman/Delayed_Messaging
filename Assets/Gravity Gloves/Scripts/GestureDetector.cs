@@ -14,6 +14,8 @@ namespace Gravity_Gloves.Scripts
         private const float GrabGestureDistanceThreshold = .125f;
         private const float GrabGestureDetectionTimeout = 2f;
 
+        private const float CatchGestureDistanceThreshold = .35f;
+
         public GrabGesture rightGrab;
         public GrabGesture leftGrab;
         
@@ -22,6 +24,7 @@ namespace Gravity_Gloves.Scripts
             public bool previousGrabState;
             public bool currentGrabState;
             private bool detecting;
+            private bool catching;
 
             private float startGrabTime;
             public Vector3 startGrabPosition;
@@ -30,10 +33,19 @@ namespace Gravity_Gloves.Scripts
 
             private GravityObject targetGravityObject;
 
-            public void CheckState(bool current, Vector3 position, Side side, Selection selection)
+            public void CheckState(bool current, Vector3 position, Side side, Selection selection, Transform hand)
             {
                 // Set the current grab states
                 SetCurrentState(current);
+
+                if (catching)
+                {
+                    if (currentGrabState && !previousGrabState && Vector3.Distance(position, targetGravityObject.transform.position) < CatchGestureDistanceThreshold)
+                    {
+                        targetGravityObject.WarpToHand(hand);
+                        catching = false;
+                    }
+                }
                 
                 switch (detecting)
                 {
@@ -73,9 +85,8 @@ namespace Gravity_Gloves.Scripts
                 endGrabPosition = position;
                 grabDirection = endGrabPosition - startGrabPosition;
                 detecting = false;
-                targetGravityObject.LaunchGravityObject(grabDirection);
-
-                targetGravityObject = null;
+                targetGravityObject.LaunchGravityObject(grabDirection.normalized, endGrabPosition);
+                catching = true;
             }
         }
 
@@ -87,8 +98,8 @@ namespace Gravity_Gloves.Scripts
 
         private void Update()
         {
-            rightGrab.CheckState(controllerTransforms.RightGrab(), controllerTransforms.RightPosition(), Side.RIGHT, selection);
-            leftGrab.CheckState(controllerTransforms.LeftGrab(), controllerTransforms.LeftPosition(), Side.LEFT, selection);
+            rightGrab.CheckState(controllerTransforms.RightGrab(), controllerTransforms.RightPosition(), Side.RIGHT, selection, controllerTransforms.RightTransform());
+            leftGrab.CheckState(controllerTransforms.LeftGrab(), controllerTransforms.LeftPosition(), Side.LEFT, selection, controllerTransforms.LeftTransform());
         }
 
         private void LateUpdate()
