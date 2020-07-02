@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/UI/Visuals/[Teleport Visual].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/UI/Visuals/[Teleport Visual].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scenes/[Experimentation Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Scenes/[Experimentation Scene].unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Draw.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Draw.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +37,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Resources/Resource.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/ResourceGathererInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Misc/ThreadControlQueue.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Space Objects/Screen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/PandaBehaviour/Examples/02_PlayTag/Assets/Computer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Units/ResourceGatherer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Space Objects/SpaceObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Misc/Draw.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/PandaBehaviour/Examples/02_PlayTag/Assets/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/Cursors/CastCursor.cs" root0="FORCE_HIGHLIGHTING" />
@@ -73,6 +73,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseObjectInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Legacy/MiscLegacy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Serialization/JsonSerializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Space.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/ResourceDepotInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Input/SteamVR_Action_Boolean.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/97/599cc6a2/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
@@ -83,8 +84,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/PlayerClass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/a5/76c18145/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Behaviors/AIDestinationSetter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Interfaces.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/c7/7cd62c67/Bounds.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/UserInterface.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/SpaceManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Modifiers/AlternativePath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Gravity Gloves/Scenes/[Experimentation Scene].unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseInterface.cs" root0="FORCE_HIGHLIGHTING" />
@@ -124,12 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/BaseClass.cs" />
-        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/BaseObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/VR_Prototyping/Scripts/Selection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/SetTransform.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/Base.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/ResourceGathererInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/ResourceInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/Interface Building Blocks/FrameButton.cs" />
@@ -159,7 +156,6 @@
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/Structure.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentGeneration.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentTilemap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Draw.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentController.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentTileMap.cs" />
@@ -171,10 +167,17 @@
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" />
-        <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/SpaceObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Draw.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space Objects/Screen.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Interfaces.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space Objects/SpaceObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/SpaceManager.cs" />
       </list>
     </option>
   </component>
@@ -192,6 +195,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
@@ -244,7 +248,8 @@
       <workItem from="1590501337283" duration="1996000" />
       <workItem from="1590504149462" duration="36872000" />
       <workItem from="1590681727409" duration="28606000" />
-      <workItem from="1592569865793" duration="643000" />
+      <workItem from="1592569865793" duration="1461000" />
+      <workItem from="1592572648171" duration="10051000" />
     </task>
     <servers />
   </component>

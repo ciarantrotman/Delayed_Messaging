@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Delayed_Messaging.Scripts.Objects.Units;
+﻿using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
-using VR_Prototyping.Scripts;
 using Gizmos = Popcron.Gizmos;
 using Side = Gravity_Gloves.Scripts.Selection.TargetObjects.Side;
 
