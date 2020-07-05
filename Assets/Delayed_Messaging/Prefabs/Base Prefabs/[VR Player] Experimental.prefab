@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &2130687678218771625
+--- !u!114 &696707681691253325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,13 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6027902236920901800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73f65862037a37147ad9a9c7c4cea150, type: 3}
+  m_Script: {fileID: 11500000, guid: 7193251e363c75a4e9a92680aa966f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectionRange: 3
-  selectionConeAngle: 30
-  preferentialSelectionConeAngle: 5
---- !u!114 &6913899939254078023
+  waist: {fileID: 0}
+  leftAnchor: {fileID: 0}
+  rightAnchor: {fileID: 0}
+  controller: {fileID: 0}
+  height: 0.75
+  displacement: 0
+  offset: 0.2
+--- !u!114 &1302382774784549039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24,9 +28,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6027902236920901800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5803544cf1e8ddc4b86a106ac94a36fd, type: 3}
+  m_Script: {fileID: 11500000, guid: cd0595dc2fa28454386bd3949bb70d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchSpeed: 1
+  grappleVisualMaterial: {fileID: 2100000, guid: 94d17135e5aa81743bce8712fc5327bb,
+    type: 2}
+  controller: {fileID: 0}
+  launchAnchor: {fileID: 0}
+  grappleVisual: {fileID: 0}
 --- !u!1001 &1578893831554148188
 PrefabInstance:
   m_ObjectHideFlags: 0
