@@ -596,6 +596,27 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 696707681691253325, guid: 192d9da0486dace46a65d61f74c74d25,
+        type: 3}
+      propertyPath: height
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 696707681691253325, guid: 192d9da0486dace46a65d61f74c74d25,
+        type: 3}
+      propertyPath: offset
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302382774784549039, guid: 192d9da0486dace46a65d61f74c74d25,
+        type: 3}
+      propertyPath: launchSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1302382774784549039, guid: 192d9da0486dace46a65d61f74c74d25,
+        type: 3}
+      propertyPath: hook
+      value: 
+      objectReference: {fileID: 7502253179798431238, guid: a918bcd0256b5ff479274f0d36eff59c,
+        type: 3}
     - target: {fileID: 1500517236849690852, guid: 192d9da0486dace46a65d61f74c74d25,
         type: 3}
       propertyPath: m_LocalRotation.x

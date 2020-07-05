@@ -55,6 +55,16 @@ namespace Grapple.Scripts
             SetAnchorOffset(configuration);
         }
 
+        public Vector3 RightAnchor()
+        {
+            return rightAnchor.transform.position;
+        }
+        
+        public Vector3 LeftAnchor()
+        {
+            return leftAnchor.transform.position;
+        }
+
         private void SetAnchorOffset(Configuration config)
         {
             switch (config)
