@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7193251e363c75a4e9a92680aa966f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waist: {fileID: 0}
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}
   controller: {fileID: 0}
@@ -32,11 +31,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchSpeed: 1
+  hook: {fileID: 0}
   grappleVisualMaterial: {fileID: 2100000, guid: 94d17135e5aa81743bce8712fc5327bb,
     type: 2}
-  controller: {fileID: 0}
-  launchAnchor: {fileID: 0}
-  grappleVisual: {fileID: 0}
+  rightReferenceFrame:
+    grappleVisual: {fileID: 0}
+    referenceFrame: {fileID: 0}
+    start: {fileID: 0}
+    middle: {fileID: 0}
+    end: {fileID: 0}
+    ballisticData:
+      start: {x: 0, y: 0, z: 0}
+      middle: {x: 0, y: 0, z: 0}
+      end: {x: 0, y: 0, z: 0}
+      initialVelocity: {x: 0, y: 0, z: 0}
+      initialHeight: 0
+      theta: 0
+      range: 0
+      height: 0
+      flight: 0
+      terminalVelocity: 0
+      thetaVector: {x: 0, y: 0, z: 0}
+      horizontalComponent: 0
+      verticalComponent: 0
+      rise: 0
+      fall: 0
+    ballisticVariables:
+      handPosition: {x: 0, y: 0, z: 0}
+      anchorPosition: {x: 0, y: 0, z: 0}
+      speedModifier: 0
+      launchSpeed: 0
+  leftReferenceFrame:
+    grappleVisual: {fileID: 0}
+    referenceFrame: {fileID: 0}
+    start: {fileID: 0}
+    middle: {fileID: 0}
+    end: {fileID: 0}
+    ballisticData:
+      start: {x: 0, y: 0, z: 0}
+      middle: {x: 0, y: 0, z: 0}
+      end: {x: 0, y: 0, z: 0}
+      initialVelocity: {x: 0, y: 0, z: 0}
+      initialHeight: 0
+      theta: 0
+      range: 0
+      height: 0
+      flight: 0
+      terminalVelocity: 0
+      thetaVector: {x: 0, y: 0, z: 0}
+      horizontalComponent: 0
+      verticalComponent: 0
+      rise: 0
+      fall: 0
+    ballisticVariables:
+      handPosition: {x: 0, y: 0, z: 0}
+      anchorPosition: {x: 0, y: 0, z: 0}
+      speedModifier: 0
+      launchSpeed: 0
 --- !u!1001 &1578893831554148188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -512,6 +563,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473554891637304817, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473554891637304817, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7473554891637304831, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}

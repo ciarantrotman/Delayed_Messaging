@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using Delayed_Messaging.Scripts.Environment;
+using Grapple.Scripts;
 using Pathfinding;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -21,6 +22,33 @@ namespace Delayed_Messaging.Scripts.Utilities
 				var point = GetPoint(p0, p1, p2, i / (float) segments);
 				lr.SetPosition(i, point);
 			}
+		}
+		private const float G = 9.81f;
+		public static void BallisticTrajectory(this LineRenderer lineRenderer, BallisticTrajectory.BallisticTrajectoryData data, int segments = 40)
+		{
+			lineRenderer.positionCount = segments;
+			lineRenderer.useWorldSpace = false;
+			
+			for (int i = 0; i < segments; i++)
+			{
+				float timeStep = GetTimeStep(data.flight, i / (float) segments);
+				lineRenderer.SetPosition(i, new Vector3(
+					0, 
+					GetHeight(data, timeStep), 
+					GetRange(data, timeStep)));
+			}
+		}
+		private static float GetTimeStep(float flight, float step)
+		{
+			return Mathf.Lerp(0, flight, step);
+		}
+		private static float GetHeight(BallisticTrajectory.BallisticTrajectoryData data, float time)
+		{
+			return (data.height = data.initialHeight + (data.verticalComponent * time) - 0.5f * G * Mathf.Pow(time, 2)) - data.initialHeight;
+		}
+		private static float GetRange(BallisticTrajectory.BallisticTrajectoryData data, float time)
+		{
+			return Mathf.Lerp(0, data.range, time);
 		}
 		public static void DrawLineRenderer(this LineRenderer lr, GameObject focus, GameObject midpoint, Transform controller, GameObject target, int quality)
 		{

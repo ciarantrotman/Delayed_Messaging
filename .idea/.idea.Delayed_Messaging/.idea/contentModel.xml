@@ -465,8 +465,10 @@
         <e p="Grapple" t="Include">
           <e p="Scripts" t="Include">
             <e p="BallisticTrajectory.cs" t="Include" />
+            <e p="GrappleHook.cs" t="Include" />
             <e p="GrappleSystem.cs" t="Include" />
             <e p="LaunchAnchor.cs" t="Include" />
+            <e p="LineRendererDebug.cs" t="Include" />
           </e>
         </e>
         <e p="Gravity Gloves" t="Include">

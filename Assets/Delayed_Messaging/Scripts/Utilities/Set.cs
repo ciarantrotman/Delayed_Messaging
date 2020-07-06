@@ -687,5 +687,24 @@ namespace Delayed_Messaging.Scripts.Utilities
             model.transform.localScale = Vector3.one * .1f;
             //model.transform.localScale = new Vector3(adjustedBounds, adjustedBounds, adjustedBounds);
         }
+        
+        public static void SetSpringJointValues(this SpringJoint springJoint, Rigidbody connectedRigidBody = null, bool auto = false, float spring = 10f, float damper = .2f, float minDistance = 0f, float maxDistance = 0f, float tolerance = .05f)
+        {
+            // Set these values
+            springJoint.spring = spring;
+            springJoint.damper = damper;
+            springJoint.maxDistance = maxDistance;
+            springJoint.minDistance = minDistance;
+            springJoint.tolerance = tolerance;
+            springJoint.autoConfigureConnectedAnchor = auto;
+            
+            // Adjust connected body
+            springJoint.connectedBody = connectedRigidBody;
+        }
+
+        public static void SetSpringJointAnchor(this SpringJoint springJoint, Vector3 anchor)
+        {
+            springJoint.connectedAnchor = anchor;
+        }
     }
 }

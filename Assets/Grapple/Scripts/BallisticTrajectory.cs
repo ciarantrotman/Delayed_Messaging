@@ -43,7 +43,7 @@ namespace Grapple.Scripts
         }
         
         /// <summary>
-        /// 
+        /// Sets the defining variables for the ballistic curve
         /// </summary>
         /// <param name="variables"></param>
         /// <param name="hand"></param>
@@ -58,21 +58,21 @@ namespace Grapple.Scripts
         }
         
         /// <summary>
-        /// 
+        /// Calculates all required variables based on the input variables
         /// </summary>
         /// <param name="data"></param>
         /// <param name="variables"></param>
         private static void SolveBallistics(this BallisticTrajectoryData data, BallisticVariables variables)
         {
             // Calculate Known Variables
-            data.initialVelocity = ((variables.handPosition - variables.anchorPosition).normalized) * (variables.launchSpeed * variables.speedModifier);
-            data.initialHeight = variables.handPosition.y;
+            data.initialVelocity = ((variables.handPosition - variables.anchorPosition).normalized) * (variables.launchSpeed * Mathf.Pow(variables.speedModifier, 2));
+            data.initialHeight = variables.anchorPosition.y;
             data.thetaVector = ((variables.handPosition - new Vector3(variables.anchorPosition.x, variables.handPosition.y, variables.anchorPosition.z)).normalized) * (variables.launchSpeed * variables.speedModifier); 
-            data.theta = Vector3.Angle(data.initialVelocity, data.thetaVector);
+            data.theta = Vector3.Angle(data.initialVelocity, data.thetaVector) * Mathf.Deg2Rad;
 
             // Calculate Equation Variables
-            data.horizontalComponent = (data.initialVelocity.magnitude) * Mathf.Cos(data.theta * Mathf.Deg2Rad);
-            data.verticalComponent = (data.initialVelocity.magnitude) * Mathf.Sin(data.theta * Mathf.Deg2Rad);
+            data.horizontalComponent = (data.initialVelocity.magnitude) * Mathf.Cos(data.theta);
+            data.verticalComponent = (data.initialVelocity.magnitude) * Mathf.Sin(data.theta);
             data.rise = data.initialVelocity.magnitude / G;
 
             // Solve Unknown Variables
@@ -82,7 +82,11 @@ namespace Grapple.Scripts
             data.range = data.horizontalComponent * data.flight;
             data.terminalVelocity = Mathf.Sqrt(Mathf.Pow(data.horizontalComponent, 2) + Mathf.Pow((-G * data.fall), 2));
         }
-
+        /// <summary>
+        /// Public wrapper to set input variables and make calculations 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="variables"></param>
         public static void Calculate(this BallisticTrajectoryData data, BallisticVariables variables)
         {
             data.SolveBallistics(variables);
