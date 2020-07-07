@@ -6,40 +6,30 @@ namespace Grapple.Scripts
     public static class BallisticTrajectory
     {
         private const float G = 9.81f;
+        private const float ThetaMinimum = 10f;
         [Serializable] public class BallisticTrajectoryData
         {
             // Outputs
-            public Vector3 start;
-            public Vector3 middle;
-            public Vector3 end;
-            
+            public Vector3 start, middle, end;
+
             // Known Variables
             public Vector3 initialVelocity;
-            public float initialHeight;
-            public float theta; // initial angle
+            public float initialHeight, theta;
 
             // Unknown Variables
-            public float range;
-            public float height;
-            public float flight;
-            public float terminalVelocity;
-            
+            public float range, height, flight, terminalVelocity;
+
             // Calculation Variables
             public Vector3 thetaVector; // flattened forward vector for initial velocity
             
             // Equation Variables
-            public float horizontalComponent;
-            public float verticalComponent;
-            public float rise;
-            public float fall;
+            public float horizontalComponent, verticalComponent, rise, fall;
         }
         
         [Serializable] public class BallisticVariables
         {
-            public Vector3 handPosition;
-            public Vector3 anchorPosition;
-            public float speedModifier;
-            public float launchSpeed;
+            public Vector3 handPosition, anchorPosition;
+            public float speedModifier, launchSpeed;
         }
         
         /// <summary>
@@ -67,9 +57,9 @@ namespace Grapple.Scripts
             // Calculate Known Variables
             data.initialVelocity = ((variables.handPosition - variables.anchorPosition).normalized) * (variables.launchSpeed * Mathf.Pow(variables.speedModifier, 2));
             data.initialHeight = variables.anchorPosition.y;
-            data.thetaVector = ((variables.handPosition - new Vector3(variables.anchorPosition.x, variables.handPosition.y, variables.anchorPosition.z)).normalized) * (variables.launchSpeed * variables.speedModifier); 
-            data.theta = Vector3.Angle(data.initialVelocity, data.thetaVector) * Mathf.Deg2Rad;
-
+            data.thetaVector = (variables.handPosition - new Vector3(variables.anchorPosition.x, variables.handPosition.y, variables.anchorPosition.z)).normalized; 
+            data.theta = Vector3.Angle(data.initialVelocity.normalized, data.thetaVector.normalized) * Mathf.Deg2Rad;
+            
             // Calculate Equation Variables
             data.horizontalComponent = (data.initialVelocity.magnitude) * Mathf.Cos(data.theta);
             data.verticalComponent = (data.initialVelocity.magnitude) * Mathf.Sin(data.theta);

@@ -688,7 +688,7 @@ namespace Delayed_Messaging.Scripts.Utilities
             //model.transform.localScale = new Vector3(adjustedBounds, adjustedBounds, adjustedBounds);
         }
         
-        public static void SetSpringJointValues(this SpringJoint springJoint, Rigidbody connectedRigidBody = null, bool auto = false, float spring = 10f, float damper = .2f, float minDistance = 0f, float maxDistance = 0f, float tolerance = .05f)
+        public static void SetSpringJointValues(this SpringJoint springJoint, Rigidbody connectedRigidBody = null, bool auto = false, float spring = 6f, float damper = .2f, float minDistance = 0f, float maxDistance = 0f, float tolerance = .05f)
         {
             // Set these values
             springJoint.spring = spring;

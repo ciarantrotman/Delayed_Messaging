@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8976386972614985437}
   - component: {fileID: 7473554891637304817}
-  - component: {fileID: 2172141916721672402}
   - component: {fileID: 6008014702192664898}
   - component: {fileID: 5324881845562752161}
   - component: {fileID: 6339565769025428999}
   - component: {fileID: 1436019363763248530}
   - component: {fileID: 7473554891637304831}
+  - component: {fileID: 2294774478314625449}
   - component: {fileID: 618182138019180014}
   - component: {fileID: 2910476754053980516}
   m_Layer: 0
@@ -57,20 +57,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 3
---- !u!136 &2172141916721672402
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8976386972615268133}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.15
-  m_Height: 1.5
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!114 &6008014702192664898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +161,18 @@ MonoBehaviour:
   haptic:
     actionPath: /actions/DelayedMessaging/out/Haptic
     needsReinit: 0
+--- !u!114 &2294774478314625449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976386972615268133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cc71cb6614bf454e952fbd4812952fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &618182138019180014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828733765559933638, guid: e7c06e4444edf6348b77d3ac9e83b812,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 1089079
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7c06e4444edf6348b77d3ac9e83b812, type: 3}

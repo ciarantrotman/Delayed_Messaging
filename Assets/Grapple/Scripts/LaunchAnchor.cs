@@ -7,13 +7,9 @@ namespace Grapple.Scripts
     [RequireComponent(typeof(ControllerTransforms))]
     public class LaunchAnchor : MonoBehaviour
     {
-        private GameObject waist;
-        [HideInInspector] public GameObject leftAnchor;
-        [HideInInspector] public GameObject rightAnchor;
+        [HideInInspector] public GameObject waist, leftAnchor, rightAnchor;
         
-        private Vector3 headPosition;
-        private Vector3 headForward;
-
+        private Vector3 headPosition, headForward;
         public ControllerTransforms controller;
         
         [Header("Anchor Configuration")]
@@ -23,10 +19,14 @@ namespace Grapple.Scripts
         
         public enum Configuration { CENTER, RIGHT, LEFT }
         private Configuration configuration;
-
-        private void Start()
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="controllerTransforms"></param>
+        public void ConfigureAnchors(ControllerTransforms controllerTransforms)
         {
-            controller = GetComponent<ControllerTransforms>();
+            controller = controllerTransforms;
             
             waist = new GameObject("[Launch Anchors / Waist]");
             leftAnchor = new GameObject("[Launch Anchor / Left]");
@@ -37,34 +37,45 @@ namespace Grapple.Scripts
             
             SetAnchorOffset(Configuration.CENTER);
         }
-
-        private void Update()
-        {
-            CalculateWaistPosition(controller.CameraPosition(), controller.CameraForwardVector());
-        }
-
-        public void CalculateWaistPosition(Vector3 position, Vector3 forward)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="forward"></param>
+        private void CalculateWaistPosition(Vector3 position, Vector3 forward)
         {
             waist.transform.position = new Vector3(position.x, position.y - height, position.z);
             waist.transform.forward = forward; // todo: swap between reference frames when grappled
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="config"></param>
         public void SetConfiguration(Configuration config)
         {
             configuration = config;
             SetAnchorOffset(configuration);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Vector3 RightAnchor()
         {
             return rightAnchor.transform.position;
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public Vector3 LeftAnchor()
         {
             return leftAnchor.transform.position;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="config"></param>
         private void SetAnchorOffset(Configuration config)
         {
             switch (config)
@@ -84,6 +95,10 @@ namespace Grapple.Scripts
                 default:
                     break;
             }
+        }
+        private void Update()
+        {
+            CalculateWaistPosition(controller.CameraPosition(), controller.CameraForwardVector());
         }
     }
 }

@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7193251e363c75a4e9a92680aa966f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waist: {fileID: 0}
   leftAnchor: {fileID: 0}
   rightAnchor: {fileID: 0}
   controller: {fileID: 0}
-  height: 0.75
+  height: 0.5
   displacement: 0
-  offset: 0.2
+  offset: 0.175
 --- !u!114 &1302382774784549039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,10 +31,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0595dc2fa28454386bd3949bb70d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchSpeed: 1
-  hook: {fileID: 0}
+  launchSpeed: 30
+  slowTime:
+    duration: 3
+    factor: 0.05
+  hook: {fileID: 7502253179798431238, guid: a918bcd0256b5ff479274f0d36eff59c, type: 3}
   grappleVisualMaterial: {fileID: 2100000, guid: 94d17135e5aa81743bce8712fc5327bb,
     type: 2}
+  ropeMaterial: {fileID: 2100000, guid: f9307e6383a818a4cbf94237f04cffc6, type: 2}
+  grappleLayer:
+    serializedVersion: 2
+    m_Bits: 1048576
   rightReferenceFrame:
     grappleVisual: {fileID: 0}
     referenceFrame: {fileID: 0}
@@ -88,6 +96,30 @@ MonoBehaviour:
       anchorPosition: {x: 0, y: 0, z: 0}
       speedModifier: 0
       launchSpeed: 0
+  leftGrapple:
+    grappleHook: {fileID: 0}
+    grappleJoint: {fileID: 0}
+    rope: {fileID: 0}
+  rightGrapple:
+    grappleHook: {fileID: 0}
+    grappleJoint: {fileID: 0}
+    rope: {fileID: 0}
+--- !u!114 &7495332318478479019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6027902236920901800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e07ee63f511734f87e7ad85c05e71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boostStrength: 10
+  slowTime:
+    duration: 5
+    factor: 0.05
 --- !u!1001 &1578893831554148188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -544,6 +576,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2172141916721672402, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2910476754053980516, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: disableLeftHand
@@ -577,7 +614,7 @@ PrefabInstance:
     - target: {fileID: 7473554891637304831, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: debugActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8976386972614985437, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
