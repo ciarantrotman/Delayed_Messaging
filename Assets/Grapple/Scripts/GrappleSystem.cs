@@ -89,11 +89,10 @@ namespace Grapple.Scripts
         }
         [Serializable] public class Grapple
         {
-            private bool launchCurrent, launchPrevious, grappleConnected;
+            private bool launchCurrent, launchPrevious, grappleConnected, hanging;
             private GameObject hookPrefab, anchor, ropeCenter;
 
-            private const float ReelForce = 30f, RopeWidth = .01f;
-
+            private const float ReelForce = 30f, RopeWidth = .01f, RopeSpring = 10f, Damper = 50f, MinimumDistance = .5f, Slack = 1f;
             private Vector3 grappleLocation;
             private Vector2 joystick;
             
@@ -173,6 +172,7 @@ namespace Grapple.Scripts
             /// <param name="referenceFrame"></param>
             private void Launch(BallisticReferenceFrame referenceFrame)
             {
+                StopHanging();
                 CreateHook(grappleMask);
                 grappleHook.LaunchHook(referenceFrame.ballisticData.initialVelocity);
                 grappleHook.collide.AddListener(GrappleAttach);
@@ -204,15 +204,17 @@ namespace Grapple.Scripts
             /// <param name="direction"></param>
             private void Reel(GrappleState direction)
             {
-                // todo: break spring joint here
+                StopHanging();
                 switch (direction)
                 {
                     case GrappleState.REEL_IN:
                         AddForce(grappleLocation - anchor.transform.position);
-                        break;
+                        return;
                     case GrappleState.REEL_OUT:
                         AddForce(anchor.transform.position - grappleLocation);
-                        break;
+                        return;
+                    case GrappleState.HANG:
+                        return;
                     default:
                         return;
                 }
@@ -226,11 +228,29 @@ namespace Grapple.Scripts
                 player.AddForce(vector.normalized * ReelForce, ForceMode.Acceleration);
             }
             /// <summary>
-            /// 
+            /// Called once to create a spring joint with the current grapple state
             /// </summary>
             private void Hang()
             {
-                // todo: create the spring joint here
+                if (hanging) return;
+                
+                grappleJoint = player.gameObject.AddComponent<SpringJoint>();
+                grappleJoint.ConfigureSpringJoint(
+                    grappleHook.hookRigidBody, 
+                    false, RopeSpring, Damper, MinimumDistance, 
+                    Vector3.Distance(player.transform.position, grappleLocation) + Slack);
+                
+                // Ensure this only gets called once
+                hanging = true;
+            }
+            /// <summary>
+            /// Destroys the spring joint used to hang
+            /// </summary>
+            private void StopHanging()
+            {
+                if (!hanging) return;
+                hanging = false;
+                Destroy(grappleJoint);
             }
             /// <summary>
             /// This is called when the collide event is triggered in the active GrappleHook
@@ -239,14 +259,13 @@ namespace Grapple.Scripts
             {
                 grappleConnected = true;
                 grappleLocation = grappleHook.grapplePoint;
-                //grappleJoint.SetSpringJointAnchor(grappleHook.grapplePoint);
-                //grappleJoint.SetSpringJointValues();
             }
             /// <summary>
             /// Draws the rope between the anchor and the grapple hook
             /// </summary>
             public void DrawRope()
             {
+                // todo: turn this into a curved line renderer
                 rope.DrawStraightLineRender(anchor.transform, grappleHook.transform);
             }
         }
@@ -260,8 +279,12 @@ namespace Grapple.Scripts
             
             launchAnchor.ConfigureAnchors(controller);
 
-            rightReferenceFrame.SetupReferenceFrame("Right", grappleVisualMaterial);
-            leftReferenceFrame.SetupReferenceFrame("Left", grappleVisualMaterial);
+            rightReferenceFrame.SetupReferenceFrame(
+                "Right", 
+                grappleVisualMaterial);
+            leftReferenceFrame.SetupReferenceFrame(
+                "Left", 
+                grappleVisualMaterial);
             
             leftGrapple.ConfigureGrapple(
                 ropeMaterial, 
@@ -284,14 +307,25 @@ namespace Grapple.Scripts
                 slowTime, 
                 timeManager);
         }
-
         private void Update()
         {
-            rightReferenceFrame.ApplyBallisticsData(controller.RightPosition(), launchAnchor.RightAnchor(), launchSpeed);
-            leftReferenceFrame.ApplyBallisticsData(controller.LeftPosition(), launchAnchor.LeftAnchor(), launchSpeed);
+            rightReferenceFrame.ApplyBallisticsData(
+                controller.RightPosition(),
+                launchAnchor.RightAnchor(), 
+                launchSpeed);
+            leftReferenceFrame.ApplyBallisticsData(
+                controller.LeftPosition(), 
+                launchAnchor.LeftAnchor(),
+                launchSpeed);
             
-            rightGrapple.CheckLaunch(controller.Select(ControllerTransforms.Check.RIGHT), rightReferenceFrame, controller.JoyStick(ControllerTransforms.Check.RIGHT));
-            leftGrapple.CheckLaunch(controller.Select(ControllerTransforms.Check.LEFT), leftReferenceFrame, controller.JoyStick(ControllerTransforms.Check.LEFT));
+            rightGrapple.CheckLaunch(
+                controller.Select(ControllerTransforms.Check.RIGHT), 
+                rightReferenceFrame, 
+                controller.JoyStick(ControllerTransforms.Check.RIGHT));
+            leftGrapple.CheckLaunch(
+                controller.Select(ControllerTransforms.Check.LEFT), 
+                leftReferenceFrame, 
+                controller.JoyStick(ControllerTransforms.Check.LEFT));
             
             rightGrapple.DrawRope();
             leftGrapple.DrawRope();

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 namespace Grapple.Scripts
@@ -8,7 +7,7 @@ namespace Grapple.Scripts
     {
         public Rigidbody hookRigidBody;
         [HideInInspector] public UnityEvent collide;
-        [HideInInspector] public Vector3 grapplePoint;
+        [HideInInspector] public Vector3 grapplePoint, offsetGrapplePoint;
         private GameObject anchorTarget;
         private LayerMask grappleLayer;
         /// <summary>

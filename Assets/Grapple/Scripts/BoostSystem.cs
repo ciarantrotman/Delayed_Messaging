@@ -71,7 +71,6 @@ namespace Grapple.Scripts
                 timeManager.SlowTime(slowTime);
             }
         }
-        
         private void Start()
         {
             controller = GetComponent<ControllerTransforms>();
@@ -87,7 +86,6 @@ namespace Grapple.Scripts
                 playerRigidBody,
                 slowTime);
         }
-
         private void Update()
         {
             leftBoost.SetBoostVector(

@@ -22,15 +22,11 @@
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/GestureDetection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/GestureDetection.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Joint Testing].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Joint Testing].unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +37,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Testing/JointTesting.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseObjectInterface.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/ResourceInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
@@ -141,7 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Units/ResourceGatherer.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/UnitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseObjectInterface.cs" />
@@ -178,19 +174,20 @@
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space Objects/SpaceObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/SpaceManager.cs" />
-        <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/LineRendererDebug.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Draw.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/TimeManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
-        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/GestureDetection.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" />
+        <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Testing/JointTesting.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" />
       </list>
     </option>
@@ -264,7 +261,9 @@
       <workItem from="1590681727409" duration="28606000" />
       <workItem from="1592569865793" duration="1461000" />
       <workItem from="1592572648171" duration="10051000" />
-      <workItem from="1593960912637" duration="45706000" />
+      <workItem from="1593960912637" duration="46344000" />
+      <workItem from="1594229332737" duration="74000" />
+      <workItem from="1594229582509" duration="2287000" />
     </task>
     <servers />
   </component>
