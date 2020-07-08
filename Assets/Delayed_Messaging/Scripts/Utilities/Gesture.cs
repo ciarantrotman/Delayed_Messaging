@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using Delayed_Messaging.Scripts.Utilities;
+using Grapple.Scripts;
 using UnityEngine;
-using VR_Prototyping.Scripts.Utilities;
+using VR_Prototyping.Scripts;
+using GrappleState = Grapple.Scripts.GrappleSystem.Grapple.GrappleState;
 
-namespace VR_Prototyping.Scripts
+namespace Delayed_Messaging.Scripts.Utilities
 {
-    public static class GestureDetection
+    public static class Gesture
     {
         public static void JoystickGestureDetection(this Locomotion l, Vector2 current, Vector2 previous, float rot, float speed, float triggerValue, float toleranceValue, GameObject visual, LineRenderer lr, bool currentTouch, bool previousTouch, bool disabled, bool locomotionActive)
         {
@@ -43,7 +44,6 @@ namespace VR_Prototyping.Scripts
                 l.LocomotionEnd(visual, visual.transform.position, visual.transform.eulerAngles, lr);
             }
         }
-        
         public static bool Grab(this Transform palm, Transform index, Transform middle, Transform ring, Transform little, float threshold)
         {
             float average = (palm.TransformDistance(index) +
@@ -59,7 +59,6 @@ namespace VR_Prototyping.Scripts
             
             return average < threshold;
         }
-        
         public static bool DualSelect(this Transform thumb, Transform index, Transform middle, float threshold)
         {
             float average = (thumb.TransformDistance(index) +
@@ -69,13 +68,11 @@ namespace VR_Prototyping.Scripts
             Debug.DrawRay(position, middle.position - position, Color.blue);
             return average < threshold;
         }
-        
         public static bool Select(this Transform thumb, Transform finger, float threshold)
         {
             float average = (thumb.TransformDistance(finger));
             return average < threshold;
         }
-
         public static bool PalmDown(this Transform palm, List<Vector3> palmDirection, float tolerance, int tracking)
         {
             Vector3 down = -palm.up;
@@ -84,6 +81,14 @@ namespace VR_Prototyping.Scripts
             Debug.DrawRay(position, down, Color.magenta);
             Debug.DrawRay(position, Vector3.down, Color.red);
             return Vector3.Angle(Vector3.down, palmDirection[0]) < tolerance && Vector3.Angle(Vector3.down, palmDirection[palmDirection.Count]) < tolerance;
+        }
+
+        private const float Tolerance = .05f;
+        public static GrappleState CheckGrappleState(Vector2 input)
+        {
+            if (input.y <= Tolerance && input.y >= -Tolerance) return GrappleState.HANG;
+            if (input.y >= Tolerance) return GrappleState.REEL_IN;
+            return input.y <= -Tolerance ? GrappleState.REEL_OUT : GrappleState.HANG;
         }
     }
 }

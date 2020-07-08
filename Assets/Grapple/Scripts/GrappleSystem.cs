@@ -89,25 +89,26 @@ namespace Grapple.Scripts
         }
         [Serializable] public class Grapple
         {
-            private bool launchCurrent, launchPrevious;
-            private GameObject hookPrefab, anchor;
+            private bool launchCurrent, launchPrevious, grappleConnected;
+            private GameObject hookPrefab, anchor, ropeCenter;
 
-            private Rigidbody player;
-            private bool reel;
-            private const float ReelForce = 2f;
-            private Vector3 reelLocation;
-                
-            public GrappleHook grappleHook;
-            private LayerMask grappleMask;
-            public SpringJoint grappleJoint;
+            private const float ReelForce = 30f, RopeWidth = .01f;
+
+            private Vector3 grappleLocation;
+            private Vector2 joystick;
             
+            private LayerMask grappleMask;
+            public GrappleHook grappleHook;
+            public SpringJoint grappleJoint;
             public LineRenderer rope;
-            private const float RopeWidth = .015f;
-            private GameObject ropeCenter;
+            private Rigidbody player;
             
             private TimeManager.SlowTimeData slowTime;
             private TimeManager timeManager;
-
+            
+            public enum GrappleState { REEL_IN, REEL_OUT, HANG }
+            private GrappleState grappleState;
+            
             /// <summary>
             /// Configures the setup and caches external variables so they don't need to be passed more than once
             /// </summary>
@@ -151,16 +152,19 @@ namespace Grapple.Scripts
                 grappleHook.ConfigureGrappleHook(layerMask);
                 grappleHook.SpawnHook();
             }
+
             /// <summary>
             /// Checks the conditions to launch a grapple
             /// </summary>
             /// <param name="launch"></param>
             /// <param name="referenceFrame"></param>
-            public void CheckLaunch(bool launch, BallisticReferenceFrame referenceFrame)
+            /// <param name="gestureVector"></param>
+            public void CheckLaunch(bool launch, BallisticReferenceFrame referenceFrame, Vector2 gestureVector)
             {
                 launchCurrent = launch;
+                joystick = gestureVector;
                 if (launchCurrent && !launchPrevious) Launch(referenceFrame);
-                else if (launchCurrent && launchPrevious) ReelIn();
+                if (grappleConnected) CheckGrappleState();
                 launchPrevious = launchCurrent;
             }
             /// <summary>
@@ -172,31 +176,69 @@ namespace Grapple.Scripts
                 CreateHook(grappleMask);
                 grappleHook.LaunchHook(referenceFrame.ballisticData.initialVelocity);
                 grappleHook.collide.AddListener(GrappleAttach);
-                reel = false;
+                grappleConnected = false;
             }
             /// <summary>
-            /// Update analogue called when holding a grapple which has attached to something successfully
+            /// Feeds in the cached value for the joystick and outputs a grapple state
             /// </summary>
-            private void ReelIn()
+            private void CheckGrappleState()
             {
-                if (!reel) return;
-                player.AddForce((reelLocation - anchor.transform.position) * ReelForce, ForceMode.Acceleration);
+                switch (Gesture.CheckGrappleState(joystick))
+                {
+                    case GrappleState.REEL_IN:
+                        Reel(GrappleState.REEL_IN);
+                        return;
+                    case GrappleState.REEL_OUT:
+                        Reel(GrappleState.REEL_OUT);
+                        return;
+                    case GrappleState.HANG:
+                        Hang();
+                        return;
+                    default:
+                        return;
+                }
             }
             /// <summary>
-            /// Called once when a grapple is released
+            /// Update analogue called when holding a grapple which has attached to something successfully, direction determines the direction
             /// </summary>
-            private void Decouple()
+            /// <param name="direction"></param>
+            private void Reel(GrappleState direction)
             {
-                //grappleJoint.spring = 0;
-                timeManager.SlowTime(slowTime);
+                // todo: break spring joint here
+                switch (direction)
+                {
+                    case GrappleState.REEL_IN:
+                        AddForce(grappleLocation - anchor.transform.position);
+                        break;
+                    case GrappleState.REEL_OUT:
+                        AddForce(anchor.transform.position - grappleLocation);
+                        break;
+                    default:
+                        return;
+                }
+            }
+            /// <summary>
+            /// Adds force to the player rigid body in the supplied vector 
+            /// </summary>
+            /// <param name="vector"></param>
+            private void AddForce(Vector3 vector)
+            {
+                player.AddForce(vector.normalized * ReelForce, ForceMode.Acceleration);
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            private void Hang()
+            {
+                // todo: create the spring joint here
             }
             /// <summary>
             /// This is called when the collide event is triggered in the active GrappleHook
             /// </summary>
             private void GrappleAttach()
             {
-                reel = true;
-                reelLocation = grappleHook.grapplePoint;
+                grappleConnected = true;
+                grappleLocation = grappleHook.grapplePoint;
                 //grappleJoint.SetSpringJointAnchor(grappleHook.grapplePoint);
                 //grappleJoint.SetSpringJointValues();
             }
@@ -248,8 +290,8 @@ namespace Grapple.Scripts
             rightReferenceFrame.ApplyBallisticsData(controller.RightPosition(), launchAnchor.RightAnchor(), launchSpeed);
             leftReferenceFrame.ApplyBallisticsData(controller.LeftPosition(), launchAnchor.LeftAnchor(), launchSpeed);
             
-            rightGrapple.CheckLaunch(controller.RightSelect(), rightReferenceFrame);
-            leftGrapple.CheckLaunch(controller.LeftSelect(), leftReferenceFrame);
+            rightGrapple.CheckLaunch(controller.Select(ControllerTransforms.Check.RIGHT), rightReferenceFrame, controller.JoyStick(ControllerTransforms.Check.RIGHT));
+            leftGrapple.CheckLaunch(controller.Select(ControllerTransforms.Check.LEFT), leftReferenceFrame, controller.JoyStick(ControllerTransforms.Check.LEFT));
             
             rightGrapple.DrawRope();
             leftGrapple.DrawRope();

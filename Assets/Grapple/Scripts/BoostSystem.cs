@@ -91,14 +91,14 @@ namespace Grapple.Scripts
         private void Update()
         {
             leftBoost.SetBoostVector(
-                controller.LeftForwardVector(),
+                controller.ForwardVector(ControllerTransforms.Check.LEFT),
                 boostStrength);
             rightBoost.SetBoostVector(
-                controller.RightForwardVector(),
+                controller.ForwardVector(ControllerTransforms.Check.RIGHT),
                 boostStrength);
             
-            leftBoost.CheckBoost(controller.LeftGrab());
-            rightBoost.CheckBoost(controller.RightGrab());
+            leftBoost.CheckBoost(controller.Grab(ControllerTransforms.Check.LEFT));
+            rightBoost.CheckBoost(controller.Grab(ControllerTransforms.Check.RIGHT));
         }
     }
 }

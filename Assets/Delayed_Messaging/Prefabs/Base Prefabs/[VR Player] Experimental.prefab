@@ -33,8 +33,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchSpeed: 30
   slowTime:
-    duration: 3
-    factor: 0.05
+    duration: 5
+    factor: 0.025
+    staySlow: 0
   hook: {fileID: 7502253179798431238, guid: a918bcd0256b5ff479274f0d36eff59c, type: 3}
   grappleVisualMaterial: {fileID: 2100000, guid: 94d17135e5aa81743bce8712fc5327bb,
     type: 2}
@@ -118,8 +119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boostStrength: 10
   slowTime:
-    duration: 5
+    duration: 7
     factor: 0.05
+    staySlow: 0
 --- !u!1001 &1578893831554148188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -584,6 +586,11 @@ PrefabInstance:
     - target: {fileID: 2910476754053980516, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: disableLeftHand
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2910476754053980516, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5324881845562752161, guid: 8749d393fbf106e488259a509328cf48,

@@ -98,7 +98,7 @@ namespace Grapple.Scripts
         }
         private void Update()
         {
-            CalculateWaistPosition(controller.CameraPosition(), controller.CameraForwardVector());
+            CalculateWaistPosition(controller.Position(ControllerTransforms.Check.HEAD), controller.ForwardVector(ControllerTransforms.Check.HEAD));
         }
     }
 }

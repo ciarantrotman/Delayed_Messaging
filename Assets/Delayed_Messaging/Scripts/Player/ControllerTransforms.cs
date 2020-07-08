@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using Valve.VR;
@@ -323,6 +324,91 @@ namespace Delayed_Messaging.Scripts.Player
             castGameObjects.lTs.transform.SetParent(castGameObjects.lCn.transform);
             castGameObjects.lHp.transform.SetParent(transform);
             castGameObjects.lRt.transform.SetParent(castGameObjects.lHp.transform);
+        }
+        public enum Check { LEFT, RIGHT, HEAD }
+        public Vector2 JoyStick(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftJoystick();
+                case Check.RIGHT:
+                    return RightJoystick();
+                case Check.HEAD:
+                    return Vector2.zero;
+                default:
+                    return Vector2.zero;
+            }
+        }
+        public bool Select(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftSelect();
+                case Check.RIGHT:
+                    return RightSelect();
+                case Check.HEAD:
+                    return false;
+                default:
+                    return false;
+            }
+        }
+        public bool Grab(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftGrab();
+                case Check.RIGHT:
+                    return RightGrab();
+                case Check.HEAD:
+                    return false;
+                default:
+                    return false;
+            }
+        }
+        public bool Menu(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftMenu();
+                case Check.RIGHT:
+                    return RightMenu();
+                case Check.HEAD:
+                    return false;
+                default:
+                    return false;
+            }
+        }
+        public Vector3 ForwardVector(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftForwardVector();
+                case Check.RIGHT:
+                    return RightForwardVector();
+                case Check.HEAD:
+                    return CameraForwardVector();
+                default:
+                    return Vector3.zero;
+            }
+        }
+        public Vector3 Position(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftPosition();
+                case Check.RIGHT:
+                    return RightPosition();
+                case Check.HEAD:
+                    return CameraPosition();
+                default:
+                    return Vector3.zero;
+            }
         }
     }
 }

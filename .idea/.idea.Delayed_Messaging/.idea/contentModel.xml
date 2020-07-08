@@ -451,7 +451,7 @@
               <e p="Check.cs" t="Include" />
               <e p="Draw.cs" t="Include" />
               <e p="FollowLerp.cs" t="Include" />
-              <e p="GestureDetection.cs" t="Include" />
+              <e p="Gesture.cs" t="Include" />
               <e p="Haptics.cs" t="Include" />
               <e p="Interfaces.cs" t="Include" />
               <e p="Intersection.cs" t="Include" />

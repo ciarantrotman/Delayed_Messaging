@@ -12,7 +12,7 @@ namespace Grapple.Scripts
         private GameObject anchorTarget;
         private LayerMask grappleLayer;
         /// <summary>
-        /// 
+        /// Initial configuration of the grapple, assigns the layer mask for collisions
         /// </summary>
         /// <param name="layerMask"></param>
         public void ConfigureGrappleHook(LayerMask layerMask)
@@ -20,7 +20,7 @@ namespace Grapple.Scripts
             grappleLayer = layerMask;
         }
         /// <summary>
-        /// 
+        /// Spawns a hook, its position is reset and is set to kinematic
         /// </summary>
         public void SpawnHook()
         {
@@ -29,7 +29,7 @@ namespace Grapple.Scripts
             hookRigidBody.isKinematic = true;
         }
         /// <summary>
-        /// 
+        /// Launches the hook in the provided vector
         /// </summary>
         /// <param name="vector"></param>
         public void LaunchHook(Vector3 vector)

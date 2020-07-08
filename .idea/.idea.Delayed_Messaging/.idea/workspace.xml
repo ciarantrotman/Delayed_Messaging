@@ -22,19 +22,15 @@
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Materials/UI/GroundGridMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Materials/UI/GroundGridMat.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/[Grappling Hook].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Prefabs/[Grappling Hook].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/GestureDetection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/GestureDetection.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/LineRendererDebug.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/LineRendererDebug.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +99,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Misc/BinaryHeap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/StructureController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1075282-1EEC-4ACB-B89C-CD53FBBC5E27/9a/9787d0da/TextureGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Selection/Selection.cs" root0="FORCE_HIGHLIGHTING" />
@@ -144,8 +141,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Resources/Resource.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/ResourceDepot.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Units/ResourceGatherer.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/UnitController.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseInterface.cs" />
@@ -173,7 +168,6 @@
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/PandaBehaviour/Core/Editor/CreatePandaScriptMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Inverse Kinematic Rig.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/InverseKinematicRig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" />
@@ -190,11 +184,14 @@
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Draw.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs" />
-        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/TimeManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/GestureDetection.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" />
       </list>
     </option>
   </component>
@@ -267,7 +264,7 @@
       <workItem from="1590681727409" duration="28606000" />
       <workItem from="1592569865793" duration="1461000" />
       <workItem from="1592572648171" duration="10051000" />
-      <workItem from="1593960912637" duration="38229000" />
+      <workItem from="1593960912637" duration="45706000" />
     </task>
     <servers />
   </component>
@@ -296,6 +293,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="92" y="92" width="1736" height="896" key="VCS.FileHistoryDialog/1920.60.1280.1024/-1080.-323.1080.1920/0.0.1920.1080@0.0.1920.1080" timestamp="1594059285502" />
+    <state x="649" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1594144925204">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="649" y="155" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.60.1280.1024/-1080.-323.1080.1920/0.0.1920.1080@0.0.1920.1080" timestamp="1594144925204" />
     <state x="616" y="250" key="run.anything.popup" timestamp="1590501962356">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
