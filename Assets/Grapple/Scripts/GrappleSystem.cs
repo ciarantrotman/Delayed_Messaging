@@ -22,6 +22,7 @@ namespace Grapple.Scripts
         private LaunchAnchor launchAnchor;
         private Rigidbody playerRigidBody;
         private TimeManager timeManager;
+        private SphereCollider headCollider, leftHand, rightHand;
 
         [HideInInspector] public BallisticReferenceFrame rightReferenceFrame, leftReferenceFrame;
         [HideInInspector] public Grapple leftGrapple, rightGrapple;
@@ -92,8 +93,8 @@ namespace Grapple.Scripts
             private bool launchCurrent, launchPrevious, grappleConnected, hanging;
             private GameObject hookPrefab, anchor, ropeCenter;
 
-            private const float ReelForce = 30f, RopeWidth = .01f, RopeSpring = 10f, Damper = 50f, MinimumDistance = .5f, Slack = 1f;
-            private Vector3 grappleLocation;
+            private const float ReelForce = 20f, RopeWidth = .01f, RopeSpring = 20f, Damper = 50f, MinimumDistance = .1f, Slack = 1f;
+            private Vector3 grappleLocation, lookDirection;
             private Vector2 joystick;
             
             private LayerMask grappleMask;
@@ -126,11 +127,7 @@ namespace Grapple.Scripts
                 rope.SetupLineRender(ropeMaterial, RopeWidth, true);
                 ropeCenter = new GameObject("[Rope Center]");
                 ropeCenter.transform.SetParent(ropeParent);
-                
-                // Setup Joints
-                //grappleJoint = self.gameObject.AddComponent<SpringJoint>();
-                //grappleJoint.SetSpringJointValues();
-                
+
                 // Setup References
                 slowTime = slowTimeData;
                 timeManager = manager;
@@ -156,14 +153,23 @@ namespace Grapple.Scripts
             /// Checks the conditions to launch a grapple
             /// </summary>
             /// <param name="launch"></param>
+            /// <param name="jettison"></param>
             /// <param name="referenceFrame"></param>
             /// <param name="gestureVector"></param>
-            public void CheckLaunch(bool launch, BallisticReferenceFrame referenceFrame, Vector2 gestureVector)
+            /// <param name="look"></param>
+            public void CheckLaunch(bool launch, bool jettison, BallisticReferenceFrame referenceFrame, Vector2 gestureVector, Vector3 look)
             {
+                // Cache values
                 launchCurrent = launch;
                 joystick = gestureVector;
+                lookDirection = look.normalized;
+                
+                // Check States
                 if (launchCurrent && !launchPrevious) Launch(referenceFrame);
                 if (grappleConnected) CheckGrappleState();
+                if (!launchCurrent && launchPrevious) timeManager.SlowTime(slowTime);
+                if (jettison) Jettison();
+                
                 launchPrevious = launchCurrent;
             }
             /// <summary>
@@ -226,6 +232,7 @@ namespace Grapple.Scripts
             private void AddForce(Vector3 vector)
             {
                 player.AddForce(vector.normalized * ReelForce, ForceMode.Acceleration);
+                player.AddForce(lookDirection * Mathf.Lerp(0, ReelForce, .25f));
             }
             /// <summary>
             /// Called once to create a spring joint with the current grapple state
@@ -253,6 +260,16 @@ namespace Grapple.Scripts
                 Destroy(grappleJoint);
             }
             /// <summary>
+            /// Called when ropes are disconnected
+            /// </summary>
+            private void Jettison()
+            {
+                StopHanging();
+                CreateHook(grappleMask);
+                grappleConnected = false;
+                timeManager.SlowTime(slowTime);
+            }
+            /// <summary>
             /// This is called when the collide event is triggered in the active GrappleHook
             /// </summary>
             private void GrappleAttach()
@@ -276,9 +293,15 @@ namespace Grapple.Scripts
             playerRigidBody = GetComponent<Rigidbody>();
             launchAnchor = GetComponent<LaunchAnchor>();
             timeManager = GetComponent<TimeManager>();
+            headCollider = gameObject.AddComponent<SphereCollider>();
+            //leftHand = gameObject.AddComponent<SphereCollider>();
+            //rightHand = gameObject.AddComponent<SphereCollider>();
             
             launchAnchor.ConfigureAnchors(controller);
-
+            headCollider.radius = .35f;
+            //leftHand.radius = .1f;
+            //rightHand.radius = .1f;
+            
             rightReferenceFrame.SetupReferenceFrame(
                 "Right", 
                 grappleVisualMaterial);
@@ -319,16 +342,27 @@ namespace Grapple.Scripts
                 launchSpeed);
             
             rightGrapple.CheckLaunch(
-                controller.Select(ControllerTransforms.Check.RIGHT), 
+                controller.Select(ControllerTransforms.Check.RIGHT),
+                controller.Joystick(ControllerTransforms.Check.RIGHT),
                 rightReferenceFrame, 
-                controller.JoyStick(ControllerTransforms.Check.RIGHT));
+                controller.JoyStick(ControllerTransforms.Check.RIGHT),
+                controller.ForwardVector(ControllerTransforms.Check.HEAD));
             leftGrapple.CheckLaunch(
                 controller.Select(ControllerTransforms.Check.LEFT), 
+                controller.Joystick(ControllerTransforms.Check.LEFT), 
                 leftReferenceFrame, 
-                controller.JoyStick(ControllerTransforms.Check.LEFT));
+                controller.JoyStick(ControllerTransforms.Check.LEFT),
+                controller.ForwardVector(ControllerTransforms.Check.HEAD));
             
             rightGrapple.DrawRope();
             leftGrapple.DrawRope();
+        }
+
+        private void FixedUpdate()
+        {
+            headCollider.center = controller.LocalPosition(ControllerTransforms.Check.HEAD);
+            //leftHand.center = controller.LocalPosition(ControllerTransforms.Check.LEFT);
+            //rightHand.center = controller.LocalPosition(ControllerTransforms.Check.RIGHT);
         }
     }
 }

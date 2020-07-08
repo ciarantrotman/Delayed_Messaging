@@ -6,7 +6,6 @@ namespace Grapple.Scripts
     public static class BallisticTrajectory
     {
         private const float G = 9.81f;
-        private const float ThetaMinimum = 10f;
         [Serializable] public class BallisticTrajectoryData
         {
             // Outputs

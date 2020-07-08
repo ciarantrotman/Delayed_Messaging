@@ -36,7 +36,8 @@ namespace Grapple.Scripts
             Transform hook = transform;
             hook.SetParent(null);
             hookRigidBody.isKinematic = false;
-            hookRigidBody.AddForce(vector, ForceMode.VelocityChange);
+            hookRigidBody.velocity = vector;
+            //hookRigidBody.AddForce(vector, ForceMode.VelocityChange);
         }
         private void OnTriggerEnter(Collider wall)
         {

@@ -463,6 +463,64 @@
           </e>
         </e>
         <e p="Grapple" t="Include">
+          <e p="Plugins" t="Include">
+            <e p="VrTunnellingPro" t="Include">
+              <e p="Editor" t="Include">
+                <e p="VrtpEditorUtils.cs" t="Include" />
+                <e p="VrtpStyles.cs" t="Include" />
+                <e p="VrTunnellingProEditorBase.cs" t="Include" />
+                <e p="VrTunnellingProEditorUtils.cs" t="Include" />
+                <e p="VrTunnellingProImageEditor.cs" t="Include" />
+                <e p="VrTunnellingProMobileEditor.cs" t="Include" />
+                <e p="VrTunnellingProPresetEditor.cs" t="Include" />
+                <e p="VrTunnellingProPresetEditorBase.cs" t="Include" />
+                <e p="VrTunnellingProPresetMobileEditor.cs" t="Include" />
+              </e>
+              <e p="Examples" t="Include">
+                <e p="VRTP_ExampleMovement.cs" t="Include" />
+              </e>
+              <e p="Resources" t="Include">
+                <e p="Shaders" t="Include">
+                  <e p="BlitA.shader" t="Include" />
+                  <e p="Mask.shader" t="Include" />
+                  <e p="SeparableBlur.shader" t="Include" />
+                  <e p="Skybox.shader" t="Include" />
+                  <e p="Skysphere.shader" t="Include" />
+                  <e p="Tunnelling.shader" t="Include" />
+                  <e p="TunnellingStencil.shader" t="Include" />
+                  <e p="TunnellingUtils.cginc" t="Include" />
+                  <e p="TunnellingVertex.shader" t="Include" />
+                  <e p="TunnellingVertexInner.shader" t="Include" />
+                  <e p="TunnellingVertexOuter.shader" t="Include" />
+                  <e p="TunnellingVertexUtils.cginc" t="Include" />
+                  <e p="Window.shader" t="Include" />
+                </e>
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="Tunnelling.cs" t="Include" />
+                <e p="TunnellingBase.cs" t="Include" />
+                <e p="TunnellingImageBase.cs" t="Include" />
+                <e p="TunnellingMaskObject.cs" t="Include" />
+                <e p="TunnellingMaskObjectMobile.cs" t="Include" />
+                <e p="TunnellingMobile.cs" t="Include" />
+                <e p="TunnellingOpaque.cs" t="Include" />
+                <e p="TunnellingPreset.cs" t="Include" />
+                <e p="TunnellingPresetBase.cs" t="Include" />
+                <e p="TunnellingPresetMobile.cs" t="Include" />
+              </e>
+              <e p="Shaders" t="Include">
+                <e p="CageCommon.cginc" t="Include" />
+                <e p="CageFog.cginc" t="Include" />
+                <e p="CageOpaque.shader" t="Include" />
+                <e p="CageOpaqueCounterMotion.shader" t="Include" />
+                <e p="CageOpaqueFog.shader" t="Include" />
+                <e p="CageOpaqueFogCounterMotion.shader" t="Include" />
+                <e p="CageTransparent.shader" t="Include" />
+                <e p="CageTransparentFog.shader" t="Include" />
+                <e p="DoubleSided.shader" t="Include" />
+              </e>
+            </e>
+          </e>
           <e p="Scripts" t="Include">
             <e p="BallisticTrajectory.cs" t="Include" />
             <e p="BoostSystem.cs" t="Include" />

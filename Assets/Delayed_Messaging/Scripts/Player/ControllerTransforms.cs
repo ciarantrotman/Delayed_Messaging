@@ -183,7 +183,7 @@ namespace Delayed_Messaging.Scripts.Player
         {
             return cameraRig.position;
         }
-        
+
         public Vector3 CameraLocalPosition()
         {
             return cameraRig.localPosition;
@@ -406,6 +406,36 @@ namespace Delayed_Messaging.Scripts.Player
                     return RightPosition();
                 case Check.HEAD:
                     return CameraPosition();
+                default:
+                    return Vector3.zero;
+            }
+        }
+
+        public bool Joystick(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftJoystickPress();
+                case Check.RIGHT:
+                    return RightJoystickPress();
+                case Check.HEAD:
+                    return false;
+                default:
+                    return false;
+            }
+        }
+
+        public Vector3 LocalPosition(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftLocalPosition();
+                case Check.RIGHT:
+                    return RightLocalPosition();
+                case Check.HEAD:
+                    return CameraLocalPosition();
                 default:
                     return Vector3.zero;
             }
