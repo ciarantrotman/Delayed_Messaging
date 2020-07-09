@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using DG.Tweening;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Grapple.Scripts
@@ -7,42 +9,38 @@ namespace Grapple.Scripts
     {
         public Rigidbody hookRigidBody;
         [HideInInspector] public UnityEvent collide;
-        [HideInInspector] public Vector3 grapplePoint, offsetGrapplePoint;
-        private GameObject anchorTarget;
-        private LayerMask grappleLayer;
-        /// <summary>
-        /// Initial configuration of the grapple, assigns the layer mask for collisions
-        /// </summary>
-        /// <param name="layerMask"></param>
-        public void ConfigureGrappleHook(LayerMask layerMask)
-        {
-            grappleLayer = layerMask;
-        }
+        private const float SpeedFactor = 25f;
         /// <summary>
         /// Spawns a hook, its position is reset and is set to kinematic
         /// </summary>
         public void SpawnHook()
         {
-            Transform hook = transform;
-            hook.localPosition = Vector3.zero;
-            hookRigidBody.isKinematic = true;
+            transform.localPosition = Vector3.zero;
         }
+
         /// <summary>
         /// Launches the hook in the provided vector
         /// </summary>
-        /// <param name="vector"></param>
-        public void LaunchHook(Vector3 vector)
+        /// <param name="data"></param>
+        public void LaunchHook(GrappleSystem.Location.GrappleLocationData data)
         {
             Transform hook = transform;
+            float duration = Vector3.Distance(data.grappleLocation.point, hook.position) / SpeedFactor;
+            
             hook.SetParent(null);
-            hookRigidBody.isKinematic = false;
-            hookRigidBody.velocity = vector;
-            //hookRigidBody.AddForce(vector, ForceMode.VelocityChange);
+            transform.DOMove(data.grappleLocation.point, duration);
+            transform.DORotate(data.grappleLocation.normal, duration);
+
+            StartCoroutine(Grapple(duration));
         }
-        private void OnTriggerEnter(Collider wall)
+        /// <summary>
+        /// Used to simulate the time taken to 
+        /// </summary>
+        /// <param name="duration"></param>
+        /// <returns></returns>
+        private IEnumerator Grapple(float duration)
         {
-            if (((1 << wall.gameObject.layer) & grappleLayer) == 0) return;
-            grapplePoint = wall.ClosestPoint(transform.position);
+            yield return new WaitForSeconds(duration);
             hookRigidBody.isKinematic = true;
             collide.Invoke();
         }

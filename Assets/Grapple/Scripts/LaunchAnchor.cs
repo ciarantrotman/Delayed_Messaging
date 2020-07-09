@@ -57,20 +57,22 @@ namespace Grapple.Scripts
             SetAnchorOffset(configuration);
         }
         /// <summary>
-        /// 
+        /// Returns the relevant anchor's position
         /// </summary>
         /// <returns></returns>
-        public Vector3 RightAnchor()
+        public Vector3 Anchor(Configuration check)
         {
-            return rightAnchor.transform.position;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public Vector3 LeftAnchor()
-        {
-            return leftAnchor.transform.position;
+            switch (check)
+            {
+                case Configuration.LEFT:
+                    return leftAnchor.transform.position;
+                case Configuration.RIGHT:
+                    return rightAnchor.transform.position;
+                case Configuration.CENTER:
+                    return Vector3.zero;
+                default:
+                    return Vector3.zero;
+            }
         }
         /// <summary>
         /// 

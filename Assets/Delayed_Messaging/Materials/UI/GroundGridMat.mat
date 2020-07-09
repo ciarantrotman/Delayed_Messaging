@@ -24,6 +24,6 @@ Material:
     - _BorderSize: 0.97
     - _GridSize: 0.95
     - _Height: 0.02
-    - _Tiling: 10000
+    - _Tiling: 25
     m_Colors:
     - _GridColour: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}

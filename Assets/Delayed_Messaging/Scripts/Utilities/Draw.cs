@@ -107,8 +107,15 @@ namespace Delayed_Messaging.Scripts.Utilities
 		}
 		public static void DrawStraightLineRender(this LineRenderer lr, Transform start, Transform end)
 		{
+			lr.positionCount = 2;
 			lr.SetPosition(0, start.position);
 			lr.SetPosition(1, end.position);
+		}
+		public static void DrawStraightLineRender(this LineRenderer lr, Vector3 start, Vector3 end)
+		{
+			lr.positionCount = 2;
+			lr.SetPosition(0, start);
+			lr.SetPosition(1, end);
 		}
 		public static void DrawDestinationLineRender(this LineRenderer lineRenderer, Seeker seeker)
 		{

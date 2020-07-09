@@ -3,7 +3,6 @@ using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
 using BallisticData =  Grapple.Scripts.BallisticTrajectory.BallisticTrajectoryData;
-using BallisticVariables =  Grapple.Scripts.BallisticTrajectory.BallisticVariables;
 
 namespace Grapple.Scripts
 {
@@ -11,7 +10,7 @@ namespace Grapple.Scripts
     public class GrappleSystem : MonoBehaviour
     {
         [Header("Grapple System Configuration")]
-        [Range(.1f, 50f)] public float launchSpeed = 1f;
+        [Range(0, 100f)] public float launchSpeed = 1f, grappleRange = 50f, indirectAngle = 25f;
         [SerializeField] private TimeManager.SlowTimeData slowTime;
         [Header("Grapple System References")]
         [Space(10), SerializeField] private GameObject hook;
@@ -22,130 +21,136 @@ namespace Grapple.Scripts
         private LaunchAnchor launchAnchor;
         private Rigidbody playerRigidBody;
         private TimeManager timeManager;
-        private SphereCollider headCollider, leftHand, rightHand;
+        private SphereCollider headCollider;
 
-        [HideInInspector] public BallisticReferenceFrame rightReferenceFrame, leftReferenceFrame;
+        [HideInInspector] public Location leftLocation, rightLocation;
         [HideInInspector] public Grapple leftGrapple, rightGrapple;
 
-        [Serializable] public class BallisticReferenceFrame
+        [Serializable] public class Location
         {
-            public LineRenderer grappleVisual;
-            public GameObject referenceFrame, start, middle, end;
-
-            [HideInInspector] public BallisticData ballisticData;
-            [HideInInspector] public BallisticVariables ballisticVariables;
-
-            /// <summary>
-            /// Creates a local 2D reference frame to do ballistic calculations in
-            /// </summary>
-            /// <param name="side"></param>
-            /// <param name="mat"></param>
-            public void SetupReferenceFrame(string side, Material mat)
-            {                
-                referenceFrame = new GameObject($"[Ballistic Reference Frame / {side}]");
-                start = new GameObject("[Ballistic Reference Frame / Start]");
-                middle = new GameObject("[Ballistic Reference Frame / Middle]");
-                end = new GameObject("[Ballistic Reference Frame / End]");
-            
-                start.transform.SetParent(referenceFrame.transform);
-                middle.transform.SetParent(referenceFrame.transform);
-                end.transform.SetParent(referenceFrame.transform);
-                
-                grappleVisual = start.AddComponent<LineRenderer>();
-                grappleVisual.SetupLineRender(mat, .005f, true);
-            }
-            /// <summary>
-            /// Sets the positions of objects within the reference frame based on calculated ballistic trajectories
-            /// </summary>
-            /// <param name="data"></param>
-            /// <param name="variables"></param>
-            /// <param name="anchorOffset"></param>
-            private void SetBallisticData(BallisticData data, BallisticVariables variables, float anchorOffset = 0f)
+            private Vector3 grappleDirection, anchor;
+            private float indirectAngle, grappleDistance;
+            private LayerMask grappleLayer;
+            public enum GrappleType { DIRECT, INDIRECT, INVALID }
+            [Serializable] public struct GrappleLocationData
             {
-                referenceFrame.transform.position = new Vector3(variables.anchorPosition.x, 0, variables.anchorPosition.z);
-                referenceFrame.transform.forward = data.thetaVector;
+                public RaycastHit grappleLocation, indirectLocation;
+                public GrappleType grappleType;
+            }
+            public GrappleLocationData data;
 
-                start.transform.localPosition = new Vector3(0, variables.anchorPosition.y, 0);
-                middle.transform.localPosition = new Vector3(0, data.height > 0 ? data.height : 0, data.range > 0 ? data.range * .5f : 0f);
-                end.transform.localPosition = new Vector3(0, 0, data.range > 0 ? data.range : 0);
-
-                data.start = start.transform.position;
-                data.middle = middle.transform.position;
-                data.end = end.transform.position;
+            /// <summary>
+            /// Cache the values set in the inspector, only called once on start
+            /// </summary>
+            /// <param name="distance"></param>
+            /// <param name="angle"></param>
+            /// <param name="layerMask"></param>
+            public void CacheValues(float distance, float angle, LayerMask layerMask)
+            {
+                indirectAngle = angle;
+                grappleDistance = distance;
+                grappleLayer = layerMask;
             }
             /// <summary>
-            /// Calls the ballistic trajectory calculations and sets ballistic data, includes visuals
+            /// Takes in the anchor and hand location, outputs grapple location and type
             /// </summary>
+            /// <param name="anchorPosition"></param>
             /// <param name="hand"></param>
-            /// <param name="anchor"></param>
-            /// <param name="speed"></param>
-            public void ApplyBallisticsData(Vector3 hand, Vector3 anchor, float speed)
+            /// <returns></returns>
+            public void GrappleLocation(Vector3 anchorPosition, Vector3 hand)
             {
-                ballisticVariables.SetBallisticVariables(hand, anchor, speed);
-                ballisticData.Calculate(ballisticVariables);
-                SetBallisticData(ballisticData, ballisticVariables);
-                //grappleVisual.BezierLineRenderer(ballisticData.start, ballisticData.middle, ballisticData.end);
-                grappleVisual.BallisticTrajectory(ballisticData);
+                anchor = anchorPosition;
+                grappleDirection = (hand - anchor).normalized;
+
+                Debug.DrawRay(anchorPosition, grappleDirection * grappleDistance, Color.red);
+                Debug.DrawLine(anchorPosition, data.indirectLocation.point, Color.green);
+
+                switch (Physics.Raycast(anchor, grappleDirection, out RaycastHit hit, grappleDistance, grappleLayer))
+                {
+                    case true:
+                        data.indirectLocation = hit;
+                        data.grappleLocation = hit;
+                        data.grappleType = GrappleType.DIRECT;
+                        return;
+                    case false when ValidFallback():
+                        data.grappleLocation = data.indirectLocation;
+                        data.grappleType = GrappleType.INDIRECT;
+                        return;
+                    case false:
+                        data.grappleType = GrappleType.INVALID;
+                        return;
+                }
+            }
+            /// <summary>
+            /// Checks if the last grapple location is valid or not
+            /// </summary>
+            /// <returns></returns>
+            private bool ValidFallback()
+            {
+                return true;
+                return Vector3.Angle(grappleDirection, (anchor - data.indirectLocation.point)) <= indirectAngle;
             }
         }
+        
         [Serializable] public class Grapple
         {
             private bool launchCurrent, launchPrevious, grappleConnected, hanging;
-            private GameObject hookPrefab, anchor, ropeCenter;
+            private GameObject hookPrefab, anchor, detectionVisual, detectionCenter;
 
             private const float ReelForce = 20f, RopeWidth = .01f, RopeSpring = 20f, Damper = 50f, MinimumDistance = .1f, Slack = 1f;
-            private Vector3 grappleLocation, lookDirection;
+            private Vector3 lookDirection, ropeCenter;
             private Vector2 joystick;
             
-            private LayerMask grappleMask;
             public GrappleHook grappleHook;
             public SpringJoint grappleJoint;
-            public LineRenderer rope;
+            public LineRenderer rope, detection;
             private Rigidbody player;
-            
-            private TimeManager.SlowTimeData slowTime;
             private TimeManager timeManager;
-            
+            private TimeManager.SlowTimeData slowTime;
+            private Location location;
+            private Location.GrappleLocationData grappleLocation;
             public enum GrappleState { REEL_IN, REEL_OUT, HANG }
             private GrappleState grappleState;
-            
+
             /// <summary>
             /// Configures the setup and caches external variables so they don't need to be passed more than once
             /// </summary>
             /// <param name="ropeMaterial"></param>
+            /// <param name="visualMaterial"></param>
             /// <param name="ropeParent"></param>
-            /// <param name="self"></param>
             /// <param name="grapplePrefab"></param>
             /// <param name="anchorReference"></param>
-            /// <param name="layerMask"></param>
-            /// <param name="rb"></param>
+            /// <param name="rigidBody"></param>
             /// <param name="slowTimeData"></param>
-            public void ConfigureGrapple(Material ropeMaterial, Transform ropeParent, Transform self, GameObject grapplePrefab, GameObject anchorReference, LayerMask layerMask, Rigidbody rb, TimeManager.SlowTimeData slowTimeData, TimeManager manager)
+            /// <param name="manager"></param>
+            public void ConfigureGrapple(Material ropeMaterial, Material visualMaterial, Transform ropeParent, GameObject grapplePrefab, GameObject anchorReference, Rigidbody rigidBody, TimeManager.SlowTimeData slowTimeData, TimeManager manager)
             {
                 // Setup Rope
                 rope = ropeParent.gameObject.AddComponent<LineRenderer>();
                 rope.SetupLineRender(ropeMaterial, RopeWidth, true);
-                ropeCenter = new GameObject("[Rope Center]");
-                ropeCenter.transform.SetParent(ropeParent);
+                
+                // Setup Detection Visual
+                detectionCenter = new GameObject("[Detection Center]");
+                detectionVisual = new GameObject("[Detection Visual]");
+                detectionVisual.transform.SetParent(anchorReference.transform);
+                detection = detectionVisual.gameObject.AddComponent<LineRenderer>();
+                detection.SetupLineRender(visualMaterial, .001f, true);
 
                 // Setup References
                 slowTime = slowTimeData;
                 timeManager = manager;
-                player = rb;
+                player = rigidBody;
                 hookPrefab = grapplePrefab;
                 anchor = anchorReference;
-                grappleMask = layerMask;
-                CreateHook(grappleMask);
+                CreateHook();
             }
             /// <summary>
             /// Creates a frozen hook at the anchor location
             /// </summary>
-            private void CreateHook(LayerMask layerMask)
+            private void CreateHook()
             {
-                // Create Hook
                 GameObject hook = Instantiate(hookPrefab, anchor.transform);
                 grappleHook = hook.GetComponent<GrappleHook>();
-                grappleHook.ConfigureGrappleHook(layerMask);
                 grappleHook.SpawnHook();
             }
 
@@ -154,33 +159,46 @@ namespace Grapple.Scripts
             /// </summary>
             /// <param name="launch"></param>
             /// <param name="jettison"></param>
-            /// <param name="referenceFrame"></param>
             /// <param name="gestureVector"></param>
             /// <param name="look"></param>
-            public void CheckLaunch(bool launch, bool jettison, BallisticReferenceFrame referenceFrame, Vector2 gestureVector, Vector3 look)
+            /// <param name="locationData"></param>
+            public void CheckLaunch(bool launch, bool jettison, Vector2 gestureVector, Vector3 look, Location locationData)
             {
                 // Cache values
                 launchCurrent = launch;
                 joystick = gestureVector;
                 lookDirection = look.normalized;
-                
+                location = locationData;
+
                 // Check States
-                if (launchCurrent && !launchPrevious) Launch(referenceFrame);
+                if (launchCurrent && !launchPrevious) Launch();
                 if (grappleConnected) CheckGrappleState();
                 if (!launchCurrent && launchPrevious) timeManager.SlowTime(slowTime);
                 if (jettison) Jettison();
                 
+                // Reset Values
                 launchPrevious = launchCurrent;
+                
+                // Draw Calls
+                DrawRope();
+                DrawVisualisation();
             }
+
             /// <summary>
-            /// Contains the logic which launches a grapple
+            /// Contains the logic which launches a grapple, grappleLocation is always valid
             /// </summary>
-            /// <param name="referenceFrame"></param>
-            private void Launch(BallisticReferenceFrame referenceFrame)
+            private void Launch()
             {
+                // Checks if the grapple location is valid and caches values if it is
+                if (location.data.grappleType == Location.GrappleType.INVALID) return;
+                grappleLocation = location.data;
+                
+                // Method Calls
                 StopHanging();
-                CreateHook(grappleMask);
-                grappleHook.LaunchHook(referenceFrame.ballisticData.initialVelocity);
+                CreateHook();
+                
+                // Reset Logic
+                grappleHook.LaunchHook(grappleLocation);
                 grappleHook.collide.AddListener(GrappleAttach);
                 grappleConnected = false;
             }
@@ -214,10 +232,10 @@ namespace Grapple.Scripts
                 switch (direction)
                 {
                     case GrappleState.REEL_IN:
-                        AddForce(grappleLocation - anchor.transform.position);
+                        AddForce(grappleLocation.grappleLocation.point - anchor.transform.position);
                         return;
                     case GrappleState.REEL_OUT:
-                        AddForce(anchor.transform.position - grappleLocation);
+                        AddForce(anchor.transform.position - grappleLocation.grappleLocation.point);
                         return;
                     case GrappleState.HANG:
                         return;
@@ -232,7 +250,7 @@ namespace Grapple.Scripts
             private void AddForce(Vector3 vector)
             {
                 player.AddForce(vector.normalized * ReelForce, ForceMode.Acceleration);
-                player.AddForce(lookDirection * Mathf.Lerp(0, ReelForce, .25f));
+                player.AddForce(lookDirection * Mathf.Lerp(0, ReelForce, .5f));
             }
             /// <summary>
             /// Called once to create a spring joint with the current grapple state
@@ -245,7 +263,7 @@ namespace Grapple.Scripts
                 grappleJoint.ConfigureSpringJoint(
                     grappleHook.hookRigidBody, 
                     false, RopeSpring, Damper, MinimumDistance, 
-                    Vector3.Distance(player.transform.position, grappleLocation) + Slack);
+                    Vector3.Distance(player.transform.position, grappleLocation.grappleLocation.point) + Slack);
                 
                 // Ensure this only gets called once
                 hanging = true;
@@ -265,7 +283,7 @@ namespace Grapple.Scripts
             private void Jettison()
             {
                 StopHanging();
-                CreateHook(grappleMask);
+                CreateHook();
                 grappleConnected = false;
                 timeManager.SlowTime(slowTime);
             }
@@ -275,18 +293,43 @@ namespace Grapple.Scripts
             private void GrappleAttach()
             {
                 grappleConnected = true;
-                grappleLocation = grappleHook.grapplePoint;
             }
             /// <summary>
             /// Draws the rope between the anchor and the grapple hook
             /// </summary>
             public void DrawRope()
             {
-                // todo: turn this into a curved line renderer
-                rope.DrawStraightLineRender(anchor.transform, grappleHook.transform);
+                Vector3 anchorPosition = anchor.transform.position;
+                Vector3 hookPosition = grappleHook.transform.position;
+                ropeCenter = Vector3.Lerp(ropeCenter, Vector3.Lerp(anchorPosition, hookPosition, .5f), .1f);
+                rope.BezierLineRenderer(anchorPosition, ropeCenter, hookPosition);
+            }
+            /// <summary>
+            /// Draws the visual to show where 
+            /// </summary>
+            private void DrawVisualisation()
+            {
+                Vector3 anchorPosition = anchor.transform.position;
+                
+                switch (location.data.grappleType)
+                {
+                    case Location.GrappleType.DIRECT:
+                        detection.DrawStraightLineRender(anchorPosition, location.data.grappleLocation.point);
+                        break;
+                    case Location.GrappleType.INDIRECT:
+                        detection.DrawStraightLineRender(anchorPosition, location.data.indirectLocation.point);
+                        break;
+                    case Location.GrappleType.INVALID:
+                        detection.DrawStraightLineRender(anchorPosition, anchorPosition);
+                        break;
+                    default:
+                        return;
+                }
             }
         }
-
+        /// <summary>
+        /// Initialise and Cache Values
+        /// </summary>
         private void Start()
         {
             controller = GetComponent<ControllerTransforms>();
@@ -294,75 +337,61 @@ namespace Grapple.Scripts
             launchAnchor = GetComponent<LaunchAnchor>();
             timeManager = GetComponent<TimeManager>();
             headCollider = gameObject.AddComponent<SphereCollider>();
-            //leftHand = gameObject.AddComponent<SphereCollider>();
-            //rightHand = gameObject.AddComponent<SphereCollider>();
+
+            leftLocation.CacheValues(
+                grappleRange,
+                indirectAngle,
+                grappleLayer);
+            rightLocation.CacheValues(
+                grappleRange,
+                indirectAngle,
+                grappleLayer);
             
             launchAnchor.ConfigureAnchors(controller);
             headCollider.radius = .35f;
-            //leftHand.radius = .1f;
-            //rightHand.radius = .1f;
-            
-            rightReferenceFrame.SetupReferenceFrame(
-                "Right", 
-                grappleVisualMaterial);
-            leftReferenceFrame.SetupReferenceFrame(
-                "Left", 
-                grappleVisualMaterial);
             
             leftGrapple.ConfigureGrapple(
-                ropeMaterial, 
-                launchAnchor.leftAnchor.transform, 
-                transform, 
+                ropeMaterial, grappleVisualMaterial,
+                launchAnchor.leftAnchor.transform,
                 hook,
-                launchAnchor.leftAnchor, 
-                grappleLayer, 
+                launchAnchor.leftAnchor,
                 playerRigidBody, 
-                slowTime, 
-                timeManager);
+                slowTime, timeManager);
             rightGrapple.ConfigureGrapple(
-                ropeMaterial, 
-                launchAnchor.rightAnchor.transform, 
-                transform, 
+                ropeMaterial, grappleVisualMaterial,
+                launchAnchor.rightAnchor.transform,
                 hook,
-                launchAnchor.rightAnchor, 
-                grappleLayer, 
+                launchAnchor.rightAnchor,
                 playerRigidBody, 
-                slowTime, 
-                timeManager);
+                slowTime, timeManager);
         }
         private void Update()
         {
-            rightReferenceFrame.ApplyBallisticsData(
-                controller.RightPosition(),
-                launchAnchor.RightAnchor(), 
-                launchSpeed);
-            leftReferenceFrame.ApplyBallisticsData(
-                controller.LeftPosition(), 
-                launchAnchor.LeftAnchor(),
-                launchSpeed);
+            // Calculate Grapple Location
+            leftLocation.GrappleLocation(
+                launchAnchor.Anchor(LaunchAnchor.Configuration.LEFT),
+                controller.Position(ControllerTransforms.Check.LEFT));
+            rightLocation.GrappleLocation(
+                launchAnchor.Anchor(LaunchAnchor.Configuration.RIGHT),
+                controller.Position(ControllerTransforms.Check.RIGHT));
             
+            // Check for User Input
             rightGrapple.CheckLaunch(
                 controller.Select(ControllerTransforms.Check.RIGHT),
                 controller.Joystick(ControllerTransforms.Check.RIGHT),
-                rightReferenceFrame, 
                 controller.JoyStick(ControllerTransforms.Check.RIGHT),
-                controller.ForwardVector(ControllerTransforms.Check.HEAD));
+                controller.ForwardVector(ControllerTransforms.Check.HEAD),
+                rightLocation);
             leftGrapple.CheckLaunch(
                 controller.Select(ControllerTransforms.Check.LEFT), 
-                controller.Joystick(ControllerTransforms.Check.LEFT), 
-                leftReferenceFrame, 
+                controller.Joystick(ControllerTransforms.Check.LEFT),
                 controller.JoyStick(ControllerTransforms.Check.LEFT),
-                controller.ForwardVector(ControllerTransforms.Check.HEAD));
-            
-            rightGrapple.DrawRope();
-            leftGrapple.DrawRope();
+                controller.ForwardVector(ControllerTransforms.Check.HEAD),
+                leftLocation);
         }
-
         private void FixedUpdate()
         {
             headCollider.center = controller.LocalPosition(ControllerTransforms.Check.HEAD);
-            //leftHand.center = controller.LocalPosition(ControllerTransforms.Check.LEFT);
-            //rightHand.center = controller.LocalPosition(ControllerTransforms.Check.RIGHT);
         }
     }
 }
