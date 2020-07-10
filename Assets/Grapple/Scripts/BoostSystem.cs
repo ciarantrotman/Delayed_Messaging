@@ -6,7 +6,7 @@ namespace Grapple.Scripts
 {
     public class BoostSystem : MonoBehaviour
     {
-        [Header("Boost System Configuration")]
+        //[Header("Boost System Configuration")]
         [SerializeField, Range(1f, 50f)] private float boostStrength = 10f;
         [SerializeField] private TimeManager.SlowTimeData slowTime;
 

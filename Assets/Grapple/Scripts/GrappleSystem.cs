@@ -9,10 +9,10 @@ namespace Grapple.Scripts
     [RequireComponent(typeof(ControllerTransforms), typeof(LaunchAnchor))]
     public class GrappleSystem : MonoBehaviour
     {
-        [Header("Grapple System Configuration")]
+        //[Header("Grapple System Configuration")]
         [Range(0, 100f)] public float launchSpeed = 1f, grappleRange = 50f, indirectAngle = 25f;
         [SerializeField] private TimeManager.SlowTimeData slowTime;
-        [Header("Grapple System References")]
+        //[Header("Grapple System References")]
         [Space(10), SerializeField] private GameObject hook, visual;
         public Material grappleVisualMaterial, ropeMaterial;
         public LayerMask grappleLayer;
@@ -93,9 +93,9 @@ namespace Grapple.Scripts
         [Serializable] public class Grapple
         {
             private bool launchCurrent, launchPrevious, grappleConnected, hanging;
-            private GameObject hookPrefab, anchor, detectionVisual, grappleVisual;
+            private GameObject hookPrefab, anchor, detectionParent, invalid, indirect, grappleVisual;
 
-            private const float ReelForce = 20f, RopeWidth = .01f, RopeSpring = 20f, Damper = 50f, MinimumDistance = .1f, Slack = 1f;
+            private const float ReelForce = 20f, RopeWidth = .01f, RopeSpring = 20f, Damper = 10f, MinimumDistance = .1f, Slack = 1f;
             private Vector3 lookDirection, ropeCenter, detectionMiddle, detectionEnd;
             private Vector2 joystick;
             
@@ -115,19 +115,14 @@ namespace Grapple.Scripts
             /// </summary>
             /// <param name="ropeMaterial"></param>
             /// <param name="visualMaterial"></param>
-            /// <param name="ropeParent"></param>
             /// <param name="grapplePrefab"></param>
             /// <param name="anchorReference"></param>
             /// <param name="visual"></param>
             /// <param name="rigidBody"></param>
             /// <param name="slowTimeData"></param>
             /// <param name="manager"></param>
-            public void ConfigureGrapple(Material ropeMaterial, Material visualMaterial, Transform ropeParent, GameObject grapplePrefab, GameObject anchorReference, GameObject visual, Rigidbody rigidBody, TimeManager.SlowTimeData slowTimeData, TimeManager manager)
+            public void ConfigureGrapple(Material ropeMaterial, Material visualMaterial, GameObject grapplePrefab, GameObject anchorReference, GameObject visual, Rigidbody rigidBody, TimeManager.SlowTimeData slowTimeData, TimeManager manager)
             {
-                // Setup Rope
-                rope = ropeParent.gameObject.AddComponent<LineRenderer>();
-                rope.SetupLineRender(ropeMaterial, RopeWidth, true);
-
                 // Setup References
                 slowTime = slowTimeData;
                 timeManager = manager;
@@ -135,15 +130,35 @@ namespace Grapple.Scripts
                 hookPrefab = grapplePrefab;
                 anchor = anchorReference;
                 
+                // Setup Rope
+                rope = anchor.AddComponent<LineRenderer>();
+                rope.SetupLineRender(ropeMaterial, RopeWidth, true);
+                
                 // Setup Detection Visual
-                detectionVisual = new GameObject("[Detection Visual]");
-                detectionVisual.transform.SetParent(anchor.transform);
-                detection = detectionVisual.gameObject.AddComponent<LineRenderer>();
+                detectionParent = new GameObject("[Detection Parent]");
+                invalid = new GameObject("[Invalid]");
+                indirect = new GameObject("[Indirect]");
+                CreateOffset(invalid, detectionParent, 10f);
+                CreateOffset(indirect, detectionParent, 0f);
+
+                detectionParent.transform.SetParent(anchor.transform);
+                detection = detectionParent.gameObject.AddComponent<LineRenderer>();
                 detection.SetupLineRender(visualMaterial, .003f, true);
                 grappleVisual = Instantiate(visual, anchor.transform);
                 
                 // Create first hook
                 CreateHook();
+            }
+            /// <summary>
+            /// Creates the two offset components
+            /// </summary>
+            /// <param name="target"></param>
+            /// <param name="parent"></param>
+            /// <param name="offset"></param>
+            private void CreateOffset(GameObject target, GameObject parent, float offset)
+            {
+                target.transform.SetParent(parent.transform);
+                target.transform.localPosition = new Vector3(0,0,offset);
             }
             /// <summary>
             /// Creates a frozen hook at the anchor location
@@ -154,7 +169,6 @@ namespace Grapple.Scripts
                 grappleHook = hook.GetComponent<GrappleHook>();
                 grappleHook.SpawnHook();
             }
-
             /// <summary>
             /// Checks the conditions to launch a grapple
             /// </summary>
@@ -184,7 +198,6 @@ namespace Grapple.Scripts
                 DrawRope();
                 DrawVisualisation();
             }
-
             /// <summary>
             /// Contains the logic which launches a grapple, grappleLocation is always valid
             /// </summary>
@@ -312,7 +325,10 @@ namespace Grapple.Scripts
             {
                 // Cache Values
                 Vector3 start = anchor.transform.position;
+                Vector3 middle;
                 Vector3 end;
+
+                float speed;
                 
                 // Determine where the end of the detection curve should be
                 switch (location.data.grappleType)
@@ -320,30 +336,41 @@ namespace Grapple.Scripts
                     case Location.GrappleType.DIRECT:
                         SetVisual(true, location.data.grappleLocation);
                         end =  location.data.grappleLocation.point;
-                        detectionMiddle = Vector3.Lerp(detectionMiddle, Vector3.Lerp(start, detectionEnd, .5f), .1f);
+                        middle = detectionMiddle;
+                        speed = .75f;
                         break;
                     case Location.GrappleType.INDIRECT:
                         SetVisual(true, location.data.indirectLocation);
                         end =  location.data.indirectLocation.point;
-                        detectionMiddle = Vector3.Lerp(detectionMiddle, (start + location.data.direction) * (Vector3.Distance(start, end) * 25f), .1f);
+                        middle = indirect.transform.position;
+                        speed = .35f;
                         break;
                     case Location.GrappleType.INVALID:
                         SetVisual(false, location.data.indirectLocation);
-                        end =  start + location.data.direction;
-                        detectionMiddle = Vector3.Lerp(detectionMiddle, Vector3.Lerp(start, detectionEnd, .5f), .5f);
+                        end = invalid.transform.position;
+                        middle = detectionMiddle;
+                        speed = .9f;
                         break;
                     default:
                         return;
                 }
                 
                 // Align those values
-                detectionEnd = Vector3.Lerp(detectionEnd, end, .5f);
-                detection.BezierLineRenderer(start, detectionMiddle, detectionEnd);
+                detectionParent.transform.forward = location.data.direction;
+                detectionEnd = Vector3.Lerp(detectionEnd, end, speed);
+                detectionMiddle = Vector3.Lerp(detectionMiddle, Vector3.Lerp(start, detectionEnd, .5f), speed);
+                indirect.transform.localPosition = new Vector3(0,0,(Vector3.Distance(start, end) * .25f));
+                detection.BezierLineRenderer(start, middle, detectionEnd);
             }
+            /// <summary>
+            /// Sets the visual state
+            /// </summary>
+            /// <param name="enabled"></param>
+            /// <param name="grapple"></param>
             private void SetVisual(bool enabled, RaycastHit grapple)
             {
                 grappleVisual.SetActive(enabled);
-                grappleVisual.transform.position = grapple.point;
+                grappleVisual.transform.position = Vector3.Lerp(grappleVisual.transform.position, grapple.point, .75f);
                 grappleVisual.transform.forward = grapple.normal;
             }
         }
@@ -368,17 +395,15 @@ namespace Grapple.Scripts
                 grappleLayer);
             
             launchAnchor.ConfigureAnchors(controller);
-            headCollider.radius = .35f;
+            headCollider.radius = .2f;
             
             leftGrapple.ConfigureGrapple(
                 ropeMaterial, grappleVisualMaterial,
-                launchAnchor.leftAnchor.transform,
                 hook, launchAnchor.leftAnchor, visual,
                 playerRigidBody, 
                 slowTime, timeManager);
             rightGrapple.ConfigureGrapple(
                 ropeMaterial, grappleVisualMaterial,
-                launchAnchor.rightAnchor.transform,
                 hook, launchAnchor.rightAnchor, visual,
                 playerRigidBody, 
                 slowTime, timeManager);

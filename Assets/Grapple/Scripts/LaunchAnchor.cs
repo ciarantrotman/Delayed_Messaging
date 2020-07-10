@@ -13,7 +13,7 @@ namespace Grapple.Scripts
         private ControllerTransforms controller;
         
         [Header("Anchor Configuration")]
-        [SerializeField] private float height = .75f, offset = .2f;
+        [SerializeField] private float height = .75f, offset = .2f, back = .1f;
 
         public enum Configuration { CENTER, RIGHT, LEFT }
         private Configuration configuration;
@@ -81,16 +81,16 @@ namespace Grapple.Scripts
             switch (config)
             {
                 case Configuration.CENTER:
-                    leftAnchor.transform.localPosition = new Vector3(- offset, 0, 0);
-                    rightAnchor.transform.localPosition = new Vector3(offset, 0, 0);
+                    leftAnchor.transform.localPosition = new Vector3(- offset, 0, - back);
+                    rightAnchor.transform.localPosition = new Vector3(offset, 0, - back);
                     break;
                 case Configuration.RIGHT:
-                    leftAnchor.transform.localPosition = new Vector3(offset, 0, 0);
-                    rightAnchor.transform.localPosition = new Vector3(offset + (offset * .5f), 0, 0);
+                    leftAnchor.transform.localPosition = new Vector3(offset, 0, - back);
+                    rightAnchor.transform.localPosition = new Vector3(offset + (offset * .5f), 0, - back);
                     break;
                 case Configuration.LEFT:
-                    leftAnchor.transform.localPosition = new Vector3(- offset - (offset * .5f), 0, 0);
-                    rightAnchor.transform.localPosition = new Vector3(- offset, 0, 0);
+                    leftAnchor.transform.localPosition = new Vector3(- offset - (offset * .5f), 0, - back);
+                    rightAnchor.transform.localPosition = new Vector3(- offset, 0, - back);
                     break;
                 default:
                     break;
