@@ -17,9 +17,8 @@ namespace Grapple.Scripts
         {
             transform.localPosition = Vector3.zero;
         }
-
         /// <summary>
-        /// Launches the hook in the provided vector
+        /// Launches the hook in the provided vector, time is calculated based on distance
         /// </summary>
         /// <param name="data"></param>
         public void LaunchHook(GrappleSystem.Location.GrappleLocationData data)

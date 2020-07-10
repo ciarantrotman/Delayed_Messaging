@@ -10,13 +10,11 @@ namespace Grapple.Scripts
         [HideInInspector] public GameObject waist, leftAnchor, rightAnchor;
         
         private Vector3 headPosition, headForward;
-        public ControllerTransforms controller;
+        private ControllerTransforms controller;
         
         [Header("Anchor Configuration")]
-        [SerializeField] private float height = .75f;
-        [SerializeField] private float displacement;
-        [SerializeField] private float offset = .2f;
-        
+        [SerializeField] private float height = .75f, offset = .2f;
+
         public enum Configuration { CENTER, RIGHT, LEFT }
         private Configuration configuration;
         
