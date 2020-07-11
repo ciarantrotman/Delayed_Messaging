@@ -95,8 +95,8 @@ namespace Grapple.Scripts
                 controller.ForwardVector(ControllerTransforms.Check.RIGHT),
                 boostStrength);
             
-            leftBoost.CheckBoost(controller.Grab(ControllerTransforms.Check.LEFT));
-            rightBoost.CheckBoost(controller.Grab(ControllerTransforms.Check.RIGHT));
+            leftBoost.CheckBoost(controller.Menu(ControllerTransforms.Check.LEFT));
+            rightBoost.CheckBoost(controller.Menu(ControllerTransforms.Check.RIGHT));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
@@ -37,6 +38,22 @@ namespace Grapple.Scripts
                 public Vector3 direction;
                 public RaycastHit grappleLocation, indirectLocation;
                 public GrappleType grappleType;
+                public bool connected, wrap;
+                public List<RaycastHit> wrapPoints;
+                public RaycastHit GrappleLocation()
+                {
+                    switch (grappleType)
+                    {
+                        case GrappleType.DIRECT:
+                            return grappleLocation;
+                        case GrappleType.INDIRECT:
+                            return indirectLocation;
+                        case GrappleType.INVALID:
+                            return grappleLocation;
+                        default:
+                            return grappleLocation;
+                    }
+                }
             }
             public GrappleLocationData data;
 
@@ -56,12 +73,12 @@ namespace Grapple.Scripts
             /// Takes in the anchor and hand location, outputs grapple location and type
             /// </summary>
             /// <param name="anchorPosition"></param>
-            /// <param name="hand"></param>
+            /// <param name="direction"></param>
             /// <returns></returns>
-            public void GrappleLocation(Vector3 anchorPosition, Vector3 hand)
+            public void GrappleLocation(Vector3 anchorPosition, Vector3 direction)
             {
                 anchor = anchorPosition;
-                grappleDirection = (hand - anchor).normalized;
+                grappleDirection = direction.normalized;
                 data.direction = grappleDirection;
 
                 switch (Physics.Raycast(anchor, grappleDirection, out RaycastHit hit, grappleDistance, grappleLayer))
@@ -70,14 +87,29 @@ namespace Grapple.Scripts
                         data.indirectLocation = hit;
                         data.grappleLocation = hit;
                         data.grappleType = GrappleType.DIRECT;
-                        return;
+                        break;
                     case false when ValidFallback():
                         data.grappleLocation = data.indirectLocation;
                         data.grappleType = GrappleType.INDIRECT;
-                        return;
+                        break;
                     case false:
                         data.grappleType = GrappleType.INVALID;
-                        return;
+                        break;
+                }
+
+                if (data.connected) CheckWrap();
+            }
+
+            private void CheckWrap()
+            {
+                Vector3 ropeVector = data.grappleLocation.point - anchor;
+                float ropeLength = Vector3.Distance(anchor, data.grappleLocation.point);
+
+                if (!Physics.Raycast(anchor, ropeVector, out RaycastHit hit, ropeLength, grappleLayer)) return;
+                
+                if (Vector3.Distance(hit.point, anchor) < ropeLength)
+                {
+                        
                 }
             }
             /// <summary>
@@ -95,7 +127,7 @@ namespace Grapple.Scripts
             private bool launchCurrent, launchPrevious, grappleConnected, hanging;
             private GameObject hookPrefab, anchor, detectionParent, invalid, indirect, grappleVisual;
 
-            private const float ReelForce = 20f, RopeWidth = .01f, RopeSpring = 20f, Damper = 10f, MinimumDistance = .1f, Slack = 1f;
+            private const float ReelForce = 15f, RopeWidth = .01f, RopeSpring = 20f, Damper = 10f, MinimumDistance = .1f, Slack = 1f;
             private Vector3 lookDirection, ropeCenter, detectionMiddle, detectionEnd;
             private Vector2 joystick;
             
@@ -184,6 +216,7 @@ namespace Grapple.Scripts
                 joystick = gestureVector;
                 lookDirection = look.normalized;
                 location = locationData;
+                location.data.connected = grappleConnected;
 
                 // Check States
                 if (launchCurrent && !launchPrevious) Launch();
@@ -246,10 +279,10 @@ namespace Grapple.Scripts
                 switch (direction)
                 {
                     case GrappleState.REEL_IN:
-                        AddForce(grappleLocation.grappleLocation.point - anchor.transform.position);
+                        AddForce(grappleLocation.GrappleLocation().point - anchor.transform.position);
                         return;
                     case GrappleState.REEL_OUT:
-                        AddForce(anchor.transform.position - grappleLocation.grappleLocation.point);
+                        AddForce(anchor.transform.position - grappleLocation.GrappleLocation().point);
                         return;
                     case GrappleState.HANG:
                         return;
@@ -264,7 +297,7 @@ namespace Grapple.Scripts
             private void AddForce(Vector3 vector)
             {
                 player.AddForce(vector.normalized * ReelForce, ForceMode.Acceleration);
-                player.AddForce(lookDirection * Mathf.Lerp(0, ReelForce, .5f));
+                player.AddForce(lookDirection * (ReelForce * .5f), ForceMode.Acceleration);
             }
             /// <summary>
             /// Called once to create a spring joint with the current grapple state
@@ -277,7 +310,7 @@ namespace Grapple.Scripts
                 grappleJoint.ConfigureSpringJoint(
                     grappleHook.hookRigidBody, 
                     false, RopeSpring, Damper, MinimumDistance, 
-                    Vector3.Distance(player.transform.position, grappleLocation.grappleLocation.point) + Slack);
+                    Vector3.Distance(player.transform.position, grappleLocation.GrappleLocation().point) + Slack);
                 
                 // Ensure this only gets called once
                 hanging = true;
@@ -296,10 +329,17 @@ namespace Grapple.Scripts
             /// </summary>
             private void Jettison()
             {
+                // Reset all states
                 StopHanging();
                 CreateHook();
+                
+                // Only implement the following if you are connected
+                if (!grappleConnected) return;
                 grappleConnected = false;
+                
+                // Jettison effects
                 timeManager.SlowTime(slowTime);
+                player.AddForce(lookDirection * (ReelForce * .25f), ForceMode.VelocityChange);
             }
             /// <summary>
             /// This is called when the collide event is triggered in the active GrappleHook
@@ -334,19 +374,19 @@ namespace Grapple.Scripts
                 switch (location.data.grappleType)
                 {
                     case Location.GrappleType.DIRECT:
-                        SetVisual(true, location.data.grappleLocation);
-                        end =  location.data.grappleLocation.point;
+                        SetVisual(true, location.data.GrappleLocation());
+                        end =  location.data.GrappleLocation().point;
                         middle = detectionMiddle;
                         speed = .75f;
                         break;
                     case Location.GrappleType.INDIRECT:
-                        SetVisual(true, location.data.indirectLocation);
-                        end =  location.data.indirectLocation.point;
+                        SetVisual(true, location.data.GrappleLocation());
+                        end =  location.data.GrappleLocation().point;
                         middle = indirect.transform.position;
                         speed = .35f;
                         break;
                     case Location.GrappleType.INVALID:
-                        SetVisual(false, location.data.indirectLocation);
+                        SetVisual(false, location.data.GrappleLocation());
                         end = invalid.transform.position;
                         middle = detectionMiddle;
                         speed = .9f;
@@ -363,7 +403,7 @@ namespace Grapple.Scripts
                 detection.BezierLineRenderer(start, middle, detectionEnd);
             }
             /// <summary>
-            /// Sets the visual state
+            /// Determines the state of the visual for the grapple point
             /// </summary>
             /// <param name="enabled"></param>
             /// <param name="grapple"></param>
@@ -408,27 +448,84 @@ namespace Grapple.Scripts
                 playerRigidBody, 
                 slowTime, timeManager);
         }
+        /// <summary>
+        /// Compares the anchor configuration and returns the handed select value
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        private bool Launch(ControllerTransforms.Check check)
+        {
+            switch (launchAnchor.configuration)
+            {
+                case LaunchAnchor.Configuration.CENTER:
+                    return controller.Select(check);
+                case LaunchAnchor.Configuration.RIGHT:
+                    return controller.Select(ControllerTransforms.Check.RIGHT);
+                case LaunchAnchor.Configuration.LEFT:
+                    return controller.Select(ControllerTransforms.Check.LEFT);
+                default:
+                    return false;
+            }
+        }
+        /// <summary>
+        /// Compares the anchor configuration and returns the handed select value
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        private Vector2 GrappleState(ControllerTransforms.Check check)
+        {
+            switch (launchAnchor.configuration)
+            {
+                case LaunchAnchor.Configuration.CENTER:
+                    return controller.JoyStick(check);
+                case LaunchAnchor.Configuration.RIGHT:
+                    return controller.JoyStick(ControllerTransforms.Check.RIGHT);
+                case LaunchAnchor.Configuration.LEFT:
+                    return controller.JoyStick(ControllerTransforms.Check.LEFT);
+                default:
+                    return Vector2.zero;
+            }
+        }
+        /// <summary>
+        /// Compares the anchor configuration and returns the handed select value
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        private bool Jettison(ControllerTransforms.Check check)
+        {
+            switch (launchAnchor.configuration)
+            {
+                case LaunchAnchor.Configuration.CENTER:
+                    return controller.Joystick(check);
+                case LaunchAnchor.Configuration.RIGHT:
+                    return controller.Joystick(ControllerTransforms.Check.RIGHT);
+                case LaunchAnchor.Configuration.LEFT:
+                    return controller.Joystick(ControllerTransforms.Check.LEFT);
+                default:
+                    return false;
+            }
+        }
         private void Update()
         {
             // Calculate Grapple Location
             leftLocation.GrappleLocation(
                 launchAnchor.Anchor(LaunchAnchor.Configuration.LEFT),
-                controller.Position(ControllerTransforms.Check.LEFT));
+                launchAnchor.Direction(LaunchAnchor.Configuration.LEFT));
             rightLocation.GrappleLocation(
                 launchAnchor.Anchor(LaunchAnchor.Configuration.RIGHT),
-                controller.Position(ControllerTransforms.Check.RIGHT));
+                launchAnchor.Direction(LaunchAnchor.Configuration.RIGHT));
             
             // Check for User Input
             rightGrapple.CheckLaunch(
-                controller.Select(ControllerTransforms.Check.RIGHT),
-                controller.Joystick(ControllerTransforms.Check.RIGHT),
-                controller.JoyStick(ControllerTransforms.Check.RIGHT),
+                Launch(ControllerTransforms.Check.RIGHT), 
+                Jettison(ControllerTransforms.Check.RIGHT),
+                GrappleState(ControllerTransforms.Check.RIGHT),
                 controller.ForwardVector(ControllerTransforms.Check.HEAD),
                 rightLocation);
             leftGrapple.CheckLaunch(
-                controller.Select(ControllerTransforms.Check.LEFT), 
-                controller.Joystick(ControllerTransforms.Check.LEFT),
-                controller.JoyStick(ControllerTransforms.Check.LEFT),
+                Launch(ControllerTransforms.Check.LEFT), 
+                Jettison(ControllerTransforms.Check.LEFT),
+                GrappleState(ControllerTransforms.Check.LEFT),
                 controller.ForwardVector(ControllerTransforms.Check.HEAD),
                 leftLocation);
         }
