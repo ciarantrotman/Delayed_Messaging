@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5756227896217334170}
   - component: {fileID: 4003769132542593448}
   m_Layer: 0
-  m_Name: Icosphere
+  m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2279,7 +2279,7 @@ GameObject:
   - component: {fileID: 7349103580168565571}
   - component: {fileID: 1353045410714168197}
   m_Layer: 0
-  m_Name: Torus
+  m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2788,7 +2788,7 @@ GameObject:
   - component: {fileID: 7764928038804767627}
   - component: {fileID: 8468576488367318322}
   m_Layer: 0
-  m_Name: Torus (1)
+  m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

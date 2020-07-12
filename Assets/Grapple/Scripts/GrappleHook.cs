@@ -30,16 +30,18 @@ namespace Grapple.Scripts
             transform.DOMove(data.grappleLocation.point, duration);
             transform.DORotate(data.grappleLocation.normal, duration);
 
-            StartCoroutine(Grapple(duration));
+            StartCoroutine(Grapple(duration, data.grappleLocation.transform));
         }
         /// <summary>
         /// Used to simulate the time taken to 
         /// </summary>
         /// <param name="duration"></param>
+        /// <param name="parent"></param>
         /// <returns></returns>
-        private IEnumerator Grapple(float duration)
+        private IEnumerator Grapple(float duration, Transform parent)
         {
             yield return new WaitForSeconds(duration);
+            transform.SetParent(parent);
             hookRigidBody.isKinematic = true;
             collide.Invoke();
         }

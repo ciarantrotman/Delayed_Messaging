@@ -525,9 +525,11 @@
             <e p="BallisticTrajectory.cs" t="Include" />
             <e p="BoostSystem.cs" t="Include" />
             <e p="GrappleHook.cs" t="Include" />
+            <e p="GrappleRope.cs" t="Include" />
             <e p="GrappleSystem.cs" t="Include" />
             <e p="LaunchAnchor.cs" t="Include" />
             <e p="MotionVignette.cs" t="Include" />
+            <e p="MovingTarget.cs" t="Include" />
             <e p="Testing" t="Include">
               <e p="JointTesting.cs" t="Include" />
             </e>

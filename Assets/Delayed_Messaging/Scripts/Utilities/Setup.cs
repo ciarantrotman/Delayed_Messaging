@@ -22,6 +22,7 @@ namespace Delayed_Messaging.Scripts.Utilities
             lr.startWidth = width;
             lr.endWidth = width;
             lr.numCapVertices = 32;
+            lr.numCornerVertices = 32;
             lr.useWorldSpace = true;
             lr.enabled = startEnabled;
         }

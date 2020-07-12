@@ -687,18 +687,19 @@ namespace Delayed_Messaging.Scripts.Utilities
             model.transform.localScale = Vector3.one * .1f;
             //model.transform.localScale = new Vector3(adjustedBounds, adjustedBounds, adjustedBounds);
         }
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="springJoint"></param>
-        /// <param name="connectedRigidBody"></param>
+        /// <param name="anchorLocation"></param>
         /// <param name="auto"></param>
         /// <param name="spring"></param>
         /// <param name="damper"></param>
         /// <param name="minimumDistance"></param>
         /// <param name="maximumDistance"></param>
         /// <param name="tolerance"></param>
-        public static void ConfigureSpringJoint(this SpringJoint springJoint, Rigidbody connectedRigidBody = null, bool auto = false, float spring = 10f, float damper = 50f, float minimumDistance = 0f, float maximumDistance = 0f, float tolerance = .05f)
+        public static void ConfigureSpringJoint(this SpringJoint springJoint, Vector3 anchorLocation, bool auto = false, float spring = 10f, float damper = 50f, float minimumDistance = 0f, float maximumDistance = 0f, float tolerance = .05f)
         {
             // Set these values
             springJoint.spring = spring;
@@ -709,8 +710,7 @@ namespace Delayed_Messaging.Scripts.Utilities
             springJoint.autoConfigureConnectedAnchor = auto;
             
             // Adjust connected body
-            springJoint.connectedBody = connectedRigidBody;
-            springJoint.connectedAnchor = Vector3.zero;
+            springJoint.connectedAnchor = anchorLocation;
         }
         /// <summary>
         /// 

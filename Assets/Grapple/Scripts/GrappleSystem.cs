@@ -38,8 +38,10 @@ namespace Grapple.Scripts
                 public Vector3 direction;
                 public RaycastHit grappleLocation, indirectLocation;
                 public GrappleType grappleType;
-                public bool connected, wrap;
-                public List<RaycastHit> wrapPoints;
+                public bool connected;
+                ///
+                /// This returns the valid location for the initial grapple location and should only be used for visualisation
+                /// 
                 public RaycastHit GrappleLocation()
                 {
                     switch (grappleType)
@@ -56,7 +58,6 @@ namespace Grapple.Scripts
                 }
             }
             public GrappleLocationData data;
-
             /// <summary>
             /// Cache the values set in the inspector, only called once on start
             /// </summary>
@@ -96,29 +97,15 @@ namespace Grapple.Scripts
                         data.grappleType = GrappleType.INVALID;
                         break;
                 }
-
-                if (data.connected) CheckWrap();
-            }
-
-            private void CheckWrap()
-            {
-                Vector3 ropeVector = data.grappleLocation.point - anchor;
-                float ropeLength = Vector3.Distance(anchor, data.grappleLocation.point);
-
-                if (!Physics.Raycast(anchor, ropeVector, out RaycastHit hit, ropeLength, grappleLayer)) return;
-                
-                if (Vector3.Distance(hit.point, anchor) < ropeLength)
-                {
-                        
-                }
             }
             /// <summary>
-            /// Checks if the last grapple location is valid or not
+            /// Checks if the last grapple location is valid or not - it checks deviation and distance
             /// </summary>
             /// <returns></returns>
             private bool ValidFallback()
             {
-                return Vector3.Angle(grappleDirection, data.indirectLocation.point - anchor) <= indirectAngle;
+                // todo: rework for moving objects
+                return Vector3.Angle(grappleDirection, data.indirectLocation.point - anchor) <= indirectAngle && Vector3.Distance(data.indirectLocation.point, anchor) <= grappleDistance;
             }
         }
         
@@ -130,10 +117,11 @@ namespace Grapple.Scripts
             private const float ReelForce = 15f, RopeWidth = .01f, RopeSpring = 20f, Damper = 10f, MinimumDistance = .1f, Slack = 1f;
             private Vector3 lookDirection, ropeCenter, detectionMiddle, detectionEnd;
             private Vector2 joystick;
-            
+
+            public GrappleRope grappleRope;
             public GrappleHook grappleHook;
             public SpringJoint grappleJoint;
-            public LineRenderer rope, detection;
+            public LineRenderer /*rope,*/ detection;
             private Rigidbody player;
             private TimeManager timeManager;
             private TimeManager.SlowTimeData slowTime;
@@ -153,7 +141,8 @@ namespace Grapple.Scripts
             /// <param name="rigidBody"></param>
             /// <param name="slowTimeData"></param>
             /// <param name="manager"></param>
-            public void ConfigureGrapple(Material ropeMaterial, Material visualMaterial, GameObject grapplePrefab, GameObject anchorReference, GameObject visual, Rigidbody rigidBody, TimeManager.SlowTimeData slowTimeData, TimeManager manager)
+            /// <param name="mask"></param>
+            public void ConfigureGrapple(Material ropeMaterial, Material visualMaterial, GameObject grapplePrefab, GameObject anchorReference, GameObject visual, Rigidbody rigidBody, TimeManager.SlowTimeData slowTimeData, TimeManager manager, LayerMask mask)
             {
                 // Setup References
                 slowTime = slowTimeData;
@@ -163,8 +152,10 @@ namespace Grapple.Scripts
                 anchor = anchorReference;
                 
                 // Setup Rope
-                rope = anchor.AddComponent<LineRenderer>();
-                rope.SetupLineRender(ropeMaterial, RopeWidth, true);
+                //rope = anchor.AddComponent<LineRenderer>();
+                //rope.SetupLineRender(ropeMaterial, RopeWidth, true);
+                grappleRope = anchor.AddComponent<GrappleRope>();
+                grappleRope.ConfigureRope(anchor.transform, ropeMaterial, mask);
                 
                 // Setup Detection Visual
                 detectionParent = new GameObject("[Detection Parent]");
@@ -209,7 +200,7 @@ namespace Grapple.Scripts
             /// <param name="gestureVector"></param>
             /// <param name="look"></param>
             /// <param name="locationData"></param>
-            public void CheckLaunch(bool launch, bool jettison, Vector2 gestureVector, Vector3 look, Location locationData)
+            public void GrappleUpdate(bool launch, bool jettison, Vector2 gestureVector, Vector3 look, Location locationData)
             {
                 // Cache values
                 launchCurrent = launch;
@@ -240,14 +231,21 @@ namespace Grapple.Scripts
                 if (location.data.grappleType == Location.GrappleType.INVALID) return;
                 grappleLocation = location.data;
                 
-                // Method Calls
-                StopHanging();
-                CreateHook();
-                
                 // Reset Logic
+                ResetGrapple();
                 grappleHook.LaunchHook(grappleLocation);
                 grappleHook.collide.AddListener(GrappleAttach);
                 grappleConnected = false;
+                grappleRope.LaunchRope(grappleHook.transform);
+            }
+            /// <summary>
+            /// This is called when the collide event is triggered in the active GrappleHook
+            /// </summary>
+            private void GrappleAttach()
+            {
+                grappleConnected = true;
+                grappleRope.CreateRope(grappleLocation.grappleLocation);
+                grappleRope.wrap.AddListener(ReconfigureHang);
             }
             /// <summary>
             /// Feeds in the cached value for the joystick and outputs a grapple state
@@ -279,10 +277,10 @@ namespace Grapple.Scripts
                 switch (direction)
                 {
                     case GrappleState.REEL_IN:
-                        AddForce(grappleLocation.GrappleLocation().point - anchor.transform.position);
+                        AddForce(grappleRope.RopeVector());
                         return;
                     case GrappleState.REEL_OUT:
-                        AddForce(anchor.transform.position - grappleLocation.GrappleLocation().point);
+                        AddForce(-grappleRope.RopeVector());
                         return;
                     case GrappleState.HANG:
                         return;
@@ -305,15 +303,19 @@ namespace Grapple.Scripts
             private void Hang()
             {
                 if (hanging) return;
-                
                 grappleJoint = player.gameObject.AddComponent<SpringJoint>();
                 grappleJoint.ConfigureSpringJoint(
-                    grappleHook.hookRigidBody, 
+                    grappleRope.GrappleLocation().point, 
                     false, RopeSpring, Damper, MinimumDistance, 
-                    Vector3.Distance(player.transform.position, grappleLocation.GrappleLocation().point) + Slack);
-                
-                // Ensure this only gets called once
+                    grappleRope.RopeLength() + Slack);
                 hanging = true;
+            }
+            /// <summary>
+            /// Used to reconfigure the hanging location for the spring joint
+            /// </summary>
+            private void ReconfigureHang()
+            {
+                hanging = false;
             }
             /// <summary>
             /// Destroys the spring joint used to hang
@@ -330,8 +332,7 @@ namespace Grapple.Scripts
             private void Jettison()
             {
                 // Reset all states
-                StopHanging();
-                CreateHook();
+                ResetGrapple();
                 
                 // Only implement the following if you are connected
                 if (!grappleConnected) return;
@@ -342,21 +343,24 @@ namespace Grapple.Scripts
                 player.AddForce(lookDirection * (ReelForce * .25f), ForceMode.VelocityChange);
             }
             /// <summary>
-            /// This is called when the collide event is triggered in the active GrappleHook
+            /// Resets the state of the rope
             /// </summary>
-            private void GrappleAttach()
+            private void ResetGrapple()
             {
-                grappleConnected = true;
+                grappleRope.DisconnectRope();
+                StopHanging();
+                CreateHook();
             }
             /// <summary>
             /// Draws the rope between the anchor and the grapple hook
             /// </summary>
             public void DrawRope()
             {
+                /*
                 Vector3 anchorPosition = anchor.transform.position;
                 Vector3 hookPosition = grappleHook.transform.position;
                 ropeCenter = Vector3.Lerp(ropeCenter, Vector3.Lerp(anchorPosition, hookPosition, .5f), .1f);
-                rope.BezierLineRenderer(anchorPosition, ropeCenter, hookPosition);
+                rope.BezierLineRenderer(anchorPosition, ropeCenter, hookPosition);*/
             }
             /// <summary>
             /// Draws the visual to show where 
@@ -441,14 +445,15 @@ namespace Grapple.Scripts
                 ropeMaterial, grappleVisualMaterial,
                 hook, launchAnchor.leftAnchor, visual,
                 playerRigidBody, 
-                slowTime, timeManager);
+                slowTime, timeManager, grappleLayer);
             rightGrapple.ConfigureGrapple(
                 ropeMaterial, grappleVisualMaterial,
                 hook, launchAnchor.rightAnchor, visual,
                 playerRigidBody, 
-                slowTime, timeManager);
+                slowTime, timeManager, grappleLayer);
         }
-        /// <summary>
+        #region Conditional Values
+                /// <summary>
         /// Compares the anchor configuration and returns the handed select value
         /// </summary>
         /// <param name="check"></param>
@@ -505,6 +510,7 @@ namespace Grapple.Scripts
                     return false;
             }
         }
+        #endregion
         private void Update()
         {
             // Calculate Grapple Location
@@ -516,13 +522,13 @@ namespace Grapple.Scripts
                 launchAnchor.Direction(LaunchAnchor.Configuration.RIGHT));
             
             // Check for User Input
-            rightGrapple.CheckLaunch(
+            rightGrapple.GrappleUpdate(
                 Launch(ControllerTransforms.Check.RIGHT), 
                 Jettison(ControllerTransforms.Check.RIGHT),
                 GrappleState(ControllerTransforms.Check.RIGHT),
                 controller.ForwardVector(ControllerTransforms.Check.HEAD),
                 rightLocation);
-            leftGrapple.CheckLaunch(
+            leftGrapple.GrappleUpdate(
                 Launch(ControllerTransforms.Check.LEFT), 
                 Jettison(ControllerTransforms.Check.LEFT),
                 GrappleState(ControllerTransforms.Check.LEFT),
