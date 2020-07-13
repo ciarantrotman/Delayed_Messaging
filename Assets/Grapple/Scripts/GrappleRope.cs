@@ -17,7 +17,7 @@ namespace Grapple.Scripts
         private Vector3 ropeCenter;
 
         [HideInInspector] public UnityEvent wrap;
-        private List<RaycastHit> ropePoints = new List<RaycastHit>();
+        private readonly List<RaycastHit> ropePoints = new List<RaycastHit>();
         
         /// <summary>
         /// Assigns values to cached variables
@@ -31,7 +31,7 @@ namespace Grapple.Scripts
             ropeMaterial = material;
             anchor = anchorTransform;
             rope = gameObject.AddComponent<LineRenderer>();
-            rope.SetupLineRender(ropeMaterial, .01f, true);
+            rope.SetupLineRender(ropeMaterial, .015f, true);
         }
         /// <summary>
         /// Used to transfer information to draw the rope when it has been launched
@@ -81,6 +81,7 @@ namespace Grapple.Scripts
         /// </summary>
         private void CheckWrap()
         {
+            return;
             if (ropePoints.Count <= 0) return;
 
             // Cache the values used for all the calculations
@@ -115,6 +116,12 @@ namespace Grapple.Scripts
         /// </summary>
         private void DrawRope()
         {
+            Vector3 anchorPosition = anchor.position;
+            Vector3 hookPosition = launched || ropeConnected ? hook.position : anchorPosition;
+            ropeCenter = Vector3.Lerp(ropeCenter, Vector3.Lerp(anchorPosition, hookPosition, .5f), .1f);
+            rope.BezierLineRenderer(anchorPosition, ropeCenter, hookPosition);
+            return;
+            /*
             switch (launched)
             {
                 case true:
@@ -132,6 +139,7 @@ namespace Grapple.Scripts
                     rope.SetPosition(ropePoints.Count, anchor.position);
                     return;
             }
+            */
         }
         /// <summary>
         /// Called to reset the rope
@@ -144,9 +152,9 @@ namespace Grapple.Scripts
         }
         private void Update()
         {
+            DrawRope();
             if (!ropeConnected) return;
             CheckWrap();
-            DrawRope();
         }
     }
 }

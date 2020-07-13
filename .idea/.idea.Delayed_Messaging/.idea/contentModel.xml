@@ -534,6 +534,7 @@
               <e p="JointTesting.cs" t="Include" />
             </e>
             <e p="TimeManager.cs" t="Include" />
+            <e p="Velocity.cs" t="Include" />
           </e>
         </e>
         <e p="Gravity Gloves" t="Include">
