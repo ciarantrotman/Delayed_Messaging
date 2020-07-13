@@ -55,10 +55,9 @@ namespace Grapple.Scripts
         /// Used to allow us to wrap the logic for returning the grapple location in this separate class
         /// </summary>
         /// <returns></returns>
-        public RaycastHit GrappleLocation()
+        public Vector3 GrappleLocation()
         {
-            return ropePoints[ropePoints.Count - 1];
-            return ropePoints.Count > 0 ? ropePoints[ropePoints.Count - 1] : new RaycastHit();
+            return ropePoints[ropePoints.Count - 1].point;
         }
         /// <summary>
         /// Returns the vector to the functional grapple location
@@ -66,7 +65,7 @@ namespace Grapple.Scripts
         /// <returns></returns>
         public Vector3 RopeVector()
         {
-            return GrappleLocation().point - anchor.position;
+            return GrappleLocation() - anchor.position;
         }
         /// <summary>
         /// Returns the length of the functional rope
@@ -74,7 +73,7 @@ namespace Grapple.Scripts
         /// <returns></returns>
         public float RopeLength()
         {
-            return Vector3.Distance(GrappleLocation().point, anchor.position);
+            return Vector3.Distance(GrappleLocation(), anchor.position);
         }
         /// <summary>
         /// Checks the state of the rope and sees if it can wrap or unwrap
@@ -85,7 +84,7 @@ namespace Grapple.Scripts
             if (ropePoints.Count <= 0) return;
 
             // Cache the values used for all the calculations
-            Vector3 anchorPosition = anchor.position, ropeVector = GrappleLocation().point - anchorPosition;
+            Vector3 anchorPosition = anchor.position, ropeVector = GrappleLocation() - anchorPosition;
 
             // If there is an obstacle in the way and it's between the anchor and the last grapple point, that's your new grapple point
             if (Physics.Raycast(anchorPosition, ropeVector, out RaycastHit hit, RopeLength() - WrapTolerance, layer))
@@ -121,12 +120,11 @@ namespace Grapple.Scripts
             ropeCenter = Vector3.Lerp(ropeCenter, Vector3.Lerp(anchorPosition, hookPosition, .5f), .1f);
             rope.BezierLineRenderer(anchorPosition, ropeCenter, hookPosition);
             return;
-            /*
             switch (launched)
             {
                 case true:
-                    Vector3 anchorPosition = anchor.position;
-                    Vector3 hookPosition = hook.position;
+                    //Vector3 anchorPosition = anchor.position;
+                    //Vector3 hookPosition = hook.position;
                     ropeCenter = Vector3.Lerp(ropeCenter, Vector3.Lerp(anchorPosition, hookPosition, .5f), .1f);
                     rope.BezierLineRenderer(anchorPosition, ropeCenter, hookPosition);
                     return;
@@ -139,7 +137,6 @@ namespace Grapple.Scripts
                     rope.SetPosition(ropePoints.Count, anchor.position);
                     return;
             }
-            */
         }
         /// <summary>
         /// Called to reset the rope

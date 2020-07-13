@@ -329,10 +329,10 @@ namespace Grapple.Scripts
                 switch (direction)
                 {
                     case GrappleState.REEL_IN:
-                        AddForce(grappleRope.RopeVector());
+                        AddForce(grappleRope.RopeVector(), 1.5f);
                         return;
                     case GrappleState.REEL_OUT:
-                        AddForce(-grappleRope.RopeVector());
+                        AddForce(-grappleRope.RopeVector(), .5f);
                         return;
                     case GrappleState.HANG:
                         return;
@@ -340,13 +340,15 @@ namespace Grapple.Scripts
                         return;
                 }
             }
+
             /// <summary>
             /// Adds force to the player rigid body in the supplied vector 
             /// </summary>
             /// <param name="vector"></param>
-            private void AddForce(Vector3 vector)
+            /// <param name="modifier"></param>
+            private void AddForce(Vector3 vector, float modifier)
             {
-                player.AddForce(vector.normalized * ReelForce, ForceMode.Acceleration);
+                player.AddForce(vector.normalized * (ReelForce * modifier), ForceMode.Acceleration);
                 player.AddForce(lookDirection * (ReelForce * .5f), ForceMode.Acceleration);
             }
             /// <summary>
@@ -357,7 +359,7 @@ namespace Grapple.Scripts
                 if (hanging) return;
                 grappleJoint = player.gameObject.AddComponent<SpringJoint>();
                 grappleJoint.ConfigureSpringJoint(
-                    grappleRope.GrappleLocation().point, 
+                    grappleRope.GrappleLocation(), 
                     false, RopeSpring, Damper, MinimumDistance, 
                     grappleRope.RopeLength() + Slack);
                 hanging = true;
@@ -367,7 +369,7 @@ namespace Grapple.Scripts
             /// </summary>
             private void ReconfigureHang()
             {
-                hanging = false;
+                StopHanging();
             }
             /// <summary>
             /// Destroys the spring joint used to hang

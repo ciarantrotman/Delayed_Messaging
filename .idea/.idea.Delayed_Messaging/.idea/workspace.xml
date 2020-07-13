@@ -20,15 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/[Grapple Visual].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Prefabs/[Grapple Visual].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/[Grappling Hook].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Prefabs/[Grappling Hook].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Rope.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Rope.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,8 +188,8 @@
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/MovingTarget.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
-        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Velocity.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" />
       </list>
     </option>
@@ -273,7 +268,7 @@
       <workItem from="1594229582509" duration="23966000" />
       <workItem from="1594391784687" duration="17744000" />
       <workItem from="1594559443321" duration="17472000" />
-      <workItem from="1594637351145" duration="9774000" />
+      <workItem from="1594637351145" duration="11277000" />
     </task>
     <servers />
   </component>
