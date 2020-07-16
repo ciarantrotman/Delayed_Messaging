@@ -15,6 +15,7 @@ namespace Grapple.Scripts
         private bool ropeConnected, launched;
         private const float WrapTolerance = .1f;
         private Vector3 ropeCenter;
+        private GameObject localHook;
 
         [HideInInspector] public UnityEvent wrap;
         private readonly List<RaycastHit> ropePoints = new List<RaycastHit>();
@@ -33,21 +34,32 @@ namespace Grapple.Scripts
             rope = gameObject.AddComponent<LineRenderer>();
             rope.SetupLineRender(ropeMaterial, .015f, true);
         }
+
         /// <summary>
         /// Used to transfer information to draw the rope when it has been launched
         /// </summary>
         /// <param name="hookTransform"></param>
-        public void LaunchRope(Transform hookTransform)
+        /// <param name="grappleLocation"></param>
+        public void LaunchRope(Transform hookTransform, RaycastHit grappleLocation)
         {
+            // Create an object where the hook will be - allows for targeting moving objects
+            localHook = new GameObject();
+            localHook.transform.SetParent(grappleLocation.transform);
+            localHook.transform.position = grappleLocation.point;
+            
+            // Set Variables
             hook = hookTransform;
             launched = true;
         }
         /// <summary>
         /// 
         /// </summary>
-        public void CreateRope(RaycastHit grappleLocation)
+        public void AttachRope(RaycastHit grappleLocation)
         {
+            // Connection Logic
             ropePoints.Add(grappleLocation);
+
+            // Reset Variables
             ropeConnected = true;
             launched = false;
         }
@@ -57,7 +69,7 @@ namespace Grapple.Scripts
         /// <returns></returns>
         public Vector3 GrappleLocation()
         {
-            return ropePoints[ropePoints.Count - 1].point;
+            return localHook.transform.position; //ropePoints[ropePoints.Count - 1].point;
         }
         /// <summary>
         /// Returns the vector to the functional grapple location

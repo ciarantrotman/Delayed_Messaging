@@ -288,7 +288,7 @@ namespace Grapple.Scripts
                 grappleHook.LaunchHook(grappleLocation);
                 grappleHook.collide.AddListener(GrappleAttach);
                 grappleConnected = false;
-                grappleRope.LaunchRope(grappleHook.transform);
+                grappleRope.LaunchRope(grappleHook.transform, grappleLocation.grappleLocation);
             }
             /// <summary>
             /// This is called when the collide event is triggered in the active GrappleHook
@@ -296,7 +296,7 @@ namespace Grapple.Scripts
             private void GrappleAttach()
             {
                 grappleConnected = true;
-                grappleRope.CreateRope(grappleLocation.grappleLocation);
+                grappleRope.AttachRope(grappleLocation.grappleLocation);
                 //grappleRope.wrap.AddListener(ReconfigureHang);
             }
             /// <summary>
@@ -356,13 +356,17 @@ namespace Grapple.Scripts
             /// </summary>
             private void Hang()
             {
-                if (hanging) return;
-                grappleJoint = player.gameObject.AddComponent<SpringJoint>();
-                grappleJoint.ConfigureSpringJoint(
-                    grappleRope.GrappleLocation(), 
-                    false, RopeSpring, Damper, MinimumDistance, 
-                    grappleRope.RopeLength() + Slack);
-                hanging = true;
+                if (!hanging)
+                {
+                    grappleJoint = player.gameObject.AddComponent<SpringJoint>();
+                    grappleJoint.ConfigureSpringJoint(
+                        grappleRope.GrappleLocation(), 
+                        false, RopeSpring, Damper, MinimumDistance, 
+                        grappleRope.RopeLength() + Slack);
+                    hanging = true;
+                }
+                // Reconfigure it every update in the case of being grappled to a moving target
+                grappleJoint.SetSpringJointAnchor(grappleRope.GrappleLocation());
             }
             /// <summary>
             /// Used to reconfigure the hanging location for the spring joint
