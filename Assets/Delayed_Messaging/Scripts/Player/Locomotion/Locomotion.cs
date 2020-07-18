@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using Delayed_Messaging.Scripts.Player;
-using Delayed_Messaging.Scripts.Player.Locomotion;
 using Delayed_Messaging.Scripts.Utilities;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Events;
-using VR_Prototyping.Scripts.Utilities;
 
-namespace VR_Prototyping.Scripts
+namespace Delayed_Messaging.Scripts.Player.Locomotion
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(ControllerTransforms))]
@@ -55,12 +50,6 @@ namespace VR_Prototyping.Scripts
         [SerializeField, Space(5)] private GameObject targetVisual;
         [SerializeField] private Material lineRenderMat;
         
-        //[SerializeField, Space(10)] private GameObject sceneChangeWipe;
-        //[SerializeField, Range(.25f, 5f)] private float sceneWipeDuration;
-
-        [HideInInspector] public UnityEvent sceneWipeTrigger;
-        
-        private SceneWipe sceneWipe;
         private ControllerTransforms controller;
 
         private void Start()
@@ -79,16 +68,12 @@ namespace VR_Prototyping.Scripts
             positionPreview = ghost.GetComponent<LocomotionPositionPreview>();
             positionPreview.controller = controller;
             positionPreview.GhostToggle(null, false);
-
-            /*
-            sceneChangeWipe = Instantiate(sceneChangeWipe, controllerTransforms.Player().transform);
-            sceneWipe = sceneChangeWipe.AddComponent<SceneWipe>();
-            sceneWipe.Initialise(controllerTransforms, this);
-            */
         }
 
         private void LateUpdate()
         {
+            return;
+            
             cTouchR = controller.Joystick(ControllerTransforms.Check.RIGHT);
             cTouchL = controller.Joystick(ControllerTransforms.Check.LEFT);
 
@@ -138,8 +123,8 @@ namespace VR_Prototyping.Scripts
             
             controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
             controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
-            
             transform.SetParent(cameraNormalised.transform);
+            
             switch (locomotionMethod)
             {
                 case Method.DASH:
@@ -162,29 +147,23 @@ namespace VR_Prototyping.Scripts
             lr.enabled = false;
         }
 
-        public void CustomLocomotion(Vector3 targetPosition, Vector3 targetRotation, Method method, bool wipe)
+        public void CustomLocomotion(Vector3 targetPosition, Vector3 targetRotation, Method method, float time = 0f)
         {
             controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
             controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
             transform.SetParent(cameraNormalised.transform);
             switch (method)
             {
-                case Method.DASH when !wipe:
-                    cameraNormalised.transform.DOMove(targetPosition, moveSpeed);
-                    cameraNormalised.transform.DORotate(targetRotation, moveSpeed);
-                    StartCoroutine(Uncouple(transform, moveSpeed));
+                case Method.DASH:
+                    cameraNormalised.transform.DOMove(targetPosition, time);
+                    cameraNormalised.transform.DORotate(targetRotation, time);
+                    StartCoroutine(Uncouple(transform, time));
                     break;
-                case Method.BLINK when !wipe:
+                case Method.BLINK:
                     cameraNormalised.transform.position = targetPosition;
                     cameraNormalised.transform.eulerAngles = targetRotation;
                     transform.SetParent(null);
                     active = false;
-                    break;
-                case Method.BLINK:
-                    customPosition = targetPosition;
-                    customRotation = targetRotation;
-                    SceneWipe();
-                    sceneWipeTrigger.AddListener(CustomWipe);
                     break;
                 default:
                     throw new ArgumentException();

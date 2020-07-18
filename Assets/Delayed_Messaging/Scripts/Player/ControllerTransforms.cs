@@ -9,18 +9,13 @@ namespace Delayed_Messaging.Scripts.Player
 {
     public class ControllerTransforms : MonoBehaviour
     {
-        [SerializeField] public bool steamEnabled;
         [SerializeField, Space(10)] public bool debugActive;
         public enum DebugType { NEVER, SELECTED_ONLY, ALWAYS }
-        [SerializeField, Space(10)] public bool directInteraction;
         [Range(.01f, .05f), SerializeField] private float directDistance = .025f;
-        [Range(0, 31)] public int layerIndex = 9;
-        
+
         [SerializeField, Space(10)] private Transform cameraRig;
         [SerializeField, Space(10)] private Transform leftController;
         [SerializeField] private Transform rightController;
-
-        [SerializeField] public Material lineRenderMaterial;
 
         [Header("SteamVR Actions")]
         public SteamVR_Action_Vector2 joystickDirection;
@@ -28,7 +23,7 @@ namespace Delayed_Messaging.Scripts.Player
 
         [HideInInspector] public EventTracker leftGrab, rightGrab, leftSelect, rightSelect, leftMenu, rightMenu, leftJoystick, rightJoystick; 
 
-        private GameObject lHandDirect, rHandDirect, localRef, localHeadset, localR, localL;
+        private GameObject lHandDirect, rHandDirect, localRef, localHeadset, localR, localL, controllerMidpoint;
         public const float MaxAngle = 110f, MinAngle = 60f, Trigger = .7f, Sensitivity = 10f, Tolerance = .1f;
         public readonly List<Vector2> rJoystickValues = new List<Vector2>(), lJoystickValues = new List<Vector2>();
 
@@ -110,6 +105,8 @@ namespace Delayed_Messaging.Scripts.Player
         {
             SetupDirect();
             SetupLocal();
+            
+            controllerMidpoint = Set.NewGameObject(gameObject, "[Controller Midpoint]");
         }
 
         private void SetupDirect()
@@ -156,6 +153,11 @@ namespace Delayed_Messaging.Scripts.Player
             localHeadset.transform.Transforms(CameraTransform());
             localR.transform.Transforms(RightTransform());
             localL.transform.Transforms(LeftTransform());
+            
+            // Set the controller midpoint
+            controllerMidpoint.transform.position = Vector3.Lerp(Position(Check.LEFT), Position(Check.RIGHT), .5f);
+            controllerMidpoint.transform.LookAt(Position(Check.RIGHT));
+            //controllerMidpoint.transform.rotation = Quaternion.Lerp(Transform(Check.LEFT).rotation, Transform(Check.RIGHT).rotation, .5f);
         }
 
         #region Private Accessors
@@ -382,6 +384,10 @@ namespace Delayed_Messaging.Scripts.Player
                 default:
                     return CameraTransform();
             }
+        }
+        public Transform ControllerCenter()
+        {
+            return controllerMidpoint.transform;
         }
         public Vector2 JoyStick(Check check)
         {

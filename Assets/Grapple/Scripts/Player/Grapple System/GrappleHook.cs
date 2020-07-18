@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using DG.Tweening;
+using Grapple.Scripts.Player.Grapple_System;
 using UnityEngine;
 using UnityEngine.Events;
 

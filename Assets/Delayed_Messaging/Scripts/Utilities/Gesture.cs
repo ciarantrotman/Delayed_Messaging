@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using Delayed_Messaging.Scripts.Player.Locomotion;
 using Grapple.Scripts;
 using UnityEngine;
 using VR_Prototyping.Scripts;
-using GrappleState = Grapple.Scripts.GrappleSystem.Grapple.GrappleState;
+using GrappleState = Grapple.Scripts.Player.Grapple_System.GrappleSystem.Grapple.GrappleState;
 
 namespace Delayed_Messaging.Scripts.Utilities
 {

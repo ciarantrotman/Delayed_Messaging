@@ -9,19 +9,10 @@ namespace Grapple.Scripts.User_Interface
     {
         public enum DetectionMode { GRAB, SELECT }
         [Header("Direct Interface Options")]
-        [SerializeField, Range(.1f, .5f)] protected float detectionRadius = .1f;
         public DetectionMode detectionMode = DetectionMode.GRAB;
-        protected SphereCollider detectionCollider;
-        protected ControllerTransforms controller;
 
         private void Awake()
         {
-            foreach (GameObject rootGameObject in SceneManager.GetActiveScene().GetRootGameObjects())
-            {
-                if (!rootGameObject.CompareTag($"Player")) continue;
-                controller = rootGameObject.GetComponent<ControllerTransforms>();
-            }
-            
             Initialise();
         }
 
@@ -29,10 +20,5 @@ namespace Grapple.Scripts.User_Interface
         /// This is only called once all references have been made
         /// </summary>
         protected abstract void Initialise();
-
-        private void OnDrawGizmos()
-        {
-            Popcron.Gizmos.Sphere(transform.position, detectionRadius, Color.white);
-        }
     }
 }

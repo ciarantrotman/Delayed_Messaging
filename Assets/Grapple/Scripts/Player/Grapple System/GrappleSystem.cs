@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
-using BallisticData =  Grapple.Scripts.BallisticTrajectory.BallisticTrajectoryData;
 
-namespace Grapple.Scripts
+namespace Grapple.Scripts.Player.Grapple_System
 {
     [RequireComponent(typeof(ControllerTransforms), typeof(LaunchAnchor))]
     public class GrappleSystem : MonoBehaviour
@@ -16,6 +14,7 @@ namespace Grapple.Scripts
         public Material grappleVisualMaterial, ropeMaterial;
         public LayerMask grappleLayer;
 
+        private bool grappleState = true;
         private ControllerTransforms controller;
         private LaunchAnchor launchAnchor;
         private Rigidbody playerRigidBody;
@@ -31,7 +30,7 @@ namespace Grapple.Scripts
         /// </summary>
         [Serializable] public class Distance
         {
-            private GameObject parent;
+            public GameObject parent;
             private LineRenderer visual;
             /// <summary>
             /// 
@@ -162,7 +161,8 @@ namespace Grapple.Scripts
         [Serializable] public class Grapple
         {
             private bool launchCurrent, launchPrevious, grappleConnected, hanging;
-            private GameObject hookPrefab, anchor, detectionParent, invalid, indirect, grappleVisual;
+            private GameObject hookPrefab, anchor, detectionParent, invalid, indirect;
+            public GameObject grappleVisual;
 
             private float angle; 
             private const float ReelForce = 15f, RopeWidth = .01f, RopeSpring = 35f, Damper = 10f, MinimumDistance = .1f, Slack = .5f, DetectionWidth = .0075f;
@@ -387,7 +387,7 @@ namespace Grapple.Scripts
             /// <summary>
             /// Called when ropes are disconnected
             /// </summary>
-            private void Jettison()
+            public void Jettison(bool effects = true)
             {
                 // Reset all states
                 ResetGrapple();
@@ -397,6 +397,7 @@ namespace Grapple.Scripts
                 grappleConnected = false;
                 
                 // Jettison effects
+                if (!effects) return;
                 timeManager.SlowTime(slowTime);
                 player.AddForce(lookDirection * (ReelForce * .25f), ForceMode.VelocityChange);
             }
@@ -591,6 +592,8 @@ namespace Grapple.Scripts
         #endregion
         private void Update()
         {
+            if (!grappleState) return;
+            
             // Align Distance Visualisation
             leftDistance.AlignDistance(launchAnchor.Direction(LaunchAnchor.Configuration.LEFT));
             rightDistance.AlignDistance(launchAnchor.Direction(LaunchAnchor.Configuration.RIGHT));
@@ -625,6 +628,22 @@ namespace Grapple.Scripts
             Transform self = transform;
             Vector3 rotation = self.eulerAngles;
             self.eulerAngles = new Vector3(0, rotation.y, 0);
+        }
+
+        public void ToggleGrapple(bool state)
+        {
+            grappleState = state;
+            
+            rightGrapple.detection.enabled = state;
+            rightGrapple.grappleVisual.SetActive(state);
+            leftGrapple.detection.enabled = state;
+            leftGrapple.grappleVisual.SetActive(state);
+            
+            leftDistance.parent.SetActive(state);
+            rightDistance.parent.SetActive(state);
+            
+            leftGrapple.Jettison(false);
+            rightGrapple.Jettison(false);
         }
     }
 }

@@ -9,14 +9,14 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
     public class SceneWipe : MonoBehaviour
     {
         private ControllerTransforms controller;
-        private VR_Prototyping.Scripts.Locomotion locomotion;
+        private Locomotion locomotion;
         private MeshRenderer sceneWipeRenderer;
         private static readonly int Fade = Shader.PropertyToID("_Fade");
         
         private const float Value = .51f;
         private float value = -Value;
 
-        public void Initialise(ControllerTransforms transforms, VR_Prototyping.Scripts.Locomotion l)
+        public void Initialise(ControllerTransforms transforms, Locomotion l)
         {
             controller = transforms;
             locomotion = l;
@@ -34,7 +34,7 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
         {
             DOTween.To(()=> value, x=> value = x, Value, duration);
             yield return new WaitForSeconds(duration);
-            locomotion.sceneWipeTrigger.Invoke();
+            //locomotion.sceneWipeTrigger.Invoke();
             DOTween.To(()=> value, x=> value = x, -Value, duration);
             yield return null;
         }
