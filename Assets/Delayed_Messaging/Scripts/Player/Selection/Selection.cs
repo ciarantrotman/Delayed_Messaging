@@ -13,7 +13,7 @@ namespace Delayed_Messaging.Scripts.Player.Selection
 	[DisallowMultipleComponent, RequireComponent(typeof(ControllerTransforms))]
 	public class Selection : MonoBehaviour
 	{
-		private ControllerTransforms controllerTransforms;
+		private ControllerTransforms controller;
 		private Cast cast;
 		public UserInterface UserInterface { get; private set; }
 		[HideInInspector] public SelectionObjects selectionObjectsL;
@@ -50,12 +50,12 @@ namespace Delayed_Messaging.Scripts.Player.Selection
 
 		private void Start ()
 		{
-			controllerTransforms = GetComponent<ControllerTransforms>();
+			controller = GetComponent<ControllerTransforms>();
 			UserInterface = GetComponent<UserInterface>();
 			cast = gameObject.AddComponent<Cast>();
 			
 			cast.SetupCastObjects(castCursorObject, transform, "Cast Selection", selectionLineRenderMat, 
-				maximumAngle, minimumAngle, selectionRange, 0.1f, .005f, controllerTransforms, 
+				maximumAngle, minimumAngle, selectionRange, 0.1f, .005f, controller, 
 				true);
 
 			selectionObjectsL = gameObject.AddComponent<SelectionObjects>();
@@ -74,8 +74,8 @@ namespace Delayed_Messaging.Scripts.Player.Selection
 		private void Update()
 		{
 			SortLists();
-			selectionObjectsL.SelectUpdate(this, cast.lCastObject, selectionObjectsR.currentBaseObject, lCastList, multiSelectDistanceThreshold, controllerTransforms.LeftSelect(), disableLeftHand);
-			selectionObjectsR.SelectUpdate(this, cast.rCastObject, selectionObjectsL.currentBaseObject, rCastList, multiSelectDistanceThreshold, controllerTransforms.RightSelect(), disableRightHand);
+			selectionObjectsL.SelectUpdate(this, cast.lCastObject, selectionObjectsR.currentBaseObject, lCastList, multiSelectDistanceThreshold, controller.Select(ControllerTransforms.Check.LEFT), disableLeftHand);
+			selectionObjectsR.SelectUpdate(this, cast.rCastObject, selectionObjectsL.currentBaseObject, rCastList, multiSelectDistanceThreshold, controller.Select(ControllerTransforms.Check.RIGHT), disableRightHand);
 		}
 
 		private void SortLists()
@@ -214,7 +214,7 @@ namespace Delayed_Messaging.Scripts.Player.Selection
 		}
 		private void OnDrawGizmos() 
 		{
-			if (controllerTransforms != null && controllerTransforms.debugActive)
+			if (controller != null && controller.debugActive)
 			{
 				DrawGizmos ();
 			}

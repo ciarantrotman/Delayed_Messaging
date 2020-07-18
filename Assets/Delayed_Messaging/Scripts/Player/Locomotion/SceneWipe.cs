@@ -8,7 +8,7 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
 {
     public class SceneWipe : MonoBehaviour
     {
-        private ControllerTransforms controllerTransforms;
+        private ControllerTransforms controller;
         private VR_Prototyping.Scripts.Locomotion locomotion;
         private MeshRenderer sceneWipeRenderer;
         private static readonly int Fade = Shader.PropertyToID("_Fade");
@@ -18,14 +18,14 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
 
         public void Initialise(ControllerTransforms transforms, VR_Prototyping.Scripts.Locomotion l)
         {
-            controllerTransforms = transforms;
+            controller = transforms;
             locomotion = l;
             sceneWipeRenderer = GetComponent<MeshRenderer>();
         }
         private void Update()
         {
             Transform thisTransform = transform;
-            thisTransform.Position(controllerTransforms.CameraTransform());
+            thisTransform.Position(controller.Transform(ControllerTransforms.Check.HEAD));
             thisTransform.up = Vector3.up;
             sceneWipeRenderer.material.SetFloat(Fade, value);
         }

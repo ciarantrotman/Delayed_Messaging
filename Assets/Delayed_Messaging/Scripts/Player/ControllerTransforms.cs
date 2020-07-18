@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
 using Valve.VR;
 
 namespace Delayed_Messaging.Scripts.Player
@@ -22,33 +23,61 @@ namespace Delayed_Messaging.Scripts.Player
         [SerializeField] public Material lineRenderMaterial;
 
         [Header("SteamVR Actions")]
-        public SteamVR_Action_Boolean grab;
-        public SteamVR_Action_Boolean trigger;
-        public SteamVR_Action_Boolean menu;
-        public SteamVR_Action_Boolean joystick;
         public SteamVR_Action_Vector2 joystickDirection;
-        public SteamVR_Action_Vibration haptic;
+        public SteamVR_Action_Boolean grab, trigger, menu, joystick;
 
-        private GameObject lHandDirect;
-        private GameObject rHandDirect;
+        [HideInInspector] public EventTracker leftGrab, rightGrab, leftSelect, rightSelect, leftMenu, rightMenu, leftJoystick, rightJoystick; 
 
-        private GameObject localRef;
-        private GameObject localHeadset;
-        private GameObject localR;
-        private GameObject localL;
+        private GameObject lHandDirect, rHandDirect, localRef, localHeadset, localR, localL;
+        public const float MaxAngle = 110f, MinAngle = 60f, Trigger = .7f, Sensitivity = 10f, Tolerance = .1f;
+        public readonly List<Vector2> rJoystickValues = new List<Vector2>(), lJoystickValues = new List<Vector2>();
 
-        public const string LTag = "Direct/Left";
-        public const string RTag = "Direct/Right";
-        
-        public const float MaxAngle = 110f;
-        public const float MinAngle = 60f;
-        
-        public const float Trigger = .7f;
-        public const float Sensitivity = 10f;
-        public const float Tolerance = .1f;
+        [Serializable] public struct EventTracker
+        {
+            public enum EventType { START, STAY, END }
+            
+            private bool current;
+            private bool previous;
 
-        public readonly List<Vector2> rJoystickValues = new List<Vector2>();
-        public readonly List<Vector2> lJoystickValues = new List<Vector2>();
+            public UnityEvent onStart;
+            public UnityEvent onStay;
+            public UnityEvent onEnd;
+
+            public void CheckState(bool currentState)
+            {
+                current = currentState;
+
+                if (current && !previous)
+                {
+                    onStart.Invoke();
+                }
+                if (current && previous)
+                {
+                    onStay.Invoke();
+                }
+                if (!current && previous)
+                {
+                    onEnd.Invoke();
+                }
+
+                previous = current;
+            }
+
+            public UnityEvent Event(EventType eventType)
+            {
+                switch (eventType)
+                {
+                    case EventType.START:
+                        return onStart;
+                    case EventType.STAY:
+                        return onStay;
+                    case EventType.END:
+                        return onEnd;
+                    default:
+                        return null;
+                }
+            }
+        }
         
         public struct CastGameObjects
         {
@@ -85,16 +114,14 @@ namespace Delayed_Messaging.Scripts.Player
 
         private void SetupDirect()
         {
-            lHandDirect = new GameObject(LTag);
-            rHandDirect = new GameObject(RTag);
-            lHandDirect.transform.SetParent(transform);
-            rHandDirect.transform.SetParent(transform);
-            lHandDirect.layer = layerIndex;
-            rHandDirect.layer = layerIndex;
-            SphereCollider ls = lHandDirect.AddComponent<SphereCollider>();
-            SphereCollider rs = rHandDirect.AddComponent<SphereCollider>();
-            ls.radius = directDistance;
-            rs.radius = directDistance;
+            DirectInteraction direct;
+            // Left
+            direct = Transform(Check.LEFT).gameObject.AddComponent<DirectInteraction>();
+            direct.Initialise(this, Check.LEFT, directDistance);
+            
+            // Right
+            direct = Transform(Check.RIGHT).gameObject.AddComponent<DirectInteraction>();
+            direct.Initialise(this, Check.RIGHT, directDistance);
         }
 
         private void SetupLocal()
@@ -107,11 +134,22 @@ namespace Delayed_Messaging.Scripts.Player
 
         private void Update()
         {
-            rJoystickValues.Vector2ListCull(RightJoystick(), Sensitivity);
-            lJoystickValues.Vector2ListCull(LeftJoystick(), Sensitivity);
+            rJoystickValues.Vector2ListCull(JoyStick(Check.RIGHT), Sensitivity);
+            lJoystickValues.Vector2ListCull(JoyStick(Check.LEFT), Sensitivity);
+            
+            leftGrab.CheckState(Grab(Check.LEFT));
+            rightGrab.CheckState(Grab(Check.RIGHT));
+            
+            leftSelect.CheckState(Select(Check.LEFT));
+            rightSelect.CheckState(Select(Check.RIGHT));
+            
+            leftMenu.CheckState(Menu(Check.LEFT));
+            rightMenu.CheckState(Menu(Check.RIGHT));
+            
+            leftJoystick.CheckState(Joystick(Check.LEFT));
+            rightJoystick.CheckState(Joystick(Check.RIGHT));
         }
         
-
         private void FixedUpdate()
         {
             localRef.transform.SplitPositionVector(0, CameraTransform());
@@ -120,51 +158,48 @@ namespace Delayed_Messaging.Scripts.Player
             localL.transform.Transforms(LeftTransform());
         }
 
-        public GameObject Player()
-        {
-            return gameObject;
-        }
-        
-        public Transform LeftTransform()
+        #region Private Accessors
+
+        private Transform LeftTransform()
         {
             return leftController;
         }
 
-        public Transform RightTransform()
+        private Transform RightTransform()
         {
             return rightController;
         }
 
-        public Vector3 LeftPosition()
+        private Vector3 LeftPosition()
         {
             return LeftTransform().position;
         }
     
-        public Vector3 RightPosition()
+        private Vector3 RightPosition()
         {
             return RightTransform().position;
         }
         
-        public Vector3 LeftLocalPosition()
+        private Vector3 LeftLocalPosition()
         {
             return LeftTransform().localPosition;
         }
         
-        public Vector3 RightLocalPosition()
+        private Vector3 RightLocalPosition()
         {
             return RightTransform().localPosition;
         }
         
-        public Transform HmdLocalRelativeTransform()
+        private Transform HmdLocalRelativeTransform()
         {
             return localHeadset.transform;
         }
-        public Transform LeftLocalRelativeTransform()
+        private Transform LeftLocalRelativeTransform()
         {
             return localL.transform;
         }
         
-        public Transform RightLocalRelativeTransform()
+        private Transform RightLocalRelativeTransform()
         {
             return localR.transform;
         }
@@ -174,57 +209,57 @@ namespace Delayed_Messaging.Scripts.Player
             return Vector3.Distance(RightPosition(), LeftPosition());
         }
 
-        public Transform CameraTransform()
+        private Transform CameraTransform()
         {
             return cameraRig;
         }
 
-        public Vector3 CameraPosition()
+        private Vector3 CameraPosition()
         {
             return cameraRig.position;
         }
 
-        public Vector3 CameraLocalPosition()
+        private Vector3 CameraLocalPosition()
         {
             return cameraRig.localPosition;
         }
 
-        public bool LeftGrab()
+        private bool LeftGrab()
         {
             return grab.GetState(SteamVR_Input_Sources.LeftHand);
         }
 
-        public bool RightGrab()
+        private bool RightGrab()
         {
             return grab.GetState(SteamVR_Input_Sources.RightHand);
         }
 
-        public bool LeftMenu()
+        private bool LeftMenu()
         {
             return menu.GetState(SteamVR_Input_Sources.LeftHand);
         }
     
-        public bool RightMenu()
+        private bool RightMenu()
         {
             return menu.GetState(SteamVR_Input_Sources.RightHand);
         }
 
-        public bool LeftSelect()
+        private bool LeftSelect()
         {
             return trigger.GetState(SteamVR_Input_Sources.LeftHand);
         }
         
-        public bool RightSelect()
+        private bool RightSelect()
         {
             return trigger.GetState(SteamVR_Input_Sources.RightHand);
         }
 
-        public bool LeftLocomotion()
+        private bool LeftLocomotion()
         {
             return LeftJoystickPress();
         }
 
-        public bool RightLocomotion()
+        private bool RightLocomotion()
         {
             return RightJoystickPress();
         }
@@ -239,22 +274,22 @@ namespace Delayed_Messaging.Scripts.Player
             return joystick.GetState(SteamVR_Input_Sources.RightHand);
         }
 
-        public Vector2 LeftJoystick()
+        private Vector2 LeftJoystick()
         {
             return joystickDirection.GetAxis(SteamVR_Input_Sources.LeftHand);
         }
 
-        public Vector2 RightJoystick()
+        private Vector2 RightJoystick()
         {
             return joystickDirection.GetAxis(SteamVR_Input_Sources.RightHand);
         }
         
-        public Vector3 LeftForwardVector()
+        private Vector3 LeftForwardVector()
         {
             return LeftTransform().TransformVector(Vector3.forward);
         }
     
-        public Vector3 RightForwardVector()
+        private Vector3 RightForwardVector()
         {
             return RightTransform().TransformVector(Vector3.forward);
         }
@@ -264,21 +299,11 @@ namespace Delayed_Messaging.Scripts.Player
             return hand.forward;
         }
 
-        public Vector3 CameraForwardVector()
+        private Vector3 CameraForwardVector()
         {
             return cameraRig.forward;
         }
 
-        public static SteamVR_Input_Sources LeftSource()
-        {
-            return SteamVR_Input_Sources.LeftHand;
-        }
-        
-        public static SteamVR_Input_Sources RightSource()
-        {
-            return SteamVR_Input_Sources.RightHand;
-        }
-        
         public void SetupCastObjects(CastGameObjects castGameObjects, GameObject targetVisual, string instanceName, bool startActive = false)
         {
             castGameObjects.parent = new GameObject("[" + instanceName + "/Calculations]");
@@ -325,7 +350,39 @@ namespace Delayed_Messaging.Scripts.Player
             castGameObjects.lHp.transform.SetParent(transform);
             castGameObjects.lRt.transform.SetParent(castGameObjects.lHp.transform);
         }
+
+        #endregion
+
         public enum Check { LEFT, RIGHT, HEAD }
+
+        public Transform RelativeTransform(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftLocalRelativeTransform();
+                case Check.RIGHT:
+                    return RightLocalRelativeTransform();
+                case Check.HEAD:
+                    return HmdLocalRelativeTransform();
+                default:
+                    return HmdLocalRelativeTransform();
+            }
+        }
+        public Transform Transform(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftTransform();
+                case Check.RIGHT:
+                    return RightTransform();
+                case Check.HEAD:
+                    return CameraTransform();
+                default:
+                    return CameraTransform();
+            }
+        }
         public Vector2 JoyStick(Check check)
         {
             switch (check)
@@ -354,6 +411,20 @@ namespace Delayed_Messaging.Scripts.Player
                     return false;
             }
         }
+        public UnityEvent SelectEvent(Check check, EventTracker.EventType eventType)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftSelect.Event(eventType);
+                case Check.RIGHT:
+                    return rightSelect.Event(eventType);
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
+            }
+        }
         public bool Grab(Check check)
         {
             switch (check)
@@ -368,6 +439,20 @@ namespace Delayed_Messaging.Scripts.Player
                     return false;
             }
         }
+        public UnityEvent GrabEvent(Check check, EventTracker.EventType eventType)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftGrab.Event(eventType);
+                case Check.RIGHT:
+                    return rightGrab.Event(eventType);
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
+            }
+        }
         public bool Menu(Check check)
         {
             switch (check)
@@ -380,6 +465,20 @@ namespace Delayed_Messaging.Scripts.Player
                     return false;
                 default:
                     return false;
+            }
+        }
+        public UnityEvent MenuEvent(Check check, EventTracker.EventType eventType)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftMenu.Event(eventType);
+                case Check.RIGHT:
+                    return rightMenu.Event(eventType);
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
             }
         }
         public Vector3 ForwardVector(Check check)
@@ -410,7 +509,6 @@ namespace Delayed_Messaging.Scripts.Player
                     return Vector3.zero;
             }
         }
-
         public bool Joystick(Check check)
         {
             switch (check)
@@ -425,7 +523,20 @@ namespace Delayed_Messaging.Scripts.Player
                     return false;
             }
         }
-
+        public UnityEvent JoystickEvent(Check check, EventTracker.EventType eventType)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftJoystick.Event(eventType);
+                case Check.RIGHT:
+                    return rightJoystick.Event(eventType);
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
+            }
+        }
         public Vector3 LocalPosition(Check check)
         {
             switch (check)

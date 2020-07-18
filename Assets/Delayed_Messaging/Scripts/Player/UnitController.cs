@@ -12,7 +12,7 @@ namespace Delayed_Messaging.Scripts.Player
     [DisallowMultipleComponent, RequireComponent(typeof(ControllerTransforms))]
     public class UnitController : MonoBehaviour
     {
-        private ControllerTransforms controllerTransforms;
+        private ControllerTransforms controller;
         private Player player;
         private Selection.Selection selection;
         private Cast cast;
@@ -40,20 +40,20 @@ namespace Delayed_Messaging.Scripts.Player
         
         private void Start()
         {
-            controllerTransforms = GetComponent<ControllerTransforms>();
+            controller = GetComponent<ControllerTransforms>();
             player = GetComponent<Player>();
             selection = GetComponent<Selection.Selection>();
             cast = gameObject.AddComponent<Cast>();
-            cast.SetupCastObjects(targetVisual, transform, "Unit Controller", lineRenderMat, maximumAngle, minimumAngle, maximumMoveDistance, minimumMoveDistance,  .0075f, controllerTransforms);
+            cast.SetupCastObjects(targetVisual, transform, "Unit Controller", lineRenderMat, maximumAngle, minimumAngle, maximumMoveDistance, minimumMoveDistance,  .0075f, controller);
         }
 
         private void LateUpdate()
         {
-            this.MoveUnit(controllerTransforms.LeftGrab(),pGrabL, cast.lCastObject, selection.selectionObjectsL.list);
-            this.MoveUnit(controllerTransforms.RightGrab(),pGrabR, cast.rCastObject, selection.selectionObjectsR.list);
+            this.MoveUnit(controller.Grab(ControllerTransforms.Check.LEFT),pGrabL, cast.lCastObject, selection.selectionObjectsL.list);
+            this.MoveUnit(controller.Grab(ControllerTransforms.Check.RIGHT),pGrabR, cast.rCastObject, selection.selectionObjectsR.list);
 
-            pGrabL = controllerTransforms.LeftGrab();
-            pGrabR = controllerTransforms.RightGrab();
+            pGrabL = controller.Grab(ControllerTransforms.Check.LEFT);
+            pGrabR = controller.Grab(ControllerTransforms.Check.RIGHT);
         }
 
         public static void UnitMoveStart(Cast.CastObjects castObjects)

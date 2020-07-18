@@ -61,13 +61,13 @@ namespace VR_Prototyping.Scripts
         [HideInInspector] public UnityEvent sceneWipeTrigger;
         
         private SceneWipe sceneWipe;
-        private ControllerTransforms controllerTransforms;
+        private ControllerTransforms controller;
 
         private void Start()
         {
-            controllerTransforms = GetComponent<ControllerTransforms>();
+            controller = GetComponent<ControllerTransforms>();
             cast = gameObject.AddComponent<Cast>();
-            cast.SetupCastObjects(targetVisual, transform, "Locomotion", lineRenderMat, ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, .01f, controllerTransforms);
+            cast.SetupCastObjects(targetVisual, transform, "Locomotion", lineRenderMat, ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, .01f, controller);
             cameraNormalised = new GameObject("[Locomotion/Temporary]");
             SetupGameObjects();
         }
@@ -77,7 +77,7 @@ namespace VR_Prototyping.Scripts
             ghost = Instantiate(ghost);
             ghost.name = "[Locomotion/Ghost]";
             positionPreview = ghost.GetComponent<LocomotionPositionPreview>();
-            positionPreview.ControllerTransforms = controllerTransforms;
+            positionPreview.controller = controller;
             positionPreview.GhostToggle(null, false);
 
             /*
@@ -89,20 +89,20 @@ namespace VR_Prototyping.Scripts
 
         private void LateUpdate()
         {
-            cTouchR = controllerTransforms.RightLocomotion();
-            cTouchL = controllerTransforms.LeftLocomotion();
+            cTouchR = controller.Joystick(ControllerTransforms.Check.RIGHT);
+            cTouchL = controller.Joystick(ControllerTransforms.Check.LEFT);
 
             this.JoystickGestureDetection(
-                controllerTransforms.RightJoystick(), controllerTransforms.rJoystickValues[0], angle, rotateSpeed, 
+                controller.JoyStick(ControllerTransforms.Check.RIGHT), controller.rJoystickValues[0], angle, rotateSpeed, 
                 ControllerTransforms.Trigger, ControllerTransforms.Tolerance,
                 cast.rCastObject.visual, cast.rCastObject.lineRenderer, cTouchR, pTouchR, disableRightHand, active);
             this.JoystickGestureDetection(
-                controllerTransforms.LeftJoystick(), controllerTransforms.lJoystickValues[0], angle, rotateSpeed,
+                controller.JoyStick(ControllerTransforms.Check.LEFT), controller.lJoystickValues[0], angle, rotateSpeed,
                 ControllerTransforms.Trigger, ControllerTransforms.Tolerance,
                 cast.lCastObject.visual, cast.lCastObject.lineRenderer, cTouchL, pTouchL, disableLeftHand, active);
             
-            pTouchR = controllerTransforms.RightLocomotion();
-            pTouchL = controllerTransforms.LeftLocomotion();
+            pTouchR = controller.Joystick(ControllerTransforms.Check.RIGHT);
+            pTouchL = controller.Joystick(ControllerTransforms.Check.LEFT);
         }
 
         private static Vector3 RotationAngle(Transform target, float a)
@@ -116,8 +116,8 @@ namespace VR_Prototyping.Scripts
             if(transform.parent == cameraNormalised.transform || !rotation) return;
             active = true;
             
-            controllerTransforms.CameraTransform().SplitRotation(cameraNormalised.transform, false);
-            controllerTransforms.CameraTransform().SplitPosition(transform, cameraNormalised.transform);
+            controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
+            controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
             
             transform.SetParent(cameraNormalised.transform);
             cameraNormalised.transform.DORotate(RotationAngle(cameraNormalised.transform, a), time);
@@ -136,8 +136,8 @@ namespace VR_Prototyping.Scripts
         {
             if (transform.parent == cameraNormalised.transform) return;
             
-            controllerTransforms.CameraTransform().SplitRotation(cameraNormalised.transform, false);
-            controllerTransforms.CameraTransform().SplitPosition(transform, cameraNormalised.transform);
+            controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
+            controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
             
             transform.SetParent(cameraNormalised.transform);
             switch (locomotionMethod)
@@ -164,8 +164,8 @@ namespace VR_Prototyping.Scripts
 
         public void CustomLocomotion(Vector3 targetPosition, Vector3 targetRotation, Method method, bool wipe)
         {
-            controllerTransforms.CameraTransform().SplitRotation(cameraNormalised.transform, false);
-            controllerTransforms.CameraTransform().SplitPosition(transform, cameraNormalised.transform);
+            controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
+            controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
             transform.SetParent(cameraNormalised.transform);
             switch (method)
             {

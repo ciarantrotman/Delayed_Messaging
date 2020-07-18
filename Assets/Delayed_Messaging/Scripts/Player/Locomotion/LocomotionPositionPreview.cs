@@ -1,10 +1,7 @@
-﻿using System;
-using Delayed_Messaging.Scripts.Player;
-using Delayed_Messaging.Scripts.Utilities;
-//using Sirenix.OdinInspector;
-using UnityEngine;
+﻿using Delayed_Messaging.Scripts.Utilities;
+using UnityEngine; //using Sirenix.OdinInspector;
 
-namespace VR_Prototyping.Scripts
+namespace Delayed_Messaging.Scripts.Player.Locomotion
 {
     public class LocomotionPositionPreview : MonoBehaviour
     {
@@ -13,7 +10,7 @@ namespace VR_Prototyping.Scripts
         [SerializeField] private Transform rHand;
         private bool active;
         
-        public ControllerTransforms ControllerTransforms { private get; set; }
+        public ControllerTransforms controller { private get; set; }
 
         private void Update()
         {
@@ -24,11 +21,11 @@ namespace VR_Prototyping.Scripts
             thisTransform.localPosition = Vector3.zero;
             thisTransform.forward = thisTransform.parent.forward;
             Transform headTransform = head.transform;
-            headTransform.LocalTransforms(ControllerTransforms.HmdLocalRelativeTransform());
+            headTransform.LocalTransforms(controller.RelativeTransform(ControllerTransforms.Check.HEAD));
             Vector3 localRot = headTransform.localEulerAngles;
             headTransform.localEulerAngles = new Vector3(localRot.x, 0, localRot.z);
-            lHand.transform.LocalTransforms(ControllerTransforms.LeftLocalRelativeTransform());
-            rHand.transform.LocalTransforms(ControllerTransforms.RightLocalRelativeTransform());
+            lHand.transform.LocalTransforms(controller.RelativeTransform(ControllerTransforms.Check.LEFT));
+            rHand.transform.LocalTransforms(controller.RelativeTransform(ControllerTransforms.Check.RIGHT));
         }
 
         public void GhostToggle(Transform parent, bool state)

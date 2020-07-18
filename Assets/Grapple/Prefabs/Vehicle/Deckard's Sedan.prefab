@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 2601692991888750857}
   - component: {fileID: 7804510136662114818}
   - component: {fileID: 2234236537481779563}
-  - component: {fileID: 1299882681908797216}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_windscreenCowl_low_Plane.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,20 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1299882681908797216
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95067973456643109}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4309794302762353346, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &128187553697222517
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,8 +90,7 @@ GameObject:
   - component: {fileID: 683422872049624430}
   - component: {fileID: 1144060770266549750}
   - component: {fileID: 1734407686780978358}
-  - component: {fileID: 6925768638330907080}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low.003_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +109,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1144060770266549750
 MeshFilter:
@@ -174,20 +158,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6925768638330907080
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128187553697222517}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4013816957086901225, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &131157725397068898
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,8 +169,7 @@ GameObject:
   - component: {fileID: 1521797968718220454}
   - component: {fileID: 7813880567288759939}
   - component: {fileID: 4596813949201085966}
-  - component: {fileID: 7414637713850336792}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wheel.RR_low_Cylinder.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,20 +237,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7414637713850336792
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131157725397068898}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7678087635095113499, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &473080884653587091
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,8 +248,7 @@ GameObject:
   - component: {fileID: 2865179813721436549}
   - component: {fileID: 5797255807222254454}
   - component: {fileID: 6700212356114182788}
-  - component: {fileID: 4759996338009406096}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wheel.FR_low_Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,20 +316,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4759996338009406096
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 473080884653587091}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5555900833212040767, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &594583665429440743
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,8 +327,7 @@ GameObject:
   - component: {fileID: 3911589754084371725}
   - component: {fileID: 3533277003072245120}
   - component: {fileID: 5095318086343312966}
-  - component: {fileID: 5320696346838306110}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_indicator_low_Plane.042
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +346,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 33
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3533277003072245120
 MeshFilter:
@@ -456,20 +395,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5320696346838306110
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 594583665429440743}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6471302121801521635, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &611957607403692098
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7775008999483702140}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +425,7 @@ Transform:
   - {fileID: 1864812638659741219}
   - {fileID: 7814620011644969081}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1019360058370805412
 GameObject:
@@ -513,8 +438,7 @@ GameObject:
   - component: {fileID: 6529394241375343419}
   - component: {fileID: 8053400474365135625}
   - component: {fileID: 7631064762497378331}
-  - component: {fileID: 3264119752701466716}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorFrame.R_low_Plane.171
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +457,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 8858137900614233126}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8053400474365135625
 MeshFilter:
@@ -582,20 +506,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3264119752701466716
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019360058370805412}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5879762077525002417, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &1186810165477233216
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,8 +517,7 @@ GameObject:
   - component: {fileID: 4594088434312286540}
   - component: {fileID: 5280680599419976141}
   - component: {fileID: 2145259220899167014}
-  - component: {fileID: 7611739184427920582}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_rearViewMirror_low_Plane.085
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +536,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 45
+  m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5280680599419976141
 MeshFilter:
@@ -676,20 +585,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7611739184427920582
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186810165477233216}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3777049931326539132, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &1291699161913143530
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,8 +596,7 @@ GameObject:
   - component: {fileID: 9193655608218241319}
   - component: {fileID: 3728288401871881391}
   - component: {fileID: 5250638853587552959}
-  - component: {fileID: 7816029390165574362}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wheelCover_low_Plane.025
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +615,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 52
+  m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3728288401871881391
 MeshFilter:
@@ -770,20 +664,220 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7816029390165574362
-MeshCollider:
+--- !u!1 &1300199954204854638
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291699161913143530}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7680507231970731580}
+  - component: {fileID: 2578375889583100251}
+  - component: {fileID: 3162732882463278410}
+  - component: {fileID: 6401955627667308656}
+  - component: {fileID: 7478164822679539566}
+  m_Layer: 20
+  m_Name: Readout
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7680507231970731580
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300199954204854638}
+  m_LocalRotation: {x: 0.09824038, y: 0.042373314, z: 0.0034437529, w: 0.99425423}
+  m_LocalPosition: {x: 0, y: 0, z: 0.618}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4398506937093214781}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.207, y: -0.06}
+  m_SizeDelta: {x: 20, y: 5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!23 &2578375889583100251
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300199954204854638}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -861039539390881524, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 21974639158376882, guid: 053ad863734f4ba4cb4161ca381191e3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &3162732882463278410
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300199954204854638}
+  m_Mesh: {fileID: 0}
+--- !u!222 &6401955627667308656
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300199954204854638}
+  m_CullTransparentMesh: 0
+--- !u!114 &7478164822679539566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300199954204854638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'This is some example text on screen
+
+
+    Pretty cool that I can have
+    text on screen!
+
+
+    Speed:  <b>10mps</b>
+
+    Height: <b>159m</b>'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 053ad863734f4ba4cb4161ca381191e3, type: 2}
+  m_sharedMaterial: {fileID: 21974639158376882, guid: 053ad863734f4ba4cb4161ca381191e3,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_outlineColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontSize: 0.25
+  m_fontSizeBase: 0.25
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_textAlignment: 257
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 50
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_firstOverflowCharacterIndex: -1
+  m_linkedTextComponent: {fileID: 0}
+  m_isLinkedTextComponent: 0
+  m_isTextTruncated: 0
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 0
+  m_isCullingEnabled: 0
+  m_ignoreRectMaskCulling: 0
+  m_ignoreCulling: 1
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_firstVisibleCharacter: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 9.890664, y: 2.353177, z: 9.882621, w: 2.3355744}
+  m_textInfo:
+    textComponent: {fileID: 7478164822679539566}
+    characterCount: 108
+    spriteCount: 0
+    spaceCount: 22
+    wordCount: 20
+    linkCount: 0
+    lineCount: 10
+    pageCount: 1
+    materialCount: 1
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_spriteAnimator: {fileID: 0}
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 2578375889583100251}
+  m_subTextObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_maskType: 0
 --- !u!1 &1325012924805728485
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,8 +889,7 @@ GameObject:
   - component: {fileID: 6065813158297079402}
   - component: {fileID: 3501028498507825028}
   - component: {fileID: 6863740116633768404}
-  - component: {fileID: 2576624449239540528}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_hoodDetail_low_Circle.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -815,7 +908,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 32
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3501028498507825028
 MeshFilter:
@@ -864,20 +957,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2576624449239540528
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325012924805728485}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7821702699407754393, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &1327192792012633758
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4526227310231787373}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Right Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -908,7 +987,7 @@ Transform:
   - {fileID: 2865179813721436549}
   - {fileID: 1521797968718220454}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1416979501549560195
 GameObject:
@@ -921,8 +1000,7 @@ GameObject:
   - component: {fileID: 746722864134253884}
   - component: {fileID: 371864498067249610}
   - component: {fileID: 6310373044009641589}
-  - component: {fileID: 1428660648119464548}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorWindow.L_low_Plane.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -941,7 +1019,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6289530672382002856}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &371864498067249610
 MeshFilter:
@@ -990,20 +1068,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1428660648119464548
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416979501549560195}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8142869470848324339, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &1681658180744279604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,8 +1079,7 @@ GameObject:
   - component: {fileID: 385316052187026610}
   - component: {fileID: 9216298023158112998}
   - component: {fileID: 6466280913727920022}
-  - component: {fileID: 7157051968643541704}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_floorMat_low_Plane.045
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1098,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9216298023158112998
 MeshFilter:
@@ -1084,20 +1147,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7157051968643541704
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681658180744279604}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4908591060917459387, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &1873022842349816253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,8 +1158,7 @@ GameObject:
   - component: {fileID: 6740999150273654376}
   - component: {fileID: 5489933199801849136}
   - component: {fileID: 750640442004811807}
-  - component: {fileID: 603984592188035180}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_low.003_NurbsPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1129,7 +1177,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5489933199801849136
 MeshFilter:
@@ -1178,20 +1226,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &603984592188035180
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873022842349816253}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5988266028087898910, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &1890774950977060016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,8 +1237,7 @@ GameObject:
   - component: {fileID: 7304667032154752609}
   - component: {fileID: 1184623672182850936}
   - component: {fileID: 3446854077271844322}
-  - component: {fileID: 1600252840802422046}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_jetEngine_low_Circle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1223,7 +1256,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 36
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1184623672182850936
 MeshFilter:
@@ -1272,20 +1305,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1600252840802422046
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1890774950977060016}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6133983160730885769, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &1963721359877066812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,8 +1316,7 @@ GameObject:
   - component: {fileID: 6514440186372312834}
   - component: {fileID: 7557128639609993686}
   - component: {fileID: 2666288063172417816}
-  - component: {fileID: 4017206554321212334}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorUpper.R_low_Plane.043
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1317,7 +1335,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 8858137900614233126}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7557128639609993686
 MeshFilter:
@@ -1366,20 +1384,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4017206554321212334
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1963721359877066812}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3683716363434467839, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &1980466521150666199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,7 +1393,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1237358555527768441}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Left Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1410,7 +1414,7 @@ Transform:
   - {fileID: 2758979245489563635}
   - {fileID: 4708167374939157697}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2072375390611574362
 GameObject:
@@ -1423,8 +1427,7 @@ GameObject:
   - component: {fileID: 6384620243845974521}
   - component: {fileID: 4737327432923155019}
   - component: {fileID: 8793697179804497483}
-  - component: {fileID: 8917507225838886986}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low.005_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1443,7 +1446,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4737327432923155019
 MeshFilter:
@@ -1492,20 +1495,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8917507225838886986
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2072375390611574362}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3552406660457256556, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2077672829500523447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1517,8 +1506,7 @@ GameObject:
   - component: {fileID: 2356703271937665290}
   - component: {fileID: 6507799598635776450}
   - component: {fileID: 554558476262959161}
-  - component: {fileID: 8711893623725479702}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_body_low.001_Plane.029
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1525,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6507799598635776450
 MeshFilter:
@@ -1586,20 +1574,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8711893623725479702
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077672829500523447}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2690814236114859351, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2088755016070182517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,8 +1585,7 @@ GameObject:
   - component: {fileID: 6929848304850277360}
   - component: {fileID: 8094239442294873270}
   - component: {fileID: 3173468877565623227}
-  - component: {fileID: 8858920839439317420}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_keypad_low_Plane.146
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1631,7 +1604,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 38
+  m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8094239442294873270
 MeshFilter:
@@ -1680,20 +1653,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8858920839439317420
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088755016070182517}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4160808451610458111, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2136884526248144114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,8 +1664,7 @@ GameObject:
   - component: {fileID: 2965593433072391268}
   - component: {fileID: 4642244711474915060}
   - component: {fileID: 4689466612850873959}
-  - component: {fileID: 10718555363278383}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_low.001_NurbsPath.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1725,7 +1683,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4642244711474915060
 MeshFilter:
@@ -1774,20 +1732,133 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &10718555363278383
-MeshCollider:
+--- !u!1 &2181125092249907997
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2136884526248144114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913179809888968607}
+  - component: {fileID: 3950174216268135577}
+  m_Layer: 20
+  m_Name: Left Door Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913179809888968607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181125092249907997}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5070001, y: -1.3, z: 0.833}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6289530672382002856}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &3950174216268135577
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181125092249907997}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5201163143743901577, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2481836338718268213
 GameObject:
   m_ObjectHideFlags: 0
@@ -1799,8 +1870,7 @@ GameObject:
   - component: {fileID: 2194830966207033746}
   - component: {fileID: 4187533511260160783}
   - component: {fileID: 948838198561801158}
-  - component: {fileID: 3209525932586927345}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Right Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1819,7 +1889,7 @@ Transform:
   m_LocalScale: {x: 0.35477, y: 0.35477, z: 0.35477}
   m_Children: []
   m_Father: {fileID: 4398506937093214781}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 11.248, y: 4.9680004, z: 0.88600004}
 --- !u!33 &4187533511260160783
 MeshFilter:
@@ -1847,7 +1917,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fcb6ea88d60ad8748955916ab32285c1, type: 2}
+  - {fileID: 2100000, guid: 3d27187f338f0bf4f97ab95c4268bdef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1868,20 +1938,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3209525932586927345
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2481836338718268213}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &2502938421859235985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,8 +1949,7 @@ GameObject:
   - component: {fileID: 1477415644065028648}
   - component: {fileID: 3550989012896429953}
   - component: {fileID: 4220247163515043273}
-  - component: {fileID: 1453081905735552533}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_seat_low_Circle.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1913,7 +1968,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 49
+  m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3550989012896429953
 MeshFilter:
@@ -1962,20 +2017,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1453081905735552533
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2502938421859235985}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1530785497621127560, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2613437268817665866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1987,8 +2028,7 @@ GameObject:
   - component: {fileID: 1379844960044530582}
   - component: {fileID: 3822523131911773744}
   - component: {fileID: 3429719937473917971}
-  - component: {fileID: 3905660453394435713}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low.007_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2007,7 +2047,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3822523131911773744
 MeshFilter:
@@ -2056,20 +2096,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3905660453394435713
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2613437268817665866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 631683216695324245, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2694083276929014792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,8 +2107,7 @@ GameObject:
   - component: {fileID: 2847369710026345469}
   - component: {fileID: 7570343835837833525}
   - component: {fileID: 6638301425816114660}
-  - component: {fileID: 8325842652905928907}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorCladding.L_low_Plane.055
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2101,7 +2126,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6289530672382002856}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7570343835837833525
 MeshFilter:
@@ -2150,20 +2175,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8325842652905928907
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2694083276929014792}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2037841882660333096, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2758326241302226974
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,8 +2186,7 @@ GameObject:
   - component: {fileID: 3177332473485297386}
   - component: {fileID: 5735550333736918905}
   - component: {fileID: 8359101717736588172}
-  - component: {fileID: 336752801033022953}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_hazards_low_Plane.163
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2195,7 +2205,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 28
+  m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5735550333736918905
 MeshFilter:
@@ -2244,20 +2254,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &336752801033022953
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2758326241302226974}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7388106675113299526, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2846873288486044248
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,7 +2265,7 @@ GameObject:
   - component: {fileID: 4618395380790930277}
   - component: {fileID: 2627392305900612430}
   - component: {fileID: 4355304883391382354}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: CRT Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2288,7 +2284,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 4398506937093214781}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2627392305900612430
 MeshFilter:
@@ -2348,8 +2344,7 @@ GameObject:
   - component: {fileID: 2758979245489563635}
   - component: {fileID: 7633459119820976860}
   - component: {fileID: 817646182907332387}
-  - component: {fileID: 4592048736496873445}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wheel.FL_low_Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2417,20 +2412,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4592048736496873445
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2872238836435823397}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4508093294163915150, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2897036198275028149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,8 +2423,7 @@ GameObject:
   - component: {fileID: 6498294229497826412}
   - component: {fileID: 5522887255706227226}
   - component: {fileID: 4586293962173656823}
-  - component: {fileID: 2475376150238500352}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wingMirrorRail_low_Plane.027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2511,20 +2491,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2475376150238500352
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2897036198275028149}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6770462799478300500, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &2949828118033561597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,8 +2502,7 @@ GameObject:
   - component: {fileID: 4184890251447389767}
   - component: {fileID: 6563269191429010115}
   - component: {fileID: 3100237936017460081}
-  - component: {fileID: 6991778381990001638}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_frontBumper_low_Plane.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2556,7 +2521,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6563269191429010115
 MeshFilter:
@@ -2605,20 +2570,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6991778381990001638
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2949828118033561597}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -555213608621355439, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3041780913770876061
 GameObject:
   m_ObjectHideFlags: 0
@@ -2630,8 +2581,7 @@ GameObject:
   - component: {fileID: 2739250358053886558}
   - component: {fileID: 3626906166558199496}
   - component: {fileID: 2237621033209269399}
-  - component: {fileID: 6259579524681043710}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_headliner_low_Plane.173
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2650,7 +2600,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 30
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3626906166558199496
 MeshFilter:
@@ -2699,20 +2649,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6259579524681043710
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3041780913770876061}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1120638418561381542, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3073140012892905175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,8 +2660,7 @@ GameObject:
   - component: {fileID: 6422721053695609175}
   - component: {fileID: 2911326360420351713}
   - component: {fileID: 205019147539163024}
-  - component: {fileID: 1381270231627025919}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorLower.R_low_Plane.047
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2744,7 +2679,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 8858137900614233126}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2911326360420351713
 MeshFilter:
@@ -2793,20 +2728,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1381270231627025919
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3073140012892905175}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4870337742163737874, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3319387738864929867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,8 +2739,7 @@ GameObject:
   - component: {fileID: 3989324847437527530}
   - component: {fileID: 2558322731315611733}
   - component: {fileID: 3181771563928574686}
-  - component: {fileID: 3261430632647960296}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low.002_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2838,7 +2758,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2558322731315611733
 MeshFilter:
@@ -2887,20 +2807,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3261430632647960296
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3319387738864929867}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3405763420907154908, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3321731683043099697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,8 +2818,7 @@ GameObject:
   - component: {fileID: 3485680050904815130}
   - component: {fileID: 1325797891432740446}
   - component: {fileID: 6675156006949600162}
-  - component: {fileID: 7389832600567007464}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_seatBelt_low_Plane.160
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2932,7 +2837,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 50
+  m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1325797891432740446
 MeshFilter:
@@ -2981,20 +2886,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7389832600567007464
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3321731683043099697}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 555266355063994486, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3348228608988029019
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,8 +2897,7 @@ GameObject:
   - component: {fileID: 5349072517729313976}
   - component: {fileID: 2763634528898810503}
   - component: {fileID: 7778837653632515621}
-  - component: {fileID: 4843236440977495473}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorUpper.L_low_Plane.074
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3026,7 +2916,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6289530672382002856}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2763634528898810503
 MeshFilter:
@@ -3075,20 +2965,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4843236440977495473
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3348228608988029019}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -502327423680958786, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3373006686202221508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3100,8 +2976,7 @@ GameObject:
   - component: {fileID: 5294243746360860386}
   - component: {fileID: 4294386743138859595}
   - component: {fileID: 5719221683064435649}
-  - component: {fileID: 3119526452823642537}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_rearWindowFrame_low_Plane.035
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3120,7 +2995,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 46
+  m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4294386743138859595
 MeshFilter:
@@ -3169,20 +3044,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3119526452823642537
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3373006686202221508}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8694872431138796624, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3513045268228792774
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,8 +3055,7 @@ GameObject:
   - component: {fileID: 2067873113703263245}
   - component: {fileID: 2487754038570947345}
   - component: {fileID: 5178801259708794245}
-  - component: {fileID: 9209433627938485718}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low.006_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3214,7 +3074,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2487754038570947345
 MeshFilter:
@@ -3263,20 +3123,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &9209433627938485718
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3513045268228792774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1422108786783038628, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3522229484770300520
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,8 +3134,7 @@ GameObject:
   - component: {fileID: 2350971909296434337}
   - component: {fileID: 7699290082601192471}
   - component: {fileID: 7906412183791878940}
-  - component: {fileID: 3781260764922547823}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_low.002_NurbsPath.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3308,7 +3153,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7699290082601192471
 MeshFilter:
@@ -3357,20 +3202,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3781260764922547823
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3522229484770300520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8276883590824408770, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3609552206415987809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3382,8 +3213,7 @@ GameObject:
   - component: {fileID: 3950135990232288579}
   - component: {fileID: 3750557177949000046}
   - component: {fileID: 5628500398852513116}
-  - component: {fileID: 948663122937268832}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_handbrake_low_Plane.053
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3402,7 +3232,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3750557177949000046
 MeshFilter:
@@ -3451,20 +3281,133 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &948663122937268832
-MeshCollider:
+--- !u!1 &3611275403491906367
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3609552206415987809}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4391197243154716385}
+  - component: {fileID: 6104302976764285685}
+  m_Layer: 20
+  m_Name: Right Door Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4391197243154716385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611275403491906367}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.486, y: -1.3, z: 0.833}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8858137900614233126}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &6104302976764285685
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3611275403491906367}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2381451394591856727, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3721237791429869575
 GameObject:
   m_ObjectHideFlags: 0
@@ -3476,8 +3419,7 @@ GameObject:
   - component: {fileID: 4708167374939157697}
   - component: {fileID: 2321846633581164717}
   - component: {fileID: 2208454415636437982}
-  - component: {fileID: 1728076817379972319}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wheel.RL_low_Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3545,20 +3487,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1728076817379972319
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3721237791429869575}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4159463707406008726, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3775148476938447777
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,8 +3498,7 @@ GameObject:
   - component: {fileID: 7686554618860919017}
   - component: {fileID: 502994704368414733}
   - component: {fileID: 3396997108559362674}
-  - component: {fileID: 7511216083296079590}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorUpper_interior.L_low_Plane.117
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3590,7 +3517,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6289530672382002856}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &502994704368414733
 MeshFilter:
@@ -3639,20 +3566,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7511216083296079590
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3775148476938447777}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8670650006277407240, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &3812064996387438960
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,8 +3577,7 @@ GameObject:
   - component: {fileID: 5468361611609886470}
   - component: {fileID: 8693152593820789665}
   - component: {fileID: 8540809602907024517}
-  - component: {fileID: 7374356613890127872}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low.004_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3684,7 +3596,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8693152593820789665
 MeshFilter:
@@ -3733,20 +3645,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7374356613890127872
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3812064996387438960}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5704463338092507032, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &4121909953735341028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3758,8 +3656,7 @@ GameObject:
   - component: {fileID: 2607159662633943058}
   - component: {fileID: 4079790624211789953}
   - component: {fileID: 5371309007332618690}
-  - component: {fileID: 2055384017582597845}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_roofScoop_low_Plane.019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3778,7 +3675,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 47
+  m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4079790624211789953
 MeshFilter:
@@ -3827,20 +3724,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2055384017582597845
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4121909953735341028}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3072517219833905925, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &4553504205979548116
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,8 +3735,7 @@ GameObject:
   - component: {fileID: 8148638853058408543}
   - component: {fileID: 9029608981498578054}
   - component: {fileID: 7219507237026514907}
-  - component: {fileID: 6607900265607828370}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_airVent_low_Plane.062
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3872,7 +3754,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9029608981498578054
 MeshFilter:
@@ -3921,20 +3803,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6607900265607828370
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4553504205979548116}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7647748095827681918, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &4629773188944479722
 GameObject:
   m_ObjectHideFlags: 0
@@ -3946,8 +3814,7 @@ GameObject:
   - component: {fileID: 8961769776013186926}
   - component: {fileID: 8258046061802394127}
   - component: {fileID: 3862532367859345964}
-  - component: {fileID: 6487806704700306900}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3966,7 +3833,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8258046061802394127
 MeshFilter:
@@ -4015,20 +3882,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6487806704700306900
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4629773188944479722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 421256204191231041, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &4631729953951821406
 GameObject:
   m_ObjectHideFlags: 0
@@ -4040,9 +3893,8 @@ GameObject:
   - component: {fileID: 3879100470144931663}
   - component: {fileID: 2044787845463666755}
   - component: {fileID: 6328022385645056054}
-  - component: {fileID: 7308616041850215531}
-  m_Layer: 0
-  m_Name: sedan_windows_Plane.015
+  m_Layer: 20
+  m_Name: Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4060,7 +3912,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 53
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2044787845463666755
 MeshFilter:
@@ -4109,20 +3961,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7308616041850215531
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4631729953951821406}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6140323376372011389, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &4677371852852972562
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,8 +3972,7 @@ GameObject:
   - component: {fileID: 8585267299320507243}
   - component: {fileID: 274352739020558030}
   - component: {fileID: 4120011133870292130}
-  - component: {fileID: 7912897057294136252}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorCladding.R_low_Plane.041
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4154,7 +3991,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 8858137900614233126}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &274352739020558030
 MeshFilter:
@@ -4203,20 +4040,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7912897057294136252
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4677371852852972562}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7633479263498405520, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &4781167119116822284
 GameObject:
   m_ObjectHideFlags: 0
@@ -4228,8 +4051,7 @@ GameObject:
   - component: {fileID: 5883585723622724986}
   - component: {fileID: 1536686551748195103}
   - component: {fileID: 1255718073143910899}
-  - component: {fileID: 3883675552766405056}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_headlight_low_Plane.037
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4248,7 +4070,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1536686551748195103
 MeshFilter:
@@ -4297,20 +4119,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3883675552766405056
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4781167119116822284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7353755259271000801, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5193117077822552361
 GameObject:
   m_ObjectHideFlags: 0
@@ -4322,9 +4130,8 @@ GameObject:
   - component: {fileID: 9021359632660944408}
   - component: {fileID: 1599507976000768104}
   - component: {fileID: 6612522297059446094}
-  - component: {fileID: 2269840050882169057}
-  m_Layer: 0
-  m_Name: sedan_body_low_Plane.051
+  m_Layer: 20
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4342,7 +4149,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1599507976000768104
 MeshFilter:
@@ -4391,20 +4198,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2269840050882169057
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5193117077822552361}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6498918193629427189, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5248316023327711868
 GameObject:
   m_ObjectHideFlags: 0
@@ -4416,8 +4209,7 @@ GameObject:
   - component: {fileID: 3418632035111978200}
   - component: {fileID: 1267671122043114369}
   - component: {fileID: 9011290728304575872}
-  - component: {fileID: 7565165201844781998}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_exhaust_low_Cube.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4436,7 +4228,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1267671122043114369
 MeshFilter:
@@ -4485,20 +4277,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7565165201844781998
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5248316023327711868}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7694455466318702459, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5343604420252984336
 GameObject:
   m_ObjectHideFlags: 0
@@ -4510,7 +4288,7 @@ GameObject:
   - component: {fileID: 7814620011644969081}
   - component: {fileID: 3512415745238809569}
   - component: {fileID: 4142715814538898280}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Under View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4525,7 +4303,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5343604420252984336}
   m_LocalRotation: {x: -0.14790912, y: -0, z: -0, w: -0.989001}
-  m_LocalPosition: {x: -0.469, y: -1.33, z: 3.71}
+  m_LocalPosition: {x: -0.95, y: -1.45, z: 3.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7775008999483702140}
@@ -4541,7 +4319,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4564,7 +4342,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: d6682985717193844b1e95a5535cbf21, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1
@@ -4590,7 +4368,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
+  m_CameraOutput: 1
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -4616,8 +4394,7 @@ GameObject:
   - component: {fileID: 6187964840751290267}
   - component: {fileID: 8445455935228836634}
   - component: {fileID: 5167189789683029461}
-  - component: {fileID: 8748321957357428339}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorFrame.L_low_Plane.082
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4636,7 +4413,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6289530672382002856}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8445455935228836634
 MeshFilter:
@@ -4685,20 +4462,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8748321957357428339
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5476720173735866596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1240215006357224719, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5544937425020019403
 GameObject:
   m_ObjectHideFlags: 0
@@ -4710,8 +4473,7 @@ GameObject:
   - component: {fileID: 385168901688201112}
   - component: {fileID: 7086117637539015126}
   - component: {fileID: 1344940951337196640}
-  - component: {fileID: 2715486991277558062}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_taillights_low_Plane.088
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4730,7 +4492,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 51
+  m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7086117637539015126
 MeshFilter:
@@ -4779,20 +4541,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2715486991277558062
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5544937425020019403}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5428087327828488672, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5605875566712281359
 GameObject:
   m_ObjectHideFlags: 0
@@ -4804,8 +4552,7 @@ GameObject:
   - component: {fileID: 743162123640193675}
   - component: {fileID: 1576455927193917632}
   - component: {fileID: 3869274272414219747}
-  - component: {fileID: 5946687277990987773}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wingMirror_low_Plane.049
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4873,20 +4620,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5946687277990987773
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5605875566712281359}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 201385010497998338, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5641651638503004387
 GameObject:
   m_ObjectHideFlags: 0
@@ -4898,8 +4631,7 @@ GameObject:
   - component: {fileID: 3502841172977349659}
   - component: {fileID: 2801476635217227496}
   - component: {fileID: 5621446879802021330}
-  - component: {fileID: 7862330685620322033}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_rearSuspension_low_Cylinder.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4918,7 +4650,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 44
+  m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2801476635217227496
 MeshFilter:
@@ -4967,20 +4699,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7862330685620322033
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5641651638503004387}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3519057295932056634, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5649622770889488154
 GameObject:
   m_ObjectHideFlags: 0
@@ -4990,8 +4708,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6516917032482793451}
-  m_Layer: 0
-  m_Name: GameObject
+  m_Layer: 20
+  m_Name: Steering Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5009,8 +4727,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9093665292984812769}
+  - {fileID: 5445175225253780067}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 19.901001, y: 0, z: 0}
 --- !u!1 &5760293386334831506
 GameObject:
@@ -5023,8 +4742,7 @@ GameObject:
   - component: {fileID: 4043156167323697578}
   - component: {fileID: 2169298295588781196}
   - component: {fileID: 3008487359928434899}
-  - component: {fileID: 2787773185853372727}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Left Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5043,7 +4761,7 @@ Transform:
   m_LocalScale: {x: 0.35477, y: 0.35477, z: 0.35477}
   m_Children: []
   m_Father: {fileID: 4398506937093214781}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10.2890005, y: 0, z: 0}
 --- !u!33 &2169298295588781196
 MeshFilter:
@@ -5092,20 +4810,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2787773185853372727
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5760293386334831506}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5826090203567592064
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,8 +4821,7 @@ GameObject:
   - component: {fileID: 8069236833737107655}
   - component: {fileID: 8824868821045201484}
   - component: {fileID: 2201650198034568104}
-  - component: {fileID: 4140663739078938710}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_interiorTrim_low_Plane.048
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5137,7 +4840,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 35
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8824868821045201484
 MeshFilter:
@@ -5165,7 +4868,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46ea3f99e883d9142888973c70eded1e, type: 2}
+  - {fileID: 2100000, guid: d8ee846bc330b384b87d59b086b3d31d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5186,20 +4889,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4140663739078938710
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5826090203567592064}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1218156111817477014, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5848246283484045743
 GameObject:
   m_ObjectHideFlags: 0
@@ -5211,8 +4900,7 @@ GameObject:
   - component: {fileID: 3545730081582254484}
   - component: {fileID: 8126925560254190223}
   - component: {fileID: 8512249762350823984}
-  - component: {fileID: 2459643741637052894}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_heatSink_low_Cube.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5231,7 +4919,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8126925560254190223
 MeshFilter:
@@ -5280,20 +4968,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2459643741637052894
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5848246283484045743}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 611556362945462624, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &5854741640982792657
 GameObject:
   m_ObjectHideFlags: 0
@@ -5305,8 +4979,7 @@ GameObject:
   - component: {fileID: 6621368432034131624}
   - component: {fileID: 3942214127472255194}
   - component: {fileID: 9022983365095286513}
-  - component: {fileID: 584017812309359794}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Center Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5325,7 +4998,7 @@ Transform:
   m_LocalScale: {x: 0.5696562, y: 0.3797708, z: 0.5696562}
   m_Children: []
   m_Father: {fileID: 4398506937093214781}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 10.2890005, y: 0, z: 0}
 --- !u!33 &3942214127472255194
 MeshFilter:
@@ -5374,20 +5047,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &584017812309359794
-MeshCollider:
+--- !u!1 &6339402468221609136
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5854741640982792657}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5674258893833763414}
+  m_Layer: 0
+  m_Name: Player Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5674258893833763414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339402468221609136}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.837, y: 0.508, z: -0.927}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8042253012620699208}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6467322282300970075
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,6 +5086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8042253012620699208}
+  - component: {fileID: 5292601194603879197}
   m_Layer: 0
   m_Name: Deckard's Sedan
   m_TagString: Untagged
@@ -5415,18 +5105,41 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5674258893833763414}
   - {fileID: 6289530672382002856}
   - {fileID: 8858137900614233126}
+  - {fileID: 1237358555527768441}
+  - {fileID: 4526227310231787373}
+  - {fileID: 6516917032482793451}
   - {fileID: 2729172968090305148}
   - {fileID: 4398506937093214781}
   - {fileID: 1407511044635157180}
-  - {fileID: 1237358555527768441}
-  - {fileID: 4526227310231787373}
   - {fileID: 7775008999483702140}
-  - {fileID: 6516917032482793451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5292601194603879197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6467322282300970075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09a6f62ecb9f854999fbaa14af1f263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 5674258893833763414}
+  leftDoor: {fileID: 6289530672382002856}
+  rightDoor: {fileID: 8858137900614233126}
+  leftWheels: {fileID: 1237358555527768441}
+  rightWheels: {fileID: 4526227310231787373}
+  readout: {fileID: 7478164822679539566}
+  doorOpenAngle: 0
+  doorOpenSpeed: 0
+  wheelUpAngle: 0
+  wheelUpSpeed: 0
 --- !u!1 &6544443466728687386
 GameObject:
   m_ObjectHideFlags: 0
@@ -5438,8 +5151,7 @@ GameObject:
   - component: {fileID: 2304318017219502789}
   - component: {fileID: 4915588660460542805}
   - component: {fileID: 5195255980856153944}
-  - component: {fileID: 568777662439769882}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_rearBumper_low_Circle.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5458,7 +5170,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 41
+  m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4915588660460542805
 MeshFilter:
@@ -5507,20 +5219,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &568777662439769882
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6544443466728687386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2556554501331978376, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &6628665335746629731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5532,8 +5230,7 @@ GameObject:
   - component: {fileID: 163830772737567371}
   - component: {fileID: 4401499968098773570}
   - component: {fileID: 5480536821693938548}
-  - component: {fileID: 7038460833468739278}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_gearStick_boot_low_Sphere.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5552,7 +5249,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4401499968098773570
 MeshFilter:
@@ -5601,20 +5298,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7038460833468739278
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6628665335746629731}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6593869012502718232, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &6695803050797109380
 GameObject:
   m_ObjectHideFlags: 0
@@ -5626,8 +5309,7 @@ GameObject:
   - component: {fileID: 2708661883506265056}
   - component: {fileID: 8441895940502462644}
   - component: {fileID: 1281812760730685923}
-  - component: {fileID: 4884109860622801912}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_licencePlate_low_Plane.033
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5646,7 +5328,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 39
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8441895940502462644
 MeshFilter:
@@ -5695,20 +5377,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4884109860622801912
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6695803050797109380}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5301759424485740016, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &6834820278678064019
 GameObject:
   m_ObjectHideFlags: 0
@@ -5720,8 +5388,7 @@ GameObject:
   - component: {fileID: 6193705009683215507}
   - component: {fileID: 8046924662646050065}
   - component: {fileID: 5193264612181401650}
-  - component: {fileID: 653510246821142394}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorUpper_interior.R_low_Plane.031
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5740,7 +5407,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 8858137900614233126}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8046924662646050065
 MeshFilter:
@@ -5789,20 +5456,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &653510246821142394
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6834820278678064019}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2400687615283199291, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &6909312467871131184
 GameObject:
   m_ObjectHideFlags: 0
@@ -5812,7 +5465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2729172968090305148}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Windscreen Wiper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5833,7 +5486,7 @@ Transform:
   - {fileID: 5876103051206529790}
   - {fileID: 3263718053725739524}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 15.275001, y: 0, z: 0}
 --- !u!1 &6954435457020492370
 GameObject:
@@ -5846,8 +5499,7 @@ GameObject:
   - component: {fileID: 3371427118927177379}
   - component: {fileID: 7053865640329803819}
   - component: {fileID: 2535602387105997308}
-  - component: {fileID: 3034475804215853924}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_rearCladding_low_Plane.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5866,7 +5518,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 43
+  m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7053865640329803819
 MeshFilter:
@@ -5915,20 +5567,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3034475804215853924
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6954435457020492370}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3927926916378308960, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &6957955913212392063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5940,7 +5578,7 @@ GameObject:
   - component: {fileID: 3263718053725739524}
   - component: {fileID: 4406587651137893127}
   - component: {fileID: 3728674217701352554}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wiperBlade_low_Plane.097
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6019,8 +5657,7 @@ GameObject:
   - component: {fileID: 5439623245699103728}
   - component: {fileID: 2512072941553180693}
   - component: {fileID: 7350308101186988811}
-  - component: {fileID: 5604469626359168709}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low.008_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6039,7 +5676,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2512072941553180693
 MeshFilter:
@@ -6088,20 +5725,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5604469626359168709
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7160529887212905761}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1614884921224695181, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &7220163503789477211
 GameObject:
   m_ObjectHideFlags: 0
@@ -6113,8 +5736,7 @@ GameObject:
   - component: {fileID: 968979238264227721}
   - component: {fileID: 7386453999631772551}
   - component: {fileID: 5618205654912914876}
-  - component: {fileID: 4104822437571964268}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_roofWedge_low_Plane.021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6133,7 +5755,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 48
+  m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7386453999631772551
 MeshFilter:
@@ -6182,20 +5804,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4104822437571964268
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7220163503789477211}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5561985345581339642, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &7346515727171130712
 GameObject:
   m_ObjectHideFlags: 0
@@ -6207,8 +5815,7 @@ GameObject:
   - component: {fileID: 5445175225253780067}
   - component: {fileID: 2053225097898344029}
   - component: {fileID: 3631163200528647438}
-  - component: {fileID: 2709714336455503509}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_steeringColumn_low_Cube.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6222,12 +5829,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7346515727171130712}
-  m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.17279649, y: -0, z: -0, w: 0.9849576}
+  m_LocalPosition: {x: 0.835, y: 0.035617784, z: -0.35109025}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
-  m_Father: {fileID: 4398506937093214781}
-  m_RootOrder: 0
+  m_Father: {fileID: 6516917032482793451}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2053225097898344029
 MeshFilter:
@@ -6276,20 +5883,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2709714336455503509
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7346515727171130712}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -7689500626035884918, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &7518848452466589784
 GameObject:
   m_ObjectHideFlags: 0
@@ -6301,8 +5894,7 @@ GameObject:
   - component: {fileID: 5788343379209689269}
   - component: {fileID: 6561525241740245049}
   - component: {fileID: 5277587636164131463}
-  - component: {fileID: 7644164476001616845}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorLower_interior.L_low_Plane.078
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6321,7 +5913,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6289530672382002856}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6561525241740245049
 MeshFilter:
@@ -6370,20 +5962,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7644164476001616845
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7518848452466589784}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1727614334570095262, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &7578577360771796305
 GameObject:
   m_ObjectHideFlags: 0
@@ -6393,7 +5971,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1407511044635157180}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6411,12 +5989,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3879100470144931663}
+  - {fileID: 9021359632660944408}
   - {fileID: 3743649289617987918}
   - {fileID: 971569557020511784}
   - {fileID: 8341950837892342985}
   - {fileID: 8148638853058408543}
   - {fileID: 2356703271937665290}
-  - {fileID: 9021359632660944408}
   - {fileID: 2734526107686392423}
   - {fileID: 3989324847437527530}
   - {fileID: 683422872049624430}
@@ -6464,13 +6043,12 @@ Transform:
   - {fileID: 3485680050904815130}
   - {fileID: 385168901688201112}
   - {fileID: 9193655608218241319}
-  - {fileID: 3879100470144931663}
   - {fileID: 2601692991888750857}
   - {fileID: 8097975453545514548}
   - {fileID: 743162123640193675}
   - {fileID: 6498294229497826412}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 4
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7599473597605449300
 GameObject:
@@ -6483,8 +6061,7 @@ GameObject:
   - component: {fileID: 7223194233248934136}
   - component: {fileID: 104891923924110470}
   - component: {fileID: 3931968689277908948}
-  - component: {fileID: 7138227606931902116}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_key_low_Plane.166
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6503,7 +6080,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 37
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &104891923924110470
 MeshFilter:
@@ -6552,20 +6129,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7138227606931902116
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7599473597605449300}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4455986573528781723, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &7686476895457771009
 GameObject:
   m_ObjectHideFlags: 0
@@ -6577,8 +6140,7 @@ GameObject:
   - component: {fileID: 3743649289617987918}
   - component: {fileID: 2605542098801417391}
   - component: {fileID: 1700290335063251746}
-  - component: {fileID: 472661900617942354}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_56Panel_low_Plane.072
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6597,7 +6159,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2605542098801417391
 MeshFilter:
@@ -6646,20 +6208,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &472661900617942354
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7686476895457771009}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4442491062316707166, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &7976769226146846915
 GameObject:
   m_ObjectHideFlags: 0
@@ -6671,8 +6219,7 @@ GameObject:
   - component: {fileID: 2734526107686392423}
   - component: {fileID: 8173098374299836632}
   - component: {fileID: 2845378896675236825}
-  - component: {fileID: 5118660565868331066}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_clamp_low.001_Circle.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6691,7 +6238,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8173098374299836632
 MeshFilter:
@@ -6740,20 +6287,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5118660565868331066
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7976769226146846915}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8996127029976760938, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &7998111226359023931
 GameObject:
   m_ObjectHideFlags: 0
@@ -6765,8 +6298,7 @@ GameObject:
   - component: {fileID: 2565915244866292807}
   - component: {fileID: 8580048732288098010}
   - component: {fileID: 899301776879201102}
-  - component: {fileID: 1426963261927854220}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_frontSuspension_low_Cylinder.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6785,7 +6317,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8580048732288098010
 MeshFilter:
@@ -6834,20 +6366,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1426963261927854220
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7998111226359023931}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6158137817978913006, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8015893533935598265
 GameObject:
   m_ObjectHideFlags: 0
@@ -6859,8 +6377,7 @@ GameObject:
   - component: {fileID: 8341950837892342985}
   - component: {fileID: 8065793801937192769}
   - component: {fileID: 7576439343049660906}
-  - component: {fileID: 6869590618605073896}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_airVent_low.001_Plane.065
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6879,7 +6396,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8065793801937192769
 MeshFilter:
@@ -6928,20 +6445,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6869590618605073896
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8015893533935598265}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 5583772853943974048, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8044564551519439941
 GameObject:
   m_ObjectHideFlags: 0
@@ -6953,8 +6456,7 @@ GameObject:
   - component: {fileID: 718858438908696262}
   - component: {fileID: 4697445373564599617}
   - component: {fileID: 4319676291717783759}
-  - component: {fileID: 3235727294984610203}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_interiorPillar_low_Plane.034
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6973,7 +6475,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 34
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4697445373564599617
 MeshFilter:
@@ -7022,20 +6524,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3235727294984610203
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8044564551519439941}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1789784492848804729, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8059997199290668623
 GameObject:
   m_ObjectHideFlags: 0
@@ -7047,9 +6535,8 @@ GameObject:
   - component: {fileID: 9093665292984812769}
   - component: {fileID: 855393603762831086}
   - component: {fileID: 2561585057775259540}
-  - component: {fileID: 1918173206623027565}
-  m_Layer: 0
-  m_Name: sedan_steeringWheel_low_Cube.003
+  m_Layer: 20
+  m_Name: Steering Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7116,20 +6603,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1918173206623027565
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8059997199290668623}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8633219771271757247, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8178058264149466401
 GameObject:
   m_ObjectHideFlags: 0
@@ -7139,7 +6612,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8858137900614233126}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Right Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7157,6 +6630,7 @@ Transform:
   m_LocalPosition: {x: 1.106, y: 0.888, z: -0.711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4391197243154716385}
   - {fileID: 8585267299320507243}
   - {fileID: 6529394241375343419}
   - {fileID: 6422721053695609175}
@@ -7165,7 +6639,7 @@ Transform:
   - {fileID: 6193705009683215507}
   - {fileID: 3601893202600819709}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8267882987842943478
 GameObject:
@@ -7178,8 +6652,7 @@ GameObject:
   - component: {fileID: 8097975453545514548}
   - component: {fileID: 8057135440406418381}
   - component: {fileID: 6773660995949890341}
-  - component: {fileID: 1073225917103169466}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_windScreenGasket_low_NurbsPath.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7247,20 +6720,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1073225917103169466
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8267882987842943478}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8992933548603329743, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8376372957413716011
 GameObject:
   m_ObjectHideFlags: 0
@@ -7270,7 +6729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4398506937093214781}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Screens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7288,13 +6747,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5445175225253780067}
   - {fileID: 4618395380790930277}
   - {fileID: 4043156167323697578}
   - {fileID: 6621368432034131624}
   - {fileID: 2194830966207033746}
+  - {fileID: 7680507231970731580}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8446169625756006470
 GameObject:
@@ -7305,7 +6764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6289530672382002856}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Left Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7319,10 +6778,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8446169625756006470}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70129347, w: 0.7128727}
   m_LocalPosition: {x: -1.106, y: 0.888, z: -0.711}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1913179809888968607}
   - {fileID: 746722864134253884}
   - {fileID: 7686554618860919017}
   - {fileID: 5349072517729313976}
@@ -7331,8 +6791,8 @@ Transform:
   - {fileID: 6187964840751290267}
   - {fileID: 2847369710026345469}
   m_Father: {fileID: 8042253012620699208}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.062004}
 --- !u!1 &8505119605183654722
 GameObject:
   m_ObjectHideFlags: 0
@@ -7344,8 +6804,7 @@ GameObject:
   - component: {fileID: 5606811654661446389}
   - component: {fileID: 2903708836583848987}
   - component: {fileID: 8844788461473845255}
-  - component: {fileID: 8487432727784465556}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_pedals_low_Plane.084
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7364,7 +6823,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 40
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2903708836583848987
 MeshFilter:
@@ -7413,20 +6872,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8487432727784465556
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505119605183654722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -136978467360668175, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8601869870543080683
 GameObject:
   m_ObjectHideFlags: 0
@@ -7438,8 +6883,7 @@ GameObject:
   - component: {fileID: 3265149855111854284}
   - component: {fileID: 7570460799402827886}
   - component: {fileID: 6817009277709316226}
-  - component: {fileID: 2470350962904250060}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_cables_low_BezierCurve.000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7458,7 +6902,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7570460799402827886
 MeshFilter:
@@ -7507,20 +6951,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2470350962904250060
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8601869870543080683}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6976674692067560349, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8658606912123730445
 GameObject:
   m_ObjectHideFlags: 0
@@ -7532,8 +6962,7 @@ GameObject:
   - component: {fileID: 5149209719444562563}
   - component: {fileID: 8527911889483324008}
   - component: {fileID: 3198896933050810042}
-  - component: {fileID: 5722314683736522226}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_gearStick_knob_low_Sphere.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7552,7 +6981,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 26
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8527911889483324008
 MeshFilter:
@@ -7601,20 +7030,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5722314683736522226
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8658606912123730445}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1884886806719248550, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8697769766411173495
 GameObject:
   m_ObjectHideFlags: 0
@@ -7626,8 +7041,7 @@ GameObject:
   - component: {fileID: 4052344058250300809}
   - component: {fileID: 3654688919361092405}
   - component: {fileID: 5126448190340493484}
-  - component: {fileID: 236854686177051756}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_rearCladding_low.001_Plane.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7646,7 +7060,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 42
+  m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3654688919361092405
 MeshFilter:
@@ -7695,20 +7109,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &236854686177051756
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8697769766411173495}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -3603266735297833050, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8763036627400584746
 GameObject:
   m_ObjectHideFlags: 0
@@ -7720,8 +7120,7 @@ GameObject:
   - component: {fileID: 3712275822294688238}
   - component: {fileID: 4940795452134118087}
   - component: {fileID: 902689715248150936}
-  - component: {fileID: 620843804379257640}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_frontBumper_low.001_Plane.017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7740,7 +7139,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4940795452134118087
 MeshFilter:
@@ -7789,20 +7188,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &620843804379257640
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8763036627400584746}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -9026800227517766494, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8866925589038085710
 GameObject:
   m_ObjectHideFlags: 0
@@ -7814,8 +7199,7 @@ GameObject:
   - component: {fileID: 3601893202600819709}
   - component: {fileID: 5552509178964552140}
   - component: {fileID: 1158262058479241647}
-  - component: {fileID: 3336367800346913810}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorWindow.R_low_Plane.178
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7834,7 +7218,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 8858137900614233126}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5552509178964552140
 MeshFilter:
@@ -7883,20 +7267,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &3336367800346913810
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8866925589038085710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 823245691724656226, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8868589944665411063
 GameObject:
   m_ObjectHideFlags: 0
@@ -7908,7 +7278,7 @@ GameObject:
   - component: {fileID: 1864812638659741219}
   - component: {fileID: 1509111365631138326}
   - component: {fileID: 4881084220539483757}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Rear View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7939,7 +7309,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.13207549, g: 0.13207549, b: 0.13207549, a: 0}
   m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -7962,7 +7332,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: c57fa358276efc8488e8322101520f80, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1
@@ -7988,7 +7358,7 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_CameraOutput: 0
+  m_CameraOutput: 1
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -8014,8 +7384,7 @@ GameObject:
   - component: {fileID: 3219940634057988941}
   - component: {fileID: 1347376213250724269}
   - component: {fileID: 4367003724823357258}
-  - component: {fileID: 4058313135718502173}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_centerConsole_low_Plane.133
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8034,7 +7403,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1347376213250724269
 MeshFilter:
@@ -8083,20 +7452,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4058313135718502173
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8876452269992127997}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1779653413277060429, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &8945083913131084550
 GameObject:
   m_ObjectHideFlags: 0
@@ -8108,8 +7463,7 @@ GameObject:
   - component: {fileID: 4377098974266905761}
   - component: {fileID: 8945777661851036956}
   - component: {fileID: 688453685804957574}
-  - component: {fileID: 6353827233732378325}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorLower_interior.R_low_Plane.169
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8128,7 +7482,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 8858137900614233126}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8945777661851036956
 MeshFilter:
@@ -8177,20 +7531,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6353827233732378325
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945083913131084550}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8318146715781623259, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &9080097237883141911
 GameObject:
   m_ObjectHideFlags: 0
@@ -8202,8 +7542,7 @@ GameObject:
   - component: {fileID: 2310099582358779225}
   - component: {fileID: 9018768673297040177}
   - component: {fileID: 1845742541387671358}
-  - component: {fileID: 5941117702713331120}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_doorLower.L_low_Plane.073
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8222,7 +7561,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 6289530672382002856}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9018768673297040177
 MeshFilter:
@@ -8271,20 +7610,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &5941117702713331120
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9080097237883141911}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6470328604959756308, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &9179422460474487346
 GameObject:
   m_ObjectHideFlags: 0
@@ -8296,8 +7621,7 @@ GameObject:
   - component: {fileID: 971569557020511784}
   - component: {fileID: 1774459511595979755}
   - component: {fileID: 7685883380713407293}
-  - component: {fileID: 4402019959849237487}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_airFreshener_low_Plane.056
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8316,7 +7640,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children: []
   m_Father: {fileID: 1407511044635157180}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1774459511595979755
 MeshFilter:
@@ -8365,20 +7689,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4402019959849237487
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9179422460474487346}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6194349635177256532, guid: 440e78cb06f23894ca4ec6af38a9c880, type: 3}
 --- !u!1 &9208667876842769137
 GameObject:
   m_ObjectHideFlags: 0
@@ -8390,7 +7700,7 @@ GameObject:
   - component: {fileID: 5876103051206529790}
   - component: {fileID: 248763869343359102}
   - component: {fileID: 4871220718949996713}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: sedan_wiperArm_Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

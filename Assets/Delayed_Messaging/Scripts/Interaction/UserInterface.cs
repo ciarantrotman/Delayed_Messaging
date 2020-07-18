@@ -14,7 +14,7 @@ namespace Delayed_Messaging.Scripts.Interaction
     [RequireComponent(typeof(ControllerTransforms)), RequireComponent(typeof(Selection))]
     public class UserInterface : MonoBehaviour
     {
-        private ControllerTransforms controllerTransforms;
+        private ControllerTransforms controller;
         private Selection selection;
         public enum DominantHand
         {
@@ -48,7 +48,7 @@ namespace Delayed_Messaging.Scripts.Interaction
 
         private void Start()
         {
-            controllerTransforms = GetComponent<ControllerTransforms>();
+            controller = GetComponent<ControllerTransforms>();
             selection = GetComponent<Selection>();
             SetupGameObjects();
         }
@@ -58,8 +58,8 @@ namespace Delayed_Messaging.Scripts.Interaction
             uiSelectionOrigin = new GameObject("[UI Selection Origin]");
             uiAnchor = new GameObject("[UI Anchor]");
             
-            uiSelectionOrigin.transform.SetParent(dominantHand == DominantHand.LEFT ? controllerTransforms.LeftTransform() : controllerTransforms.RightTransform());
-            uiAnchor.transform.SetParent(dominantHand == DominantHand.LEFT ? controllerTransforms.RightTransform() : controllerTransforms.LeftTransform());
+            uiSelectionOrigin.transform.SetParent(dominantHand == DominantHand.LEFT ? controller.Transform(ControllerTransforms.Check.LEFT) : controller.Transform(ControllerTransforms.Check.RIGHT));
+            uiAnchor.transform.SetParent(dominantHand == DominantHand.LEFT ? controller.Transform(ControllerTransforms.Check.RIGHT) : controller.Transform(ControllerTransforms.Check.LEFT));
             uiAnchor.transform.localPosition = new Vector3(dominantHand == DominantHand.LEFT ? -uiOffset : uiOffset, 0,-uiOffset);
             uiAnchor.transform.localEulerAngles = new Vector3(90f, 0,0);
 
@@ -77,8 +77,8 @@ namespace Delayed_Messaging.Scripts.Interaction
         private void Update()
         {
             currentSelect = dominantHand == DominantHand.LEFT
-                ? controllerTransforms.LeftSelect()
-                : controllerTransforms.RightSelect();
+                ? controller.Select(ControllerTransforms.Check.LEFT)
+                : controller.Select(ControllerTransforms.Check.RIGHT);
             
             objectHeaderObject.transform.Transforms(uiAnchor.transform);
             
@@ -158,7 +158,7 @@ namespace Delayed_Messaging.Scripts.Interaction
         
         private void OnDrawGizmos () 
         {
-            if (controllerTransforms != null && controllerTransforms.debugActive)
+            if (controller != null && controller.debugActive)
             {
                 DrawGizmos ();
             }
@@ -167,7 +167,7 @@ namespace Delayed_Messaging.Scripts.Interaction
         private void DrawGizmos ()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(uiSelectionOrigin.transform.position, (dominantHand == DominantHand.LEFT ? controllerTransforms.LeftForwardVector() : controllerTransforms.RightForwardVector()) * interactionRange);
+            Gizmos.DrawRay(uiSelectionOrigin.transform.position, (dominantHand == DominantHand.LEFT ? controller.ForwardVector(ControllerTransforms.Check.LEFT) : controller.ForwardVector(ControllerTransforms.Check.RIGHT)) * interactionRange);
         }
     }
 }

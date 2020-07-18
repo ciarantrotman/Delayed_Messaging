@@ -431,6 +431,7 @@
             </e>
             <e p="Player" t="Include">
               <e p="ControllerTransforms.cs" t="Include" />
+              <e p="DirectInteraction.cs" t="Include" />
               <e p="Locomotion" t="Include">
                 <e p="Locomotion.cs" t="Include" />
                 <e p="LocomotionPositionPreview.cs" t="Include" />
@@ -522,64 +523,29 @@
             </e>
           </e>
           <e p="Scripts" t="Include">
-            <e p="BallisticTrajectory.cs" t="Include" />
-            <e p="BoostSystem.cs" t="Include" />
-            <e p="GrappleHook.cs" t="Include" />
-            <e p="GrappleRope.cs" t="Include" />
-            <e p="GrappleSystem.cs" t="Include" />
-            <e p="LaunchAnchor.cs" t="Include" />
-            <e p="MotionVignette.cs" t="Include" />
-            <e p="MovingTarget.cs" t="Include" />
-            <e p="Testing" t="Include">
-              <e p="JointTesting.cs" t="Include" />
+            <e p="Player" t="Include">
+              <e p="Boost System" t="Include">
+                <e p="BoostSystem.cs" t="Include" />
+              </e>
+              <e p="Grapple System" t="Include">
+                <e p="GrappleHook.cs" t="Include" />
+                <e p="GrappleRope.cs" t="Include" />
+                <e p="GrappleSystem.cs" t="Include" />
+                <e p="LaunchAnchor.cs" t="Include" />
+              </e>
+              <e p="Velocity.cs" t="Include" />
             </e>
-            <e p="TimeManager.cs" t="Include" />
-            <e p="Velocity.cs" t="Include" />
-          </e>
-        </e>
-        <e p="Gravity Gloves" t="Include">
-          <e p="Plugins" t="Include">
-            <e p="Inverse Kinematics" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="InverseKinematics.cs" t="Include" />
-              </e>
+            <e p="User Interface" t="Include">
+              <e p="Button.cs" t="Include" />
+              <e p="DirectInterface.cs" t="Include" />
             </e>
-            <e p="VRArmIK" t="Include">
-              <e p="Demo" t="Include">
-                <e p="ArmRendererScaler.cs" t="Include" />
-              </e>
-              <e p="LICENSE.txt" t="Include" />
-              <e p="Materials" t="Include">
-                <e p="AlwaysOnTop.shader" t="Include" />
-              </e>
-              <e p="readme.txt" t="Include" />
-              <e p="Scripts" t="Include">
-                <e p="ArmTransforms.cs" t="Include" />
-                <e p="AvatarVRTrackingReferences.cs" t="Include" />
-                <e p="LocalVrTrackingInput.cs" t="Include" />
-                <e p="PoseManager.cs" t="Include" />
-                <e p="ShoulderPoser.cs" t="Include" />
-                <e p="ShoulderTransforms.cs" t="Include" />
-                <e p="StaticOffsetTransform.cs" t="Include" />
-                <e p="Utils" t="Include">
-                  <e p="Editor" t="Include">
-                    <e p="LabelOverrideInspector.cs" t="Include" />
-                    <e p="ReadOnlyInspector.cs" t="Include" />
-                  </e>
-                  <e p="Extensions.cs" t="Include" />
-                  <e p="InspectorAttributes.cs" t="Include" />
-                  <e p="VectorHelpers.cs" t="Include" />
-                </e>
-                <e p="VRArmIK.cs" t="Include" />
-                <e p="VRTrackingReferences.cs" t="Include" />
-              </e>
+            <e p="Utilities" t="Include">
+              <e p="BallisticTrajectory.cs" t="Include" />
+              <e p="TimeManager.cs" t="Include" />
             </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="GestureDetector.cs" t="Include" />
-            <e p="GravityObject.cs" t="Include" />
-            <e p="InverseKinematicRig.cs" t="Include" />
-            <e p="Selection.cs" t="Include" />
+            <e p="Vehicle" t="Include">
+              <e p="VehicleController.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="Spaces" t="Include">

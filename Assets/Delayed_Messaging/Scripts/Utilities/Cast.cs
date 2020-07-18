@@ -10,7 +10,7 @@ namespace Delayed_Messaging.Scripts.Utilities
 	{
 		public GameObject parent;
 		private static readonly int Distance = Shader.PropertyToID("_Distance");
-		private ControllerTransforms controllerTransforms;
+		private ControllerTransforms controller;
 		private float maxAngle;
 		private float minAngle;
 		private float maxDistance;
@@ -36,7 +36,7 @@ namespace Delayed_Messaging.Scripts.Utilities
 
 		public void SetupCastObjects(GameObject visualPrefab, Transform castTransform, string instanceName, Material lineRendererMat, float maxA, float minA, float maxD, float minD, float lineRendererThickness, ControllerTransforms controllerTransformsReference, bool startActive = false)
 		{
-			controllerTransforms = controllerTransformsReference;
+			controller = controllerTransformsReference;
 			maxAngle = maxA;
 			minAngle = minA;
 			maxDistance = maxD;
@@ -83,14 +83,14 @@ namespace Delayed_Messaging.Scripts.Utilities
 		}
 		private void Update()
 		{
-			CastUpdate(lCastObject, controllerTransforms.LeftTransform(), controllerTransforms.LeftJoystick());
-			CastUpdate(rCastObject, controllerTransforms.RightTransform(), controllerTransforms.RightJoystick());
+			CastUpdate(lCastObject, controller.Transform(ControllerTransforms.Check.LEFT), controller.JoyStick(ControllerTransforms.Check.LEFT));
+			CastUpdate(rCastObject, controller.Transform(ControllerTransforms.Check.RIGHT), controller.JoyStick(ControllerTransforms.Check.RIGHT));
 		}
 		private void CastUpdate(CastObjects castObjects, Transform hand, Vector2 joystick)
 		{
 			castObjects.lastValidPosition = castObjects.target.LastValidPosition(castObjects.lastValidPosition);
 			Set.DistanceCast(castObjects.target, castObjects.follow, castObjects.proxy, castObjects.normalised, castObjects.hitPoint, castObjects.midpoint, castObjects.rotation, castObjects.visual, 
-				hand, controllerTransforms.CameraTransform(), joystick, maxAngle, minAngle,
+				hand, controller.Transform(ControllerTransforms.Check.HEAD), joystick, maxAngle, minAngle,
 				minDistance, maxDistance, castObjects.lastValidPosition);
 			castObjects.lineRenderer.BezierLineRenderer(hand.position,castObjects.midpoint.transform.position,castObjects.hitPoint.transform.position);
 			castObjects.lineRenderer.material.SetFloat(Distance, hand.TransformDistance(castObjects.hitPoint.transform));

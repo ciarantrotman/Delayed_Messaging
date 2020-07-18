@@ -6,10 +6,8 @@ using Delayed_Messaging.Scripts.Interaction.Cursors;
 using Delayed_Messaging.Scripts.Objects;
 using Delayed_Messaging.Scripts.Player;
 using Delayed_Messaging.Scripts.Player.Selection;
-using Gravity_Gloves.Scripts;
 using UnityEngine;
 using Selection = Delayed_Messaging.Scripts.Player.Selection.Selection;
-using Side = Gravity_Gloves.Scripts.Selection.TargetObjects.Side;
 
 namespace Delayed_Messaging.Scripts.Utilities
 {
@@ -562,113 +560,6 @@ namespace Delayed_Messaging.Scripts.Utilities
             
             // If the angle is smaller than the cone radians, then it is within the cone
             return angle < coneRadians && heightCheck;
-        }
-        public static bool IsPointInCone(this Transform point, Gravity_Gloves.Scripts.Selection.SelectionCone selectionCone, GravityObject.GravityObjectData gravityObjectData)
-        {
-            // Normalise the two vectors
-            Vector3 axis = selectionCone.coneAxis;
-            Vector3 pointVector = (point.position - selectionCone.coneTipPosition).normalized;
-            
-            // Use the dot product to calculate the angle between them
-            float dotProduct = Vector3.Dot(pointVector, axis);
-            float angle = Mathf.Acos(dotProduct);
-            float coneRadians = Mathf.Lerp(0, selectionCone.coneAngle, .5f) * Mathf.Deg2Rad;
-            float distance = Vector3.Distance(point.position, selectionCone.coneTipPosition);
-
-            // Check against the height of the cone
-            bool heightCheck = distance <= selectionCone.coneHeight;
-            
-            // Set Gravity Object Data
-            gravityObjectData.SetData(angle, distance);
-            
-            // If the angle is smaller than the cone radians, then it is within the cone
-            return angle < coneRadians && heightCheck;
-        }
-        
-        public static GravityObject FindTarget(Gravity_Gloves.Scripts.Selection.SelectionData selectionData, Side side)
-        {
-            IEnumerable<GravityObject> targets = selectionData.targetObjects.objects;
-            IEnumerable<GravityObject> gravityObjects = targets as GravityObject[] ?? targets.ToArray();
-            
-            if (!gravityObjects.Any()) return null;
-
-            GravityObject cacheGravityObject;
-
-            // Make sure that you are referencing a non-null entity
-            selectionData.targetObjects.targetGravityObject = gravityObjects.First();
-            
-            // Find the closest and the least deviant gravity objects
-            GravityObject closest = FindClosest(gravityObjects, side);
-            GravityObject leastDeviant = FindLeastDeviant(gravityObjects, side);
-
-            // Work out which should be the target by checking which are in the preferential cone
-            bool prefClosest = closest.transform.IsPointInCone(selectionData.preferentialSelectionCone, selectionData.targetObjects.targetGravityObject.GetData(side));
-            bool prefLeastDeviant = leastDeviant.transform.IsPointInCone(selectionData.preferentialSelectionCone, selectionData.targetObjects.targetGravityObject.GetData(side));
-
-            // If both fall within the preferential cone, choose the closest of the two
-            if (prefClosest && prefLeastDeviant)
-            {
-                cacheGravityObject = closest;
-            }
-            // If neither do then choose the least deviant
-            else if (!prefClosest && !prefLeastDeviant)
-            {
-                // Give preference to deviance, but take into account closer objects
-                cacheGravityObject = leastDeviant.GetData(side).distance <= closest.GetData(side).distance * .5f /* ToDo: Better Logic Here */ ? leastDeviant : closest;
-            }
-            // Otherwise pick whichever is within the preferential selection cone
-            else if (prefLeastDeviant)
-            {
-                cacheGravityObject = leastDeviant;
-            }
-            else
-            {
-                cacheGravityObject = closest;
-            }
-            
-            // Set the data of the target object
-            cacheGravityObject.SetTargetData(side, true);
-            return cacheGravityObject;
-        }
-
-        private static GravityObject FindClosest(IEnumerable<GravityObject> targets, Side side)
-        {
-            GravityObject gravityObject = null;
-            IEnumerable<GravityObject> gravityObjects = targets as GravityObject[] ?? targets.ToArray();
-                
-            // Make sure you're comparing against something
-            if (gravityObjects.Any())
-            {
-                gravityObject = gravityObjects.First();
-            }
-            foreach (GravityObject target in gravityObjects)
-            {
-                if (gravityObject.GetData(side).distance < target.GetData(side).distance)
-                {
-                    gravityObject = target;
-                }
-            }
-            return gravityObject;
-        }
-
-        private static GravityObject FindLeastDeviant(IEnumerable<GravityObject> targets, Side side)
-        {
-            GravityObject gravityObject = null;
-            IEnumerable<GravityObject> gravityObjects = targets as GravityObject[] ?? targets.ToArray();
-                
-            // Make sure you're comparing against something
-            if (gravityObjects.Any())
-            {
-                gravityObject = gravityObjects.First();
-            }
-            foreach (GravityObject target in gravityObjects)
-            {
-                if (gravityObject.GetData(side).deviation < target.GetData(side).deviation)
-                {
-                    gravityObject = target;
-                }
-            }
-            return gravityObject;
         }
     }
 }

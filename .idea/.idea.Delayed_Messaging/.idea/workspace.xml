@@ -20,10 +20,158 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/indexLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/UserInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/UserInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Selection/Selection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Selection/Selection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/UnitController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/UnitController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Cast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Cast.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Models/Vehicles/Materials/Interior Details.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Models/Vehicles/Materials/Interior Details.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Models/Weapons/Sword.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Models/Weapons/Sword.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Debug.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Debug/Loop.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Debug/Loop.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Vehicle/Deckard's Sedan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Vehicle/Deckard's Sedan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Weapons/Sword Variant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Weapons/Sword Variant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/MotionVignette.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/MotionVignette.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/MovingTarget.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/MovingTarget.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/Testing.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/Testing/JointTesting.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/Testing/JointTesting.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/TimeManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/TimeManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/Velocity.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/Velocity.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures/Rear View.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures/Rear View.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures/Rear View.renderTexture" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures/Rear View.renderTexture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures/Under View.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures/Under View.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures/Under View.renderTexture" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grapple/User Interface/Materials/Render Textures/Under View.renderTexture.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Arm.FBX" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Arm.FBX.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Materials/Arm.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Materials/Arm.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Materials/Blue.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Materials/Blue.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Materials/Red.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/3D/Materials/Red.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Inverse Kinematics.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Inverse Kinematics.pdf.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Scenes/Arm.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Scenes/Arm.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Scripts/InverseKinematics.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Scripts/InverseKinematics.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Textures/Arm Normals.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Textures/Arm Normals.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Textures/Arm.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Textures/Arm.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Demo.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Demo/ArmRendererScaler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Demo/ArmRendererScaler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Demo/VRArmIK-Demo.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Demo/VRArmIK-Demo.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/LICENSE.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Materials.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Materials/AlwaysOnTop.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Materials/AlwaysOnTop.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Materials/BoneOnTop.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Materials/BoneOnTop.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Materials/Grey.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Materials/Grey.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs/Avatar.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs/Avatar.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs/LeftArm.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs/LeftArm.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs/PoseManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs/PoseManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs/RightArm.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Prefabs/RightArm.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/README.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/ArmTransforms.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/ArmTransforms.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/AvatarVRTrackingReferences.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/AvatarVRTrackingReferences.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/LocalVrTrackingInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/LocalVrTrackingInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/PoseManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/PoseManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/ShoulderPoser.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/ShoulderPoser.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/ShoulderTransforms.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/ShoulderTransforms.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/StaticOffsetTransform.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/StaticOffsetTransform.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Editor/LabelOverrideInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Editor/LabelOverrideInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Editor/ReadOnlyInspector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Editor/ReadOnlyInspector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Extensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Extensions.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/InspectorAttributes.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/InspectorAttributes.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/VectorHelpers.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/VectorHelpers.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/VRArmIK.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/VRArmIK.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/VRTrackingReferences.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/VRTrackingReferences.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Prefabs/[Gravity Object].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Prefabs/[Gravity Object].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Prefabs/[IK Rig].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Prefabs/[IK Rig].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scenes/[Experimentation Scene].unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scenes/[Experimentation Scene].unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/InverseKinematicRig.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/InverseKinematicRig.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,19 +182,16 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Testing/JointTesting.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseObjectInterface.cs.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/MotionVignette.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/ResourceInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/PandaBehaviour/Core/Editor/CreatePandaScriptMenu.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/DirectInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/Interface Building Blocks/FrameButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/ObjectHeader.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/WorkerInterface.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Velocity.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/Interface Building Blocks/RaycastInterface.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/AI/Seeker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/PandaBehaviour/Examples/01_Move/Assets/Move.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Units/Worker.cs" root0="FORCE_HIGHLIGHTING" />
@@ -62,39 +207,33 @@
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/AstarPath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/UserInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseInterface.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/MovingTarget.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/BoostSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/AI/AIPath.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/PlayerClass.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/Inverse Kinematics/Scripts/InverseKinematics.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/DirectInteraction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/AI/IAstarAI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Interfaces.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/InverseKinematicRig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Units/Unit.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/StructureClass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/Base.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Cast.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/ResourceDepot.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Misc/PathProcessor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Misc/ThreadControlQueue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/97/599cc6a2/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/a5/76c18145/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Misc/Draw.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/c7/7cd62c67/Bounds.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/e2/7683ca7b/Texture2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/63/fcd7450e/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/Misc/BinaryHeap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/StructureController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -102,7 +241,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Selection/Selection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/Structure.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Legacy/MiscLegacy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/TimeManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/Cursors/CastCursor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/Cursors/UnitCursor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/Cursors/RaycastCursor.cs" root0="FORCE_HIGHLIGHTING" />
@@ -112,12 +250,16 @@
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/WorkerInterface.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/ModelController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/BaseClass.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/Interface Building Blocks/RaycastButton.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Vehicle/VehicleController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Interfaces.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleRope.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Space.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleHook.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Selection/SelectionObjects.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/BaseObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Boost System/BoostSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Behaviors/AIDestinationSetter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/SpaceManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -133,35 +275,20 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalAdditionalCameraDataEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Modifiers/AlternativePath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Scripts/SteamVR_RenderModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Gravity Gloves/Scenes/[Experimentation Scene].unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.popcron.gizmos@41dfa1712443598c7f8538c7997994075db5f5fd/Runtime/Gizmos.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Selection/SelectionObjects.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Units/Unit.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/BaseClass.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/StructureClass.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Cast.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Selection/Selection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/ModelController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/BaseObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/StructureController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Objects/Structures/Structure.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentGeneration.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentTilemap.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentGenerator.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentController.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentTileMap.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Gravity Gloves/Selection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/UserInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/PandaBehaviour/Core/Editor/CreatePandaScriptMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Inverse Kinematic Rig.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/InverseKinematicRig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Selection.cs" />
@@ -176,7 +303,6 @@
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/GestureDetection.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Testing/JointTesting.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/BallisticTrajectory.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Draw.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/MotionVignette.cs" />
@@ -191,6 +317,21 @@
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Vehicle/VehicleController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Extensions.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Check.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/UserInterface.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/UnitController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Cast.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Selection/Selection.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/DirectInterface.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/DirectInteraction.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Boost System/BoostSystem.cs" />
       </list>
     </option>
   </component>
@@ -270,7 +411,8 @@
       <workItem from="1594559443321" duration="17472000" />
       <workItem from="1594637351145" duration="11277000" />
       <workItem from="1594744769995" duration="2083000" />
-      <workItem from="1594918816438" duration="617000" />
+      <workItem from="1594918816438" duration="1239000" />
+      <workItem from="1594989519000" duration="13163000" />
     </task>
     <servers />
   </component>
