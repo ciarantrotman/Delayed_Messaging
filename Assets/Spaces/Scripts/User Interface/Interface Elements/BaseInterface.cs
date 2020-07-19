@@ -22,7 +22,7 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
         public OutlineConfiguration outlineConfiguration;
         
         // Protected Variables
-        public const string Button = "Button", Slider = "Slider";
+        public const string Button = "Button", Slider = "Slider", Direct = "Direct";
         protected Outline outline;
         protected Collider TriggerCollider => GetComponent<Collider>();
         [Serializable] public class OutlineConfiguration

@@ -11,7 +11,7 @@ namespace Spaces.Scripts.User_Interface
         private Button button;
         private bool extantButton;
         private const float Offset = .5f;
-        private Vector3 OffsetPosition => new Vector3(0,0,Offset);
+        private static Vector3 OffsetPosition => new Vector3(0,0,Offset);
 
         public void Initialise(GameObject parent, string rayName, Material material)
         {
@@ -24,7 +24,7 @@ namespace Spaces.Scripts.User_Interface
         }
 
         // Find the current button
-        public void Check(Vector3 origin, Vector3 vector, float range, bool enabled)
+        public void Check(Vector3 origin, Vector3 vector, float range, bool rayEnabled)
         {
             float rayDistance;
                 
@@ -57,28 +57,29 @@ namespace Spaces.Scripts.User_Interface
                 rayDistance = Offset;
             }
                 
-            ConfigureRay(origin, vector, rayDistance, enabled);
+            ConfigureRay(origin, vector, rayDistance, rayEnabled);
         }
-        private void ConfigureRay(Vector3 origin, Vector3 vector, float range, bool enabled)
+        private void ConfigureRay(Vector3 origin, Vector3 vector, float range, bool enableRay)
         {
-            ray.enabled = enabled;
-            if (!enabled) return;
+            ray.enabled = enableRay;
+            if (!enableRay) return;
                 
             ray.SetPosition(1, Vector3.Lerp(ray.GetPosition(1), new Vector3(0,0,range), .25f));
             rayParent.transform.position = Vector3.Lerp(rayParent.transform.position, origin, .75f);
             rayParent.transform.forward = Vector3.Lerp(rayParent.transform.forward, vector, .5f);
         }
+        
         // Wrappers for button events
         public void ButtonSelect()
         {
-            Debug.Log($"PRE -> {button == null}, {extantButton}");
-            if(button == null) return;
-            Debug.Log($"CALLED -> {button.name}, {extantButton}");
-            button.buttonSelect.Invoke();
-            Debug.Log("YES");
+            if (extantButton && button.interactionType != BaseInterface.InteractionType.DIRECT && button.triggerType != BaseInterface.TriggerType.GRAB)
+            {
+                button.buttonSelect.Invoke();
+            }
         }
         public void ButtonGrab()
         {
+            if (!extantButton) return;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
     public class Button : BaseInterface
     {
         public UnityEvent buttonSelect;
-        //[HideInInspector] public UnityEvent grabStart, grabStay, grabEnd;
+        [HideInInspector] public UnityEvent grabStart, grabStay, grabEnd;
 
         protected override void Initialise()
         {
@@ -20,16 +20,6 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
         public void HoverEnd()
         {
             outline.enabled = false;
-        }
-
-        private void OnTriggerEnter(Collider userCollider)
-        {
-            HoverStart();
-        }
-
-        private void OnTriggerExit(Collider userCollider)
-        {
-            HoverEnd();
         }
     }
 }

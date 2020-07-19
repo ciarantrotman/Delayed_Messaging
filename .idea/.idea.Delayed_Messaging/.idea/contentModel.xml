@@ -558,6 +558,7 @@
             <e p="Space.cs" t="Include" />
             <e p="SpaceManager.cs" t="Include" />
             <e p="User Interface" t="Include">
+              <e p="DirectInteraction.cs" t="Include" />
               <e p="IndirectInteraction.cs" t="Include" />
               <e p="InteractionController.cs" t="Include" />
               <e p="Interface Elements" t="Include">

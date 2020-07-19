@@ -11,7 +11,6 @@ namespace Delayed_Messaging.Scripts.Player
     {
         [SerializeField, Space(10)] public bool debugActive;
         public enum DebugType { NEVER, SELECTED_ONLY, ALWAYS }
-        [Range(.01f, .05f), SerializeField] private float directDistance = .025f;
 
         [SerializeField, Space(10)] private Transform cameraRig;
         [SerializeField, Space(10)] private Transform leftController;
@@ -111,6 +110,7 @@ namespace Delayed_Messaging.Scripts.Player
 
         private void SetupDirect()
         {
+            /*
             DirectInteraction direct;
             // Left
             direct = Transform(Check.LEFT).gameObject.AddComponent<DirectInteraction>();
@@ -119,6 +119,7 @@ namespace Delayed_Messaging.Scripts.Player
             // Right
             direct = Transform(Check.RIGHT).gameObject.AddComponent<DirectInteraction>();
             direct.Initialise(this, Check.RIGHT, directDistance);
+            */
         }
 
         private void SetupLocal()

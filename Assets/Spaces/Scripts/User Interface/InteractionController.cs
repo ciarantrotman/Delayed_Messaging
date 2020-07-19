@@ -1,7 +1,4 @@
-﻿using System;
-using Delayed_Messaging.Scripts.Player;
-using Delayed_Messaging.Scripts.Utilities;
-using Spaces.Scripts.User_Interface.Interface_Elements;
+﻿using Delayed_Messaging.Scripts.Player;
 using UnityEngine;
 
 namespace Spaces.Scripts.User_Interface
@@ -9,44 +6,79 @@ namespace Spaces.Scripts.User_Interface
     [RequireComponent(typeof(ControllerTransforms))]
     public class InteractionController : MonoBehaviour
     {
-        [Header("Interaction Settings")]
-        [SerializeField, Range(1, 50)] private float range;
+        [Header("Indirect Interaction Settings")]
+        [SerializeField, Range(1f, 50f)] private float range;
         [SerializeField] private Material material;
+        [Header("Direct Interaction Settings")]
+        [Range(0f, .05f), SerializeField] private float radius = .025f;
         
         private ControllerTransforms Controller => GetComponent<ControllerTransforms>();
-        private IndirectInteraction dominant, nonDominant;
+        private IndirectInteraction dominantIndirect, nonDominantIndirect;
+        private DirectInteraction dominantDirect, nonDominantDirect;
 
         private void Awake()
         {
-            // Initialise
-            nonDominant = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<IndirectInteraction>();
-            dominant = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<IndirectInteraction>();
-            nonDominant.Initialise(
+            // Initialise Indirect Interaction
+            nonDominantIndirect = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<IndirectInteraction>();
+            dominantIndirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<IndirectInteraction>();
+            nonDominantIndirect.Initialise(
                 gameObject, 
-                "[Non-Dominant]", 
+                "[Indirect / Non-Dominant]", 
                 material);
-            dominant.Initialise(
+            dominantIndirect.Initialise(
                 gameObject, 
-                "[Dominant]", 
+                "[Indirect / Dominant]", 
                 material);
             
-            // Add event listeners for both controllers
+            // Initialise Direct Interaction
+            nonDominantDirect = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<DirectInteraction>();
+            dominantDirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<DirectInteraction>();
+            nonDominantDirect.Initialise(
+                gameObject, 
+                "[Direct / Non-Dominant]",
+                radius);
+            dominantDirect.Initialise(
+                gameObject, 
+                "[Direct / Dominant]",
+                radius);
+            
+            // Add event listeners for indirect interaction
             Controller.SelectEvent(
                 ControllerTransforms.Check.LEFT, 
-                ControllerTransforms.EventTracker.EventType.END).AddListener(nonDominant.ButtonSelect);
+                ControllerTransforms.EventTracker.EventType.END).AddListener(nonDominantIndirect.ButtonSelect);
             Controller.SelectEvent(
                 ControllerTransforms.Check.RIGHT, 
-                ControllerTransforms.EventTracker.EventType.END).AddListener(dominant.ButtonSelect);
+                ControllerTransforms.EventTracker.EventType.END).AddListener(dominantIndirect.ButtonSelect);
+            
+            // Add event listeners for direct interaction
+            Controller.GrabEvent(
+                ControllerTransforms.Check.LEFT, 
+                ControllerTransforms.EventTracker.EventType.START).AddListener(nonDominantDirect.ButtonGrabStart);
+            Controller.GrabEvent(
+                ControllerTransforms.Check.LEFT, 
+                ControllerTransforms.EventTracker.EventType.STAY).AddListener(nonDominantDirect.ButtonGrabStay);
+            Controller.GrabEvent(
+                ControllerTransforms.Check.LEFT, 
+                ControllerTransforms.EventTracker.EventType.END).AddListener(nonDominantDirect.ButtonGrabEnd);
+            Controller.GrabEvent(
+                ControllerTransforms.Check.RIGHT, 
+                ControllerTransforms.EventTracker.EventType.START).AddListener(dominantDirect.ButtonGrabStart);
+            Controller.GrabEvent(
+                ControllerTransforms.Check.RIGHT, 
+                ControllerTransforms.EventTracker.EventType.STAY).AddListener(dominantDirect.ButtonGrabStay);
+            Controller.GrabEvent(
+                ControllerTransforms.Check.RIGHT, 
+                ControllerTransforms.EventTracker.EventType.END).AddListener(dominantDirect.ButtonGrabEnd);
         }
 
         private void Update()
         {
-            dominant.Check(
+            dominantIndirect.Check(
                 Controller.Position(ControllerTransforms.Check.RIGHT), 
                 Controller.ForwardVector(ControllerTransforms.Check.RIGHT), 
                 range,
                 true);
-            nonDominant.Check(
+            nonDominantIndirect.Check(
                 Controller.Position(ControllerTransforms.Check.LEFT),
                 Controller.ForwardVector(ControllerTransforms.Check.LEFT), 
                 range,
