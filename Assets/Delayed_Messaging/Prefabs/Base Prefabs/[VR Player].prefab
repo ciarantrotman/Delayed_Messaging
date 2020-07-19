@@ -65,15 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d55267a78c9924a82b472cb49e09ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steamEnabled: 1
-  debugActive: 1
-  directInteraction: 1
+  debugActive: 0
   directDistance: 0.05
-  layerIndex: 9
   cameraRig: {fileID: 3186137213216201964}
   leftController: {fileID: 8976386972614945327}
   rightController: {fileID: 8976386972615003891}
-  lineRenderMaterial: {fileID: 2100000, guid: ae5e4e1f62297f4459560c0ef5281216, type: 2}
   joystickDirection:
     actionPath: /actions/DelayedMessaging/in/JoystickDirection
     needsReinit: 0

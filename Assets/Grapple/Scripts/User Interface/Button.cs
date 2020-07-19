@@ -19,7 +19,7 @@ namespace Grapple.Scripts.User_Interface
             
             // Configure outline
             outline = buttonModel.AddComponent<Outline>();
-            outline.SetOutline(Outline.Mode.OutlineAll, 10f, Color.white, false);
+            outline.Outline(Outline.Mode.OutlineAll, 10f, Color.white, false);
         }
 
         private void OnTriggerEnter(Collider other)

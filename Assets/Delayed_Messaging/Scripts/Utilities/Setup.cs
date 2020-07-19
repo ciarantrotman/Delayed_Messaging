@@ -26,6 +26,20 @@ namespace Delayed_Messaging.Scripts.Utilities
             lr.useWorldSpace = true;
             lr.enabled = startEnabled;
         }
+        public static LineRenderer LineRender(this GameObject parent, Material material, float startWidth, float endWidth, bool startEnabled, bool worldSpace)
+        {
+            LineRenderer lr = parent.AddComponent<LineRenderer>();
+            lr.material = material;
+            lr.shadowCastingMode = ShadowCastingMode.Off;
+            lr.receiveShadows = false;
+            lr.startWidth = startWidth;
+            lr.endWidth = endWidth;
+            lr.numCapVertices = 32;
+            lr.numCornerVertices = 32;
+            lr.useWorldSpace = worldSpace;
+            lr.enabled = startEnabled;
+            return lr;
+        }
         /// <summary>
         /// Sets up a trail renderer component
         /// </summary>

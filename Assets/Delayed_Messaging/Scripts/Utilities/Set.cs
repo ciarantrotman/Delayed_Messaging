@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Spaces.Scripts.User_Interface;
+using Spaces.Scripts.User_Interface.Interface_Elements;
 using UnityEngine;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
 //using Leap;
@@ -479,12 +481,22 @@ namespace Delayed_Messaging.Scripts.Utilities
             return objO.transform.localPosition.z * Mathf.Pow(depth, 2.5f);
         }
 
-        public static void SetOutline(this Outline outline, Outline.Mode mode, float width, Color color, bool state)
+        public static void Outline(this Outline outline, Outline.Mode mode, float width, Color color, bool state)
         {
             outline.enabled = state;
             outline.OutlineColor = color;
             outline.OutlineWidth = width;
             outline.OutlineMode = mode;
+        }
+        
+        public static Outline Outline(this GameObject target, BaseInterface.OutlineConfiguration configuration)
+        {
+            Outline outline = target.AddComponent<Outline>();
+            outline.enabled = false;
+            outline.OutlineColor = configuration.Color;
+            outline.OutlineWidth = configuration.Width;
+            outline.OutlineMode = configuration.Mode;
+            return outline;
         }
 
         public static Vector3 ScaledScale(this Vector3 initialScale, float factor)
@@ -567,7 +579,7 @@ namespace Delayed_Messaging.Scripts.Utilities
         /// <param name="parent"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static GameObject NewGameObject(GameObject parent, string name)
+        public static GameObject Object(GameObject parent, string name)
         {
             GameObject gameObject = new GameObject();
             gameObject.transform.parent = parent.transform;

@@ -20,22 +20,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Object.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Object.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Object].prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Object].prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player] Experimental.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Environment/[Ground Plane].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Environment/[Ground Plane].prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Gesture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Vehicle/Deckard's Sedan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Prefabs/Vehicle/Deckard's Sedan.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scenes/[Grapple Scene].unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleHook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleHook.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/DirectInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/DirectInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/Vehicle/VehicleController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/Vehicle/VehicleController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/PrototypingScreenMat.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/PrototypingScreenMat.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Flat Screen].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Flat Screen].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Space Object] Screen.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Space Object] Screen.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/[VR Player] Spaces.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/[VR Player] Spaces.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Interfaces.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Interfaces.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,10 +73,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseObjectInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/PandaBehaviour/Examples/02_PlayTag/Assets/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Input/SteamVR_Action_Boolean.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/ResourceDepotInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/AstarPathfindingProject/Core/AstarPath.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/UserInterface.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/User Interface/BaseInterface.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" root0="FORCE_HIGHLIGHTING" />
@@ -119,7 +128,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Vehicle/VehicleController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/LaunchAnchor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleSystem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Interfaces.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleRope.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Space.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleHook.cs" root0="FORCE_HIGHLIGHTING" />
@@ -147,11 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Environment/EnvironmentTileMap.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Gravity Gloves/Selection.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Plugins/PandaBehaviour/Core/Editor/CreatePandaScriptMenu.cs" />
-        <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/Inverse Kinematic Rig.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/InverseKinematicRig.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GestureDetector.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Scripts/GravityObject.cs" />
@@ -175,9 +178,7 @@
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/LaunchAnchor.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleHook.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/MovingTarget.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Velocity.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
@@ -194,10 +195,17 @@
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/PlayerController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/DirectInteraction.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Vehicle/VehicleController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/DirectInteraction.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/BaseInterface.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Button.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" />
       </list>
     </option>
   </component>
@@ -278,7 +286,7 @@
       <workItem from="1594637351145" duration="11277000" />
       <workItem from="1594744769995" duration="2083000" />
       <workItem from="1594918816438" duration="1239000" />
-      <workItem from="1594989519000" duration="25593000" />
+      <workItem from="1594989519000" duration="31359000" />
     </task>
     <servers />
   </component>

@@ -551,13 +551,19 @@
         </e>
         <e p="Spaces" t="Include">
           <e p="Scripts" t="Include">
-            <e p="Interfaces.cs" t="Include" />
             <e p="Space Objects" t="Include">
               <e p="Screen.cs" t="Include" />
               <e p="SpaceObject.cs" t="Include" />
             </e>
             <e p="Space.cs" t="Include" />
             <e p="SpaceManager.cs" t="Include" />
+            <e p="User Interface" t="Include">
+              <e p="InteractionController.cs" t="Include" />
+              <e p="Interface Elements" t="Include">
+                <e p="BaseInterface.cs" t="Include" />
+                <e p="Button.cs" t="Include" />
+              </e>
+            </e>
           </e>
         </e>
         <e p="SteamVR" t="Include">

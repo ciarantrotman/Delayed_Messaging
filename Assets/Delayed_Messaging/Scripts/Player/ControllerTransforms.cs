@@ -106,7 +106,7 @@ namespace Delayed_Messaging.Scripts.Player
             SetupDirect();
             SetupLocal();
             
-            controllerMidpoint = Set.NewGameObject(gameObject, "[Controller Midpoint]");
+            controllerMidpoint = Set.Object(gameObject, "[Controller Midpoint]");
         }
 
         private void SetupDirect()
@@ -123,10 +123,10 @@ namespace Delayed_Messaging.Scripts.Player
 
         private void SetupLocal()
         {
-            localRef = Set.NewGameObject(gameObject, "[Local Reference Rig]");
-            localHeadset = Set.NewGameObject(localRef, "Local/HMD");
-            localR = Set.NewGameObject(localHeadset,"Local/Right");
-            localL = Set.NewGameObject(localHeadset,"Local/Left");
+            localRef = Set.Object(gameObject, "[Local Reference Rig]");
+            localHeadset = Set.Object(localRef, "Local/HMD");
+            localR = Set.Object(localHeadset,"Local/Right");
+            localL = Set.Object(localHeadset,"Local/Left");
         }
 
         private void Update()
