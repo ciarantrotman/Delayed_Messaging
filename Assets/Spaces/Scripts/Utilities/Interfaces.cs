@@ -1,4 +1,4 @@
-﻿namespace Delayed_Messaging.Scripts.Utilities
+﻿namespace Spaces.Scripts.Utilities
 {
     public interface ISelectable<in T>
     {

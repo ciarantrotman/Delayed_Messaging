@@ -377,6 +377,8 @@
           <e p="Scripts" t="Include">
             <e p="Objects" t="Include">
               <e p="BaseObject.cs" t="Include" />
+              <e p="ObjectClass.cs" t="Include" />
+              <e p="ObjectCreator.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
               <e p="ControllerTransforms.cs" t="Include" />
@@ -386,6 +388,7 @@
                 <e p="LocomotionVisual.cs" t="Include" />
                 <e p="SceneWipe.cs" t="Include" />
               </e>
+              <e p="ObjectCreatorManager.cs" t="Include" />
             </e>
             <e p="User Interface" t="Include">
               <e p="DirectInteraction.cs" t="Include" />
@@ -400,11 +403,9 @@
               <e p="Cast.cs" t="Include" />
               <e p="Check.cs" t="Include" />
               <e p="Draw.cs" t="Include" />
-              <e p="FollowLerp.cs" t="Include" />
               <e p="Gesture.cs" t="Include" />
               <e p="Interfaces.cs" t="Include" />
               <e p="Intersection.cs" t="Include" />
-              <e p="InverseLerp.cs" t="Include" />
               <e p="Set.cs" t="Include" />
               <e p="Setup.cs" t="Include" />
             </e>

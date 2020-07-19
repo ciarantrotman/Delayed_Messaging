@@ -1,4 +1,4 @@
-﻿using Delayed_Messaging.Scripts.Utilities;
+﻿using Spaces.Scripts.Utilities;
 using UnityEngine; //using Sirenix.OdinInspector;
 
 namespace Delayed_Messaging.Scripts.Player.Locomotion

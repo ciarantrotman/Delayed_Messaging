@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GroundGridMat
+  m_Name: GroundGrid
   m_Shader: {fileID: -6465566751694194690, guid: 1082ea2ff02e56847810a65d156397b4,
     type: 3}
   m_ShaderKeywords: 

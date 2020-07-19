@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace VR_Prototyping.Scripts
+namespace Spaces.Scripts.Utilities
 {
     public static class Intersection
     {

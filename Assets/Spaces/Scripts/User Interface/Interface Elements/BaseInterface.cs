@@ -1,5 +1,5 @@
 ﻿using System;
-using Delayed_Messaging.Scripts.Utilities;
+using Spaces.Scripts.Utilities;
 using UnityEngine;
 using Outline = VR_Prototyping.Plugins.QuickOutline.Scripts.Outline;
 

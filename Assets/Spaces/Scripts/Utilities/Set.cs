@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Spaces.Scripts.User_Interface;
 using Spaces.Scripts.User_Interface.Interface_Elements;
-using Spaces.Scripts.Utilities;
 using UnityEngine;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
-//using Leap;
-//using Leap.Unity;
 
-namespace Delayed_Messaging.Scripts.Utilities
+namespace Spaces.Scripts.Utilities
 {
     public static class Set
     {

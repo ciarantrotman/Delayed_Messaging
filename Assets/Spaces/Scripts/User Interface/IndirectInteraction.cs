@@ -1,5 +1,5 @@
-﻿using Delayed_Messaging.Scripts.Utilities;
-using Spaces.Scripts.User_Interface.Interface_Elements;
+﻿using Spaces.Scripts.User_Interface.Interface_Elements;
+using Spaces.Scripts.Utilities;
 using UnityEngine;
 
 namespace Spaces.Scripts.User_Interface

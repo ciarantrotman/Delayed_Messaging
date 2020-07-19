@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
 
-namespace Delayed_Messaging.Scripts.Utilities
+namespace Spaces.Scripts.Utilities
 {
     public static class Setup
     {
