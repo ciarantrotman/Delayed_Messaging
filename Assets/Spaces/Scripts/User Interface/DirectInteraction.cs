@@ -7,18 +7,16 @@ namespace Spaces.Scripts.User_Interface
 {
     public class DirectInteraction : MonoBehaviour
     {
-        private GameObject directParent;
         private Button button;
         private bool extantButton;
         private SphereCollider directCollider;
 
-        public void Initialise(GameObject parent, string directName, float radius)
+        public void Initialise(float radius)
         {
             // Create references
-            directParent = Set.Object(parent, directName);
+            gameObject.tag = BaseInterface.Direct;
             directCollider = gameObject.AddComponent<SphereCollider>();
-            directParent.tag = BaseInterface.Direct;
-            
+
             // Configure direct collider
             directCollider.isTrigger = true;
             directCollider.radius = radius;
@@ -44,22 +42,21 @@ namespace Spaces.Scripts.User_Interface
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(BaseInterface.Button))
+            if (!other.CompareTag(BaseInterface.Button)) return;
+            
+            // Create a new button cache
+            Button newButton = other.transform.GetComponent<Button>();
+                
+            // Logic for when it is a new button
+            if (extantButton && button != newButton)
             {
-                // Create a new button cache
-                Button newButton = other.transform.GetComponent<Button>();
-                
-                // Logic for when it is a new button
-                if (extantButton && button != newButton)
-                {
-                    button.HoverEnd();
-                }
-                
-                // Button is now that new button
-                button = newButton;
-                extantButton = true;
-                button.HoverStart();
+                button.HoverEnd();
             }
+                
+            // Button is now that new button
+            button = newButton;
+            extantButton = true;
+            button.HoverStart();
         }
 
         private void OnTriggerExit(Collider other)

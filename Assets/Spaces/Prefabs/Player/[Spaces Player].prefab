@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 5
   material: {fileID: 2100000, guid: db79bbb8a0f517843aae9f7e040717c4, type: 2}
+  radius: 0.05
 --- !u!1001 &506065743506935199
 PrefabInstance:
   m_ObjectHideFlags: 0

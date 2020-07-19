@@ -26,24 +26,27 @@ namespace Spaces.Scripts.User_Interface
         // Find the current button
         public void Check(Vector3 origin, Vector3 vector, float range, bool rayEnabled)
         {
-            float rayDistance;
-                
-            if (Physics.Raycast(origin, vector, out RaycastHit hit, range) && hit.transform.CompareTag(BaseInterface.Button))
+            float rayDistance = Offset;
+
+            if (Physics.Raycast(origin, vector, out RaycastHit hit, range) && hit.transform.CompareTag(BaseInterface.Button) && rayEnabled)
             {
                 // Create a new button cache
                 Button newButton = hit.transform.GetComponent<Button>();
                 rayDistance = hit.distance;
-
-                // Logic for when it is a new button
-                if (extantButton && button != newButton)
+                
+                if (newButton.interactionType != BaseInterface.InteractionType.DIRECT);
                 {
-                    button.HoverEnd();
-                }
+                    // Logic for when it is a new button
+                    if (extantButton && button != newButton)
+                    {
+                        button.HoverEnd();
+                    }
                     
-                // Button is now that new button
-                button = newButton;
-                extantButton = true;
-                button.HoverStart();
+                    // Button is now that new button
+                    button = newButton;
+                    extantButton = true;
+                    button.HoverStart();
+                }
             }
             else
             {
@@ -54,7 +57,6 @@ namespace Spaces.Scripts.User_Interface
                     button = null;
                     extantButton = false;
                 }
-                rayDistance = Offset;
             }
                 
             ConfigureRay(origin, vector, rayDistance, rayEnabled);

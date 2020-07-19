@@ -33,14 +33,8 @@ namespace Spaces.Scripts.User_Interface
             // Initialise Direct Interaction
             nonDominantDirect = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<DirectInteraction>();
             dominantDirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<DirectInteraction>();
-            nonDominantDirect.Initialise(
-                gameObject, 
-                "[Direct / Non-Dominant]",
-                radius);
-            dominantDirect.Initialise(
-                gameObject, 
-                "[Direct / Dominant]",
-                radius);
+            nonDominantDirect.Initialise(radius);
+            dominantDirect.Initialise(radius);
             
             // Add event listeners for indirect interaction
             Controller.SelectEvent(
