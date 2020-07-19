@@ -493,9 +493,9 @@ namespace Delayed_Messaging.Scripts.Utilities
         {
             Outline outline = target.AddComponent<Outline>();
             outline.enabled = false;
-            outline.OutlineColor = configuration.Color;
-            outline.OutlineWidth = configuration.Width;
-            outline.OutlineMode = configuration.Mode;
+            outline.OutlineColor = configuration.color;
+            outline.OutlineWidth = configuration.width;
+            outline.OutlineMode = configuration.mode;
             return outline;
         }
 

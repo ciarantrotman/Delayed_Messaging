@@ -72,8 +72,6 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
 
         private void LateUpdate()
         {
-            return;
-            
             cTouchR = controller.Joystick(ControllerTransforms.Check.RIGHT);
             cTouchL = controller.Joystick(ControllerTransforms.Check.LEFT);
 

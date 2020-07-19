@@ -25,14 +25,11 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
         public const string Button = "Button", Slider = "Slider";
         protected Outline outline;
         protected Collider TriggerCollider => GetComponent<Collider>();
-        
-        // Useful Structs
-        [Serializable]
-        public struct OutlineConfiguration
+        [Serializable] public class OutlineConfiguration
         {
-            public float Width => 10f;
-            public Outline.Mode Mode => Outline.Mode.OutlineAll;
-            public Color Color => new Color(1,1,1,1);
+            [Range(1, 10)] public float width = 10f;
+            public Outline.Mode mode = Outline.Mode.OutlineAll;
+            public Color color = new Color(1,1,1,1);
         }
         
         

@@ -20,28 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Object.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Object.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Object].prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Object].prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Materials/UI/GroundGridMat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Materials/UI/GroundGridMat.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Base Prefabs/[VR Player].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Environment/[Ground Plane].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Prefabs/Environment/[Ground Plane].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/PrototypingScreenMat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/PrototypingScreenMat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Flat Screen].prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Flat Screen].prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Space Object] Screen.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Space Objects/[Space Object] Screen.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/[VR Player] Spaces.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/[VR Player] Spaces.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Interfaces.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Interfaces.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +175,6 @@
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/DirectInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/SceneWipe.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleSystem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
@@ -206,6 +187,7 @@
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Set.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" />
       </list>
     </option>
   </component>
@@ -286,7 +268,7 @@
       <workItem from="1594637351145" duration="11277000" />
       <workItem from="1594744769995" duration="2083000" />
       <workItem from="1594918816438" duration="1239000" />
-      <workItem from="1594989519000" duration="31359000" />
+      <workItem from="1594989519000" duration="31723000" />
     </task>
     <servers />
   </component>

@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 8976386972614985437}
   - component: {fileID: 7473554891637304817}
   - component: {fileID: 7473554891637304831}
-  - component: {fileID: 318384068163028394}
-  - component: {fileID: 2294774478314625449}
   - component: {fileID: 2910476754053980516}
   m_Layer: 0
   m_Name: '[VR Player]'
@@ -165,32 +163,6 @@ MonoBehaviour:
     onEnd:
       m_PersistentCalls:
         m_Calls: []
---- !u!114 &318384068163028394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8976386972615268133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5176a7ccbc4add40a2691ae39d9fbfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerState: 0
-  playerRigidbody: {fileID: 0}
---- !u!114 &2294774478314625449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8976386972615268133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cc71cb6614bf454e952fbd4812952fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2910476754053980516
 MonoBehaviour:
   m_ObjectHideFlags: 0
