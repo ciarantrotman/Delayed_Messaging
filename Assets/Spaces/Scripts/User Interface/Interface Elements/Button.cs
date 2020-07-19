@@ -5,8 +5,8 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
 {
     public class Button : BaseInterface
     {
-        public UnityEvent select;
-        [HideInInspector] public UnityEvent grabStart, grabStay, grabEnd;
+        public UnityEvent buttonSelect;
+        //[HideInInspector] public UnityEvent grabStart, grabStay, grabEnd;
 
         protected override void Initialise()
         {

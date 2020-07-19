@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scenes/[Spaces Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scenes/[Spaces Scene].unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" afterDir="false" />
     </list>
@@ -175,7 +177,6 @@
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/Grapple System/GrappleSystem.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Player/PlayerController.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/User Interface/Button.cs" />
-        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Vehicle/VehicleController.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/DirectInteraction.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/BaseInterface.cs" />
@@ -184,6 +185,7 @@
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Utilities/Setup.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/Locomotion.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" />
+        <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" />
       </list>
@@ -266,7 +268,7 @@
       <workItem from="1594637351145" duration="11277000" />
       <workItem from="1594744769995" duration="2083000" />
       <workItem from="1594918816438" duration="1239000" />
-      <workItem from="1594989519000" duration="32424000" />
+      <workItem from="1594989519000" duration="34102000" />
     </task>
     <servers />
   </component>
