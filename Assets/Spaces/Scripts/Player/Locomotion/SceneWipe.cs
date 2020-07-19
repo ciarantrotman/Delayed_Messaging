@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using DG.Tweening;
+using Spaces.Scripts.Player;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
 using VR_Prototyping.Scripts;

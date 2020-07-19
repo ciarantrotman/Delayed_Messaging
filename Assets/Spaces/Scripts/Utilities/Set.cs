@@ -579,7 +579,7 @@ namespace Spaces.Scripts.Utilities
         public static GameObject Object(GameObject parent, string name)
         {
             GameObject gameObject = new GameObject();
-            gameObject.transform.parent = parent.transform;
+            gameObject.transform.parent = parent == null ? null : parent.transform;
             gameObject.name = name;
             return gameObject;
         }

@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ray
-  m_Shader: {fileID: -6465566751694194690, guid: 817ca35082737ae4ca7f5fa28a7a5770,
+  m_Shader: {fileID: -6465566751694194690, guid: 0e8237c89dd1fb94b839a431c5403166,
     type: 3}
   m_ShaderKeywords: _EMISSION _SPECULAR_COLOR
   m_LightmapFlags: 2

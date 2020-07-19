@@ -4,48 +4,9 @@ using UnityEngine.Events;
 
 namespace Spaces.Scripts.Objects
 {
+    [RequireComponent(typeof(ObjectTotem))]
     public class BaseObject : MonoBehaviour 
     {
-        /// <summary>
-        /// A reference to the prefabs for the object and totem
-        /// </summary>
-        [Serializable] public class ObjectTotem
-        {
-            private bool extant;
-            public GameObject objectObject, totemObject;
-
-            /// <summary>
-            /// Called only once, when the object is first created
-            /// </summary>
-            /// <param name="parent"></param>
-            /// <param name="objectClass"></param>
-            public void InstantiateObjectTotem(Transform parent, ObjectClass objectClass)
-            {
-                if (extant) return;
-                
-                objectObject = Instantiate(objectClass.objectObject, parent);
-                totemObject = Instantiate(objectClass.totemObject, parent);
-                
-                extant = true;
-            }
-            // Handles the logic for transitioning between totem and object
-            public UnityAction SetState(TotemState state)
-            {
-                switch (state)
-                {
-                    case TotemState.TOTEM:
-                        objectObject.SetActive(false);
-                        totemObject.SetActive(true);
-                        return null;
-                    case TotemState.OBJECT:
-                        objectObject.SetActive(true);
-                        totemObject.SetActive(false);
-                        return null;
-                    default:
-                        return null;
-                }
-            }
-        }
         /// <summary>
         /// This is the relative transform of the object - relative to the origin of the scene that it is in
         /// </summary>
@@ -71,9 +32,9 @@ namespace Spaces.Scripts.Objects
         public UnityEvent totemise, objectise;
 
         // Core object information
-        public ObjectTotem objectTotem;
         public TotemState totemState;
         public RelativeTransform relativeTransform;
+        private ObjectTotem ObjectTotem => GetComponent<ObjectTotem>();
         private bool extant;
         
         /// <summary>
@@ -121,28 +82,39 @@ namespace Spaces.Scripts.Objects
             extant = true;
         }
         /// <summary>
+        /// Only called once at the start, lambda expression is giving me issues
+        /// </summary>
+        private void AddListeners()
+        {
+            totemise.AddListener(() => ObjectTotem.SetState(TotemState.TOTEM));
+            objectise.AddListener(() => ObjectTotem.SetState(TotemState.OBJECT));
+        }
+        /// <summary>
         /// Called whenever an object is created, either for the first time, or when transitioning between spaces
         /// </summary>
         public void CreateObject(ObjectClass objectClass = null)
         {
             switch (extant)
             {
-                // When the object is being created the first time
-                case false:
-                    objectTotem.InstantiateObjectTotem(transform, objectClass);
+                // When the object is being created the first time and a class is fed through
+                case false when objectClass != null:
+                    // Feed through the object class data
+                    ObjectTotem.InstantiateObjectTotem(transform, objectClass);
+                    // Reconfigure the script to read as spawned
                     ExtantState();
-                    SetTotemState(TotemState.OBJECT);
+                    // Add listeners
+                    AddListeners();
+                    // Set the state of the new object
+                    SetTotemState(objectClass.spawnState);
                     return;
                 // When the object is being removed from an inventory, space totem, or a space is being loaded 
                 case true:
                     return;
+                // Only reachable when no object class is provided when it's needed
+                default:
+                    Debug.LogError("Object Class Missing");
+                    return;
             }
-        }
-
-        private void Awake()
-        {
-            totemise.AddListener(objectTotem.SetState(TotemState.TOTEM));
-            objectise.AddListener(objectTotem.SetState(TotemState.OBJECT));
         }
     }
 }

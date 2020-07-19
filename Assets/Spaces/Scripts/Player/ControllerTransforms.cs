@@ -5,16 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using Valve.VR;
 
-namespace Delayed_Messaging.Scripts.Player
+namespace Spaces.Scripts.Player
 {
     public class ControllerTransforms : MonoBehaviour
     {
-        [SerializeField, Space(10)] public bool debugActive;
-        public enum DebugType { NEVER, SELECTED_ONLY, ALWAYS }
-
         [SerializeField, Space(10)] private Transform cameraRig;
-        [SerializeField, Space(10)] private Transform leftController;
-        [SerializeField] private Transform rightController;
+        [SerializeField] private Transform leftController, rightController;
 
         [Header("SteamVR Actions")]
         public SteamVR_Action_Vector2 joystickDirection;
@@ -72,8 +68,7 @@ namespace Delayed_Messaging.Scripts.Player
                 }
             }
         }
-        
-        public struct CastGameObjects
+        [Serializable] public struct CastGameObjects
         {
             public GameObject parent;
             public GameObject cN;
@@ -100,34 +95,18 @@ namespace Delayed_Messaging.Scripts.Player
             public Vector3 lLastValidPosition;
         }
         
-        private void Start()
+        private void Awake()
         {
-            SetupDirect();
-            SetupLocal();
-            
-            controllerMidpoint = Set.Object(gameObject, "[Controller Midpoint]");
+            CreateObjects();
         }
 
-        private void SetupDirect()
-        {
-            /*
-            DirectInteraction direct;
-            // Left
-            direct = Transform(Check.LEFT).gameObject.AddComponent<DirectInteraction>();
-            direct.Initialise(this, Check.LEFT, directDistance);
-            
-            // Right
-            direct = Transform(Check.RIGHT).gameObject.AddComponent<DirectInteraction>();
-            direct.Initialise(this, Check.RIGHT, directDistance);
-            */
-        }
-
-        private void SetupLocal()
+        private void CreateObjects()
         {
             localRef = Set.Object(gameObject, "[Local Reference Rig]");
             localHeadset = Set.Object(localRef, "Local/HMD");
             localR = Set.Object(localHeadset,"Local/Right");
             localL = Set.Object(localHeadset,"Local/Left");
+            controllerMidpoint = Set.Object(gameObject, "[Controller Midpoint]");
         }
 
         private void Update()
@@ -158,7 +137,6 @@ namespace Delayed_Messaging.Scripts.Player
             // Set the controller midpoint
             controllerMidpoint.transform.position = Vector3.Lerp(Position(Check.LEFT), Position(Check.RIGHT), .5f);
             controllerMidpoint.transform.LookAt(Position(Check.RIGHT));
-            //controllerMidpoint.transform.rotation = Quaternion.Lerp(Transform(Check.LEFT).rotation, Transform(Check.RIGHT).rotation, .5f);
         }
 
         #region Private Accessors
