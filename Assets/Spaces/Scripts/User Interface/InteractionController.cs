@@ -21,6 +21,7 @@ namespace Spaces.Scripts.User_Interface
             private GameObject rayParent;
             private LineRenderer ray;
             private Button button;
+            private bool extantButton;
             private const float Offset = 1f;
             private Vector3 OffsetPosition => new Vector3(0,0,Offset);
 
@@ -39,14 +40,32 @@ namespace Spaces.Scripts.User_Interface
             {
                 float rayDistance;
                 
-                if (Physics.Raycast(origin, vector, out RaycastHit hit, range))
+                if (Physics.Raycast(origin, vector, out RaycastHit hit, range) && hit.transform.CompareTag(BaseInterface.Button))
                 {
-                    button = hit.transform.CompareTag(BaseInterface.Button) ? hit.transform.GetComponent<Button>() : null;
+                    // Create a new button cache
+                    Button newButton = hit.transform.GetComponent<Button>();
                     rayDistance = hit.distance;
+
+                    // Logic for when it is a new button
+                    if (extantButton && button != newButton)
+                    {
+                        button.HoverEnd();
+                    }
+                    
+                    // Button is now that new button
+                    button = newButton;
+                    button.HoverStart();
+                    extantButton = true;
                 }
                 else
                 {
+                    // You are no longer pointing at a button, set the last button to not being hovered on
+                    if (extantButton)
+                    {
+                        button.HoverEnd();
+                    }
                     button = null;
+                    extantButton = false;
                     rayDistance = Offset;
                 }
                 
