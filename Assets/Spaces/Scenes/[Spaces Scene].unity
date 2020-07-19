@@ -865,7 +865,7 @@ PrefabInstance:
     - target: {fileID: 8803159653928582637, guid: 744e67b313d3ded4387babbce54ec5fe,
         type: 3}
       propertyPath: buttonSelect.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8803159653928582637, guid: 744e67b313d3ded4387babbce54ec5fe,
         type: 3}
@@ -1653,7 +1653,7 @@ PrefabInstance:
     - target: {fileID: 2697247049208190585, guid: 1bcd69681f5774647aba2817951769b4,
         type: 3}
       propertyPath: m_Name
-      value: '[Space Object] Screen'
+      value: '[Object]'
       objectReference: {fileID: 0}
     - target: {fileID: 4822337763703640507, guid: 1bcd69681f5774647aba2817951769b4,
         type: 3}
@@ -1710,5 +1710,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2441326990686026285, guid: 1bcd69681f5774647aba2817951769b4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1bcd69681f5774647aba2817951769b4, type: 3}

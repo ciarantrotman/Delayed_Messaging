@@ -1,3 +1,0 @@
-tree "Move"
-    while UnitDirected
-        DirectedMovement
