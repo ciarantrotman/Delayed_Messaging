@@ -22,20 +22,17 @@
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/User Interface/Ray.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/User Interface/Ray.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/Base Prefabs/Rigs/[Camera Rig].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/Base Prefabs/Rigs/[Camera Rig].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/Locomotion/[Locomotion Ghost].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/Locomotion/[Locomotion Ghost].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/Locomotion/[Locomotion Visual].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/Locomotion/[Locomotion Visual].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/BaseObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/BaseObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Indirect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Indirect.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scenes/[Spaces Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scenes/[Spaces Scene].unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/BaseObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/BaseObject.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectClass.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/SceneWipe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/SceneWipe.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ObjectCreatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ObjectCreatorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Cast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Cast.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInteraction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,50 +44,48 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectClass.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Input/SteamVR_Action_Boolean.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInteraction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/BaseObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInteraction.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/97/599cc6a2/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/a5/76c18145/List`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/c7/7cd62c67/Bounds.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/e2/7683ca7b/Texture2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/63/fcd7450e/Mathf.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInteraction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Scripts/SteamVR.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/RenderPipeline/DelayedMessagingRenderPipeline.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/Unity.RenderPipelines.Universal.Editor.asmdef" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalAdditionalCameraDataEditor.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Cast.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Check.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Draw.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Gesture.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectClass.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interfaces.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Intersection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Setup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1075282-1EEC-4ACB-B89C-CD53FBBC5E27/9a/9787d0da/TextureGenerator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Shaders/Unlit.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Scripts/SteamVR.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/RenderPipeline/DelayedMessagingRenderPipeline.asset" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/Unity.RenderPipelines.Universal.Editor.asmdef" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalAdditionalCameraDataEditor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Scripts/SteamVR_RenderModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/C1075282-1EEC-4ACB-B89C-CD53FBBC5E27/9a/9787d0da/TextureGenerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ObjectCreatorManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInteraction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.popcron.gizmos@41dfa1712443598c7f8538c7997994075db5f5fd/Runtime/Gizmos.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Shaders/Unlit.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/97/599cc6a2/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/a5/76c18145/List`1.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Input/SteamVR_Action_Boolean.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/c7/7cd62c67/Bounds.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/MovingTarget.cs" />
-        <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/Velocity.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleRope.cs" />
         <option value="$PROJECT_DIR$/Assets/Grapple/Scripts/GrappleSystem.cs" />
-        <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Gravity Gloves/Plugins/VRArmIK/Scripts/Utils/Extensions.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Interaction/UserInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" />
@@ -114,7 +109,6 @@
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInteraction.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInteraction.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Delayed_Messaging/Scripts/Player/StructureController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object.cs" />
@@ -130,13 +124,17 @@
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Intersection.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreation.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/CubeObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectClass.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotem.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/BaseObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ObjectCreatorManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" />
+        <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ObjectCreatorManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInteraction.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" />
       </list>
     </option>
   </component>
@@ -217,7 +215,8 @@
       <workItem from="1594637351145" duration="11277000" />
       <workItem from="1594744769995" duration="2083000" />
       <workItem from="1594918816438" duration="1239000" />
-      <workItem from="1594989519000" duration="49393000" />
+      <workItem from="1594989519000" duration="49525000" />
+      <workItem from="1595269512296" duration="5206000" />
     </task>
     <servers />
   </component>

@@ -102,11 +102,11 @@ namespace Spaces.Scripts.Player
 
         private void CreateObjects()
         {
-            localRef = Set.Object(gameObject, "[Local Reference Rig]");
-            localHeadset = Set.Object(localRef, "Local/HMD");
-            localR = Set.Object(localHeadset,"Local/Right");
-            localL = Set.Object(localHeadset,"Local/Left");
-            controllerMidpoint = Set.Object(gameObject, "[Controller Midpoint]");
+            localRef = Set.Object(gameObject, "[Local Reference Rig]", Vector3.zero);
+            localHeadset = Set.Object(localRef, "Local/HMD", Vector3.zero);
+            localR = Set.Object(localHeadset,"Local/Right", Vector3.zero);
+            localL = Set.Object(localHeadset,"Local/Left", Vector3.zero);
+            controllerMidpoint = Set.Object(gameObject, "[Controller Midpoint]", Vector3.zero);
         }
 
         private void Update()

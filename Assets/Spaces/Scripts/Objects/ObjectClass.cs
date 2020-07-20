@@ -6,6 +6,6 @@ namespace Spaces.Scripts.Objects
     public class ObjectClass : ScriptableObject
     {
         public GameObject objectObject, totemObject;
-        public BaseObject.TotemState spawnState = BaseObject.TotemState.OBJECT;
+        public ObjectInstance.TotemState spawnState = ObjectInstance.TotemState.OBJECT;
     }
 }

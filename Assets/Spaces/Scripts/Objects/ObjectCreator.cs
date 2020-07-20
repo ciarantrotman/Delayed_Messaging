@@ -10,33 +10,34 @@ namespace Spaces.Scripts.Objects
     {
         [Header("Core References")]
         [SerializeField] private ObjectClass objectClass;
-        [SerializeField] private Button button;
         [Header("Label Settings")]
-        [SerializeField] private TextMeshPro label;
         [SerializeField] private string labelText;
 
-        private ObjectCreatorManager manager;
+        private Button Button => GetComponentInChildren<Button>();
+        private TextMeshPro Label => GetComponentInChildren<TextMeshPro>();
+        private static ObjectCreatorManager Manager => Reference.Player().GetComponent<ObjectCreatorManager>();
         
+        /// <summary>
+        /// Sets the state of the button at start and adds listeners for object creation
+        /// </summary>
         private void Awake()
         {
-            label.SetText(labelText);
-            button.buttonSelect.AddListener(CreateObject);
-            
-            //todo add reference to object creator manager
+            Label.SetText(labelText);
+            Button.buttonSelect.AddListener(CreateObject);
         }
+        
         /// <summary>
         /// Creates a placeholder gameobject, then adds a blank object script to it , then configures it using the object class provided
         /// </summary>
         private void CreateObject()
         {
             // Create placeholder object, named after the object
-            GameObject placeholder = Set.Object(null, labelText);
-            placeholder.transform.position = new Vector3(-1.5f, 1.5f, 1.5f); // todo change this to object creator manager reference
+            GameObject placeholder = Set.Object(null, labelText, Manager.CreationLocation());
             // Add required scripts (object totem has to be added first!)
-            ObjectTotem objectTotem = placeholder.AddComponent<ObjectTotem>();
-            BaseObject baseObject = placeholder.AddComponent<BaseObject>();
+            placeholder.AddComponent<ObjectTotem>();
+            ObjectInstance objectInstance = placeholder.AddComponent<ObjectInstance>();
             // Create the object
-            baseObject.CreateObject(objectClass);
+            objectInstance.CreateObject(objectClass);
         }
     }
 }

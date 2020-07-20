@@ -575,12 +575,14 @@ namespace Spaces.Scripts.Utilities
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="name"></param>
+        /// <param name="localPosition"></param>
         /// <returns></returns>
-        public static GameObject Object(GameObject parent, string name)
+        public static GameObject Object(GameObject parent, string name, Vector3 localPosition)
         {
             GameObject gameObject = new GameObject();
             gameObject.transform.parent = parent == null ? null : parent.transform;
             gameObject.name = name;
+            gameObject.transform.localPosition = localPosition;
             return gameObject;
         }
         /// <summary>

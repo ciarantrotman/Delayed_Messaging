@@ -376,9 +376,9 @@
           </e>
           <e p="Scripts" t="Include">
             <e p="Objects" t="Include">
-              <e p="BaseObject.cs" t="Include" />
               <e p="ObjectClass.cs" t="Include" />
               <e p="ObjectCreator.cs" t="Include" />
+              <e p="ObjectInstance.cs" t="Include" />
               <e p="ObjectTotem.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
@@ -407,6 +407,7 @@
               <e p="Gesture.cs" t="Include" />
               <e p="Interfaces.cs" t="Include" />
               <e p="Intersection.cs" t="Include" />
+              <e p="Reference.cs" t="Include" />
               <e p="Set.cs" t="Include" />
               <e p="Setup.cs" t="Include" />
             </e>

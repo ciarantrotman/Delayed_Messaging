@@ -15,7 +15,7 @@ namespace Spaces.Scripts.User_Interface
 
         public void Initialise(GameObject parent, string rayName, Material material)
         {
-            rayParent = Set.Object(parent, rayName);
+            rayParent = Set.Object(parent, rayName, Vector3.zero);
             ray = rayParent.LineRender(material, .005f, .001f, true, false);
                 
             // Set the positions of the raycast
@@ -32,6 +32,9 @@ namespace Spaces.Scripts.User_Interface
             {
                 // Create a new button cache
                 Button newButton = hit.transform.GetComponent<Button>();
+                // In the case that the collider we hit is in the child of the object
+                newButton = newButton == null ? hit.transform.GetComponentInParent<Button>() : newButton;
+                // Record the distance for the UI ray
                 rayDistance = hit.distance;
                 
                 if (newButton.interactionType != BaseInterface.InteractionType.DIRECT);
@@ -58,9 +61,16 @@ namespace Spaces.Scripts.User_Interface
                     extantButton = false;
                 }
             }
-                
+            // Always call this at the end to set the state of the UI ray
             ConfigureRay(origin, vector, rayDistance, rayEnabled);
         }
+        /// <summary>
+        /// Sets the state of the UI ray
+        /// </summary>
+        /// <param name="origin"></param>
+        /// <param name="vector"></param>
+        /// <param name="range"></param>
+        /// <param name="enableRay"></param>
         private void ConfigureRay(Vector3 origin, Vector3 vector, float range, bool enableRay)
         {
             ray.enabled = enableRay;

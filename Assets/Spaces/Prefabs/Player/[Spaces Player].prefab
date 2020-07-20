@@ -15,6 +15,19 @@ MonoBehaviour:
   range: 5
   material: {fileID: 2100000, guid: db79bbb8a0f517843aae9f7e040717c4, type: 2}
   radius: 0.05
+--- !u!114 &8503732875960798049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905692857995942586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab220e5a067b2443b0dcc24c3b477f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultOffset: 2
 --- !u!1001 &506065743506935199
 PrefabInstance:
   m_ObjectHideFlags: 0

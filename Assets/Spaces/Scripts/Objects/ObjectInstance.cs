@@ -1,40 +1,57 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Spaces.Scripts.Objects
 {
     [RequireComponent(typeof(ObjectTotem))]
-    public class BaseObject : MonoBehaviour 
+    public class ObjectInstance : MonoBehaviour 
     {
         /// <summary>
         /// This is the relative transform of the object - relative to the origin of the scene that it is in
         /// </summary>
         [Serializable] public class RelativeTransform
         {
-            public Vector3 position;
-            public Vector3 rotation;
             /// <summary>
-            /// Placeholder method to call when you finish moving the object
+            /// A struct which represents a location in 3D space
             /// </summary>
-            /// <param name="pos"></param>
-            /// <param name="rot"></param>
-            public void SetRelativeTransform(Vector3 pos, Vector3 rot)
+            [Serializable] public class Location
             {
-                position = pos;
-                rotation = rot;
+                public Vector3 position;
+                public Vector3 rotation;
+                /// <summary>
+                /// Defines the values for this location
+                /// </summary>
+                /// <param name="pos"></param>
+                /// <param name="rot"></param>
+                public void DefineLocation(Vector3 pos, Vector3 rot)
+                {
+                    position = pos;
+                    rotation = rot;
+                }
+            }
+            public List<Location> locations = new List<Location>();
+
+            /// <summary>
+            /// Add the input values into a location struct, then store that in a list of locations
+            /// This can be used to "undo" moves
+            /// </summary>
+            /// <param name="location"></param>
+            public void SetRelativeTransform(Location location)
+            {
+                locations.Add(location);
             }
         }
         /// <summary>
         /// This is used to reference what state any given object is in
         /// </summary>
         public enum TotemState { TOTEM, OBJECT }
-        public UnityEvent totemise, objectise;
+        //public UnityEvent totemise, objectise;
 
         // Core object information
-        public TotemState totemState;
-        public RelativeTransform relativeTransform;
         private ObjectTotem ObjectTotem => GetComponent<ObjectTotem>();
+        public RelativeTransform relativeTransform = new RelativeTransform();
+        public TotemState totemState;
         private bool extant;
         
         /// <summary>
@@ -47,11 +64,13 @@ namespace Spaces.Scripts.Objects
             {
                 case TotemState.TOTEM:
                     totemState = TotemState.TOTEM;
-                    totemise.Invoke();
+                    //totemise.Invoke();
+                    ObjectTotem.Totemise();
                     break;
                 case TotemState.OBJECT:
                     totemState = TotemState.OBJECT;
-                    objectise.Invoke();
+                    //objectise.Invoke();
+                    ObjectTotem.Objectise();
                     break;
                 default:
                     return;
@@ -82,12 +101,15 @@ namespace Spaces.Scripts.Objects
             extant = true;
         }
         /// <summary>
-        /// Only called once at the start, lambda expression is giving me issues
+        /// Creates a new location to add to the locations list
         /// </summary>
-        private void AddListeners()
+        /// <returns></returns>
+        private RelativeTransform.Location CurrentLocation()
         {
-            totemise.AddListener(() => ObjectTotem.SetState(TotemState.TOTEM));
-            objectise.AddListener(() => ObjectTotem.SetState(TotemState.OBJECT));
+            RelativeTransform.Location location = new RelativeTransform.Location();
+            Transform objectTransform = transform;
+            location.DefineLocation(objectTransform.position, objectTransform.eulerAngles);
+            return location;
         }
         /// <summary>
         /// Called whenever an object is created, either for the first time, or when transitioning between spaces
@@ -98,23 +120,39 @@ namespace Spaces.Scripts.Objects
             {
                 // When the object is being created the first time and a class is fed through
                 case false when objectClass != null:
-                    // Feed through the object class data
-                    ObjectTotem.InstantiateObjectTotem(transform, objectClass);
-                    // Reconfigure the script to read as spawned
-                    ExtantState();
-                    // Add listeners
-                    AddListeners();
-                    // Set the state of the new object
-                    SetTotemState(objectClass.spawnState);
+                    CreateNewObject(objectClass);
                     return;
                 // When the object is being removed from an inventory, space totem, or a space is being loaded 
                 case true:
+                    CreateExtantObject();
                     return;
                 // Only reachable when no object class is provided when it's needed
                 default:
                     Debug.LogError("Object Class Missing");
                     return;
             }
+        }
+        /// <summary>
+        /// Logic for the first time the object is created
+        /// </summary>
+        /// <param name="objectClass"></param>
+        private void CreateNewObject(ObjectClass objectClass)
+        {
+            // Feed through the object class data
+            ObjectTotem.InstantiateObjectTotem(transform, objectClass, this);
+            // Reconfigure the script to read as spawned
+            ExtantState();
+            // Set the state of the new object
+            SetTotemState(objectClass.spawnState);
+            // Set the relative transform for the object
+            relativeTransform.SetRelativeTransform(CurrentLocation());
+        }
+        /// <summary>
+        /// This is the same as "recreating" an extant object
+        /// </summary>
+        private void CreateExtantObject()
+        {
+            Debug.LogWarning("You haven't gotten to this yet!");
         }
     }
 }
