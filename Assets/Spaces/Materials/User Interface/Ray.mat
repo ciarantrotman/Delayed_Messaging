@@ -12,8 +12,8 @@ Material:
     type: 3}
   m_ShaderKeywords: _EMISSION _SPECULAR_COLOR
   m_LightmapFlags: 2
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses:
@@ -64,7 +64,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _Offset: 0
+    - _Offset: 0.25
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Shininess: 0
@@ -80,7 +80,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.4877625, g: 0.9150943, b: 0.8976473, a: 0.40392157}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - _Emission: {r: 0.19748881, g: 0.3376422, b: 0.7262492, a: 0}
+    - _Emission: {r: 0.15699539, g: 0.2962619, b: 0.6792453, a: 0}
     - _EmissionColor: {r: 0.2015563, g: 0.8148468, b: 0.78353804, a: 1}
     - _SpecColor: {r: 0.6132076, g: 0.08388106, b: 0.24071807, a: 0}
 --- !u!114 &8755557134221154554

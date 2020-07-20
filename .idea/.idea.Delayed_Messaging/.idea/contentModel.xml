@@ -379,7 +379,9 @@
               <e p="ObjectClass.cs" t="Include" />
               <e p="ObjectCreator.cs" t="Include" />
               <e p="ObjectInstance.cs" t="Include" />
+              <e p="ObjectSelectionController.cs" t="Include" />
               <e p="ObjectTotem.cs" t="Include" />
+              <e p="ObjectTotemiser.cs" t="Include" />
             </e>
             <e p="Player" t="Include">
               <e p="ControllerTransforms.cs" t="Include" />
@@ -390,6 +392,10 @@
                 <e p="SceneWipe.cs" t="Include" />
               </e>
               <e p="ObjectCreatorManager.cs" t="Include" />
+            </e>
+            <e p="Space" t="Include">
+              <e p="SpaceInstance.cs" t="Include" />
+              <e p="SpaceManager.cs" t="Include" />
             </e>
             <e p="User Interface" t="Include">
               <e p="DirectInteraction.cs" t="Include" />

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - Direct
+  - SpaceManager
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,9 @@ namespace Spaces.Scripts.User_Interface
         private IndirectInteraction dominantIndirect, nonDominantIndirect;
         private DirectInteraction dominantDirect, nonDominantDirect;
 
+        /// <summary>
+        /// Creates all required objects and adds global button event listeners
+        /// </summary>
         private void Awake()
         {
             // Initialise Indirect Interaction
