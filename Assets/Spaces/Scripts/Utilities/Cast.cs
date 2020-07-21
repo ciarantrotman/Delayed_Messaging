@@ -90,7 +90,7 @@ namespace Spaces.Scripts.Utilities
 			Set.DistanceCast(castObjects.target, castObjects.follow, castObjects.proxy, castObjects.normalised, castObjects.hitPoint, castObjects.midpoint, castObjects.rotation, castObjects.visual, 
 				hand, controller.Transform(ControllerTransforms.Check.HEAD), joystick, maxAngle, minAngle,
 				minDistance, maxDistance, castObjects.lastValidPosition);
-			castObjects.lineRenderer.BezierLineRenderer(hand.position,castObjects.midpoint.transform.position,castObjects.hitPoint.transform.position);
+			castObjects.lineRenderer.Bezier(hand.position,castObjects.midpoint.transform.position,castObjects.hitPoint.transform.position);
 			castObjects.lineRenderer.material.SetFloat(Distance, hand.TransformDistance(castObjects.hitPoint.transform));
 		}
 	}

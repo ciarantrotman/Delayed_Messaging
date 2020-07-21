@@ -1,18 +1,15 @@
-﻿using Spaces.Scripts.Player;
-using Spaces.Scripts.User_Interface.Interface_Elements;
+﻿using Spaces.Scripts.User_Interface.Interface_Elements;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Events;
-using Event = Spaces.Scripts.Player.ControllerTransforms.EventTracker.EventType;
 
-namespace Spaces.Scripts.User_Interface
+namespace Spaces.Scripts.User_Interface.Interface_Interaction
 {
-    public class IndirectInterface: InteractionController
+    public class IndirectInterface: Interaction
     {
         private GameObject rayParent;
         private LineRenderer ray;
         private Button button;
-        private bool extantButton;
+        private bool extant;
         private const float Offset = .5f;
         private static Vector3 OffsetPosition => new Vector3(0,0,Offset);
 
@@ -43,29 +40,34 @@ namespace Spaces.Scripts.User_Interface
                 if (newButton.interactionType != BaseInterface.InteractionType.DIRECT);
                 {
                     // Logic for when it is a new button
-                    if (extantButton && button != newButton)
+                    if (button != newButton)
                     {
-                        button.HoverEnd();
+                        // Stop hovering on the old object if there is one
+                        if (extant)
+                        {
+                            button.HoverEnd();
+                        }
+                        // start hovering on the new object
+                        newButton.HoverStart();
                     }
                     
                     // Button is now that new button
                     button = newButton;
-                    extantButton = true;
-                    button.HoverStart();
+                    extant = true;
                 }
             }
             else
             {
                 // You are no longer pointing at a button, set the last button to not being hovered on
-                if (extantButton)
+                if (extant)
                 {
                     button.HoverEnd();
                     button = null;
-                    extantButton = false;
+                    extant = false;
                 }
             }
             // Always call this at the end to set the state of the UI ray
-            ConfigureRay(origin, vector, rayDistance, rayEnabled);
+            ConfigureRay(origin, vector, rayDistance, extant);
         }
         /// <summary>
         /// Sets the state of the UI ray
@@ -87,26 +89,24 @@ namespace Spaces.Scripts.User_Interface
         // Wrappers for button events
         protected override void Select()
         {
-            if (extantButton)
-            {
-                button.buttonSelect.Invoke();
-            }
+            if (!extant) return;
+            button.buttonSelect.Invoke();
         }
         protected override void GrabStart()
         {
-            if (!extantButton) return;
+            if (!extant) return;
             button.grabStart.Invoke();
         }
         
         protected override void GrabStay()
         {
-            if (!extantButton) return;
+            if (!extant) return;
             button.grabStay.Invoke();
         }
         
         protected override void GrabEnd()
         {
-            if (!extantButton) return;
+            if (!extant) return;
             button.grabEnd.Invoke();
         }
         

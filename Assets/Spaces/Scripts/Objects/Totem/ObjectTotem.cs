@@ -33,6 +33,7 @@ namespace Spaces.Scripts.Objects
         private static GameObject Create(GameObject prefab, Transform parent)
         {
             GameObject placeholder = Instantiate(prefab, parent);
+            placeholder.tag = ObjectInstance.Object;
             placeholder.SetActive(false);
             return placeholder;
         }

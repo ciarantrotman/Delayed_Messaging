@@ -376,12 +376,22 @@
           </e>
           <e p="Scripts" t="Include">
             <e p="Objects" t="Include">
-              <e p="ObjectClass.cs" t="Include" />
-              <e p="ObjectCreator.cs" t="Include" />
+              <e p="Object Classes" t="Include">
+                <e p="ObjectClass.cs" t="Include" />
+              </e>
+              <e p="Object Creation" t="Include">
+                <e p="ObjectCreator.cs" t="Include" />
+                <e p="ObjectCreatorManager.cs" t="Include" />
+              </e>
+              <e p="Object Interaction" t="Include">
+                <e p="IndirectObject.cs" t="Include" />
+                <e p="ObjectInteractionController.cs" t="Include" />
+              </e>
               <e p="ObjectInstance.cs" t="Include" />
-              <e p="ObjectInteractionController.cs" t="Include" />
-              <e p="ObjectTotem.cs" t="Include" />
-              <e p="ObjectTotemiser.cs" t="Include" />
+              <e p="Totem" t="Include">
+                <e p="ObjectTotem.cs" t="Include" />
+                <e p="ObjectTotemiser.cs" t="Include" />
+              </e>
             </e>
             <e p="Player" t="Include">
               <e p="ControllerTransforms.cs" t="Include" />
@@ -391,27 +401,28 @@
                 <e p="LocomotionVisual.cs" t="Include" />
                 <e p="SceneWipe.cs" t="Include" />
               </e>
-              <e p="ObjectCreatorManager.cs" t="Include" />
             </e>
             <e p="Space" t="Include">
               <e p="SpaceInstance.cs" t="Include" />
               <e p="SpaceManager.cs" t="Include" />
             </e>
             <e p="User Interface" t="Include">
-              <e p="DirectInterface.cs" t="Include" />
-              <e p="IndirectInterface.cs" t="Include" />
-              <e p="InteractionController.cs" t="Include" />
               <e p="Interface Elements" t="Include">
                 <e p="BaseInterface.cs" t="Include" />
                 <e p="Button.cs" t="Include" />
               </e>
-              <e p="InterfaceInteractionController.cs" t="Include" />
+              <e p="Interface Interaction" t="Include">
+                <e p="DirectInterface.cs" t="Include" />
+                <e p="IndirectInterface.cs" t="Include" />
+                <e p="InterfaceInteractionController.cs" t="Include" />
+              </e>
             </e>
             <e p="Utilities" t="Include">
               <e p="Cast.cs" t="Include" />
               <e p="Check.cs" t="Include" />
               <e p="Draw.cs" t="Include" />
               <e p="Gesture.cs" t="Include" />
+              <e p="Interaction.cs" t="Include" />
               <e p="Interfaces.cs" t="Include" />
               <e p="Intersection.cs" t="Include" />
               <e p="Reference.cs" t="Include" />

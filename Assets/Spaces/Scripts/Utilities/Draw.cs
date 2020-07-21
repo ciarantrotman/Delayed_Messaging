@@ -15,7 +15,7 @@ namespace Spaces.Scripts.Utilities
 		/// <param name="p1"></param>
 		/// <param name="p2"></param>
 		/// <param name="segments"></param>
-		public static void BezierLineRenderer(this LineRenderer lr, Vector3 p0, Vector3 p1, Vector3 p2, int segments = 40)
+		public static void Bezier(this LineRenderer lr, Vector3 p0, Vector3 p1, Vector3 p2, int segments = 40)
 		{
 			lr.positionCount = segments;
 			lr.SetPosition(0, p0);
@@ -37,7 +37,7 @@ namespace Spaces.Scripts.Utilities
             
 			lr.LineRenderWidth(.001f, focus != null ? .01f : 0f);
             
-			lr.BezierLineRenderer(controller.position,
+			lr.Bezier(controller.position,
 				midpoint.transform.position, 
 				target.transform.position,
 				quality);

@@ -1,11 +1,10 @@
 ﻿using Spaces.Scripts.Player;
 using UnityEngine;
-using UnityEngine.Events;
 using Event = Spaces.Scripts.Player.ControllerTransforms.EventTracker.EventType;
 
-namespace Spaces.Scripts.User_Interface
+namespace Spaces.Scripts.Utilities
 {
-    public abstract class InteractionController : MonoBehaviour
+    public abstract class Interaction : MonoBehaviour
     {
         public void AddEventListeners(ControllerTransforms controller, ControllerTransforms.Check side)
         {

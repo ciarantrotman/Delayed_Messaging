@@ -40,43 +40,24 @@
         /// </summary>
         void HoverEnd();
     }
-
-    public interface IMovable<in T>
-    {
-        void SetDestination(T destination);
-        void DirectedMovement();
-    }
     
-    public interface IDamageable<in T>
+    public interface IInteractive
     {
-        void Damage(T damageTaken);
-    }
-
-    public interface IRaycastInterface
-    {
+        /// <summary>
+        /// 
+        /// </summary>
         void Select();
-    }
-
-    public interface IInitialiseObjectInterface<in T>
-    {
-        void Initialise(T baseObject);
-    }
-    /// <summary>
-    /// Method used when instantiating a unit, gives it a location to spawn to and a destination
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="S"></typeparam>
-    /// <typeparam name="U"></typeparam>
-    public interface ISpawnableUnit<in T, in S>
-    {
-        void SpawnUnit(T spawnLocation, S spawnDestination);
-    }
-    /// <summary>
-    /// Used to spawn a structure, placing building logic should go here
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public interface ISpawnableStructure<in T>
-    {
-        void SpawnStructure(T spawnLocation);
+        /// <summary>
+        /// 
+        /// </summary>
+        void GrabStart();
+        /// <summary>
+        /// 
+        /// </summary>
+        void GrabStay();
+        /// <summary>
+        /// 
+        /// </summary>
+        void GrabEnd();
     }
 }

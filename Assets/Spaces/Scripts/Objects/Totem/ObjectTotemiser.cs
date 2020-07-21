@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Spaces.Scripts.Objects.Object_Interaction;
 using Spaces.Scripts.User_Interface.Interface_Elements;
 using TMPro;
 using UnityEngine;
 
-namespace Spaces.Scripts.Objects
+namespace Spaces.Scripts.Objects.Totem
 {
     public class ObjectTotemiser : MonoBehaviour
     { 
         [Header("Label Settings")]
         [SerializeField] private string labelText;
-        private static ObjectInteractionController ObjectSelectionController => Reference.Player().GetComponent<ObjectInteractionController>();
+        private static ObjectInteractionController ObjectInteractionController => Reference.Player().GetComponent<ObjectInteractionController>();
         private Button Button => GetComponentInChildren<Button>();
         private TextMeshPro Label => GetComponentInChildren<TextMeshPro>();
 
@@ -19,9 +19,9 @@ namespace Spaces.Scripts.Objects
             Button.buttonSelect.AddListener(ToggleState);
         }
 
-        private void ToggleState()
+        private static void ToggleState()
         {
-            ObjectSelectionController.FocusObject().ToggleTotemState();
+            ObjectInteractionController.FocusObject()?.ToggleTotemState();
         }
     }
 }

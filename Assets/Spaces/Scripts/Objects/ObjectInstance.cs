@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using Spaces.Scripts.Space;
+using Spaces.Scripts.Utilities;
 using UnityEngine;
 
 namespace Spaces.Scripts.Objects
 {
     [RequireComponent(typeof(ObjectTotem))]
-    public class ObjectInstance : MonoBehaviour 
+    public class ObjectInstance : MonoBehaviour, IInteractive
     {
+        public const string Object = "Object";
         /// <summary>
         /// This is the relative transform of the object - relative to the origin of the scene that it is in
         /// </summary>
@@ -157,6 +159,50 @@ namespace Spaces.Scripts.Objects
         private void CreateExtantObject()
         {
             Debug.LogWarning("You haven't gotten to this yet!");
+        }
+        
+        // -----
+        /// <summary>
+        /// 
+        /// </summary>
+        public void HoverStart()
+        {
+            Debug.Log($"{name}: Hover Start");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void HoverEnd()
+        {
+            Debug.Log($"{name}: Hover End");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Select()
+        {
+            Debug.Log($"{name}: Select");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void GrabStart()
+        {
+            Debug.Log($"{name}: Grab Start");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void GrabStay()
+        {
+            Debug.Log($"{name}: Grab Stay");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void GrabEnd()
+        {
+            Debug.Log($"{name}: Grab End");
         }
     }
 }

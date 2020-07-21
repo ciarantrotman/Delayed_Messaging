@@ -1,11 +1,12 @@
 ﻿using Spaces.Scripts.User_Interface.Interface_Elements;
+using Spaces.Scripts.Utilities;
 using UnityEngine;
 using UnityEngine.Events;
 using Button = Spaces.Scripts.User_Interface.Interface_Elements.Button;
 
 namespace Spaces.Scripts.User_Interface
 {
-    public class DirectInterface : InteractionController
+    public class DirectInterface : Interaction
     {
         private Button button;
         private bool extantButton;
