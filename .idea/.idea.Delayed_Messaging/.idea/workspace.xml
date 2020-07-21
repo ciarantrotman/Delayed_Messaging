@@ -20,36 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceInteractionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/Base Prefabs/[VR Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/Base Prefabs/[VR Player].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Both.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Both.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Direct.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Direct.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Indirect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Indirect.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scenes/[Spaces Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scenes/[Spaces Scene].unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectSelectionController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectSelectionController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotemiser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotemiser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/SceneWipe.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/SceneWipe.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInteraction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInterface.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInteraction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInterface.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceInteractionController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Gesture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Gesture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceInteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceInteractionController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +111,6 @@
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotem.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ObjectCreatorManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectFocus.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectSelectionController.cs" />
@@ -148,15 +121,16 @@
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/BaseInterfaceController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInterface.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInteractionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInterface.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceInteractionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInterface.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceInteractionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" />
       </list>
     </option>
   </component>
@@ -238,7 +212,7 @@
       <workItem from="1594744769995" duration="2083000" />
       <workItem from="1594918816438" duration="1239000" />
       <workItem from="1594989519000" duration="49525000" />
-      <workItem from="1595269512296" duration="17425000" />
+      <workItem from="1595269512296" duration="18076000" />
     </task>
     <servers />
   </component>

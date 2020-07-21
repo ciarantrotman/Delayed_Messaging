@@ -43,8 +43,9 @@ namespace Spaces.Scripts.Player.Locomotion
         [SerializeField, Range(0f, 1f)] private float vignetteStrength = .35f;
         [SerializeField, Space(5)] private GameObject targetVisual;
         [SerializeField] private Material lineRenderMat;
-        
-        private ControllerTransforms Controller => GetComponentInParent<ControllerTransforms>();
+
+        private static GameObject Player => Reference.Player();
+        private static ControllerTransforms Controller => Reference.Player().GetComponent<ControllerTransforms>();
 
         private void Start()
         {
@@ -89,15 +90,15 @@ namespace Spaces.Scripts.Player.Locomotion
 
         public void RotateUser(float a, float time)
         {
-            if (transform.parent == cameraNormalised.transform || !rotation) return;
+            if (Player.transform.parent == cameraNormalised.transform || !rotation) return;
             active = true;
             
             Controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
             Controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
             
-            transform.SetParent(cameraNormalised.transform);
+            Player.transform.SetParent(cameraNormalised.transform);
             cameraNormalised.transform.DORotate(RotationAngle(cameraNormalised.transform, a), time);
-            StartCoroutine(Uncouple(transform, time));
+            StartCoroutine(Uncouple(Player.transform, time));
         }
 
         public void LocomotionStart(GameObject visual, LineRenderer lr)
@@ -110,23 +111,23 @@ namespace Spaces.Scripts.Player.Locomotion
         
         public void LocomotionEnd(GameObject visual, Vector3 posTarget, Vector3 rotTarget, LineRenderer lr)
         {
-            if (transform.parent == cameraNormalised.transform) return;
+            if (Player.transform.parent == cameraNormalised.transform) return;
             
             Controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
             Controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
-            transform.SetParent(cameraNormalised.transform);
+            Player.transform.SetParent(cameraNormalised.transform);
             
             switch (locomotionMethod)
             {
                 case Method.DASH:
                     cameraNormalised.transform.DOMove(posTarget, moveSpeed);
                     cameraNormalised.transform.DORotate(rotTarget, moveSpeed);
-                    StartCoroutine(Uncouple(transform, moveSpeed));
+                    StartCoroutine(Uncouple(Player.transform, moveSpeed));
                     break;
                 case Method.BLINK:
                     cameraNormalised.transform.position = posTarget;
                     cameraNormalised.transform.eulerAngles = rotTarget;
-                    transform.SetParent(null);
+                    Player.transform.SetParent(null);
                     active = false;
                     break;
                 default:
@@ -142,18 +143,18 @@ namespace Spaces.Scripts.Player.Locomotion
         {
             Controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
             Controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
-            transform.SetParent(cameraNormalised.transform);
+            Player.transform.SetParent(cameraNormalised.transform);
             switch (method)
             {
                 case Method.DASH:
                     cameraNormalised.transform.DOMove(targetPosition, time);
                     cameraNormalised.transform.DORotate(targetRotation, time);
-                    StartCoroutine(Uncouple(transform, time));
+                    StartCoroutine(Uncouple(Player.transform, time));
                     break;
                 case Method.BLINK:
                     cameraNormalised.transform.position = targetPosition;
                     cameraNormalised.transform.eulerAngles = targetRotation;
-                    transform.SetParent(null);
+                    Player.transform.SetParent(null);
                     active = false;
                     break;
                 default:

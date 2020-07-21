@@ -34,7 +34,6 @@ namespace Spaces.Scripts.User_Interface
             nonDominantIndirectInterface.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);
             dominantIndirectInterface.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT);
             
-            /*
             // Add direct interaction to each controller
             nonDominantDirectInterface = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<DirectInterface>();
             dominantDirectInterface = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<DirectInterface>();
@@ -46,7 +45,6 @@ namespace Spaces.Scripts.User_Interface
             // Add direct event listeners
             nonDominantDirectInterface.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);
             dominantDirectInterface.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT);
-            */
         }
 
         private void Update()

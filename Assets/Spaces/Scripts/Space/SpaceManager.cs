@@ -39,7 +39,7 @@ namespace Spaces.Scripts.Space
         /// <returns></returns>
         private SpaceInstance ActiveSpace()
         {
-            return activeSpace == null ? null : activeSpace;
+            return activeSpace;
         }
         /// <summary>
         /// 
