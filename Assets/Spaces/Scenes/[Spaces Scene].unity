@@ -138,6 +138,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Button] Cube'
       objectReference: {fileID: 0}
+    - target: {fileID: 2439961678570272829, guid: 744e67b313d3ded4387babbce54ec5fe,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interface
+      objectReference: {fileID: 0}
     - target: {fileID: 2439961678570272830, guid: 744e67b313d3ded4387babbce54ec5fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -595,6 +600,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2439961678570272829, guid: 744e67b313d3ded4387babbce54ec5fe,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interface
+      objectReference: {fileID: 0}
     - target: {fileID: 2439961678570272830, guid: 744e67b313d3ded4387babbce54ec5fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -839,6 +849,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Button] Totemiser'
       objectReference: {fileID: 0}
+    - target: {fileID: 803877389267308223, guid: 7ad9129e9a4b02249ab92dba3713c07f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interface
+      objectReference: {fileID: 0}
     - target: {fileID: 3746297202577936416, guid: 7ad9129e9a4b02249ab92dba3713c07f,
         type: 3}
       propertyPath: m_Mesh
@@ -857,6 +872,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Space Manager]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 942244880460756894, guid: 6f7ebaf0231adc541bc36389d802f784,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interface
       objectReference: {fileID: 0}
     - target: {fileID: 3860611089836490402, guid: 6f7ebaf0231adc541bc36389d802f784,
         type: 3}

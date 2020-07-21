@@ -1,4 +1,5 @@
 ﻿using Spaces.Scripts.Player;
+using Spaces.Scripts.Space;
 using Spaces.Scripts.User_Interface.Interface_Elements;
 using Spaces.Scripts.Utilities;
 using TMPro;
@@ -15,7 +16,8 @@ namespace Spaces.Scripts.Objects
 
         private Button Button => GetComponentInChildren<Button>();
         private TextMeshPro Label => GetComponentInChildren<TextMeshPro>();
-        private static ObjectCreatorManager Manager => Reference.Player().GetComponent<ObjectCreatorManager>();
+        private static ObjectCreatorManager ObjectCreatorManager => Reference.Player().GetComponent<ObjectCreatorManager>();
+        private static SpaceManager SpaceManager => Reference.Player().GetComponent<SpaceManager>();
         
         /// <summary>
         /// Sets the state of the button at start and adds listeners for object creation
@@ -32,7 +34,7 @@ namespace Spaces.Scripts.Objects
         private void CreateObject()
         {
             // Create placeholder object, named after the object
-            GameObject placeholder = Set.Object(null, labelText, Manager.CreationLocation());
+            GameObject placeholder = Set.Object(null, labelText, ObjectCreatorManager.CreationLocation());
             // Add required scripts (object totem has to be added first!)
             placeholder.AddComponent<ObjectTotem>();
             ObjectInstance objectInstance = placeholder.AddComponent<ObjectInstance>();

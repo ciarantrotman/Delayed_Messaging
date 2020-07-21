@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Delayed_Messaging.Scripts.Player.Locomotion;
+using Spaces.Scripts.Player.Locomotion;
 using UnityEngine;
 
 namespace Spaces.Scripts.Utilities

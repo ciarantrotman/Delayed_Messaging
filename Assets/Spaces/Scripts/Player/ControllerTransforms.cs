@@ -22,37 +22,35 @@ namespace Spaces.Scripts.Player
         public const float MaxAngle = 110f, MinAngle = 60f, Trigger = .7f, Sensitivity = 10f, Tolerance = .1f;
         public readonly List<Vector2> rJoystickValues = new List<Vector2>(), lJoystickValues = new List<Vector2>();
 
-        [Serializable] public struct EventTracker
+        [Serializable] public class EventTracker
         {
             public enum EventType { START, STAY, END }
             
             private bool current;
             private bool previous;
 
-            public UnityEvent onStart;
-            public UnityEvent onStay;
-            public UnityEvent onEnd;
-
+            public UnityEvent onStart, onStay, onEnd;
+            
             public void CheckState(bool currentState)
             {
                 current = currentState;
 
                 if (current && !previous)
                 {
-                    onStart.Invoke();
+                    onStart?.Invoke();
                 }
                 if (current && previous)
                 {
-                    onStay.Invoke();
+                    onStay?.Invoke();
                 }
                 if (!current && previous)
                 {
-                    onEnd.Invoke();
+                    onEnd?.Invoke();
                 }
 
                 previous = current;
             }
-
+            
             public UnityEvent Event(EventType eventType)
             {
                 switch (eventType)
@@ -68,6 +66,7 @@ namespace Spaces.Scripts.Player
                 }
             }
         }
+
         [Serializable] public struct CastGameObjects
         {
             public GameObject parent;
@@ -396,20 +395,6 @@ namespace Spaces.Scripts.Player
                     return false;
             }
         }
-        public UnityEvent SelectEvent(Check check, EventTracker.EventType eventType)
-        {
-            switch (check)
-            {
-                case Check.LEFT:
-                    return leftSelect.Event(eventType);
-                case Check.RIGHT:
-                    return rightSelect.Event(eventType);
-                case Check.HEAD:
-                    return null;
-                default:
-                    return null;
-            }
-        }
         public bool Grab(Check check)
         {
             switch (check)
@@ -424,20 +409,6 @@ namespace Spaces.Scripts.Player
                     return false;
             }
         }
-        public UnityEvent GrabEvent(Check check, EventTracker.EventType eventType)
-        {
-            switch (check)
-            {
-                case Check.LEFT:
-                    return leftGrab.Event(eventType);
-                case Check.RIGHT:
-                    return rightGrab.Event(eventType);
-                case Check.HEAD:
-                    return null;
-                default:
-                    return null;
-            }
-        }
         public bool Menu(Check check)
         {
             switch (check)
@@ -450,20 +421,6 @@ namespace Spaces.Scripts.Player
                     return false;
                 default:
                     return false;
-            }
-        }
-        public UnityEvent MenuEvent(Check check, EventTracker.EventType eventType)
-        {
-            switch (check)
-            {
-                case Check.LEFT:
-                    return leftMenu.Event(eventType);
-                case Check.RIGHT:
-                    return rightMenu.Event(eventType);
-                case Check.HEAD:
-                    return null;
-                default:
-                    return null;
             }
         }
         public Vector3 ForwardVector(Check check)
@@ -508,20 +465,6 @@ namespace Spaces.Scripts.Player
                     return false;
             }
         }
-        public UnityEvent JoystickEvent(Check check, EventTracker.EventType eventType)
-        {
-            switch (check)
-            {
-                case Check.LEFT:
-                    return leftJoystick.Event(eventType);
-                case Check.RIGHT:
-                    return rightJoystick.Event(eventType);
-                case Check.HEAD:
-                    return null;
-                default:
-                    return null;
-            }
-        }
         public Vector3 LocalPosition(Check check)
         {
             switch (check)
@@ -534,6 +477,63 @@ namespace Spaces.Scripts.Player
                     return CameraLocalPosition();
                 default:
                     return Vector3.zero;
+            }
+        }
+        // Events
+        public UnityEvent SelectEvent(Check check, EventTracker.EventType eventType)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftSelect.Event(eventType);
+                case Check.RIGHT:
+                    return rightSelect.Event(eventType);
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
+            }
+        }
+        public UnityEvent GrabEvent(Check check, EventTracker.EventType eventType)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftGrab.Event(eventType);
+                case Check.RIGHT:
+                    return rightGrab.Event(eventType);
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
+            }
+        }
+        public UnityEvent MenuEvent(Check check, EventTracker.EventType eventType)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftMenu.Event(eventType);
+                case Check.RIGHT:
+                    return rightMenu.Event(eventType);
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
+            }
+        }
+        public UnityEvent JoystickEvent(Check check, EventTracker.EventType eventType)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftJoystick.Event(eventType);
+                case Check.RIGHT:
+                    return rightJoystick.Event(eventType);
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
             }
         }
     }

@@ -1,10 +1,13 @@
-﻿using Spaces.Scripts.User_Interface.Interface_Elements;
+﻿using Spaces.Scripts.Player;
+using Spaces.Scripts.User_Interface.Interface_Elements;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
+using Event = Spaces.Scripts.Player.ControllerTransforms.EventTracker.EventType;
 
 namespace Spaces.Scripts.User_Interface
 {
-    public class IndirectInteraction: MonoBehaviour
+    public class IndirectInterface: InteractionController
     {
         private GameObject rayParent;
         private LineRenderer ray;
@@ -28,7 +31,7 @@ namespace Spaces.Scripts.User_Interface
         {
             float rayDistance = Offset;
 
-            if (Physics.Raycast(origin, vector, out RaycastHit hit, range) && hit.transform.CompareTag(BaseInterface.Button) && rayEnabled)
+            if (Physics.Raycast(origin, vector, out RaycastHit hit, range) && hit.transform.CompareTag(BaseInterface.Interface) && rayEnabled)
             {
                 // Create a new button cache
                 Button newButton = hit.transform.GetComponent<Button>();
@@ -82,16 +85,30 @@ namespace Spaces.Scripts.User_Interface
         }
         
         // Wrappers for button events
-        public void ButtonSelect()
+        protected override void Select()
         {
-            if (extantButton && button.interactionType != BaseInterface.InteractionType.DIRECT && button.triggerType != BaseInterface.TriggerType.GRAB)
+            if (extantButton)
             {
                 button.buttonSelect.Invoke();
             }
         }
-        public void ButtonGrab()
+        protected override void GrabStart()
         {
             if (!extantButton) return;
+            button.grabStart.Invoke();
         }
+        
+        protected override void GrabStay()
+        {
+            if (!extantButton) return;
+            button.grabStay.Invoke();
+        }
+        
+        protected override void GrabEnd()
+        {
+            if (!extantButton) return;
+            button.grabEnd.Invoke();
+        }
+        
     }
 }

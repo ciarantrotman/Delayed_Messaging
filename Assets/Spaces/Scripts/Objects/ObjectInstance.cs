@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Spaces.Scripts.Space;
 using UnityEngine;
 
 namespace Spaces.Scripts.Objects
@@ -49,6 +50,7 @@ namespace Spaces.Scripts.Objects
         //public UnityEvent totemise, objectise;
 
         // Core object information
+        private static SpaceManager SpaceManager => Reference.SpaceManager();
         private ObjectTotem ObjectTotem => GetComponent<ObjectTotem>();
         public RelativeTransform relativeTransform = new RelativeTransform();
         public TotemState totemState;
@@ -146,6 +148,8 @@ namespace Spaces.Scripts.Objects
             SetTotemState(objectClass.spawnState);
             // Set the relative transform for the object
             relativeTransform.SetRelativeTransform(CurrentLocation());
+            // Register the object with the space manager
+            SpaceManager.ObjectRegistration(this);
         }
         /// <summary>
         /// This is the same as "recreating" an extant object

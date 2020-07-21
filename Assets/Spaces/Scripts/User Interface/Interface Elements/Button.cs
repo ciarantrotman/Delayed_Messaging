@@ -9,7 +9,7 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
 
         protected override void Initialise()
         {
-            gameObject.tag = Button;
+            gameObject.tag = Interface;
         }
 
         public void HoverStart()

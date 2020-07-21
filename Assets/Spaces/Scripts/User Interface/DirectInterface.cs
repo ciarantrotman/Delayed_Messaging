@@ -1,10 +1,11 @@
 ﻿using Spaces.Scripts.User_Interface.Interface_Elements;
 using UnityEngine;
+using UnityEngine.Events;
 using Button = Spaces.Scripts.User_Interface.Interface_Elements.Button;
 
 namespace Spaces.Scripts.User_Interface
 {
-    public class DirectInteraction : MonoBehaviour
+    public class DirectInterface : InteractionController
     {
         private Button button;
         private bool extantButton;
@@ -21,19 +22,25 @@ namespace Spaces.Scripts.User_Interface
             directCollider.radius = radius;
         }
 
-        public void ButtonGrabStart()
+        protected override void Select()
+        {
+            if (!extantButton) return;
+            button.buttonSelect.Invoke();
+        }
+
+        protected override void GrabStart()
         {
             if (!extantButton) return;
             button.grabStart.Invoke();
         }
         
-        public void ButtonGrabStay()
+        protected override void GrabStay()
         {
             if (!extantButton) return;
             button.grabStay.Invoke();
         }
         
-        public void ButtonGrabEnd()
+        protected override void GrabEnd()
         {
             if (!extantButton) return;
             button.grabEnd.Invoke();
@@ -41,7 +48,7 @@ namespace Spaces.Scripts.User_Interface
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag(BaseInterface.Button)) return;
+            if (!other.CompareTag(BaseInterface.Interface)) return;
             
             // Create a new button cache
             Button newButton = other.transform.GetComponent<Button>();
@@ -60,7 +67,7 @@ namespace Spaces.Scripts.User_Interface
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag(BaseInterface.Button) && other.GetComponent<Button>() == button && extantButton)
+            if (other.CompareTag(BaseInterface.Interface) && other.GetComponent<Button>() == button && extantButton)
             {
                 // You are no longer near at a button, set the last button to not being hovered on
                 button.HoverEnd();

@@ -9,7 +9,7 @@ namespace Spaces.Scripts.Objects
     { 
         [Header("Label Settings")]
         [SerializeField] private string labelText;
-        private ObjectSelectionController ObjectSelectionController => Reference.Player().GetComponent<ObjectSelectionController>();
+        private static ObjectInteractionController ObjectSelectionController => Reference.Player().GetComponent<ObjectInteractionController>();
         private Button Button => GetComponentInChildren<Button>();
         private TextMeshPro Label => GetComponentInChildren<TextMeshPro>();
 

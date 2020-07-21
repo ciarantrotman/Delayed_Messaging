@@ -10,14 +10,14 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
     public class SceneWipe : MonoBehaviour
     {
         private ControllerTransforms controller;
-        private Locomotion locomotion;
+        private Spaces.Scripts.Player.Locomotion.Locomotion locomotion;
         private MeshRenderer sceneWipeRenderer;
         private static readonly int Fade = Shader.PropertyToID("_Fade");
         
         private const float Value = .51f;
         private float value = -Value;
 
-        public void Initialise(ControllerTransforms transforms, Locomotion l)
+        public void Initialise(ControllerTransforms transforms, Spaces.Scripts.Player.Locomotion.Locomotion l)
         {
             controller = transforms;
             locomotion = l;

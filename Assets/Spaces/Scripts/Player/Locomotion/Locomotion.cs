@@ -1,30 +1,23 @@
 ﻿using System;
 using System.Collections;
+using Delayed_Messaging.Scripts.Player.Locomotion;
 using DG.Tweening;
-using Spaces.Scripts.Player;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
 
-namespace Delayed_Messaging.Scripts.Player.Locomotion
+namespace Spaces.Scripts.Player.Locomotion
 {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(ControllerTransforms))]
     public class Locomotion : MonoBehaviour
     {
         private LocomotionPositionPreview positionPreview;
         private Cast cast;
         private GameObject cameraNormalised;
         
-        private bool cTouchR;
-        private bool cTouchL;
-        private bool pTouchR;
-        private bool pTouchL;
+        private bool cTouchR, cTouchL, pTouchR, pTouchL;
 
         private Vector3 rRotTarget;
         private bool active;
-
-        private Vector3 customRotation;
-        private Vector3 customPosition;
 
         public enum Method
         {
@@ -51,13 +44,12 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
         [SerializeField, Space(5)] private GameObject targetVisual;
         [SerializeField] private Material lineRenderMat;
         
-        private ControllerTransforms controller;
+        private ControllerTransforms Controller => GetComponentInParent<ControllerTransforms>();
 
         private void Start()
         {
-            controller = GetComponent<ControllerTransforms>();
             cast = gameObject.AddComponent<Cast>();
-            cast.SetupCastObjects(targetVisual, transform, "Locomotion", lineRenderMat, ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, .01f, controller);
+            cast.SetupCastObjects(targetVisual, transform, "Locomotion", lineRenderMat, ControllerTransforms.MaxAngle, ControllerTransforms.MinAngle, maximumMoveDistance, minimumMoveDistance, .01f, Controller);
             cameraNormalised = new GameObject("[Locomotion/Temporary]");
             SetupGameObjects();
         }
@@ -67,26 +59,26 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
             ghost = Instantiate(ghost);
             ghost.name = "[Locomotion/Ghost]";
             positionPreview = ghost.GetComponent<LocomotionPositionPreview>();
-            positionPreview.controller = controller;
+            positionPreview.controller = Controller;
             positionPreview.GhostToggle(null, false);
         }
 
         private void LateUpdate()
         {
-            cTouchR = controller.Joystick(ControllerTransforms.Check.RIGHT);
-            cTouchL = controller.Joystick(ControllerTransforms.Check.LEFT);
+            cTouchR = Controller.Joystick(ControllerTransforms.Check.RIGHT);
+            cTouchL = Controller.Joystick(ControllerTransforms.Check.LEFT);
 
             this.JoystickGestureDetection(
-                controller.JoyStick(ControllerTransforms.Check.RIGHT), controller.rJoystickValues[0], angle, rotateSpeed, 
+                Controller.JoyStick(ControllerTransforms.Check.RIGHT), Controller.rJoystickValues[0], angle, rotateSpeed, 
                 ControllerTransforms.Trigger, ControllerTransforms.Tolerance,
                 cast.rCastObject.visual, cast.rCastObject.lineRenderer, cTouchR, pTouchR, disableRightHand, active);
             this.JoystickGestureDetection(
-                controller.JoyStick(ControllerTransforms.Check.LEFT), controller.lJoystickValues[0], angle, rotateSpeed,
+                Controller.JoyStick(ControllerTransforms.Check.LEFT), Controller.lJoystickValues[0], angle, rotateSpeed,
                 ControllerTransforms.Trigger, ControllerTransforms.Tolerance,
                 cast.lCastObject.visual, cast.lCastObject.lineRenderer, cTouchL, pTouchL, disableLeftHand, active);
             
-            pTouchR = controller.Joystick(ControllerTransforms.Check.RIGHT);
-            pTouchL = controller.Joystick(ControllerTransforms.Check.LEFT);
+            pTouchR = Controller.Joystick(ControllerTransforms.Check.RIGHT);
+            pTouchL = Controller.Joystick(ControllerTransforms.Check.LEFT);
         }
 
         private static Vector3 RotationAngle(Transform target, float a)
@@ -97,11 +89,11 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
 
         public void RotateUser(float a, float time)
         {
-            if(transform.parent == cameraNormalised.transform || !rotation) return;
+            if (transform.parent == cameraNormalised.transform || !rotation) return;
             active = true;
             
-            controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
-            controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
+            Controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
+            Controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
             
             transform.SetParent(cameraNormalised.transform);
             cameraNormalised.transform.DORotate(RotationAngle(cameraNormalised.transform, a), time);
@@ -120,8 +112,8 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
         {
             if (transform.parent == cameraNormalised.transform) return;
             
-            controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
-            controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
+            Controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
+            Controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
             transform.SetParent(cameraNormalised.transform);
             
             switch (locomotionMethod)
@@ -148,8 +140,8 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
 
         public void CustomLocomotion(Vector3 targetPosition, Vector3 targetRotation, Method method, float time = 0f)
         {
-            controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
-            controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
+            Controller.Transform(ControllerTransforms.Check.HEAD).SplitRotation(cameraNormalised.transform, false);
+            Controller.Transform(ControllerTransforms.Check.HEAD).SplitPosition(transform, cameraNormalised.transform);
             transform.SetParent(cameraNormalised.transform);
             switch (method)
             {
@@ -168,34 +160,12 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
                     throw new ArgumentException();
             }
         }
-
-        private void CustomWipe()
-        {
-            cameraNormalised.transform.position = customPosition;
-            cameraNormalised.transform.eulerAngles = customRotation;
-            transform.SetParent(null);
-            active = false;
-        }
-        
         private IEnumerator Uncouple(Transform a, float time)
         {
-            SetVignette(vignetteStrength);
             yield return new WaitForSeconds(time);
             a.SetParent(null);
             active = false;
-            SetVignette(0);
             yield return null;
-        }
-
-        private void SetVignette(float intensity)
-        {
-            if (!motionSicknessVignette) return;
-            //vignetteLayer.intensity.value = intensity;
-        }
-        
-        public void SceneWipe()
-        {
-            //StartCoroutine(sceneWipe.SceneWipeStart(sceneWipeDuration));
         }
     }
 }
