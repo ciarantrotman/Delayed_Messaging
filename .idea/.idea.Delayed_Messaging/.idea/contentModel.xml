@@ -403,6 +403,9 @@
               </e>
             </e>
             <e p="Space" t="Include">
+              <e p="Space Classes" t="Include">
+                <e p="SpaceClass.cs" t="Include" />
+              </e>
               <e p="SpaceInstance.cs" t="Include" />
               <e p="SpaceManager.cs" t="Include" />
             </e>
@@ -416,6 +419,10 @@
                 <e p="IndirectInterface.cs" t="Include" />
                 <e p="InterfaceInteractionController.cs" t="Include" />
               </e>
+              <e p="Object Interface" t="Include">
+                <e p="ContextualObjectMetadata.cs" t="Include" />
+              </e>
+              <e p="UserInterfaceController.cs" t="Include" />
             </e>
             <e p="Utilities" t="Include">
               <e p="Cast.cs" t="Include" />

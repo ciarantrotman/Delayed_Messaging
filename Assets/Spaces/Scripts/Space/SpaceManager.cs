@@ -1,61 +1,155 @@
 ﻿using System;
 using System.Collections.Generic;
 using Spaces.Scripts.Objects;
+using Spaces.Scripts.Objects.Object_Classes;
+using Spaces.Scripts.Objects.Object_Creation;
+using Spaces.Scripts.Player;
+using Spaces.Scripts.Space.Space_Classes;
+using Spaces.Scripts.User_Interface.Interface_Elements;
+using Spaces.Scripts.Utilities;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Spaces.Scripts.Space
 {
     public class SpaceManager : MonoBehaviour
     {
-        public List<SpaceInstance> spaces = new List<SpaceInstance>();
+        [SerializeField] private ObjectClass spaceClass;
+        public Button spaceButton;
         
-        [SerializeField] private SpaceInstance activeSpace;
+        [Space(10)] public List<SpaceInstance> spaces = new List<SpaceInstance>();
         
-        private void Awake()
+        private GameObject spaceButtonParent;
+        private SpaceInstance activeSpace;
+
+        private static ControllerTransforms Controller => Reference.Player().GetComponent<ControllerTransforms>();
+        private static ObjectCreatorManager ObjectCreatorManager => Reference.Player().GetComponent<ObjectCreatorManager>();
+        
+        // ------------------------------------------------------------------------------------------------------------
+        
+        private void InitialiseSpaceButton()
         {
-            gameObject.tag = Reference.SpaceManagerTag;
-            LoadSpace(ActiveSpace());
+            // Create the parent for the space button
+            spaceButtonParent = Set.Object(gameObject, "[Space Button]", Vector3.zero);
+            
+            // Add and configure the collider
+            SphereCollider buttonCollider = spaceButtonParent.AddComponent<SphereCollider>();
+            buttonCollider.radius = .15f;
+            buttonCollider.isTrigger = true;
+            
+            // Add and configure the button component
+            //spaceButton = spaceButtonParent.AddComponent<Button>();
+            //spaceButton.ConfigureInterface(BaseInterface.TriggerType.GRAB, BaseInterface.InteractionType.DIRECT);
+            
+            // Add listener to create new scene
+            spaceButton.buttonSelect.AddListener(CreateSpace);
+        }
+        /// <summary>
+        /// Wrapper to create a new scene
+        /// </summary>
+        private void CreateSpace()
+        {
+            SpaceInstance cachedSpace = ActiveSpace();
+            
+            // Load a new space, if the active space is null, or the active space doesn't have a parent,
+            // a new space will be made
+            LoadSpace(cachedSpace.ParentSpace());
+            
+            // Take the active scene and totemise it, that will then be added to the new space
+            // Feed in the parent of the current space so it can be unloaded
+            cachedSpace.TotemiseSpace();
+        }
+        /// <summary>
+        /// Loads the supplied space
+        /// If there isn't one supplied it will create a new one
+        /// </summary>
+        /// <param name="spaceInstance"></param>
+        internal void LoadSpace(SpaceInstance spaceInstance = null)
+        {
+            // If a space is supplied, set that to active, otherwise create a new one
+            if (spaceInstance != null)
+            {
+                SetActiveSpace(spaceInstance);
+                spaces.Add(ActiveSpace());
+            }
+            else
+            {
+                spaces.Add(NewActiveSpace());
+            }
+
+            // Load that active scene up
+            ActiveSpace().LoadSpace();
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="spaceInstance"></param>
-        private void LoadSpace(SpaceInstance spaceInstance)
+        public void UnloadSpace(SpaceInstance spaceInstance)
         {
-            spaces.Add(spaceInstance == null ? CreateNewSpace() : ActiveSpace());
+            spaceInstance.UnloadSpace();
         }
         /// <summary>
-        /// 
+        /// Generates a new space and makes it the active space
         /// </summary>
         /// <returns></returns>
-        private SpaceInstance CreateNewSpace()
+        private SpaceInstance NewActiveSpace()
         {
-            SetActiveSpace(gameObject.AddComponent<SpaceInstance>());
+            // Create a new gameobject, and parent it to the space manager
+            ObjectCreatorManager.CreateSpace($"[Space {spaces.Count + 1}]", spaceClass, gameObject, out SpaceInstance spaceInstance);
+
+            // Create a new space instance, then add it to that placeholder gameobject, then make it the active scene
+            SetActiveSpace(spaceInstance);
+            
+            // Return the active space
             return ActiveSpace();
         }
         /// <summary>
-        /// 
+        /// Returns the active space
         /// </summary>
         /// <returns></returns>
-        private SpaceInstance ActiveSpace()
+        internal SpaceInstance ActiveSpace()
         {
             return activeSpace;
         }
         /// <summary>
-        /// 
+        /// Sets a supplied space to the active space
         /// </summary>
         /// <param name="spaceInstance"></param>
-        private void SetActiveSpace(SpaceInstance spaceInstance)
+        public void SetActiveSpace(SpaceInstance spaceInstance)
         {
             activeSpace = spaceInstance;
         }
         /// <summary>
-        /// 
+        /// Adds a supplied object to the active scene
         /// </summary>
         /// <param name="objectInstance"></param>
         public void ObjectRegistration(ObjectInstance objectInstance)
         {
+            // Only gets called when making your first scene, after that there will always be an active scene
+            if (ActiveSpace() == null) return;
+            Debug.Log($"Registering {objectInstance.name} with {ActiveSpace().name}");
             ActiveSpace().AddObject(objectInstance);
+        }
+        
+        // ------------------------------------------------------------------------------------------------------------
+        
+        private void Awake()
+        {
+            // Set the tag of this so it can be found
+            gameObject.tag = Reference.SpaceManagerTag;
+
+            // Initialise the button to trigger a new scene 
+            InitialiseSpaceButton();
+            
+            // Load in the active scene - if no active scene is provided, an empty one will be created
+            //
+            // NewActiveSpace(defaultSpace.GetComponent<SpaceInstance>());
+            LoadSpace(ActiveSpace());
+        }
+
+        private void FixedUpdate()
+        {
+            spaceButtonParent.transform.LerpTransform(Controller.Transform(ControllerTransforms.Check.HEAD), .75f);
         }
     }
 }

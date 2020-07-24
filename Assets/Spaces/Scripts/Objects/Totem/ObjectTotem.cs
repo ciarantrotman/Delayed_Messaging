@@ -1,12 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using Spaces.Scripts.Objects.Object_Classes;
+using Spaces.Scripts.Utilities;
+using UnityEngine;
+using VR_Prototyping.Plugins.QuickOutline.Scripts;
 
-namespace Spaces.Scripts.Objects
+namespace Spaces.Scripts.Objects.Totem
 {
     public class ObjectTotem : MonoBehaviour
     {
-        private bool extant;
-        private ObjectInstance objectInstance;
+        private bool extant, outline;
         public GameObject objectObject, totemObject;
+        public Outline objectOutline, totemOutline;
+        
+        // ------------------------------------------------------------------------------------------------------------
 
         /// <summary>
         /// Called only once, when the object is first created
@@ -14,15 +20,18 @@ namespace Spaces.Scripts.Objects
         /// <param name="parent"></param>
         /// <param name="objectClass"></param>
         /// <param name="instance"></param>
-        public void InstantiateObjectTotem(Transform parent, ObjectClass objectClass, ObjectInstance instance)
+        public void InstantiateObjectTotem(Transform parent, ObjectClass objectClass, ObjectInstance instance = null)
         {
             if (extant) return;
             extant = true;
             
+            // Create the relevant objects
             objectObject = Create(objectClass.objectObject, parent);
             totemObject = Create(objectClass.totemObject, parent);
 
-            objectInstance = instance;
+            // Add outlines for the objects
+            objectOutline = objectObject.Outline(objectClass.objectOutline);
+            totemOutline = totemObject.Outline(objectClass.totemOutline);
         }
         /// <summary>
         /// Creates a new object and sets it to inactive in the same frame
@@ -60,13 +69,51 @@ namespace Spaces.Scripts.Objects
             switch (state)
             {
                 case ObjectInstance.TotemState.TOTEM:
+                    // Set the outline for the active object to false, then disable the object
+                    if (outline)
+                    {
+                        Outline(ObjectInstance.TotemState.OBJECT, false);
+                    }
                     objectObject.SetActive(false);
+                    
+                    // Set the totem active, then enable the outline
                     totemObject.SetActive(true);
-                    return;
+                    if (outline)
+                    {
+                        Outline(ObjectInstance.TotemState.TOTEM, true);
+                    }
+                    break;
                 case ObjectInstance.TotemState.OBJECT:
-                    objectObject.SetActive(true);
+                    // Disable the outline on the totem, then disable the totem
+                    if (outline)
+                    {
+                        Outline(ObjectInstance.TotemState.TOTEM, false);
+                    }
                     totemObject.SetActive(false);
-                    return;
+
+                    // Then enable the object and enable its outline
+                    objectObject.SetActive(true);
+                    if (outline)
+                    {
+                        Outline(ObjectInstance.TotemState.OBJECT, true);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void Outline(ObjectInstance.TotemState totemState, bool state)
+        {
+            outline = state;
+            switch (totemState)
+            {
+                case ObjectInstance.TotemState.TOTEM:
+                    totemOutline.enabled = state;
+                    break;
+                case ObjectInstance.TotemState.OBJECT:
+                    objectOutline.enabled = state;
+                    break;
                 default:
                     return;
             }

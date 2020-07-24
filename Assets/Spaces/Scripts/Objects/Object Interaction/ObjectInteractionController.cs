@@ -1,4 +1,6 @@
 ﻿using Spaces.Scripts.Player;
+using Spaces.Scripts.Space;
+using Spaces.Scripts.User_Interface;
 using UnityEngine;
 
 namespace Spaces.Scripts.Objects.Object_Interaction
@@ -12,10 +14,42 @@ namespace Spaces.Scripts.Objects.Object_Interaction
         [Header("Direct Interaction Settings")]
         [Range(0f, .05f), SerializeField] private float directRadius = .025f;
         
-        private ControllerTransforms Controller => GetComponent<ControllerTransforms>();
+        private static ControllerTransforms Controller => Reference.Player().GetComponent<ControllerTransforms>();
+        private static UserInterfaceController UserInterfaceController => Reference.Player().GetComponent<UserInterfaceController>();
         private IndirectObject dominantIndirect, nondominantIndirect;
         private ObjectInstance focusObject;
+        
+        // ------------------------------------------------------------------------------------------------------------
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ObjectInstance FocusObject()
+        {
+            return focusObject;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public SpaceInstance FocusSpace()
+        {
+            return focusObject.GetComponent<SpaceInstance>();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="objectInstance"></param>
+        /// <param name="check"></param>
+        public void SetFocusObject(ObjectInstance objectInstance, ControllerTransforms.Check check)
+        {
+            focusObject = objectInstance;
+            UserInterfaceController.SetObjectMetadata(focusObject, Controller.Transform(check));
+        }
 
+        // ------------------------------------------------------------------------------------------------------------
+        
         /// <summary>
         /// Creates all required objects and adds global button event listeners
         /// </summary>
@@ -26,8 +60,8 @@ namespace Spaces.Scripts.Objects.Object_Interaction
             dominantIndirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<IndirectObject>();
             
             // Initialise the indirect interfaces
-            nondominantIndirect.Initialise(gameObject, "[Object] [Indirect / Non-Dominant]", material, range);
-            dominantIndirect.Initialise(gameObject, "[Object] [Indirect / Dominant]", material, range);
+            nondominantIndirect.Initialise(gameObject, "[Object] [Indirect / Non-Dominant]", material, range, ControllerTransforms.Check.LEFT);
+            dominantIndirect.Initialise(gameObject, "[Object] [Indirect / Dominant]", material, range, ControllerTransforms.Check.RIGHT);
             
             // Add indirect event listeners
             nondominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);
@@ -48,17 +82,6 @@ namespace Spaces.Scripts.Objects.Object_Interaction
                 indirectRadius,
                 range,
                 true);
-        }
-
-        public ObjectInstance FocusObject()
-        {
-            return focusObject;
-        }
-
-        public void SetFocusObject(ObjectInstance objectInstance)
-        {
-            Debug.Log($"{objectInstance.name} set as focus object");
-            focusObject = objectInstance;
         }
     }
 }

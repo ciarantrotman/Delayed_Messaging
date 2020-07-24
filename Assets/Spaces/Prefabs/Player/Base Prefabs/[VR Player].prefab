@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 7473554891637304817}
   - component: {fileID: 7473554891637304831}
   - component: {fileID: 3849967000324366259}
+  - component: {fileID: 1000955370548509105}
   m_Layer: 0
   m_Name: '[VR Player]'
   m_TagString: Player
@@ -236,6 +237,19 @@ MonoBehaviour:
   range: 5
   material: {fileID: 2100000, guid: db79bbb8a0f517843aae9f7e040717c4, type: 2}
   radius: 0.05
+--- !u!114 &1000955370548509105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976386972615268133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3698d6485823e4194951de2e9baac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contextualObjectMetadata: {fileID: 0}
 --- !u!1001 &8467027769127916243
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -28,8 +28,8 @@ namespace Spaces.Scripts.User_Interface
             dominantIndirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<IndirectInterface>();
             
             // Initialise the indirect interfaces
-            nondominantIndirect.Initialise(gameObject, "[Interface] [Indirect / Non-Dominant]", material);
-            dominantIndirect.Initialise(gameObject, "[Interface] [Indirect / Dominant]", material);
+            nondominantIndirect.Initialise(gameObject, "[Interface] [Indirect / Non-Dominant]", material, ControllerTransforms.Check.LEFT);
+            dominantIndirect.Initialise(gameObject, "[Interface] [Indirect / Dominant]", material, ControllerTransforms.Check.RIGHT);
             
             // Add indirect event listeners
             nondominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);

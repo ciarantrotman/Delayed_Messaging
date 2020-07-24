@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
+using Spaces.Scripts.Objects.Object_Classes;
+using Spaces.Scripts.Objects.Totem;
 using Spaces.Scripts.Space;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
+using VR_Prototyping.Plugins.QuickOutline.Scripts;
 
 namespace Spaces.Scripts.Objects
 {
     [RequireComponent(typeof(ObjectTotem))]
     public class ObjectInstance : MonoBehaviour, IInteractive
     {
-        public const string Object = "Object";
         /// <summary>
         /// This is the relative transform of the object - relative to the origin of the scene that it is in
         /// </summary>
@@ -34,7 +38,7 @@ namespace Spaces.Scripts.Objects
                 }
             }
             public List<Location> locations = new List<Location>();
-
+            public Location CurrentLocation => locations[locations.Count - 1];
             /// <summary>
             /// Add the input values into a location struct, then store that in a list of locations
             /// This can be used to "undo" moves
@@ -45,25 +49,39 @@ namespace Spaces.Scripts.Objects
                 locations.Add(location);
             }
         }
+        
+        // ------------------------------------------------------------------------------------------------------------
+        
         /// <summary>
         /// This is used to reference what state any given object is in
         /// </summary>
         public enum TotemState { TOTEM, OBJECT }
+        public const string Object = "Object";
         //public UnityEvent totemise, objectise;
 
         // Core object information
         private static SpaceManager SpaceManager => Reference.SpaceManager();
         private ObjectTotem ObjectTotem => GetComponent<ObjectTotem>();
         public RelativeTransform relativeTransform = new RelativeTransform();
-        public TotemState totemState;
+        public TotemState totemState, cachedTotemState;
+        public ObjectClass objectClass;
         private bool extant;
         
+        // ------------------------------------------------------------------------------------------------------------
+
         /// <summary>
         /// Defines the object state of the object
         /// </summary>
         /// <param name="state"></param>
-        private void SetTotemState(TotemState state)
+        /// <param name="cacheState"></param>
+        public void SetTotemState(TotemState state, bool cacheState = false)
         {
+            // This is how the object remembers its state when being totemised by a scene
+            if (cacheState)
+            {
+                cachedTotemState = totemState;
+            }
+            
             switch (state)
             {
                 case TotemState.TOTEM:
@@ -115,73 +133,76 @@ namespace Spaces.Scripts.Objects
             location.DefineLocation(objectTransform.position, objectTransform.eulerAngles);
             return location;
         }
-        /// <summary>
-        /// Called whenever an object is created, either for the first time, or when transitioning between spaces
-        /// </summary>
-        public void CreateObject(ObjectClass objectClass = null)
-        {
-            switch (extant)
-            {
-                // When the object is being created the first time and a class is fed through
-                case false when objectClass != null:
-                    CreateNewObject(objectClass);
-                    return;
-                // When the object is being removed from an inventory, space totem, or a space is being loaded 
-                case true:
-                    CreateExtantObject();
-                    return;
-                // Only reachable when no object class is provided when it's needed
-                default:
-                    Debug.LogError("Object Class Missing");
-                    return;
-            }
-        }
+
         /// <summary>
         /// Logic for the first time the object is created
         /// </summary>
-        /// <param name="objectClass"></param>
-        private void CreateNewObject(ObjectClass objectClass)
+        /// <param name="supplyObjectClass"></param>
+        /// <param name="register"></param>
+        public void CreateNewObject(ObjectClass supplyObjectClass, bool register = true)
         {
+            // Cache object class
+            objectClass = supplyObjectClass;
             // Feed through the object class data
-            ObjectTotem.InstantiateObjectTotem(transform, objectClass, this);
+            ObjectTotem.InstantiateObjectTotem(transform, supplyObjectClass, this);
             // Reconfigure the script to read as spawned
             ExtantState();
             // Set the state of the new object
-            SetTotemState(objectClass.spawnState);
+            SetTotemState(supplyObjectClass.spawnState);
             // Set the relative transform for the object
             relativeTransform.SetRelativeTransform(CurrentLocation());
             // Register the object with the space manager
+            string a = register ? "observed" : "ignored";
+            Debug.Log($"Registration of {supplyObjectClass.name} {a}.");
+            if (!register) return;
             SpaceManager.ObjectRegistration(this);
         }
         /// <summary>
         /// This is the same as "recreating" an extant object
         /// </summary>
-        private void CreateExtantObject()
+        public void CreateExtantObject(SpaceInstance.SpaceData data, Vector3 origin)
         {
-            Debug.LogWarning("You haven't gotten to this yet!");
+            // Cache reference
+            Transform objectTransform = transform;
+            
+            // Set its cached totem state
+            SetTotemState(data.objectState);
+            
+            // Snap to space totem
+            objectTransform.position = origin;
+            objectTransform.localScale = Vector3.zero;
+
+            // Calculate how long it should take to reload
+            float duration = Vector3.Distance(objectTransform.position, data.objectLocation.position);
+            
+            // Tween to supplied location
+            objectTransform.DOLocalMove(data.objectLocation.position, duration);
+            objectTransform.DOLocalRotate(data.objectLocation.rotation, duration);
+            objectTransform.DOScale(Vector3.one, duration);
         }
         
-        // -----
+        // ------------------------------------------------------------------------------------------------------------
+        
         /// <summary>
         /// 
         /// </summary>
         public void HoverStart()
         {
-            Debug.Log($"{name}: Hover Start");
+            ObjectTotem.Outline(totemState, true);
         }
         /// <summary>
         /// 
         /// </summary>
         public void HoverEnd()
         {
-            Debug.Log($"{name}: Hover End");
+            ObjectTotem.Outline(totemState, false);
         }
         /// <summary>
         /// 
         /// </summary>
         public void Select()
         {
-            Debug.Log($"{name}: Select");
+
         }
         /// <summary>
         /// 
@@ -202,6 +223,7 @@ namespace Spaces.Scripts.Objects
         /// </summary>
         public void GrabEnd()
         {
+            relativeTransform.SetRelativeTransform(CurrentLocation());
             Debug.Log($"{name}: Grab End");
         }
     }

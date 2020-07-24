@@ -6,6 +6,7 @@ namespace Spaces.Scripts.Utilities
 {
     public abstract class Interaction : MonoBehaviour
     {
+        protected ControllerTransforms.Check orientation;
         public void AddEventListeners(ControllerTransforms controller, ControllerTransforms.Check side)
         {
             // Add event listeners 

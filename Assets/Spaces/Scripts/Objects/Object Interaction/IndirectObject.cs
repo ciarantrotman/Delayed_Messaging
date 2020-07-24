@@ -1,4 +1,4 @@
-﻿using Spaces.Scripts.User_Interface.Interface_Elements;
+﻿using Spaces.Scripts.Player;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
 
@@ -6,37 +6,35 @@ namespace Spaces.Scripts.Objects.Object_Interaction
 {
     public class IndirectObject : Interaction
     {
-        private GameObject rayParent, rayEnd;
+        private GameObject rayOrigin, rayCenter, rayEnd;
         private LineRenderer ray;
         private ObjectInstance objectInstance;
         private bool extant;
         private float range;
         private const float Offset = .1f;
-        private Vector3 center;
         private static Vector3 OffsetPosition => new Vector3(0,0,Offset);
         private static ObjectInteractionController InteractionController => Reference.Player().GetComponent<ObjectInteractionController>();
-
-        public void Initialise(GameObject parent, string rayName, Material material, float detectionRange)
+        public void Initialise(GameObject parent, string rayName, Material material, float detectionRange, ControllerTransforms.Check check)
         {
             // Cache values
             range = detectionRange;
+            orientation = check;
             
             // Create objects for linerenderer
-            rayParent = Set.Object(parent, rayName, Vector3.zero);
-            rayEnd = Set.Object(rayParent, $"{rayName} / End", OffsetPosition);
+            rayOrigin = Set.Object(parent, rayName, Vector3.zero);
+            rayCenter = Set.Object(rayOrigin, $"{rayName} / Center", Vector3.zero);
+            rayEnd = Set.Object(rayOrigin, $"{rayName} / End", OffsetPosition);
             
             // Create and configure linerenderer
-            ray = rayParent.LineRender(material, .005f, .001f, true, true);
-            ray.Bezier(rayParent.transform.position, Center(), rayEnd.transform.position);
+            ray = rayOrigin.LineRender(material, .005f, .001f, true, true);
+            ray.Bezier(rayOrigin.transform.position, Center(), rayEnd.transform.position);
         }
         
         // Find the current object
         public void Check(Vector3 origin, Vector3 vector, float radius, float castRange, bool rayEnabled)
         {
             range = castRange;
-            Ray ray = new Ray {origin = origin, direction = vector};
-            Debug.DrawRay(ray.origin, ray.direction, Color.red);
-            if (Physics.SphereCast(ray, radius, out RaycastHit hit, range) && hit.transform.CompareTag(ObjectInstance.Object) && rayEnabled)
+            if (Physics.SphereCast(new Ray {origin = origin, direction = vector}, radius, out RaycastHit hit, range) && hit.transform.CompareTag(ObjectInstance.Object) && rayEnabled)
             {
                 // Create a new button cache
                 ObjectInstance newObject = hit.transform.GetComponent<ObjectInstance>();
@@ -90,10 +88,10 @@ namespace Spaces.Scripts.Objects.Object_Interaction
             ray.enabled = enableRay;
             if (!enableRay) return;
             
-            rayParent.transform.position = Vector3.Lerp(rayParent.transform.position, origin, .75f);
-            rayParent.transform.forward = Vector3.Lerp(rayParent.transform.forward, vector, .5f);
+            rayOrigin.transform.position = Vector3.Lerp(rayOrigin.transform.position, origin, .75f);
+            rayOrigin.transform.forward = Vector3.Lerp(rayOrigin.transform.forward, vector, .5f);
             
-            ray.Bezier(rayParent.transform.position, Center(), rayEnd.transform.position);
+            ray.Bezier(rayOrigin.transform.position, Center(), rayEnd.transform.position);
         }
         /// <summary>
         /// Laggy dynamic center point for linerenderer
@@ -101,15 +99,16 @@ namespace Spaces.Scripts.Objects.Object_Interaction
         /// <returns></returns>
         private Vector3 Center()
         {
-            center = Vector3.Lerp(center, Vector3.Lerp(rayParent.transform.position, rayEnd.transform.position, .5f), .75f);
-            return center;
+            float z = rayCenter.transform.localPosition.z;
+            rayCenter.transform.localPosition = new Vector3(0,0, Mathf.Lerp(z, Vector3.Distance(rayOrigin.transform.position, rayEnd.transform.position), .5f));
+            return rayCenter.transform.position;
         }
         
         protected override void Select()
         {
             if (!extant) return;
             objectInstance.Select();
-            InteractionController.SetFocusObject(objectInstance);
+            InteractionController.SetFocusObject(objectInstance, orientation);
         }
 
         protected override void GrabStart()

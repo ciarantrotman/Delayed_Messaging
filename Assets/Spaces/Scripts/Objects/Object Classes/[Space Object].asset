@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6429a53869cef1f42b2ddf140c5c0b8c, type: 3}
-  m_Name: '[Sphere Object]'
+  m_Name: '[Space Object]'
   m_EditorClassIdentifier: 
-  objectObject: {fileID: 6976901029903997182, guid: e6800ba87a1414c4795a7f8fa6b0e589,
+  objectObject: {fileID: 9197480540750208082, guid: 14b5f90afdd7f324c8d5a274d662307c,
     type: 3}
-  totemObject: {fileID: 8125397014880535984, guid: 5892c25ee404a2946b62c8cfeb5d1406,
+  totemObject: {fileID: 8148908803951064980, guid: e1c71f02c4ae3384383e6ce77c838803,
     type: 3}
   spawnState: 1
   objectOutline:
     width: 10
-    mode: 3
-    color: {r: 0.7176471, g: 0.8078432, b: 0.9960785, a: 1}
+    mode: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
   totemOutline:
     width: 10
-    mode: 3
-    color: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}
+    mode: 0
+    color: {r: 0.9960785, g: 0.4666667, b: 0.49803925, a: 1}

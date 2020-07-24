@@ -16,3 +16,12 @@ MonoBehaviour:
     type: 3}
   totemObject: {fileID: 8125397014880535984, guid: 5892c25ee404a2946b62c8cfeb5d1406,
     type: 3}
+  spawnState: 1
+  objectOutline:
+    width: 10
+    mode: 3
+    color: {r: 0.7176471, g: 0.8078432, b: 0.9960785, a: 1}
+  totemOutline:
+    width: 10
+    mode: 3
+    color: {r: 1, g: 0.4575472, b: 0.4575472, a: 1}

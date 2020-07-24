@@ -1,4 +1,5 @@
-﻿using Spaces.Scripts.User_Interface.Interface_Elements;
+﻿using Spaces.Scripts.Player;
+using Spaces.Scripts.User_Interface.Interface_Elements;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
 
@@ -13,8 +14,12 @@ namespace Spaces.Scripts.User_Interface.Interface_Interaction
         private const float Offset = .5f;
         private static Vector3 OffsetPosition => new Vector3(0,0,Offset);
 
-        public void Initialise(GameObject parent, string rayName, Material material)
+        public void Initialise(GameObject parent, string rayName, Material material, ControllerTransforms.Check check)
         {
+            // Cache values
+            orientation = check;
+            
+            // Create ray objects
             rayParent = Set.Object(parent, rayName, Vector3.zero);
             ray = rayParent.LineRender(material, .005f, .001f, true, false);
                 
@@ -89,24 +94,24 @@ namespace Spaces.Scripts.User_Interface.Interface_Interaction
         // Wrappers for button events
         protected override void Select()
         {
-            if (!extant) return;
+            if (!extant || !button.CheckInvocation(BaseInterface.TriggerType.SELECT, BaseInterface.InteractionType.INDIRECT)) return;
             button.buttonSelect.Invoke();
         }
         protected override void GrabStart()
         {
-            if (!extant) return;
+            if (!extant || !button.CheckInvocation(BaseInterface.TriggerType.GRAB, BaseInterface.InteractionType.INDIRECT)) return;
             button.grabStart.Invoke();
         }
         
         protected override void GrabStay()
         {
-            if (!extant) return;
+            if (!extant || !button.CheckInvocation(BaseInterface.TriggerType.GRAB, BaseInterface.InteractionType.INDIRECT)) return;
             button.grabStay.Invoke();
         }
         
         protected override void GrabEnd()
         {
-            if (!extant) return;
+            if (!extant || !button.CheckInvocation(BaseInterface.TriggerType.GRAB, BaseInterface.InteractionType.INDIRECT)) return;
             button.grabEnd.Invoke();
         }
         
