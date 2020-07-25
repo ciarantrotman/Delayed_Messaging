@@ -9,22 +9,11 @@ namespace Spaces.Scripts.Utilities
 		public GameObject parent;
 		private static readonly int Distance = Shader.PropertyToID("_Distance");
 		private ControllerTransforms controller;
-		private float maxAngle;
-		private float minAngle;
-		private float maxDistance;
-		private float minDistance;
+		private float maxAngle, minAngle, maxDistance, minDistance;
 
 		public class CastObjects
 		{
-			//public BaseCursor cursor;
-			public GameObject follow;
-			public GameObject proxy;
-			public GameObject normalised;
-			public GameObject midpoint;
-			public GameObject target;
-			public GameObject hitPoint;
-			public GameObject visual;
-			public GameObject rotation;
+			public GameObject follow, proxy, normalised, midpoint, target, hitPoint, visual, rotation;
 			public Vector3 lastValidPosition;
 			public LineRenderer lineRenderer;
 		}
@@ -59,15 +48,7 @@ namespace Spaces.Scripts.Utilities
 			castObjects.visual = Instantiate(v, castObjects.hitPoint.transform);
 			castObjects.visual.name = "[" + instanceName + "/Visual/Right]";
 			castObjects.visual.SetActive(enabled);
-			//castObjects.cursor = castObjects.visual.GetComponent<BaseCursor>();
 
-			/*
-			if (castObjects.cursor == null)
-			{
-				Debug.LogWarning($"{instanceName} has no <b>BaseCursor</b> attached to {castObjects.visual.name}");
-			}
-			*/
-			
 			castObjects.follow.transform.SetParent(parentTransform);
 			castObjects.proxy.transform.SetParent(castObjects.follow.transform);
 			castObjects.normalised.transform.SetParent(castObjects.follow.transform);

@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectClass: {fileID: 11400000, guid: 8c554b3e08757254a93600fe68e51968, type: 2}
   spaceClass: {fileID: 11400000, guid: f45bde05db2e36d448344daa73684a60, type: 2}
-  spaceButton: {fileID: 0}
+  spaceButton: {fileID: 5009973314092289152, guid: 6fa12e508056936499eab7747ffc3347,
+    type: 3}
   spaces: []

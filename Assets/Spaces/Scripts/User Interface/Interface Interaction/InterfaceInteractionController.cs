@@ -1,9 +1,8 @@
-﻿using Delayed_Messaging.Scripts.Player;
-using Spaces.Scripts.Player;
-using Spaces.Scripts.User_Interface.Interface_Interaction;
+﻿using Spaces.Scripts.Player;
+using Spaces.Scripts.Utilities;
 using UnityEngine;
 
-namespace Spaces.Scripts.User_Interface
+namespace Spaces.Scripts.User_Interface.Interface_Interaction
 {
     [RequireComponent(typeof(ControllerTransforms))]
     public class InterfaceInteractionController : MonoBehaviour
@@ -27,9 +26,12 @@ namespace Spaces.Scripts.User_Interface
             nondominantIndirect = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<IndirectInterface>();
             dominantIndirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<IndirectInterface>();
             
+            // Create a cached parent
+            GameObject interactionParent = Set.Object(gameObject, "[Interface Interaction Parent]", Vector3.zero);
+            
             // Initialise the indirect interfaces
-            nondominantIndirect.Initialise(gameObject, "[Interface] [Indirect / Non-Dominant]", material, ControllerTransforms.Check.LEFT);
-            dominantIndirect.Initialise(gameObject, "[Interface] [Indirect / Dominant]", material, ControllerTransforms.Check.RIGHT);
+            nondominantIndirect.Initialise(interactionParent, "[Interface] [Indirect / Non-Dominant]", material, ControllerTransforms.Check.LEFT);
+            dominantIndirect.Initialise(interactionParent, "[Interface] [Indirect / Dominant]", material, ControllerTransforms.Check.RIGHT);
             
             // Add indirect event listeners
             nondominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);
@@ -40,8 +42,8 @@ namespace Spaces.Scripts.User_Interface
             dominantDirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<DirectInterface>();
             
             // Initialise the direct interfaces
-            nondominantDirect.Initialise(radius);
-            dominantDirect.Initialise(radius);
+            nondominantDirect.Initialise(radius, ControllerTransforms.Check.LEFT);
+            dominantDirect.Initialise(radius, ControllerTransforms.Check.RIGHT);
             
             // Add direct event listeners
             nondominantDirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);
@@ -50,14 +52,14 @@ namespace Spaces.Scripts.User_Interface
 
         private void Update()
         {
-            dominantIndirect.Check(
-                Controller.Position(ControllerTransforms.Check.RIGHT), 
-                Controller.ForwardVector(ControllerTransforms.Check.RIGHT), 
-                range,
-                true);
             nondominantIndirect.Check(
                 Controller.Position(ControllerTransforms.Check.LEFT),
                 Controller.ForwardVector(ControllerTransforms.Check.LEFT), 
+                range,
+                true);
+            dominantIndirect.Check(
+                Controller.Position(ControllerTransforms.Check.RIGHT), 
+                Controller.ForwardVector(ControllerTransforms.Check.RIGHT), 
                 range,
                 true);
         }

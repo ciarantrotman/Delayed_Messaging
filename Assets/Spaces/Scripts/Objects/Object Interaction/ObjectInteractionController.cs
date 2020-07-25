@@ -1,6 +1,7 @@
 ﻿using Spaces.Scripts.Player;
 using Spaces.Scripts.Space;
 using Spaces.Scripts.User_Interface;
+using Spaces.Scripts.Utilities;
 using UnityEngine;
 
 namespace Spaces.Scripts.Objects.Object_Interaction
@@ -62,10 +63,13 @@ namespace Spaces.Scripts.Objects.Object_Interaction
             // Add indirect interface interaction to each controller parent
             nondominantIndirect = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<IndirectObject>();
             dominantIndirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<IndirectObject>();
+
+            // Create a cached parent
+            GameObject interactionParent = Set.Object(gameObject, "[Interaction Parent]", Vector3.zero);
             
             // Initialise the indirect interfaces
-            nondominantIndirect.Initialise(gameObject, "[Object] [Indirect / Non-Dominant]", material, range, ControllerTransforms.Check.LEFT);
-            dominantIndirect.Initialise(gameObject, "[Object] [Indirect / Dominant]", material, range, ControllerTransforms.Check.RIGHT);
+            nondominantIndirect.Initialise(interactionParent, "[Object] [Indirect / Non-Dominant]", material, range, ControllerTransforms.Check.LEFT);
+            dominantIndirect.Initialise(interactionParent, "[Object] [Indirect / Dominant]", material, range, ControllerTransforms.Check.RIGHT);
             
             // Add indirect event listeners
             nondominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);

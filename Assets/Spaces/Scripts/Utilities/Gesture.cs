@@ -51,10 +51,10 @@ namespace Spaces.Scripts.Utilities
                              palm.TransformDistance(little)) / 4;
 
             Vector3 position = palm.position;
-            Debug.DrawRay(position, index.position - position, Color.red);
-            Debug.DrawRay(position, middle.position - position, Color.yellow);
-            Debug.DrawRay(position, ring.position - position, Color.green);
-            Debug.DrawRay(position, little.position - position, Color.blue);
+            //Debug.DrawRay(position, index.position - position, Color.red);
+            //Debug.DrawRay(position, middle.position - position, Color.yellow);
+            //Debug.DrawRay(position, ring.position - position, Color.green);
+            //Debug.DrawRay(position, little.position - position, Color.blue);
             
             return average < threshold;
         }
@@ -63,8 +63,8 @@ namespace Spaces.Scripts.Utilities
             float average = (thumb.TransformDistance(index) +
                              thumb.TransformDistance(middle));
             Vector3 position = thumb.position;
-            Debug.DrawRay(position, index.position - position, Color.red);
-            Debug.DrawRay(position, middle.position - position, Color.blue);
+            //Debug.DrawRay(position, index.position - position, Color.red);
+            //Debug.DrawRay(position, middle.position - position, Color.blue);
             return average < threshold;
         }
         public static bool Select(this Transform thumb, Transform finger, float threshold)
@@ -77,8 +77,8 @@ namespace Spaces.Scripts.Utilities
             Vector3 down = -palm.up;
             palmDirection.Vector3ListCull(down, tracking);
             Vector3 position = palm.position;
-            Debug.DrawRay(position, down, Color.magenta);
-            Debug.DrawRay(position, Vector3.down, Color.red);
+            //Debug.DrawRay(position, down, Color.magenta);
+            //Debug.DrawRay(position, Vector3.down, Color.red);
             return Vector3.Angle(Vector3.down, palmDirection[0]) < tolerance && Vector3.Angle(Vector3.down, palmDirection[palmDirection.Count]) < tolerance;
         }
     }

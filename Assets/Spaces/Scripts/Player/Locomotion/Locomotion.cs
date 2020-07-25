@@ -60,7 +60,6 @@ namespace Spaces.Scripts.Player.Locomotion
             ghost = Instantiate(ghost);
             ghost.name = "[Locomotion/Ghost]";
             positionPreview = ghost.GetComponent<LocomotionPositionPreview>();
-            positionPreview.controller = Controller;
             positionPreview.GhostToggle(null, false);
         }
 

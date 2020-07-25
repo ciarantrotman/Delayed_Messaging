@@ -17,34 +17,34 @@ namespace Spaces.Scripts.Space
     {
         [SerializeField] private ObjectClass objectClass;
         [SerializeField] private SpaceClass spaceClass;
-        public Button spaceButton;
-        
+        [SerializeField] private GameObject spaceButton;
+
         [Space(10)] public List<SpaceInstance> spaces = new List<SpaceInstance>();
-        
-        private GameObject spaceButtonParent;
-        private SpaceInstance activeSpace;
 
         private static ControllerTransforms Controller => Reference.Controller();
         private static Camera Camera => Reference.Camera();
 
+        private Button SpaceButton => spaceButton.GetComponent<Button>();
+        private SpaceInstance activeSpace;
+        
         // ------------------------------------------------------------------------------------------------------------
         
         private void InitialiseSpaceButton()
         {
             // Create the parent for the space button
-            spaceButtonParent = Set.Object(gameObject, "[Space Button]", Vector3.zero);
+            spaceButton = Instantiate(spaceButton, transform);
+            spaceButton.name = "[Space Button]";
             
-            // Add and configure the collider
-            SphereCollider buttonCollider = spaceButtonParent.AddComponent<SphereCollider>();
-            buttonCollider.radius = .15f;
+            // Add and configure the collider, must be done before adding button component
+            SphereCollider buttonCollider = spaceButton.GetComponent<SphereCollider>();
+            buttonCollider.radius = .175f;
             buttonCollider.isTrigger = true;
             
             // Add and configure the button component
-            Button temp = spaceButtonParent.AddComponent<Button>();
-            temp.ConfigureInterface(BaseInterface.TriggerType.GRAB, BaseInterface.InteractionType.DIRECT);
+            SpaceButton.ConfigureInterface(BaseInterface.TriggerType.GRAB, BaseInterface.InteractionType.DIRECT);
             
             // Add listener to create new scene
-            spaceButton.buttonSelect.AddListener(CreateSpace);
+            SpaceButton.grabStart.AddListener(CreateSpace);
         }
         /// <summary>
         /// Wrapper to create a new scene
@@ -53,15 +53,14 @@ namespace Spaces.Scripts.Space
         {
             SpaceInstance cachedSpace = ActiveSpace();
             
-            // Load a new space, if the active space is null, or the active space doesn't have a parent,
-            // a new space will be made
+            // Load a new space, if the active space is null, or the active space doesn't have a parent, a new space will be made
             string debugText = cachedSpace.ParentSpace() == null ? "is a root space, cannot load a parent space" : $"is loading its parent space, <b>{cachedSpace.ParentSpace().name}</b>";
             Debug.Log($"<b>{cachedSpace.name}</b> {debugText}");
             LoadSpace(cachedSpace.ParentSpace());
             
             // Take the active scene and totemise it, that will then be added to the new space
             // Feed in the parent of the current space so it can be unloaded
-            cachedSpace.TotemiseSpace();
+            cachedSpace.TotemiseSpace(Controller.Position(SpaceButton.check));
         }
         /// <summary>
         /// Loads the supplied space
@@ -188,14 +187,12 @@ namespace Spaces.Scripts.Space
             InitialiseSpaceButton();
             
             // Load in the active scene - if no active scene is provided, an empty one will be created
-            //
-            // NewActiveSpace(defaultSpace.GetComponent<SpaceInstance>());
             LoadSpace(ActiveSpace());
         }
 
         private void FixedUpdate()
         {
-            spaceButtonParent.transform.LerpTransform(Controller.Transform(ControllerTransforms.Check.HEAD), .75f);
+            spaceButton.transform.LerpTransform(Controller.Transform(ControllerTransforms.Check.HEAD), .75f);
         }
     }
 }

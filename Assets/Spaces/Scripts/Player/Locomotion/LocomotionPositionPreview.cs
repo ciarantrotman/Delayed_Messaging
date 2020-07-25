@@ -1,8 +1,7 @@
-﻿using Spaces.Scripts.Player;
-using Spaces.Scripts.Utilities;
-using UnityEngine; //using Sirenix.OdinInspector;
+﻿using Spaces.Scripts.Utilities;
+using UnityEngine;
 
-namespace Delayed_Messaging.Scripts.Player.Locomotion
+namespace Spaces.Scripts.Player.Locomotion
 {
     public class LocomotionPositionPreview : MonoBehaviour
     {
@@ -10,8 +9,8 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
         [SerializeField] private Transform lHand;
         [SerializeField] private Transform rHand;
         private bool active;
-        
-        public ControllerTransforms controller { private get; set; }
+
+        private static ControllerTransforms Controller => Reference.Controller();
 
         private void Update()
         {
@@ -22,11 +21,11 @@ namespace Delayed_Messaging.Scripts.Player.Locomotion
             thisTransform.localPosition = Vector3.zero;
             thisTransform.forward = thisTransform.parent.forward;
             Transform headTransform = head.transform;
-            headTransform.LocalTransforms(controller.RelativeTransform(ControllerTransforms.Check.HEAD));
+            headTransform.LocalTransforms(Controller.RelativeTransform(ControllerTransforms.Check.HEAD));
             Vector3 localRot = headTransform.localEulerAngles;
             headTransform.localEulerAngles = new Vector3(localRot.x, 0, localRot.z);
-            lHand.transform.LocalTransforms(controller.RelativeTransform(ControllerTransforms.Check.LEFT));
-            rHand.transform.LocalTransforms(controller.RelativeTransform(ControllerTransforms.Check.RIGHT));
+            lHand.transform.LocalTransforms(Controller.RelativeTransform(ControllerTransforms.Check.LEFT));
+            rHand.transform.LocalTransforms(Controller.RelativeTransform(ControllerTransforms.Check.RIGHT));
         }
 
         public void GhostToggle(Transform parent, bool state)

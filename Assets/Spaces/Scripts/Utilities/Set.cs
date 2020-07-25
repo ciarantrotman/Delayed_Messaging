@@ -375,13 +375,7 @@ namespace Spaces.Scripts.Utilities
             
             float p = Mathf.Pow(d, 1f);
             float y = p;
-            
-            if (debug)
-            {
-                Debug.DrawRay(aPos, -x * y, Color.cyan);   
-                Debug.DrawRay(aPos, x * p, Color.yellow);
-            }
-            
+
             rb.AddForce(x, ForceMode.Force);
             
             if (!(d < 1f)) return;
@@ -559,17 +553,6 @@ namespace Spaces.Scripts.Utilities
                     throw new ArgumentOutOfRangeException(nameof(axis), axis, null);
             }
         }
-        /*
-        public static void HandPosition(bool armDisabled, GameObject elbow, Arm arm, GameObject transformPosition, Vector3 position, GameObject lookAt, Transform wrist)
-        {
-            if (armDisabled) return;
-            elbow.transform.position = arm.ElbowPosition.ToVector3();
-            lookAt.transform.MidpointPosition(elbow.transform, wrist.transform, true);
-            transformPosition.transform.StablePositionLook(position, lookAt.transform, true);
-            Debug.DrawLine(elbow.transform.position, wrist.transform.position, Color.yellow);
-            Debug.DrawLine(transformPosition.transform.position, lookAt.transform.position, Color.white);
-        }
-        */
         /// <summary>
         /// Returns a GameObject, sets its parent, and names it
         /// </summary>
@@ -629,7 +612,7 @@ namespace Spaces.Scripts.Utilities
         public static void DistanceCast(GameObject target, GameObject follow, GameObject proxy, GameObject normalised, GameObject hitPoint, GameObject midPoint, GameObject rotation, GameObject visual, Transform controllerTransform, Transform cameraTransform, Vector2 joystick, float maxAngle, float minAngle, float minDistance, float maxDistance, Vector3 lastValidPosition)
         {
             // set the positions of the local objects and calculate the depth based on the angle of the controller
-            target.transform.LocalDepth(follow.ControllerAngle(proxy,normalised,controllerTransform,cameraTransform,true).CalculateDepth(maxAngle, minAngle, maxDistance, minDistance, proxy.transform), false, .2f);
+            target.transform.LocalDepth(follow.ControllerAngle(proxy,normalised,controllerTransform,cameraTransform).CalculateDepth(maxAngle, minAngle, maxDistance, minDistance, proxy.transform), false, .2f);
             target.TargetLocation(hitPoint, lastValidPosition, 15);
             midPoint.transform.LocalDepth(proxy.transform.Midpoint(target.transform), false, 0f);
             visual.Target(hitPoint, normalised.transform, joystick, rotation);

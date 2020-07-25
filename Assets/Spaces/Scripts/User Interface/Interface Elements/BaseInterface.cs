@@ -1,4 +1,5 @@
 ﻿using System;
+using Spaces.Scripts.Player;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
 using Outline = VR_Prototyping.Plugins.QuickOutline.Scripts.Outline;
@@ -8,11 +9,6 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
     [RequireComponent(typeof(Collider))]
     public abstract class BaseInterface : MonoBehaviour
     {
-        public enum TriggerType { GRAB, SELECT, BOTH }
-        public enum InteractionType { DIRECT, INDIRECT, BOTH }
-        // is true by default, is set to false if there is no model supplied
-        private bool corporeal;
-        
         [Header("Base Interface Options")]
         public TriggerType triggerType = TriggerType.SELECT;
         public InteractionType interactionType = InteractionType.INDIRECT;
@@ -23,7 +19,13 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
         [Header("Visual Options")] 
         public OutlineConfiguration outlineConfiguration;
         
-        // Protected Variables
+        // ------------------------------------------------------------------------------------------------------------
+        
+        internal ControllerTransforms.Check check;
+        public enum TriggerType { GRAB, SELECT, BOTH }
+        public enum InteractionType { DIRECT, INDIRECT, BOTH }
+        // is true by default, is set to false if there is no model supplied
+        private bool corporeal;
         protected Collider TriggerCollider => GetComponent<Collider>();
         public const string Interface = "Interface", Direct = "Direct";
         private Outline outline;
@@ -33,6 +35,8 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
             public Outline.Mode mode = Outline.Mode.OutlineAll;
             public Color color = new Color(1,1,1,1);
         }
+        
+        // ------------------------------------------------------------------------------------------------------------
 
         /// <summary>
         /// Use this to check if a button should be triggered given the button invocation parameters
@@ -49,30 +53,16 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
             }
             return interaction == interactionType || triggerType == TriggerType.BOTH;
         }
-        
-        
-        private void Awake()
-        {
-            // Set the tag of the interface 
-            gameObject.tag = Interface;
-            
-            // Create visual effect for hovering, but only if there is a model
-            if (model != null)
-            {
-                corporeal = true;
-                outline = model.Outline(outlineConfiguration);
-            }
-            
-            // Call abstract initialisation method
-            Initialise();
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="trigger"></param>
+        /// <param name="interaction"></param>
         public void ConfigureInterface(TriggerType trigger, InteractionType interaction)
         {
             triggerType = trigger;
             interactionType = interaction;
         }
-
         /// <summary>
         /// I have built this in such a way that it shouldn't need to reference anything to work
         /// </summary>
@@ -100,6 +90,32 @@ namespace Spaces.Scripts.User_Interface.Interface_Elements
         {
             if (!corporeal) return;
             outline.enabled = state;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cacheCheck"></param>
+        public void SetCheck(ControllerTransforms.Check cacheCheck)
+        {
+            this.check = cacheCheck;
+        }
+        
+        // ------------------------------------------------------------------------------------------------------------
+        
+        private void Awake()
+        {
+            // Set the tag of the interface 
+            gameObject.tag = Interface;
+            
+            // Create visual effect for hovering, but only if there is a model
+            if (model != null)
+            {
+                corporeal = true;
+                outline = model.Outline(outlineConfiguration);
+            }
+            
+            // Call abstract initialisation method
+            Initialise();
         }
     }
 }

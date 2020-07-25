@@ -25,7 +25,7 @@ namespace Spaces.Scripts.Objects.Totem
             
             if (ObjectInteractionController.FocusSpace() != null)
             {
-                Debug.Log($"<b>{ObjectInteractionController.FocusSpace().name}</b> state was toggled");
+                Debug.Log($"<b>{ObjectInteractionController.FocusSpace().name}</b> is being de-totemised and loaded");
                 ObjectInteractionController.FocusSpace().LoadSpace(load: false);
             }
         }

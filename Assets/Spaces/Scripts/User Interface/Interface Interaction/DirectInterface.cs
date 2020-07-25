@@ -1,10 +1,10 @@
-﻿using Spaces.Scripts.User_Interface.Interface_Elements;
+﻿using Spaces.Scripts.Player;
+using Spaces.Scripts.User_Interface.Interface_Elements;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Events;
 using Button = Spaces.Scripts.User_Interface.Interface_Elements.Button;
 
-namespace Spaces.Scripts.User_Interface
+namespace Spaces.Scripts.User_Interface.Interface_Interaction
 {
     public class DirectInterface : Interaction
     {
@@ -12,12 +12,13 @@ namespace Spaces.Scripts.User_Interface
         private bool extantButton;
         private SphereCollider directCollider;
 
-        public void Initialise(float radius)
+        public void Initialise(float radius, ControllerTransforms.Check checkCache)
         {
             // Create references
             gameObject.tag = BaseInterface.Direct;
             directCollider = gameObject.AddComponent<SphereCollider>();
-
+            orientation = checkCache;
+            
             // Configure direct collider
             directCollider.isTrigger = true;
             directCollider.radius = radius;
@@ -32,6 +33,9 @@ namespace Spaces.Scripts.User_Interface
         protected override void GrabStart()
         {
             if (!extantButton) return;
+            // Set the orientation based on which direct interface triggers the event
+            button.SetCheck(orientation);
+            // Trigger grab start
             button.grabStart.Invoke();
         }
         

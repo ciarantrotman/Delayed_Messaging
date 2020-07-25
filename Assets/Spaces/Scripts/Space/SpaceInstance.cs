@@ -5,6 +5,7 @@ using Spaces.Scripts.Objects;
 using Spaces.Scripts.Objects.Object_Classes;
 using Spaces.Scripts.Objects.Object_Creation;
 using Spaces.Scripts.Objects.Totem;
+using Spaces.Scripts.Player;
 using Spaces.Scripts.Space.Space_Classes;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -113,10 +114,10 @@ namespace Spaces.Scripts.Space
         /// <summary>
         /// 
         /// </summary>
-        public void TotemiseSpace()
+        public void TotemiseSpace(Vector3 position)
         {
             // todo, something better than this, it will need to go to the hand that you used to grab, need to wait to implement manipulation to do this though
-            transform.position = ObjectCreatorManager.CreationLocation();
+            transform.position = position;
             
             // If this space has a parent space, then load it up
             if (parentSpace != null)
@@ -196,14 +197,14 @@ namespace Spaces.Scripts.Space
             // Reload in all the objects in this space
             foreach (SpaceData spaceData in objectInstances)
             {
-                Debug.Log($"<b>{name}</b> Unloading: <b>{spaceData.objectInstance.name}</b> is being unloaded.");
+                Debug.Log($"<b>{name}</b> Unloading: <b>{spaceData.objectInstance.name}</b> is being unloaded");
                 
                 // todo add a check to make sure you don't unload the scene you just loaded
                 // ugh this is really messy but I don't have much choice here?
                 // This is totally dependant on spaces having separate gameobjects...
                 if (childSpace.gameObject == spaceData.objectInstance.gameObject)
                 {
-                    Debug.Log($"Skipped unloading <b>{childSpace.name}</b> from <b>{name}</b> as it is the loader scene!");
+                    Debug.Log($"Skipped unloading <b>{childSpace.name}</b> from <b>{name}</b>, as it is being loaded as the active space");
                     continue;
                 }
                 

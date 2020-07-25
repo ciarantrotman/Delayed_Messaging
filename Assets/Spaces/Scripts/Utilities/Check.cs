@@ -84,7 +84,7 @@ namespace Spaces.Scripts.Utilities
             return target.transform;
         }
         
-        public static float ControllerAngle(this GameObject follow, GameObject proxy, GameObject normal, Transform controller, Transform head, bool debug)
+        public static float ControllerAngle(this GameObject follow, GameObject proxy, GameObject normal, Transform controller, Transform head)
         {
             proxy.transform.Position(controller);
             proxy.transform.ForwardVector(controller);
@@ -95,12 +95,6 @@ namespace Spaces.Scripts.Utilities
             Vector3 normalDown = -normal.transform.up;
             Vector3 proxyForward = proxy.transform.forward;
             Vector3 position = proxy.transform.position;
-            
-            if (!debug) return Vector3.Angle(normalDown, proxyForward);
-            
-            Debug.DrawLine(follow.transform.position, position, Color.red);
-            Debug.DrawRay(normal.transform.position, normalDown, Color.blue);
-            Debug.DrawRay(position, proxyForward, Color.blue);
 
             return Vector3.Angle(normalDown, proxyForward);
         }
