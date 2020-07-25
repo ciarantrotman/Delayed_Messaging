@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949b5182faeb0054d9e6b4d3f756c4a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceClass: {fileID: 11400000, guid: 8c554b3e08757254a93600fe68e51968, type: 2}
+  objectClass: {fileID: 11400000, guid: 8c554b3e08757254a93600fe68e51968, type: 2}
+  spaceClass: {fileID: 11400000, guid: f45bde05db2e36d448344daa73684a60, type: 2}
   spaceButton: {fileID: 0}
   spaces: []

@@ -42,6 +42,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1397864418142803021, guid: 6906d0c66eb40d0419e5caf22682c183,
         type: 3}
+    - target: {fileID: 1263516890974150871, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263516890974150871, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263516890974150871, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.77254903
+      objectReference: {fileID: 0}
+    - target: {fileID: 1263516890974150871, guid: 8749d393fbf106e488259a509328cf48,
+        type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7278270575415948628, guid: 8749d393fbf106e488259a509328cf48,
         type: 3}
       propertyPath: m_IsActive

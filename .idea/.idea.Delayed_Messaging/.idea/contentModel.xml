@@ -391,6 +391,7 @@
               <e p="Totem" t="Include">
                 <e p="ObjectTotem.cs" t="Include" />
                 <e p="ObjectTotemiser.cs" t="Include" />
+                <e p="SpaceTotem.cs" t="Include" />
               </e>
             </e>
             <e p="Player" t="Include">

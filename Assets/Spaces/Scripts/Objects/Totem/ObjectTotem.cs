@@ -11,6 +11,7 @@ namespace Spaces.Scripts.Objects.Totem
         private bool extant, outline;
         public GameObject objectObject, totemObject;
         public Outline objectOutline, totemOutline;
+        private SpaceTotem spaceTotem;
         
         // ------------------------------------------------------------------------------------------------------------
 
@@ -32,6 +33,9 @@ namespace Spaces.Scripts.Objects.Totem
             // Add outlines for the objects
             objectOutline = objectObject.Outline(objectClass.objectOutline);
             totemOutline = totemObject.Outline(objectClass.totemOutline);
+            
+            // Create space totem references
+            spaceTotem = totemObject.AddComponent<SpaceTotem>();
         }
         /// <summary>
         /// Creates a new object and sets it to inactive in the same frame
@@ -102,7 +106,11 @@ namespace Spaces.Scripts.Objects.Totem
                     break;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="totemState"></param>
+        /// <param name="state"></param>
         public void Outline(ObjectInstance.TotemState totemState, bool state)
         {
             outline = state;
@@ -117,6 +125,16 @@ namespace Spaces.Scripts.Objects.Totem
                 default:
                     return;
             }
+        }
+        /// <summary>
+        /// Used currently for setting the colour of the space totem, but can be expanded in future
+        /// </summary>
+        /// <param name="color"></param>
+        public void SetTotemColour(Color color)
+        {
+            // Set the outline colour of the totem
+            totemOutline.OutlineColor = color;
+            spaceTotem.SetTotemColour(color);
         }
     }
 }

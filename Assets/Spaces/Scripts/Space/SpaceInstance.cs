@@ -4,8 +4,10 @@ using DG.Tweening;
 using Spaces.Scripts.Objects;
 using Spaces.Scripts.Objects.Object_Classes;
 using Spaces.Scripts.Objects.Object_Creation;
+using Spaces.Scripts.Objects.Totem;
 using Spaces.Scripts.Space.Space_Classes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Spaces.Scripts.Space
 {
@@ -13,18 +15,21 @@ namespace Spaces.Scripts.Space
     {
         private ObjectInstance spaceObject;
         private SpaceInstance parentSpace;
+        private SpaceClass spaceClass;
+        private Color spaceColour;
         public List<SpaceData> objectInstances = new List<SpaceData>();
         private static SpaceManager SpaceManager => Reference.SpaceManager();
         private static ObjectCreatorManager ObjectCreatorManager => Reference.Player().GetComponent<ObjectCreatorManager>();
         private enum SpaceStates { LOADED, UNLOADED, TOTEMISED }
         private SpaceStates SpaceState { set; get; }
+        private int index;
 
         // ------------------------------------------------------------------------------------------------------------
 
         /// <summary>
         /// Struct used to store data about the space when it has been totemised
         /// </summary>
-        [Serializable] public struct SpaceData
+        [Serializable] public class SpaceData
         {
             public ObjectInstance objectInstance;
             public ObjectClass objectClass;
@@ -48,13 +53,35 @@ namespace Spaces.Scripts.Space
             }
         }
 
-        public void Initialise(ObjectInstance instance)
+        /// <summary>
+        /// Used to initialise the space instance
+        /// </summary>
+        /// <param name="instance"></param>
+        /// <param name="space"></param>
+        /// <param name="spaceIndex"></param>
+        public void Initialise(ObjectInstance instance, SpaceClass space, int spaceIndex)
         {
+            // Cache values
             spaceObject = instance;
+            spaceClass = space;
+            index = spaceIndex;
+            
+            // Set visual effects determined by this space
+            spaceColour = spaceClass.spaceColours[Random.Range(0, spaceClass.spaceColours.Count - 1)];
+            spaceObject.ObjectTotem.SetTotemColour(spaceColour);
+            
             //spaceObject.objectise.AddListener(LoadSpace);
         }
 
-        public SpaceClass spaceClass;
+        /// <summary>
+        /// 
+        /// </summary>
+        public void OnBecomeActiveSpace()
+        {
+            // Change the background colour of the main camera to that of the scene
+            SpaceManager.SetCameraColour(spaceColour);
+            // todo make the colour of the space totem match the colour of the space
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -94,7 +121,7 @@ namespace Spaces.Scripts.Space
             // If this space has a parent space, then load it up
             if (parentSpace != null)
             {
-                Debug.Log($"<b>{parentSpace.name}</b> was loaded by <b>{name}</b>!");
+                Debug.Log($"<b>{parentSpace.name}</b> was loaded by <b>{name}</b> because it's its parent space");
                 SpaceManager.LoadSpace(parentSpace);
             }
             
@@ -102,27 +129,25 @@ namespace Spaces.Scripts.Space
             foreach (SpaceData spaceData in objectInstances)
             {
                 // Cache the reference
-                SpaceData data = spaceData;
-                
                 // Set all the states needed for the object
-                data.objectLocation = data.objectInstance.relativeTransform.CurrentLocation;
-                data.objectState = data.objectInstance.totemState;
+                spaceData.objectLocation = spaceData.objectInstance.relativeTransform.CurrentLocation;
+                spaceData.objectState = spaceData.objectInstance.totemState;
                 
                 // Totemise the objects in the space
                 //data.objectInstance.SetTotemState(ObjectInstance.TotemState.TOTEM);
                 
                 // Unload the objects
                 // todo, move this to its own method
-                Debug.Log($"<b>{name}</b> Totemising: {data.objectInstance.name} was unloaded ");
-                data.objectInstance.transform.DOMove(transform.position, 1f);
-                data.objectInstance.transform.DOScale(Vector3.zero, 1f);
+                Debug.Log($"Totemising <b>{name}</b>: <b>{spaceData.objectInstance.name}</b> was unloaded from the space");
+                spaceData.objectInstance.transform.DOMove(transform.position, 1f);
+                spaceData.objectInstance.transform.DOScale(Vector3.zero, 1f);
                 //data.objectInstance.gameObject.SetActive(false);
                 //Destroy(data.objectInstance.gameObject);
             }
             
             // Then turn the space into a totem
             spaceObject.SetTotemState(ObjectInstance.TotemState.TOTEM);
-            
+
             // Register the totem in the new scene
             SpaceManager.ObjectRegistration(spaceObject);
             
@@ -151,10 +176,11 @@ namespace Spaces.Scripts.Space
                 // Cache the reference
                 SpaceData data = spaceData;
                 
-                Debug.Log($"<b>{name}</b> Loading: {data.objectInstance.name} was loaded ");
+                Debug.Log($"<b>{name}</b> Loading: <b>{data.objectInstance.name}</b> was loaded ");
                 
                 // Create the extant object
                 data.objectInstance.gameObject.SetActive(true);
+                // todo, supply a meaningful position for the object to spawn from here
                 data.objectInstance.CreateExtantObject(data, spaceObject.transform.position, load);
             }
             

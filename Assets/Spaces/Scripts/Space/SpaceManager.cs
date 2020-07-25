@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Spaces.Scripts.Objects;
 using Spaces.Scripts.Objects.Object_Classes;
 using Spaces.Scripts.Objects.Object_Creation;
@@ -14,7 +15,8 @@ namespace Spaces.Scripts.Space
 {
     public class SpaceManager : MonoBehaviour
     {
-        [SerializeField] private ObjectClass spaceClass;
+        [SerializeField] private ObjectClass objectClass;
+        [SerializeField] private SpaceClass spaceClass;
         public Button spaceButton;
         
         [Space(10)] public List<SpaceInstance> spaces = new List<SpaceInstance>();
@@ -22,7 +24,8 @@ namespace Spaces.Scripts.Space
         private GameObject spaceButtonParent;
         private SpaceInstance activeSpace;
 
-        private static ControllerTransforms Controller => Reference.Player().GetComponent<ControllerTransforms>();
+        private static ControllerTransforms Controller => Reference.Controller();
+        private static Camera Camera => Reference.Camera();
 
         // ------------------------------------------------------------------------------------------------------------
         
@@ -37,8 +40,8 @@ namespace Spaces.Scripts.Space
             buttonCollider.isTrigger = true;
             
             // Add and configure the button component
-            //spaceButton = spaceButtonParent.AddComponent<Button>();
-            //spaceButton.ConfigureInterface(BaseInterface.TriggerType.GRAB, BaseInterface.InteractionType.DIRECT);
+            Button temp = spaceButtonParent.AddComponent<Button>();
+            temp.ConfigureInterface(BaseInterface.TriggerType.GRAB, BaseInterface.InteractionType.DIRECT);
             
             // Add listener to create new scene
             spaceButton.buttonSelect.AddListener(CreateSpace);
@@ -52,8 +55,8 @@ namespace Spaces.Scripts.Space
             
             // Load a new space, if the active space is null, or the active space doesn't have a parent,
             // a new space will be made
-            string parent = cachedSpace.ParentSpace() == null ? "NO PARENT" : cachedSpace.ParentSpace().name;
-            Debug.Log($"<b>{cachedSpace.name}</b> is loading its parent space, <b>{parent}</b>");
+            string debugText = cachedSpace.ParentSpace() == null ? "is a root space, cannot load a parent space" : $"is loading its parent space, <b>{cachedSpace.ParentSpace().name}</b>";
+            Debug.Log($"<b>{cachedSpace.name}</b> {debugText}");
             LoadSpace(cachedSpace.ParentSpace());
             
             // Take the active scene and totemise it, that will then be added to the new space
@@ -70,20 +73,19 @@ namespace Spaces.Scripts.Space
             // If a space is supplied, set that to active, otherwise create a new one
             if (spaceInstance != null)
             {
-                Debug.Log($"Loading a supplied space: {spaceInstance.name}");
+                Debug.Log($"Loading a supplied space: <b>{spaceInstance.name}</b>");
                 SetActiveSpace(spaceInstance);
-                spaces.Add(ActiveSpace());
+                SpaceRegistration(ActiveSpace());
             }
             else
             {
-                Debug.Log($"Tried to load a null space, created a new space instead!");
-                spaces.Add(NewActiveSpace());
+                SpaceRegistration(NewActiveSpace());
+                Debug.Log($"Created root space: <b>{ActiveSpace().name}</b>");
             }
 
             // Load that active scene up
             ActiveSpace().LoadSpace(load: false);
         }
-
         /// <summary>
         /// 
         /// </summary>
@@ -101,7 +103,8 @@ namespace Spaces.Scripts.Space
         private SpaceInstance NewActiveSpace()
         {
             // Create a new gameobject, and parent it to the space manager
-            ObjectCreatorManager.CreateSpace($"[Space {spaces.Count + 1}]", spaceClass, gameObject, out SpaceInstance spaceInstance);
+            int index = spaces.Count + 1;
+            ObjectCreatorManager.CreateSpace($"[Space {index}]", objectClass, spaceClass, index - 1, gameObject, out SpaceInstance spaceInstance);
 
             // Create a new space instance, then add it to that placeholder gameobject, then make it the active scene
             SetActiveSpace(spaceInstance);
@@ -123,22 +126,14 @@ namespace Spaces.Scripts.Space
         /// <param name="spaceInstance"></param>
         public void SetActiveSpace(SpaceInstance spaceInstance)
         {
+            if(spaceInstance == activeSpace) return;
+            
+            // Set the active space to the supplied space
             Debug.Log($"<b>{spaceInstance.name}</b> set as Active Space");
             activeSpace = spaceInstance;
             
-            return;
-            // todo this is a really janky way of doing this
-            activeSpace.gameObject.SetActive(true);
-            
-            /*
-             // i tried to do this in the unloading loop in space instance but it didnt work and i dont know why
-            // todo add a check to make sure you don't unload the scene you just loaded
-                if (childSpace == spaceData.objectInstance)
-                {
-                    Debug.Log($"Skipped unloading {childSpace.name}");
-                    continue;
-                }
-            */
+            // Make any changes required of the new space
+            activeSpace.OnBecomeActiveSpace();
         }
         /// <summary>
         /// Adds a supplied object to the active scene
@@ -148,8 +143,38 @@ namespace Spaces.Scripts.Space
         {
             // Only gets called when making your first scene, after that there will always be an active scene
             if (ActiveSpace() == null) return;
-            Debug.Log($"Registering {objectInstance.name} with {ActiveSpace().name}");
+            
+            Debug.Log($"Registering Object: <b>{objectInstance.name}</b> with Space: <b>{ActiveSpace().name}</b>");
+            
+            // Register it with the active space
             ActiveSpace().AddObject(objectInstance);
+            
+            // Communicate that downwards too
+            objectInstance.SetRegisteredSpace(ActiveSpace());
+        }
+        /// <summary>
+        /// Add a supplied space to the master list of spaces
+        /// </summary>
+        /// <param name="space"></param>
+        private void SpaceRegistration(SpaceInstance space)
+        {
+            // Only add a space to spaces if it isn't already registered
+            if (!spaces.Contains(space))
+            {
+                spaces.Add(space);
+            }
+        }
+        /// <summary>
+        /// Transitions the colour of the camera background colour
+        /// </summary>
+        /// <param name="color"></param>
+        public static void SetCameraColour(Color color)
+        {
+            float lerp = 0;
+            DOTween.To(() => lerp, x => lerp = x, 1f, 1.5f).OnUpdate(() =>
+            {
+                Camera.backgroundColor = Color.Lerp(Camera.backgroundColor, color, lerp);
+            });
         }
         
         // ------------------------------------------------------------------------------------------------------------

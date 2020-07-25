@@ -2,6 +2,7 @@
 using Spaces.Scripts.Objects.Totem;
 using Spaces.Scripts.Player;
 using Spaces.Scripts.Space;
+using Spaces.Scripts.Space.Space_Classes;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
 
@@ -33,14 +34,17 @@ namespace Spaces.Scripts.Objects.Object_Creation
             // Create the object
             objectInstance.CreateNewObject(objectClass);
         }
+
         /// <summary>
         /// Creates a new object as standard, but adds a space instance to the created object, and returns that to whatever called it
         /// </summary>
         /// <param name="objectName"></param>
         /// <param name="objectClass"></param>
+        /// <param name="spaceClass"></param>
+        /// <param name="index"></param>
         /// <param name="parent"></param>
         /// <param name="spaceInstanceReference"></param>
-        public static void CreateSpace(string objectName, ObjectClass objectClass, GameObject parent, out SpaceInstance spaceInstanceReference)
+        public static void CreateSpace(string objectName, ObjectClass objectClass, SpaceClass spaceClass, int index, GameObject parent, out SpaceInstance spaceInstanceReference)
         {
             // Create placeholder object, named after the object
             GameObject placeholder = Set.Object(parent, objectName, Vector3.zero);
@@ -52,12 +56,13 @@ namespace Spaces.Scripts.Objects.Object_Creation
             // Add required scripts (object totem has to be added first!)
             placeholder.AddComponent<ObjectTotem>();
             ObjectInstance objectInstance = placeholder.AddComponent<ObjectInstance>();
-            
-            // Initialise the space
-            spaceInstance.Initialise(objectInstance);
 
             // Create the object, but don't register it with the scene - this avoids recursion
             objectInstance.CreateNewObject(objectClass, register: false);
+            
+            // Initialise the space
+            // Requires the objectInstance to have been created already as it references it
+            spaceInstance.Initialise(objectInstance, spaceClass, index);
         }
         /// <summary>
         /// Returns the position that the new object will be put

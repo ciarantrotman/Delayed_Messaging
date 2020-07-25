@@ -57,13 +57,13 @@ namespace Spaces.Scripts.Objects
         /// </summary>
         public enum TotemState { TOTEM, OBJECT }
         public const string Object = "Object";
-        //public UnityEvent totemise, objectise;
 
         // Core object information
         private static SpaceManager SpaceManager => Reference.SpaceManager();
-        private ObjectTotem ObjectTotem => GetComponent<ObjectTotem>();
+        internal ObjectTotem ObjectTotem => GetComponent<ObjectTotem>();
         public RelativeTransform relativeTransform = new RelativeTransform();
-        public TotemState totemState, cachedTotemState;
+        private SpaceInstance registeredSpace;
+        public TotemState totemState;
         public ObjectClass objectClass;
         private bool extant;
         
@@ -73,25 +73,18 @@ namespace Spaces.Scripts.Objects
         /// Defines the object state of the object
         /// </summary>
         /// <param name="state"></param>
-        /// <param name="cacheState"></param>
-        public void SetTotemState(TotemState state, bool cacheState = false)
+        public void SetTotemState(TotemState state)
         {
             // This is how the object remembers its state when being totemised by a scene
-            if (cacheState)
-            {
-                cachedTotemState = totemState;
-            }
-            
+
             switch (state)
             {
                 case TotemState.TOTEM:
                     totemState = TotemState.TOTEM;
-                    //totemise.Invoke();
                     ObjectTotem.Totemise();
                     break;
                 case TotemState.OBJECT:
                     totemState = TotemState.OBJECT;
-                    //objectise.Invoke();
                     ObjectTotem.Objectise();
                     break;
                 default:
@@ -114,6 +107,13 @@ namespace Spaces.Scripts.Objects
                 default:
                     return;
             }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SetRegisteredSpace(SpaceInstance space)
+        {
+            registeredSpace = space;
         }
         /// <summary>
         /// Only ever called once the first time the object is spawned
@@ -152,8 +152,6 @@ namespace Spaces.Scripts.Objects
             // Set the relative transform for the object
             relativeTransform.SetRelativeTransform(CurrentLocation());
             // Register the object with the space manager
-            string a = register ? "observed" : "ignored";
-            Debug.Log($"Registration of {supplyObjectClass.name} {a}.");
             if (!register) return;
             SpaceManager.ObjectRegistration(this);
         }
@@ -162,14 +160,14 @@ namespace Spaces.Scripts.Objects
         /// </summary>
         public void CreateExtantObject(SpaceInstance.SpaceData data, Vector3 origin, bool load = false)
         {
-            // Cache reference
-            Transform objectTransform = transform;
-            
             // Set its cached totem state
             SetTotemState(data.objectState);
             
             // Don't respawn objects if the scene is being loaded
             if (load) return;
+            
+            // Cache reference
+            Transform objectTransform = transform;
             
             // Snap to space totem
             objectTransform.position = origin;
