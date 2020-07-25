@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Spaces.Scripts.Objects;
 using Spaces.Scripts.Objects.Object_Classes;
+using Spaces.Scripts.Objects.Object_Creation;
 using Spaces.Scripts.Space.Space_Classes;
 using UnityEngine;
 
@@ -14,6 +15,9 @@ namespace Spaces.Scripts.Space
         private SpaceInstance parentSpace;
         public List<SpaceData> objectInstances = new List<SpaceData>();
         private static SpaceManager SpaceManager => Reference.SpaceManager();
+        private static ObjectCreatorManager ObjectCreatorManager => Reference.Player().GetComponent<ObjectCreatorManager>();
+        private enum SpaceStates { LOADED, UNLOADED, TOTEMISED }
+        private SpaceStates SpaceState { set; get; }
 
         // ------------------------------------------------------------------------------------------------------------
 
@@ -84,6 +88,9 @@ namespace Spaces.Scripts.Space
         /// </summary>
         public void TotemiseSpace()
         {
+            // todo, something better than this, it will need to go to the hand that you used to grab, need to wait to implement manipulation to do this though
+            transform.position = ObjectCreatorManager.CreationLocation();
+            
             // If this space has a parent space, then load it up
             if (parentSpace != null)
             {
@@ -106,7 +113,7 @@ namespace Spaces.Scripts.Space
                 
                 // Unload the objects
                 // todo, move this to its own method
-                Debug.Log($"Unloading: {data.objectInstance.name} from {name}");
+                Debug.Log($"<b>{name}</b> Totemising: {data.objectInstance.name} was unloaded ");
                 data.objectInstance.transform.DOMove(transform.position, 1f);
                 data.objectInstance.transform.DOScale(Vector3.zero, 1f);
                 //data.objectInstance.gameObject.SetActive(false);
@@ -118,18 +125,21 @@ namespace Spaces.Scripts.Space
             
             // Register the totem in the new scene
             SpaceManager.ObjectRegistration(spaceObject);
+            
+            // Set the space state
+            SetSpaceState(SpaceStates.TOTEMISED);
         }
         /// <summary>
         /// 
         /// </summary>
-        public void LoadSpace()
+        public void LoadSpace(bool load)
         {
             // todo: cache the current active space, but then when the space is totemised it reloads that parent scene
             // This will set the current active space to the parent of this space, but not if its itself
             SetParentSpace(SpaceManager.ActiveSpace() == this ? null : SpaceManager.ActiveSpace());
             if (parentSpace != null)
             {
-                SpaceManager.UnloadSpace(parentSpace);
+                SpaceManager.UnloadSpace(unloadSpace: parentSpace, loadSpace: this);
             }
 
             // Sets this as the current active space 
@@ -141,19 +151,52 @@ namespace Spaces.Scripts.Space
                 // Cache the reference
                 SpaceData data = spaceData;
                 
-                Debug.Log($"Loading: {data.objectInstance.name} from {name}");
+                Debug.Log($"<b>{name}</b> Loading: {data.objectInstance.name} was loaded ");
                 
                 // Create the extant object
-                data.objectInstance.CreateExtantObject(data, spaceObject.transform.position);
-                //data.objectInstance.gameObject.SetActive(true);
+                data.objectInstance.gameObject.SetActive(true);
+                data.objectInstance.CreateExtantObject(data, spaceObject.transform.position, load);
             }
+            
+            // Set the space state
+            SetSpaceState(SpaceStates.LOADED);
         }
         /// <summary>
-        /// 
+        /// Method called to unload a scene
+        /// This is called when a child space is loaded and this space is its parent space
         /// </summary>
-        public void UnloadSpace()
+        public void UnloadSpace(SpaceInstance childSpace)
         {
+            // Reload in all the objects in this space
+            foreach (SpaceData spaceData in objectInstances)
+            {
+                Debug.Log($"<b>{name}</b> Unloading: <b>{spaceData.objectInstance.name}</b> is being unloaded.");
+                
+                // todo add a check to make sure you don't unload the scene you just loaded
+                // ugh this is really messy but I don't have much choice here?
+                // This is totally dependant on spaces having separate gameobjects...
+                if (childSpace.gameObject == spaceData.objectInstance.gameObject)
+                {
+                    Debug.Log($"Skipped unloading <b>{childSpace.name}</b> from <b>{name}</b> as it is the loader scene!");
+                    continue;
+                }
+                
+                // Unload the object
+                //data.objectInstance.CreateExtantObject(data, spaceObject.transform.position);
+                spaceData.objectInstance.gameObject.SetActive(false);
+            }
             
+            // Set the space state
+            SetSpaceState(SpaceStates.UNLOADED);
+        }
+        /// <summary>
+        /// Wrapper used to set the state of the space
+        /// For the time being this is just a way for me to keep track of the space state
+        /// </summary>
+        /// <param name="state"></param>
+        private void SetSpaceState(SpaceStates state)
+        {
+            SpaceState = state;
         }
         /// <summary>
         /// 

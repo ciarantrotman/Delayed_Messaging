@@ -63,7 +63,7 @@ namespace Spaces.Scripts.Objects.Object_Creation
         /// Returns the position that the new object will be put
         /// </summary>
         /// <returns></returns>
-        private Vector3 CreationLocation()
+        public Vector3 CreationLocation()
         {
             if (!initialised) return Vector3.up;
             

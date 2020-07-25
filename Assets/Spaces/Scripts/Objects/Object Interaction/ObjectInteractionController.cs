@@ -22,7 +22,7 @@ namespace Spaces.Scripts.Objects.Object_Interaction
         // ------------------------------------------------------------------------------------------------------------
         
         /// <summary>
-        /// 
+        /// Public wrapper for the focus object
         /// </summary>
         /// <returns></returns>
         public ObjectInstance FocusObject()
@@ -30,12 +30,16 @@ namespace Spaces.Scripts.Objects.Object_Interaction
             return focusObject;
         }
         /// <summary>
-        /// 
+        /// Wrapper for getting the SpaceInstance from a space totem
         /// </summary>
         /// <returns></returns>
         public SpaceInstance FocusSpace()
         {
-            return focusObject.GetComponent<SpaceInstance>();
+            // Check if there is a space instance attached to the focus object
+            SpaceInstance space = FocusObject().GetComponent<SpaceInstance>();
+            
+            // Return it if there is one, or return null if there isn't one
+            return space == null ? null : space;
         }
         /// <summary>
         /// 

@@ -160,13 +160,16 @@ namespace Spaces.Scripts.Objects
         /// <summary>
         /// This is the same as "recreating" an extant object
         /// </summary>
-        public void CreateExtantObject(SpaceInstance.SpaceData data, Vector3 origin)
+        public void CreateExtantObject(SpaceInstance.SpaceData data, Vector3 origin, bool load = false)
         {
             // Cache reference
             Transform objectTransform = transform;
             
             // Set its cached totem state
             SetTotemState(data.objectState);
+            
+            // Don't respawn objects if the scene is being loaded
+            if (load) return;
             
             // Snap to space totem
             objectTransform.position = origin;

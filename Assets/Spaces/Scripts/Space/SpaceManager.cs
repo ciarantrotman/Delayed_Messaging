@@ -23,8 +23,7 @@ namespace Spaces.Scripts.Space
         private SpaceInstance activeSpace;
 
         private static ControllerTransforms Controller => Reference.Player().GetComponent<ControllerTransforms>();
-        private static ObjectCreatorManager ObjectCreatorManager => Reference.Player().GetComponent<ObjectCreatorManager>();
-        
+
         // ------------------------------------------------------------------------------------------------------------
         
         private void InitialiseSpaceButton()
@@ -53,6 +52,8 @@ namespace Spaces.Scripts.Space
             
             // Load a new space, if the active space is null, or the active space doesn't have a parent,
             // a new space will be made
+            string parent = cachedSpace.ParentSpace() == null ? "NO PARENT" : cachedSpace.ParentSpace().name;
+            Debug.Log($"<b>{cachedSpace.name}</b> is loading its parent space, <b>{parent}</b>");
             LoadSpace(cachedSpace.ParentSpace());
             
             // Take the active scene and totemise it, that will then be added to the new space
@@ -69,24 +70,29 @@ namespace Spaces.Scripts.Space
             // If a space is supplied, set that to active, otherwise create a new one
             if (spaceInstance != null)
             {
+                Debug.Log($"Loading a supplied space: {spaceInstance.name}");
                 SetActiveSpace(spaceInstance);
                 spaces.Add(ActiveSpace());
             }
             else
             {
+                Debug.Log($"Tried to load a null space, created a new space instead!");
                 spaces.Add(NewActiveSpace());
             }
 
             // Load that active scene up
-            ActiveSpace().LoadSpace();
+            ActiveSpace().LoadSpace(load: false);
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="spaceInstance"></param>
-        public void UnloadSpace(SpaceInstance spaceInstance)
+        /// <param name="unloadSpace"></param>
+        /// <param name="loadSpace"></param>
+        public static void UnloadSpace(SpaceInstance unloadSpace, SpaceInstance loadSpace)
         {
-            spaceInstance.UnloadSpace();
+            Debug.Log($"The space <b>{unloadSpace.name}</b> is being unloaded by <b>{loadSpace.name}</b>");
+            unloadSpace.UnloadSpace(loadSpace);
         }
         /// <summary>
         /// Generates a new space and makes it the active space
@@ -117,7 +123,22 @@ namespace Spaces.Scripts.Space
         /// <param name="spaceInstance"></param>
         public void SetActiveSpace(SpaceInstance spaceInstance)
         {
+            Debug.Log($"<b>{spaceInstance.name}</b> set as Active Space");
             activeSpace = spaceInstance;
+            
+            return;
+            // todo this is a really janky way of doing this
+            activeSpace.gameObject.SetActive(true);
+            
+            /*
+             // i tried to do this in the unloading loop in space instance but it didnt work and i dont know why
+            // todo add a check to make sure you don't unload the scene you just loaded
+                if (childSpace == spaceData.objectInstance)
+                {
+                    Debug.Log($"Skipped unloading {childSpace.name}");
+                    continue;
+                }
+            */
         }
         /// <summary>
         /// Adds a supplied object to the active scene

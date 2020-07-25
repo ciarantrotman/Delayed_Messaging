@@ -22,7 +22,12 @@ namespace Spaces.Scripts.Objects.Totem
         private static void ToggleState()
         {
             ObjectInteractionController.FocusObject()?.ToggleTotemState();
-            ObjectInteractionController.FocusSpace()?.LoadSpace();
+            
+            if (ObjectInteractionController.FocusSpace() != null)
+            {
+                Debug.Log($"<b>{ObjectInteractionController.FocusSpace().name}</b> state was toggled");
+                ObjectInteractionController.FocusSpace().LoadSpace(load: false);
+            }
         }
     }
 }
