@@ -20,38 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemAccent.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemAccent.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemMain.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemMain.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemPearl.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemPearl.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/User Interface/Shaders/TotemPearl.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/User Interface/Shaders/TotemPearl.shadergraph" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/Proxy Object/[Cube Object].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/Proxy Object/[Cube Object].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/Proxy Object/[Sphere Object].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/Proxy Object/[Sphere Object].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/[Space Totem].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/[Space Totem].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Cube Object].asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Cube Object].asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Space Object].asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Space Object].asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Sphere Object].asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Sphere Object].asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreatorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/IndirectObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/IndirectObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/ObjectInteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/ObjectInteractionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotemiser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotemiser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/DirectInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/DirectInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/IndirectInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/IndirectInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/InterfaceInteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/InterfaceInteractionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interfaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interfaces.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Setup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Setup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/Space Classes/SpaceClass.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/Space Classes/SpaceClass.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,13 +135,13 @@
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Setup.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotemiser.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationParent.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationController.cs" />
       </list>
     </option>
@@ -254,7 +226,7 @@
       <workItem from="1594989519000" duration="49525000" />
       <workItem from="1595269512296" duration="24049000" />
       <workItem from="1595421577636" duration="35086000" />
-      <workItem from="1595680568294" duration="55908000" />
+      <workItem from="1595680568294" duration="58518000" />
     </task>
     <servers />
   </component>

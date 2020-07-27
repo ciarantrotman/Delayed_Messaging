@@ -8,6 +8,7 @@ namespace Spaces.Scripts.Objects.Manipulation
     public class ManipulationController : MonoBehaviour
     {
         [SerializeField, Range(0,1)] private float directDamping = .75f, indirectDamping = .75f;
+        private ObjectInstance focusObject;
         private static ControllerTransforms Controller => Reference.Controller();
         /// <summary>
         /// 
@@ -17,6 +18,10 @@ namespace Spaces.Scripts.Objects.Manipulation
         /// <param name="totemisedSpace"></param>
         public void Direct(ObjectInstance objectInstance, ControllerTransforms.Check check, bool totemisedSpace = false)
         {
+            // Make sure you can grab the object
+            if (!objectInstance.ValidGrab() || objectInstance == focusObject) return;
+            focusObject = objectInstance;
+            objectInstance.SetGrabState(false);
             // todo tidy this but up, this is not a good way of doing this
             // check if the object you're grabbing has a space instance connected to it, if it does then it's a space totem
             // add a listener to the space totem to check distance from "space button"
@@ -43,6 +48,9 @@ namespace Spaces.Scripts.Objects.Manipulation
                 // But also remove the listener to do that because it has been thrown
                 Debug.Log($"<b>Listener Removed from {objectInstance.name}</b>");
                 Controller.GrabEvent(check, ControllerTransforms.EventTracker.EventType.END).RemoveListener(objectInstance.GrabEnd);
+                // Reset the grab state of the object
+                objectInstance.SetGrabState(true);
+                focusObject = null;
             });
         }
         /// <summary>
@@ -52,18 +60,20 @@ namespace Spaces.Scripts.Objects.Manipulation
         /// <param name="check"></param>
         public void Indirect(ObjectInstance objectInstance, ControllerTransforms.Check check)
         {
+            // Make sure you can grab the object
+            if (!objectInstance.ValidGrab() || objectInstance == focusObject) return;
+            focusObject = objectInstance;
+            objectInstance.SetGrabState(false);
             // Cache reference to object 
             Transform objectTransform = objectInstance.transform;
             // Create all the objects needed
             GameObject controllerProxy = Set.Object(null, "[Controller Proxy]", Controller.Position(check));
-            controllerProxy.transform.LookAt(Controller.Transform(check));
+            controllerProxy.transform.rotation = Controller.Transform(check).rotation;
             GameObject parent = Set.Object(controllerProxy, "[Indirect Parent]", Vector3.zero);
-            parent.transform.forward = Controller.ForwardVector(check);
             // Add the direct parent script and pass through the relevant information
             parent.AddComponent<ManipulationParent>().IndirectInitialise(controller: controllerProxy, objectPosition: objectTransform.position, check: check, lerp: indirectDamping);
             // Couple the object and the manipulation parent
             objectTransform.SetParent(parent.transform);
-            objectTransform.localPosition = Vector3.zero;
             // Insert logic for when you release that object
             Controller.GrabEvent(check, ControllerTransforms.EventTracker.EventType.END).AddListener(() =>
             {
@@ -75,6 +85,9 @@ namespace Spaces.Scripts.Objects.Manipulation
                 // But also remove the listener to do that because it has been thrown
                 Debug.Log($"<b>Listener Removed from {objectInstance.name}</b>");
                 Controller.GrabEvent(check, ControllerTransforms.EventTracker.EventType.END).RemoveListener(objectInstance.GrabEnd);
+                // Reset the grab state of the object
+                objectInstance.SetGrabState(true);
+                focusObject = null;
             });
         }
     }

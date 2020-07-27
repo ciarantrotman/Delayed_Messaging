@@ -12,7 +12,7 @@ using UnityEngine;
 namespace Spaces.Scripts.Objects
 {
     [RequireComponent(typeof(ObjectTotem))]
-    public class ObjectInstance : MonoBehaviour, IInteractive<ControllerTransforms.Check, Interaction.Mode, Boolean>
+    public class ObjectInstance : MonoBehaviour, IInteractive<ControllerTransforms.Check, Interaction.Mode, bool>
     {
         /// <summary>
         /// This is the relative transform of the object - relative to the origin of the scene that it is in
@@ -68,7 +68,7 @@ namespace Spaces.Scripts.Objects
         private SpaceInstance registeredSpace;
         public TotemState totemState;
         public ObjectClass objectClass;
-        private bool extant, space;
+        private bool extant, space, validGrab = true;
         
         // ------------------------------------------------------------------------------------------------------------
 
@@ -207,7 +207,23 @@ namespace Spaces.Scripts.Objects
         {
             return parentCache == null ? null : parentCache;
         }
-        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="state"></param>
+        internal void SetGrabState(bool state)
+        {
+            validGrab = state;
+        }
+        /// <summary>
+        /// Used to check if you can grab an object
+        /// </summary>
+        /// <returns></returns>
+        public bool ValidGrab()
+        {
+            return validGrab;
+        }
+
         // ------------------------------------------------------------------------------------------------------------
         
         /// <summary>
@@ -242,9 +258,7 @@ namespace Spaces.Scripts.Objects
                 SetParentCache();
             }
             // Debug information
-            Debug.Log($"Grab: <b>{name}</b> was grabbed by the {check} hand <b>{mode}LY</b>");
-            
-            // todo remove any listeners that were added to the object from another grab to prevent mix ups
+            // Debug.Log($"Grab: <b>{name}</b> was grabbed by the {check} hand <b>{mode}LY</b>");
             // todo actually better would be figuring out two handed manipulation instead
             switch (mode)
             {
@@ -272,21 +286,17 @@ namespace Spaces.Scripts.Objects
         {
             // Check to see if there is indeed a parent, and make sure its a manipulation parent
             if (transform.parent == null || transform.parent.GetComponent<ManipulationParent>() == null) return;
-            
             // Cache references to the objects parent object and cache velocity
             GameObject parent = transform.parent.gameObject;
             Vector3 velocity = parent.GetComponent<ManipulationParent>().Velocity();
             Vector3 angular = parent.GetComponent<ManipulationParent>().AngularVelocity();
-            
             // Decouple the object and destroy its parent
             transform.SetParent(ParentCache());
             Destroy(parent);
-            
             // Apply grab end effects
             //Debug.Log($"<b>Manipulation</b>: {name} was thrown with a velocity of {velocity} and an angular velocity of {angular}");
             Rigidbody.velocity = velocity;
             Rigidbody.angularVelocity = angular;
-            
             // todo, make this be when the object stops moving
             relativeTransform.SetRelativeTransform(CurrentLocation());
         }

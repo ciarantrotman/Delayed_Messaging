@@ -27,6 +27,7 @@ MonoBehaviour:
     color: {r: 0.8490566, g: 0.500623, b: 0.500623, a: 1}
   objectPhysics:
     gravity: 0
-    mass: 1
-    drag: 3
-    angularDrag: 3
+    kinematic: 0
+    mass: 10
+    drag: 10
+    angularDrag: 10
