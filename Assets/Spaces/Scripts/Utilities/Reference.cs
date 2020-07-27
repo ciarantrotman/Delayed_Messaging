@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Spaces.Scripts.Objects.Manipulation;
 using Spaces.Scripts.Player;
 using Spaces.Scripts.Space;
 using UnityEngine;
@@ -38,5 +39,13 @@ public static class Reference
     public static ControllerTransforms Controller()
     {
         return Player().GetComponent<ControllerTransforms>();
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <returns></returns>
+    public static ManipulationController Manipulation()
+    {
+        return Player().GetComponent<ManipulationController>();
     }
 }

@@ -34,7 +34,7 @@ namespace Spaces.Scripts.Objects.Object_Interaction
         public void Check(Vector3 origin, Vector3 vector, float radius, float castRange, bool rayEnabled)
         {
             range = castRange;
-            if (Physics.SphereCast(new Ray {origin = origin, direction = vector}, radius, out RaycastHit hit, range) && hit.transform.CompareTag(ObjectInstance.Object) && rayEnabled)
+            if (Physics.SphereCast(new Ray {origin = origin, direction = vector}, radius, out RaycastHit hit, range) && hit.transform.CompareTag(tagComparison) && rayEnabled)
             {
                 // Create a new button cache
                 ObjectInstance newObject = hit.transform.GetComponent<ObjectInstance>();
@@ -114,19 +114,21 @@ namespace Spaces.Scripts.Objects.Object_Interaction
         protected override void GrabStart()
         {
             if (!extant) return;
-            objectInstance.GrabStart();
+            objectInstance.GrabStart(orientation, Mode.INDIRECT);
         }
 
         protected override void GrabStay()
         {
             if (!extant) return;
-            objectInstance.GrabStay();
+            //objectInstance.GrabStay();
         }
 
         protected override void GrabEnd()
         {
             if (!extant) return;
-            objectInstance.GrabEnd();
+            // Currently this doesn't need to be called because other listeners are added elsewhere
+            // It also may not be the current object when this is triggered
+            //objectInstance.GrabEnd();
         }
     }
 }

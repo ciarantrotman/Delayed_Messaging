@@ -1,4 +1,5 @@
 ﻿using Spaces.Scripts.Player;
+using Spaces.Scripts.User_Interface.Interface_Elements;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
 
@@ -34,8 +35,8 @@ namespace Spaces.Scripts.User_Interface.Interface_Interaction
             dominantIndirect.Initialise(interactionParent, "[Interface] [Indirect / Dominant]", material, ControllerTransforms.Check.RIGHT);
             
             // Add indirect event listeners
-            nondominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);
-            dominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT);
+            nondominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT, BaseInterface.Interface);
+            dominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT, BaseInterface.Interface);
             
             // Add direct interaction to each controller
             nondominantDirect = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<DirectInterface>();
@@ -46,8 +47,8 @@ namespace Spaces.Scripts.User_Interface.Interface_Interaction
             dominantDirect.Initialise(radius, ControllerTransforms.Check.RIGHT);
             
             // Add direct event listeners
-            nondominantDirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);
-            dominantDirect.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT);
+            nondominantDirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT, BaseInterface.Interface);
+            dominantDirect.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT, BaseInterface.Interface);
         }
 
         private void Update()

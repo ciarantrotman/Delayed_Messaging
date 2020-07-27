@@ -25,14 +25,13 @@ namespace Spaces.Scripts.Objects.Object_Creation
         public void CreateObject(string objectName, ObjectClass objectClass, GameObject parent = null)
         {
             // Create placeholder object, named after the object
-            GameObject placeholder = Set.Object(parent, objectName, CreationLocation());
-            
+            GameObject placeholder = Set.Object(parent, objectName, CreationLocation(), ObjectInstance.Object);
             // Add required scripts (object totem has to be added first!)
             placeholder.AddComponent<ObjectTotem>();
-            ObjectInstance objectInstance = placeholder.AddComponent<ObjectInstance>();
-
-            // Create the object
-            objectInstance.CreateNewObject(objectClass);
+            // Add a rigidbody to the object, configure it based on the object class
+            placeholder.AddComponent<Rigidbody>().Rigidbody(objectClass.objectPhysics);
+            // Then create the object instance and configure the object
+            placeholder.AddComponent<ObjectInstance>().CreateNewObject(objectClass);
         }
 
         /// <summary>
@@ -47,19 +46,17 @@ namespace Spaces.Scripts.Objects.Object_Creation
         public static void CreateSpace(string objectName, ObjectClass objectClass, SpaceClass spaceClass, int index, GameObject parent, out SpaceInstance spaceInstanceReference)
         {
             // Create placeholder object, named after the object
-            GameObject placeholder = Set.Object(parent, objectName, Vector3.zero);
-            
+            GameObject placeholder = Set.Object(parent, objectName, Vector3.zero, ObjectInstance.Object);
             // Add the space instance to the object
             SpaceInstance spaceInstance = placeholder.AddComponent<SpaceInstance>();
             spaceInstanceReference = spaceInstance;
-            
             // Add required scripts (object totem has to be added first!)
             placeholder.AddComponent<ObjectTotem>();
-            ObjectInstance objectInstance = placeholder.AddComponent<ObjectInstance>();
-
+            // Add a rigidbody to the object, configure it based on the object class
+            placeholder.AddComponent<Rigidbody>().Rigidbody(objectClass.objectPhysics);
             // Create the object, but don't register it with the scene - this avoids recursion
-            objectInstance.CreateNewObject(objectClass, register: false);
-            
+            ObjectInstance objectInstance = placeholder.AddComponent<ObjectInstance>();
+            objectInstance.CreateNewObject(objectClass, register: false, isSpace: true);
             // Initialise the space
             // Requires the objectInstance to have been created already as it references it
             spaceInstance.Initialise(objectInstance, spaceClass, index);

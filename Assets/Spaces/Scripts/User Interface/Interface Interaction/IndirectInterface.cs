@@ -33,7 +33,7 @@ namespace Spaces.Scripts.User_Interface.Interface_Interaction
         {
             float rayDistance = Offset;
 
-            if (Physics.Raycast(origin, vector, out RaycastHit hit, range) && hit.transform.CompareTag(BaseInterface.Interface) && rayEnabled)
+            if (Physics.Raycast(origin, vector, out RaycastHit hit, range) && hit.transform.CompareTag(tagComparison) && rayEnabled)
             {
                 // Create a new button cache
                 Button newButton = hit.transform.GetComponent<Button>();

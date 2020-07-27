@@ -18,16 +18,9 @@ namespace Spaces.Scripts.Objects.Totem
             Label.SetText(labelText);
             Button.buttonSelect.AddListener(ToggleState);
         }
-
         private static void ToggleState()
         {
             ObjectInteractionController.FocusObject()?.ToggleTotemState();
-            
-            if (ObjectInteractionController.FocusSpace() != null)
-            {
-                Debug.Log($"<b>{ObjectInteractionController.FocusSpace().name}</b> is being de-totemised and loaded");
-                ObjectInteractionController.FocusSpace().LoadSpace(load: false);
-            }
         }
     }
 }

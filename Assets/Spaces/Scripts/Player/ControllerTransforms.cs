@@ -16,9 +16,10 @@ namespace Spaces.Scripts.Player
         public SteamVR_Action_Vector2 joystickDirection;
         public SteamVR_Action_Boolean grab, trigger, menu, joystick;
 
-        [HideInInspector] public EventTracker leftGrab, rightGrab, leftSelect, rightSelect, leftMenu, rightMenu, leftJoystick, rightJoystick; 
+        [HideInInspector] public EventTracker leftGrab, rightGrab, leftSelect, rightSelect, leftMenu, rightMenu, leftJoystick, rightJoystick;
 
-        private GameObject lHandDirect, rHandDirect, localRef, localHeadset, localR, localL, controllerMidpoint;
+        //private Rigidbody leftRigidbody, rightRigidbody;
+        private GameObject lHandDirect, rHandDirect, localRef, localHeadset, localR, localL, controllerMidpoint, rightChest, leftChest;
         public const float MaxAngle = 110f, MinAngle = 60f, Trigger = .7f, Sensitivity = 10f, Tolerance = .1f;
         public readonly List<Vector2> rJoystickValues = new List<Vector2>(), lJoystickValues = new List<Vector2>();
 
@@ -102,10 +103,12 @@ namespace Spaces.Scripts.Player
         private void CreateObjects()
         {
             localRef = Set.Object(gameObject, "[Local Reference Rig]", Vector3.zero);
-            localHeadset = Set.Object(localRef, "Local/HMD", Vector3.zero);
-            localR = Set.Object(localHeadset,"Local/Right", Vector3.zero);
-            localL = Set.Object(localHeadset,"Local/Left", Vector3.zero);
-            controllerMidpoint = Set.Object(gameObject, "[Controller Midpoint]", Vector3.zero);
+            localHeadset = Set.Object(localRef, "[Head]", Vector3.zero);
+            localR = Set.Object(localHeadset,"[Right]", Vector3.zero);
+            localL = Set.Object(localHeadset,"[Left]", Vector3.zero);
+            controllerMidpoint = Set.Object(localRef, "[Controller Midpoint]", Vector3.zero);
+            rightChest = Set.Object(localRef, "[Chest / Right]", Vector3.zero);
+            leftChest = Set.Object(localRef, "[Chest / Left]", Vector3.zero);
         }
 
         private void Update()
@@ -132,6 +135,8 @@ namespace Spaces.Scripts.Player
             localHeadset.transform.Transforms(CameraTransform());
             localR.transform.Transforms(RightTransform());
             localL.transform.Transforms(LeftTransform());
+            rightChest.transform.SplitTransform(positionTarget: localHeadset.transform, heightReference: localR.transform);
+            leftChest.transform.SplitTransform(positionTarget: localHeadset.transform, heightReference: localL.transform);
             
             // Set the controller midpoint
             controllerMidpoint.transform.position = Vector3.Lerp(Position(Check.LEFT), Position(Check.RIGHT), .5f);
@@ -140,6 +145,18 @@ namespace Spaces.Scripts.Player
 
         #region Private Accessors
 
+        private Rigidbody LeftRigidbody()
+        {
+            return null;
+            //return leftRigidbody;
+        }
+        
+        private Rigidbody RightRigidbody()
+        {
+            return null;
+            //return rightRigidbody;
+        }
+        
         private Transform LeftTransform()
         {
             return leftController;
@@ -465,6 +482,11 @@ namespace Spaces.Scripts.Player
                     return false;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
         public Vector3 LocalPosition(Check check)
         {
             switch (check)
@@ -475,6 +497,25 @@ namespace Spaces.Scripts.Player
                     return RightLocalPosition();
                 case Check.HEAD:
                     return CameraLocalPosition();
+                default:
+                    return Vector3.zero;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        public Vector3 ChestPosition(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return leftChest.transform.position;
+                case Check.RIGHT:
+                    return rightChest.transform.position;
+                case Check.HEAD:
+                    return Vector3.zero;
                 default:
                     return Vector3.zero;
             }
@@ -534,6 +575,40 @@ namespace Spaces.Scripts.Player
                     return null;
                 default:
                     return null;
+            }
+        }
+        // Rigidbody calculations
+        public Rigidbody Rigidbody(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftRigidbody();
+                case Check.RIGHT:
+                    return RightRigidbody();
+                case Check.HEAD:
+                    return null;
+                default:
+                    return null;
+            }
+        }
+        /// <summary>
+        /// Returns the relevant velocity of the interrogated rigidbody, used for velocity tracking
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        public Vector3 Velocity(Check check)
+        {
+            switch (check)
+            {
+                case Check.LEFT:
+                    return LeftRigidbody().velocity;
+                case Check.RIGHT:
+                    return RightRigidbody().velocity;
+                case Check.HEAD:
+                    return Vector3.zero;
+                default:
+                    return Vector3.zero;
             }
         }
     }

@@ -20,26 +20,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fcd921b-f578-4afd-b0a6-4652f48a6db7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Delayed_Messaging/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/[Totem].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/[Totem].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Spaces/[Space Manager].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Spaces/[Space Manager].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/Blank Buttons/[Button] Indirect.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/Blank Buttons/[Button] Indirect.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Totemiser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/User Interface/[Button] Totemiser.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scenes/[Spaces Scene].unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scenes/[Spaces Scene].unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemAccent.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemAccent.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemMain.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemMain.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemPearl.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/Totem/TotemPearl.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Materials/User Interface/Shaders/TotemPearl.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Materials/User Interface/Shaders/TotemPearl.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/Proxy Object/[Cube Object].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/Proxy Object/[Cube Object].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/Proxy Object/[Sphere Object].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/Proxy Object/[Sphere Object].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/[Space Totem].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Objects/[Space Totem].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Prefabs/Player/[Spaces Player].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Cube Object].asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Cube Object].asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Space Object].asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Space Object].asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Sphere Object].asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/[Sphere Object].asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreatorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/IndirectObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/IndirectObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/ObjectInteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/ObjectInteractionController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotemiser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotemiser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/DirectInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/DirectInterface.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/IndirectInterface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/IndirectInterface.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/InterfaceInteractionController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/InterfaceInteractionController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Cast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Cast.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Check.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Check.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Gesture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Gesture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interfaces.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interfaces.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Setup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Setup.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +85,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/D19E8A38-5444-4F3D-A5A4-C530527191EF/2e/901fe8dd/TweenSettingsExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Shaders/Unlit.shader" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationParent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Input/SteamVR_Action_Boolean.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/InterfaceInteractionController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationVisual.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/IndirectInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/DirectInterface.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" root0="FORCE_HIGHLIGHTING" />
@@ -94,22 +108,18 @@
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreatorManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/SteamVR/Scripts/SteamVR_RenderModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.popcron.gizmos@41dfa1712443598c7f8538c7997994075db5f5fd/Runtime/Gizmos.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/ObjectInteractionController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/97/599cc6a2/Vector3.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interaction.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7C074160-DD1A-4D91-9B45-B6E4C27A3BAC/a5/76c18145/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/94C5F4C3-8CDC-42D2-B006-F8BADEF04394/c7/7cd62c67/Bounds.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/DirectObject.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/CubeObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectClass.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/BaseObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ObjectCreatorManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectFocus.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectCreator.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectSelectionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectTotemiser.cs" />
@@ -120,41 +130,47 @@
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/DirectInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInteractionController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/IndirectInterface.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InteractionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/InterfaceInteractionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/InteractionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Draw.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interfaces.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interaction.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/IndirectInterface.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/IndirectObject.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Object Interface/ContextualObjectMetadata.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreator.cs" />
         <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@7.1.8/Editor/UniversalRenderPipelineCameraEditor.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/Space Classes/SpaceClass.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreatorManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/UserInterfaceController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/SpaceTotem.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotemiser.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/Button.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Elements/BaseInterface.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/ObjectInteractionController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/InterfaceInteractionController.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Gesture.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/LocomotionPositionPreview.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/Locomotion/Locomotion.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Cast.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Check.cs" />
-        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Reference.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/DirectParent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interaction.cs" />
         <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/DirectInterface.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/DirectObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/IndirectInterface.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/IndirectObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/User Interface/Interface Interaction/InterfaceInteractionController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Interaction/ObjectInteractionController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Creation/ObjectCreatorManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Interfaces.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationVisual.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Object Classes/ObjectClass.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Setup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotem.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/ObjectInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Totem/ObjectTotemiser.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Utilities/Set.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Player/ControllerTransforms.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationParent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Space/SpaceInstance.cs" />
+        <option value="$PROJECT_DIR$/Assets/Spaces/Scripts/Objects/Manipulation/ManipulationController.cs" />
       </list>
     </option>
   </component>
@@ -238,7 +254,7 @@
       <workItem from="1594989519000" duration="49525000" />
       <workItem from="1595269512296" duration="24049000" />
       <workItem from="1595421577636" duration="35086000" />
-      <workItem from="1595680568294" duration="17227000" />
+      <workItem from="1595680568294" duration="55908000" />
     </task>
     <servers />
   </component>
@@ -263,10 +279,10 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="794" y="256" key="RiderGenerateDialog" timestamp="1595364018661">
+    <state x="794" y="256" key="RiderGenerateDialog" timestamp="1595779800041">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="794" y="256" key="RiderGenerateDialog/1920.60.1280.1024/-1080.-323.1080.1920/0.0.1920.1080@0.0.1920.1080" timestamp="1595364018661" />
+    <state x="794" y="256" key="RiderGenerateDialog/1920.60.1280.1024/-1080.-323.1080.1920/0.0.1920.1080@0.0.1920.1080" timestamp="1595779800041" />
     <state x="92" y="92" width="1736" height="896" key="VCS.FileHistoryDialog" timestamp="1595100114468">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Spaces.Scripts.Objects.Manipulation;
 using Spaces.Scripts.Objects.Object_Classes;
 using Spaces.Scripts.Objects.Totem;
+using Spaces.Scripts.Player;
 using Spaces.Scripts.Space;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
-using UnityEngine.Events;
-using VR_Prototyping.Plugins.QuickOutline.Scripts;
 
 namespace Spaces.Scripts.Objects
 {
     [RequireComponent(typeof(ObjectTotem))]
-    public class ObjectInstance : MonoBehaviour, IInteractive
+    public class ObjectInstance : MonoBehaviour, IInteractive<ControllerTransforms.Check, Interaction.Mode, Boolean>
     {
         /// <summary>
         /// This is the relative transform of the object - relative to the origin of the scene that it is in
@@ -59,13 +59,16 @@ namespace Spaces.Scripts.Objects
         public const string Object = "Object";
 
         // Core object information
+        private static ManipulationController Manipulation => Reference.Manipulation();
         private static SpaceManager SpaceManager => Reference.SpaceManager();
         internal ObjectTotem ObjectTotem => GetComponent<ObjectTotem>();
+        internal Rigidbody Rigidbody => GetComponent<Rigidbody>();
         public RelativeTransform relativeTransform = new RelativeTransform();
+        private Transform parentCache;
         private SpaceInstance registeredSpace;
         public TotemState totemState;
         public ObjectClass objectClass;
-        private bool extant;
+        private bool extant, space;
         
         // ------------------------------------------------------------------------------------------------------------
 
@@ -139,10 +142,13 @@ namespace Spaces.Scripts.Objects
         /// </summary>
         /// <param name="supplyObjectClass"></param>
         /// <param name="register"></param>
-        public void CreateNewObject(ObjectClass supplyObjectClass, bool register = true)
+        /// <param name="isSpace"></param>
+        public void CreateNewObject(ObjectClass supplyObjectClass, bool register = true, bool isSpace = false)
         {
-            // Cache object class
+            // Cache local variables
             objectClass = supplyObjectClass;
+            space = isSpace;
+            SetParentCache();
             // Feed through the object class data
             ObjectTotem.InstantiateObjectTotem(transform, supplyObjectClass, this);
             // Reconfigure the script to read as spawned
@@ -162,24 +168,44 @@ namespace Spaces.Scripts.Objects
         {
             // Set its cached totem state
             SetTotemState(data.objectState);
-            
             // Don't respawn objects if the scene is being loaded
             if (load) return;
-            
             // Cache reference
             Transform objectTransform = transform;
-            
             // Snap to space totem
             objectTransform.position = origin;
             objectTransform.localScale = Vector3.zero;
-
             // Calculate how long it should take to reload
             float duration = Vector3.Distance(objectTransform.position, data.objectLocation.position);
-            
             // Tween to supplied location
             objectTransform.DOLocalMove(data.objectLocation.position, duration);
             objectTransform.DOLocalRotate(data.objectLocation.rotation, duration);
             objectTransform.DOScale(Vector3.one, duration);
+        }
+        /// <summary>
+        /// Check if this object is associated with a space totem
+        /// </summary>
+        /// <returns></returns>
+        public bool Space()
+        {
+            return space;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private void SetParentCache()
+        {
+            parentCache = transform.parent;
+            string parent = parentCache == null ? "[Root]" : parentCache.name;
+            Debug.Log($"<b>{name}</b> Object Parenting: <b>{name}</b> parent set to <b>{parent}</b>");
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        private Transform ParentCache()
+        {
+            return parentCache == null ? null : parentCache;
         }
         
         // ------------------------------------------------------------------------------------------------------------
@@ -208,9 +234,29 @@ namespace Spaces.Scripts.Objects
         /// <summary>
         /// 
         /// </summary>
-        public void GrabStart()
+        public void GrabStart(ControllerTransforms.Check check, Interaction.Mode mode, bool totemisedSpace = false)
         {
-            Debug.Log($"{name}: Grab Start");
+            // Cache a reference to its parent when you first grab it
+            if (!totemisedSpace)
+            {
+                SetParentCache();
+            }
+            // Debug information
+            Debug.Log($"Grab: <b>{name}</b> was grabbed by the {check} hand <b>{mode}LY</b>");
+            
+            // todo remove any listeners that were added to the object from another grab to prevent mix ups
+            // todo actually better would be figuring out two handed manipulation instead
+            switch (mode)
+            {
+                case Interaction.Mode.DIRECT:
+                    Manipulation.Direct(objectInstance: this, check, totemisedSpace);
+                    break;
+                case Interaction.Mode.INDIRECT:
+                    Manipulation.Indirect(objectInstance: this, check);
+                    break;
+                default:
+                    return;
+            }
         }
         /// <summary>
         /// 
@@ -224,8 +270,25 @@ namespace Spaces.Scripts.Objects
         /// </summary>
         public void GrabEnd()
         {
+            // Check to see if there is indeed a parent, and make sure its a manipulation parent
+            if (transform.parent == null || transform.parent.GetComponent<ManipulationParent>() == null) return;
+            
+            // Cache references to the objects parent object and cache velocity
+            GameObject parent = transform.parent.gameObject;
+            Vector3 velocity = parent.GetComponent<ManipulationParent>().Velocity();
+            Vector3 angular = parent.GetComponent<ManipulationParent>().AngularVelocity();
+            
+            // Decouple the object and destroy its parent
+            transform.SetParent(ParentCache());
+            Destroy(parent);
+            
+            // Apply grab end effects
+            //Debug.Log($"<b>Manipulation</b>: {name} was thrown with a velocity of {velocity} and an angular velocity of {angular}");
+            Rigidbody.velocity = velocity;
+            Rigidbody.angularVelocity = angular;
+            
+            // todo, make this be when the object stops moving
             relativeTransform.SetRelativeTransform(CurrentLocation());
-            Debug.Log($"{name}: Grab End");
         }
     }
 }

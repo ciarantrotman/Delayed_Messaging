@@ -1,4 +1,5 @@
 ﻿using Pathfinding;
+using Spaces.Scripts.Objects.Object_Classes;
 using UnityEngine;
 using UnityEngine.Rendering;
 using VR_Prototyping.Plugins.QuickOutline.Scripts;
@@ -143,6 +144,19 @@ namespace Spaces.Scripts.Utilities
         {
             sc.isTrigger = trigger;
             sc.radius = radius;
+        }
+        /// <summary>
+        /// Configures a supplied rigidbody based on a supplied object physics struct
+        /// </summary>
+        /// <param name="rigidbody"></param>
+        /// <param name="objectPhysics"></param>
+        public static void Rigidbody(this Rigidbody rigidbody, ObjectClass.ObjectPhysics objectPhysics)
+        {
+            rigidbody.useGravity = objectPhysics.gravity;
+            rigidbody.isKinematic = objectPhysics.kinematic;
+            rigidbody.mass = objectPhysics.mass;
+            rigidbody.drag = objectPhysics.drag;
+            rigidbody.angularDrag = objectPhysics.angularDrag;
         }
     }
 }

@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-guid: 6429a53869cef1f42b2ddf140c5c0b8c
+guid: 3b31e512fe7570d40abb6732d85ee32c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - objectObject: {instanceID: 0}
-  - totemObject: {fileID: 8125397014880535984, guid: 5892c25ee404a2946b62c8cfeb5d1406,
-      type: 3}
+  - material: {fileID: 2100000, guid: db79bbb8a0f517843aae9f7e040717c4, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

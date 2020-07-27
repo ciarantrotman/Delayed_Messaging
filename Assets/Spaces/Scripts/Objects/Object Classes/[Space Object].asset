@@ -24,4 +24,9 @@ MonoBehaviour:
   totemOutline:
     width: 10
     mode: 0
-    color: {r: 0.9960785, g: 0.4666667, b: 0.49803925, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 1}
+  objectPhysics:
+    gravity: 0
+    mass: 1
+    drag: 3
+    angularDrag: 3

@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Spaces.Scripts.Objects;
 using Spaces.Scripts.Objects.Object_Classes;
-using Spaces.Scripts.Objects.Object_Creation;
-using Spaces.Scripts.Objects.Totem;
 using Spaces.Scripts.Player;
 using Spaces.Scripts.Space.Space_Classes;
+using Spaces.Scripts.Utilities;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Spaces.Scripts.Space
 {
     public class SpaceInstance : MonoBehaviour
     {
+        private int index;
+        private bool holding;
         private ObjectInstance spaceObject;
         private SpaceInstance parentSpace;
         private SpaceClass spaceClass;
         private Color spaceColour;
         public List<SpaceData> objectInstances = new List<SpaceData>();
         private static SpaceManager SpaceManager => Reference.SpaceManager();
-        private static ObjectCreatorManager ObjectCreatorManager => Reference.Player().GetComponent<ObjectCreatorManager>();
         private enum SpaceStates { LOADED, UNLOADED, TOTEMISED }
-        private SpaceStates SpaceState { set; get; }
-        private int index;
+        private SpaceStates spaceState;
 
         // ------------------------------------------------------------------------------------------------------------
 
@@ -66,12 +65,9 @@ namespace Spaces.Scripts.Space
             spaceObject = instance;
             spaceClass = space;
             index = spaceIndex;
-            
             // Set visual effects determined by this space
-            spaceColour = spaceClass.spaceColours[Random.Range(0, spaceClass.spaceColours.Count - 1)];
+            spaceColour = spaceClass.spaceColours[index];
             spaceObject.ObjectTotem.SetTotemColour(spaceColour);
-            
-            //spaceObject.objectise.AddListener(LoadSpace);
         }
 
         /// <summary>
@@ -112,46 +108,34 @@ namespace Spaces.Scripts.Space
             //return objectInstances.Contains(objectInstance);
         }
         /// <summary>
-        /// 
+        /// Called when totemising a space
+        /// Handles the logic for recalling all objects registered with that space
+        /// Turns the space object into a totem
+        /// Triggers direct manipulation of the space totem as well
         /// </summary>
-        public void TotemiseSpace(Vector3 position)
+        public void TotemiseSpace(Transform target, ControllerTransforms.Check check)
         {
-            // todo, something better than this, it will need to go to the hand that you used to grab, need to wait to implement manipulation to do this though
-            transform.position = position;
-            
-            // If this space has a parent space, then load it up
-            if (parentSpace != null)
-            {
-                Debug.Log($"<b>{parentSpace.name}</b> was loaded by <b>{name}</b> because it's its parent space");
-                SpaceManager.LoadSpace(parentSpace);
-            }
-            
+            // Manipulation logic for the totem, comes before the next section because of DoTween references
+            transform.Transforms(target);
+            spaceObject.ObjectTotem.RecenterObjectTotem();
+            spaceObject.GrabStart(check, Interaction.Mode.DIRECT, totemisedSpace: true);
             // Totemise each of the objects in the space
             foreach (SpaceData spaceData in objectInstances)
             {
-                // Cache the reference
                 // Set all the states needed for the object
                 spaceData.objectLocation = spaceData.objectInstance.relativeTransform.CurrentLocation;
                 spaceData.objectState = spaceData.objectInstance.totemState;
-                
-                // Totemise the objects in the space
-                //data.objectInstance.SetTotemState(ObjectInstance.TotemState.TOTEM);
-                
                 // Unload the objects
-                // todo, move this to its own method
-                Debug.Log($"Totemising <b>{name}</b>: <b>{spaceData.objectInstance.name}</b> was unloaded from the space");
-                spaceData.objectInstance.transform.DOMove(transform.position, 1f);
-                spaceData.objectInstance.transform.DOScale(Vector3.zero, 1f);
-                //data.objectInstance.gameObject.SetActive(false);
-                //Destroy(data.objectInstance.gameObject);
+                spaceData.objectInstance.transform.DOMove(transform.position, .25f);
+                spaceData.objectInstance.transform.DOScale(Vector3.zero, .25f).OnComplete(() =>
+                {
+                    spaceData.objectInstance.gameObject.SetActive(false);
+                });
             }
-            
             // Then turn the space into a totem
             spaceObject.SetTotemState(ObjectInstance.TotemState.TOTEM);
-
             // Register the totem in the new scene
             SpaceManager.ObjectRegistration(spaceObject);
-            
             // Set the space state
             SetSpaceState(SpaceStates.TOTEMISED);
         }
@@ -160,31 +144,18 @@ namespace Spaces.Scripts.Space
         /// </summary>
         public void LoadSpace(bool load)
         {
-            // todo: cache the current active space, but then when the space is totemised it reloads that parent scene
-            // This will set the current active space to the parent of this space, but not if its itself
-            SetParentSpace(SpaceManager.ActiveSpace() == this ? null : SpaceManager.ActiveSpace());
-            if (parentSpace != null)
-            {
-                SpaceManager.UnloadSpace(unloadSpace: parentSpace, loadSpace: this);
-            }
-
-            // Sets this as the current active space 
-            SpaceManager.SetActiveSpace(this);
-            
             // Reload in all the objects in this space
             foreach (SpaceData spaceData in objectInstances)
             {
                 // Cache the reference
                 SpaceData data = spaceData;
-                
-                Debug.Log($"<b>{name}</b> Loading: <b>{data.objectInstance.name}</b> was loaded ");
-                
-                // Create the extant object
+                // Reenable the objects in this space
                 data.objectInstance.gameObject.SetActive(true);
-                // todo, supply a meaningful position for the object to spawn from here
-                data.objectInstance.CreateExtantObject(data, spaceObject.transform.position, load);
+                // Make them reappear from the space totem
+                data.objectInstance.CreateExtantObject(data, transform.position, load);
             }
-            
+            // Then turn the space back into an object
+            spaceObject.SetTotemState(ObjectInstance.TotemState.OBJECT);
             // Set the space state
             SetSpaceState(SpaceStates.LOADED);
         }
@@ -195,24 +166,10 @@ namespace Spaces.Scripts.Space
         public void UnloadSpace(SpaceInstance childSpace)
         {
             // Reload in all the objects in this space
-            foreach (SpaceData spaceData in objectInstances)
+            foreach (SpaceData spaceData in objectInstances.Where(spaceData => childSpace.gameObject != spaceData.objectInstance.gameObject))
             {
-                Debug.Log($"<b>{name}</b> Unloading: <b>{spaceData.objectInstance.name}</b> is being unloaded");
-                
-                // todo add a check to make sure you don't unload the scene you just loaded
-                // ugh this is really messy but I don't have much choice here?
-                // This is totally dependant on spaces having separate gameobjects...
-                if (childSpace.gameObject == spaceData.objectInstance.gameObject)
-                {
-                    Debug.Log($"Skipped unloading <b>{childSpace.name}</b> from <b>{name}</b>, as it is being loaded as the active space");
-                    continue;
-                }
-                
-                // Unload the object
-                //data.objectInstance.CreateExtantObject(data, spaceObject.transform.position);
                 spaceData.objectInstance.gameObject.SetActive(false);
             }
-            
             // Set the space state
             SetSpaceState(SpaceStates.UNLOADED);
         }
@@ -223,19 +180,56 @@ namespace Spaces.Scripts.Space
         /// <param name="state"></param>
         private void SetSpaceState(SpaceStates state)
         {
-            SpaceState = state;
+            spaceState = state;
+        }
+        /// <summary>
+        /// Sets the parent space of this space
+        /// </summary>
+        /// <param name="parent"></param>
+        internal void SetParentSpace(SpaceInstance parent)
+        {
+            if (parent == this)
+            {
+                Debug.Log($"<b>{name}</b> Parenting: <b>{name}</b> is the active space, cannot set itself as its own parent space");
+            }
+            else
+            {
+                parentSpace = parent;
+                Debug.Log($"<b>{name}</b> Parenting: <b>{parent.name}</b> set as parent space of <b>{name}</b>");
+            }
+        }
+        /// <summary>
+        /// Returns the parent space of this space
+        /// </summary>
+        /// <returns></returns>
+        public SpaceInstance ParentSpace()
+        {
+            return parentSpace;
+        }
+        /// <summary>
+        /// Sets the state of the holding check for this space
+        /// This bool allows us to check whether or not to load the space with the space manager
+        /// </summary>
+        /// <param name="state"></param>
+        public void SetHoldingState(bool state)
+        {
+            holding = state;
+        }
+        // ------------------------------------------------------------------------------------------------------------
+        private void LateUpdate()
+        {
+            if (holding && SpaceManager.LoadSpace(transform.position))
+            {
+                SpaceManager.LoadSpace(this);
+            }
         }
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="parent"></param>
-        public void SetParentSpace(SpaceInstance parent)
+        /// <param name="other"></param>
+        private void OnTriggerEnter(Collider other)
         {
-            parentSpace = parent;
-        }
-        public SpaceInstance ParentSpace()
-        {
-            return parentSpace;
+            if (other.name == SpaceManager.SpaceButtonName && holding) SpaceManager.LoadSpace(this);
         }
     }
 }

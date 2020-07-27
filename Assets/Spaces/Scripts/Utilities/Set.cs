@@ -95,6 +95,15 @@ namespace Spaces.Scripts.Utilities
             c.transform.position = new Vector3(position.x, y.position.y, position.z);
         }
         /// <summary>
+        /// 
+        /// </summary>
+        public static void SplitTransform(this Transform target, Transform positionTarget, Transform heightReference)
+        {
+            if (positionTarget == null || heightReference == null || target == null) return;
+            Vector3 position = positionTarget.position;
+            target.transform.position = new Vector3(position.x, heightReference.position.y, position.z);
+        }
+        /// <summary>
         /// Transform C will follow transform XZ's x and z position, and transform Y's y position
         /// </summary>
         /// <param name="c"></param>
@@ -553,19 +562,26 @@ namespace Spaces.Scripts.Utilities
                     throw new ArgumentOutOfRangeException(nameof(axis), axis, null);
             }
         }
+
         /// <summary>
-        /// Returns a GameObject, sets its parent, and names it
+        /// Returns a GameObject
+        /// Sets its parent, name, local position, and tag
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="name"></param>
         /// <param name="localPosition"></param>
+        /// <param name="tag"></param>
         /// <returns></returns>
-        public static GameObject Object(GameObject parent, string name, Vector3 localPosition)
+        public static GameObject Object(GameObject parent, string name, Vector3 localPosition, string tag = null)
         {
             GameObject gameObject = new GameObject();
             gameObject.transform.parent = parent == null ? null : parent.transform;
             gameObject.name = name;
             gameObject.transform.localPosition = localPosition;
+            if (tag != null)
+            {
+                gameObject.tag = tag;
+            }
             return gameObject;
         }
         /// <summary>

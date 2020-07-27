@@ -12,6 +12,7 @@ namespace Spaces.Scripts.Objects.Totem
         public GameObject objectObject, totemObject;
         public Outline objectOutline, totemOutline;
         private SpaceTotem spaceTotem;
+        private ObjectClass.ObjectPhysics objectPhysics = new ObjectClass.ObjectPhysics();
         
         // ------------------------------------------------------------------------------------------------------------
 
@@ -25,17 +26,18 @@ namespace Spaces.Scripts.Objects.Totem
         {
             if (extant) return;
             extant = true;
-            
             // Create the relevant objects
             objectObject = Create(objectClass.objectObject, parent);
             totemObject = Create(objectClass.totemObject, parent);
-
             // Add outlines for the objects
             objectOutline = objectObject.Outline(objectClass.objectOutline);
             totemOutline = totemObject.Outline(objectClass.totemOutline);
-            
             // Create space totem references
             spaceTotem = totemObject.AddComponent<SpaceTotem>();
+            // Create the rigidbodies for the children
+            objectPhysics.SetObjectPhysics(useGravity: false, isKinematic: true);
+            objectObject.AddComponent<Rigidbody>().Rigidbody(objectPhysics);
+            totemObject.AddComponent<Rigidbody>().Rigidbody(objectPhysics);
         }
         /// <summary>
         /// Creates a new object and sets it to inactive in the same frame
@@ -48,6 +50,7 @@ namespace Spaces.Scripts.Objects.Totem
             GameObject placeholder = Instantiate(prefab, parent);
             placeholder.tag = ObjectInstance.Object;
             placeholder.SetActive(false);
+            placeholder.transform.localPosition = Vector3.zero;
             return placeholder;
         }
         /// <summary>
@@ -79,7 +82,6 @@ namespace Spaces.Scripts.Objects.Totem
                         Outline(ObjectInstance.TotemState.OBJECT, false);
                     }
                     objectObject.SetActive(false);
-                    
                     // Set the totem active, then enable the outline
                     totemObject.SetActive(true);
                     if (outline)
@@ -94,7 +96,6 @@ namespace Spaces.Scripts.Objects.Totem
                         Outline(ObjectInstance.TotemState.TOTEM, false);
                     }
                     totemObject.SetActive(false);
-
                     // Then enable the object and enable its outline
                     objectObject.SetActive(true);
                     if (outline)
@@ -135,6 +136,14 @@ namespace Spaces.Scripts.Objects.Totem
             // Set the outline colour of the totem
             totemOutline.OutlineColor = color;
             spaceTotem.SetTotemColour(color);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void RecenterObjectTotem()
+        {
+            objectObject.transform.localPosition = Vector3.zero;
+            totemObject.transform.localPosition = Vector3.zero;
         }
     }
 }

@@ -41,7 +41,7 @@
         void HoverEnd();
     }
     
-    public interface IInteractive
+    public interface IInteractive<in T, in U, in V>
     {
         /// <summary>
         /// 
@@ -50,7 +50,7 @@
         /// <summary>
         /// 
         /// </summary>
-        void GrabStart();
+        void GrabStart(T check, U mode, V totemisedSpace);
         /// <summary>
         /// 
         /// </summary>

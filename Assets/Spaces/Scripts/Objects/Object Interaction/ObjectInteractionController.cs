@@ -13,10 +13,11 @@ namespace Spaces.Scripts.Objects.Object_Interaction
         [SerializeField, Range(.1f, 10f)] private float indirectRadius;
         [SerializeField] private Material material;
         [Header("Direct Interaction Settings")]
-        [Range(0f, .05f), SerializeField] private float directRadius = .025f;
+        [Range(0f, .05f), SerializeField] private float radius = .025f;
         
         private static ControllerTransforms Controller => Reference.Player().GetComponent<ControllerTransforms>();
         private static UserInterfaceController UserInterfaceController => Reference.Player().GetComponent<UserInterfaceController>();
+        private DirectObject dominantDirect, nondominantDirect;
         private IndirectObject dominantIndirect, nondominantIndirect;
         private ObjectInstance focusObject;
         
@@ -72,8 +73,20 @@ namespace Spaces.Scripts.Objects.Object_Interaction
             dominantIndirect.Initialise(interactionParent, "[Object] [Indirect / Dominant]", material, range, ControllerTransforms.Check.RIGHT);
             
             // Add indirect event listeners
-            nondominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT);
-            dominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT);
+            nondominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT, ObjectInstance.Object);
+            dominantIndirect.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT, ObjectInstance.Object);
+            
+            // Add direct interaction to each controller
+            nondominantDirect = Controller.Transform(ControllerTransforms.Check.LEFT).gameObject.AddComponent<DirectObject>();
+            dominantDirect = Controller.Transform(ControllerTransforms.Check.RIGHT).gameObject.AddComponent<DirectObject>();
+            
+            // Initialise the direct interfaces
+            nondominantDirect.Initialise(radius, ControllerTransforms.Check.LEFT);
+            dominantDirect.Initialise(radius, ControllerTransforms.Check.RIGHT);
+            
+            // Add direct event listeners
+            nondominantDirect.AddEventListeners(Controller, ControllerTransforms.Check.LEFT, ObjectInstance.Object);
+            dominantDirect.AddEventListeners(Controller, ControllerTransforms.Check.RIGHT, ObjectInstance.Object);
         }
 
         private void Update()

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DG.Tweening;
 using Spaces.Scripts.Objects;
 using Spaces.Scripts.Objects.Object_Classes;
@@ -9,7 +8,6 @@ using Spaces.Scripts.Space.Space_Classes;
 using Spaces.Scripts.User_Interface.Interface_Elements;
 using Spaces.Scripts.Utilities;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace Spaces.Scripts.Space
 {
@@ -18,11 +16,13 @@ namespace Spaces.Scripts.Space
         [SerializeField] private ObjectClass objectClass;
         [SerializeField] private SpaceClass spaceClass;
         [SerializeField] private GameObject spaceButton;
+        [SerializeField, Range(.1f, .5f)] private float headRadius = .175f;
 
         [Space(10)] public List<SpaceInstance> spaces = new List<SpaceInstance>();
 
         private static ControllerTransforms Controller => Reference.Controller();
         private static Camera Camera => Reference.Camera();
+        public const string SpaceButtonName = "[Space Button]";
 
         private Button SpaceButton => spaceButton.GetComponent<Button>();
         private SpaceInstance activeSpace;
@@ -33,11 +33,11 @@ namespace Spaces.Scripts.Space
         {
             // Create the parent for the space button
             spaceButton = Instantiate(spaceButton, transform);
-            spaceButton.name = "[Space Button]";
+            spaceButton.name = SpaceButtonName;
             
             // Add and configure the collider, must be done before adding button component
             SphereCollider buttonCollider = spaceButton.GetComponent<SphereCollider>();
-            buttonCollider.radius = .175f;
+            buttonCollider.radius = headRadius;
             buttonCollider.isTrigger = true;
             
             // Add and configure the button component
@@ -52,37 +52,45 @@ namespace Spaces.Scripts.Space
         private void CreateSpace()
         {
             SpaceInstance cachedSpace = ActiveSpace();
-            
             // Load a new space, if the active space is null, or the active space doesn't have a parent, a new space will be made
             string debugText = cachedSpace.ParentSpace() == null ? "is a root space, cannot load a parent space" : $"is loading its parent space, <b>{cachedSpace.ParentSpace().name}</b>";
-            Debug.Log($"<b>{cachedSpace.name}</b> {debugText}");
-            LoadSpace(cachedSpace.ParentSpace());
-            
+            Debug.Log($"Space Totemisation <b>{cachedSpace.name}</b> {debugText}");
+            LoadSpace(cachedSpace.ParentSpace(), setParent: false);
             // Take the active scene and totemise it, that will then be added to the new space
-            // Feed in the parent of the current space so it can be unloaded
-            cachedSpace.TotemiseSpace(Controller.Position(SpaceButton.check));
+            cachedSpace.TotemiseSpace(Controller.Transform(SpaceButton.check), SpaceButton.check);
         }
+
         /// <summary>
         /// Loads the supplied space
         /// If there isn't one supplied it will create a new one
         /// </summary>
         /// <param name="spaceInstance"></param>
-        internal void LoadSpace(SpaceInstance spaceInstance = null)
+        /// <param name="setParent"></param>
+        internal void LoadSpace(SpaceInstance spaceInstance = null, bool setParent = true)
         {
             // If a space is supplied, set that to active, otherwise create a new one
             if (spaceInstance != null)
             {
                 Debug.Log($"Loading a supplied space: <b>{spaceInstance.name}</b>");
-                SetActiveSpace(spaceInstance);
-                SpaceRegistration(ActiveSpace());
+                // Only do this if you want to register the current active space
+                if (setParent)
+                {
+                    // Cache the reference to the current active space
+                    spaceInstance.SetParentSpace(parent: ActiveSpace());
+                }
+                // Unload the active space (which would be the parent you dolt)
+                UnloadSpace(unloadSpace: ActiveSpace(), loadSpace: spaceInstance);
+                // Set the supplied space to the active space
+                SetActiveSpace(spaceInstance: spaceInstance);
+                // Register that new active space
+                SpaceRegistration(space: ActiveSpace());
             }
             else
             {
                 SpaceRegistration(NewActiveSpace());
                 Debug.Log($"Created root space: <b>{ActiveSpace().name}</b>");
             }
-
-            // Load that active scene up
+            // Load that new active space up
             ActiveSpace().LoadSpace(load: false);
         }
         /// <summary>
@@ -94,6 +102,15 @@ namespace Spaces.Scripts.Space
         {
             Debug.Log($"The space <b>{unloadSpace.name}</b> is being unloaded by <b>{loadSpace.name}</b>");
             unloadSpace.UnloadSpace(loadSpace);
+        }
+        /// <summary>
+        /// This is a check 
+        /// </summary>
+        /// <param name="spacePosition"></param>
+        /// <returns></returns>
+        public bool LoadSpace(Vector3 spacePosition)
+        {
+            return Vector3.Distance(spacePosition, spaceButton.transform.position) <= headRadius;
         }
         /// <summary>
         /// Generates a new space and makes it the active space

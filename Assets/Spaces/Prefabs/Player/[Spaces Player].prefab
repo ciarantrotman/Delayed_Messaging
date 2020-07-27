@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4776214766702685143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8905692857995942586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6c88ae677d3584391f89560fdb6fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directDamping: 0.75
+  indirectDamping: 0.25
 --- !u!114 &7548802202833085759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,7 +29,7 @@ MonoBehaviour:
   range: 10
   indirectRadius: 0.125
   material: {fileID: 2100000, guid: db79bbb8a0f517843aae9f7e040717c4, type: 2}
-  directRadius: 0.025
+  radius: 0.025
 --- !u!114 &7611771373011492134
 MonoBehaviour:
   m_ObjectHideFlags: 0

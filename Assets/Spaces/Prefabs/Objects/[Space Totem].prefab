@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a63aea12375af054db9b15a4589f6a3c, type: 2}
+  - {fileID: 2100000, guid: db79bbb8a0f517843aae9f7e040717c4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 3970427711123346194}
   - component: {fileID: 837097679427383545}
   - component: {fileID: 671803040080029241}
-  - component: {fileID: 6679876920311930999}
   m_Layer: 0
   m_Name: '[Space Totem]'
   m_TagString: Untagged
@@ -108,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 8148908803951064980}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.119, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 5304701399584712859}
   m_Father: {fileID: 0}
@@ -169,21 +168,8 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8148908803951064980}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6679876920311930999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8148908803951064980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e733b43eda7a9343b43869010c7b7df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totemPearl: {fileID: 5304701399584712856}

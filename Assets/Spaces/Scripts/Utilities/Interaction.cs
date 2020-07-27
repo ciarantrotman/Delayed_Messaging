@@ -6,9 +6,14 @@ namespace Spaces.Scripts.Utilities
 {
     public abstract class Interaction : MonoBehaviour
     {
+        public string tagComparison;
+        public enum Mode { DIRECT, INDIRECT }
         protected ControllerTransforms.Check orientation;
-        public void AddEventListeners(ControllerTransforms controller, ControllerTransforms.Check side)
+        public void AddEventListeners(ControllerTransforms controller, ControllerTransforms.Check side, string tag)
         {
+            // Cache references
+            tagComparison = tag;
+            
             // Add event listeners 
             controller.SelectEvent(side, Event.END).AddListener(Select);
             controller.GrabEvent(side, Event.START).AddListener(GrabStart);

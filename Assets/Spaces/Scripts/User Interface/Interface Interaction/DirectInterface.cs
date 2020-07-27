@@ -53,7 +53,7 @@ namespace Spaces.Scripts.User_Interface.Interface_Interaction
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.CompareTag(BaseInterface.Interface)) return;
+            if (!other.CompareTag(tagComparison)) return;
             
             // Create a new button cache
             Button newButton = other.transform.GetComponent<Button>();
@@ -72,7 +72,7 @@ namespace Spaces.Scripts.User_Interface.Interface_Interaction
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag(BaseInterface.Interface) && other.GetComponent<Button>() == button && extantButton)
+            if (other.CompareTag(tagComparison) && other.GetComponent<Button>() == button && extantButton)
             {
                 // You are no longer near at a button, set the last button to not being hovered on
                 button.HoverEnd();
